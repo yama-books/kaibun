@@ -5,11 +5,15 @@ on:
     paths:
       - "data/**"
       - "scripts/validate-corpus.mjs"
+      - "scripts/validate-ui.mjs"
+      - "index.html"
       - ".github/workflows/validate.yml"
   pull_request:
     paths:
       - "data/**"
       - "scripts/validate-corpus.mjs"
+      - "scripts/validate-ui.mjs"
+      - "index.html"
 permissions:
   contents: read
 jobs:
@@ -22,3 +26,5 @@ jobs:
           node-version: "24"
       - name: Validate corpus and DNA
         run: node scripts/validate-corpus.mjs
+      - name: Validate public UI
+        run: node scripts/validate-ui.mjs
