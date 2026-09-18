@@ -56,7 +56,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 <div class="wrap">
 <header>
   <div><h1>怪文回文メーカー</h1><div class="sub">まず、日本語として通す。そこから一段ずつ、鏡の奥へ伸ばす。</div></div>
-  <div class="badge">v0.12.1 / 段階履歴</div>
+  <div class="badge">v0.13 / 50かな長文化</div>
 </header>
 
 <div class="card">
@@ -149,7 +149,7 @@ async function init(){
   const rs=rules.verified_recursive_space;
   $("#recursiveStat").textContent=rs?("再帰 "+rs.sentence_variants.toLocaleString()+"文"):"再帰候補 –";
   $("#pairStat").textContent="逆語 "+pairs.pair_count+"組 / "+pairs.variant_count+"文";
-  $("#storyStat").textContent="物語 "+(growth.verified?.narrative_family_count||0)+"系統";
+  $("#storyStat").textContent="物語 "+(growth.verified?.narrative_family_count||0)+"系統 / 最長 "+(growth.verified?.longest_narrative_kana||"–")+"かな";
   populateGrowthFamilies();
   updatePolicy();
   seedOne();
