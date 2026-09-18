@@ -1,6 +1,6 @@
 {
-  "version": "0.12.1",
-  "principle": "段階長文化は、(1)構文骨格を保って中心名詞句を伸ばす structural family と、(2)全文を個別監査した narrative family の二系統。どちらも1段ずつ必ず長くする。",
+  "version": "0.13",
+  "principle": "段階長文化は、(1)構文骨格を保って中心名詞句を伸ばす structural family と、(2)全文を個別監査した narrative family の二系統。どちらも1段ずつ必ず長くする。 物語型の後半は、述語を固定したまま受け手の親族関係を鏡型に外側へ追加し、50文字級まで段階的に伸長する。",
   "families": [
     {
       "id": "wife-wait",
@@ -250,7 +250,15 @@
     "all_palindromes": true,
     "minimum_stage_increases_length": true,
     "narrative_family_count": 8,
-    "narrative_variants": 25
+    "narrative_variants": 49,
+    "longest_narrative_kana": 51,
+    "longest_narrative_example": {
+      "family": "matsutake-wife",
+      "stage": 6,
+      "display": "確かに、母の父の母のこの松茸摘みに来て、奇跡的に見つけた妻の子の母の父の母に貸した。",
+      "reading": "たしかにははのちちのははのこのまつたけつみにきてきせきてきにみつけたつまのこのははのちちのははにかした",
+      "len": 51
+    }
   },
   "narrative_families": [
     {
@@ -284,8 +292,36 @@
           "adds": "人物関係",
           "japanese_quality": "A",
           "weirdness": 4
+        },
+        {
+          "reading": "たしかにははのこのまつたけつみにきてきせきてきにみつけたつまのこのははにかした",
+          "display": "確かに、母のこの松茸摘みに来て、奇跡的に見つけた妻の子の母に貸した。",
+          "adds": "親族関係（母）",
+          "japanese_quality": "A-",
+          "weirdness": 4,
+          "extension_type": "kinship_recipient"
+        },
+        {
+          "reading": "たしかにちちのははのこのまつたけつみにきてきせきてきにみつけたつまのこのははのちちにかした",
+          "display": "確かに、父の母のこの松茸摘みに来て、奇跡的に見つけた妻の子の母の父に貸した。",
+          "adds": "親族関係（父）",
+          "japanese_quality": "A-",
+          "weirdness": 5,
+          "extension_type": "kinship_recipient"
+        },
+        {
+          "reading": "たしかにははのちちのははのこのまつたけつみにきてきせきてきにみつけたつまのこのははのちちのははにかした",
+          "display": "確かに、母の父の母のこの松茸摘みに来て、奇跡的に見つけた妻の子の母の父の母に貸した。",
+          "adds": "親族関係（母）",
+          "japanese_quality": "B+",
+          "weirdness": 5,
+          "extension_type": "kinship_recipient"
         }
-      ]
+      ],
+      "long_tail": {
+        "type": "kinship_recipient",
+        "added_stages": 3
+      }
     },
     {
       "id": "garden-crocodile",
@@ -311,8 +347,36 @@
           "adds": "関係",
           "japanese_quality": "A",
           "weirdness": 4
+        },
+        {
+          "reading": "たしかにははのこのにわのわにのこのははにかした",
+          "display": "確かに、母のこの庭のワニの子の母に貸した。",
+          "adds": "親族関係（母）",
+          "japanese_quality": "A-",
+          "weirdness": 4,
+          "extension_type": "kinship_recipient"
+        },
+        {
+          "reading": "たしかにちちのははのこのにわのわにのこのははのちちにかした",
+          "display": "確かに、父の母のこの庭のワニの子の母の父に貸した。",
+          "adds": "親族関係（父）",
+          "japanese_quality": "A-",
+          "weirdness": 5,
+          "extension_type": "kinship_recipient"
+        },
+        {
+          "reading": "たしかにははのちちのははのこのにわのわにのこのははのちちのははにかした",
+          "display": "確かに、母の父の母のこの庭のワニの子の母の父の母に貸した。",
+          "adds": "親族関係（母）",
+          "japanese_quality": "B+",
+          "weirdness": 5,
+          "extension_type": "kinship_recipient"
         }
-      ]
+      ],
+      "long_tail": {
+        "type": "kinship_recipient",
+        "added_stages": 3
+      }
     },
     {
       "id": "shop-cicada",
@@ -338,8 +402,36 @@
           "adds": "関係",
           "japanese_quality": "A",
           "weirdness": 4
+        },
+        {
+          "reading": "たしかにははのこのみせのせみのこのははにかした",
+          "display": "確かに、母のこの店のセミの子の母に貸した。",
+          "adds": "親族関係（母）",
+          "japanese_quality": "A-",
+          "weirdness": 4,
+          "extension_type": "kinship_recipient"
+        },
+        {
+          "reading": "たしかにちちのははのこのみせのせみのこのははのちちにかした",
+          "display": "確かに、父の母のこの店のセミの子の母の父に貸した。",
+          "adds": "親族関係（父）",
+          "japanese_quality": "A-",
+          "weirdness": 5,
+          "extension_type": "kinship_recipient"
+        },
+        {
+          "reading": "たしかにははのちちのははのこのみせのせみのこのははのちちのははにかした",
+          "display": "確かに、母の父の母のこの店のセミの子の母の父の母に貸した。",
+          "adds": "親族関係（母）",
+          "japanese_quality": "B+",
+          "weirdness": 5,
+          "extension_type": "kinship_recipient"
         }
-      ]
+      ],
+      "long_tail": {
+        "type": "kinship_recipient",
+        "added_stages": 3
+      }
     },
     {
       "id": "kitten",
@@ -365,8 +457,36 @@
           "adds": "関係",
           "japanese_quality": "A",
           "weirdness": 3
+        },
+        {
+          "reading": "たしかにははのこのこねこのこのははにかした",
+          "display": "確かに、母のこの子猫の子の母に貸した。",
+          "adds": "親族関係（母）",
+          "japanese_quality": "A-",
+          "weirdness": 4,
+          "extension_type": "kinship_recipient"
+        },
+        {
+          "reading": "たしかにちちのははのこのこねこのこのははのちちにかした",
+          "display": "確かに、父の母のこの子猫の子の母の父に貸した。",
+          "adds": "親族関係（父）",
+          "japanese_quality": "A-",
+          "weirdness": 5,
+          "extension_type": "kinship_recipient"
+        },
+        {
+          "reading": "たしかにははのちちのははのこのこねこのこのははのちちのははにかした",
+          "display": "確かに、母の父の母のこの子猫の子の母の父の母に貸した。",
+          "adds": "親族関係（母）",
+          "japanese_quality": "B+",
+          "weirdness": 5,
+          "extension_type": "kinship_recipient"
         }
-      ]
+      ],
+      "long_tail": {
+        "type": "kinship_recipient",
+        "added_stages": 3
+      }
     },
     {
       "id": "woodpecker",
@@ -392,8 +512,36 @@
           "adds": "関係",
           "japanese_quality": "A",
           "weirdness": 3
+        },
+        {
+          "reading": "たしかにははのこのきつつきのこのははにかした",
+          "display": "確かに、母のこのキツツキの子の母に貸した。",
+          "adds": "親族関係（母）",
+          "japanese_quality": "A-",
+          "weirdness": 4,
+          "extension_type": "kinship_recipient"
+        },
+        {
+          "reading": "たしかにちちのははのこのきつつきのこのははのちちにかした",
+          "display": "確かに、父の母のこのキツツキの子の母の父に貸した。",
+          "adds": "親族関係（父）",
+          "japanese_quality": "A-",
+          "weirdness": 5,
+          "extension_type": "kinship_recipient"
+        },
+        {
+          "reading": "たしかにははのちちのははのこのきつつきのこのははのちちのははにかした",
+          "display": "確かに、母の父の母のこのキツツキの子の母の父の母に貸した。",
+          "adds": "親族関係（母）",
+          "japanese_quality": "B+",
+          "weirdness": 5,
+          "extension_type": "kinship_recipient"
         }
-      ]
+      ],
+      "long_tail": {
+        "type": "kinship_recipient",
+        "added_stages": 3
+      }
     },
     {
       "id": "lion",
@@ -419,8 +567,36 @@
           "adds": "関係",
           "japanese_quality": "A",
           "weirdness": 3
+        },
+        {
+          "reading": "たしかにははのこのししのこのははにかした",
+          "display": "確かに、母のこの獅子の子の母に貸した。",
+          "adds": "親族関係（母）",
+          "japanese_quality": "A-",
+          "weirdness": 4,
+          "extension_type": "kinship_recipient"
+        },
+        {
+          "reading": "たしかにちちのははのこのししのこのははのちちにかした",
+          "display": "確かに、父の母のこの獅子の子の母の父に貸した。",
+          "adds": "親族関係（父）",
+          "japanese_quality": "A-",
+          "weirdness": 5,
+          "extension_type": "kinship_recipient"
+        },
+        {
+          "reading": "たしかにははのちちのははのこのししのこのははのちちのははにかした",
+          "display": "確かに、母の父の母のこの獅子の子の母の父の母に貸した。",
+          "adds": "親族関係（母）",
+          "japanese_quality": "B+",
+          "weirdness": 5,
+          "extension_type": "kinship_recipient"
         }
-      ]
+      ],
+      "long_tail": {
+        "type": "kinship_recipient",
+        "added_stages": 3
+      }
     },
     {
       "id": "nana",
@@ -446,8 +622,36 @@
           "adds": "関係",
           "japanese_quality": "A",
           "weirdness": 2
+        },
+        {
+          "reading": "たしかにははのこのななのこのははにかした",
+          "display": "確かに、母のこのナナの子の母に貸した。",
+          "adds": "親族関係（母）",
+          "japanese_quality": "A-",
+          "weirdness": 4,
+          "extension_type": "kinship_recipient"
+        },
+        {
+          "reading": "たしかにちちのははのこのななのこのははのちちにかした",
+          "display": "確かに、父の母のこのナナの子の母の父に貸した。",
+          "adds": "親族関係（父）",
+          "japanese_quality": "A-",
+          "weirdness": 5,
+          "extension_type": "kinship_recipient"
+        },
+        {
+          "reading": "たしかにははのちちのははのこのななのこのははのちちのははにかした",
+          "display": "確かに、母の父の母のこのナナの子の母の父の母に貸した。",
+          "adds": "親族関係（母）",
+          "japanese_quality": "B+",
+          "weirdness": 5,
+          "extension_type": "kinship_recipient"
         }
-      ]
+      ],
+      "long_tail": {
+        "type": "kinship_recipient",
+        "added_stages": 3
+      }
     },
     {
       "id": "ishii",
@@ -473,8 +677,36 @@
           "adds": "関係",
           "japanese_quality": "A",
           "weirdness": 2
+        },
+        {
+          "reading": "たしかにははのこのいしいのこのははにかした",
+          "display": "確かに、母のこの石井の子の母に貸した。",
+          "adds": "親族関係（母）",
+          "japanese_quality": "A-",
+          "weirdness": 4,
+          "extension_type": "kinship_recipient"
+        },
+        {
+          "reading": "たしかにちちのははのこのいしいのこのははのちちにかした",
+          "display": "確かに、父の母のこの石井の子の母の父に貸した。",
+          "adds": "親族関係（父）",
+          "japanese_quality": "A-",
+          "weirdness": 5,
+          "extension_type": "kinship_recipient"
+        },
+        {
+          "reading": "たしかにははのちちのははのこのいしいのこのははのちちのははにかした",
+          "display": "確かに、母の父の母のこの石井の子の母の父の母に貸した。",
+          "adds": "親族関係（母）",
+          "japanese_quality": "B+",
+          "weirdness": 5,
+          "extension_type": "kinship_recipient"
         }
-      ]
+      ],
+      "long_tail": {
+        "type": "kinship_recipient",
+        "added_stages": 3
+      }
     }
   ],
   "quality_note": "物語型は全段階を独立した日本語文として読める形へ修正。stageごとに行為→相手→経緯/関係を追加する。"
