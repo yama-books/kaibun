@@ -15,7 +15,7 @@
 .controls{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-top:13px}.controls label{font-size:12px;color:var(--sub)}.controls input[type=range]{width:165px;vertical-align:middle}
 @media(max-width:650px){header{display:block}.badge{display:inline-block;margin-top:8px}.layers{grid-template-columns:1fr}}
 </style></head><body><div class="wrap">
-<header><div><h1>怪文回文メーカー</h1><div class="sub">まず、日本語として通す。そこから鏡の奥へ伸ばす。</div></div><div class="badge">v0.8.1 / 再帰DNA</div></header>
+<header><div><h1>怪文回文メーカー</h1><div class="sub">まず、日本語として通す。そこから鏡の奥へ伸ばす。</div></div><div class="badge">v0.9 / 逆語ペアDNA</div></header>
 <div class="card">
 <div class="layers">
 <button class="layer active" data-layer="L1"><b>第一層　標準日本語</b><small id="c1">–</small></button>
@@ -23,29 +23,30 @@
 <button class="layer" data-layer="L3"><b>第三層　実験文</b><small id="c3">–</small></button>
 </div>
 <div class="note" id="policy">読み込み中…</div>
-<div class="stats"><span class="stat" id="ruleStat">DNA規則 –</span><span class="stat" id="recursiveStat">再帰候補 –</span><span class="stat">全件回文検証</span></div>
+<div class="stats"><span class="stat" id="ruleStat">DNA規則 –</span><span class="stat" id="recursiveStat">再帰候補 –</span><span class="stat" id="pairStat">逆語ペア –</span><span class="stat">全件回文検証</span></div>
 <div class="controls">
 <label>怪文度上限 <b id="weirdVal">2</b> <input id="weird" type="range" min="1" max="5" value="2" step="1"></label>
 <label>長文化 <b id="depthVal">1</b> <input id="depth" type="range" min="0" max="3" value="1" step="1"></label>
 </div>
 </div>
 <div class="card">
-<div class="toolbar"><button class="primary" id="seedGen">原種から1本</button><button class="dna" id="dnaGen">DNAで1本生成</button><button id="longGen">長文DNA</button><button id="ten">10本比較</button></div>
+<div class="toolbar"><button class="primary" id="seedGen">原種から1本</button><button class="dna" id="dnaGen">DNAで1本生成</button><button id="pairGen">逆語ペア</button><button id="longGen">長文DNA</button><button id="ten">10本比較</button></div>
 <div class="result" id="result">読み込み中…</div><div class="reading" id="reading"></div>
 <div class="meta"><span class="pill" id="pal">–</span><span class="pill" id="quality">日本語 –</span><span class="pill" id="weirdMeta">怪文 –</span><span class="pill" id="family">–</span><span class="pill dnaPill" id="origin">–</span></div>
 <div class="note" id="why"></div><div class="mirror" id="mirror"></div><div class="list" id="list"></div>
 </div></div>
 <script>
-let data=null,rules=null,layer="L1",seen=new Set();
+let data=null,rules=null,pairs=null,layer="L1",seen=new Set();
 const $=s=>document.querySelector(s),rev=s=>[...s].reverse().join(""),isPal=s=>s===rev(s);
 async function init(){
-  [data,rules]=await Promise.all([
+  [data,rules,pairs]=await Promise.all([
     fetch("./data/layered-seeds-v08.json").then(r=>r.json()),
-    fetch("./data/generation-rules-v08.json").then(r=>r.json())
+    fetch("./data/generation-rules-v08.json").then(r=>r.json()),
+    fetch("./data/reverse-lexeme-pairs-v09.json").then(r=>r.json())
   ]);
   $("#c1").textContent=data.counts.L1+"本";$("#c2").textContent=data.counts.L2+"本";$("#c3").textContent=data.counts.L3+"本";
   $("#ruleStat").textContent="DNA規則 "+rules.rule_count+"種";
-  const rs=rules.verified_recursive_space;$("#recursiveStat").textContent=rs?("再帰 "+rs.sentence_variants.toLocaleString()+"文"):"再帰候補 –";
+  const rs=rules.verified_recursive_space;$("#recursiveStat").textContent=rs?("再帰 "+rs.sentence_variants.toLocaleString()+"文"):"再帰候補 –";$("#pairStat").textContent="逆語 "+pairs.pair_count+"組 / "+pairs.variant_count+"文";
   updatePolicy();seedOne();
 }
 function defaultWeird(l){return l==="L1"?1:l==="L2"?3:4}
@@ -84,6 +85,20 @@ function recursivePool(){
   }
   return out;
 }
+function pairPool(){
+  const out=[];
+  for(const p of pairs.pairs){
+    if(p.right.reading!==rev(p.left.reading))continue;
+    for(const v of p.variants){
+      if(v.layer!==layer || v.weirdness>maxWeird())continue;
+      const reading=p.left.reading+v.particle+p.right.reading;
+      const display=p.left.display+v.particle+(v.right_display||p.right.display)+"。";
+      if(!isPal(reading))continue;
+      out.push({display,reading,family:"逆語ペア",origin:"PAIR:"+p.id,why:"名詞と逆読み述語の間に、文法的に許可した助詞だけを置く。",japanese_quality:v.layer==="L1"?"A":"A-",weirdness:v.weirdness});
+    }
+  }
+  return out;
+}
 function dnaPool(includeRecursive=true){
   const out=[];
   for(const rule of rules.rules){
@@ -98,6 +113,7 @@ function dnaPool(includeRecursive=true){
       pushDNA(out,rule,v[1],reading,l);
     }
   }
+  out.push(...pairPool());
   if(includeRecursive)out.push(...recursivePool());
   return out;
 }
@@ -117,11 +133,12 @@ function show(x){
 }
 function seedOne(){const x=chooseFresh(pool());show(x?{...x,origin:"原種コーパス"}:null)}
 function dnaOne(){show(chooseFresh(dnaPool(true)))}
+function pairOne(){show(chooseFresh(pairPool()))}
 function longOne(){show(chooseFresh(recursivePool()))}
 document.querySelectorAll(".layer").forEach(b=>b.onclick=()=>{document.querySelectorAll(".layer").forEach(x=>x.classList.remove("active"));b.classList.add("active");layer=b.dataset.layer;seen.clear();$("#list").innerHTML="";updatePolicy();seedOne()});
 $("#weird").oninput=e=>{$("#weirdVal").textContent=e.target.value;seen.clear();$("#list").innerHTML="";seedOne()};
 $("#depth").oninput=e=>{$("#depthVal").textContent=e.target.value;seen.clear();$("#list").innerHTML=""};
-$("#seedGen").onclick=seedOne;$("#dnaGen").onclick=dnaOne;$("#longGen").onclick=longOne;
+$("#seedGen").onclick=seedOne;$("#dnaGen").onclick=dnaOne;$("#pairGen").onclick=pairOne;$("#longGen").onclick=longOne;
 $("#ten").onclick=()=>{const box=$("#list");box.innerHTML="";const p=[...pool().map(x=>({...x,origin:"原種"})),...dnaPool(true)];const used=new Set();for(let i=0;i<10&&used.size<p.length;i++){let x;do{x=p[Math.floor(Math.random()*p.length)]}while(used.has(x.reading));used.add(x.reading);const e=document.createElement("div");e.className="item";e.innerHTML=(i+1)+". "+x.display+"<br><small>"+(x.origin||x.subgroup||"原種")+" / 日本語 "+(x.japanese_quality||"-")+" / 怪文 "+(x.weirdness??defaultWeird(layer))+"</small>";e.onclick=()=>show(x);box.appendChild(e)}};
 init().catch(e=>{$("#result").textContent="データ読込失敗";console.error(e)});
 </script></body></html>
