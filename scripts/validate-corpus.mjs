@@ -77,6 +77,23 @@ for(const f of growth.families){
 }
 if(growth.verified?.generated_growth_variants!==growthVariants)errors.push(`GROWTH COUNT mismatch: declared=${growth.verified?.generated_growth_variants} actual=${growthVariants}`);
 
+let narrativeVariants=0;
+for(const f of growth.narrative_families??[]){
+  if(reverse(f.left[0])!==f.right[0])errors.push(`NARRATIVE flank mismatch: ${f.id}`);
+  let previousLength=-1;
+  for(let stage=0;stage<f.stages.length;stage++){
+    const st=f.stages[stage];
+    if(st.reading && !isPalindrome(st.reading))errors.push(`NARRATIVE center non-palindrome: ${f.id} stage=${stage}`);
+    const reading=f.left[0]+st.reading+f.right[0];
+    check({id:"NARRATIVE:"+f.id},f.left[1]+st.display+f.right[1],reading);
+    const len=[...reading].length;
+    if(len<=previousLength)errors.push(`NARRATIVE stage does not increase length: ${f.id} stage=${stage}`);
+    previousLength=len;
+    narrativeVariants++;
+  }
+}
+if(growth.verified?.narrative_variants!=null && growth.verified.narrative_variants!==narrativeVariants)errors.push(`NARRATIVE COUNT mismatch: declared=${growth.verified.narrative_variants} actual=${narrativeVariants}`);
+
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
 if(rules.rule_count!==rules.rules.length)errors.push(`RULE COUNT mismatch: declared=${rules.rule_count} actual=${rules.rules.length}`);
@@ -86,4 +103,6 @@ if(errors.length){console.error("\nValidation failed:\n"+errors.map(x=>"- "+x).j
 console.log(`OK: ${corpus.records.length} corpus records, ${rules.rules.length} DNA rules.`);
 console.log(`Layers: L1=${counts.L1}, L2=${counts.L2}, L3=${counts.L3}`);
 console.log(`Recursive sentence space: ${recursiveSentenceCount}`);
-console.log(`Reverse lexeme pairs: ${pairs.pair_count}, variants: ${pairVariants}`);\nconsole.log(`Stepwise growth variants: ${growthVariants}`);
+console.log(`Reverse lexeme pairs: ${pairs.pair_count}, variants: ${pairVariants}`);
+console.log(`Stepwise growth variants: ${growthVariants}`);
+console.log(`Narrative growth variants: ${narrativeVariants}`);
