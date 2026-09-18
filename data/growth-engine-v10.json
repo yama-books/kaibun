@@ -1,5 +1,5 @@
 {
-  "version": "0.12",
+  "version": "0.12.1",
   "principle": "段階長文化は、(1)構文骨格を保って中心名詞句を伸ばす structural family と、(2)全文を個別監査した narrative family の二系統。どちらも1段ずつ必ず長くする。",
   "families": [
     {
@@ -255,34 +255,33 @@
   "narrative_families": [
     {
       "id": "matsutake-wife",
-      "label": "松茸摘み → 妻を発見 → 子に貸す",
-      "mode": "curated_full_stages",
+      "label": "貸した → 妻を発見 → 子に貸す",
       "stages": [
         {
-          "reading": "まつたけつみみつけたつま",
-          "display": "松茸摘み、見つけた妻。",
-          "adds": "出来事の核",
-          "japanese_quality": "B+",
-          "weirdness": 2
+          "reading": "たしかにかした",
+          "display": "確かに貸した。",
+          "adds": "行為の核",
+          "japanese_quality": "A",
+          "weirdness": 1
         },
         {
-          "reading": "まつたけつみにきてきせきてきにみつけたつま",
-          "display": "松茸摘みに来て、奇跡的に見つけた妻。",
+          "reading": "たしかにまつたけつみみつけたつまにかした",
+          "display": "確かに、松茸摘み、見つけた妻に貸した。",
+          "adds": "相手",
+          "japanese_quality": "B+",
+          "weirdness": 3
+        },
+        {
+          "reading": "たしかにまつたけつみにきてきせきてきにみつけたつまにかした",
+          "display": "確かに、松茸摘みに来て、奇跡的に見つけた妻に貸した。",
           "adds": "経緯・評価",
           "japanese_quality": "A-",
           "weirdness": 3
         },
         {
-          "reading": "このまつたけつみにきてきせきてきにみつけたつまのこ",
-          "display": "この松茸摘みに来て、奇跡的に見つけた妻の子。",
-          "adds": "人物関係",
-          "japanese_quality": "B+",
-          "weirdness": 3
-        },
-        {
           "reading": "たしかにこのまつたけつみにきてきせきてきにみつけたつまのこにかした",
           "display": "確かに、この松茸摘みに来て、奇跡的に見つけた妻の子に貸した。",
-          "adds": "行為",
+          "adds": "人物関係",
           "japanese_quality": "A",
           "weirdness": 4
         }
@@ -290,27 +289,26 @@
     },
     {
       "id": "garden-crocodile",
-      "label": "庭のワニ → 子 → 貸す",
-      "mode": "curated_full_stages",
+      "label": "貸した → 庭のワニ → その子",
       "stages": [
         {
-          "reading": "にわのわに",
-          "display": "庭のワニ。",
-          "adds": "場所つきの主体",
-          "japanese_quality": "B+",
-          "weirdness": 2
+          "reading": "たしかにかした",
+          "display": "確かに貸した。",
+          "adds": "行為の核",
+          "japanese_quality": "A",
+          "weirdness": 1
         },
         {
-          "reading": "このにわのわにのこ",
-          "display": "この庭のワニの子。",
-          "adds": "関係",
-          "japanese_quality": "B+",
+          "reading": "たしかににわのわににかした",
+          "display": "確かに、庭のワニに貸した。",
+          "adds": "場所つきの相手",
+          "japanese_quality": "A",
           "weirdness": 3
         },
         {
           "reading": "たしかにこのにわのわにのこにかした",
           "display": "確かに、この庭のワニの子に貸した。",
-          "adds": "行為",
+          "adds": "関係",
           "japanese_quality": "A",
           "weirdness": 4
         }
@@ -318,27 +316,26 @@
     },
     {
       "id": "shop-cicada",
-      "label": "店のセミ → 子 → 貸す",
-      "mode": "curated_full_stages",
+      "label": "貸した → 店のセミ → その子",
       "stages": [
         {
-          "reading": "みせのせみ",
-          "display": "店のセミ。",
-          "adds": "場所つきの主体",
-          "japanese_quality": "B+",
-          "weirdness": 2
+          "reading": "たしかにかした",
+          "display": "確かに貸した。",
+          "adds": "行為の核",
+          "japanese_quality": "A",
+          "weirdness": 1
         },
         {
-          "reading": "このみせのせみのこ",
-          "display": "この店のセミの子。",
-          "adds": "関係",
-          "japanese_quality": "B+",
+          "reading": "たしかにみせのせみにかした",
+          "display": "確かに、店のセミに貸した。",
+          "adds": "場所つきの相手",
+          "japanese_quality": "A",
           "weirdness": 3
         },
         {
           "reading": "たしかにこのみせのせみのこにかした",
           "display": "確かに、この店のセミの子に貸した。",
-          "adds": "行為",
+          "adds": "関係",
           "japanese_quality": "A",
           "weirdness": 4
         }
@@ -346,27 +343,26 @@
     },
     {
       "id": "kitten",
-      "label": "子猫 → 子 → 貸す",
-      "mode": "curated_full_stages",
+      "label": "貸した → 子猫 → その子",
       "stages": [
         {
-          "reading": "こねこ",
-          "display": "子猫。",
-          "adds": "主体",
-          "japanese_quality": "B+",
+          "reading": "たしかにかした",
+          "display": "確かに貸した。",
+          "adds": "行為の核",
+          "japanese_quality": "A",
           "weirdness": 1
         },
         {
-          "reading": "このこねこのこ",
-          "display": "この子猫の子。",
-          "adds": "関係",
-          "japanese_quality": "B+",
+          "reading": "たしかにこねこにかした",
+          "display": "確かに、子猫に貸した。",
+          "adds": "相手",
+          "japanese_quality": "A",
           "weirdness": 2
         },
         {
           "reading": "たしかにこのこねこのこにかした",
           "display": "確かに、この子猫の子に貸した。",
-          "adds": "行為",
+          "adds": "関係",
           "japanese_quality": "A",
           "weirdness": 3
         }
@@ -374,27 +370,26 @@
     },
     {
       "id": "woodpecker",
-      "label": "キツツキ → 子 → 貸す",
-      "mode": "curated_full_stages",
+      "label": "貸した → キツツキ → その子",
       "stages": [
         {
-          "reading": "きつつき",
-          "display": "キツツキ。",
-          "adds": "主体",
-          "japanese_quality": "B+",
+          "reading": "たしかにかした",
+          "display": "確かに貸した。",
+          "adds": "行為の核",
+          "japanese_quality": "A",
           "weirdness": 1
         },
         {
-          "reading": "このきつつきのこ",
-          "display": "このキツツキの子。",
-          "adds": "関係",
-          "japanese_quality": "B+",
+          "reading": "たしかにきつつきにかした",
+          "display": "確かに、キツツキに貸した。",
+          "adds": "相手",
+          "japanese_quality": "A",
           "weirdness": 2
         },
         {
           "reading": "たしかにこのきつつきのこにかした",
           "display": "確かに、このキツツキの子に貸した。",
-          "adds": "行為",
+          "adds": "関係",
           "japanese_quality": "A",
           "weirdness": 3
         }
@@ -402,27 +397,26 @@
     },
     {
       "id": "lion",
-      "label": "獅子 → 子 → 貸す",
-      "mode": "curated_full_stages",
+      "label": "貸した → 獅子 → その子",
       "stages": [
         {
-          "reading": "しし",
-          "display": "獅子。",
-          "adds": "主体",
-          "japanese_quality": "B+",
+          "reading": "たしかにかした",
+          "display": "確かに貸した。",
+          "adds": "行為の核",
+          "japanese_quality": "A",
           "weirdness": 1
         },
         {
-          "reading": "このししのこ",
-          "display": "この獅子の子。",
-          "adds": "関係",
-          "japanese_quality": "B+",
+          "reading": "たしかにししにかした",
+          "display": "確かに、獅子に貸した。",
+          "adds": "相手",
+          "japanese_quality": "A",
           "weirdness": 2
         },
         {
           "reading": "たしかにこのししのこにかした",
           "display": "確かに、この獅子の子に貸した。",
-          "adds": "行為",
+          "adds": "関係",
           "japanese_quality": "A",
           "weirdness": 3
         }
@@ -430,27 +424,26 @@
     },
     {
       "id": "nana",
-      "label": "ナナ → 子 → 貸す",
-      "mode": "curated_full_stages",
+      "label": "貸した → ナナ → その子",
       "stages": [
         {
-          "reading": "なな",
-          "display": "ナナ。",
-          "adds": "人物",
-          "japanese_quality": "B+",
+          "reading": "たしかにかした",
+          "display": "確かに貸した。",
+          "adds": "行為の核",
+          "japanese_quality": "A",
           "weirdness": 1
         },
         {
-          "reading": "このななのこ",
-          "display": "このナナの子。",
-          "adds": "関係",
-          "japanese_quality": "B+",
+          "reading": "たしかにななにかした",
+          "display": "確かに、ナナに貸した。",
+          "adds": "相手",
+          "japanese_quality": "A",
           "weirdness": 1
         },
         {
           "reading": "たしかにこのななのこにかした",
           "display": "確かに、このナナの子に貸した。",
-          "adds": "行為",
+          "adds": "関係",
           "japanese_quality": "A",
           "weirdness": 2
         }
@@ -458,32 +451,31 @@
     },
     {
       "id": "ishii",
-      "label": "石井 → 子 → 貸す",
-      "mode": "curated_full_stages",
+      "label": "貸した → 石井 → その子",
       "stages": [
         {
-          "reading": "いしい",
-          "display": "石井。",
-          "adds": "人物",
-          "japanese_quality": "B+",
+          "reading": "たしかにかした",
+          "display": "確かに貸した。",
+          "adds": "行為の核",
+          "japanese_quality": "A",
           "weirdness": 1
         },
         {
-          "reading": "このいしいのこ",
-          "display": "この石井の子。",
-          "adds": "関係",
-          "japanese_quality": "B+",
+          "reading": "たしかにいしいにかした",
+          "display": "確かに、石井に貸した。",
+          "adds": "相手",
+          "japanese_quality": "A",
           "weirdness": 1
         },
         {
           "reading": "たしかにこのいしいのこにかした",
           "display": "確かに、この石井の子に貸した。",
-          "adds": "行為",
+          "adds": "関係",
           "japanese_quality": "A",
           "weirdness": 2
         }
       ]
     }
   ],
-  "quality_note": "物語型は全文の表記・読み・意味関係を個別監査。各stageは完全回文かつ必ず前段より長い。"
+  "quality_note": "物語型は全段階を独立した日本語文として読める形へ修正。stageごとに行為→相手→経緯/関係を追加する。"
 }
