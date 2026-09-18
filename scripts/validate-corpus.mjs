@@ -3,6 +3,7 @@ import fs from "node:fs";
 const corpus = JSON.parse(fs.readFileSync("data/layered-seeds-v08.json", "utf8"));
 const rules = JSON.parse(fs.readFileSync("data/generation-rules-v08.json", "utf8"));
 const pairs = JSON.parse(fs.readFileSync("data/reverse-lexeme-pairs-v09.json", "utf8"));
+const growth = JSON.parse(fs.readFileSync("data/growth-engine-v10.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -57,6 +58,25 @@ for(const p of pairs.pairs){
 if(pairs.pair_count!==pairs.pairs.length)errors.push(`PAIR COUNT mismatch: declared=${pairs.pair_count} actual=${pairs.pairs.length}`);
 if(pairs.variant_count!==pairVariants)errors.push(`PAIR VARIANT COUNT mismatch: declared=${pairs.variant_count} actual=${pairVariants}`);
 
+let growthVariants=0;
+for(const f of growth.families){
+  if(reverse(f.left[0])!==f.right[0])errors.push(`GROWTH reverse mismatch: ${f.id}`);
+  check({id:"GROW:"+f.id},f.stage0[1],f.stage0[0]);
+  let previousMin=[...f.stage0[0]].length;
+  for(let stage=1;stage<=4;stage++){
+    const list=growth.centers["stage"+stage]??[];
+    let minLen=Infinity;
+    for(const c of list){
+      check({id:"GROW:"+f.id},f.left[1]+"も"+c[1]+"も"+f.right[1]+"。",f.left[0]+"も"+c[0]+"も"+f.right[0]);
+      minLen=Math.min(minLen,[...(f.left[0]+"も"+c[0]+"も"+f.right[0])].length);
+      growthVariants++;
+    }
+    if(minLen<=previousMin)errors.push(`GROWTH stage does not increase length: ${f.id} stage=${stage} min=${minLen} prev=${previousMin}`);
+    previousMin=minLen;
+  }
+}
+if(growth.verified?.generated_growth_variants!==growthVariants)errors.push(`GROWTH COUNT mismatch: declared=${growth.verified?.generated_growth_variants} actual=${growthVariants}`);
+
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
 if(rules.rule_count!==rules.rules.length)errors.push(`RULE COUNT mismatch: declared=${rules.rule_count} actual=${rules.rules.length}`);
@@ -66,4 +86,4 @@ if(errors.length){console.error("\nValidation failed:\n"+errors.map(x=>"- "+x).j
 console.log(`OK: ${corpus.records.length} corpus records, ${rules.rules.length} DNA rules.`);
 console.log(`Layers: L1=${counts.L1}, L2=${counts.L2}, L3=${counts.L3}`);
 console.log(`Recursive sentence space: ${recursiveSentenceCount}`);
-console.log(`Reverse lexeme pairs: ${pairs.pair_count}, variants: ${pairVariants}`);
+console.log(`Reverse lexeme pairs: ${pairs.pair_count}, variants: ${pairVariants}`);\nconsole.log(`Stepwise growth variants: ${growthVariants}`);
