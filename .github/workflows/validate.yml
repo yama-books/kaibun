@@ -1,0 +1,24 @@
+name: Validate palindrome corpus
+on:
+  push:
+    branches: [main]
+    paths:
+      - "data/**"
+      - "scripts/validate-corpus.mjs"
+      - ".github/workflows/validate.yml"
+  pull_request:
+    paths:
+      - "data/**"
+      - "scripts/validate-corpus.mjs"
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - name: Validate corpus and DNA
+        run: node scripts/validate-corpus.mjs
