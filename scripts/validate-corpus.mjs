@@ -16,7 +16,10 @@ function recursiveNPs(rule){
   const levels=[rule.bases.map(x=>({...x,depth:0}))];
   for(let d=1;d<=rule.max_depth;d++){
     const cur=[];
-    for(const w of rule.wrappers)for(const inner of levels[d-1])cur.push({reading:w.reading+"の"+inner.reading+"の"+w.reading,display:w.display+"の"+inner.display+"の"+w.display,depth:d});
+    for(const w of rule.wrappers)for(const inner of levels[d-1]){
+      if(rule.constraints?.no_same_adjacent_relation && w.reading===inner.edge)continue;
+      cur.push({reading:w.reading+"の"+inner.reading+"の"+w.reading,display:w.display+"の"+inner.display+"の"+w.display,depth:d,edge:w.reading});
+    }
     levels.push(cur);
   }
   return levels.flat();
