@@ -1,9 +1,9 @@
 <!doctype html>
 <html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>怪文回文メーカー</title><style>
-:root{--bg:#f5f0e8;--paper:#fffdf8;--ink:#22211e;--sub:#6f6a61;--line:#d8d0c2;--green:#315d59;--wine:#755055;--soft:#eee7dc}
+:root{--bg:#f5f0e8;--paper:#fffdf8;--ink:#22211e;--sub:#6f6a61;--line:#d8d0c2;--green:#315d59;--soft:#eee7dc}
 *{box-sizing:border-box}body{margin:0;font-family:"Yu Gothic UI","Hiragino Sans","Meiryo",sans-serif;background:radial-gradient(circle at 12% 8%,rgba(117,79,82,.09),transparent 26%),radial-gradient(circle at 88% 15%,rgba(49,93,89,.07),transparent 24%),var(--bg);color:var(--ink)}
-.wrap{max-width:1040px;margin:auto;padding:28px 18px 60px}header{display:flex;justify-content:space-between;gap:16px;align-items:start}h1{font-size:clamp(29px,6vw,50px);margin:0 0 7px}.sub{color:var(--sub);line-height:1.65}.badge{border:1px solid var(--line);background:var(--paper);padding:7px 11px;border-radius:99px;font-size:12px;white-space:nowrap}
+.wrap{max-width:1060px;margin:auto;padding:28px 18px 60px}header{display:flex;justify-content:space-between;gap:16px;align-items:start}h1{font-size:clamp(29px,6vw,50px);margin:0 0 7px}.sub{color:var(--sub);line-height:1.65}.badge{border:1px solid var(--line);background:var(--paper);padding:7px 11px;border-radius:99px;font-size:12px;white-space:nowrap}
 .card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px;margin-top:16px;box-shadow:0 10px 28px rgba(40,35,25,.05)}
 .layers{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.layer{border:1px solid var(--line);background:white;border-radius:13px;padding:12px;cursor:pointer;text-align:left}.layer.active{background:var(--ink);color:white}.layer b{display:block;font-size:15px}.layer small{opacity:.72}
 .toolbar{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.toolbar button{border:1px solid var(--line);background:white;padding:10px 13px;border-radius:11px;cursor:pointer}.toolbar .primary{background:var(--ink);color:white;border-color:var(--ink);font-weight:800}.toolbar .dna{background:var(--green);color:#fff;border-color:var(--green);font-weight:800}
@@ -12,10 +12,10 @@
 .note{border-left:4px solid var(--green);background:#f1f7f5;padding:10px 12px;margin-top:16px;line-height:1.65}.mirror{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-top:17px}.ch{width:28px;height:33px;display:grid;place-items:center;background:white;border:1px solid var(--line);border-radius:7px}.ch.on{background:#2d3b39;color:white}
 .list{display:grid;gap:8px;margin-top:14px}.item{padding:10px 12px;border:1px solid var(--line);background:white;border-radius:10px;cursor:pointer;line-height:1.5}.item small{color:var(--sub)}
 .stats{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}.stat{background:var(--soft);border-radius:10px;padding:7px 10px;font-size:12px}
-.controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:13px}.controls label{font-size:12px;color:var(--sub)}.controls input[type=range]{width:180px;vertical-align:middle}
+.controls{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-top:13px}.controls label{font-size:12px;color:var(--sub)}.controls input[type=range]{width:165px;vertical-align:middle}
 @media(max-width:650px){header{display:block}.badge{display:inline-block;margin-top:8px}.layers{grid-template-columns:1fr}}
 </style></head><body><div class="wrap">
-<header><div><h1>怪文回文メーカー</h1><div class="sub">まず、日本語として通す。そのあとで、世界を少しだけ曲げる。</div></div><div class="badge">v0.7 / APIなし</div></header>
+<header><div><h1>怪文回文メーカー</h1><div class="sub">まず、日本語として通す。そこから鏡の奥へ伸ばす。</div></div><div class="badge">v0.8 / 再帰DNA</div></header>
 <div class="card">
 <div class="layers">
 <button class="layer active" data-layer="L1"><b>第一層　標準日本語</b><small id="c1">–</small></button>
@@ -23,11 +23,14 @@
 <button class="layer" data-layer="L3"><b>第三層　実験文</b><small id="c3">–</small></button>
 </div>
 <div class="note" id="policy">読み込み中…</div>
-<div class="stats"><span class="stat" id="ruleStat">DNA規則 –</span><span class="stat">自由文字代入なし</span><span class="stat">全件回文検証</span></div>
-<div class="controls"><label>怪文度上限 <b id="weirdVal">5</b> <input id="weird" type="range" min="1" max="5" value="5" step="1"></label></div>
+<div class="stats"><span class="stat" id="ruleStat">DNA規則 –</span><span class="stat" id="recursiveStat">再帰候補 –</span><span class="stat">全件回文検証</span></div>
+<div class="controls">
+<label>怪文度上限 <b id="weirdVal">5</b> <input id="weird" type="range" min="1" max="5" value="5" step="1"></label>
+<label>長文化 <b id="depthVal">2</b> <input id="depth" type="range" min="0" max="3" value="2" step="1"></label>
+</div>
 </div>
 <div class="card">
-<div class="toolbar"><button class="primary" id="seedGen">原種から1本</button><button class="dna" id="dnaGen">DNAで1本生成</button><button id="ten">10本比較</button></div>
+<div class="toolbar"><button class="primary" id="seedGen">原種から1本</button><button class="dna" id="dnaGen">DNAで1本生成</button><button id="longGen">長文DNA</button><button id="ten">10本比較</button></div>
 <div class="result" id="result">読み込み中…</div><div class="reading" id="reading"></div>
 <div class="meta"><span class="pill" id="pal">–</span><span class="pill" id="quality">日本語 –</span><span class="pill" id="weirdMeta">怪文 –</span><span class="pill" id="family">–</span><span class="pill dnaPill" id="origin">–</span></div>
 <div class="note" id="why"></div><div class="mirror" id="mirror"></div><div class="list" id="list"></div>
@@ -37,70 +40,87 @@ let data=null,rules=null,layer="L1",seen=new Set();
 const $=s=>document.querySelector(s),rev=s=>[...s].reverse().join(""),isPal=s=>s===rev(s);
 async function init(){
   [data,rules]=await Promise.all([
-    fetch("./data/layered-seeds-v07.json").then(r=>r.json()),
-    fetch("./data/generation-rules-v07.json").then(r=>r.json())
+    fetch("./data/layered-seeds-v08.json").then(r=>r.json()),
+    fetch("./data/generation-rules-v08.json").then(r=>r.json())
   ]);
   $("#c1").textContent=data.counts.L1+"本";$("#c2").textContent=data.counts.L2+"本";$("#c3").textContent=data.counts.L3+"本";
-  $("#ruleStat").textContent="DNA規則 "+rules.rule_count+"種";updatePolicy();seedOne();
+  $("#ruleStat").textContent="DNA規則 "+rules.rule_count+"種";
+  const rs=rules.verified_recursive_space;$("#recursiveStat").textContent=rs?("再帰 "+rs.sentence_variants.toLocaleString()+"文"):"再帰候補 –";
+  updatePolicy();seedOne();
 }
 function defaultWeird(l){return l==="L1"?1:l==="L2"?3:4}
 function maxWeird(){return +$("#weird").value}
+function depth(){return +$("#depth").value}
 function pool(){return data.records.filter(x=>x.layer===layer && (x.weirdness??defaultWeird(x.layer))<=maxWeird())}
 function variantLayer(rule,v){
   if(v && ["L1","L2","L3"].includes(v[2])) return v[2];
   if((rule.layer||"").includes("/")) return null;
   return rule.layer;
 }
-function ruleWeird(rule,l){return rule.weirdness ?? defaultWeird(l)}
-function pushDNA(out,rule,display,reading,l){
-  if(l!==layer || !isPal(reading) || ruleWeird(rule,l)>maxWeird()) return;
-  out.push({display,reading,family:rule.type||"DNA",origin:rule.id,why:rule.description||"検証済みDNA規則",japanese_quality:l==="L1"?"A":l==="L2"?"A-":"C",weirdness:ruleWeird(rule,l)});
+function pushDNA(out,rule,display,reading,l,weirdness){
+  const w=weirdness??rule.weirdness??defaultWeird(l);
+  if(l!==layer || !isPal(reading) || w>maxWeird()) return;
+  out.push({display,reading,family:rule.type||"DNA",origin:rule.id,why:rule.description||"検証済みDNA規則",japanese_quality:l==="L1"?"A":l==="L2"?"A-":"C",weirdness:w});
 }
-function dnaPool(){
+function recursiveNPs(rule,maxDepth){
+  const levels=[rule.bases.map(x=>({...x,depth:0}))];
+  for(let d=1;d<=Math.min(maxDepth,rule.max_depth);d++){
+    const cur=[];
+    for(const w of rule.wrappers) for(const inner of levels[d-1]){
+      cur.push({reading:w.reading+"の"+inner.reading+"の"+w.reading,display:w.display+"の"+inner.display+"の"+w.display,depth:d});
+    }
+    levels.push(cur);
+  }
+  return levels.flat();
+}
+function recursivePool(){
   const out=[];
-  for(const rule of rules.rules){
-    if(rule.type==="fixed"){
-      pushDNA(out,rule,rule.display,rule.reading,rule.layer); continue;
-    }
-    if(rule.type==="particle_pair"){
-      for(const v of rule.variants||[]) pushDNA(out,rule,v[1],rule.left+v[0]+rule.right,rule.layer);
-      continue;
-    }
-    if(rule.type==="mirrored_coordination"){
-      for(const v of rule.variants||[]) pushDNA(out,rule,v[1],rule.reading_pattern.replace("{person}",v[0]),rule.layer);
-      continue;
-    }
-    for(const v of rule.variants||[]){
-      const l=variantLayer(rule,v) || (rule.layer||"").split("/")[0];
-      let reading=rule.reading_pattern||"";
-      if(reading.includes("{c}")) reading=reading.replace("{c}",v[0]);
-      if(reading.includes("{pal_center}")) reading=reading.replace("{pal_center}",v[0]);
-      pushDNA(out,rule,v[1],reading,l);
+  for(const rule of rules.rules.filter(r=>r.type==="recursive_kinship")){
+    for(const np of recursiveNPs(rule,depth())){
+      const w=rule.weirdness_by_depth?.[np.depth]??(1+np.depth);
+      for(const f of rule.frames) pushDNA(out,rule,f.display.replace("{np}",np.display),f.left+np.reading+f.right,rule.layer,w);
     }
   }
   return out;
 }
+function dnaPool(includeRecursive=true){
+  const out=[];
+  for(const rule of rules.rules){
+    if(rule.type==="recursive_kinship") continue;
+    if(rule.type==="fixed"){pushDNA(out,rule,rule.display,rule.reading,rule.layer);continue}
+    if(rule.type==="particle_pair"){for(const v of rule.variants||[])pushDNA(out,rule,v[1],rule.left+v[0]+rule.right,rule.layer);continue}
+    if(rule.type==="mirrored_coordination"){for(const v of rule.variants||[])pushDNA(out,rule,v[1],rule.reading_pattern.replace("{person}",v[0]),rule.layer);continue}
+    for(const v of rule.variants||[]){
+      const l=variantLayer(rule,v)||(rule.layer||"").split("/")[0];let reading=rule.reading_pattern||"";
+      if(reading.includes("{c}"))reading=reading.replace("{c}",v[0]);
+      if(reading.includes("{pal_center}"))reading=reading.replace("{pal_center}",v[0]);
+      pushDNA(out,rule,v[1],reading,l);
+    }
+  }
+  if(includeRecursive)out.push(...recursivePool());
+  return out;
+}
 function updatePolicy(){$("#policy").textContent=data.policy[layer]}
 function chooseFresh(p){
-  if(!p.length)return null;
-  let q=p.filter(x=>!seen.has(x.reading));
-  if(!q.length){seen.clear();q=p}
-  const x=q[Math.floor(Math.random()*q.length)];seen.add(x.reading);return x;
+  if(!p.length)return null;let q=p.filter(x=>!seen.has(x.reading));
+  if(!q.length){seen.clear();q=p}const x=q[Math.floor(Math.random()*q.length)];seen.add(x.reading);return x;
 }
 function show(x){
  if(!x){$("#result").textContent="この条件では候補がありません。";return}
  $("#result").textContent=x.display;$("#reading").textContent=x.reading;
  $("#pal").textContent=isPal(x.reading)?"✓ 完全回文":"× 不成立";$("#pal").className="pill "+(isPal(x.reading)?"ok":"");
- $("#quality").textContent="日本語 "+(x.japanese_quality|| (layer==="L1"?"A":layer==="L2"?"B":"C"));
+ $("#quality").textContent="日本語 "+(x.japanese_quality||(layer==="L1"?"A":layer==="L2"?"B":"C"));
  $("#weirdMeta").textContent="怪文 "+(x.weirdness??defaultWeird(layer));
  $("#family").textContent=x.family||x.subgroup||layer;$("#origin").textContent=x.origin||"原種コーパス";$("#why").textContent=x.why||x.rationale||"検証済み原種。";
  const m=$("#mirror");m.innerHTML="";const a=[...x.reading];a.forEach((c,i)=>{const e=document.createElement("span");e.className="ch";e.textContent=c;const t=v=>{const n=[...document.querySelectorAll(".ch")];[i,n.length-1-i].forEach(k=>n[k]?.classList.toggle("on",v))};e.onmouseenter=()=>t(true);e.onmouseleave=()=>t(false);m.appendChild(e)})
 }
 function seedOne(){const x=chooseFresh(pool());show(x?{...x,origin:"原種コーパス"}:null)}
-function dnaOne(){show(chooseFresh(dnaPool()))}
+function dnaOne(){show(chooseFresh(dnaPool(true)))}
+function longOne(){show(chooseFresh(recursivePool()))}
 document.querySelectorAll(".layer").forEach(b=>b.onclick=()=>{document.querySelectorAll(".layer").forEach(x=>x.classList.remove("active"));b.classList.add("active");layer=b.dataset.layer;seen.clear();$("#list").innerHTML="";updatePolicy();seedOne()});
 $("#weird").oninput=e=>{$("#weirdVal").textContent=e.target.value;seen.clear();$("#list").innerHTML="";seedOne()};
-$("#seedGen").onclick=seedOne;$("#dnaGen").onclick=dnaOne;
-$("#ten").onclick=()=>{const box=$("#list");box.innerHTML="";const p=[...pool().map(x=>({...x,origin:"原種"})),...dnaPool()];const used=new Set();for(let i=0;i<10&&used.size<p.length;i++){let x;do{x=p[Math.floor(Math.random()*p.length)]}while(used.has(x.reading));used.add(x.reading);const e=document.createElement("div");e.className="item";e.innerHTML=(i+1)+". "+x.display+"<br><small>"+(x.origin||x.subgroup||"原種")+" / 日本語 "+(x.japanese_quality||"-")+" / 怪文 "+(x.weirdness??defaultWeird(layer))+"</small>";e.onclick=()=>show(x);box.appendChild(e)}};
+$("#depth").oninput=e=>{$("#depthVal").textContent=e.target.value;seen.clear();$("#list").innerHTML=""};
+$("#seedGen").onclick=seedOne;$("#dnaGen").onclick=dnaOne;$("#longGen").onclick=longOne;
+$("#ten").onclick=()=>{const box=$("#list");box.innerHTML="";const p=[...pool().map(x=>({...x,origin:"原種"})),...dnaPool(true)];const used=new Set();for(let i=0;i<10&&used.size<p.length;i++){let x;do{x=p[Math.floor(Math.random()*p.length)]}while(used.has(x.reading));used.add(x.reading);const e=document.createElement("div");e.className="item";e.innerHTML=(i+1)+". "+x.display+"<br><small>"+(x.origin||x.subgroup||"原種")+" / 日本語 "+(x.japanese_quality||"-")+" / 怪文 "+(x.weirdness??defaultWeird(layer))+"</small>";e.onclick=()=>show(x);box.appendChild(e)}};
 init().catch(e=>{$("#result").textContent="データ読込失敗";console.error(e)});
 </script></body></html>
