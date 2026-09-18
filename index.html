@@ -1,32 +1,35 @@
 <!doctype html>
 <html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>怪文回文メーカー</title>
-<style>
-:root{--bg:#f5f0e8;--paper:#fffdf8;--ink:#22211e;--sub:#6f6a61;--line:#d8d0c2;--green:#315d59}
-*{box-sizing:border-box}body{margin:0;font-family:"Yu Gothic UI","Hiragino Sans","Meiryo",sans-serif;background:var(--bg);color:var(--ink)}
-.wrap{max-width:920px;margin:auto;padding:28px 18px 60px}header{display:flex;justify-content:space-between;gap:16px;align-items:start}
-h1{font-size:clamp(29px,6vw,50px);margin:0 0 7px}.sub{color:var(--sub);line-height:1.65}.badge{border:1px solid var(--line);background:var(--paper);padding:7px 11px;border-radius:99px;font-size:12px;white-space:nowrap}
+<title>怪文回文メーカー</title><style>
+:root{--bg:#f5f0e8;--paper:#fffdf8;--ink:#22211e;--sub:#6f6a61;--line:#d8d0c2;--green:#315d59;--soft:#eee7dc}
+*{box-sizing:border-box}body{margin:0;font-family:"Yu Gothic UI","Hiragino Sans","Meiryo",sans-serif;background:radial-gradient(circle at 12% 8%,rgba(117,79,82,.09),transparent 26%),var(--bg);color:var(--ink)}
+.wrap{max-width:980px;margin:auto;padding:28px 18px 60px}header{display:flex;justify-content:space-between;gap:16px;align-items:start}h1{font-size:clamp(29px,6vw,50px);margin:0 0 7px}.sub{color:var(--sub);line-height:1.65}.badge{border:1px solid var(--line);background:var(--paper);padding:7px 11px;border-radius:99px;font-size:12px;white-space:nowrap}
 .card{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px;margin-top:16px;box-shadow:0 10px 28px rgba(40,35,25,.05)}
-.audit{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{padding:11px;background:#eee7dc;border-radius:12px;text-align:center}.stat b{display:block;font-size:23px}.stat span{font-size:11px;color:var(--sub)}
-.toolbar{display:flex;gap:9px;flex-wrap:wrap;align-items:center}.toolbar button{border:1px solid var(--line);background:white;padding:10px 13px;border-radius:11px;cursor:pointer}.toolbar .primary{background:var(--ink);color:white;border-color:var(--ink);font-weight:800}
-.toggle{display:flex;gap:7px;align-items:center;font-size:13px;color:var(--sub)}.result{font-weight:900;font-size:clamp(25px,5vw,42px);line-height:1.55;margin:18px 0 8px}.reading{font-family:ui-monospace,Consolas,monospace;color:var(--sub);word-break:break-all}
-.meta{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px}.pill{border:1px solid var(--line);border-radius:99px;padding:5px 9px;font-size:12px}.ok{color:#28684f;background:#f1fbf5}
-.mirror{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-top:17px}.ch{width:28px;height:33px;display:grid;place-items:center;background:white;border:1px solid var(--line);border-radius:7px}.ch.on{background:#2d3b39;color:white}
-.list{display:grid;gap:8px;margin-top:12px}.item{padding:10px 12px;border:1px solid var(--line);background:white;border-radius:10px;cursor:pointer;line-height:1.5}.item small{color:var(--sub)}
-.note{border-left:4px solid var(--green);background:#f1f7f5;padding:10px 12px;margin-top:16px;line-height:1.65}
-@media(max-width:650px){header{display:block}.badge{display:inline-block;margin-top:8px}.audit{grid-template-columns:1fr}}
+.layers{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.layer{border:1px solid var(--line);background:white;border-radius:13px;padding:12px;cursor:pointer;text-align:left}.layer.active{background:var(--ink);color:white}.layer b{display:block;font-size:15px}.layer small{opacity:.72}
+.toolbar{display:flex;gap:9px;flex-wrap:wrap;margin-top:14px}.toolbar button{border:1px solid var(--line);background:white;padding:10px 13px;border-radius:11px;cursor:pointer}.toolbar .primary{background:var(--ink);color:white;border-color:var(--ink);font-weight:800}
+.result{font-weight:900;font-size:clamp(25px,5vw,42px);line-height:1.55;margin:18px 0 8px}.reading{font-family:ui-monospace,Consolas,monospace;color:var(--sub);word-break:break-all}.meta{display:flex;gap:7px;flex-wrap:wrap;margin-top:13px}.pill{border:1px solid var(--line);border-radius:99px;padding:5px 9px;font-size:12px}.ok{color:#28684f;background:#f1fbf5}
+.note{border-left:4px solid var(--green);background:#f1f7f5;padding:10px 12px;margin-top:16px;line-height:1.65}.mirror{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;margin-top:17px}.ch{width:28px;height:33px;display:grid;place-items:center;background:white;border:1px solid var(--line);border-radius:7px}.ch.on{background:#2d3b39;color:white}
+.list{display:grid;gap:8px;margin-top:14px}.item{padding:10px 12px;border:1px solid var(--line);background:white;border-radius:10px;cursor:pointer;line-height:1.5}.item small{color:var(--sub)}
+@media(max-width:650px){header{display:block}.badge{display:inline-block;margin-top:8px}.layers{grid-template-columns:1fr}}
 </style></head><body><div class="wrap">
-<header><div><h1>怪文回文メーカー</h1><div class="sub">意味は通す。世界だけ、少し怪しくする。</div></div><div class="badge">v0.4 公開試験</div></header>
-<div class="card"><div class="audit"><div class="stat"><b id="acceptN">–</b><span>一次採用</span></div><div class="stat"><b id="reviewN">–</b><span>文体裁定待ち</span></div><div class="stat"><b id="rejectN">–</b><span>自動除外</span></div></div>
-<div class="note">v0.3の1000件を規則単位で監査しました。既定では「日本語として自然さを優先して採用した原種」だけを使います。</div></div>
-<div class="card"><div class="toolbar"><button class="primary" id="gen">怪文を生成</button><button id="ten">10本見る</button><label class="toggle"><input type="checkbox" id="experimental"> 電文調の実験候補も含める</label></div>
-<div class="result" id="result">読み込み中…</div><div class="reading" id="reading"></div><div class="meta"><span class="pill" id="pal">–</span><span class="pill" id="status">–</span><span class="pill" id="family">–</span></div><div class="mirror" id="mirror"></div><div class="list" id="list"></div></div>
-<div class="card"><b>今回、裁定が必要なのは2点だけです</b><p class="sub">89件を1件ずつ確認する必要はありません。助詞省略の電文調を原種として許すか、さらに非過去形の舞台指示調まで許すか、という文体方針に集約できました。</p></div>
+<header><div><h1>怪文回文メーカー</h1><div class="sub">まず、ちゃんとした日本語。その次に、ちゃんと怪しい日本語。</div></div><div class="badge">v0.5 階層コーパス</div></header>
+<div class="card"><div class="layers">
+<button class="layer active" data-layer="L1"><b>第一層　標準日本語</b><small id="c1">–</small></button>
+<button class="layer" data-layer="L2"><b>第二層　意味の通る怪文</b><small id="c2">–</small></button>
+<button class="layer" data-layer="L3"><b>第三層　実験文</b><small id="c3">–</small></button>
+</div><div class="note" id="policy">第一層を読み込み中…</div></div>
+<div class="card"><div class="toolbar"><button class="primary" id="gen">1本生成</button><button id="ten">10本見る</button></div>
+<div class="result" id="result">読み込み中…</div><div class="reading" id="reading"></div>
+<div class="meta"><span class="pill" id="pal">–</span><span class="pill" id="family">–</span><span class="pill" id="subgroup">–</span></div>
+<div class="note" id="why"></div><div class="mirror" id="mirror"></div><div class="list" id="list"></div></div>
 </div><script>
-let data=null,current=null;const $=s=>document.querySelector(s),rev=s=>[...s].reverse().join(""),pal=s=>s===rev(s);
-async function init(){const r=await fetch("./data/usable-seeds.json");data=await r.json();$("#acceptN").textContent=data.counts.accept;$("#reviewN").textContent=data.counts.review;$("#rejectN").textContent=data.counts.reject;one()}
-function pool(){return data.records.filter(x=>x.audit_status==="accept"||($("#experimental").checked&&x.audit_status==="review"))}
+let data=null,layer="L1",current=null;const $=s=>document.querySelector(s),rev=s=>[...s].reverse().join(""),isPal=s=>s===rev(s);
+async function init(){data=await (await fetch("./data/layered-seeds.json")).json();$("#c1").textContent=data.counts.L1+"本";$("#c2").textContent=data.counts.L2+"本";$("#c3").textContent=data.counts.L3+"本";updatePolicy();one()}
+function pool(){return data.records.filter(x=>x.layer===layer)}
+function updatePolicy(){$("#policy").textContent=data.policy[layer]}
 function one(){const p=pool();current=p[Math.floor(Math.random()*p.length)];show(current)}
-function show(x){$("#result").textContent=x.display;$("#reading").textContent=x.reading;$("#pal").textContent=pal(x.reading)?"✓ 完全回文":"× 不成立";$("#pal").className="pill "+(pal(x.reading)?"ok":"");$("#status").textContent=x.audit_status==="accept"?"一次採用":"実験候補";$("#family").textContent=x.family;const m=$("#mirror");m.innerHTML="";const a=[...x.reading];a.forEach((c,i)=>{const e=document.createElement("span");e.className="ch";e.textContent=c;const t=v=>{const n=[...document.querySelectorAll(".ch")];[i,n.length-1-i].forEach(k=>n[k]?.classList.toggle("on",v))};e.onmouseenter=()=>t(true);e.onmouseleave=()=>t(false);m.appendChild(e)})}
-$("#gen").onclick=one;$("#ten").onclick=()=>{const box=$("#list");box.innerHTML="";for(let i=0;i<10;i++){const p=pool(),x=p[Math.floor(Math.random()*p.length)],e=document.createElement("div");e.className="item";e.innerHTML=(i+1)+". "+x.display+"<br><small>"+(x.audit_status==="accept"?"一次採用":"実験候補")+" / "+x.audit_group+"</small>";e.onclick=()=>show(x);box.appendChild(e)}};$("#experimental").onchange=()=>{$("#list").innerHTML="";one()};init().catch(e=>{$("#result").textContent="データの読み込みに失敗しました。";console.error(e)});
+function show(x){$("#result").textContent=x.display;$("#reading").textContent=x.reading;$("#pal").textContent=isPal(x.reading)?"✓ 完全回文":"× 不成立";$("#pal").className="pill "+(isPal(x.reading)?"ok":"");$("#family").textContent=x.family;$("#subgroup").textContent=x.subgroup;$("#why").textContent=x.rationale;const m=$("#mirror");m.innerHTML="";const a=[...x.reading];a.forEach((c,i)=>{const e=document.createElement("span");e.className="ch";e.textContent=c;const t=v=>{const n=[...document.querySelectorAll(".ch")];[i,n.length-1-i].forEach(k=>n[k]?.classList.toggle("on",v))};e.onmouseenter=()=>t(true);e.onmouseleave=()=>t(false);m.appendChild(e)})}
+document.querySelectorAll(".layer").forEach(b=>b.onclick=()=>{document.querySelectorAll(".layer").forEach(x=>x.classList.remove("active"));b.classList.add("active");layer=b.dataset.layer;$("#list").innerHTML="";updatePolicy();one()});
+$("#gen").onclick=one;$("#ten").onclick=()=>{const box=$("#list");box.innerHTML="";for(let i=0;i<10;i++){const p=pool(),x=p[Math.floor(Math.random()*p.length)],e=document.createElement("div");e.className="item";e.innerHTML=(i+1)+". "+x.display+"<br><small>"+x.family+" / "+x.subgroup+"</small>";e.onclick=()=>show(x);box.appendChild(e)}};
+init().catch(e=>{$("#result").textContent="データ読込失敗";console.error(e)});
 </script></body></html>
