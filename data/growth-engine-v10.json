@@ -249,8 +249,8 @@
     "generated_growth_variants": 208,
     "all_palindromes": true,
     "minimum_stage_increases_length": true,
-    "narrative_family_count": 3,
-    "narrative_variants": 8
+    "narrative_family_count": 1,
+    "narrative_variants": 4
   },
   "narrative_families": [
     {
@@ -287,56 +287,7 @@
           "note": "因果・評価を追加"
         }
       ]
-    },
-    {
-      "id": "night-dog",
-      "label": "夜鳴くなよ → 居場所なくなるよ",
-      "mode": "staged_center",
-      "left": [
-        "よるなくなよ",
-        "夜、鳴くなよ"
-      ],
-      "right": [
-        "よなくなるよ",
-        "居場所なくなるよ"
-      ],
-      "stages": [
-        {
-          "reading": "",
-          "display": "、",
-          "note": "最短形"
-        },
-        {
-          "reading": "しばいぬいばし",
-          "display": "柴犬、居場所",
-          "note": "主体と場所を追加"
-        }
-      ]
-    },
-    {
-      "id": "italy-desire",
-      "label": "イタリアで → でありたい",
-      "mode": "staged_center",
-      "left": [
-        "いたりあで",
-        "イタリアで"
-      ],
-      "right": [
-        "でありたい",
-        "でありたい"
-      ],
-      "stages": [
-        {
-          "reading": "",
-          "display": "",
-          "note": "最短形"
-        },
-        {
-          "reading": "はとまとは",
-          "display": "はトマト派",
-          "note": "嗜好情報を追加"
-        }
-      ]
     }
-  ]
+  ],
+  "quality_note": "物語型は日本語表記・読み・意味関係を個別監査し、現時点では松茸系1 familyのみを基準例として保持。"
 }
