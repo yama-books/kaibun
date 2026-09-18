@@ -1,0 +1,1046 @@
+{
+  "version": "0.9",
+  "principle": "left.reading を逆読みすると right.reading になる語彙ペアだけを登録し、その間に1かなの助詞を置く。助詞は統語・意味的に自然なものをホワイトリスト登録する。",
+  "pair_count": 30,
+  "variant_count": 103,
+  "pairs": [
+    {
+      "id": "tsuma-matsu",
+      "left": {
+        "reading": "つま",
+        "display": "妻"
+      },
+      "right": {
+        "reading": "まつ",
+        "display": "待つ"
+      },
+      "pos": "verb",
+      "variants": [
+        {
+          "particle": "が",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "も",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "を",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "と",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        }
+      ]
+    },
+    {
+      "id": "suda-dasu",
+      "left": {
+        "reading": "すだ",
+        "display": "須田"
+      },
+      "right": {
+        "reading": "だす",
+        "display": "出す"
+      },
+      "pos": "verb",
+      "variants": [
+        {
+          "particle": "が",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "も",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "に",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        }
+      ]
+    },
+    {
+      "id": "tami-mita",
+      "left": {
+        "reading": "たみ",
+        "display": "タミ"
+      },
+      "right": {
+        "reading": "みた",
+        "display": "見た"
+      },
+      "pos": "verb-past",
+      "variants": [
+        {
+          "particle": "が",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "も",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "を",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "と",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        }
+      ]
+    },
+    {
+      "id": "rumi-miru",
+      "left": {
+        "reading": "るみ",
+        "display": "ルミ"
+      },
+      "right": {
+        "reading": "みる",
+        "display": "見る"
+      },
+      "pos": "verb",
+      "variants": [
+        {
+          "particle": "が",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "も",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "を",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "と",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        }
+      ]
+    },
+    {
+      "id": "rene-neru",
+      "left": {
+        "reading": "るね",
+        "display": "ルネ"
+      },
+      "right": {
+        "reading": "ねる",
+        "display": "寝る"
+      },
+      "pos": "verb",
+      "variants": [
+        {
+          "particle": "が",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "も",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "と",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        }
+      ]
+    },
+    {
+      "id": "taki-kita",
+      "left": {
+        "reading": "たき",
+        "display": "タキ"
+      },
+      "right": {
+        "reading": "きた",
+        "display": "来た"
+      },
+      "pos": "verb-past",
+      "variants": [
+        {
+          "particle": "が",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "も",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "と",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        }
+      ]
+    },
+    {
+      "id": "takio-okita",
+      "left": {
+        "reading": "たきお",
+        "display": "タキオ"
+      },
+      "right": {
+        "reading": "おきた",
+        "display": "起きた"
+      },
+      "pos": "verb-past",
+      "variants": [
+        {
+          "particle": "が",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "も",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "と",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        }
+      ]
+    },
+    {
+      "id": "rui-iru",
+      "left": {
+        "reading": "るい",
+        "display": "ルイ"
+      },
+      "right": {
+        "reading": "いる",
+        "display": "いる"
+      },
+      "pos": "existential",
+      "variants": [
+        {
+          "particle": "が",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "も",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "と",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        }
+      ]
+    },
+    {
+      "id": "tai-ita",
+      "left": {
+        "reading": "たい",
+        "display": "鯛"
+      },
+      "right": {
+        "reading": "いた",
+        "display": "いた"
+      },
+      "pos": "existential-past",
+      "variants": [
+        {
+          "particle": "が",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "も",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        }
+      ]
+    },
+    {
+      "id": "kutsu-tsuku",
+      "left": {
+        "reading": "くつ",
+        "display": "靴"
+      },
+      "right": {
+        "reading": "つく",
+        "display": "付く"
+      },
+      "pos": "verb",
+      "variants": [
+        {
+          "particle": "が",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "も",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "に",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "を",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": "突く"
+        }
+      ]
+    },
+    {
+      "id": "iruka-karui",
+      "left": {
+        "reading": "いるか",
+        "display": "イルカ"
+      },
+      "right": {
+        "reading": "かるい",
+        "display": "軽い"
+      },
+      "pos": "adjective",
+      "variants": [
+        {
+          "particle": "が",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "も",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        }
+      ]
+    },
+    {
+      "id": "isuya-yasui",
+      "left": {
+        "reading": "いすや",
+        "display": "椅子屋"
+      },
+      "right": {
+        "reading": "やすい",
+        "display": "安い"
+      },
+      "pos": "adjective",
+      "variants": [
+        {
+          "particle": "が",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "も",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        }
+      ]
+    },
+    {
+      "id": "ikawa-wakai",
+      "left": {
+        "reading": "いかわ",
+        "display": "井川"
+      },
+      "right": {
+        "reading": "わかい",
+        "display": "若い"
+      },
+      "pos": "adjective",
+      "variants": [
+        {
+          "particle": "が",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "も",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        }
+      ]
+    },
+    {
+      "id": "takeya-yaketa",
+      "left": {
+        "reading": "たけや",
+        "display": "竹屋"
+      },
+      "right": {
+        "reading": "やけた",
+        "display": "焼けた"
+      },
+      "pos": "verb-past",
+      "variants": [
+        {
+          "particle": "が",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "も",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        }
+      ]
+    },
+    {
+      "id": "tade-deta",
+      "left": {
+        "reading": "たで",
+        "display": "蓼"
+      },
+      "right": {
+        "reading": "でた",
+        "display": "出た"
+      },
+      "pos": "verb-past",
+      "variants": [
+        {
+          "particle": "が",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "も",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        }
+      ]
+    },
+    {
+      "id": "uo-ou",
+      "left": {
+        "reading": "うお",
+        "display": "魚"
+      },
+      "right": {
+        "reading": "おう",
+        "display": "追う"
+      },
+      "pos": "verb",
+      "variants": [
+        {
+          "particle": "が",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "も",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "を",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        }
+      ]
+    },
+    {
+      "id": "taishi-shiita",
+      "left": {
+        "reading": "たいし",
+        "display": "大使"
+      },
+      "right": {
+        "reading": "しいた",
+        "display": "敷いた"
+      },
+      "pos": "verb-past",
+      "variants": [
+        {
+          "particle": "が",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "も",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        }
+      ]
+    },
+    {
+      "id": "taisa-saita",
+      "left": {
+        "reading": "たいさ",
+        "display": "大佐"
+      },
+      "right": {
+        "reading": "さいた",
+        "display": "裂いた"
+      },
+      "pos": "verb-past",
+      "variants": [
+        {
+          "particle": "が",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "も",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        }
+      ]
+    },
+    {
+      "id": "taiya-yaita",
+      "left": {
+        "reading": "たいや",
+        "display": "タイヤ"
+      },
+      "right": {
+        "reading": "やいた",
+        "display": "焼いた"
+      },
+      "pos": "verb-past",
+      "variants": [
+        {
+          "particle": "を",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "も",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        }
+      ]
+    },
+    {
+      "id": "taitsu-tsuita",
+      "left": {
+        "reading": "たいつ",
+        "display": "タイツ"
+      },
+      "right": {
+        "reading": "ついた",
+        "display": "付いた"
+      },
+      "pos": "verb-past",
+      "variants": [
+        {
+          "particle": "が",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "も",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        }
+      ]
+    },
+    {
+      "id": "taika-kaita",
+      "left": {
+        "reading": "たいか",
+        "display": "対価"
+      },
+      "right": {
+        "reading": "かいた",
+        "display": "書いた"
+      },
+      "pos": "verb-past",
+      "variants": [
+        {
+          "particle": "を",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "も",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        }
+      ]
+    },
+    {
+      "id": "dansu-sunda",
+      "left": {
+        "reading": "だんす",
+        "display": "ダンス"
+      },
+      "right": {
+        "reading": "すんだ",
+        "display": "済んだ"
+      },
+      "pos": "verb-past",
+      "variants": [
+        {
+          "particle": "が",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        },
+        {
+          "particle": "も",
+          "layer": "L1",
+          "weirdness": 1,
+          "right_display": null
+        }
+      ]
+    },
+    {
+      "id": "uma-mau",
+      "left": {
+        "reading": "うま",
+        "display": "馬"
+      },
+      "right": {
+        "reading": "まう",
+        "display": "舞う"
+      },
+      "pos": "verb",
+      "variants": [
+        {
+          "particle": "が",
+          "layer": "L2",
+          "weirdness": 2,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L2",
+          "weirdness": 2,
+          "right_display": null
+        },
+        {
+          "particle": "も",
+          "layer": "L2",
+          "weirdness": 2,
+          "right_display": null
+        }
+      ]
+    },
+    {
+      "id": "kuma-maku",
+      "left": {
+        "reading": "くま",
+        "display": "熊"
+      },
+      "right": {
+        "reading": "まく",
+        "display": "巻く"
+      },
+      "pos": "verb",
+      "variants": [
+        {
+          "particle": "が",
+          "layer": "L2",
+          "weirdness": 3,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L2",
+          "weirdness": 3,
+          "right_display": null
+        },
+        {
+          "particle": "も",
+          "layer": "L2",
+          "weirdness": 3,
+          "right_display": null
+        }
+      ]
+    },
+    {
+      "id": "buyo-yobu",
+      "left": {
+        "reading": "ぶよ",
+        "display": "ブヨ"
+      },
+      "right": {
+        "reading": "よぶ",
+        "display": "呼ぶ"
+      },
+      "pos": "verb",
+      "variants": [
+        {
+          "particle": "が",
+          "layer": "L2",
+          "weirdness": 3,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L2",
+          "weirdness": 3,
+          "right_display": null
+        },
+        {
+          "particle": "を",
+          "layer": "L2",
+          "weirdness": 2,
+          "right_display": null
+        }
+      ]
+    },
+    {
+      "id": "tane-neta",
+      "left": {
+        "reading": "たね",
+        "display": "種"
+      },
+      "right": {
+        "reading": "ねた",
+        "display": "寝た"
+      },
+      "pos": "verb-past",
+      "variants": [
+        {
+          "particle": "が",
+          "layer": "L2",
+          "weirdness": 3,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L2",
+          "weirdness": 3,
+          "right_display": null
+        },
+        {
+          "particle": "も",
+          "layer": "L2",
+          "weirdness": 3,
+          "right_display": null
+        }
+      ]
+    },
+    {
+      "id": "itai-itai",
+      "left": {
+        "reading": "いたい",
+        "display": "遺体"
+      },
+      "right": {
+        "reading": "いたい",
+        "display": "痛い"
+      },
+      "pos": "adjective",
+      "variants": [
+        {
+          "particle": "が",
+          "layer": "L2",
+          "weirdness": 5,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L2",
+          "weirdness": 5,
+          "right_display": null
+        },
+        {
+          "particle": "も",
+          "layer": "L2",
+          "weirdness": 5,
+          "right_display": null
+        }
+      ]
+    },
+    {
+      "id": "kusa-saku",
+      "left": {
+        "reading": "くさ",
+        "display": "草"
+      },
+      "right": {
+        "reading": "さく",
+        "display": "咲く"
+      },
+      "pos": "verb",
+      "variants": [
+        {
+          "particle": "が",
+          "layer": "L2",
+          "weirdness": 2,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L2",
+          "weirdness": 2,
+          "right_display": null
+        },
+        {
+          "particle": "も",
+          "layer": "L2",
+          "weirdness": 2,
+          "right_display": null
+        }
+      ]
+    },
+    {
+      "id": "nushi-shinu",
+      "left": {
+        "reading": "ぬし",
+        "display": "主"
+      },
+      "right": {
+        "reading": "しぬ",
+        "display": "死ぬ"
+      },
+      "pos": "verb",
+      "variants": [
+        {
+          "particle": "が",
+          "layer": "L2",
+          "weirdness": 3,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L2",
+          "weirdness": 3,
+          "right_display": null
+        }
+      ]
+    },
+    {
+      "id": "danshi-shinda",
+      "left": {
+        "reading": "だんし",
+        "display": "男子"
+      },
+      "right": {
+        "reading": "しんだ",
+        "display": "死んだ"
+      },
+      "pos": "verb-past",
+      "variants": [
+        {
+          "particle": "が",
+          "layer": "L2",
+          "weirdness": 3,
+          "right_display": null
+        },
+        {
+          "particle": "は",
+          "layer": "L2",
+          "weirdness": 3,
+          "right_display": null
+        },
+        {
+          "particle": "も",
+          "layer": "L2",
+          "weirdness": 3,
+          "right_display": null
+        }
+      ]
+    }
+  ]
+}
