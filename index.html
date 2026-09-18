@@ -45,6 +45,10 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 .growthActions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 .growthActions button{border:1px solid var(--line);background:white;padding:9px 12px;border-radius:10px;cursor:pointer}
 .growthActions #growOne{background:var(--green);border-color:var(--green);color:white;font-weight:800}
+.growthTrail{display:grid;gap:6px;margin-top:12px}
+.trailItem{border-left:3px solid var(--line);padding:7px 9px;background:var(--soft);border-radius:0 8px 8px 0;font-size:12px;cursor:pointer;line-height:1.5}
+.trailItem.current{border-left-color:var(--green);background:#eef8f5;font-weight:700}
+.trailItem span{color:var(--sub);margin-right:6px}
 @media(max-width:650px){header{display:block}.badge{display:inline-block;margin-top:8px}.layers{grid-template-columns:1fr}}
 </style>
 </head>
@@ -52,7 +56,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 <div class="wrap">
 <header>
   <div><h1>怪文回文メーカー</h1><div class="sub">まず、日本語として通す。そこから一段ずつ、鏡の奥へ伸ばす。</div></div>
-  <div class="badge">v0.12 / 物語長文化</div>
+  <div class="badge">v0.12.1 / 段階履歴</div>
 </header>
 
 <div class="card">
@@ -97,6 +101,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
       <button id="growAgain">同段階で別案</button>
       <button id="growBack">1段戻す</button>
     </div>
+    <div class="growthTrail" id="growthTrail"></div>
   </div>
 </div>
 
@@ -124,7 +129,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 
 <script>
 let data=null,rules=null,pairs=null,growth=null,layer="L1",seen=new Set(),currentShown=null;
-let growthState={mode:"structural",familyId:null,stage:0,lastCenter:null};
+let growthState={mode:"structural",familyId:null,stage:0,lastCenter:null,history:{}};
 
 const $=s=>document.querySelector(s);
 const rev=s=>[...s].reverse().join("");
@@ -275,6 +280,10 @@ function pairOne(){show(chooseFresh(pairPool()))}
 function growthFamilies(){
   return growthState.mode==="narrative"?(growth.narrative_families||[]):(growth.families||[]);
 }
+function resetGrowthHistory(){
+  growthState.history={};growthState.stage=0;growthState.lastCenter=null;
+  renderGrowthTrail();updateGrowthStageLabel();
+}
 function populateGrowthFamilies(){
   const list=growthFamilies();
   const sel=$("#growthFamily");sel.innerHTML="";
@@ -285,8 +294,7 @@ function populateGrowthFamilies(){
     sel.appendChild(o);
   }
   growthState.familyId=list[0]?.id||null;
-  growthState.stage=0;growthState.lastCenter=null;
-  updateGrowthStageLabel();
+  resetGrowthHistory();
 }
 function growthFamily(){
   return growthFamilies().find(f=>f.id===growthState.familyId)||growthFamilies()[0]||null;
@@ -298,6 +306,30 @@ function growthMaxStage(){
 function updateGrowthStageLabel(){
   $("#growthStage").textContent="段階 "+growthState.stage+" / "+growthMaxStage();
 }
+function trimGrowthHistory(afterStage){
+  for(const k of Object.keys(growthState.history))if(+k>afterStage)delete growthState.history[k];
+}
+function rememberGrowth(x,replace=false){
+  if(!x)return x;
+  const st=x.growth_stage??0;
+  if(replace)trimGrowthHistory(st);
+  growthState.history[st]=x;
+  growthState.stage=st;
+  renderGrowthTrail();
+  return x;
+}
+function renderGrowthTrail(){
+  const box=$("#growthTrail");if(!box)return;
+  box.innerHTML="";
+  const stages=Object.keys(growthState.history).map(Number).sort((a,b)=>a-b);
+  for(const st of stages){
+    const x=growthState.history[st],e=document.createElement("div");
+    e.className="trailItem"+(st===growthState.stage?" current":"");
+    e.innerHTML="<span>"+st+"</span>"+x.display;
+    e.onclick=()=>{growthState.stage=st;updateGrowthStageLabel();show(x);renderGrowthTrail()};
+    box.appendChild(e);
+  }
+}
 function growthCenter(stage,avoid){
   const list=growth.centers["stage"+stage]||[];
   if(!list.length)return null;
@@ -307,28 +339,34 @@ function growthCenter(stage,avoid){
 }
 function makeStructuralGrowth(stage,reroll=false){
   const f=growthFamily();if(!f)return null;
+  if(!reroll&&growthState.history[stage]){
+    growthState.stage=stage;updateGrowthStageLabel();return growthState.history[stage];
+  }
   if(stage<=0){
-    growthState.stage=0;growthState.lastCenter=null;updateGrowthStageLabel();
-    return {display:f.stage0[1],reading:f.stage0[0],family:"構文型長文化",origin:"GROW:"+f.id,japanese_quality:"A",weirdness:1,why:"短い自然文を長文化の起点にします。",growth_family:f.id,growth_stage:0,growth_mode:"structural"};
+    resetGrowthHistory();
+    const x={display:f.stage0[1],reading:f.stage0[0],family:"構文型長文化",origin:"GROW:"+f.id,japanese_quality:"A",weirdness:1,why:"短い自然文を長文化の起点にします。",growth_family:f.id,growth_stage:0,growth_mode:"structural"};
+    return rememberGrowth(x,true);
   }
   const center=growthCenter(stage,reroll?growthState.lastCenter:null);if(!center)return null;
-  growthState.stage=stage;growthState.lastCenter=center[0];updateGrowthStageLabel();
+  growthState.lastCenter=center[0];
   const reading=f.left[0]+"も"+center[0]+"も"+f.right[0];
   const display=f.left[1]+"も"+center[1]+"も"+f.right[1]+"。";
-  return {display,reading,family:"構文型長文化",origin:"GROW:"+f.id,japanese_quality:stage<=3?"A":"B",weirdness:[1,1,2,3,4][stage],why:"同じ主題・述語を保ったまま、中心の人物関係だけを一段長くしました。",growth_family:f.id,growth_stage:stage,growth_mode:"structural"};
+  const x={display,reading,family:"構文型長文化",origin:"GROW:"+f.id,japanese_quality:stage<=3?"A":"B",weirdness:[1,1,2,3,4][stage],why:"同じ主題・述語を保ったまま、中心の人物関係だけを一段長くしました。",growth_family:f.id,growth_stage:stage,growth_mode:"structural"};
+  return rememberGrowth(x,reroll);
 }
 function makeNarrativeGrowth(stage){
   const f=growthFamily();if(!f)return null;
   const max=Math.max(0,f.stages.length-1);
   stage=Math.max(0,Math.min(max,stage));
+  if(growthState.history[stage]){growthState.stage=stage;updateGrowthStageLabel();return growthState.history[stage]}
   const st=f.stages[stage];
-  growthState.stage=stage;growthState.lastCenter=null;updateGrowthStageLabel();
-  return {display:st.display,reading:st.reading,family:"物語型長文化",origin:"STORY:"+f.id,japanese_quality:st.japanese_quality||"A-",weirdness:st.weirdness??2,why:"今回追加した情報: "+(st.adds||"情報を追加"),growth_family:f.id,growth_stage:stage,growth_mode:"narrative"};
+  const x={display:st.display,reading:st.reading,family:"物語型長文化",origin:"STORY:"+f.id,japanese_quality:st.japanese_quality||"A-",weirdness:st.weirdness??2,why:"今回追加した情報: "+(st.adds||"情報を追加"),growth_family:f.id,growth_stage:stage,growth_mode:"narrative"};
+  return rememberGrowth(x,false);
 }
 function makeGrowth(stage,reroll=false){
   return growthState.mode==="narrative"?makeNarrativeGrowth(stage):makeStructuralGrowth(stage,reroll);
 }
-function growthStart(){show(makeGrowth(0))}
+function growthStart(){resetGrowthHistory();show(makeGrowth(0))}
 function growOne(){
   if(layer!=="L1")return;
   const current=(currentShown?.growth_mode===growthState.mode&&currentShown?.growth_family===growthState.familyId)?(currentShown.growth_stage??growthState.stage):growthState.stage;
@@ -346,10 +384,11 @@ function growAgain(){
   const eligible=(growth.narrative_families||[]).filter(f=>f.id!==growthState.familyId&&f.stages.length>current);
   if(eligible.length){
     const f=eligible[Math.floor(Math.random()*eligible.length)];
-    growthState.familyId=f.id;
-    $("#growthFamily").value=f.id;
+    growthState.familyId=f.id;$("#growthFamily").value=f.id;
+    resetGrowthHistory();
+    for(let st=0;st<=Math.min(current,growthMaxStage());st++)makeNarrativeGrowth(st);
   }
-  show(makeGrowth(Math.min(current,growthMaxStage())));
+  show(growthState.history[Math.min(current,growthMaxStage())]||makeGrowth(Math.min(current,growthMaxStage())));
 }
 
 document.querySelectorAll(".layer").forEach(b=>b.onclick=()=>{
@@ -362,7 +401,7 @@ $("#growthMode").onchange=e=>{
   if(layer==="L1")growthStart();
 };
 $("#growthFamily").onchange=e=>{
-  growthState.familyId=e.target.value;growthState.stage=0;growthState.lastCenter=null;updateGrowthStageLabel();
+  growthState.familyId=e.target.value;resetGrowthHistory();
   if(layer==="L1")growthStart();
 };
 $("#weird").oninput=e=>{
