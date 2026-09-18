@@ -1,6 +1,6 @@
 {
-  "version": "0.10",
-  "principle": "長文化は累積候補からランダム抽選せず、stage 0→1→2→3→4 と必ず一段ずつ長くする。同一familyを保持して述語・主題の意味骨格を変えない。",
+  "version": "0.11",
+  "principle": "長文化は累積候補からランダム抽選せず、stage 0→1→2→3→4 と必ず一段ずつ長くする。同一familyを保持して述語・主題の意味骨格を変えない。 親族名詞句による伸長だけでなく、左右の語句を固定して中央の出来事を段階的に厚くする narrative family も併用する。",
   "families": [
     {
       "id": "wife-wait",
@@ -248,6 +248,95 @@
     "family_count": 8,
     "generated_growth_variants": 208,
     "all_palindromes": true,
-    "minimum_stage_increases_length": true
-  }
+    "minimum_stage_increases_length": true,
+    "narrative_family_count": 3,
+    "narrative_variants": 8
+  },
+  "narrative_families": [
+    {
+      "id": "matsutake-wife",
+      "label": "松茸摘み → 見つけた妻",
+      "mode": "staged_center",
+      "left": [
+        "まつたけつみ",
+        "松茸摘み"
+      ],
+      "right": [
+        "みつけたつま",
+        "見つけた妻"
+      ],
+      "stages": [
+        {
+          "reading": "",
+          "display": "",
+          "note": "最短形"
+        },
+        {
+          "reading": "つつ",
+          "display": "つつ、",
+          "note": "継続動作を追加"
+        },
+        {
+          "reading": "にきてきに",
+          "display": "に来て、木に",
+          "note": "場所・動作を追加"
+        },
+        {
+          "reading": "にきてきせきてきに",
+          "display": "に来て、奇跡的に",
+          "note": "因果・評価を追加"
+        }
+      ]
+    },
+    {
+      "id": "night-dog",
+      "label": "夜鳴くなよ → 居場所なくなるよ",
+      "mode": "staged_center",
+      "left": [
+        "よるなくなよ",
+        "夜、鳴くなよ"
+      ],
+      "right": [
+        "よなくなるよ",
+        "居場所なくなるよ"
+      ],
+      "stages": [
+        {
+          "reading": "",
+          "display": "、",
+          "note": "最短形"
+        },
+        {
+          "reading": "しばいぬいばし",
+          "display": "柴犬、居場所",
+          "note": "主体と場所を追加"
+        }
+      ]
+    },
+    {
+      "id": "italy-desire",
+      "label": "イタリアで → でありたい",
+      "mode": "staged_center",
+      "left": [
+        "いたりあで",
+        "イタリアで"
+      ],
+      "right": [
+        "でありたい",
+        "でありたい"
+      ],
+      "stages": [
+        {
+          "reading": "",
+          "display": "",
+          "note": "最短形"
+        },
+        {
+          "reading": "はとまとは",
+          "display": "はトマト派",
+          "note": "嗜好情報を追加"
+        }
+      ]
+    }
+  ]
 }
