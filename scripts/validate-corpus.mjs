@@ -79,15 +79,12 @@ if(growth.verified?.generated_growth_variants!==growthVariants)errors.push(`GROW
 
 let narrativeVariants=0;
 for(const f of growth.narrative_families??[]){
-  if(reverse(f.left[0])!==f.right[0])errors.push(`NARRATIVE flank mismatch: ${f.id}`);
   let previousLength=-1;
   for(let stage=0;stage<f.stages.length;stage++){
     const st=f.stages[stage];
-    if(st.reading && !isPalindrome(st.reading))errors.push(`NARRATIVE center non-palindrome: ${f.id} stage=${stage}`);
-    const reading=f.left[0]+st.reading+f.right[0];
-    check({id:"NARRATIVE:"+f.id},f.left[1]+st.display+f.right[1],reading);
-    const len=[...reading].length;
-    if(len<=previousLength)errors.push(`NARRATIVE stage does not increase length: ${f.id} stage=${stage}`);
+    check({id:"NARRATIVE:"+f.id},st.display,st.reading);
+    const len=[...st.reading].length;
+    if(len<=previousLength)errors.push(`NARRATIVE stage does not increase length: ${f.id} stage=${stage} len=${len} prev=${previousLength}`);
     previousLength=len;
     narrativeVariants++;
   }
