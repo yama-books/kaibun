@@ -1,5 +1,5 @@
 {
-  "version": "0.8",
+  "version": "0.8.1",
   "principle": "L1の自然さを維持したまま、逆読み語彙ペアと再帰的な親族名詞句を組み合わせて長文化する。再帰深度は3までを標準とし、怪文度と連動させる。",
   "rule_count": 65,
   "rules": [
@@ -1585,15 +1585,33 @@
       "bases": [
         {
           "reading": "はは",
-          "display": "母"
+          "display": "母",
+          "edge": "はは"
+        },
+        {
+          "reading": "ははのはは",
+          "display": "母の母",
+          "edge": "はは"
         },
         {
           "reading": "ちち",
-          "display": "父"
+          "display": "父",
+          "edge": "ちち"
+        },
+        {
+          "reading": "ちちのちち",
+          "display": "父の父",
+          "edge": "ちち"
         },
         {
           "reading": "こ",
-          "display": "子"
+          "display": "子",
+          "edge": "こ"
+        },
+        {
+          "reading": "このこ",
+          "display": "子の子",
+          "edge": "こ"
         }
       ],
       "wrappers": [
@@ -1615,8 +1633,8 @@
       "weirdness_by_depth": [
         1,
         2,
-        2,
-        3
+        3,
+        4
       ],
       "frames": [
         {
@@ -1656,10 +1674,22 @@
           "display": "タミも{np}も見た。"
         },
         {
+          "id": "tami-to-mita",
+          "left": "たみと",
+          "right": "とみた",
+          "display": "タミと{np}と見た。"
+        },
+        {
           "id": "rumi-mo-miru",
           "left": "るみも",
           "right": "もみる",
           "display": "ルミも{np}も見る。"
+        },
+        {
+          "id": "rumi-to-miru",
+          "left": "るみと",
+          "right": "とみる",
+          "display": "ルミと{np}と見る。"
         },
         {
           "id": "taki-mo-kita",
@@ -1668,19 +1698,29 @@
           "display": "タキも{np}も来た。"
         },
         {
+          "id": "taki-to-kita",
+          "left": "たきと",
+          "right": "ときた",
+          "display": "タキと{np}と来た。"
+        },
+        {
           "id": "takio-mo-okita",
           "left": "たきおも",
           "right": "もおきた",
           "display": "タキオも{np}も起きた。"
         }
-      ]
+      ],
+      "constraints": {
+        "no_same_adjacent_relation": true
+      }
     }
   ],
   "verified_recursive_space": {
-    "kinship_nps": 120,
-    "frames": 9,
+    "kinship_nps": 90,
+    "frames": 12,
     "sentence_variants": 1080,
     "max_depth": 3,
-    "all_palindromes": true
+    "all_palindromes": true,
+    "constraint": "no same adjacent kinship relation"
   }
 }
