@@ -126,7 +126,15 @@ function updateCandidateCount(){
   const all=uniqueByReading([...pool().map(x=>({...x,origin:"原種"})),...dnaPool(true)]);
   $("#uniqueStat").textContent="実効候補 "+all.length.toLocaleString()+"種";
 }
-function updatePolicy(){$("#policy").textContent=data.policy[layer];updateCandidateCount()}
+function syncControls(){
+  const need=layer==="L1"?1:layer==="L2"?3:4;
+  if(maxWeird()<need){$("#weird").value=need;$("#weirdVal").textContent=need}
+  $("#longGen").disabled=layer!=="L1";
+  $("#pairGen").disabled=layer==="L3";
+  $("#dnaGen").disabled=layer==="L3";
+  for(const id of ["longGen","pairGen","dnaGen"])$("#"+id).style.opacity=$("#"+id).disabled?".38":"1";
+}
+function updatePolicy(){$("#policy").textContent=data.policy[layer];syncControls();updateCandidateCount()}
 function chooseFresh(p){
   if(!p.length)return null;let q=p.filter(x=>!seen.has(x.reading));
   if(!q.length){seen.clear();q=p}const x=q[Math.floor(Math.random()*q.length)];seen.add(x.reading);return x;
