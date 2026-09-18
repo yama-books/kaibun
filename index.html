@@ -15,7 +15,7 @@
 .controls{display:flex;gap:18px;align-items:center;flex-wrap:wrap;margin-top:13px}.controls label{font-size:12px;color:var(--sub)}.controls input[type=range]{width:165px;vertical-align:middle}
 @media(max-width:650px){header{display:block}.badge{display:inline-block;margin-top:8px}.layers{grid-template-columns:1fr}}
 </style></head><body><div class="wrap">
-<header><div><h1>怪文回文メーカー</h1><div class="sub">まず、日本語として通す。そこから鏡の奥へ伸ばす。</div></div><div class="badge">v0.9 / 逆語ペアDNA</div></header>
+<header><div><h1>怪文回文メーカー</h1><div class="sub">まず、日本語として通す。そこから鏡の奥へ伸ばす。</div></div><div class="badge">v0.10 / 段階長文化</div></header>
 <div class="card">
 <div class="layers">
 <button class="layer active" data-layer="L1"><b>第一層　標準日本語</b><small id="c1">–</small></button>
@@ -26,27 +26,33 @@
 <div class="stats"><span class="stat" id="ruleStat">DNA規則 –</span><span class="stat" id="recursiveStat">再帰候補 –</span><span class="stat" id="pairStat">逆語ペア –</span><span class="stat" id="uniqueStat">実効候補 –</span><span class="stat">全件回文検証</span></div>
 <div class="controls">
 <label>怪文度上限 <b id="weirdVal">2</b> <input id="weird" type="range" min="1" max="5" value="2" step="1"></label>
-<label>長文化 <b id="depthVal">1</b> <input id="depth" type="range" min="0" max="3" value="1" step="1"></label>
+<label>長文化骨格 <select id="growthFamily"></select></label><span class="stat" id="growthStage">段階 0 / 4</span>
 </div>
 </div>
 <div class="card">
-<div class="toolbar"><button class="primary" id="seedGen">原種から1本</button><button class="dna" id="dnaGen">DNAで1本生成</button><button id="pairGen">逆語ペア</button><button id="longGen">長文DNA</button><button id="ten">10本比較</button></div>
+<div class="toolbar"><button class="primary" id="seedGen">原種から1本</button><button class="dna" id="dnaGen">DNAで1本生成</button><button id="pairGen">逆語ペア</button><button id="growthStart">短文から開始</button><button id="growOne">1段伸ばす</button><button id="growAgain">同段階で別案</button><button id="growBack">1段戻す</button><button id="ten">10本比較</button></div>
 <div class="result" id="result">読み込み中…</div><div class="reading" id="reading"></div>
 <div class="meta"><span class="pill" id="pal">–</span><span class="pill" id="quality">日本語 –</span><span class="pill" id="weirdMeta">怪文 –</span><span class="pill" id="family">–</span><span class="pill dnaPill" id="origin">–</span></div>
 <div class="note" id="why"></div><div class="mirror" id="mirror"></div><div class="list" id="list"></div>
 </div></div>
 <script>
-let data=null,rules=null,pairs=null,layer="L1",seen=new Set();
+let data=null,rules=null,pairs=null,growth=null,layer="L1",seen=new Set(),currentShown=null,growthState={familyId:null,stage:0,lastCenter:null};
 const $=s=>document.querySelector(s),rev=s=>[...s].reverse().join(""),isPal=s=>s===rev(s);
 async function init(){
-  [data,rules,pairs]=await Promise.all([
+  [data,rules,pairs,growth]=await Promise.all([
     fetch("./data/layered-seeds-v08.json").then(r=>r.json()),
     fetch("./data/generation-rules-v08.json").then(r=>r.json()),
-    fetch("./data/reverse-lexeme-pairs-v09.json").then(r=>r.json())
+    fetch("./data/reverse-lexeme-pairs-v09.json").then(r=>r.json()),
+    fetch("./data/growth-engine-v10.json").then(r=>r.json())
   ]);
   $("#c1").textContent=data.counts.L1+"本";$("#c2").textContent=data.counts.L2+"本";$("#c3").textContent=data.counts.L3+"本";
   $("#ruleStat").textContent="DNA規則 "+rules.rule_count+"種";
   const rs=rules.verified_recursive_space;$("#recursiveStat").textContent=rs?("再帰 "+rs.sentence_variants.toLocaleString()+"文"):"再帰候補 –";$("#pairStat").textContent="逆語 "+pairs.pair_count+"組 / "+pairs.variant_count+"文";
+  const sel=$("#growthFamily");sel.innerHTML="";
+  for(const f of growth.families){
+    const o=document.createElement("option");o.value=f.id;o.textContent=f.stage0[1].replace("。","");sel.appendChild(o);
+  }
+  growthState.familyId=growth.families[0]?.id||null;
   updatePolicy();seedOne();
 }
 function uniqueByReading(arr){
@@ -56,7 +62,6 @@ function uniqueByReading(arr){
 }
 function defaultWeird(l){return l==="L1"?1:l==="L2"?3:4}
 function maxWeird(){return +$("#weird").value}
-function depth(){return +$("#depth").value}
 function pool(){return uniqueByReading(data.records.filter(x=>x.layer===layer && (x.weirdness??defaultWeird(x.layer))<=maxWeird()))}
 function variantLayer(rule,v){
   if(v && ["L1","L2","L3"].includes(v[2])) return v[2];
@@ -83,12 +88,12 @@ function recursiveNPs(rule,maxDepth){
 function recursivePool(){
   const out=[];
   for(const rule of rules.rules.filter(r=>r.type==="recursive_kinship")){
-    for(const np of recursiveNPs(rule,depth())){
+    for(const np of recursiveNPs(rule,1)){
       const w=rule.weirdness_by_depth?.[np.depth]??(1+np.depth);
       for(const f of rule.frames) pushDNA(out,rule,f.display.replace("{np}",np.display),f.left+np.reading+f.right,rule.layer,w);
     }
   }
-  return out;
+  return uniqueByReading(out);
 }
 function pairPool(){
   const out=[];
@@ -129,10 +134,11 @@ function updateCandidateCount(){
 function syncControls(){
   const need=layer==="L1"?1:layer==="L2"?3:4;
   if(maxWeird()<need){$("#weird").value=need;$("#weirdVal").textContent=need}
-  $("#longGen").disabled=layer!=="L1";
+  const growthDisabled=layer!=="L1";
   $("#pairGen").disabled=layer==="L3";
   $("#dnaGen").disabled=layer==="L3";
-  for(const id of ["longGen","pairGen","dnaGen"])$("#"+id).style.opacity=$("#"+id).disabled?".38":"1";
+  for(const id of ["growthStart","growOne","growAgain","growBack"])$("#"+id).disabled=growthDisabled;
+  for(const id of ["growthStart","growOne","growAgain","growBack","pairGen","dnaGen"])$("#"+id).style.opacity=$("#"+id).disabled?".38":"1";
 }
 function updatePolicy(){$("#policy").textContent=data.policy[layer];syncControls();updateCandidateCount()}
 function chooseFresh(p){
@@ -141,6 +147,7 @@ function chooseFresh(p){
 }
 function show(x){
  if(!x){$("#result").textContent="この条件では候補がありません。";return}
+ currentShown=x;
  $("#result").textContent=x.display;$("#reading").textContent=x.reading;
  $("#pal").textContent=isPal(x.reading)?"✓ 完全回文":"× 不成立";$("#pal").className="pill "+(isPal(x.reading)?"ok":"");
  $("#quality").textContent="日本語 "+(x.japanese_quality||(layer==="L1"?"A":layer==="L2"?"B":"C"));
@@ -151,11 +158,50 @@ function show(x){
 function seedOne(){const x=chooseFresh(pool());show(x?{...x,origin:"原種コーパス"}:null)}
 function dnaOne(){show(chooseFresh(dnaPool(true)))}
 function pairOne(){show(chooseFresh(pairPool()))}
-function longOne(){show(chooseFresh(recursivePool()))}
+function growthFamily(){
+  return growth.families.find(f=>f.id===growthState.familyId)||growth.families[0];
+}
+function growthCenter(stage,avoid){
+  const list=growth.centers["stage"+stage]||[];
+  if(!list.length)return null;
+  let pool=list.filter(x=>x[0]!==avoid);
+  if(!pool.length)pool=list;
+  return pool[Math.floor(Math.random()*pool.length)];
+}
+function makeGrowth(stage,reroll=false){
+  const f=growthFamily();if(!f)return null;
+  if(stage<=0){
+    growthState.stage=0;growthState.lastCenter=null;
+    $("#growthStage").textContent="段階 0 / 4";
+    return {display:f.stage0[1],reading:f.stage0[0],family:"段階長文化",origin:"GROW:"+f.id,japanese_quality:"A",weirdness:1,why:"短い自然文を長文化の起点にします。",growth_family:f.id,growth_stage:0};
+  }
+  const center=growthCenter(stage,reroll?growthState.lastCenter:null);if(!center)return null;
+  growthState.stage=stage;growthState.lastCenter=center[0];
+  $("#growthStage").textContent="段階 "+stage+" / 4";
+  const reading=f.left[0]+"も"+center[0]+"も"+f.right[0];
+  const display=f.left[1]+"も"+center[1]+"も"+f.right[1]+"。";
+  return {display,reading,family:"段階長文化",origin:"GROW:"+f.id,japanese_quality:stage<=3?"A":"B",weirdness:[1,1,2,3,4][stage],why:"同じ主題・述語の骨格を保ったまま、中心の人物名詞句だけを一段長くしました。",growth_family:f.id,growth_stage:stage};
+}
+function growthStart(){show(makeGrowth(0))}
+function growOne(){
+  if(layer!=="L1")return;
+  const next=Math.min(4,(currentShown?.growth_family===growthState.familyId?(currentShown.growth_stage??growthState.stage):growthState.stage)+1);
+  show(makeGrowth(next));
+}
+function growAgain(){
+  if(layer!=="L1")return;
+  const st=currentShown?.growth_family===growthState.familyId?(currentShown.growth_stage??growthState.stage):growthState.stage;
+  show(makeGrowth(st,true));
+}
+function growBack(){
+  if(layer!=="L1")return;
+  const st=Math.max(0,(currentShown?.growth_family===growthState.familyId?(currentShown.growth_stage??growthState.stage):growthState.stage)-1);
+  show(makeGrowth(st));
+}
 document.querySelectorAll(".layer").forEach(b=>b.onclick=()=>{document.querySelectorAll(".layer").forEach(x=>x.classList.remove("active"));b.classList.add("active");layer=b.dataset.layer;seen.clear();$("#list").innerHTML="";updatePolicy();seedOne()});
+$("#growthFamily").onchange=e=>{growthState.familyId=e.target.value;growthState.stage=0;growthState.lastCenter=null;$("#growthStage").textContent="段階 0 / 4";if(layer==="L1")growthStart()};
 $("#weird").oninput=e=>{$("#weirdVal").textContent=e.target.value;seen.clear();$("#list").innerHTML="";updateCandidateCount();seedOne()};
-$("#depth").oninput=e=>{$("#depthVal").textContent=e.target.value;seen.clear();$("#list").innerHTML="";updateCandidateCount()};
-$("#seedGen").onclick=seedOne;$("#dnaGen").onclick=dnaOne;$("#pairGen").onclick=pairOne;$("#longGen").onclick=longOne;
+$("#seedGen").onclick=seedOne;$("#dnaGen").onclick=dnaOne;$("#pairGen").onclick=pairOne;$("#growthStart").onclick=growthStart;$("#growOne").onclick=growOne;$("#growAgain").onclick=growAgain;$("#growBack").onclick=growBack;
 $("#ten").onclick=()=>{const box=$("#list");box.innerHTML="";const p=uniqueByReading([...pool().map(x=>({...x,origin:"原種"})),...dnaPool(true)]);const used=new Set();for(let i=0;i<10&&used.size<p.length;i++){let x;do{x=p[Math.floor(Math.random()*p.length)]}while(used.has(x.reading));used.add(x.reading);const e=document.createElement("div");e.className="item";e.innerHTML=(i+1)+". "+x.display+"<br><small>"+(x.origin||x.subgroup||"原種")+" / 日本語 "+(x.japanese_quality||"-")+" / 怪文 "+(x.weirdness??defaultWeird(layer))+"</small>";e.onclick=()=>show(x);box.appendChild(e)}};
 init().catch(e=>{$("#result").textContent="データ読込失敗";console.error(e)});
 </script></body></html>
