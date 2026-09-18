@@ -28,6 +28,7 @@ v0.3の1000候補のうち、日本語の骨格が先に崩れていた875件は
 
 - `index.html` 公開試験UI
 - `data/layered-seeds.json` v0.5 三層コーパス
+- `data/generation-rules-v05.json` L1/L2を増殖させる生成DNA規則
 - `data/usable-seeds.json` v0.4 一次監査データ（履歴保存）
 - `docs/CORPUS_AUDIT.md` v0.4 一次監査
 - `docs/LAYER_POLICY_V05.md` v0.5 階層設計
