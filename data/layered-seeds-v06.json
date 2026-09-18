@@ -1,0 +1,1982 @@
+{
+  "version": "0.6",
+  "policy": {
+    "L1": "第一層。助詞・活用・語順を含め、通常の独立文として自然であることを最優先。生産規則はホワイトリスト方式で運用。",
+    "L2": "第二層。日本語として意味は通るが、口語省略・意味上の異常・やや特殊な語彙や文体を許容。",
+    "L3": "第三層。電文調・舞台指示調など、意味は追えるが標準文から外れる実験候補。"
+  },
+  "counts": {
+    "L1": 105,
+    "L2": 25,
+    "L3": 83,
+    "total": 213,
+    "rejected_from_v03": 875
+  },
+  "records": [
+    {
+      "display": "確かに、母に貸した。",
+      "reading": "たしかにははにかした",
+      "family": "貸借",
+      "layer": "L1",
+      "subgroup": "particle_sentence",
+      "rationale": "助詞「に」を含み、貸借関係が明瞭",
+      "id": "V05-0001"
+    },
+    {
+      "display": "確かに、父に貸した。",
+      "reading": "たしかにちちにかした",
+      "family": "貸借",
+      "layer": "L1",
+      "subgroup": "particle_sentence",
+      "rationale": "助詞「に」を含み、貸借関係が明瞭",
+      "id": "V05-0002"
+    },
+    {
+      "display": "確かに、ナナに貸した。",
+      "reading": "たしかにななにかした",
+      "family": "貸借",
+      "layer": "L1",
+      "subgroup": "particle_sentence",
+      "rationale": "助詞「に」を含み、貸借関係が明瞭",
+      "id": "V05-0003"
+    },
+    {
+      "display": "確かに、ココに貸した。",
+      "reading": "たしかにここにかした",
+      "family": "貸借",
+      "layer": "L1",
+      "subgroup": "particle_sentence",
+      "rationale": "助詞「に」を含み、貸借関係が明瞭",
+      "id": "V05-0004"
+    },
+    {
+      "display": "確かに、モモに貸した。",
+      "reading": "たしかにももにかした",
+      "family": "貸借",
+      "layer": "L1",
+      "subgroup": "particle_sentence",
+      "rationale": "助詞「に」を含み、貸借関係が明瞭",
+      "id": "V05-0005"
+    },
+    {
+      "display": "確かに、ママに貸した。",
+      "reading": "たしかにままにかした",
+      "family": "貸借",
+      "layer": "L1",
+      "subgroup": "particle_sentence",
+      "rationale": "助詞「に」を含み、貸借関係が明瞭",
+      "id": "V05-0006"
+    },
+    {
+      "display": "確かに、サラサに貸した。",
+      "reading": "たしかにさらさにかした",
+      "family": "貸借",
+      "layer": "L1",
+      "subgroup": "particle_sentence",
+      "rationale": "助詞「に」を含み、貸借関係が明瞭",
+      "id": "V05-0007"
+    },
+    {
+      "display": "確かに、ミナミに貸した。",
+      "reading": "たしかにみなみにかした",
+      "family": "貸借",
+      "layer": "L1",
+      "subgroup": "particle_sentence",
+      "rationale": "助詞「に」を含み、貸借関係が明瞭",
+      "id": "V05-0008"
+    },
+    {
+      "display": "確かに、石井に貸した。",
+      "reading": "たしかにいしいにかした",
+      "family": "貸借",
+      "layer": "L1",
+      "subgroup": "particle_sentence",
+      "rationale": "助詞「に」を含み、貸借関係が明瞭",
+      "id": "V05-0009"
+    },
+    {
+      "display": "確かに、高田に貸した。",
+      "reading": "たしかにたかたにかした",
+      "family": "貸借",
+      "layer": "L1",
+      "subgroup": "particle_sentence",
+      "rationale": "助詞「に」を含み、貸借関係が明瞭",
+      "id": "V05-0010"
+    },
+    {
+      "display": "確かに、ミミに貸した。",
+      "reading": "たしかにみみにかした",
+      "family": "貸借",
+      "layer": "L1",
+      "subgroup": "particle_sentence",
+      "rationale": "助詞「に」を含み、貸借関係が明瞭",
+      "id": "V05-0011"
+    },
+    {
+      "display": "確かに、ノノに貸した。",
+      "reading": "たしかにののにかした",
+      "family": "貸借",
+      "layer": "L1",
+      "subgroup": "particle_sentence",
+      "rationale": "助詞「に」を含み、貸借関係が明瞭",
+      "id": "V05-0012"
+    },
+    {
+      "display": "確かに、リリに貸した。",
+      "reading": "たしかにりりにかした",
+      "family": "貸借",
+      "layer": "L1",
+      "subgroup": "particle_sentence",
+      "rationale": "助詞「に」を含み、貸借関係が明瞭",
+      "id": "V05-0013"
+    },
+    {
+      "display": "確かに、キキに貸した。",
+      "reading": "たしかにききにかした",
+      "family": "貸借",
+      "layer": "L1",
+      "subgroup": "particle_sentence",
+      "rationale": "助詞「に」を含み、貸借関係が明瞭",
+      "id": "V05-0014"
+    },
+    {
+      "display": "確かに、ルルに貸した。",
+      "reading": "たしかにるるにかした",
+      "family": "貸借",
+      "layer": "L1",
+      "subgroup": "particle_sentence",
+      "rationale": "助詞「に」を含み、貸借関係が明瞭",
+      "id": "V05-0015"
+    },
+    {
+      "display": "確かに、ササに貸した。",
+      "reading": "たしかにささにかした",
+      "family": "貸借",
+      "layer": "L1",
+      "subgroup": "particle_sentence",
+      "rationale": "助詞「に」を含み、貸借関係が明瞭",
+      "id": "V05-0016"
+    },
+    {
+      "display": "竹やぶ焼けた。",
+      "reading": "たけやぶやけた",
+      "family": "出来事",
+      "layer": "L1",
+      "subgroup": "curated_sentence",
+      "rationale": "通常の日本語文として意味が明瞭",
+      "id": "V05-0017"
+    },
+    {
+      "display": "ダンスが済んだ。",
+      "reading": "だんすがすんだ",
+      "family": "出来事",
+      "layer": "L1",
+      "subgroup": "curated_sentence",
+      "rationale": "通常の日本語文として意味が明瞭",
+      "id": "V05-0018"
+    },
+    {
+      "display": "イカ食べたかい？",
+      "reading": "いかたべたかい",
+      "family": "問い",
+      "layer": "L1",
+      "subgroup": "curated_sentence",
+      "rationale": "通常の日本語文として意味が明瞭",
+      "id": "V05-0019"
+    },
+    {
+      "display": "夜、乗るよ。",
+      "reading": "よるのるよ",
+      "family": "出来事",
+      "layer": "L1",
+      "subgroup": "curated_sentence",
+      "rationale": "通常の日本語文として意味が明瞭",
+      "id": "V05-0020"
+    },
+    {
+      "display": "鯛焼いた。",
+      "reading": "たいやいた",
+      "family": "出来事",
+      "layer": "L1",
+      "subgroup": "curated_sentence",
+      "rationale": "通常の日本語文として意味が明瞭",
+      "id": "V05-0021"
+    },
+    {
+      "display": "確かに貸した。",
+      "reading": "たしかにかした",
+      "family": "出来事",
+      "layer": "L1",
+      "subgroup": "curated_sentence",
+      "rationale": "通常の日本語文として意味が明瞭",
+      "id": "V05-0022"
+    },
+    {
+      "display": "私、負けましたわ。",
+      "reading": "わたしまけましたわ",
+      "family": "出来事",
+      "layer": "L1",
+      "subgroup": "curated_sentence",
+      "rationale": "通常の日本語文として意味が明瞭",
+      "id": "V05-0023"
+    },
+    {
+      "display": "留守に何する？",
+      "reading": "るすになにする",
+      "family": "問い",
+      "layer": "L1",
+      "subgroup": "curated_sentence",
+      "rationale": "通常の日本語文として意味が明瞭",
+      "id": "V05-0024"
+    },
+    {
+      "display": "世の中ね、顔かお金かなのよ。",
+      "reading": "よのなかねかおかおかねかなのよ",
+      "family": "世相",
+      "layer": "L1",
+      "subgroup": "curated_sentence",
+      "rationale": "通常の日本語文として意味が明瞭",
+      "id": "V05-0025"
+    },
+    {
+      "display": "松茸摘みに来て、奇跡的に見つけた妻。",
+      "reading": "まつたけつみにきてきせきてきにみつけたつま",
+      "family": "長文",
+      "layer": "L1",
+      "subgroup": "curated_sentence",
+      "rationale": "通常の日本語文として意味が明瞭",
+      "id": "V05-0026"
+    },
+    {
+      "display": "この子どこの子？",
+      "reading": "このこどこのこ",
+      "family": "問い",
+      "layer": "L1",
+      "subgroup": "curated_sentence",
+      "rationale": "通常の日本語文として意味が明瞭",
+      "id": "V05-0027"
+    },
+    {
+      "display": "私が探したわ。",
+      "reading": "わたしがさがしたわ",
+      "family": "主語明示",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0028"
+    },
+    {
+      "display": "私が流したわ。",
+      "reading": "わたしがながしたわ",
+      "family": "主語明示",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0029"
+    },
+    {
+      "display": "私が剥がしたわ。",
+      "reading": "わたしがはがしたわ",
+      "family": "主語明示",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0030"
+    },
+    {
+      "display": "私が逃がしたわ。",
+      "reading": "わたしがにがしたわ",
+      "family": "主語明示",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0031"
+    },
+    {
+      "display": "私が焦がしたわ。",
+      "reading": "わたしがこがしたわ",
+      "family": "主語明示",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0032"
+    },
+    {
+      "display": "私が怪我したわ。",
+      "reading": "わたしがけがしたわ",
+      "family": "主語明示",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0033"
+    },
+    {
+      "display": "私がヨガしたわ。",
+      "reading": "わたしがよがしたわ",
+      "family": "主語明示",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0034"
+    },
+    {
+      "display": "私もメモしたわ。",
+      "reading": "わたしもめもしたわ",
+      "family": "主語明示",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0035"
+    },
+    {
+      "display": "私もデモしたわ。",
+      "reading": "わたしもでもしたわ",
+      "family": "主語明示",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0036"
+    },
+    {
+      "display": "よく聞くよ。",
+      "reading": "よくきくよ",
+      "family": "習慣",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0037"
+    },
+    {
+      "display": "よく泣くよ。",
+      "reading": "よくなくよ",
+      "family": "習慣",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0038"
+    },
+    {
+      "display": "よく書くよ。",
+      "reading": "よくかくよ",
+      "family": "習慣",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0039"
+    },
+    {
+      "display": "よく解くよ。",
+      "reading": "よくとくよ",
+      "family": "習慣",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0040"
+    },
+    {
+      "display": "よく置くよ。",
+      "reading": "よくおくよ",
+      "family": "習慣",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0041"
+    },
+    {
+      "display": "よく焼くよ。",
+      "reading": "よくやくよ",
+      "family": "習慣",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0042"
+    },
+    {
+      "display": "よく引くよ。",
+      "reading": "よくひくよ",
+      "family": "習慣",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0043"
+    },
+    {
+      "display": "よく拭くよ。",
+      "reading": "よくふくよ",
+      "family": "習慣",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0044"
+    },
+    {
+      "display": "よく炊くよ。",
+      "reading": "よくたくよ",
+      "family": "習慣",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0045"
+    },
+    {
+      "display": "よく履くよ。",
+      "reading": "よくはくよ",
+      "family": "習慣",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0046"
+    },
+    {
+      "display": "よく剥くよ。",
+      "reading": "よくむくよ",
+      "family": "習慣",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0047"
+    },
+    {
+      "display": "よく付くよ。",
+      "reading": "よくつくよ",
+      "family": "習慣",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0048"
+    },
+    {
+      "display": "よく行くよ。",
+      "reading": "よくいくよ",
+      "family": "習慣",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0049"
+    },
+    {
+      "display": "よく咲くよ。",
+      "reading": "よくさくよ",
+      "family": "習慣",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0050"
+    },
+    {
+      "display": "よく空くよ。",
+      "reading": "よくあくよ",
+      "family": "習慣",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0051"
+    },
+    {
+      "display": "よく湧くよ。",
+      "reading": "よくわくよ",
+      "family": "習慣",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0052"
+    },
+    {
+      "display": "よく巻くよ。",
+      "reading": "よくまくよ",
+      "family": "習慣",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0053"
+    },
+    {
+      "display": "夜、寝るよ。",
+      "reading": "よるねるよ",
+      "family": "時刻・動作",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0054"
+    },
+    {
+      "display": "夜、見るよ。",
+      "reading": "よるみるよ",
+      "family": "時刻・動作",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0055"
+    },
+    {
+      "display": "夜、出るよ。",
+      "reading": "よるでるよ",
+      "family": "時刻・動作",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0056"
+    },
+    {
+      "display": "夜、来るよ。",
+      "reading": "よるくるよ",
+      "family": "時刻・動作",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0057"
+    },
+    {
+      "display": "夜、いるよ。",
+      "reading": "よるいるよ",
+      "family": "時刻・動作",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0058"
+    },
+    {
+      "display": "夜、煮るよ。",
+      "reading": "よるにるよ",
+      "family": "時刻・動作",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0059"
+    },
+    {
+      "display": "夜、着るよ。",
+      "reading": "よるきるよ",
+      "family": "時刻・動作",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0060"
+    },
+    {
+      "display": "夜、蹴るよ。",
+      "reading": "よるけるよ",
+      "family": "時刻・動作",
+      "layer": "L1",
+      "subgroup": "productive_natural",
+      "rationale": "語境界と回文境界がずれる自然な生成型",
+      "id": "V05-0061"
+    },
+    {
+      "display": "確かに、獅子に貸した。",
+      "reading": "たしかにししにかした",
+      "family": "貸借",
+      "layer": "L2",
+      "subgroup": "semantic_weird",
+      "rationale": "文法は自然だが貸借相手として異常",
+      "id": "V05-0062"
+    },
+    {
+      "display": "確かに、子猫に貸した。",
+      "reading": "たしかにこねこにかした",
+      "family": "貸借",
+      "layer": "L2",
+      "subgroup": "semantic_weird",
+      "rationale": "文法は自然だが貸借相手として異常",
+      "id": "V05-0063"
+    },
+    {
+      "display": "確かに、キツツキに貸した。",
+      "reading": "たしかにきつつきにかした",
+      "family": "貸借",
+      "layer": "L2",
+      "subgroup": "semantic_weird",
+      "rationale": "文法は自然だが貸借相手として異常",
+      "id": "V05-0064"
+    },
+    {
+      "display": "確かに、庭のワニに貸した。",
+      "reading": "たしかににわのわににかした",
+      "family": "貸借",
+      "layer": "L2",
+      "subgroup": "semantic_weird",
+      "rationale": "文法は自然だが貸借相手として異常",
+      "id": "V05-0065"
+    },
+    {
+      "display": "確かに、軽いイルカに貸した。",
+      "reading": "たしかにかるいいるかにかした",
+      "family": "貸借",
+      "layer": "L2",
+      "subgroup": "semantic_weird",
+      "rationale": "文法は自然だが貸借相手として異常",
+      "id": "V05-0066"
+    },
+    {
+      "display": "私、サルサしたわ。",
+      "reading": "わたしさるさしたわ",
+      "family": "行為",
+      "layer": "L2",
+      "subgroup": "colloquial_or_phrase",
+      "rationale": "意味は明瞭だが標準文より口語・句に寄る",
+      "id": "V05-0067"
+    },
+    {
+      "display": "軽いイルカ。",
+      "reading": "かるいいるか",
+      "family": "描写",
+      "layer": "L2",
+      "subgroup": "colloquial_or_phrase",
+      "rationale": "意味は明瞭だが標準文より口語・句に寄る",
+      "id": "V05-0068"
+    },
+    {
+      "display": "庭のワニ。",
+      "reading": "にわのわに",
+      "family": "描写",
+      "layer": "L2",
+      "subgroup": "colloquial_or_phrase",
+      "rationale": "意味は明瞭だが標準文より口語・句に寄る",
+      "id": "V05-0069"
+    },
+    {
+      "display": "磨かぬ鏡。",
+      "reading": "みがかぬかがみ",
+      "family": "名詞句",
+      "layer": "L2",
+      "subgroup": "colloquial_or_phrase",
+      "rationale": "意味は明瞭だが標準文より口語・句に寄る",
+      "id": "V05-0070"
+    },
+    {
+      "display": "旦那、キキなんだ。",
+      "reading": "だんなききなんだ",
+      "family": "同定",
+      "layer": "L2",
+      "subgroup": "colloquial_identity",
+      "rationale": "助詞省略はあるが口語として意味が明瞭で、怪文として面白い",
+      "id": "V05-0071"
+    },
+    {
+      "display": "旦那、ナナなんだ。",
+      "reading": "だんななななんだ",
+      "family": "同定",
+      "layer": "L2",
+      "subgroup": "colloquial_identity",
+      "rationale": "助詞省略はあるが口語として意味が明瞭で、怪文として面白い",
+      "id": "V05-0072"
+    },
+    {
+      "display": "旦那、モモなんだ。",
+      "reading": "だんなももなんだ",
+      "family": "同定",
+      "layer": "L2",
+      "subgroup": "colloquial_identity",
+      "rationale": "助詞省略はあるが口語として意味が明瞭で、怪文として面白い",
+      "id": "V05-0073"
+    },
+    {
+      "display": "旦那、ココなんだ。",
+      "reading": "だんなここなんだ",
+      "family": "同定",
+      "layer": "L2",
+      "subgroup": "colloquial_identity",
+      "rationale": "助詞省略はあるが口語として意味が明瞭で、怪文として面白い",
+      "id": "V05-0074"
+    },
+    {
+      "display": "旦那、ミミなんだ。",
+      "reading": "だんなみみなんだ",
+      "family": "同定",
+      "layer": "L2",
+      "subgroup": "colloquial_identity",
+      "rationale": "助詞省略はあるが口語として意味が明瞭で、怪文として面白い",
+      "id": "V05-0075"
+    },
+    {
+      "display": "旦那、ノノなんだ。",
+      "reading": "だんなののなんだ",
+      "family": "同定",
+      "layer": "L2",
+      "subgroup": "colloquial_identity",
+      "rationale": "助詞省略はあるが口語として意味が明瞭で、怪文として面白い",
+      "id": "V05-0076"
+    },
+    {
+      "display": "旦那、リリなんだ。",
+      "reading": "だんなりりなんだ",
+      "family": "同定",
+      "layer": "L2",
+      "subgroup": "colloquial_identity",
+      "rationale": "助詞省略はあるが口語として意味が明瞭で、怪文として面白い",
+      "id": "V05-0077"
+    },
+    {
+      "display": "旦那、ルルなんだ。",
+      "reading": "だんなるるなんだ",
+      "family": "同定",
+      "layer": "L2",
+      "subgroup": "colloquial_identity",
+      "rationale": "助詞省略はあるが口語として意味が明瞭で、怪文として面白い",
+      "id": "V05-0078"
+    },
+    {
+      "display": "旦那、サラサなんだ。",
+      "reading": "だんなさらさなんだ",
+      "family": "同定",
+      "layer": "L2",
+      "subgroup": "colloquial_identity",
+      "rationale": "助詞省略はあるが口語として意味が明瞭で、怪文として面白い",
+      "id": "V05-0079"
+    },
+    {
+      "display": "旦那、ミナミなんだ。",
+      "reading": "だんなみなみなんだ",
+      "family": "同定",
+      "layer": "L2",
+      "subgroup": "colloquial_identity",
+      "rationale": "助詞省略はあるが口語として意味が明瞭で、怪文として面白い",
+      "id": "V05-0080"
+    },
+    {
+      "display": "旦那、石井なんだ。",
+      "reading": "だんないしいなんだ",
+      "family": "同定",
+      "layer": "L2",
+      "subgroup": "colloquial_identity",
+      "rationale": "助詞省略はあるが口語として意味が明瞭で、怪文として面白い",
+      "id": "V05-0081"
+    },
+    {
+      "display": "旦那、高田なんだ。",
+      "reading": "だんなたかたなんだ",
+      "family": "同定",
+      "layer": "L2",
+      "subgroup": "colloquial_identity",
+      "rationale": "助詞省略はあるが口語として意味が明瞭で、怪文として面白い",
+      "id": "V05-0082"
+    },
+    {
+      "display": "旦那、獅子なんだ。",
+      "reading": "だんなししなんだ",
+      "family": "同定",
+      "layer": "L2",
+      "subgroup": "colloquial_identity",
+      "rationale": "助詞省略はあるが口語として意味が明瞭で、怪文として面白い",
+      "id": "V05-0083"
+    },
+    {
+      "display": "タミ、母見た。",
+      "reading": "たみははみた",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0084"
+    },
+    {
+      "display": "タミ、父見た。",
+      "reading": "たみちちみた",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0085"
+    },
+    {
+      "display": "タミ、ナナ見た。",
+      "reading": "たみななみた",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0086"
+    },
+    {
+      "display": "タミ、ママ見た。",
+      "reading": "たみままみた",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0087"
+    },
+    {
+      "display": "タミ、桃見た。",
+      "reading": "たみももみた",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0088"
+    },
+    {
+      "display": "タミ、石井見た。",
+      "reading": "たみいしいみた",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0089"
+    },
+    {
+      "display": "タミ、トマト見た。",
+      "reading": "たみとまとみた",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0090"
+    },
+    {
+      "display": "タミ、子猫見た。",
+      "reading": "たみこねこみた",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0091"
+    },
+    {
+      "display": "タミ、キツツキ見た。",
+      "reading": "たみきつつきみた",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0092"
+    },
+    {
+      "display": "タミ、新聞紙見た。",
+      "reading": "たみしんぶんしみた",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0093"
+    },
+    {
+      "display": "タミ、ココ見た。",
+      "reading": "たみここみた",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0094"
+    },
+    {
+      "display": "タミ、耳見た。",
+      "reading": "たみみみみた",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0095"
+    },
+    {
+      "display": "タミ、獅子見た。",
+      "reading": "たみししみた",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0096"
+    },
+    {
+      "display": "タミ、サラサ見た。",
+      "reading": "たみさらさみた",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0097"
+    },
+    {
+      "display": "タミ、ミナミ見た。",
+      "reading": "たみみなみみた",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0098"
+    },
+    {
+      "display": "タミ、高田見た。",
+      "reading": "たみたかたみた",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0099"
+    },
+    {
+      "display": "タミ、庭のワニ見た。",
+      "reading": "たみにわのわにみた",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0100"
+    },
+    {
+      "display": "タミ、ノノ見た。",
+      "reading": "たみののみた",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0101"
+    },
+    {
+      "display": "タミ、リリ見た。",
+      "reading": "たみりりみた",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0102"
+    },
+    {
+      "display": "タミ、キキ見た。",
+      "reading": "たみききみた",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0103"
+    },
+    {
+      "display": "タミ、ルル見た。",
+      "reading": "たみるるみた",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0104"
+    },
+    {
+      "display": "タミ、ササ見た。",
+      "reading": "たみささみた",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0105"
+    },
+    {
+      "display": "タミ、煤見た。",
+      "reading": "たみすすみた",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0106"
+    },
+    {
+      "display": "タミ、お顔見た。",
+      "reading": "たみおかおみた",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0107"
+    },
+    {
+      "display": "タミ、軽いイルカ見た。",
+      "reading": "たみかるいいるかみた",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0108"
+    },
+    {
+      "display": "須田、桃出す。",
+      "reading": "すだももだす",
+      "family": "動作",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0109"
+    },
+    {
+      "display": "須田、トマト出す。",
+      "reading": "すだとまとだす",
+      "family": "動作",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0110"
+    },
+    {
+      "display": "須田、子猫出す。",
+      "reading": "すだこねこだす",
+      "family": "動作",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0111"
+    },
+    {
+      "display": "須田、キツツキ出す。",
+      "reading": "すだきつつきだす",
+      "family": "動作",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0112"
+    },
+    {
+      "display": "須田、新聞紙出す。",
+      "reading": "すだしんぶんしだす",
+      "family": "動作",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0113"
+    },
+    {
+      "display": "須田、耳出す。",
+      "reading": "すだみみだす",
+      "family": "動作",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0114"
+    },
+    {
+      "display": "須田、獅子出す。",
+      "reading": "すだししだす",
+      "family": "動作",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0115"
+    },
+    {
+      "display": "須田、庭のワニ出す。",
+      "reading": "すだにわのわにだす",
+      "family": "動作",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0116"
+    },
+    {
+      "display": "須田、更紗出す。",
+      "reading": "すださらさだす",
+      "family": "動作",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0117"
+    },
+    {
+      "display": "須田、煤出す。",
+      "reading": "すだすすだす",
+      "family": "動作",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0118"
+    },
+    {
+      "display": "須田、軽いイルカ出す。",
+      "reading": "すだかるいいるかだす",
+      "family": "動作",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0119"
+    },
+    {
+      "display": "須田、お顔出す。",
+      "reading": "すだおかおだす",
+      "family": "動作",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0120"
+    },
+    {
+      "display": "妻、母待つ。",
+      "reading": "つまははまつ",
+      "family": "待機",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0121"
+    },
+    {
+      "display": "妻、父待つ。",
+      "reading": "つまちちまつ",
+      "family": "待機",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0122"
+    },
+    {
+      "display": "妻、ナナ待つ。",
+      "reading": "つまななまつ",
+      "family": "待機",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0123"
+    },
+    {
+      "display": "妻、ココ待つ。",
+      "reading": "つまここまつ",
+      "family": "待機",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0124"
+    },
+    {
+      "display": "妻、モモ待つ。",
+      "reading": "つまももまつ",
+      "family": "待機",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0125"
+    },
+    {
+      "display": "妻、ママ待つ。",
+      "reading": "つままままつ",
+      "family": "待機",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0126"
+    },
+    {
+      "display": "妻、獅子待つ。",
+      "reading": "つまししまつ",
+      "family": "待機",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0127"
+    },
+    {
+      "display": "妻、サラサ待つ。",
+      "reading": "つまさらさまつ",
+      "family": "待機",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0128"
+    },
+    {
+      "display": "妻、ミナミ待つ。",
+      "reading": "つまみなみまつ",
+      "family": "待機",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0129"
+    },
+    {
+      "display": "妻、石井待つ。",
+      "reading": "つまいしいまつ",
+      "family": "待機",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0130"
+    },
+    {
+      "display": "妻、高田待つ。",
+      "reading": "つまたかたまつ",
+      "family": "待機",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0131"
+    },
+    {
+      "display": "妻、子猫待つ。",
+      "reading": "つまこねこまつ",
+      "family": "待機",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0132"
+    },
+    {
+      "display": "妻、キツツキ待つ。",
+      "reading": "つまきつつきまつ",
+      "family": "待機",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0133"
+    },
+    {
+      "display": "妻、庭のワニ待つ。",
+      "reading": "つまにわのわにまつ",
+      "family": "待機",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0134"
+    },
+    {
+      "display": "妻、ミミ待つ。",
+      "reading": "つまみみまつ",
+      "family": "待機",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0135"
+    },
+    {
+      "display": "妻、ノノ待つ。",
+      "reading": "つまののまつ",
+      "family": "待機",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0136"
+    },
+    {
+      "display": "妻、リリ待つ。",
+      "reading": "つまりりまつ",
+      "family": "待機",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0137"
+    },
+    {
+      "display": "妻、キキ待つ。",
+      "reading": "つまききまつ",
+      "family": "待機",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0138"
+    },
+    {
+      "display": "妻、ルル待つ。",
+      "reading": "つまるるまつ",
+      "family": "待機",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0139"
+    },
+    {
+      "display": "妻、軽いイルカ待つ。",
+      "reading": "つまかるいいるかまつ",
+      "family": "待機",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0140"
+    },
+    {
+      "display": "妻、ササ待つ。",
+      "reading": "つまささまつ",
+      "family": "待機",
+      "layer": "L3",
+      "subgroup": "telegraphic_ellipsis",
+      "rationale": "意味は取れるが助詞省略の電文調",
+      "id": "V05-0141"
+    },
+    {
+      "display": "ルミ、母見る。",
+      "reading": "るみははみる",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_nonpast",
+      "rationale": "助詞省略＋非過去の舞台指示・メモ調",
+      "id": "V05-0142"
+    },
+    {
+      "display": "ルミ、父見る。",
+      "reading": "るみちちみる",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_nonpast",
+      "rationale": "助詞省略＋非過去の舞台指示・メモ調",
+      "id": "V05-0143"
+    },
+    {
+      "display": "ルミ、ナナ見る。",
+      "reading": "るみななみる",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_nonpast",
+      "rationale": "助詞省略＋非過去の舞台指示・メモ調",
+      "id": "V05-0144"
+    },
+    {
+      "display": "ルミ、ママ見る。",
+      "reading": "るみままみる",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_nonpast",
+      "rationale": "助詞省略＋非過去の舞台指示・メモ調",
+      "id": "V05-0145"
+    },
+    {
+      "display": "ルミ、桃見る。",
+      "reading": "るみももみる",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_nonpast",
+      "rationale": "助詞省略＋非過去の舞台指示・メモ調",
+      "id": "V05-0146"
+    },
+    {
+      "display": "ルミ、石井見る。",
+      "reading": "るみいしいみる",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_nonpast",
+      "rationale": "助詞省略＋非過去の舞台指示・メモ調",
+      "id": "V05-0147"
+    },
+    {
+      "display": "ルミ、トマト見る。",
+      "reading": "るみとまとみる",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_nonpast",
+      "rationale": "助詞省略＋非過去の舞台指示・メモ調",
+      "id": "V05-0148"
+    },
+    {
+      "display": "ルミ、子猫見る。",
+      "reading": "るみこねこみる",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_nonpast",
+      "rationale": "助詞省略＋非過去の舞台指示・メモ調",
+      "id": "V05-0149"
+    },
+    {
+      "display": "ルミ、キツツキ見る。",
+      "reading": "るみきつつきみる",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_nonpast",
+      "rationale": "助詞省略＋非過去の舞台指示・メモ調",
+      "id": "V05-0150"
+    },
+    {
+      "display": "ルミ、新聞紙見る。",
+      "reading": "るみしんぶんしみる",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_nonpast",
+      "rationale": "助詞省略＋非過去の舞台指示・メモ調",
+      "id": "V05-0151"
+    },
+    {
+      "display": "ルミ、ココ見る。",
+      "reading": "るみここみる",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_nonpast",
+      "rationale": "助詞省略＋非過去の舞台指示・メモ調",
+      "id": "V05-0152"
+    },
+    {
+      "display": "ルミ、耳見る。",
+      "reading": "るみみみみる",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_nonpast",
+      "rationale": "助詞省略＋非過去の舞台指示・メモ調",
+      "id": "V05-0153"
+    },
+    {
+      "display": "ルミ、獅子見る。",
+      "reading": "るみししみる",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_nonpast",
+      "rationale": "助詞省略＋非過去の舞台指示・メモ調",
+      "id": "V05-0154"
+    },
+    {
+      "display": "ルミ、サラサ見る。",
+      "reading": "るみさらさみる",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_nonpast",
+      "rationale": "助詞省略＋非過去の舞台指示・メモ調",
+      "id": "V05-0155"
+    },
+    {
+      "display": "ルミ、ミナミ見る。",
+      "reading": "るみみなみみる",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_nonpast",
+      "rationale": "助詞省略＋非過去の舞台指示・メモ調",
+      "id": "V05-0156"
+    },
+    {
+      "display": "ルミ、高田見る。",
+      "reading": "るみたかたみる",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_nonpast",
+      "rationale": "助詞省略＋非過去の舞台指示・メモ調",
+      "id": "V05-0157"
+    },
+    {
+      "display": "ルミ、庭のワニ見る。",
+      "reading": "るみにわのわにみる",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_nonpast",
+      "rationale": "助詞省略＋非過去の舞台指示・メモ調",
+      "id": "V05-0158"
+    },
+    {
+      "display": "ルミ、ノノ見る。",
+      "reading": "るみののみる",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_nonpast",
+      "rationale": "助詞省略＋非過去の舞台指示・メモ調",
+      "id": "V05-0159"
+    },
+    {
+      "display": "ルミ、リリ見る。",
+      "reading": "るみりりみる",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_nonpast",
+      "rationale": "助詞省略＋非過去の舞台指示・メモ調",
+      "id": "V05-0160"
+    },
+    {
+      "display": "ルミ、キキ見る。",
+      "reading": "るみききみる",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_nonpast",
+      "rationale": "助詞省略＋非過去の舞台指示・メモ調",
+      "id": "V05-0161"
+    },
+    {
+      "display": "ルミ、ルル見る。",
+      "reading": "るみるるみる",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_nonpast",
+      "rationale": "助詞省略＋非過去の舞台指示・メモ調",
+      "id": "V05-0162"
+    },
+    {
+      "display": "ルミ、ササ見る。",
+      "reading": "るみささみる",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_nonpast",
+      "rationale": "助詞省略＋非過去の舞台指示・メモ調",
+      "id": "V05-0163"
+    },
+    {
+      "display": "ルミ、煤見る。",
+      "reading": "るみすすみる",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_nonpast",
+      "rationale": "助詞省略＋非過去の舞台指示・メモ調",
+      "id": "V05-0164"
+    },
+    {
+      "display": "ルミ、お顔見る。",
+      "reading": "るみおかおみる",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_nonpast",
+      "rationale": "助詞省略＋非過去の舞台指示・メモ調",
+      "id": "V05-0165"
+    },
+    {
+      "display": "ルミ、軽いイルカ見る。",
+      "reading": "るみかるいいるかみる",
+      "family": "知覚",
+      "layer": "L3",
+      "subgroup": "telegraphic_nonpast",
+      "rationale": "助詞省略＋非過去の舞台指示・メモ調",
+      "id": "V05-0166"
+    },
+    {
+      "id": "V06-0167",
+      "display": "私、貸したわ。",
+      "reading": "わたしかしたわ",
+      "family": "動作",
+      "layer": "L1",
+      "subgroup": "watashi-c-shitawa",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0168",
+      "display": "私、消したわ。",
+      "reading": "わたしけしたわ",
+      "family": "動作",
+      "layer": "L1",
+      "subgroup": "watashi-c-shitawa",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0169",
+      "display": "私、押したわ。",
+      "reading": "わたしおしたわ",
+      "family": "動作",
+      "layer": "L1",
+      "subgroup": "watashi-c-shitawa",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0170",
+      "display": "私、出したわ。",
+      "reading": "わたしだしたわ",
+      "family": "動作",
+      "layer": "L1",
+      "subgroup": "watashi-c-shitawa",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0171",
+      "display": "私、刺したわ。",
+      "reading": "わたしさしたわ",
+      "family": "動作",
+      "layer": "L1",
+      "subgroup": "watashi-c-shitawa",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0172",
+      "display": "私、越したわ。",
+      "reading": "わたしこしたわ",
+      "family": "動作",
+      "layer": "L1",
+      "subgroup": "watashi-c-shitawa",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0173",
+      "display": "私、足したわ。",
+      "reading": "わたしたしたわ",
+      "family": "動作",
+      "layer": "L1",
+      "subgroup": "watashi-c-shitawa",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0174",
+      "display": "私、干したわ。",
+      "reading": "わたしほしたわ",
+      "family": "動作",
+      "layer": "L1",
+      "subgroup": "watashi-c-shitawa",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0175",
+      "display": "私、蒸したわ。",
+      "reading": "わたしむしたわ",
+      "family": "動作",
+      "layer": "L1",
+      "subgroup": "watashi-c-shitawa",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0176",
+      "display": "私、模したわ。",
+      "reading": "わたしもしたわ",
+      "family": "動作",
+      "layer": "L2",
+      "subgroup": "watashi-c-shitawa",
+      "register": "formal",
+      "rationale": "文法・意味関係は保つが、語彙選択や文体に意図的な怪しさを残す。"
+    },
+    {
+      "id": "V06-0177",
+      "display": "私、成したわ。",
+      "reading": "わたしなしたわ",
+      "family": "動作",
+      "layer": "L2",
+      "subgroup": "watashi-c-shitawa",
+      "register": "literary",
+      "rationale": "文法・意味関係は保つが、語彙選択や文体に意図的な怪しさを残す。"
+    },
+    {
+      "id": "V06-0178",
+      "display": "私、混ぜましたわ。",
+      "reading": "わたしまぜましたわ",
+      "family": "丁寧叙述",
+      "layer": "L1",
+      "subgroup": "watashima-c-mashitawa",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0179",
+      "display": "私、待ちましたわ。",
+      "reading": "わたしまちましたわ",
+      "family": "丁寧叙述",
+      "layer": "L1",
+      "subgroup": "watashima-c-mashitawa",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0180",
+      "display": "私、巻きましたわ。",
+      "reading": "わたしまきましたわ",
+      "family": "丁寧叙述",
+      "layer": "L1",
+      "subgroup": "watashima-c-mashitawa",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0181",
+      "display": "私、曲げましたわ。",
+      "reading": "わたしまげましたわ",
+      "family": "丁寧叙述",
+      "layer": "L1",
+      "subgroup": "watashima-c-mashitawa",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0182",
+      "display": "私、真似ましたわ。",
+      "reading": "わたしまねましたわ",
+      "family": "丁寧叙述",
+      "layer": "L1",
+      "subgroup": "watashima-c-mashitawa",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0183",
+      "display": "買うか？",
+      "reading": "かうか",
+      "family": "問い",
+      "layer": "L1",
+      "subgroup": "ka-c-ka",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0184",
+      "display": "貸すか？",
+      "reading": "かすか",
+      "family": "問い",
+      "layer": "L1",
+      "subgroup": "ka-c-ka",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0185",
+      "display": "書くか？",
+      "reading": "かくか",
+      "family": "問い",
+      "layer": "L1",
+      "subgroup": "ka-c-ka",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0186",
+      "display": "嗅ぐか？",
+      "reading": "かぐか",
+      "family": "問い",
+      "layer": "L1",
+      "subgroup": "ka-c-ka",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0187",
+      "display": "勝つか？",
+      "reading": "かつか",
+      "family": "問い",
+      "layer": "L1",
+      "subgroup": "ka-c-ka",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0188",
+      "display": "狩るか？",
+      "reading": "かるか",
+      "family": "問い",
+      "layer": "L1",
+      "subgroup": "ka-c-ka",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0189",
+      "display": "噛むか？",
+      "reading": "かむか",
+      "family": "問い",
+      "layer": "L1",
+      "subgroup": "ka-c-ka",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0190",
+      "display": "泣くな。",
+      "reading": "なくな",
+      "family": "禁止",
+      "layer": "L1",
+      "subgroup": "na-c-na",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0191",
+      "display": "鳴るな。",
+      "reading": "なるな",
+      "family": "禁止",
+      "layer": "L1",
+      "subgroup": "na-c-na",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0192",
+      "display": "読むよ。",
+      "reading": "よむよ",
+      "family": "叙述",
+      "layer": "L1",
+      "subgroup": "yo-c-yo",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0193",
+      "display": "寄るよ。",
+      "reading": "よるよ",
+      "family": "叙述",
+      "layer": "L1",
+      "subgroup": "yo-c-yo",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0194",
+      "display": "酔うよ。",
+      "reading": "ようよ",
+      "family": "叙述",
+      "layer": "L1",
+      "subgroup": "yo-c-yo",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0195",
+      "display": "呼ぶよ。",
+      "reading": "よぶよ",
+      "family": "叙述",
+      "layer": "L1",
+      "subgroup": "yo-c-yo",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0196",
+      "display": "寝るね。",
+      "reading": "ねるね",
+      "family": "確認",
+      "layer": "L1",
+      "subgroup": "ne-c-ne",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0197",
+      "display": "寝たね。",
+      "reading": "ねたね",
+      "family": "確認",
+      "layer": "L1",
+      "subgroup": "ne-c-ne",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0198",
+      "display": "飲むの？",
+      "reading": "のむの",
+      "family": "問い",
+      "layer": "L1",
+      "subgroup": "no-c-no",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0199",
+      "display": "乗るの？",
+      "reading": "のるの",
+      "family": "問い",
+      "layer": "L1",
+      "subgroup": "no-c-no",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0200",
+      "display": "沸くわ。",
+      "reading": "わくわ",
+      "family": "叙述",
+      "layer": "L1",
+      "subgroup": "wa-c-wa",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0201",
+      "display": "割るわ。",
+      "reading": "わるわ",
+      "family": "叙述",
+      "layer": "L1",
+      "subgroup": "wa-c-wa",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0202",
+      "display": "仲間かな？",
+      "reading": "なかまかな",
+      "family": "推量",
+      "layer": "L1",
+      "subgroup": "naka-c-kana",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0203",
+      "display": "中身かな？",
+      "reading": "なかみかな",
+      "family": "推量",
+      "layer": "L1",
+      "subgroup": "naka-c-kana",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0204",
+      "display": "中井かな？",
+      "reading": "なかいかな",
+      "family": "推量",
+      "layer": "L1",
+      "subgroup": "naka-c-kana",
+      "register": "proper-name",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0205",
+      "display": "モカかも。",
+      "reading": "もかかも",
+      "family": "推量",
+      "layer": "L1",
+      "subgroup": "moka-kamo",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0206",
+      "display": "値段だね。",
+      "reading": "ねだんだね",
+      "family": "確認",
+      "layer": "L1",
+      "subgroup": "nedan-dane",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0207",
+      "display": "素手です。",
+      "reading": "すでです",
+      "family": "判断",
+      "layer": "L1",
+      "subgroup": "sude-desu",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0208",
+      "display": "誰だ？",
+      "reading": "だれだ",
+      "family": "問い",
+      "layer": "L1",
+      "subgroup": "dare-da",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0209",
+      "display": "ダメだ。",
+      "reading": "だめだ",
+      "family": "判断",
+      "layer": "L1",
+      "subgroup": "dame-da",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0210",
+      "display": "痛い！",
+      "reading": "いたい",
+      "family": "感嘆",
+      "layer": "L1",
+      "subgroup": "itai",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0211",
+      "display": "足した。",
+      "reading": "たした",
+      "family": "動作",
+      "layer": "L1",
+      "subgroup": "tashita",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0212",
+      "display": "足しました。",
+      "reading": "たしました",
+      "family": "丁寧叙述",
+      "layer": "L1",
+      "subgroup": "tashimashita",
+      "register": "neutral",
+      "rationale": "通常の日本語として独立して読めることを優先した追加原種。"
+    },
+    {
+      "id": "V06-0213",
+      "display": "イカ、立ったかい？",
+      "reading": "いかたったかい",
+      "family": "問い",
+      "layer": "L2",
+      "subgroup": "ika-pal-kai",
+      "register": "semantic-weird",
+      "rationale": "文法・意味関係は保つが、語彙選択や文体に意図的な怪しさを残す。"
+    }
+  ],
+  "all_palindromes_verified": true
+}
