@@ -23,7 +23,7 @@
 <button class="layer" data-layer="L3"><b>第三層　実験文</b><small id="c3">–</small></button>
 </div>
 <div class="note" id="policy">読み込み中…</div>
-<div class="stats"><span class="stat" id="ruleStat">DNA規則 –</span><span class="stat" id="recursiveStat">再帰候補 –</span><span class="stat" id="pairStat">逆語ペア –</span><span class="stat">全件回文検証</span></div>
+<div class="stats"><span class="stat" id="ruleStat">DNA規則 –</span><span class="stat" id="recursiveStat">再帰候補 –</span><span class="stat" id="pairStat">逆語ペア –</span><span class="stat" id="uniqueStat">実効候補 –</span><span class="stat">全件回文検証</span></div>
 <div class="controls">
 <label>怪文度上限 <b id="weirdVal">2</b> <input id="weird" type="range" min="1" max="5" value="2" step="1"></label>
 <label>長文化 <b id="depthVal">1</b> <input id="depth" type="range" min="0" max="3" value="1" step="1"></label>
@@ -49,10 +49,15 @@ async function init(){
   const rs=rules.verified_recursive_space;$("#recursiveStat").textContent=rs?("再帰 "+rs.sentence_variants.toLocaleString()+"文"):"再帰候補 –";$("#pairStat").textContent="逆語 "+pairs.pair_count+"組 / "+pairs.variant_count+"文";
   updatePolicy();seedOne();
 }
+function uniqueByReading(arr){
+  const m=new Map();
+  for(const x of arr)if(!m.has(x.reading))m.set(x.reading,x);
+  return [...m.values()];
+}
 function defaultWeird(l){return l==="L1"?1:l==="L2"?3:4}
 function maxWeird(){return +$("#weird").value}
 function depth(){return +$("#depth").value}
-function pool(){return data.records.filter(x=>x.layer===layer && (x.weirdness??defaultWeird(x.layer))<=maxWeird())}
+function pool(){return uniqueByReading(data.records.filter(x=>x.layer===layer && (x.weirdness??defaultWeird(x.layer))<=maxWeird()))}
 function variantLayer(rule,v){
   if(v && ["L1","L2","L3"].includes(v[2])) return v[2];
   if((rule.layer||"").includes("/")) return null;
@@ -97,7 +102,7 @@ function pairPool(){
       out.push({display,reading,family:"逆語ペア",origin:"PAIR:"+p.id,why:"名詞と逆読み述語の間に、文法的に許可した助詞だけを置く。",japanese_quality:v.layer==="L1"?"A":"A-",weirdness:v.weirdness});
     }
   }
-  return out;
+  return uniqueByReading(out);
 }
 function dnaPool(includeRecursive=true){
   const out=[];
@@ -115,9 +120,13 @@ function dnaPool(includeRecursive=true){
   }
   out.push(...pairPool());
   if(includeRecursive)out.push(...recursivePool());
-  return out;
+  return uniqueByReading(out);
 }
-function updatePolicy(){$("#policy").textContent=data.policy[layer]}
+function updateCandidateCount(){
+  const all=uniqueByReading([...pool().map(x=>({...x,origin:"原種"})),...dnaPool(true)]);
+  $("#uniqueStat").textContent="実効候補 "+all.length.toLocaleString()+"種";
+}
+function updatePolicy(){$("#policy").textContent=data.policy[layer];updateCandidateCount()}
 function chooseFresh(p){
   if(!p.length)return null;let q=p.filter(x=>!seen.has(x.reading));
   if(!q.length){seen.clear();q=p}const x=q[Math.floor(Math.random()*q.length)];seen.add(x.reading);return x;
@@ -136,9 +145,9 @@ function dnaOne(){show(chooseFresh(dnaPool(true)))}
 function pairOne(){show(chooseFresh(pairPool()))}
 function longOne(){show(chooseFresh(recursivePool()))}
 document.querySelectorAll(".layer").forEach(b=>b.onclick=()=>{document.querySelectorAll(".layer").forEach(x=>x.classList.remove("active"));b.classList.add("active");layer=b.dataset.layer;seen.clear();$("#list").innerHTML="";updatePolicy();seedOne()});
-$("#weird").oninput=e=>{$("#weirdVal").textContent=e.target.value;seen.clear();$("#list").innerHTML="";seedOne()};
-$("#depth").oninput=e=>{$("#depthVal").textContent=e.target.value;seen.clear();$("#list").innerHTML=""};
+$("#weird").oninput=e=>{$("#weirdVal").textContent=e.target.value;seen.clear();$("#list").innerHTML="";updateCandidateCount();seedOne()};
+$("#depth").oninput=e=>{$("#depthVal").textContent=e.target.value;seen.clear();$("#list").innerHTML="";updateCandidateCount()};
 $("#seedGen").onclick=seedOne;$("#dnaGen").onclick=dnaOne;$("#pairGen").onclick=pairOne;$("#longGen").onclick=longOne;
-$("#ten").onclick=()=>{const box=$("#list");box.innerHTML="";const p=[...pool().map(x=>({...x,origin:"原種"})),...dnaPool(true)];const used=new Set();for(let i=0;i<10&&used.size<p.length;i++){let x;do{x=p[Math.floor(Math.random()*p.length)]}while(used.has(x.reading));used.add(x.reading);const e=document.createElement("div");e.className="item";e.innerHTML=(i+1)+". "+x.display+"<br><small>"+(x.origin||x.subgroup||"原種")+" / 日本語 "+(x.japanese_quality||"-")+" / 怪文 "+(x.weirdness??defaultWeird(layer))+"</small>";e.onclick=()=>show(x);box.appendChild(e)}};
+$("#ten").onclick=()=>{const box=$("#list");box.innerHTML="";const p=uniqueByReading([...pool().map(x=>({...x,origin:"原種"})),...dnaPool(true)]);const used=new Set();for(let i=0;i<10&&used.size<p.length;i++){let x;do{x=p[Math.floor(Math.random()*p.length)]}while(used.has(x.reading));used.add(x.reading);const e=document.createElement("div");e.className="item";e.innerHTML=(i+1)+". "+x.display+"<br><small>"+(x.origin||x.subgroup||"原種")+" / 日本語 "+(x.japanese_quality||"-")+" / 怪文 "+(x.weirdness??defaultWeird(layer))+"</small>";e.onclick=()=>show(x);box.appendChild(e)}};
 init().catch(e=>{$("#result").textContent="データ読込失敗";console.error(e)});
 </script></body></html>
