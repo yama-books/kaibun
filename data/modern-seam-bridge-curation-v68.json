@@ -1,0 +1,112 @@
+{
+  "version": "0.68",
+  "title": "Modern seam bridge human curation",
+  "source_generator": "v0.67",
+  "policy": {
+    "automatic_acceptance": false,
+    "review_basis": "Japanese grammaticality, semantic-role fit, current app layer conventions, and existing seam-recipe style.",
+    "ambiguous_lexical_role_stays_review_needed": true
+  },
+  "accepted": [
+    {
+      "id": "modern-see-garden-croc",
+      "display": "タミも庭のワニも見た。",
+      "reading": "たみもにわのわにもみた",
+      "layer": "L1",
+      "japanese_quality": "A",
+      "weirdness": 2,
+      "rationale": "「XもYも見た」の標準構文。庭のワニは見る対象として自然に立つ。"
+    },
+    {
+      "id": "modern-loan-garden-croc",
+      "display": "確かに庭のワニに貸した。",
+      "reading": "たしかににわのわににかした",
+      "layer": "L1",
+      "japanese_quality": "A",
+      "weirdness": 3,
+      "rationale": "目的語省略を許す通常の「Xに貸した」。受け手がワニなので意味は怪文だが文法は自然。"
+    },
+    {
+      "id": "modern-see-shop-cicada",
+      "display": "タミも店のセミも見た。",
+      "reading": "たみもみせのせみもみた",
+      "layer": "L1",
+      "japanese_quality": "A",
+      "weirdness": 2,
+      "rationale": "見る対象として「店のセミ」が成立し、並列構文も標準的。"
+    },
+    {
+      "id": "modern-loan-shop-cicada",
+      "display": "確かに店のセミに貸した。",
+      "reading": "たしかにみせのせみにかした",
+      "layer": "L1",
+      "japanese_quality": "A",
+      "weirdness": 3,
+      "rationale": "受け手がセミという内容だけが怪しく、統語は通常の貸借文。"
+    },
+    {
+      "id": "modern-see-morning-sake",
+      "display": "タミも今朝の酒も見た。",
+      "reading": "たみもけさのさけもみた",
+      "layer": "L1",
+      "japanese_quality": "A",
+      "weirdness": 2,
+      "rationale": "「今朝の酒」を見ることは語用上やや奇妙だが、名詞句と見る構文は自然。"
+    },
+    {
+      "id": "modern-loan-house-ray",
+      "display": "確かに家のエイに貸した。",
+      "reading": "たしかにいえのえいにかした",
+      "layer": "L1",
+      "japanese_quality": "A",
+      "weirdness": 3,
+      "rationale": "「家のエイ」を受け手とする擬人的怪文。文法構造は自然。"
+    },
+    {
+      "id": "modern-loan-squirrel-pickpocket",
+      "display": "確かにリスのスリに貸した。",
+      "reading": "たしかにりすのすりにかした",
+      "layer": "L2",
+      "japanese_quality": "A-",
+      "weirdness": 3,
+      "rationale": "中心語「スリ」は人なので受け手として成立するが、「リスのスリ」の意味関係が怪しくL2。"
+    }
+  ],
+  "review_needed": [
+    {
+      "id": "modern-loan-squid-meeting",
+      "display": "確かにイカの会に貸した。",
+      "reading": "たしかにいかのかいにかした",
+      "reason": "「会」を団体なら受け手になりうるが、現行shellは event-noun。団体義へ無断で変更しない。"
+    }
+  ],
+  "held": [
+    {
+      "id": "modern-loan-morning-sake",
+      "reason": "酒は貸借の受け手にならない。"
+    },
+    {
+      "id": "modern-loan-pear-item",
+      "reason": "品は貸借の受け手にならない。"
+    },
+    {
+      "id": "modern-loan-sand-eggplant",
+      "reason": "ナスはこの構文で貸借の受け手として不自然。"
+    },
+    {
+      "id": "modern-loan-lie-layer",
+      "reason": "層は貸借の受け手にならない。"
+    },
+    {
+      "id": "modern-loan-voice-eco",
+      "reason": "エコは現行解析では貸借の受け手にならない。"
+    }
+  ],
+  "summary": {
+    "accepted": 7,
+    "review_needed": 1,
+    "held": 5
+  },
+  "public_whitelist_ready": true,
+  "next_step": "Freeze v0.67 generator output, derive a public whitelist from only these seven accepted records, validate it, then integrate through a separate bridgePool without changing existing source data."
+}
