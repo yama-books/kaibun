@@ -280,7 +280,7 @@ function sentenceWrapper(){
 }
 function stripFinalPeriod(text){return text?.endsWith("。")?text.slice(0,-1):text}
 function syncSentenceWrapControls(){
-  const canWrap=!!currentShown&&isPal(currentShown.reading)&&layer!=="L3"&&(growth.sentence_level_wrappers||[]).length>0;
+  const canWrap=!!currentShown&&isPal(currentShown.reading)&&(layer!=="L3"||currentShown?.wrap_depth>0)&&(growth.sentence_level_wrappers||[]).length>0;
   $("#wrapSentence").disabled=!canWrap;
   $("#unwrapSentence").disabled=!currentShown?.wrapped_from;
   $("#wrapSentence").style.opacity=$("#wrapSentence").disabled?".38":"1";
@@ -408,7 +408,7 @@ function updateGrowthStageLabel(){
   const wrapped=currentShown?.wrap_depth||0;
   $("#growthStage").textContent=wrapped>0?"外枠 "+wrapped+"段":"段階 "+growthState.stage+" / "+max;
   const available=growthFamilies().length>0;
-  const canWrap=layer!=="L3"&&(growth.sentence_level_wrappers||[]).length>0;
+  const canWrap=(layer!=="L3"||wrapped>0)&&(growth.sentence_level_wrappers||[]).length>0;
   $("#growOne").disabled=!available&&!canWrap;
   $("#growBack").disabled=wrapped>0?!currentShown?.wrapped_from:(!available||growthState.stage<=0);
   $("#growthStart").disabled=!available;
@@ -479,8 +479,8 @@ function makeGrowth(stage,reroll=false){
 }
 function growthStart(){resetGrowthHistory();show(makeGrowth(0))}
 function growOne(){
-  if(layer==="L3")return;
   if(currentShown?.wrap_depth>0){wrapCurrentSentence();return}
+  if(layer==="L3")return;
   const current=(currentShown?.growth_mode===growthState.mode&&currentShown?.growth_family===growthState.familyId)?(currentShown.growth_stage??growthState.stage):growthState.stage;
   const max=growthMaxStage();
   if(current>=max){
@@ -563,7 +563,7 @@ function switchLayerWithoutGenerating(nextLayer){
 }
 function wrapCurrentSentence(){
   const w=sentenceWrapper();
-  if(!w||!currentShown||!isPal(currentShown.reading)||layer==="L3")return;
+  if(!w||!currentShown||!isPal(currentShown.reading)||(layer==="L3"&&!currentShown?.wrap_depth))return;
   const parent=currentShown;
   const parentLayer=layer;
   const depth=(parent.wrap_depth||0)+1;
@@ -575,16 +575,16 @@ function wrapCurrentSentence(){
     display,reading,
     family:"文レベル長文化",
     origin:"WRAP:"+w.id,
-    japanese_quality:w.quality||"B",
+    japanese_quality:depth>=6?"C":(depth>=3?"B":(w.quality||"B+")),
     weirdness:Math.min(5,2+depth),
-    why:w.semantic+"の外枠を追加。内側の文はそのまま保持しています。",
+    why:w.semantic+"の外枠を追加。内側の文はそのまま保持しています。"+(depth>=6?" 6段以上のためL3実験域です。":""),
     wrap_depth:depth,
     wrapper_id:w.id,
     wrapped_from:parent,
     wrapped_from_layer:parentLayer,
     growth_context:parent.growth_context||(parent.wrap_depth?null:snapshotGrowthContext())
   };
-  switchLayerWithoutGenerating("L2");
+  switchLayerWithoutGenerating(depth>=6?"L3":"L2");
   show(x);
 }
 function unwrapCurrentSentence(){
