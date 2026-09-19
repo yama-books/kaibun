@@ -1,0 +1,209 @@
+{
+  "version": "0.62",
+  "title": "Naha outer-frame exchange family",
+  "concept": "Exchange only A5 between two trusted spring/plant palindromes that share the high-confidence B=なは↔はな seam; the swap replaces ku1 and the mirrored ku5 outer frame while preserving the host middle three ku.",
+  "source_contexts": {
+    "shoju-wakakusa": {
+      "title": "野遊",
+      "source_group": "trusted",
+      "source_confidence": "B",
+      "broad_field": "春・草木",
+      "primary_field": "春景・遊行",
+      "tags": [
+        "若草",
+        "花",
+        "川",
+        "友"
+      ],
+      "factors": {
+        "A": "わかくさの",
+        "B": "なは",
+        "C": "しらすみる",
+        "D": "とも",
+        "E": "とちと"
+      },
+      "meter": [
+        "わかくさの",
+        "なはしらすみる",
+        "ともとちと",
+        "もとるみすらし",
+        "はなのさくかわ"
+      ],
+      "display": [
+        "若草の",
+        "名は知らず見る",
+        "友どちと",
+        "戻る身すらし",
+        "花の咲く川"
+      ],
+      "semantic_roles": {
+        "outer_frame": [
+          "spring vegetation",
+          "flowering river scene"
+        ],
+        "middle": [
+          "seeing unnamed plants",
+          "companions",
+          "returning/motion"
+        ]
+      }
+    },
+    "sendai-sakunami": {
+      "title": "作並",
+      "source_group": "trusted",
+      "source_confidence": "A",
+      "broad_field": "春・草木",
+      "primary_field": "草木・薬・地名",
+      "tags": [
+        "草",
+        "薬",
+        "作並"
+      ],
+      "factors": {
+        "A": "みなくさの",
+        "B": "なは",
+        "C": "はくとしれ",
+        "D": "くす",
+        "E": "りなり"
+      },
+      "meter": [
+        "みなくさの",
+        "なははくとしれ",
+        "くすりなり",
+        "すくれしとくは",
+        "はなのさくなみ"
+      ],
+      "display": [
+        "みな草の",
+        "名は百としれ",
+        "薬なり",
+        "すぐれし徳は",
+        "花の作並"
+      ],
+      "semantic_roles": {
+        "outer_frame": [
+          "plants",
+          "flowering Sakunami place-name landing"
+        ],
+        "middle": [
+          "many plant names",
+          "medicine",
+          "virtue/property statement"
+        ]
+      }
+    }
+  },
+  "invariant": {
+    "B": "なは",
+    "reverse_B": "はな",
+    "morphology_signature": "topic-name -> lexical-flower",
+    "confidence": "high",
+    "transferable": true,
+    "operation": "Keep host B/C/D/E fixed and replace A only; ku1 and ku5 change together because ku5 tail is reverse(B)+reverse(A)."
+  },
+  "outputs": [
+    {
+      "id": "shoju-wakakusa",
+      "kind": "historical-source",
+      "host": "shoju-wakakusa",
+      "A_source": "shoju-wakakusa",
+      "meter": [
+        "わかくさの",
+        "なはしらすみる",
+        "ともとちと",
+        "もとるみすらし",
+        "はなのさくかわ"
+      ],
+      "review_status": "historical-source"
+    },
+    {
+      "id": "hybrid-018",
+      "kind": "novel-cento",
+      "host": "shoju-wakakusa",
+      "A_source": "sendai-sakunami",
+      "meter": [
+        "みなくさの",
+        "なはしらすみる",
+        "ともとちと",
+        "もとるみすらし",
+        "はなのさくなみ"
+      ],
+      "reading": "みなくさのなはしらすみるともとちともとるみすらしはなのさくなみ",
+      "strict_palindrome": true,
+      "research_review": {
+        "status": "promising-but-linguistic-review-needed",
+        "semantic_coherence": "medium-high tentative",
+        "reasons": [
+          "Both source poems are trusted and share the broad spring/plant field.",
+          "The shared B=なは seam is high-confidence and unchanged.",
+          "The host middle three ku preserve the original 野遊 sequence of seeing plants with companions and returning.",
+          "The imported outer frame changes 若草/花の咲く川 to みな草/花の作並, which remains vegetation/place scenery rather than importing a foreign topic.",
+          "The resulting first two ku can be read as みな草の／名は知らず見る, which is semantically plausible within the plant-observation scene."
+        ],
+        "cautions": [
+          "The full classical syntax of 戻る身すらし / 花の作並 should still receive linguistic review.",
+          "This is a novel cento, not an attested historical waka."
+        ]
+      }
+    },
+    {
+      "id": "sendai-sakunami",
+      "kind": "historical-source",
+      "host": "sendai-sakunami",
+      "A_source": "sendai-sakunami",
+      "meter": [
+        "みなくさの",
+        "なははくとしれ",
+        "くすりなり",
+        "すくれしとくは",
+        "はなのさくなみ"
+      ],
+      "review_status": "historical-source"
+    },
+    {
+      "id": "hybrid-020",
+      "kind": "novel-cento",
+      "host": "sendai-sakunami",
+      "A_source": "shoju-wakakusa",
+      "meter": [
+        "わかくさの",
+        "なははくとしれ",
+        "くすりなり",
+        "すくれしとくは",
+        "はなのさくかわ"
+      ],
+      "reading": "わかくさのなははくとしれくすりなりすくれしとくははなのさくかわ",
+      "strict_palindrome": true,
+      "research_review": {
+        "status": "hold-semantic-role-mismatch",
+        "semantic_coherence": "medium-low tentative",
+        "reasons": [
+          "The broad spring/plant field remains compatible and the B seam is structurally safe.",
+          "However the Sakunami host middle builds a medicine/virtue statement whose original final landing is the place-name 作並.",
+          "Replacing that outer landing with 花の咲く川 leaves すぐれし徳は followed by a scenic river phrase, weakening the host's semantic-role completion."
+        ],
+        "cautions": [
+          "The candidate is held for this host/donor direction only; the 野遊 outer frame is not globally rejected.",
+          "A different syntactic analysis could revise the judgment, so retain as a negative/control fixture rather than delete."
+        ]
+      }
+    }
+  ],
+  "directional_result": {
+    "reciprocal_swap_is_not_equally_good": true,
+    "promising_direction": "shoju-wakakusa host <- A=みなくさの / outer frame from sendai-sakunami",
+    "held_direction": "sendai-sakunami host <- A=わかくさの / outer frame from shoju-wakakusa",
+    "lesson": "Outer-frame swaps require compatibility with the semantic role of the host ending, not just shared B morphology and broad scene."
+  },
+  "positive_family_status": {
+    "status": "second-positive-family-candidate",
+    "positive_novel": [
+      "hybrid-018"
+    ],
+    "control_novel": [
+      "hybrid-020"
+    ],
+    "evidence_strength": "strong structural/trusted-source basis; linguistic naturalness still tentative"
+  },
+  "next_step": "Implement a deterministic shared-B outer-frame research generator and compare all repeated-B swaps, using なは as the positive family and また/ほと/cross-scene なは swaps as controls."
+}
