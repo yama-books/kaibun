@@ -6,6 +6,8 @@ const isPalindrome = s => s === reverse(s);
 
 const seam = readJson("data/seam-grammar-v25.json");
 const matrix = readJson("data/modern-seam-role-matrix-v66.json");
+const frozenFixture = readJson("data/generated-modern-seam-bridge-v67.json");
+const curation = readJson("data/modern-seam-bridge-curation-v68.json");
 
 const shellById = new Map((seam.shells ?? []).map(x => [x.id, x]));
 const coreById = new Map((seam.cores ?? []).map(x => [x.id, x]));
@@ -145,6 +147,24 @@ function check() {
   if (output.summary.accepted !== 7) errors.push(`accepted count ${output.summary.accepted}, expected 7`);
   if (output.summary.review_needed !== 1) errors.push(`review-needed count ${output.summary.review_needed}, expected 1`);
   if (output.summary.hold_semantic_role !== 5) errors.push(`hold count ${output.summary.hold_semantic_role}, expected 5`);
+
+  if (frozenFixture.version !== "0.67") errors.push(`frozen fixture version ${frozenFixture.version}, expected 0.67`);
+  if (frozenFixture.candidate_count !== output.candidate_count) errors.push(`fixture count ${frozenFixture.candidate_count}, generated ${output.candidate_count}`);
+  const frozenById = new Map((frozenFixture.candidates ?? []).map(x => [x.id, x]));
+  for (const candidate of newCandidates) {
+    const frozen = frozenById.get(candidate.id);
+    if (!frozen) { errors.push(`missing frozen candidate: ${candidate.id}`); continue; }
+    if (frozen.reading !== candidate.reading) errors.push(`frozen reading drift: ${candidate.id}`);
+    if (frozen.review_status !== candidate.review_status) errors.push(`frozen status drift: ${candidate.id}`);
+  }
+
+  if (curation.version !== "0.68") errors.push(`curation version ${curation.version}, expected 0.68`);
+  const generatedAccepted = newCandidates.filter(x => x.review_status === "accepted").map(x => x.id).sort();
+  const curatedAccepted = (curation.accepted ?? []).map(x => x.id).sort();
+  if (generatedAccepted.join(",") !== curatedAccepted.join(",")) errors.push(`accepted/curation mismatch generated=${generatedAccepted.join(",")} curated=${curatedAccepted.join(",")}`);
+  const curatedReview = (curation.review_needed ?? []).map(x => x.id).sort();
+  const generatedReview = newCandidates.filter(x => x.review_status === "review-needed").map(x => x.id).sort();
+  if (generatedReview.join(",") !== curatedReview.join(",")) errors.push(`review-needed/curation mismatch`);
 
   for (const c of generated) {
     if (!c.strict_palindrome) errors.push(`non-palindrome: ${c.id}`);
