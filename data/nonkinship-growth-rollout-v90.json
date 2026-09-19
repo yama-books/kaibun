@@ -1,0 +1,63 @@
+{
+  "version": "0.90",
+  "title": "Non-kinship growth diversification rollout",
+  "source_quote_prototype": "0.87.1",
+  "source_quote_curation": "0.88",
+  "source_reaction_prototype": "0.89",
+  "public_behavior_change_planned": true,
+  "decision": "approve-eight-families",
+  "approved": {
+    "report_simple_families": 4,
+    "report_simple_stages_per_family": 6,
+    "report_simple_total_stages": 24,
+    "reaction_simple_families": 4,
+    "reaction_simple_stages_per_family": 5,
+    "reaction_simple_total_stages": 20,
+    "total_new_families": 8,
+    "total_new_stages": 44
+  },
+  "held": {
+    "quote_depth_6_to_9_stages": 16,
+    "reason": "C-quality deep reporting stack remains research-only"
+  },
+  "projected_public_growth": {
+    "narrative_family_count": 53,
+    "narrative_stage_count": 366,
+    "L1_families": 13,
+    "L2_families": 40,
+    "by_dimension": {
+      "出来事": 10,
+      "関係": 6,
+      "場所": 2,
+      "理由": 1,
+      "状況": 1,
+      "属性": 2,
+      "時間": 1,
+      "存在": 1,
+      "引用・伝聞": 22,
+      "反応": 7
+    },
+    "kinship_stage_count": 216,
+    "kinship_stage_share": 0.5902
+  },
+  "rollout_rules": [
+    "Use source stage index 1 from event-horse-dance, event-chase, event-call, and event-seed-sleep.",
+    "Report-simple families expose only wrapper_depth 0-5 from v0.87.1.",
+    "Reaction-simple families expose all wrapper_depth 0-4 from v0.89.",
+    "No existing narrative family is modified or removed.",
+    "Legacy quote-* first-wrapper diversity metric remains scoped to the original fixed quote lane; new report-simple-* families are tracked separately.",
+    "All new stages must remain strict palindromes and noun-collision free."
+  ],
+  "quality_rationale": [
+    "Accepted report stages are A/B+/B only; all C stages remain held.",
+    "Reaction stages reuse the exact wrapper chain already accepted in reaction-light, with shorter and simpler source clauses.",
+    "The added families reduce semantic concentration without changing the underlying palindrome grammar."
+  ],
+  "success_criteria": [
+    "Narrative stage count becomes 366.",
+    "Kinship stage count remains 216.",
+    "Kinship stage share falls below 60%.",
+    "No new noun collision or palindrome failure.",
+    "Legacy 18 fixed quote families and 18-way first-wrapper diversity remain unchanged."
+  ]
+}
