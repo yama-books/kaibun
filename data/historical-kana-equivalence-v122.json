@@ -1,0 +1,49 @@
+{
+  "version": "1.22",
+  "updated_on": "2026-09-20",
+  "title": "Historical kana-form diagnostic: ヱ/ゑ versus え",
+  "purpose": "Represent poem 117 as an explicit historical-kana diagnostic case rather than silently modernizing ヱ/ゑ to え in the strict palindrome layer.",
+  "mode": "research-diagnostic-only",
+  "source_case": {
+    "id": "shoju-wave3-117",
+    "source_number": 117,
+    "title": "手習子にならひ",
+    "visible_scholarly_transcription": "はやもとる さかてくるまか ヱイやらや 家かまるくて かさるともやは",
+    "direct_source_image_inspected": false,
+    "direct_article_pdf_inspected": false
+  },
+  "readings": {
+    "historical_kana_preserving": "はやもとるさかてくるまかゑいやらやいえかまるくてかさるともやは",
+    "modernized_e_fold": "はやもとるさかてくるまかえいやらやいえかまるくてかさるともやは"
+  },
+  "results": {
+    "kana_length": 31,
+    "strict_palindrome_historical_kana": false,
+    "palindrome_under_declared_ye_e_fold": true,
+    "strict_promotion": false
+  },
+  "declared_equivalence_profile": {
+    "id": "ye-e-diagnostic",
+    "pair": ["ゑ","え"],
+    "scope": "diagnostic-only",
+    "historical_language_claim": "none-universal",
+    "note": "The profile records the relationship exposed by this scholarly transcription. It does not erase historical kana distinctions in the corpus."
+  },
+  "why_separate_from_o_wo": [
+    "お/を cases retain two distinct kana symbols in the scholarly transcription but align under a declared orthographic comparison.",
+    "Poem 117 additionally involves katakana ヱ in the scholarly transcription and kanji 家 whose ordinary reading contributes いえ on the mirror side.",
+    "The evidentiary and linguistic mechanism is therefore different and should not be merged into the o/wo profile."
+  ],
+  "safety_invariants": [
+    "Do not replace ヱ/ゑ with え in stored source transcription.",
+    "Do not mark poem 117 strict_palindrome=true.",
+    "Do not promote poem 117 into fixed50 or wave2.",
+    "Do not generalize the declared diagnostic pair to unrelated historical spellings without separate evidence."
+  ],
+  "verdict": {
+    "case_status": "hold-historical-kana-equivalence",
+    "strict_baseline_changed": false,
+    "public_generator_effect": "none",
+    "automatic_acceptance": false
+  }
+}
