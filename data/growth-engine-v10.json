@@ -1,6 +1,6 @@
 {
-  "version": "0.14",
-  "principle": "段階長文化は、(1)構文骨格を保って中心名詞句を伸ばす structural family と、(2)全文を個別監査した narrative family の二系統。どちらも1段ずつ必ず長くする。 物語型の後半は、述語を固定したまま受け手の親族関係を鏡型に外側へ追加し、50文字級まで段階的に伸長する。 v0.14では場所・理由・状況をdimensionとして明示し、L2でも物語型長文化を許可する。",
+  "version": "0.15",
+  "principle": "段階長文化は、(1)構文骨格を保って中心名詞句を伸ばす structural family と、(2)全文を個別監査した narrative family の二系統。どちらも1段ずつ必ず長くする。 物語型の後半は、述語を固定したまま受け手の親族関係を鏡型に外側へ追加し、50文字級まで段階的に伸長する。 v0.14では場所・理由・状況をdimensionとして明示し、L2でも物語型長文化を許可する。 v0.15では時間・属性のdimensionを追加し、述語や観察行為を維持したまま修飾情報を厚くする。",
   "families": [
     {
       "id": "wife-wait",
@@ -249,8 +249,8 @@
     "generated_growth_variants": 208,
     "all_palindromes": true,
     "minimum_stage_increases_length": true,
-    "narrative_family_count": 11,
-    "narrative_variants": 64,
+    "narrative_family_count": 14,
+    "narrative_variants": 77,
     "longest_narrative_kana": 51,
     "longest_narrative_example": {
       "family": "matsutake-wife",
@@ -260,8 +260,8 @@
       "len": 51
     },
     "narrative_families_by_layer": {
-      "L1": 9,
-      "L2": 2,
+      "L1": 10,
+      "L2": 4,
       "L3": 0
     },
     "narrative_families_by_dimension": {
@@ -269,7 +269,9 @@
       "関係": 6,
       "場所": 2,
       "理由": 1,
-      "状況": 1
+      "状況": 1,
+      "属性": 2,
+      "時間": 1
     }
   },
   "narrative_families": [
@@ -880,6 +882,137 @@
           "japanese_quality": "B",
           "weirdness": 5,
           "dimension": "状況"
+        }
+      ]
+    },
+    {
+      "id": "attribute-young",
+      "label": "属性：井川と誰が若いか",
+      "layer": "L1",
+      "dimension": "属性",
+      "mode": "curated_full_stages",
+      "stages": [
+        {
+          "reading": "いかわがわかい",
+          "display": "が",
+          "adds": "属性の核",
+          "japanese_quality": "A",
+          "weirdness": 1,
+          "dimension": "属性"
+        },
+        {
+          "reading": "いかわもななもわかい",
+          "display": "もナナも",
+          "adds": "比較対象",
+          "japanese_quality": "A",
+          "weirdness": 1,
+          "dimension": "属性"
+        },
+        {
+          "reading": "いかわもこのななのこもわかい",
+          "display": "もこのナナの子も",
+          "adds": "人物関係",
+          "japanese_quality": "A",
+          "weirdness": 2,
+          "dimension": "属性"
+        },
+        {
+          "reading": "いかわもははのこのななのこのははもわかい",
+          "display": "も母のこのナナの子の母も",
+          "adds": "親族関係",
+          "japanese_quality": "A-",
+          "weirdness": 3,
+          "dimension": "属性"
+        }
+      ]
+    },
+    {
+      "id": "time-observation",
+      "label": "時間：今朝の酒を目撃",
+      "layer": "L2",
+      "dimension": "時間",
+      "mode": "curated_full_stages",
+      "stages": [
+        {
+          "reading": "たみもけさのさけもみた",
+          "display": "タミも今朝の酒も見た。",
+          "adds": "時間つきの対象",
+          "japanese_quality": "A",
+          "weirdness": 2,
+          "dimension": "時間"
+        },
+        {
+          "reading": "たみもけさのななのさけもみた",
+          "display": "タミも今朝のナナの酒も見た。",
+          "adds": "所有者",
+          "japanese_quality": "A",
+          "weirdness": 3,
+          "dimension": "時間"
+        },
+        {
+          "reading": "たみもけさのこのななのこのさけもみた",
+          "display": "タミも今朝のこのナナの子の酒も見た。",
+          "adds": "人物関係",
+          "japanese_quality": "A-",
+          "weirdness": 4,
+          "dimension": "時間"
+        },
+        {
+          "reading": "たみもけさのははのこのななのこのははのさけもみた",
+          "display": "タミも今朝の母のこのナナの子の母の酒も見た。",
+          "adds": "親族関係",
+          "japanese_quality": "B+",
+          "weirdness": 5,
+          "dimension": "時間"
+        }
+      ]
+    },
+    {
+      "id": "attribute-light",
+      "label": "属性：何が軽いか",
+      "layer": "L2",
+      "dimension": "属性",
+      "mode": "curated_full_stages",
+      "stages": [
+        {
+          "reading": "いるかがかるい",
+          "display": "イルカが軽い。",
+          "adds": "属性の核",
+          "japanese_quality": "A",
+          "weirdness": 1,
+          "dimension": "属性"
+        },
+        {
+          "reading": "いるかもははもかるい",
+          "display": "イルカも母も軽い。",
+          "adds": "比較対象",
+          "japanese_quality": "A",
+          "weirdness": 2,
+          "dimension": "属性"
+        },
+        {
+          "reading": "いるかもにわのわにもかるい",
+          "display": "イルカも庭のワニも軽い。",
+          "adds": "異常な比較対象",
+          "japanese_quality": "A",
+          "weirdness": 3,
+          "dimension": "属性"
+        },
+        {
+          "reading": "いるかもこのにわのわにのこもかるい",
+          "display": "イルカもこの庭のワニの子も軽い。",
+          "adds": "関係",
+          "japanese_quality": "A-",
+          "weirdness": 4,
+          "dimension": "属性"
+        },
+        {
+          "reading": "いるかもこのにわのたきのきたのわにのこもかるい",
+          "display": "イルカもこの庭の滝の北のワニの子も軽い。",
+          "adds": "場所の詳細",
+          "japanese_quality": "B+",
+          "weirdness": 5,
+          "dimension": "属性"
         }
       ]
     }
