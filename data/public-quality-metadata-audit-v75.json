@@ -1,0 +1,124 @@
+{
+  "version": "0.75",
+  "title": "Public candidate quality-metadata audit",
+  "scope": "Current public one-shot candidate pools materialized from seed, DNA, reverse-pair, seam, and bridge data; unique by reading.",
+  "public_behavior_changed": false,
+  "totals": {
+    "all_unique": 649,
+    "all_palindrome_failures": 0,
+    "by_layer": {
+      "L1": 494,
+      "L2": 72,
+      "L3": 83
+    },
+    "by_quality": {
+      "A": 497,
+      "A-": 42,
+      "B": 27,
+      "C": 83
+    },
+    "by_source": {
+      "seed": 272,
+      "dna": 300,
+      "pair": 29,
+      "seam": 42,
+      "bridge": 6
+    }
+  },
+  "default_settings": {
+    "thresholds": {
+      "L1": 2,
+      "L2": 3,
+      "L3": 4
+    },
+    "unique": 635,
+    "palindrome_failures": 0,
+    "by_layer": {
+      "L1": 492,
+      "L2": 60,
+      "L3": 83
+    },
+    "by_quality": {
+      "A": 492,
+      "A-": 33,
+      "B": 27,
+      "C": 83
+    },
+    "by_source": {
+      "seed": 271,
+      "dna": 300,
+      "pair": 29,
+      "seam": 29,
+      "bridge": 6
+    },
+    "layer_detail": {
+      "L1": {
+        "count": 492,
+        "quality": {
+          "A": 492
+        },
+        "source": {
+          "seed": 159,
+          "dna": 290,
+          "pair": 21,
+          "seam": 19,
+          "bridge": 3
+        }
+      },
+      "L2": {
+        "count": 60,
+        "quality": {
+          "A-": 33,
+          "B": 27
+        },
+        "source": {
+          "seed": 29,
+          "dna": 10,
+          "pair": 8,
+          "seam": 10,
+          "bridge": 3
+        }
+      },
+      "L3": {
+        "count": 83,
+        "quality": {
+          "C": 83
+        },
+        "source": {
+          "seed": 83
+        }
+      }
+    }
+  },
+  "critical_limitation": {
+    "finding": "japanese_quality cannot currently be treated as an independent naturalness measurement.",
+    "reasons": [
+      "Public DNA candidates receive quality mainly from layer in index.html (L1->A, L2->A-, L3->C).",
+      "The resulting L1 distribution is therefore tautological: all 492 default L1 candidates are labeled A.",
+      "Seed/seam/bridge records have more curated quality metadata, but pooling them with layer-derived DNA labels obscures the distinction."
+    ],
+    "consequence": "Do not report A/A- share as natural-language success rate."
+  },
+  "valid_uses_of_current_metadata": [
+    "Regression detection when a curated record changes layer/quality unexpectedly.",
+    "Comparing wrapper choices that already carry individually authored quality labels.",
+    "Filtering public layers according to existing product policy."
+  ],
+  "invalid_uses": [
+    "Estimating the probability that a random generated sentence feels natural to a reader.",
+    "Claiming that all L1 DNA outputs are independently verified A-quality.",
+    "Comparing human naturalness between source types without new review."
+  ],
+  "next_step": {
+    "id": "human-stratified-benchmark",
+    "proposal": "Create a deterministic, source-stratified sample of public candidates and review each for grammaticality, semantic coherence, weirdness usefulness, and display/reading fidelity.",
+    "minimum_dimensions": [
+      "source_pool",
+      "layer",
+      "grammar",
+      "semantic_coherence",
+      "productive_value"
+    ],
+    "rule": "Keep human review separate from the existing japanese_quality field until enough evidence exists to revise public labels."
+  }
+}
