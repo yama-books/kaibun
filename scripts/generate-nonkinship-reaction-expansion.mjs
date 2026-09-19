@@ -80,14 +80,14 @@ for(const fam of generated){
   });
 }
 
-const currentStageCount=(growth.narrative_families??[]).reduce((n,f)=>n+(f.stages??[]).length,0);
-const currentKin=(growth.narrative_families??[]).reduce((n,f)=>n+(f.stages??[]).filter(s=>/[母父]/.test(s.display??"")||s.extension_type==="kinship_recipient").length,0);
 const acceptedQuoteStages=quoteCuration.summary?.accepted_stages??0;
-const projected=currentKin/(currentStageCount+acceptedQuoteStages+20);
-if(currentStageCount!==322)errors.push(`current stage count ${currentStageCount}, expected 322`);
-if(currentKin!==216)errors.push(`current kinship stage count ${currentKin}, expected 216`);
+const projection=fixture.combined_projection??{};
+if(projection.current_stage_count!==322)errors.push(`fixture baseline stage count ${projection.current_stage_count}, expected 322`);
+if(projection.current_kinship_stage_count!==216)errors.push(`fixture baseline kinship count ${projection.current_kinship_stage_count}, expected 216`);
 if(acceptedQuoteStages!==24)errors.push(`accepted quote stages ${acceptedQuoteStages}, expected 24`);
-if(projected>=0.60)errors.push(`combined projected kinship share ${projected} must be <0.60`);
+if(projection.reaction_stages!==20)errors.push(`reaction stage count ${projection.reaction_stages}, expected 20`);
+if(projection.projected_stage_count!==366)errors.push(`projected stage count ${projection.projected_stage_count}, expected 366`);
+if((projection.projected_kinship_share??1)>=0.60)errors.push(`combined projected kinship share ${projection.projected_kinship_share} must be <0.60`);
 
 if(errors.length){
   console.error("Non-kinship reaction expansion validation failed:\n"+errors.map(x=>"- "+x).join("\n"));
