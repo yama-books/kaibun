@@ -1,0 +1,268 @@
+{
+  "version": "0.49",
+  "title": "Factor-level scene signatures for the v0.46 autumn night/garden/moon family",
+  "scope": {
+    "family": "autumn-moon-microgrammar-v46",
+    "source_ids": [
+      "shoju-035",
+      "shoju-038",
+      "shoju-031"
+    ],
+    "evidence_only": true,
+    "no_new_kanji_restoration": true
+  },
+  "evidence_policy": {
+    "allowed": [
+      "v0.40 tentative_parse/reasons",
+      "v0.36 morphology-signed seams",
+      "v0.34 factor readings"
+    ],
+    "forbidden": [
+      "free semantic completion from kana alone",
+      "source-image claims not actually checked"
+    ],
+    "confidence_levels": [
+      "high-structural",
+      "human-tentative",
+      "unresolved"
+    ]
+  },
+  "scene_schema": {
+    "roles": [
+      "time",
+      "celestial",
+      "flora",
+      "foliage",
+      "place",
+      "light/action",
+      "evaluation"
+    ],
+    "generic_tags": [
+      "秋",
+      "月"
+    ],
+    "scene_label": "autumn-night-garden-moon"
+  },
+  "signatures": [
+    {
+      "id": "scene:A:なかきよの",
+      "span_type": "A5",
+      "reading": "なかきよの",
+      "source_id": "shoju-038",
+      "surface_candidate": "長き夜の",
+      "scene_roles": [
+        "time"
+      ],
+      "scene_tags": [
+        "夜"
+      ],
+      "confidence": "human-tentative",
+      "evidence": [
+        "v0.40 hybrid-008 tentative_parse ku1",
+        "v0.40 hybrid-022 tentative_parse ku1"
+      ],
+      "note": "Used only as a tentative factor-level semantic signature; not promoted to source-confirmed orthography."
+    },
+    {
+      "id": "scene:BC:きつるもはきの",
+      "span_type": "BC7",
+      "reading": "きつるもはきの",
+      "source_id": "shoju-035",
+      "surface_candidate": "来つるも萩の",
+      "scene_roles": [
+        "flora"
+      ],
+      "scene_tags": [
+        "萩"
+      ],
+      "confidence": "human-tentative",
+      "evidence": [
+        "v0.40 hybrid-008 tentative_parse ku2",
+        "v0.40 hybrid-016/022 reasons identify 萩・葉・庭・月 scene"
+      ],
+      "note": "The exact syntactic attachment of きつるも remains a stated caution in v0.40."
+    },
+    {
+      "id": "scene:D:はに",
+      "span_type": "D2",
+      "reading": "はに",
+      "source_ids": [
+        "shoju-035",
+        "shoju-031"
+      ],
+      "forward_surface": "葉に",
+      "reverse_surface": "庭（には）",
+      "scene_roles": [
+        "foliage",
+        "place"
+      ],
+      "scene_tags_forward": [
+        "葉"
+      ],
+      "scene_tags_reverse": [
+        "庭"
+      ],
+      "morphology_signature": "noun+particle -> place-noun",
+      "confidence": "high-structural",
+      "evidence": [
+        "v0.36 D2 はに high transferable",
+        "v0.40 hybrid-008/016/022 reasons"
+      ],
+      "note": "This is the strongest scene-bearing boundary shift in the family."
+    },
+    {
+      "id": "scene:E:てりて",
+      "span_type": "E3",
+      "reading": "てりて",
+      "source_id": "shoju-035",
+      "surface_candidate": "照りて",
+      "scene_roles": [
+        "light/action"
+      ],
+      "scene_tags": [
+        "照り"
+      ],
+      "confidence": "human-tentative",
+      "evidence": [
+        "v0.40 hybrid-008 tentative_parse ku3 = 葉に照りて"
+      ],
+      "note": "E3 is structurally ABA; the lexical parse is still source-image pending."
+    },
+    {
+      "id": "scene:E:しけし",
+      "span_type": "E3",
+      "reading": "しけし",
+      "source_id": "shoju-031",
+      "surface_candidate": "繁し",
+      "scene_roles": [
+        "foliage"
+      ],
+      "scene_tags": [
+        "繁茂"
+      ],
+      "confidence": "human-tentative",
+      "evidence": [
+        "v0.40 hybrid-016/022 reasons and cautions refer to 葉に繁し"
+      ],
+      "note": "The主述関係 after transplantation remains explicitly unresolved in v0.40."
+    },
+    {
+      "id": "scene:ku4:にはのきはもる",
+      "span_type": "ku7",
+      "reading": "にはのきはもる",
+      "source_id": "shoju-035",
+      "surface_candidate_partial": "庭の…",
+      "scene_roles": [
+        "place"
+      ],
+      "scene_tags": [
+        "庭"
+      ],
+      "confidence": "high-structural-for-庭 / unresolved-rest",
+      "evidence": [
+        "v0.36 はに reverse_parse = 庭",
+        "v0.40 hybrid-008 tentative_parse ku4"
+      ],
+      "unresolved": [
+        "きはもる の漢字・語義"
+      ],
+      "note": "Do not infer the unresolved remainder from palindrome expectation."
+    },
+    {
+      "id": "scene:ku5:つきのよきかな",
+      "span_type": "ku7",
+      "reading": "つきのよきかな",
+      "source_id": "shoju-038",
+      "surface_candidate": "月の良きかな",
+      "scene_roles": [
+        "celestial",
+        "evaluation"
+      ],
+      "scene_tags": [
+        "月"
+      ],
+      "confidence": "human-tentative",
+      "evidence": [
+        "v0.40 hybrid-008/022 tentative_parse ku5"
+      ],
+      "note": "Useful as an outer-scene closing phrase; still based on prior human tentative parse."
+    },
+    {
+      "id": "scene:A:はれつみよ",
+      "span_type": "A5",
+      "reading": "はれつみよ",
+      "source_id": "shoju-035",
+      "scene_roles": [],
+      "scene_tags": [],
+      "confidence": "unresolved",
+      "evidence": [
+        "v0.34 structural factor only"
+      ],
+      "note": "No new semantic parse is asserted in v0.49."
+    },
+    {
+      "id": "scene:ku5:つきよみつれは",
+      "span_type": "ku7",
+      "reading": "つきよみつれは",
+      "source_id": "shoju-035",
+      "scene_roles": [
+        "celestial"
+      ],
+      "scene_tags": [
+        "月"
+      ],
+      "confidence": "human-tentative-partial",
+      "evidence": [
+        "v0.40 hybrid-016 reasons treat the family as 萩・葉・庭・月"
+      ],
+      "note": "Only 月-bearing scene contribution is recorded; full syntax is not asserted."
+    }
+  ],
+  "family_coverage": {
+    "hybrid_008": {
+      "reading": "なかきよのきつるもはきのはにてりてにはのきはもるつきのよきかな",
+      "covered_roles": [
+        "time",
+        "flora",
+        "foliage",
+        "place",
+        "light/action",
+        "celestial",
+        "evaluation"
+      ],
+      "evidence_status": "human-reviewed-high-semantic-coherence"
+    },
+    "hybrid_016": {
+      "reading": "はれつみよきつるもはきのはにしけしにはのきはもるつきよみつれは",
+      "covered_roles": [
+        "flora",
+        "foliage",
+        "place",
+        "celestial"
+      ],
+      "unresolved_roles": [
+        "A semantics",
+        "exact E syntax",
+        "full ku5 syntax"
+      ],
+      "evidence_status": "human-reviewed-high-semantic-coherence-parse-needed"
+    },
+    "hybrid_022": {
+      "reading": "なかきよのきつるもはきのはにしけしにはのきはもるつきのよきかな",
+      "covered_roles": [
+        "time",
+        "flora",
+        "foliage",
+        "place",
+        "celestial",
+        "evaluation"
+      ],
+      "unresolved_roles": [
+        "exact E syntax"
+      ],
+      "evidence_status": "human-reviewed-high-semantic-coherence-parse-needed"
+    }
+  },
+  "conclusion": "Factor-level scene evidence explains why v0.46 can stay coherent even when source-level title tags are sparse: scene continuity is carried by specific attested phrases and the はに↔には boundary shift, not by broad source labels alone.",
+  "next_step": "Use these signatures only as a conservative semantic filter; expand them only from source text or documented human review."
+}
