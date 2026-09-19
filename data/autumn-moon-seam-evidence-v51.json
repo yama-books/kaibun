@@ -108,5 +108,29 @@
     "Keep D=こた as the highest-value unresolved morphology problem because it blocks three candidates.",
     "For B=たま and D=むす, create a separate source-specific candidate-review lane rather than changing v0.36 global seam rules.",
     "Seek source image or another independent transcription before upgrading reverse また/すむ lexical functions."
+  ],
+  "evidence_sources": [
+    {
+      "id": "yamauchi-jstage-metadata",
+      "tier": "official-metadata",
+      "label": "J-STAGE: 山内潤三「廻文歌の限界と効用（下）」",
+      "url": "https://www.jstage.jst.go.jp/article/jeb1947/1974/107/1974_107_1/_article/-char/ja/",
+      "doi": "10.11168/jeb1947.1974.107_1",
+      "use": "bibliographic identity only; source image/PDF not inspected in this session"
+    },
+    {
+      "id": "yamauchi-text-mirror",
+      "tier": "secondary-mirror-of-academic-transcription",
+      "label": "123deta text mirror of 密教文化 Vol.1974 No.107",
+      "url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "use": "surfaced transcription evidence for poems 31, 38, and additional 109; not equivalent to source-image inspection"
+    },
+    {
+      "id": "kotonoha-classical-palindromes",
+      "tier": "independent-secondary-transcription",
+      "label": "KOTONOHA ウェブ 古典回文一覧",
+      "url": "https://kotonohaweb.net/kaibun/2/",
+      "use": "independent corroboration for poem 31 wording including 玉は軒端の葉に繁し"
+    }
   ]
 }
