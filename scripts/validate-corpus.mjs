@@ -28,6 +28,10 @@ const sceneGate = JSON.parse(fs.readFileSync("data/scene-compatibility-gate-v48.
 const factorSceneSignatures = JSON.parse(fs.readFileSync("data/autumn-moon-factor-scene-signatures-v49.json", "utf8"));
 const seamReviewQueue = JSON.parse(fs.readFileSync("data/autumn-moon-seam-review-queue-v50.json", "utf8"));
 const seamEvidence = JSON.parse(fs.readFileSync("data/autumn-moon-seam-evidence-v51.json", "utf8"));
+const sourceSpecificLane = JSON.parse(fs.readFileSync("data/source-specific-seam-review-lane-v52.json", "utf8"));
+const haniPivotExchange = JSON.parse(fs.readFileSync("data/hani-central-pivot-exchange-v53.json", "utf8"));
+const pivotSurvey = JSON.parse(fs.readFileSync("data/central-pivot-exchange-survey-v54.json", "utf8"));
+const mitsuPivotExchange = JSON.parse(fs.readFileSync("data/mitsu-central-pivot-exchange-v55.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -413,6 +417,29 @@ if(v51Tama?.proposed_signature?.transferable!=="conditional-source-specific")err
 if(v51Musu?.proposed_signature?.transferable!=="conditional-source-specific")errors.push("SEAM EVIDENCE V51 むす must remain source-specific conditional");
 if(v51Kota?.proposed_signature?.transferable!==false)errors.push("SEAM EVIDENCE V51 こた must remain blocked");
 if((seamEvidence.evidence_sources??[]).length<3)errors.push("SEAM EVIDENCE V51 provenance sources missing");
+if(sourceSpecificLane.version!=="0.52")errors.push(`SOURCE-SPECIFIC V52 version mismatch: ${sourceSpecificLane.version}`);
+if(sourceSpecificLane.summary?.previously_unclassified!==7)errors.push("SOURCE-SPECIFIC V52 must start from 7 unclassified candidates");
+if(sourceSpecificLane.summary?.semantic_review_eligible_source_specific!==4||(sourceSpecificLane.eligible??[]).length!==4)errors.push("SOURCE-SPECIFIC V52 eligible count must be 4");
+if(sourceSpecificLane.summary?.still_blocked!==3)errors.push("SOURCE-SPECIFIC V52 blocked count must be 3");
+if(sourceSpecificLane.summary?.global_seams_promoted!==0)errors.push("SOURCE-SPECIFIC V52 must not promote global seams");
+for(const x of sourceSpecificLane.eligible??[]){if(!isPalindrome(x.reading))errors.push(`SOURCE-SPECIFIC V52 non-palindrome: ${x.id}`);}
+if(haniPivotExchange.version!=="0.53")errors.push(`HANI PIVOT V53 version mismatch: ${haniPivotExchange.version}`);
+if(haniPivotExchange.counts?.total_outputs!==4||(haniPivotExchange.outputs??[]).length!==4)errors.push("HANI PIVOT V53 output count must be 4");
+if(haniPivotExchange.invariant?.D!=="はに")errors.push("HANI PIVOT V53 D must remain はに");
+for(const x of haniPivotExchange.outputs??[]){if(!isPalindrome(x.reading))errors.push(`HANI PIVOT V53 non-palindrome: ${x.id}`);}
+const v53h19=(haniPivotExchange.outputs??[]).find(x=>x.id==="hybrid-019");
+if(v53h19?.review?.status!=="promising-but-parse-needed")errors.push("HANI PIVOT V53 hybrid-019 review status changed");
+if(pivotSurvey.version!=="0.54")errors.push(`PIVOT SURVEY V54 version mismatch: ${pivotSurvey.version}`);
+if(pivotSurvey.summary?.repeated_D_groups!==5)errors.push("PIVOT SURVEY V54 repeated D groups must be 5");
+if(pivotSurvey.summary?.next_test_group!=="みつ")errors.push("PIVOT SURVEY V54 next test group must remain みつ");
+if(mitsuPivotExchange.version!=="0.55")errors.push(`MITSU PIVOT V55 version mismatch: ${mitsuPivotExchange.version}`);
+if(mitsuPivotExchange.invariant?.D!=="みつ"||mitsuPivotExchange.invariant?.reverse_D!=="つみ")errors.push("MITSU PIVOT V55 D signature changed");
+if((mitsuPivotExchange.outputs??[]).length!==2)errors.push("MITSU PIVOT V55 must contain 2 directed swap outputs");
+for(const x of mitsuPivotExchange.outputs??[]){if(!isPalindrome(x.reading))errors.push(`MITSU PIVOT V55 non-palindrome: ${x.id}`);}
+const v55h2=(mitsuPivotExchange.outputs??[]).find(x=>x.id==="hybrid-002");
+const v55h17=(mitsuPivotExchange.outputs??[]).find(x=>x.id==="hybrid-017");
+if(v55h2?.revised_operation_analysis?.research_status!=="promising-but-source-parse-needed")errors.push("MITSU PIVOT V55 hybrid-002 status changed");
+if(v55h17?.revised_operation_analysis?.research_status!=="hold-semantic-role-mismatch")errors.push("MITSU PIVOT V55 hybrid-017 status changed");
 
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
@@ -446,3 +473,7 @@ console.log(`Scene gate v48 case studies: ${(sceneGate.case_studies??[]).length}
 console.log(`Factor scene v49 signatures: ${(factorSceneSignatures.signatures??[]).length}`);
 console.log(`Seam review v50 tasks: ${(seamReviewQueue.queue??[]).length}`);
 console.log(`Seam evidence v51 findings: ${(seamEvidence.findings??[]).length}`);
+console.log(`Source-specific v52 eligible: ${(sourceSpecificLane.eligible??[]).length}`);
+console.log(`Hani v53 pivot outputs: ${(haniPivotExchange.outputs??[]).length}`);
+console.log(`Pivot survey v54 groups: ${(pivotSurvey.groups??[]).length}`);
+console.log(`Mitsu v55 directed swaps: ${(mitsuPivotExchange.outputs??[]).length}`);
