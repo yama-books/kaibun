@@ -24,8 +24,19 @@ const required = [
   "./data/layered-seeds-v08.json",
   "./data/generation-rules-v08.json",
   "./data/reverse-lexeme-pairs-v09.json",
-  "./data/growth-engine-v10.json"
+  "./data/growth-engine-v10.json",
+  "./data/seam-grammar-v25.json",
+  "./data/modern-bridge-public-v69.json"
 ];
+if (!html.includes("function bridgePool()")) {
+  failed = true;
+  console.error("index.html is missing bridgePool()");
+}
+if (!html.includes("return uniqueByReading([...base,...bridgePool()])")) {
+  failed = true;
+  console.error("seamPool() does not merge bridgePool()");
+}
+
 for (const ref of required) {
   const path = ref.replace(/^\.\//, "");
   if (!fs.existsSync(path)) {
