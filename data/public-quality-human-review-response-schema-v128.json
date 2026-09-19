@@ -1,0 +1,39 @@
+{
+  "version": "0.128",
+  "title": "Human quality review response schema",
+  "source_blind_form_version": "0.96",
+  "source_adjudication_ledger_version": "0.97",
+  "response_container": {
+    "required": ["version","review_form_version","reviewer_id","responses"],
+    "forbidden": ["source_pool","source_id","layer","japanese_quality","weirdness","model_review","current_product_metadata"]
+  },
+  "response_required_fields": [
+    "review_id",
+    "grammar",
+    "semantic_coherence",
+    "display_reading_fidelity",
+    "productive_value",
+    "overall_naturalness",
+    "confidence",
+    "notes"
+  ],
+  "allowed_values": {
+    "grammar": ["pass","marginal","fail"],
+    "semantic_coherence": ["clear","strained","opaque"],
+    "display_reading_fidelity": ["pass","hint-needed","mismatch"],
+    "productive_value": ["expand","keep-only","hold"],
+    "overall_naturalness": [1,2,3,4,5],
+    "confidence": ["low","medium","high"]
+  },
+  "notes": {
+    "type": "array-of-strings",
+    "empty_allowed": true
+  },
+  "invariants": [
+    "Exactly 50 unique review_id responses are required for a complete import.",
+    "All review IDs must exist in blind form v0.96.",
+    "No product metadata is accepted in the human response payload.",
+    "The importer never modifies v0.96 or v0.97 in place.",
+    "Imported human review does not adjudicate a candidate automatically."
+  ]
+}
