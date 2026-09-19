@@ -165,7 +165,8 @@ async function init(){
   const rs=rules.verified_recursive_space;
   $("#recursiveStat").textContent=rs?("再帰 "+rs.sentence_variants.toLocaleString()+"文"):"再帰候補 –";
   $("#pairStat").textContent="逆語 "+pairs.pair_count+"組 / "+pairs.variant_count+"文";
-  $("#storyStat").textContent="物語 "+(growth.verified?.narrative_family_count||0)+"系統 / "+(growth.verified?.narrative_variants||0)+"段階 / 最長 "+(growth.verified?.longest_narrative_kana||"–")+"かな";\n  $("#benchmarkStat").textContent="固定基準 "+(growth.verified?.hundred_kana_benchmark?.length||"–")+"かな";
+  $("#storyStat").textContent="物語 "+(growth.verified?.narrative_family_count||0)+"系統 / "+(growth.verified?.narrative_variants||0)+"段階 / 最長 "+(growth.verified?.longest_narrative_kana||"–")+"かな";
+  $("#benchmarkStat").textContent="固定基準 "+(growth.verified?.hundred_kana_benchmark?.length||"–")+"かな";
   populateGrowthDimensions();
   populateGrowthFamilies();
   populateSentenceWrappers();
