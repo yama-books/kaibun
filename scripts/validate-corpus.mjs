@@ -361,4 +361,5 @@ console.log(`Historical factor hybrids: ${factorHybrids.novel_path_count}`);
 console.log(`Historical cento candidates: ${cento.total}`);
 console.log(`Wave2 verified samples: ${wave2.verified_count}, held: ${wave2.held_count}`);
 console.log(`Manual hybrid reviews: ${hybridCuration.reviews?.length??0}`);
-console.log(`Topic-first models: ${topicFirst.topic_hierarchy?.length??0}`);\nconsole.log(`Wave2 source triage: ${(wave2Triage.cases??[]).length} held records, promoted=${wave2Triage.summary?.promoted_to_wave2_verified??"?"}`);
+console.log(`Topic-first models: ${topicFirst.topic_hierarchy?.length??0}`);
+console.log(`Wave2 source triage: ${(wave2Triage.cases??[]).length} held records, promoted=${wave2Triage.summary?.promoted_to_wave2_verified??"?"}`);
