@@ -1,0 +1,292 @@
+{
+  "version": "0.28",
+  "purpose": "歴史的翻刻から機械的に抽出・回文検証できたが、意味・漢字復元をまだ人手裁定していない候補を、信頼済みコーパスと分離して保持する。",
+  "collection_metadata": {
+    "yamauchi_1974_lower": {
+      "article": "山内潤三「廻文歌の限界と効用（下）―高野山釈教長歌を頂点として―」",
+      "journal": "密教文化 107号",
+      "date": "1974-07-25",
+      "pages": "1-38",
+      "reported_combined_corpus_size": 303,
+      "collections": [
+        {
+          "title": "廻文歌百首",
+          "author": "大福窓笑寿",
+          "preface_year": 1814,
+          "publication_year": 1820,
+          "notes": "自家出版。回文歌百首・追加二十二首、回文発句、長歌『車尽し』を収録。『風車塵の言の葉』は表紙のみ異なる同書と山内が記す。"
+        },
+        {
+          "title": "廻文百よくるま",
+          "author": "三友亭",
+          "colophon_year": 1808,
+          "holding": "大阪大学蔵（山内論文の底本）",
+          "notes": "冒頭に古詠12首、三友亭序の後に157首。山内論文に全文翻刻。"
+        }
+      ],
+      "research_note": "山内は両書合計303首について初句・第五句の語彙、さらに名詞・動詞・形容詞の語彙調査を行っており、大規模な歴史語彙採掘の基盤になる。"
+    }
+  },
+  "candidates": [
+    {
+      "id": "shoju-001-komatsuhiki",
+      "title": "小松引",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 1,
+      "source_transcription_normalized": "しけるはのまたひけよもつまこのてのこまつもよけひたまのはるけし",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "しけるはの",
+        "またひけよもつ",
+        "まこのての",
+        "こまつもよけひ",
+        "たまのはるけし"
+      ],
+      "transcription_status": "Yamauchi 1974 transcription; kana reading reconstructed conservatively from the printed transcription",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌1",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction"
+      ]
+    },
+    {
+      "id": "shoju-002-nanakusa",
+      "title": "七種",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 2,
+      "source_transcription_normalized": "やかてみつはなみさいさくななのののななくさいさみなはつみてかや",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "やかてみつ",
+        "はなみさいさく",
+        "ななののの",
+        "ななくさいさみ",
+        "なはつみてかや"
+      ],
+      "transcription_status": "Yamauchi 1974 transcription; kana reading reconstructed conservatively from the printed transcription",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌2",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction"
+      ]
+    },
+    {
+      "id": "shoju-004-kasumi",
+      "title": "霞（同）",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 4,
+      "source_transcription_normalized": "とほくまをこよかすみはるひのかけかのひるはみすかよこをまくほと",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "とほくまを",
+        "こよかすみはる",
+        "ひのかけか",
+        "のひるはみすか",
+        "よこをまくほと"
+      ],
+      "transcription_status": "Yamauchi 1974 transcription; kana reading reconstructed conservatively from the printed transcription",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌4",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction"
+      ]
+    },
+    {
+      "id": "shoju-007-kobai",
+      "title": "紅梅",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 7,
+      "source_transcription_normalized": "むめかなをのひしよまさるほかにたにかほるさまよしひのをなかめむ",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "むめかなを",
+        "のひしよまさる",
+        "ほかにたに",
+        "かほるさまよし",
+        "ひのをなかめむ"
+      ],
+      "transcription_status": "Yamauchi 1974 transcription; kana reading reconstructed conservatively from the printed transcription",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌7",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction"
+      ]
+    },
+    {
+      "id": "shoju-010-somokuka",
+      "title": "草木花",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 10,
+      "source_transcription_normalized": "はるのみとまたるるけしきさくはなはくさきしけるるたまとみのるは",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "はるのみと",
+        "またるるけしき",
+        "さくはなは",
+        "くさきしけるる",
+        "たまとみのるは"
+      ],
+      "transcription_status": "Yamauchi 1974 transcription; kana reading reconstructed conservatively from the printed transcription",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌10",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction"
+      ]
+    },
+    {
+      "id": "shoju-add-101",
+      "title": "追加101",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 101,
+      "source_transcription_normalized": "もとすらしわかなまなかのことのはのとこのかなまなかわしらすとも",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "もとすらし",
+        "わかなまなかの",
+        "ことのはの",
+        "とこのかなまな",
+        "かわしらすとも"
+      ],
+      "transcription_status": "Yamauchi 1974 transcription; kana reading reconstructed conservatively from the printed transcription",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌101",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction"
+      ]
+    },
+    {
+      "id": "shoju-add-105",
+      "title": "花 古歌にならひ",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 105,
+      "source_transcription_normalized": "さときよくこしをのしよしみよはなはよみしよしのをしこくよきとさ",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "さときよく",
+        "こしをのしよし",
+        "みよはなは",
+        "よみしよしのを",
+        "しこくよきとさ"
+      ],
+      "transcription_status": "Yamauchi 1974 transcription; kana reading reconstructed conservatively from the printed transcription",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌105",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction"
+      ]
+    },
+    {
+      "id": "shoju-add-108",
+      "title": "納涼",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 108,
+      "source_transcription_normalized": "そよしてみすすめときひもとひつきつひともひきとめすすみてしよそ",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "そよしてみ",
+        "すすめときひも",
+        "とひつきつ",
+        "ひともひきとめ",
+        "すすみてしよそ"
+      ],
+      "transcription_status": "Yamauchi 1974 transcription; kana reading reconstructed conservatively from the printed transcription",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌108",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction"
+      ]
+    },
+    {
+      "id": "shoju-add-109",
+      "title": "嫁娘見月",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 109,
+      "source_transcription_normalized": "なかよさのきつるみそらはむすめよめすむはらそみるつきのさよかな",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "なかよさの",
+        "きつるみそらは",
+        "むすめよめ",
+        "すむはらそみる",
+        "つきのさよかな"
+      ],
+      "transcription_status": "Yamauchi 1974 transcription; kana reading reconstructed conservatively from the printed transcription",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌109",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction"
+      ]
+    },
+    {
+      "id": "shoju-add-111",
+      "title": "出来秋",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 111,
+      "source_transcription_normalized": "みなほましとこもみのるかをたのほのたをかるのみもことしまほなみ",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "みなほまし",
+        "とこもみのるか",
+        "をたのほの",
+        "たをかるのみも",
+        "ことしまほなみ"
+      ],
+      "transcription_status": "Yamauchi 1974 transcription; kana reading reconstructed conservatively from the printed transcription",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌111",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction"
+      ]
+    }
+  ]
+}
