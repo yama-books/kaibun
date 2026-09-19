@@ -21,6 +21,8 @@ const yamauchiTokenization = JSON.parse(fs.readFileSync("data/yamauchi-tokenizat
 const topicFirst = JSON.parse(fs.readFileSync("data/historical-topic-first-model-v42.json", "utf8"));
 const wave2Triage = JSON.parse(fs.readFileSync("data/historical-wave2-source-triage-v43.json", "utf8"));
 const autumnMoonSpans = JSON.parse(fs.readFileSync("data/autumn-moon-variable-spans-v44.json", "utf8"));
+const topicFirstGate = JSON.parse(fs.readFileSync("data/historical-topic-first-gate-v45.json", "utf8"));
+const autumnMoonMicrogrammar = JSON.parse(fs.readFileSync("data/autumn-moon-microgrammar-v46.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -354,6 +356,22 @@ if((autumnMoonSpans.units?.seam_units??[]).find(x=>x.id==="seam:B2:ほと")?.tra
 for(const id of ["seam:D2:はに","seam:D2:けふ","seam:D2:みな"]){if((autumnMoonSpans.units?.seam_units??[]).find(x=>x.id===id)?.transferable!==true)errors.push(`AUTUMN MOON V44 high seam not transferable: ${id}`);}
 if(autumnMoonSpans.counts?.edge_units!==(autumnMoonSpans.units?.edge_units??[]).length)errors.push("AUTUMN MOON V44 edge count mismatch");
 for(const u of autumnMoonSpans.units?.edge_units??[]){if(reverse(u.reading)!==u.reverse_reading)errors.push(`AUTUMN MOON V44 edge reverse mismatch: ${u.id}`);}
+if(topicFirstGate.version!=="0.45")errors.push(`TOPIC FIRST GATE V45 version mismatch: ${topicFirstGate.version}`);
+if(topicFirstGate.summary?.autumn_only_cento_candidates!==17||(topicFirstGate.candidates??[]).length!==17)errors.push("TOPIC FIRST GATE V45 count must be 17");
+if(topicFirstGate.summary?.seam_complete_nonblocked!==10)errors.push("TOPIC FIRST GATE V45 seam-complete count must be 10");
+if(topicFirstGate.summary?.mechanical_gate_matches_prior_review_set!==true)errors.push("TOPIC FIRST GATE V45 must reproduce prior review set");
+const v45Gate=[...(topicFirstGate.mechanical_gate_ids??[])].sort().join(",");
+const v40Review=[...(hybridCuration.reviews??[])].map(x=>x.id).sort().join(",");
+if(v45Gate!==v40Review)errors.push(`TOPIC FIRST GATE V45 review-set mismatch: gate=${v45Gate} review=${v40Review}`);
+for(const x of topicFirstGate.candidates??[]){if(!isPalindrome(x.reading))errors.push(`TOPIC FIRST GATE V45 non-palindrome: ${x.id}`);if(!x.all_five_phrases_attested)errors.push(`TOPIC FIRST GATE V45 phrase gap: ${x.id}`);}
+if(autumnMoonMicrogrammar.version!=="0.46")errors.push(`AUTUMN MOON V46 version mismatch: ${autumnMoonMicrogrammar.version}`);
+if(autumnMoonMicrogrammar.counts?.total_outputs!==4||(autumnMoonMicrogrammar.outputs??[]).length!==4)errors.push("AUTUMN MOON V46 output count must be 4");
+if(autumnMoonMicrogrammar.counts?.historical_sources!==1||autumnMoonMicrogrammar.counts?.novel_cento!==3)errors.push("AUTUMN MOON V46 source/novel counts mismatch");
+const v46Ids=[...(autumnMoonMicrogrammar.outputs??[])].map(x=>x.id).sort().join(",");
+if(v46Ids!==["hybrid-008","hybrid-016","hybrid-022","shoju-035"].sort().join(","))errors.push(`AUTUMN MOON V46 output ids mismatch: ${v46Ids}`);
+const v46A=new Map((autumnMoonMicrogrammar.variable_factors?.A??[]).map(x=>[x.id,x.reading]));
+const v46E=new Map((autumnMoonMicrogrammar.variable_factors?.E??[]).map(x=>[x.id,x.reading]));
+for(const x of autumnMoonMicrogrammar.outputs??[]){const A=v46A.get(x.A_option),E=v46E.get(x.E_option),B=autumnMoonMicrogrammar.fixed_factors?.B?.reading,C=autumnMoonMicrogrammar.fixed_factors?.C?.reading,D=autumnMoonMicrogrammar.fixed_factors?.D?.reading;const expected=A+B+C+D+E+reverse(D)+reverse(C)+reverse(B)+reverse(A);if(x.reading!==expected||!isPalindrome(x.reading))errors.push(`AUTUMN MOON V46 derivation mismatch: ${x.id}`);}
 
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
@@ -380,3 +398,5 @@ console.log(`Manual hybrid reviews: ${hybridCuration.reviews?.length??0}`);
 console.log(`Topic-first models: ${topicFirst.topic_hierarchy?.length??0}`);
 console.log(`Wave2 source triage: ${(wave2Triage.cases??[]).length} held records, promoted=${wave2Triage.summary?.promoted_to_wave2_verified??"?"}`);
 console.log(`Autumn/moon v44 spans: phrases=${autumnMoonSpans.counts?.phrase_instances??0}, pivots=${autumnMoonSpans.counts?.pivot_units??0}, seams=${autumnMoonSpans.counts?.seam_units??0}, edges=${autumnMoonSpans.counts?.edge_units??0}`);
+console.log(`Topic-first v45 candidates: ${(topicFirstGate.candidates??[]).length}, seam-complete=${topicFirstGate.summary?.seam_complete_nonblocked??0}`);
+console.log(`Autumn/moon v46 microgrammar outputs: ${(autumnMoonMicrogrammar.outputs??[]).length}`);
