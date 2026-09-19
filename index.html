@@ -60,7 +60,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 <div class="wrap">
 <header>
   <div><h1>怪文回文メーカー</h1><div class="sub">まず、日本語として通す。そこから一段ずつ、鏡の奥へ伸ばす。</div></div>
-  <div class="badge">v0.22 / 衝突回避長文化</div>
+  <div class="badge">v0.25 / 語彙分散長文化</div>
 </header>
 
 <div class="card">
@@ -167,7 +167,7 @@ async function init(){
   $("#pairStat").textContent="逆語 "+pairs.pair_count+"組 / "+pairs.variant_count+"文";
   $("#storyStat").textContent="物語 "+(growth.verified?.narrative_family_count||0)+"系統 / "+(growth.verified?.narrative_variants||0)+"段階 / 最長 "+(growth.verified?.longest_narrative_kana||"–")+"かな";
   $("#benchmarkStat").textContent="固定基準 "+(growth.verified?.hundred_kana_benchmark?.length||"–")+"かな";
-  $("#wrapperStat").textContent="外枠 "+(growth.verified?.sentence_level_wrapper_count||0)+"種 / 名詞重複回避ON";
+  $("#wrapperStat").textContent="外枠 "+(growth.verified?.sentence_level_wrapper_count||0)+"種 / 外側語彙 "+(growth.verified?.wrapper_distinct_outer_readings||0)+"種 / 重複回避ON";
   populateGrowthDimensions();
   populateGrowthFamilies();
   populateSentenceWrappers();
