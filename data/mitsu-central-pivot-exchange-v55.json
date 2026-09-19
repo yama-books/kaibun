@@ -1,0 +1,144 @@
+{
+  "version": "0.55",
+  "title": "Mitsu central-pivot exchange family",
+  "concept": "Directional E3 exchange between two faith/Buddhist contexts sharing high-confidence D=みつ↔つみ.",
+  "source_contexts": {
+    "shoju-five-elements": {
+      "title": "地水火風空",
+      "source_group": "trusted",
+      "broad_field": "信仰",
+      "primary_field": "釈教・宇宙観",
+      "factors": {
+        "A": "みなくうの",
+        "B": "せか",
+        "C": "いなりちも",
+        "D": "みつ",
+        "E": "もひも"
+      },
+      "meter": [
+        "みなくうの",
+        "せかいなりちも",
+        "みつもひも",
+        "つみもちりない",
+        "かせのうくなみ"
+      ],
+      "semantic_structure": {
+        "type": "enumeration/conceptual-sequence",
+        "evidence": [
+          "地",
+          "水",
+          "火",
+          "風",
+          "空"
+        ],
+        "note": "The trusted display explicitly presents the five-elements conceptual field."
+      }
+    },
+    "shoju-068": {
+      "title": "釈教",
+      "source_group": "mining",
+      "broad_field": "信仰",
+      "primary_field": "釈教",
+      "factors": {
+        "A": "しなもなく",
+        "B": "ほと",
+        "C": "けのをしへ",
+        "D": "みつ",
+        "E": "のよの"
+      },
+      "meter": [
+        "しなもなく",
+        "ほとけのをしへ",
+        "みつのよの",
+        "つみへしをのけ",
+        "とほくなもなし"
+      ],
+      "surfaced_transcription": [
+        "品もなく",
+        "ほとけのをしへ",
+        "みつの世の",
+        "つみへしをのけ",
+        "とほくなもなし"
+      ],
+      "evidence_status": "Yamauchi transcription mirror; source image not checked"
+    }
+  },
+  "invariant": {
+    "D": "みつ",
+    "reverse_D": "つみ",
+    "morphology_signature": "nature/substance-noun -> abstract-noun",
+    "confidence": "high",
+    "transferable": true,
+    "operation": "Keep host A/B/C/D fixed; exchange only E3."
+  },
+  "outputs": [
+    {
+      "id": "hybrid-002",
+      "host": "shoju-068",
+      "donor_E": "shoju-five-elements",
+      "E": "もひも",
+      "meter": [
+        "しなもなく",
+        "ほとけのをしへ",
+        "みつもひも",
+        "つみへしをのけ",
+        "とほくなもなし"
+      ],
+      "reading": "しなもなくほとけのをしへみつもひもつみへしをのけとほくなもなし",
+      "strict_palindrome": true,
+      "prior_v37_status": "hold-morphological-seam",
+      "revised_operation_analysis": {
+        "B_issue": "B=ほと is globally blocked, but B and its A/B/C context are not moved by the E-only operation.",
+        "scene": "faith/Buddhist -> faith/Buddhist",
+        "semantic_role": "The inserted 水も火も phrase is compatible with the donor's five-elements vocabulary and does not introduce a new scene.",
+        "research_status": "promising-but-source-parse-needed",
+        "confidence": "tentative-research-review"
+      },
+      "cautions": [
+        "Full syntax of the shoju-068 host remains mining/source-image pending.",
+        "This does not make B=ほと globally transferable.",
+        "The relation between 水も火も and the following 罪... phrase still needs linguistic/source review."
+      ]
+    },
+    {
+      "id": "hybrid-017",
+      "host": "shoju-five-elements",
+      "donor_E": "shoju-068",
+      "E": "のよの",
+      "meter": [
+        "みなくうの",
+        "せかいなりちも",
+        "みつのよの",
+        "つみもちりない",
+        "かせのうくなみ"
+      ],
+      "reading": "みなくうのせかいなりちもみつのよのつみもちりないかせのうくなみ",
+      "strict_palindrome": true,
+      "prior_v37_status": "review-unclassified-seam",
+      "revised_operation_analysis": {
+        "B_issue": "B=せか is not moved from the trusted host context, so its lack of a global crossover signature is not itself a blocker for E-only testing.",
+        "scene": "faith/Buddhist -> faith/Buddhist",
+        "semantic_role": "Replacing 水も火も with 水の世の interrupts the host poem's explicit 地・水・火・風・空 enumeration structure.",
+        "research_status": "hold-semantic-role-mismatch",
+        "confidence": "high-structural-for-enumeration-impact"
+      },
+      "cautions": [
+        "The donor phrase itself is historically attested; the problem is its role inside this host.",
+        "Do not reject the E phrase globally; hold this host-donor direction."
+      ]
+    }
+  ],
+  "directional_result": {
+    "reciprocal_swap_is_not_semantically_symmetric": true,
+    "promising_direction": "shoju-068 host <- E=もひも from five-elements",
+    "held_direction": "five-elements host <- E=のよの from shoju-068",
+    "lesson": "Same scene and same D seam are insufficient. The imported E must preserve the semantic role that the host central phrase performs."
+  },
+  "proposed_rule": {
+    "name": "factor-semantic-role-compatibility",
+    "status": "research-hypothesis",
+    "requirement": "For E-only swaps, compare not only scene tags but the host central phrase's discourse/semantic role such as enumeration, action, description, evaluation, or pivot.",
+    "missing_metadata_policy": "hold for review, not reject"
+  },
+  "next_step": "Add semantic-role compatibility to the central-pivot exchange model, then retest the はに and みつ cases without converting the rule into a numeric naturalness score."
+}
