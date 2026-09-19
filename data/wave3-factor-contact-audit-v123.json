@@ -1,0 +1,151 @@
+{
+  "version": "1.23",
+  "updated_on": "2026-09-20",
+  "title": "Wave3 factor-contact morphology and semantic-role audit",
+  "purpose": "Audit the two new wave3 strict candidates that touch the existing factor graph before allowing any crossover: poem 116 D=きよ and poem 119 B=つま.",
+  "cases": [
+    {
+      "id": "wave3-116-vs-shoju-055-D-kiyo",
+      "wave3_source": {
+        "id": "shoju-wave3-116",
+        "title": "笹",
+        "D": "きよ",
+        "E": "きあき",
+        "DE_surface": "きよきあき",
+        "interpretive_hypothesis": "清き秋",
+        "source_kanji_verified": false
+      },
+      "existing_source": {
+        "id": "shoju-055",
+        "title": "春亀",
+        "D": "きよ",
+        "E": "くさく",
+        "DE_surface": "きよくさく",
+        "interpretive_hypothesis": "清く咲く",
+        "source_kanji_verified": false
+      },
+      "morphology_review": {
+        "raw_D_equal": true,
+        "likely_shared_structure": "adjective stem きよ- followed by different inflectional continuation",
+        "morphology_equivalence": "plausible-stem-compatible-not-source-annotated",
+        "global_transferability": false,
+        "reason": "The shared きよ can plausibly be the stem of 清し-type adjectival material in both phrases, but the target poem-specific lexical/kanji analysis is not annotated strongly enough to declare a global D signature."
+      },
+      "central_E_swap_hypotheses": [
+        {
+          "host": "shoju-055",
+          "donor_E": "shoju-wave3-116",
+          "result_DE": "きよきあき",
+          "structural_status": "pass",
+          "semantic_role_status": "hold-semantic-role-change",
+          "scene_status": "hold-scene-review",
+          "reason": "Donor E appears to turn the central phrase toward an attributive adjective + season noun, whereas host E appears predicate/action-oriented. Source 55 is 春亀; source 116 is 笹 with both spring/autumn lexical material."
+        },
+        {
+          "host": "shoju-wave3-116",
+          "donor_E": "shoju-055",
+          "result_DE": "きよくさく",
+          "structural_status": "pass",
+          "semantic_role_status": "hold-semantic-role-change",
+          "scene_status": "hold-scene-review",
+          "reason": "The donor phrase may introduce a verbal predicate structure into a source whose central phrase is nominal/seasonal; narrow scene compatibility is not established."
+        }
+      ],
+      "verdict": {
+        "positive_family": false,
+        "automatic_generator_lane": false,
+        "status": "hold-semantic-role-and-scene",
+        "research_value": "new negative/control case showing that plausible D-stem compatibility is still insufficient without E semantic-role compatibility"
+      }
+    },
+    {
+      "id": "wave3-119-vs-shoju-072-B-tsuma",
+      "wave3_source": {
+        "id": "shoju-wave3-119",
+        "title": "寄山恋",
+        "B": "つま",
+        "BC_surface": "つまとしつみる",
+        "forward_parse": "unresolved",
+        "possible_hypothesis": "妻 + と ...",
+        "source_kanji_for_tsuma_verified": false
+      },
+      "existing_source": {
+        "id": "shoju-072",
+        "title": "寄琴恋",
+        "B": "つま",
+        "BC_surface": "つまことをもて",
+        "yamauchi_visible_surface": "つま 琴 をもて",
+        "lexical_evidence": {
+          "entry": "つまごと【爪琴／妻琴】",
+          "meaning": "箏の異称、または琴を爪弾くこと",
+          "evidence_role": "independent dictionary evidence that つま+琴 can form a lexical unit"
+        },
+        "forward_parse": "likely word-internal onset of つまごと / lexical-koto expression",
+        "source_kanji_for_tsuma_verified": false
+      },
+      "shared_title_scene": {
+        "broad": "恋・人事",
+        "narrow_relation": "寄○恋",
+        "source_119": "寄山恋",
+        "source_072": "寄琴恋",
+        "scene_compatibility": "strong-title-level"
+      },
+      "morphology_review": {
+        "raw_B_equal": true,
+        "source_072_forward_morphology": "lexical-koto-unit-likely",
+        "source_119_forward_morphology": "unresolved",
+        "morphology_equivalence_confirmed": false,
+        "morphology_non_equivalence_proven": false,
+        "global_transferability": false,
+        "reason": "The two kana cells cannot be merged solely from B=つま. Source 72 has strong independent lexical support for つま琴=つまごと-like material, while source 119's つまとしつ見る lacks poem-specific lexical annotation."
+      },
+      "reverse_B_review": {
+        "reverse_B": "まつ",
+        "source_072_surface": "まつのしらへか",
+        "source_119_surface": "まつ身きつひと",
+        "possible_shared_parse": "待つ",
+        "status": "plausible-but-not-sufficient",
+        "reason": "Even if reverse-side まつ aligns, forward-side morphology remains unresolved and blocks A-only transfer."
+      },
+      "would_be_A_only_candidates": [
+        {
+          "host": "shoju-wave3-119",
+          "outer_donor": "shoju-072",
+          "reading": "かへらしのつまとしつみるたかやまやかたるみつしとまつのしらへか",
+          "status": "hold-source-specific-morphology"
+        },
+        {
+          "host": "shoju-072",
+          "outer_donor": "shoju-wave3-119",
+          "reading": "とひつきみつまことをもてけふのよのふけてもをとこまつみきつひと",
+          "status": "hold-source-specific-morphology"
+        }
+      ],
+      "verdict": {
+        "positive_family": false,
+        "automatic_generator_lane": false,
+        "status": "hold-source-specific-morphology",
+        "third_family_candidate": false,
+        "research_value": "high-quality narrow-scene negative guard: title compatibility cannot override unresolved morphology"
+      }
+    }
+  ],
+  "summary": {
+    "new_factor_contacts_audited": 2,
+    "positive_families_created": 0,
+    "automatic_generator_lanes_created": 0,
+    "new_negative_controls": 2,
+    "key_lesson": "Wave3 can create narrower scene contacts, but morphology and semantic-role gates continue to block raw-factor shortcuts."
+  },
+  "safety_rules": [
+    {
+      "id": "narrow-scene-does-not-override-morphology",
+      "rule": "Even a close title pair such as 寄琴恋 / 寄山恋 cannot authorize crossover when the shared raw cell may occupy different lexical/morphological structures."
+    },
+    {
+      "id": "shared-adjective-stem-does-not-guarantee-E-role",
+      "rule": "A shared D stem can be morphologically plausible while E replacement still changes inflectional/syntactic role; central-E operations must retain semantic-role gating."
+    }
+  ],
+  "next_action": "Do not establish a third family from poems 116 or 119. Continue wave3 mining for repeated A/E-safe lanes and preserve these cases as regression negatives."
+}
