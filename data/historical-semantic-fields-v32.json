@@ -1,0 +1,1446 @@
+{
+  "version": "0.32",
+  "purpose": "歴史回文短歌の意味場を、信頼済み本文または翻刻の題に基づいて分類し、31かな鏡像格子・中央3かなピボットと組み合わせて生成器へ戻す。",
+  "caution": "mining層の意味分類は本文の漢字復元ではなく題に基づく暫定分類。意味の細部を本文から推定しない。",
+  "sample_count": 50,
+  "broad_field_counts": [
+    [
+      "春・草木",
+      12
+    ],
+    [
+      "秋・月",
+      12
+    ],
+    [
+      "信仰",
+      8
+    ],
+    [
+      "恋・人事",
+      6
+    ],
+    [
+      "その他",
+      4
+    ],
+    [
+      "冬・雪",
+      4
+    ],
+    [
+      "夏・行事",
+      4
+    ]
+  ],
+  "primary_field_counts": [
+    [
+      "春・草木",
+      3
+    ],
+    [
+      "釈教",
+      3
+    ],
+    [
+      "冬景",
+      2
+    ],
+    [
+      "夏・納涼",
+      2
+    ],
+    [
+      "秋・露",
+      2
+    ],
+    [
+      "秋・月",
+      2
+    ],
+    [
+      "草木",
+      2
+    ],
+    [
+      "神祇",
+      2
+    ],
+    [
+      "夜・夢・舟",
+      1
+    ],
+    [
+      "雪・植物",
+      1
+    ],
+    [
+      "人事・植物",
+      1
+    ],
+    [
+      "死・怪異",
+      1
+    ],
+    [
+      "釈教・宇宙観",
+      1
+    ],
+    [
+      "旅・信仰",
+      1
+    ],
+    [
+      "春景・遊行",
+      1
+    ],
+    [
+      "草木・薬・地名",
+      1
+    ],
+    [
+      "水辺・梅",
+      1
+    ],
+    [
+      "春景",
+      1
+    ],
+    [
+      "春・梅",
+      1
+    ],
+    [
+      "夏・鳥",
+      1
+    ],
+    [
+      "端午・年中行事",
+      1
+    ],
+    [
+      "秋・月・田",
+      1
+    ],
+    [
+      "秋・月・海・鳥",
+      1
+    ],
+    [
+      "秋・鳥",
+      1
+    ],
+    [
+      "名所・秋",
+      1
+    ],
+    [
+      "秋・紅葉",
+      1
+    ],
+    [
+      "秋・暦",
+      1
+    ],
+    [
+      "冬・雪・地名",
+      1
+    ],
+    [
+      "鳥・長寿",
+      1
+    ],
+    [
+      "春・動物",
+      1
+    ],
+    [
+      "人事・身分",
+      1
+    ],
+    [
+      "人事・商い",
+      1
+    ],
+    [
+      "神祇・祝",
+      1
+    ],
+    [
+      "恋・琴",
+      1
+    ],
+    [
+      "恋",
+      1
+    ],
+    [
+      "恋・山",
+      1
+    ],
+    [
+      "言葉・不詳",
+      1
+    ],
+    [
+      "花",
+      1
+    ],
+    [
+      "月・家族",
+      1
+    ],
+    [
+      "秋・実り",
+      1
+    ]
+  ],
+  "field_statistics": {
+    "その他": {
+      "count": 4,
+      "central3_top": [
+        [
+          "めさめ",
+          1
+        ],
+        [
+          "しらし",
+          1
+        ],
+        [
+          "るつる",
+          1
+        ],
+        [
+          "のはの",
+          1
+        ]
+      ],
+      "center_top": [
+        [
+          "さ",
+          1
+        ],
+        [
+          "ら",
+          1
+        ],
+        [
+          "つ",
+          1
+        ],
+        [
+          "は",
+          1
+        ]
+      ],
+      "ids": [
+        "edo-popular-takarabune",
+        "mitoku-hitodama",
+        "shoju-054",
+        "shoju-add-101"
+      ]
+    },
+    "冬・雪": {
+      "count": 4,
+      "central3_top": [
+        [
+          "もつも",
+          1
+        ],
+        [
+          "のきの",
+          1
+        ],
+        [
+          "かれか",
+          1
+        ],
+        [
+          "ののの",
+          1
+        ]
+      ],
+      "center_top": [
+        [
+          "つ",
+          1
+        ],
+        [
+          "き",
+          1
+        ],
+        [
+          "れ",
+          1
+        ],
+        [
+          "の",
+          1
+        ]
+      ],
+      "ids": [
+        "mitoku-shirayuki",
+        "mitoku-fuyu",
+        "shoju-046",
+        "shoju-053"
+      ]
+    },
+    "恋・人事": {
+      "count": 6,
+      "central3_top": [
+        [
+          "のよの",
+          2
+        ],
+        [
+          "はなは",
+          1
+        ],
+        [
+          "きよき",
+          1
+        ],
+        [
+          "のみの",
+          1
+        ],
+        [
+          "まやま",
+          1
+        ]
+      ],
+      "center_top": [
+        [
+          "よ",
+          3
+        ],
+        [
+          "な",
+          1
+        ],
+        [
+          "み",
+          1
+        ],
+        [
+          "や",
+          1
+        ]
+      ],
+      "ids": [
+        "mitoku-rusu",
+        "shoju-058",
+        "shoju-061",
+        "shoju-072",
+        "shoju-073",
+        "shoju-077"
+      ]
+    },
+    "信仰": {
+      "count": 8,
+      "central3_top": [
+        [
+          "もひも",
+          1
+        ],
+        [
+          "いせい",
+          1
+        ],
+        [
+          "かけか",
+          1
+        ],
+        [
+          "のさの",
+          1
+        ],
+        [
+          "のえの",
+          1
+        ],
+        [
+          "のよの",
+          1
+        ],
+        [
+          "のひの",
+          1
+        ],
+        [
+          "のへの",
+          1
+        ]
+      ],
+      "center_top": [
+        [
+          "ひ",
+          2
+        ],
+        [
+          "せ",
+          1
+        ],
+        [
+          "け",
+          1
+        ],
+        [
+          "さ",
+          1
+        ],
+        [
+          "え",
+          1
+        ],
+        [
+          "よ",
+          1
+        ],
+        [
+          "へ",
+          1
+        ]
+      ],
+      "ids": [
+        "shoju-five-elements",
+        "shoju-ise",
+        "shoju-064",
+        "shoju-066",
+        "shoju-067",
+        "shoju-068",
+        "shoju-069",
+        "shoju-070"
+      ]
+    },
+    "春・草木": {
+      "count": 12,
+      "central3_top": [
+        [
+          "はなは",
+          2
+        ],
+        [
+          "とちと",
+          1
+        ],
+        [
+          "りなり",
+          1
+        ],
+        [
+          "りけり",
+          1
+        ],
+        [
+          "のての",
+          1
+        ],
+        [
+          "ののの",
+          1
+        ],
+        [
+          "かけか",
+          1
+        ],
+        [
+          "にたに",
+          1
+        ]
+      ],
+      "center_top": [
+        [
+          "な",
+          3
+        ],
+        [
+          "け",
+          2
+        ],
+        [
+          "ち",
+          1
+        ],
+        [
+          "て",
+          1
+        ],
+        [
+          "の",
+          1
+        ],
+        [
+          "た",
+          1
+        ],
+        [
+          "さ",
+          1
+        ],
+        [
+          "は",
+          1
+        ]
+      ],
+      "ids": [
+        "shoju-wakakusa",
+        "sendai-sakunami",
+        "shoju-water-plum",
+        "shoju-001-komatsuhiki",
+        "shoju-002-nanakusa",
+        "shoju-004-kasumi",
+        "shoju-007-kobai",
+        "shoju-010-somokuka",
+        "shoju-055",
+        "shoju-056",
+        "shoju-057",
+        "shoju-add-105"
+      ]
+    },
+    "夏・行事": {
+      "count": 4,
+      "central3_top": [
+        [
+          "なけな",
+          1
+        ],
+        [
+          "かかか",
+          1
+        ],
+        [
+          "かせか",
+          1
+        ],
+        [
+          "つきつ",
+          1
+        ]
+      ],
+      "center_top": [
+        [
+          "け",
+          1
+        ],
+        [
+          "か",
+          1
+        ],
+        [
+          "せ",
+          1
+        ],
+        [
+          "き",
+          1
+        ]
+      ],
+      "ids": [
+        "shoju-021",
+        "shoju-024",
+        "shoju-027",
+        "shoju-add-108"
+      ]
+    },
+    "秋・月": {
+      "count": 12,
+      "central3_top": [
+        [
+          "かりか",
+          2
+        ],
+        [
+          "のねの",
+          1
+        ],
+        [
+          "しけし",
+          1
+        ],
+        [
+          "のよの",
+          1
+        ],
+        [
+          "てりて",
+          1
+        ],
+        [
+          "しろし",
+          1
+        ],
+        [
+          "まやま",
+          1
+        ],
+        [
+          "しはし",
+          1
+        ]
+      ],
+      "center_top": [
+        [
+          "り",
+          3
+        ],
+        [
+          "よ",
+          2
+        ],
+        [
+          "ね",
+          1
+        ],
+        [
+          "け",
+          1
+        ],
+        [
+          "ろ",
+          1
+        ],
+        [
+          "や",
+          1
+        ],
+        [
+          "は",
+          1
+        ],
+        [
+          "き",
+          1
+        ]
+      ],
+      "ids": [
+        "shoju-030",
+        "shoju-031",
+        "shoju-033",
+        "shoju-035",
+        "shoju-038",
+        "shoju-040",
+        "shoju-041",
+        "shoju-043",
+        "shoju-044",
+        "shoju-045",
+        "shoju-add-109",
+        "shoju-add-111"
+      ]
+    }
+  },
+  "entries": [
+    {
+      "id": "edo-popular-takarabune",
+      "title": "宝船回文歌",
+      "reading": "なかきよのとをのねふりのみなめさめなみのりふねのをとのよきかな",
+      "source_group": "trusted",
+      "primary_field": "夜・夢・舟",
+      "field_tags": [
+        "夜",
+        "舟",
+        "吉祥"
+      ],
+      "classification_basis": "trusted text + title",
+      "central3": "めさめ",
+      "center": "さ",
+      "ku3": "みなめさめ",
+      "broad_field": "その他"
+    },
+    {
+      "id": "mitoku-shirayuki",
+      "title": "白雪",
+      "reading": "しらゆきはけさのらくさのはにもつもにはのさくらのさけはきゆらし",
+      "source_group": "trusted",
+      "primary_field": "雪・植物",
+      "field_tags": [
+        "冬",
+        "雪",
+        "草木"
+      ],
+      "classification_basis": "trusted text + title",
+      "central3": "もつも",
+      "center": "つ",
+      "ku3": "はにもつも",
+      "broad_field": "冬・雪"
+    },
+    {
+      "id": "mitoku-rusu",
+      "title": "身の留守",
+      "reading": "みのるすにきてはをりとるこのはなはのこるとりをはてきにするのみ",
+      "source_group": "trusted",
+      "primary_field": "人事・植物",
+      "field_tags": [
+        "留守",
+        "花",
+        "鳥"
+      ],
+      "classification_basis": "trusted text + title",
+      "central3": "はなは",
+      "center": "な",
+      "ku3": "このはなは",
+      "broad_field": "恋・人事"
+    },
+    {
+      "id": "mitoku-hitodama",
+      "title": "人魂",
+      "reading": "またとひぬめとをとあはれぬししらししぬれはあとをとめぬひとたま",
+      "source_group": "trusted",
+      "primary_field": "死・怪異",
+      "field_tags": [
+        "死",
+        "人魂",
+        "男女"
+      ],
+      "classification_basis": "trusted text + title",
+      "central3": "しらし",
+      "center": "ら",
+      "ku3": "ぬししらし",
+      "broad_field": "その他"
+    },
+    {
+      "id": "mitoku-fuyu",
+      "title": "冬景色",
+      "reading": "ふゆらしきけしきおもしろいはのきのはいろしもおきしけきしらゆふ",
+      "source_group": "trusted",
+      "primary_field": "冬景",
+      "field_tags": [
+        "冬",
+        "霜",
+        "草木"
+      ],
+      "classification_basis": "trusted text + title",
+      "central3": "のきの",
+      "center": "き",
+      "ku3": "いはのきの",
+      "broad_field": "冬・雪"
+    },
+    {
+      "id": "shoju-five-elements",
+      "title": "地水火風空",
+      "reading": "みなくうのせかいなりちもみつもひもつみもちりないかせのうくなみ",
+      "source_group": "trusted",
+      "primary_field": "釈教・宇宙観",
+      "field_tags": [
+        "釈教",
+        "五大",
+        "世界"
+      ],
+      "classification_basis": "trusted text + title",
+      "central3": "もひも",
+      "center": "ひ",
+      "ku3": "みつもひも",
+      "broad_field": "信仰"
+    },
+    {
+      "id": "shoju-ise",
+      "title": "伊勢参宮",
+      "reading": "ひころよいなかくよきはるいまいせいまいるはきよくかないよろこひ",
+      "source_group": "trusted",
+      "primary_field": "旅・信仰",
+      "field_tags": [
+        "伊勢",
+        "参詣",
+        "家内"
+      ],
+      "classification_basis": "trusted text + title",
+      "central3": "いせい",
+      "center": "せ",
+      "ku3": "いまいせい",
+      "broad_field": "信仰"
+    },
+    {
+      "id": "shoju-wakakusa",
+      "title": "野遊",
+      "reading": "わかくさのなはしらすみるともとちともとるみすらしはなのさくかわ",
+      "source_group": "trusted",
+      "primary_field": "春景・遊行",
+      "field_tags": [
+        "若草",
+        "花",
+        "川",
+        "友"
+      ],
+      "classification_basis": "trusted text + title",
+      "central3": "とちと",
+      "center": "ち",
+      "ku3": "ともとちと",
+      "broad_field": "春・草木"
+    },
+    {
+      "id": "sendai-sakunami",
+      "title": "作並",
+      "reading": "みなくさのなははくとしれくすりなりすくれしとくははなのさくなみ",
+      "source_group": "trusted",
+      "primary_field": "草木・薬・地名",
+      "field_tags": [
+        "草",
+        "薬",
+        "作並"
+      ],
+      "classification_basis": "trusted text + title",
+      "central3": "りなり",
+      "center": "な",
+      "ku3": "くすりなり",
+      "broad_field": "春・草木"
+    },
+    {
+      "id": "shoju-water-plum",
+      "title": "水辺梅",
+      "reading": "いけのもよなみなかめむにかほりけりほかにむめかなみなよものけい",
+      "source_group": "trusted",
+      "primary_field": "水辺・梅",
+      "field_tags": [
+        "池",
+        "波",
+        "梅",
+        "香"
+      ],
+      "classification_basis": "trusted text + title",
+      "central3": "りけり",
+      "center": "け",
+      "ku3": "かほりけり",
+      "broad_field": "春・草木"
+    },
+    {
+      "id": "shoju-001-komatsuhiki",
+      "title": "小松引",
+      "reading": "しけるはのまたひけよもつまこのてのこまつもよけひたまのはるけし",
+      "source_group": "mining",
+      "primary_field": "春・草木",
+      "field_tags": [
+        "小松",
+        "春"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "のての",
+      "center": "て",
+      "ku3": "まこのての",
+      "broad_field": "春・草木"
+    },
+    {
+      "id": "shoju-002-nanakusa",
+      "title": "七種",
+      "reading": "やかてみつはなみさいさくななのののななくさいさみなはつみてかや",
+      "source_group": "mining",
+      "primary_field": "春・草木",
+      "field_tags": [
+        "七種",
+        "菜"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "ののの",
+      "center": "の",
+      "ku3": "ななののの",
+      "broad_field": "春・草木"
+    },
+    {
+      "id": "shoju-004-kasumi",
+      "title": "霞（同）",
+      "reading": "とほくまをこよかすみはるひのかけかのひるはみすかよこをまくほと",
+      "source_group": "mining",
+      "primary_field": "春景",
+      "field_tags": [
+        "霞",
+        "春"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "かけか",
+      "center": "け",
+      "ku3": "ひのかけか",
+      "broad_field": "春・草木"
+    },
+    {
+      "id": "shoju-007-kobai",
+      "title": "紅梅",
+      "reading": "むめかなをのひしよまさるほかにたにかほるさまよしひのをなかめむ",
+      "source_group": "mining",
+      "primary_field": "春・梅",
+      "field_tags": [
+        "紅梅",
+        "梅"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "にたに",
+      "center": "た",
+      "ku3": "ほかにたに",
+      "broad_field": "春・草木"
+    },
+    {
+      "id": "shoju-010-somokuka",
+      "title": "草木花",
+      "reading": "はるのみとまたるるけしきさくはなはくさきしけるるたまとみのるは",
+      "source_group": "mining",
+      "primary_field": "春・草木",
+      "field_tags": [
+        "草木",
+        "花"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "はなは",
+      "center": "な",
+      "ku3": "さくはなは",
+      "broad_field": "春・草木"
+    },
+    {
+      "id": "shoju-021",
+      "title": "子規",
+      "reading": "もとつたそほとときすはやきつなけなつきやはすきととほそたつとも",
+      "source_group": "mining",
+      "primary_field": "夏・鳥",
+      "field_tags": [
+        "子規",
+        "鳥"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "なけな",
+      "center": "け",
+      "ku3": "きつなけな",
+      "broad_field": "夏・行事"
+    },
+    {
+      "id": "shoju-024",
+      "title": "端午",
+      "reading": "やりほのみさいくなりほこととかかかととこほりなくいさみのほりや",
+      "source_group": "mining",
+      "primary_field": "端午・年中行事",
+      "field_tags": [
+        "端午",
+        "行事"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "かかか",
+      "center": "か",
+      "ku3": "ととかかか",
+      "broad_field": "夏・行事"
+    },
+    {
+      "id": "shoju-027",
+      "title": "納涼",
+      "reading": "さよきつるけふそまたきしすすかせかすすしきたまそふけるつきよさ",
+      "source_group": "mining",
+      "primary_field": "夏・納涼",
+      "field_tags": [
+        "納涼",
+        "夏"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "かせか",
+      "center": "せ",
+      "ku3": "すすかせか",
+      "broad_field": "夏・行事"
+    },
+    {
+      "id": "shoju-030",
+      "title": "露",
+      "reading": "ゆつらしのさくをなてしこはきのねのきはこしてなをくさのしらつゆ",
+      "source_group": "mining",
+      "primary_field": "秋・露",
+      "field_tags": [
+        "露",
+        "秋"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "のねの",
+      "center": "ね",
+      "ku3": "はきのねの",
+      "broad_field": "秋・月"
+    },
+    {
+      "id": "shoju-031",
+      "title": "同（露）",
+      "reading": "やとるつゆたまはのきはのはにしけしにはのはきのはまたゆつるとや",
+      "source_group": "mining",
+      "primary_field": "秋・露",
+      "field_tags": [
+        "露",
+        "秋"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "しけし",
+      "center": "け",
+      "ku3": "はにしけし",
+      "broad_field": "秋・月"
+    },
+    {
+      "id": "shoju-033",
+      "title": "月",
+      "reading": "きつるままちもきよけらしけふのよのふけしらけよきもちままるつき",
+      "source_group": "mining",
+      "primary_field": "秋・月",
+      "field_tags": [
+        "月",
+        "秋"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "のよの",
+      "center": "よ",
+      "ku3": "けふのよの",
+      "broad_field": "秋・月"
+    },
+    {
+      "id": "shoju-035",
+      "title": "同（月）",
+      "reading": "はれつみよきつるもはきのはにてりてにはのきはもるつきよみつれは",
+      "source_group": "mining",
+      "primary_field": "秋・月",
+      "field_tags": [
+        "月",
+        "秋"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "てりて",
+      "center": "り",
+      "ku3": "はにてりて",
+      "broad_field": "秋・月"
+    },
+    {
+      "id": "shoju-038",
+      "title": "田毎月",
+      "reading": "なかきよのきつるみちもとこたしろしたこともちみるつきのよきかな",
+      "source_group": "mining",
+      "primary_field": "秋・月・田",
+      "field_tags": [
+        "田毎月",
+        "月",
+        "田"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "しろし",
+      "center": "ろ",
+      "ku3": "こたしろし",
+      "broad_field": "秋・月"
+    },
+    {
+      "id": "shoju-040",
+      "title": "月明海上鴻鷹渡",
+      "reading": "てりつうみきつしもなかのみなかりかなみのかなもしつきみうつりて",
+      "source_group": "mining",
+      "primary_field": "秋・月・海・鳥",
+      "field_tags": [
+        "月",
+        "海",
+        "鴻雁"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "かりか",
+      "center": "り",
+      "ku3": "みなかりか",
+      "broad_field": "秋・月"
+    },
+    {
+      "id": "shoju-041",
+      "title": "初鷹",
+      "reading": "なかきかしとふのはにてさはつかりかつはさてにはのふとしかきかな",
+      "source_group": "mining",
+      "primary_field": "秋・鳥",
+      "field_tags": [
+        "初鷹",
+        "鳥"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "かりか",
+      "center": "り",
+      "ku3": "はつかりか",
+      "broad_field": "秋・月"
+    },
+    {
+      "id": "shoju-043",
+      "title": "名所苅",
+      "reading": "なかくよふよもはらたまのかしまやましかのまたらはもよふよくかな",
+      "source_group": "mining",
+      "primary_field": "名所・秋",
+      "field_tags": [
+        "名所",
+        "苅"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "まやま",
+      "center": "や",
+      "ku3": "かしまやま",
+      "broad_field": "秋・月"
+    },
+    {
+      "id": "shoju-044",
+      "title": "紅葉",
+      "reading": "やまのおくほとしらぬみちみもしはしもみちみぬらしとほくおのまや",
+      "source_group": "mining",
+      "primary_field": "秋・紅葉",
+      "field_tags": [
+        "紅葉",
+        "秋"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "しはし",
+      "center": "は",
+      "ku3": "みもしはし",
+      "broad_field": "秋・月"
+    },
+    {
+      "id": "shoju-045",
+      "title": "九月尽",
+      "reading": "やまのせかふゆかしてはのきあかきかあきのはてしかゆふかせのまや",
+      "source_group": "mining",
+      "primary_field": "秋・暦",
+      "field_tags": [
+        "九月尽",
+        "秋"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "かきか",
+      "center": "き",
+      "ku3": "きあかきか",
+      "broad_field": "秋・月"
+    },
+    {
+      "id": "shoju-046",
+      "title": "冬枯",
+      "reading": "やとよこのとひきしみさへふゆかれかゆふへさみしきひとのこよとや",
+      "source_group": "mining",
+      "primary_field": "冬景",
+      "field_tags": [
+        "冬枯",
+        "冬"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "かれか",
+      "center": "れ",
+      "ku3": "ふゆかれか",
+      "broad_field": "冬・雪"
+    },
+    {
+      "id": "shoju-053",
+      "title": "矢田野雪",
+      "reading": "きゆらしなきよしこのまややたのののたややまのこしよきなしらゆき",
+      "source_group": "mining",
+      "primary_field": "冬・雪・地名",
+      "field_tags": [
+        "雪",
+        "矢田野"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "ののの",
+      "center": "の",
+      "ku3": "やたののの",
+      "broad_field": "冬・雪"
+    },
+    {
+      "id": "shoju-054",
+      "title": "鶴",
+      "reading": "なかしひのいつのひまにかのほるつるほのかにまひのついのひしかな",
+      "source_group": "mining",
+      "primary_field": "鳥・長寿",
+      "field_tags": [
+        "鶴",
+        "鳥"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "るつる",
+      "center": "つ",
+      "ku3": "のほるつる",
+      "broad_field": "その他"
+    },
+    {
+      "id": "shoju-055",
+      "title": "春亀",
+      "reading": "やまみなのけいはこのめかきよくさくよきかめのこはいけのなみまや",
+      "source_group": "mining",
+      "primary_field": "春・動物",
+      "field_tags": [
+        "春",
+        "亀"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "くさく",
+      "center": "さ",
+      "ku3": "きよくさく",
+      "broad_field": "春・草木"
+    },
+    {
+      "id": "shoju-056",
+      "title": "松",
+      "reading": "そたつまのはにもりとみてのひるはるひのてみとりもにはのまつたそ",
+      "source_group": "mining",
+      "primary_field": "草木",
+      "field_tags": [
+        "松"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "るはる",
+      "center": "は",
+      "ku3": "のひるはる",
+      "broad_field": "春・草木"
+    },
+    {
+      "id": "shoju-057",
+      "title": "竹",
+      "reading": "やふにはのなひけたるさまにきはひはきにまさるたけひなのはにふや",
+      "source_group": "mining",
+      "primary_field": "草木",
+      "field_tags": [
+        "竹"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "はひは",
+      "center": "ひ",
+      "ku3": "にきはひは",
+      "broad_field": "春・草木"
+    },
+    {
+      "id": "shoju-058",
+      "title": "士",
+      "reading": "とひてかやなはゆみとりとかたきよきたかとりとみゆはなやかてひと",
+      "source_group": "mining",
+      "primary_field": "人事・身分",
+      "field_tags": [
+        "士"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "きよき",
+      "center": "よ",
+      "ku3": "かたきよき",
+      "broad_field": "恋・人事"
+    },
+    {
+      "id": "shoju-061",
+      "title": "商",
+      "reading": "かひたしのりうるさまにやひとのみのとひやにまさるうりのしたひか",
+      "source_group": "mining",
+      "primary_field": "人事・商い",
+      "field_tags": [
+        "商"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "のみの",
+      "center": "み",
+      "ku3": "ひとのみの",
+      "broad_field": "恋・人事"
+    },
+    {
+      "id": "shoju-064",
+      "title": "社頭祝",
+      "reading": "らくてみのよみやきよめしすすかけかすすしめよきやみよのみてくら",
+      "source_group": "mining",
+      "primary_field": "神祇・祝",
+      "field_tags": [
+        "社頭",
+        "祝"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "かけか",
+      "center": "け",
+      "ku3": "すすかけか",
+      "broad_field": "信仰"
+    },
+    {
+      "id": "shoju-066",
+      "title": "神祇",
+      "reading": "きとうたはまさしよきみかかみのさのみかかみきよしさまはたうとき",
+      "source_group": "mining",
+      "primary_field": "神祇",
+      "field_tags": [
+        "神祇"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "のさの",
+      "center": "さ",
+      "ku3": "かみのさの",
+      "broad_field": "信仰"
+    },
+    {
+      "id": "shoju-067",
+      "title": "同（神祇）",
+      "reading": "つつみつをこそかなへうるすみのえのみするうへなかそこをつみつつ",
+      "source_group": "mining",
+      "primary_field": "神祇",
+      "field_tags": [
+        "神祇"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "のえの",
+      "center": "え",
+      "ku3": "すみのえの",
+      "broad_field": "信仰"
+    },
+    {
+      "id": "shoju-068",
+      "title": "釈教",
+      "reading": "しなもなくほとけのをしへみつのよのつみへしをのけとほくなもなし",
+      "source_group": "mining",
+      "primary_field": "釈教",
+      "field_tags": [
+        "釈教"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "のよの",
+      "center": "よ",
+      "ku3": "みつのよの",
+      "broad_field": "信仰"
+    },
+    {
+      "id": "shoju-069",
+      "title": "同（釈教）",
+      "reading": "つみはうくきくみつねかしつきのひのきつしかねつみくきくうはみつ",
+      "source_group": "mining",
+      "primary_field": "釈教",
+      "field_tags": [
+        "釈教"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "のひの",
+      "center": "ひ",
+      "ku3": "つきのひの",
+      "broad_field": "信仰"
+    },
+    {
+      "id": "shoju-070",
+      "title": "同（釈教）",
+      "reading": "なかるへきみつきよけらしかわのへのわかしらけよきつみきへるかな",
+      "source_group": "mining",
+      "primary_field": "釈教",
+      "field_tags": [
+        "釈教"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "のへの",
+      "center": "へ",
+      "ku3": "かわのへの",
+      "broad_field": "信仰"
+    },
+    {
+      "id": "shoju-072",
+      "title": "寄琴恋",
+      "reading": "かへらしのつまことをもてけふのよのふけてもをとこまつのしらへか",
+      "source_group": "mining",
+      "primary_field": "恋・琴",
+      "field_tags": [
+        "恋",
+        "琴"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "のよの",
+      "center": "よ",
+      "ku3": "けふのよの",
+      "broad_field": "恋・人事"
+    },
+    {
+      "id": "shoju-073",
+      "title": "不逢知恋",
+      "reading": "とやかふとついちとぬれしやみのよのみやしれぬとちいつとふかやと",
+      "source_group": "mining",
+      "primary_field": "恋",
+      "field_tags": [
+        "恋",
+        "不逢"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "のよの",
+      "center": "よ",
+      "ku3": "やみのよの",
+      "broad_field": "恋・人事"
+    },
+    {
+      "id": "shoju-077",
+      "title": "寄山恋",
+      "reading": "かすかあひよまにとひきしいこまやまこいしきひとにまよひあかすか",
+      "source_group": "mining",
+      "primary_field": "恋・山",
+      "field_tags": [
+        "恋",
+        "山"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "まやま",
+      "center": "や",
+      "ku3": "いこまやま",
+      "broad_field": "恋・人事"
+    },
+    {
+      "id": "shoju-add-101",
+      "title": "追加101",
+      "reading": "もとすらしわかなまなかのことのはのとこのかなまなかわしらすとも",
+      "source_group": "mining",
+      "primary_field": "言葉・不詳",
+      "field_tags": [
+        "言葉"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "のはの",
+      "center": "は",
+      "ku3": "ことのはの",
+      "broad_field": "その他"
+    },
+    {
+      "id": "shoju-add-105",
+      "title": "花 古歌にならひ",
+      "reading": "さときよくこしをのしよしみよはなはよみしよしのをしこくよきとさ",
+      "source_group": "mining",
+      "primary_field": "花",
+      "field_tags": [
+        "花"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "はなは",
+      "center": "な",
+      "ku3": "みよはなは",
+      "broad_field": "春・草木"
+    },
+    {
+      "id": "shoju-add-108",
+      "title": "納涼",
+      "reading": "そよしてみすすめときひもとひつきつひともひきとめすすみてしよそ",
+      "source_group": "mining",
+      "primary_field": "夏・納涼",
+      "field_tags": [
+        "納涼",
+        "夏"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "つきつ",
+      "center": "き",
+      "ku3": "とひつきつ",
+      "broad_field": "夏・行事"
+    },
+    {
+      "id": "shoju-add-109",
+      "title": "嫁娘見月",
+      "reading": "なかよさのきつるみそらはむすめよめすむはらそみるつきのさよかな",
+      "source_group": "mining",
+      "primary_field": "月・家族",
+      "field_tags": [
+        "月",
+        "嫁",
+        "娘"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "めよめ",
+      "center": "よ",
+      "ku3": "むすめよめ",
+      "broad_field": "秋・月"
+    },
+    {
+      "id": "shoju-add-111",
+      "title": "出来秋",
+      "reading": "みなほましとこもみのるかをたのほのたをかるのみもことしまほなみ",
+      "source_group": "mining",
+      "primary_field": "秋・実り",
+      "field_tags": [
+        "秋",
+        "実り"
+      ],
+      "classification_basis": "source title only; semantic review pending",
+      "central3": "のほの",
+      "center": "ほ",
+      "ku3": "をたのほの",
+      "broad_field": "秋・月"
+    }
+  ],
+  "generator_policy": {
+    "step1": "先に意味場を選ぶ（春景、秋月、雪景、信仰、恋など）。",
+    "step2": "意味場ごとの名詞・動詞・評価語候補を準備する。",
+    "step3": "31かな鏡像格子 5-2-5-2-3-2-5-2-5 上で音列候補を作る。",
+    "step4": "中央3かなABAは独立語に限定せず、意味場の語や助詞・語尾を跨ぐピボットとして探索する。",
+    "step5": "左右で別の語境界解析を許し、5-7-5-7-7の句として自然な候補を再ランキングする。"
+  }
+}
