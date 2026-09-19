@@ -42,6 +42,8 @@ const shoju068SourceReview = JSON.parse(fs.readFileSync("data/shoju-068-source-r
 const mataOuterReview = JSON.parse(fs.readFileSync("data/mata-outer-frame-morphology-review-v102.json", "utf8"));
 const musuMoonFamily = JSON.parse(fs.readFileSync("data/musu-moon-family-review-v103.json", "utf8"));
 const generatedMusuMoonV104 = JSON.parse(fs.readFileSync("data/generated-musu-moon-outer-frame-v104.json", "utf8"));
+const hybrid007SyntaxV105 = JSON.parse(fs.readFileSync("data/hybrid-007-syntax-deep-review-v105.json", "utf8"));
+const wave2TravelMahaV106 = JSON.parse(fs.readFileSync("data/wave2-travel-maha-outer-frame-prospect-v106.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -528,6 +530,31 @@ if(generatedMusuMoonV104.version!=="1.04"||generatedMusuMoonV104.candidate_count
 const musuV104Ids=(generatedMusuMoonV104.candidates??[]).map(x=>x.id).sort().join(",");
 if(musuV104Ids!==["shoju-add-109","hybrid-003","hybrid-007","hybrid-014"].sort().join(","))errors.push(`GENERATED MUSU MOON V104 ids mismatch: ${musuV104Ids}`);
 
+if(hybrid007SyntaxV105.version!=="1.05")errors.push(`HYBRID007 V105 version mismatch: ${hybrid007SyntaxV105.version}`);
+if(hybrid007SyntaxV105.verdict?.current_review_status!=="promising-but-parse-needed")errors.push("HYBRID007 V105 status must remain promising-but-parse-needed");
+if(hybrid007SyntaxV105.verdict?.promote_to_deep_review_supported!==false)errors.push("HYBRID007 V105 must not promote automatically");
+if(hybrid007SyntaxV105.verdict?.third_positive_family_established!==false)errors.push("HYBRID007 V105 must not establish third family");
+if(hybrid007SyntaxV105.review_basis?.official_article_metadata?.pdf_content_directly_inspected_in_this_review!==false)errors.push("HYBRID007 V105 must preserve PDF-not-directly-inspected state");
+const h7Second=(hybrid007SyntaxV105.segment_reviews??[]).find(x=>x.segment==="すむはらそみる");
+if(h7Second?.voicing_status!=="unresolved")errors.push("HYBRID007 V105 voicing must remain unresolved");
+if(hybrid007SyntaxV105.new_safety_rule?.id!=="source-voicing-and-lexeme-ambiguity-guard")errors.push("HYBRID007 V105 safety rule missing");
+if(hybrid007SyntaxV105.new_safety_rule?.applies_beyond_hybrid_007!==true)errors.push("HYBRID007 V105 safety rule must apply beyond candidate");
+
+if(wave2TravelMahaV106.version!=="1.06")errors.push(`WAVE2 TRAVEL V106 version mismatch: ${wave2TravelMahaV106.version}`);
+if(wave2TravelMahaV106.baseline_policy?.fixed50_unchanged!==true)errors.push("WAVE2 TRAVEL V106 must not change fixed50");
+if(wave2TravelMahaV106.baseline_policy?.wave2_verified_count_unchanged!==14||wave2TravelMahaV106.baseline_policy?.wave2_held_count_unchanged!==5)errors.push("WAVE2 TRAVEL V106 wave2 counts drift");
+if(wave2TravelMahaV106.operation?.shared_B!=="まは"||wave2TravelMahaV106.operation?.reverse_B!=="はま")errors.push("WAVE2 TRAVEL V106 B seam changed");
+if(wave2TravelMahaV106.shared_B_review?.forward_morphology_compatibility!=="strongly-supported-by-identical-surface-continuation")errors.push("WAVE2 TRAVEL V106 forward morphology support changed");
+if(wave2TravelMahaV106.shared_B_review?.reverse_B_lexeme!=="unresolved")errors.push("WAVE2 TRAVEL V106 reverse B must remain unresolved");
+if(wave2TravelMahaV106.shared_B_review?.source_image_checked!==false)errors.push("WAVE2 TRAVEL V106 must not claim source image check");
+if((wave2TravelMahaV106.generated_prospects??[]).length!==2)errors.push("WAVE2 TRAVEL V106 prospect count must be 2");
+for(const x of wave2TravelMahaV106.generated_prospects??[]){
+  if(!isPalindrome(x.reading))errors.push(`WAVE2 TRAVEL V106 non-palindrome: ${x.id}`);
+  if(x.meter.map(y=>[...y].length).join(",")!=="5,7,5,7,7")errors.push(`WAVE2 TRAVEL V106 meter mismatch: ${x.id}`);
+  if(x.review_status!=="hold-source-confirmation")errors.push(`WAVE2 TRAVEL V106 status drift: ${x.id}`);
+}
+if(wave2TravelMahaV106.summary?.positive_family_established!==false||wave2TravelMahaV106.summary?.automatic_acceptance!==0)errors.push("WAVE2 TRAVEL V106 must remain prospect-only");
+
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
 if(rules.rule_count!==rules.rules.length)errors.push(`RULE COUNT mismatch: declared=${rules.rule_count} actual=${rules.rules.length}`);
@@ -573,3 +600,5 @@ console.log(`Shoju-068 source review v1.01: image=${shoju068SourceReview.decisio
 console.log(`B=mata morphology review v1.02: positive=${mataOuterReview.decision?.positive_family}`);
 console.log(`Musu moon family v1.03: outputs=${(musuMoonFamily.outputs??[]).length}, best=${musuMoonFamily.summary?.best_novel_candidate}`);
 console.log(`Musu moon generator v1.04: candidates=${generatedMusuMoonV104.candidate_count}`);
+console.log(`Hybrid-007 syntax v1.05: status=${hybrid007SyntaxV105.verdict?.current_review_status}, third-family=${hybrid007SyntaxV105.verdict?.third_positive_family_established}`);
+console.log(`Wave2 travel v1.06: prospects=${(wave2TravelMahaV106.generated_prospects??[]).length}, positive=${wave2TravelMahaV106.summary?.positive_family_established}`);
