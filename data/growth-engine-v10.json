@@ -1,6 +1,6 @@
 {
-  "version": "0.19",
-  "principle": "段階長文化は、(1)構文骨格を保って中心名詞句を伸ばす structural family と、(2)全文を個別監査した narrative family の二系統。どちらも1段ずつ必ず長くする。 物語型の後半は、述語を固定したまま受け手の親族関係を鏡型に外側へ追加し、50文字級まで段階的に伸長する。 v0.14では場所・理由・状況をdimensionとして明示し、L2でも物語型長文化を許可する。 v0.15では時間・属性のdimensionを追加し、述語や観察行為を維持したまま修飾情報を厚くする。 v0.16では貸借以外に待機・来訪・存在・睡眠の述語系統を追加し、長文の述語偏りを減らす。 v0.17では完全回文文そのものを引用節として外側から包み、伝聞・判断・解釈・記述を追加するsentence-level wrapperを導入する。 v0.18では任意の完全回文文を、逆読み関係にある引用外枠で何段でも包める汎用sentence wrapper engineを公開UIへ解放する。 v0.18.1では100かな超の固定benchmarkを保持し、長文域の回文成立をCIで回帰検証する。 v0.19では引用・伝聞だけでなく、引用文を原因や記録タイトルとして名詞化する外枠を追加する。",
+  "version": "0.20",
+  "principle": "段階長文化は、(1)構文骨格を保って中心名詞句を伸ばす structural family と、(2)全文を個別監査した narrative family の二系統。どちらも1段ずつ必ず長くする。 物語型の後半は、述語を固定したまま受け手の親族関係を鏡型に外側へ追加し、50文字級まで段階的に伸長する。 v0.14では場所・理由・状況をdimensionとして明示し、L2でも物語型長文化を許可する。 v0.15では時間・属性のdimensionを追加し、述語や観察行為を維持したまま修飾情報を厚くする。 v0.16では貸借以外に待機・来訪・存在・睡眠の述語系統を追加し、長文の述語偏りを減らす。 v0.17では完全回文文そのものを引用節として外側から包み、伝聞・判断・解釈・記述を追加するsentence-level wrapperを導入する。 v0.18では任意の完全回文文を、逆読み関係にある引用外枠で何段でも包める汎用sentence wrapper engineを公開UIへ解放する。 v0.18.1では100かな超の固定benchmarkを保持し、長文域の回文成立をCIで回帰検証する。 v0.19では引用・伝聞だけでなく、引用文を原因や記録タイトルとして名詞化する外枠を追加する。 v0.20ではセリフ内外で同じ名詞を再使用しないcollision policyをsentence wrapperの必須条件とし、外枠語彙を11種へ拡張する。",
   "families": [
     {
       "id": "wife-wait",
@@ -250,14 +250,14 @@
     "all_palindromes": true,
     "minimum_stage_increases_length": true,
     "narrative_family_count": 22,
-    "narrative_variants": 122,
-    "longest_narrative_kana": 107,
+    "narrative_variants": 138,
+    "longest_narrative_kana": 131,
     "longest_narrative_example": {
       "family": "quote-matsutake",
-      "stage": 8,
-      "display": "対価と『ルミと「タミと『大樹と「対価と『ルミと「タミと『大樹と「確かに、母の父の母のこの松茸摘みに来て、奇跡的に見つけた妻の子の母の父の母に貸した」と聞いた』と見た」と見る』と書いた」と聞いた』と見た」と見る』と書いた。",
-      "reading": "たいかとるみとたみとたいきとたいかとるみとたみとたいきとたしかにははのちちのははのこのまつたけつみにきてきせきてきにみつけたつまのこのははのちちのははにかしたときいたとみたとみるとかいたときいたとみたとみるとかいた",
-      "len": 107
+      "stage": 10,
+      "display": "旦那、記録の＜ダイセの｛対価と（ルミと［タミと〔タメキと【ルタカと《田部野と〈大樹と『ウイと「確かに、母の父の母のこの松茸摘みに来て、奇跡的に見つけた妻の子の母の父の母に貸した」と言う』と聞いた〉と述べた》と語る】と決めた〕と見た］と見る）と書いた｝のせいだ＞の黒木なんだ。",
+      "reading": "だんなきろくのだいせのたいかとるみとたみとためきとるたかとたべのとたいきとういとたしかにははのちちのははのこのまつたけつみにきてきせきてきにみつけたつまのこのははのちちのははにかしたというときいたとのべたとかたるときめたとみたとみるとかいたのせいだのくろきなんだ",
+      "len": 131
     },
     "narrative_families_by_layer": {
       "L1": 12,
@@ -276,14 +276,16 @@
       "引用・伝聞": 4
     },
     "quote_wrapper_count": 5,
-    "sentence_level_wrapper_count": 6,
+    "sentence_level_wrapper_count": 11,
     "sentence_level_wrappers_reverse_verified": true,
     "hundred_kana_benchmark": {
       "family": "quote-matsutake",
-      "length": 107,
-      "stage": 8,
-      "min_required": 100
-    }
+      "length": 131,
+      "stage": 10,
+      "min_required": 100,
+      "noun_collision_free": true
+    },
+    "noun_collision_policy": true
   },
   "narrative_families": [
     {
@@ -1222,76 +1224,191 @@
           "adds": "引用する元の文",
           "japanese_quality": "B+",
           "weirdness": 5,
-          "dimension": "引用・伝聞"
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 0
         },
         {
-          "reading": "たいきとたしかにははのちちのははのこのまつたけつみにきてきせきてきにみつけたつまのこのははのちちのははにかしたときいた",
-          "display": "大樹と「確かに、母の父の母のこの松茸摘みに来て、奇跡的に見つけた妻の子の母の父の母に貸した」と聞いた。",
-          "adds": "伝聞",
+          "reading": "ういとたしかにははのちちのははのこのまつたけつみにきてきせきてきにみつけたつまのこのははのちちのははにかしたという",
+          "display": "ウイと「確かに、母の父の母のこの松茸摘みに来て、奇跡的に見つけた妻の子の母の父の母に貸した」と言う。",
+          "adds": "文レベル外枠：発言",
+          "japanese_quality": "B+",
+          "weirdness": 3,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 1,
+          "wrapper_id": "say",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "うい",
+              "display": "ウイ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "たいきとういとたしかにははのちちのははのこのまつたけつみにきてきせきてきにみつけたつまのこのははのちちのははにかしたというときいた",
+          "display": "大樹と『ウイと「確かに、母の父の母のこの松茸摘みに来て、奇跡的に見つけた妻の子の母の父の母に貸した」と言う』と聞いた。",
+          "adds": "文レベル外枠：伝聞",
           "japanese_quality": "B+",
           "weirdness": 4,
-          "dimension": "引用・伝聞"
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 2,
+          "wrapper_id": "hear",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "たいき",
+              "display": "大樹",
+              "kind": "person"
+            }
+          ]
         },
         {
-          "reading": "たみとたいきとたしかにははのちちのははのこのまつたけつみにきてきせきてきにみつけたつまのこのははのちちのははにかしたときいたとみた",
-          "display": "タミと『大樹と「確かに、母の父の母のこの松茸摘みに来て、奇跡的に見つけた妻の子の母の父の母に貸した」と聞いた』と見た。",
-          "adds": "判断",
-          "japanese_quality": "B+",
+          "reading": "たべのとたいきとういとたしかにははのちちのははのこのまつたけつみにきてきせきてきにみつけたつまのこのははのちちのははにかしたというときいたとのべた",
+          "display": "田部野と〈大樹と『ウイと「確かに、母の父の母のこの松茸摘みに来て、奇跡的に見つけた妻の子の母の父の母に貸した」と言う』と聞いた〉と述べた。",
+          "adds": "文レベル外枠：陳述",
+          "japanese_quality": "B",
           "weirdness": 4,
-          "dimension": "引用・伝聞"
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 3,
+          "wrapper_id": "state",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "たべの",
+              "display": "田部野",
+              "kind": "person"
+            }
+          ]
         },
         {
-          "reading": "るみとたみとたいきとたしかにははのちちのははのこのまつたけつみにきてきせきてきにみつけたつまのこのははのちちのははにかしたときいたとみたとみる",
-          "display": "ルミと「タミと『大樹と「確かに、母の父の母のこの松茸摘みに来て、奇跡的に見つけた妻の子の母の父の母に貸した」と聞いた』と見た」と見る。",
-          "adds": "解釈",
-          "japanese_quality": "B",
-          "weirdness": 5,
-          "dimension": "引用・伝聞"
-        },
-        {
-          "reading": "たいかとるみとたみとたいきとたしかにははのちちのははのこのまつたけつみにきてきせきてきにみつけたつまのこのははのちちのははにかしたときいたとみたとみるとかいた",
-          "display": "対価と『ルミと「タミと『大樹と「確かに、母の父の母のこの松茸摘みに来て、奇跡的に見つけた妻の子の母の父の母に貸した」と聞いた』と見た」と見る』と書いた。",
-          "adds": "記述",
-          "japanese_quality": "B",
-          "weirdness": 5,
-          "dimension": "引用・伝聞"
-        },
-        {
-          "reading": "たいきとたいかとるみとたみとたいきとたしかにははのちちのははのこのまつたけつみにきてきせきてきにみつけたつまのこのははのちちのははにかしたときいたとみたとみるとかいたときいた",
-          "display": "大樹と「対価と『ルミと「タミと『大樹と「確かに、母の父の母のこの松茸摘みに来て、奇跡的に見つけた妻の子の母の父の母に貸した」と聞いた』と見た」と見る』と書いた」と聞いた。",
-          "adds": "再伝聞",
-          "japanese_quality": "B",
-          "weirdness": 5,
-          "dimension": "引用・伝聞"
-        },
-        {
-          "reading": "たみとたいきとたいかとるみとたみとたいきとたしかにははのちちのははのこのまつたけつみにきてきせきてきにみつけたつまのこのははのちちのははにかしたときいたとみたとみるとかいたときいたとみた",
-          "display": "タミと『大樹と「対価と『ルミと「タミと『大樹と「確かに、母の父の母のこの松茸摘みに来て、奇跡的に見つけた妻の子の母の父の母に貸した」と聞いた』と見た」と見る』と書いた」と聞いた』と見た。",
-          "adds": "100かな級への文レベル外枠：判断",
+          "reading": "るたかとたべのとたいきとういとたしかにははのちちのははのこのまつたけつみにきてきせきてきにみつけたつまのこのははのちちのははにかしたというときいたとのべたとかたる",
+          "display": "ルタカと《田部野と〈大樹と『ウイと「確かに、母の父の母のこの松茸摘みに来て、奇跡的に見つけた妻の子の母の父の母に貸した」と言う』と聞いた〉と述べた》と語る。",
+          "adds": "文レベル外枠：語り",
           "japanese_quality": "B",
           "weirdness": 5,
           "dimension": "引用・伝聞",
-          "extension_type": "sentence_wrapper_benchmark"
+          "wrapper_depth": 4,
+          "wrapper_id": "narrate",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "るたか",
+              "display": "ルタカ",
+              "kind": "person"
+            }
+          ]
         },
         {
-          "reading": "るみとたみとたいきとたいかとるみとたみとたいきとたしかにははのちちのははのこのまつたけつみにきてきせきてきにみつけたつまのこのははのちちのははにかしたときいたとみたとみるとかいたときいたとみたとみる",
-          "display": "ルミと「タミと『大樹と「対価と『ルミと「タミと『大樹と「確かに、母の父の母のこの松茸摘みに来て、奇跡的に見つけた妻の子の母の父の母に貸した」と聞いた』と見た」と見る』と書いた」と聞いた』と見た」と見る。",
-          "adds": "100かな級への文レベル外枠：解釈",
+          "reading": "ためきとるたかとたべのとたいきとういとたしかにははのちちのははのこのまつたけつみにきてきせきてきにみつけたつまのこのははのちちのははにかしたというときいたとのべたとかたるときめた",
+          "display": "タメキと【ルタカと《田部野と〈大樹と『ウイと「確かに、母の父の母のこの松茸摘みに来て、奇跡的に見つけた妻の子の母の父の母に貸した」と言う』と聞いた〉と述べた》と語る】と決めた。",
+          "adds": "文レベル外枠：決定",
           "japanese_quality": "B",
           "weirdness": 5,
           "dimension": "引用・伝聞",
-          "extension_type": "sentence_wrapper_benchmark"
+          "wrapper_depth": 5,
+          "wrapper_id": "decide",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "ためき",
+              "display": "タメキ",
+              "kind": "person"
+            }
+          ]
         },
         {
-          "reading": "たいかとるみとたみとたいきとたいかとるみとたみとたいきとたしかにははのちちのははのこのまつたけつみにきてきせきてきにみつけたつまのこのははのちちのははにかしたときいたとみたとみるとかいたときいたとみたとみるとかいた",
-          "display": "対価と『ルミと「タミと『大樹と「対価と『ルミと「タミと『大樹と「確かに、母の父の母のこの松茸摘みに来て、奇跡的に見つけた妻の子の母の父の母に貸した」と聞いた』と見た」と見る』と書いた」と聞いた』と見た」と見る』と書いた。",
-          "adds": "100かな超への文レベル外枠：記述",
-          "japanese_quality": "B",
+          "reading": "たみとためきとるたかとたべのとたいきとういとたしかにははのちちのははのこのまつたけつみにきてきせきてきにみつけたつまのこのははのちちのははにかしたというときいたとのべたとかたるときめたとみた",
+          "display": "タミと〔タメキと【ルタカと《田部野と〈大樹と『ウイと「確かに、母の父の母のこの松茸摘みに来て、奇跡的に見つけた妻の子の母の父の母に貸した」と言う』と聞いた〉と述べた》と語る】と決めた〕と見た。",
+          "adds": "文レベル外枠：判断",
+          "japanese_quality": "C",
           "weirdness": 5,
           "dimension": "引用・伝聞",
-          "extension_type": "sentence_wrapper_benchmark"
+          "wrapper_depth": 6,
+          "wrapper_id": "judge",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "たみ",
+              "display": "タミ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "るみとたみとためきとるたかとたべのとたいきとういとたしかにははのちちのははのこのまつたけつみにきてきせきてきにみつけたつまのこのははのちちのははにかしたというときいたとのべたとかたるときめたとみたとみる",
+          "display": "ルミと［タミと〔タメキと【ルタカと《田部野と〈大樹と『ウイと「確かに、母の父の母のこの松茸摘みに来て、奇跡的に見つけた妻の子の母の父の母に貸した」と言う』と聞いた〉と述べた》と語る】と決めた〕と見た］と見る。",
+          "adds": "文レベル外枠：解釈",
+          "japanese_quality": "C",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 7,
+          "wrapper_id": "interpret",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "るみ",
+              "display": "ルミ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "たいかとるみとたみとためきとるたかとたべのとたいきとういとたしかにははのちちのははのこのまつたけつみにきてきせきてきにみつけたつまのこのははのちちのははにかしたというときいたとのべたとかたるときめたとみたとみるとかいた",
+          "display": "対価と（ルミと［タミと〔タメキと【ルタカと《田部野と〈大樹と『ウイと「確かに、母の父の母のこの松茸摘みに来て、奇跡的に見つけた妻の子の母の父の母に貸した」と言う』と聞いた〉と述べた》と語る】と決めた〕と見た］と見る）と書いた。",
+          "adds": "文レベル外枠：記述",
+          "japanese_quality": "C",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 8,
+          "wrapper_id": "write",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "たいか",
+              "display": "対価",
+              "kind": "abstract"
+            }
+          ]
+        },
+        {
+          "reading": "だいせのたいかとるみとたみとためきとるたかとたべのとたいきとういとたしかにははのちちのははのこのまつたけつみにきてきせきてきにみつけたつまのこのははのちちのははにかしたというときいたとのべたとかたるときめたとみたとみるとかいたのせいだ",
+          "display": "ダイセの｛対価と（ルミと［タミと〔タメキと【ルタカと《田部野と〈大樹と『ウイと「確かに、母の父の母のこの松茸摘みに来て、奇跡的に見つけた妻の子の母の父の母に貸した」と言う』と聞いた〉と述べた》と語る】と決めた〕と見た］と見る）と書いた｝のせいだ。",
+          "adds": "文レベル外枠：理由化",
+          "japanese_quality": "C",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 9,
+          "wrapper_id": "cause",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "だいせ",
+              "display": "ダイセ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "だんなきろくのだいせのたいかとるみとたみとためきとるたかとたべのとたいきとういとたしかにははのちちのははのこのまつたけつみにきてきせきてきにみつけたつまのこのははのちちのははにかしたというときいたとのべたとかたるときめたとみたとみるとかいたのせいだのくろきなんだ",
+          "display": "旦那、記録の＜ダイセの｛対価と（ルミと［タミと〔タメキと【ルタカと《田部野と〈大樹と『ウイと「確かに、母の父の母のこの松茸摘みに来て、奇跡的に見つけた妻の子の母の父の母に貸した」と言う』と聞いた〉と述べた》と語る】と決めた〕と見た］と見る）と書いた｝のせいだ＞の黒木なんだ。",
+          "adds": "文レベル外枠：記録・同定",
+          "japanese_quality": "C",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 10,
+          "wrapper_id": "record-identity",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "だんな",
+              "display": "旦那",
+              "kind": "role"
+            },
+            {
+              "reading": "きろく",
+              "display": "記録",
+              "kind": "common"
+            },
+            {
+              "reading": "くろき",
+              "display": "黒木",
+              "kind": "person"
+            }
+          ]
         }
-      ]
+      ],
+      "collision_policy": "outer nouns must not repeat inside/outside"
     },
     {
       "id": "quote-garden",
@@ -1308,49 +1425,191 @@
           "adds": "引用する元の文",
           "japanese_quality": "B+",
           "weirdness": 5,
-          "dimension": "引用・伝聞"
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 0
         },
         {
-          "reading": "たいきとたしかにははのちちのははのこのにわのたきのきたのわにのこのははのちちのははにかしたときいた",
-          "display": "大樹と「確かに、母の父の母のこの庭の滝の北のワニの子の母の父の母に貸した」と聞いた。",
-          "adds": "伝聞",
+          "reading": "ういとたしかにははのちちのははのこのにわのたきのきたのわにのこのははのちちのははにかしたという",
+          "display": "ウイと「確かに、母の父の母のこの庭の滝の北のワニの子の母の父の母に貸した」と言う。",
+          "adds": "文レベル外枠：発言",
+          "japanese_quality": "B+",
+          "weirdness": 3,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 1,
+          "wrapper_id": "say",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "うい",
+              "display": "ウイ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "たいきとういとたしかにははのちちのははのこのにわのたきのきたのわにのこのははのちちのははにかしたというときいた",
+          "display": "大樹と『ウイと「確かに、母の父の母のこの庭の滝の北のワニの子の母の父の母に貸した」と言う』と聞いた。",
+          "adds": "文レベル外枠：伝聞",
           "japanese_quality": "B+",
           "weirdness": 4,
-          "dimension": "引用・伝聞"
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 2,
+          "wrapper_id": "hear",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "たいき",
+              "display": "大樹",
+              "kind": "person"
+            }
+          ]
         },
         {
-          "reading": "たみとたいきとたしかにははのちちのははのこのにわのたきのきたのわにのこのははのちちのははにかしたときいたとみた",
-          "display": "タミと『大樹と「確かに、母の父の母のこの庭の滝の北のワニの子の母の父の母に貸した」と聞いた』と見た。",
-          "adds": "判断",
-          "japanese_quality": "B+",
+          "reading": "たべのとたいきとういとたしかにははのちちのははのこのにわのたきのきたのわにのこのははのちちのははにかしたというときいたとのべた",
+          "display": "田部野と〈大樹と『ウイと「確かに、母の父の母のこの庭の滝の北のワニの子の母の父の母に貸した」と言う』と聞いた〉と述べた。",
+          "adds": "文レベル外枠：陳述",
+          "japanese_quality": "B",
           "weirdness": 4,
-          "dimension": "引用・伝聞"
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 3,
+          "wrapper_id": "state",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "たべの",
+              "display": "田部野",
+              "kind": "person"
+            }
+          ]
         },
         {
-          "reading": "るみとたみとたいきとたしかにははのちちのははのこのにわのたきのきたのわにのこのははのちちのははにかしたときいたとみたとみる",
-          "display": "ルミと「タミと『大樹と「確かに、母の父の母のこの庭の滝の北のワニの子の母の父の母に貸した」と聞いた』と見た」と見る。",
-          "adds": "解釈",
+          "reading": "るたかとたべのとたいきとういとたしかにははのちちのははのこのにわのたきのきたのわにのこのははのちちのははにかしたというときいたとのべたとかたる",
+          "display": "ルタカと《田部野と〈大樹と『ウイと「確かに、母の父の母のこの庭の滝の北のワニの子の母の父の母に貸した」と言う』と聞いた〉と述べた》と語る。",
+          "adds": "文レベル外枠：語り",
           "japanese_quality": "B",
           "weirdness": 5,
-          "dimension": "引用・伝聞"
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 4,
+          "wrapper_id": "narrate",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "るたか",
+              "display": "ルタカ",
+              "kind": "person"
+            }
+          ]
         },
         {
-          "reading": "たいかとるみとたみとたいきとたしかにははのちちのははのこのにわのたきのきたのわにのこのははのちちのははにかしたときいたとみたとみるとかいた",
-          "display": "対価と『ルミと「タミと『大樹と「確かに、母の父の母のこの庭の滝の北のワニの子の母の父の母に貸した」と聞いた』と見た」と見る』と書いた。",
-          "adds": "記述",
+          "reading": "ためきとるたかとたべのとたいきとういとたしかにははのちちのははのこのにわのたきのきたのわにのこのははのちちのははにかしたというときいたとのべたとかたるときめた",
+          "display": "タメキと【ルタカと《田部野と〈大樹と『ウイと「確かに、母の父の母のこの庭の滝の北のワニの子の母の父の母に貸した」と言う』と聞いた〉と述べた》と語る】と決めた。",
+          "adds": "文レベル外枠：決定",
           "japanese_quality": "B",
           "weirdness": 5,
-          "dimension": "引用・伝聞"
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 5,
+          "wrapper_id": "decide",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "ためき",
+              "display": "タメキ",
+              "kind": "person"
+            }
+          ]
         },
         {
-          "reading": "たいきとたいかとるみとたみとたいきとたしかにははのちちのははのこのにわのたきのきたのわにのこのははのちちのははにかしたときいたとみたとみるとかいたときいた",
-          "display": "大樹と「対価と『ルミと「タミと『大樹と「確かに、母の父の母のこの庭の滝の北のワニの子の母の父の母に貸した」と聞いた』と見た」と見る』と書いた」と聞いた。",
-          "adds": "再伝聞",
-          "japanese_quality": "B",
+          "reading": "たみとためきとるたかとたべのとたいきとういとたしかにははのちちのははのこのにわのたきのきたのわにのこのははのちちのははにかしたというときいたとのべたとかたるときめたとみた",
+          "display": "タミと〔タメキと【ルタカと《田部野と〈大樹と『ウイと「確かに、母の父の母のこの庭の滝の北のワニの子の母の父の母に貸した」と言う』と聞いた〉と述べた》と語る】と決めた〕と見た。",
+          "adds": "文レベル外枠：判断",
+          "japanese_quality": "C",
           "weirdness": 5,
-          "dimension": "引用・伝聞"
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 6,
+          "wrapper_id": "judge",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "たみ",
+              "display": "タミ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "るみとたみとためきとるたかとたべのとたいきとういとたしかにははのちちのははのこのにわのたきのきたのわにのこのははのちちのははにかしたというときいたとのべたとかたるときめたとみたとみる",
+          "display": "ルミと［タミと〔タメキと【ルタカと《田部野と〈大樹と『ウイと「確かに、母の父の母のこの庭の滝の北のワニの子の母の父の母に貸した」と言う』と聞いた〉と述べた》と語る】と決めた〕と見た］と見る。",
+          "adds": "文レベル外枠：解釈",
+          "japanese_quality": "C",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 7,
+          "wrapper_id": "interpret",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "るみ",
+              "display": "ルミ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "たいかとるみとたみとためきとるたかとたべのとたいきとういとたしかにははのちちのははのこのにわのたきのきたのわにのこのははのちちのははにかしたというときいたとのべたとかたるときめたとみたとみるとかいた",
+          "display": "対価と（ルミと［タミと〔タメキと【ルタカと《田部野と〈大樹と『ウイと「確かに、母の父の母のこの庭の滝の北のワニの子の母の父の母に貸した」と言う』と聞いた〉と述べた》と語る】と決めた〕と見た］と見る）と書いた。",
+          "adds": "文レベル外枠：記述",
+          "japanese_quality": "C",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 8,
+          "wrapper_id": "write",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "たいか",
+              "display": "対価",
+              "kind": "abstract"
+            }
+          ]
+        },
+        {
+          "reading": "だいせのたいかとるみとたみとためきとるたかとたべのとたいきとういとたしかにははのちちのははのこのにわのたきのきたのわにのこのははのちちのははにかしたというときいたとのべたとかたるときめたとみたとみるとかいたのせいだ",
+          "display": "ダイセの｛対価と（ルミと［タミと〔タメキと【ルタカと《田部野と〈大樹と『ウイと「確かに、母の父の母のこの庭の滝の北のワニの子の母の父の母に貸した」と言う』と聞いた〉と述べた》と語る】と決めた〕と見た］と見る）と書いた｝のせいだ。",
+          "adds": "文レベル外枠：理由化",
+          "japanese_quality": "C",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 9,
+          "wrapper_id": "cause",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "だいせ",
+              "display": "ダイセ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "だんなきろくのだいせのたいかとるみとたみとためきとるたかとたべのとたいきとういとたしかにははのちちのははのこのにわのたきのきたのわにのこのははのちちのははにかしたというときいたとのべたとかたるときめたとみたとみるとかいたのせいだのくろきなんだ",
+          "display": "旦那、記録の＜ダイセの｛対価と（ルミと［タミと〔タメキと【ルタカと《田部野と〈大樹と『ウイと「確かに、母の父の母のこの庭の滝の北のワニの子の母の父の母に貸した」と言う』と聞いた〉と述べた》と語る】と決めた〕と見た］と見る）と書いた｝のせいだ＞の黒木なんだ。",
+          "adds": "文レベル外枠：記録・同定",
+          "japanese_quality": "C",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 10,
+          "wrapper_id": "record-identity",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "だんな",
+              "display": "旦那",
+              "kind": "role"
+            },
+            {
+              "reading": "きろく",
+              "display": "記録",
+              "kind": "common"
+            },
+            {
+              "reading": "くろき",
+              "display": "黒木",
+              "kind": "person"
+            }
+          ]
         }
-      ]
+      ],
+      "collision_policy": "outer nouns must not repeat inside/outside"
     },
     {
       "id": "quote-reason",
@@ -1367,49 +1626,174 @@
           "adds": "引用する元の文",
           "japanese_quality": "B+",
           "weirdness": 5,
-          "dimension": "引用・伝聞"
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 0
         },
         {
-          "reading": "たいきとだいせのははのこのにわのたきのきたのわにのこのははのせいだときいた",
-          "display": "大樹と「ダイセの母のこの庭の滝の北のワニの子の母のせいだ」と聞いた。",
-          "adds": "伝聞",
+          "reading": "ういとだいせのははのこのにわのたきのきたのわにのこのははのせいだという",
+          "display": "ウイと「ダイセの母のこの庭の滝の北のワニの子の母のせいだ」と言う。",
+          "adds": "文レベル外枠：発言",
+          "japanese_quality": "B+",
+          "weirdness": 3,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 1,
+          "wrapper_id": "say",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "うい",
+              "display": "ウイ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "たいきとういとだいせのははのこのにわのたきのきたのわにのこのははのせいだというときいた",
+          "display": "大樹と『ウイと「ダイセの母のこの庭の滝の北のワニの子の母のせいだ」と言う』と聞いた。",
+          "adds": "文レベル外枠：伝聞",
           "japanese_quality": "B+",
           "weirdness": 4,
-          "dimension": "引用・伝聞"
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 2,
+          "wrapper_id": "hear",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "たいき",
+              "display": "大樹",
+              "kind": "person"
+            }
+          ]
         },
         {
-          "reading": "たみとたいきとだいせのははのこのにわのたきのきたのわにのこのははのせいだときいたとみた",
-          "display": "タミと『大樹と「ダイセの母のこの庭の滝の北のワニの子の母のせいだ」と聞いた』と見た。",
-          "adds": "判断",
-          "japanese_quality": "B+",
+          "reading": "たべのとたいきとういとだいせのははのこのにわのたきのきたのわにのこのははのせいだというときいたとのべた",
+          "display": "田部野と〈大樹と『ウイと「ダイセの母のこの庭の滝の北のワニの子の母のせいだ」と言う』と聞いた〉と述べた。",
+          "adds": "文レベル外枠：陳述",
+          "japanese_quality": "B",
           "weirdness": 4,
-          "dimension": "引用・伝聞"
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 3,
+          "wrapper_id": "state",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "たべの",
+              "display": "田部野",
+              "kind": "person"
+            }
+          ]
         },
         {
-          "reading": "るみとたみとたいきとだいせのははのこのにわのたきのきたのわにのこのははのせいだときいたとみたとみる",
-          "display": "ルミと「タミと『大樹と「ダイセの母のこの庭の滝の北のワニの子の母のせいだ」と聞いた』と見た」と見る。",
-          "adds": "解釈",
+          "reading": "るたかとたべのとたいきとういとだいせのははのこのにわのたきのきたのわにのこのははのせいだというときいたとのべたとかたる",
+          "display": "ルタカと《田部野と〈大樹と『ウイと「ダイセの母のこの庭の滝の北のワニの子の母のせいだ」と言う』と聞いた〉と述べた》と語る。",
+          "adds": "文レベル外枠：語り",
           "japanese_quality": "B",
           "weirdness": 5,
-          "dimension": "引用・伝聞"
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 4,
+          "wrapper_id": "narrate",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "るたか",
+              "display": "ルタカ",
+              "kind": "person"
+            }
+          ]
         },
         {
-          "reading": "たいかとるみとたみとたいきとだいせのははのこのにわのたきのきたのわにのこのははのせいだときいたとみたとみるとかいた",
-          "display": "対価と『ルミと「タミと『大樹と「ダイセの母のこの庭の滝の北のワニの子の母のせいだ」と聞いた』と見た」と見る』と書いた。",
-          "adds": "記述",
+          "reading": "ためきとるたかとたべのとたいきとういとだいせのははのこのにわのたきのきたのわにのこのははのせいだというときいたとのべたとかたるときめた",
+          "display": "タメキと【ルタカと《田部野と〈大樹と『ウイと「ダイセの母のこの庭の滝の北のワニの子の母のせいだ」と言う』と聞いた〉と述べた》と語る】と決めた。",
+          "adds": "文レベル外枠：決定",
           "japanese_quality": "B",
           "weirdness": 5,
-          "dimension": "引用・伝聞"
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 5,
+          "wrapper_id": "decide",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "ためき",
+              "display": "タメキ",
+              "kind": "person"
+            }
+          ]
         },
         {
-          "reading": "たいきとたいかとるみとたみとたいきとだいせのははのこのにわのたきのきたのわにのこのははのせいだときいたとみたとみるとかいたときいた",
-          "display": "大樹と「対価と『ルミと「タミと『大樹と「ダイセの母のこの庭の滝の北のワニの子の母のせいだ」と聞いた』と見た」と見る』と書いた」と聞いた。",
-          "adds": "再伝聞",
-          "japanese_quality": "B",
+          "reading": "たみとためきとるたかとたべのとたいきとういとだいせのははのこのにわのたきのきたのわにのこのははのせいだというときいたとのべたとかたるときめたとみた",
+          "display": "タミと〔タメキと【ルタカと《田部野と〈大樹と『ウイと「ダイセの母のこの庭の滝の北のワニの子の母のせいだ」と言う』と聞いた〉と述べた》と語る】と決めた〕と見た。",
+          "adds": "文レベル外枠：判断",
+          "japanese_quality": "C",
           "weirdness": 5,
-          "dimension": "引用・伝聞"
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 6,
+          "wrapper_id": "judge",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "たみ",
+              "display": "タミ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "るみとたみとためきとるたかとたべのとたいきとういとだいせのははのこのにわのたきのきたのわにのこのははのせいだというときいたとのべたとかたるときめたとみたとみる",
+          "display": "ルミと［タミと〔タメキと【ルタカと《田部野と〈大樹と『ウイと「ダイセの母のこの庭の滝の北のワニの子の母のせいだ」と言う』と聞いた〉と述べた》と語る】と決めた〕と見た］と見る。",
+          "adds": "文レベル外枠：解釈",
+          "japanese_quality": "C",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 7,
+          "wrapper_id": "interpret",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "るみ",
+              "display": "ルミ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "たいかとるみとたみとためきとるたかとたべのとたいきとういとだいせのははのこのにわのたきのきたのわにのこのははのせいだというときいたとのべたとかたるときめたとみたとみるとかいた",
+          "display": "対価と（ルミと［タミと〔タメキと【ルタカと《田部野と〈大樹と『ウイと「ダイセの母のこの庭の滝の北のワニの子の母のせいだ」と言う』と聞いた〉と述べた》と語る】と決めた〕と見た］と見る）と書いた。",
+          "adds": "文レベル外枠：記述",
+          "japanese_quality": "C",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 8,
+          "wrapper_id": "write",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "たいか",
+              "display": "対価",
+              "kind": "abstract"
+            }
+          ]
+        },
+        {
+          "reading": "だんなきろくのたいかとるみとたみとためきとるたかとたべのとたいきとういとだいせのははのこのにわのたきのきたのわにのこのははのせいだというときいたとのべたとかたるときめたとみたとみるとかいたのくろきなんだ",
+          "display": "旦那、記録の｛対価と（ルミと［タミと〔タメキと【ルタカと《田部野と〈大樹と『ウイと「ダイセの母のこの庭の滝の北のワニの子の母のせいだ」と言う』と聞いた〉と述べた》と語る】と決めた〕と見た］と見る）と書いた｝の黒木なんだ。",
+          "adds": "文レベル外枠：記録・同定",
+          "japanese_quality": "C",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 9,
+          "wrapper_id": "record-identity",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "だんな",
+              "display": "旦那",
+              "kind": "role"
+            },
+            {
+              "reading": "きろく",
+              "display": "記録",
+              "kind": "common"
+            },
+            {
+              "reading": "くろき",
+              "display": "黒木",
+              "kind": "person"
+            }
+          ]
         }
-      ]
+      ],
+      "collision_policy": "outer nouns must not repeat inside/outside"
     },
     {
       "id": "quote-wait",
@@ -1426,53 +1810,213 @@
           "adds": "引用する元の文",
           "japanese_quality": "B+",
           "weirdness": 3,
-          "dimension": "引用・伝聞"
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 0
         },
         {
-          "reading": "たいきとつまもちちのははのこのななのこのははのちちもまつときいた",
-          "display": "大樹と「妻も父の母のこのナナの子の母の父も待つ」と聞いた。",
-          "adds": "伝聞",
+          "reading": "ういとつまもちちのははのこのななのこのははのちちもまつという",
+          "display": "ウイと「妻も父の母のこのナナの子の母の父も待つ」と言う。",
+          "adds": "文レベル外枠：発言",
+          "japanese_quality": "B+",
+          "weirdness": 3,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 1,
+          "wrapper_id": "say",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "うい",
+              "display": "ウイ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "たいきとういとつまもちちのははのこのななのこのははのちちもまつというときいた",
+          "display": "大樹と『ウイと「妻も父の母のこのナナの子の母の父も待つ」と言う』と聞いた。",
+          "adds": "文レベル外枠：伝聞",
           "japanese_quality": "B+",
           "weirdness": 4,
-          "dimension": "引用・伝聞"
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 2,
+          "wrapper_id": "hear",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "たいき",
+              "display": "大樹",
+              "kind": "person"
+            }
+          ]
         },
         {
-          "reading": "たみとたいきとつまもちちのははのこのななのこのははのちちもまつときいたとみた",
-          "display": "タミと『大樹と「妻も父の母のこのナナの子の母の父も待つ」と聞いた』と見た。",
-          "adds": "判断",
-          "japanese_quality": "B+",
+          "reading": "たべのとたいきとういとつまもちちのははのこのななのこのははのちちもまつというときいたとのべた",
+          "display": "田部野と〈大樹と『ウイと「妻も父の母のこのナナの子の母の父も待つ」と言う』と聞いた〉と述べた。",
+          "adds": "文レベル外枠：陳述",
+          "japanese_quality": "B",
           "weirdness": 4,
-          "dimension": "引用・伝聞"
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 3,
+          "wrapper_id": "state",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "たべの",
+              "display": "田部野",
+              "kind": "person"
+            }
+          ]
         },
         {
-          "reading": "るみとたみとたいきとつまもちちのははのこのななのこのははのちちもまつときいたとみたとみる",
-          "display": "ルミと「タミと『大樹と「妻も父の母のこのナナの子の母の父も待つ」と聞いた』と見た」と見る。",
-          "adds": "解釈",
+          "reading": "るたかとたべのとたいきとういとつまもちちのははのこのななのこのははのちちもまつというときいたとのべたとかたる",
+          "display": "ルタカと《田部野と〈大樹と『ウイと「妻も父の母のこのナナの子の母の父も待つ」と言う』と聞いた〉と述べた》と語る。",
+          "adds": "文レベル外枠：語り",
           "japanese_quality": "B",
           "weirdness": 5,
-          "dimension": "引用・伝聞"
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 4,
+          "wrapper_id": "narrate",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "るたか",
+              "display": "ルタカ",
+              "kind": "person"
+            }
+          ]
         },
         {
-          "reading": "たいかとるみとたみとたいきとつまもちちのははのこのななのこのははのちちもまつときいたとみたとみるとかいた",
-          "display": "対価と『ルミと「タミと『大樹と「妻も父の母のこのナナの子の母の父も待つ」と聞いた』と見た」と見る』と書いた。",
-          "adds": "記述",
+          "reading": "ためきとるたかとたべのとたいきとういとつまもちちのははのこのななのこのははのちちもまつというときいたとのべたとかたるときめた",
+          "display": "タメキと【ルタカと《田部野と〈大樹と『ウイと「妻も父の母のこのナナの子の母の父も待つ」と言う』と聞いた〉と述べた》と語る】と決めた。",
+          "adds": "文レベル外枠：決定",
           "japanese_quality": "B",
           "weirdness": 5,
-          "dimension": "引用・伝聞"
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 5,
+          "wrapper_id": "decide",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "ためき",
+              "display": "タメキ",
+              "kind": "person"
+            }
+          ]
         },
         {
-          "reading": "たいきとたいかとるみとたみとたいきとつまもちちのははのこのななのこのははのちちもまつときいたとみたとみるとかいたときいた",
-          "display": "大樹と「対価と『ルミと「タミと『大樹と「妻も父の母のこのナナの子の母の父も待つ」と聞いた』と見た」と見る』と書いた」と聞いた。",
-          "adds": "再伝聞",
-          "japanese_quality": "B",
+          "reading": "たみとためきとるたかとたべのとたいきとういとつまもちちのははのこのななのこのははのちちもまつというときいたとのべたとかたるときめたとみた",
+          "display": "タミと〔タメキと【ルタカと《田部野と〈大樹と『ウイと「妻も父の母のこのナナの子の母の父も待つ」と言う』と聞いた〉と述べた》と語る】と決めた〕と見た。",
+          "adds": "文レベル外枠：判断",
+          "japanese_quality": "C",
           "weirdness": 5,
-          "dimension": "引用・伝聞"
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 6,
+          "wrapper_id": "judge",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "たみ",
+              "display": "タミ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "るみとたみとためきとるたかとたべのとたいきとういとつまもちちのははのこのななのこのははのちちもまつというときいたとのべたとかたるときめたとみたとみる",
+          "display": "ルミと［タミと〔タメキと【ルタカと《田部野と〈大樹と『ウイと「妻も父の母のこのナナの子の母の父も待つ」と言う』と聞いた〉と述べた》と語る】と決めた〕と見た］と見る。",
+          "adds": "文レベル外枠：解釈",
+          "japanese_quality": "C",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 7,
+          "wrapper_id": "interpret",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "るみ",
+              "display": "ルミ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "たいかとるみとたみとためきとるたかとたべのとたいきとういとつまもちちのははのこのななのこのははのちちもまつというときいたとのべたとかたるときめたとみたとみるとかいた",
+          "display": "対価と（ルミと［タミと〔タメキと【ルタカと《田部野と〈大樹と『ウイと「妻も父の母のこのナナの子の母の父も待つ」と言う』と聞いた〉と述べた》と語る】と決めた〕と見た］と見る）と書いた。",
+          "adds": "文レベル外枠：記述",
+          "japanese_quality": "C",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 8,
+          "wrapper_id": "write",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "たいか",
+              "display": "対価",
+              "kind": "abstract"
+            }
+          ]
+        },
+        {
+          "reading": "だいせのたいかとるみとたみとためきとるたかとたべのとたいきとういとつまもちちのははのこのななのこのははのちちもまつというときいたとのべたとかたるときめたとみたとみるとかいたのせいだ",
+          "display": "ダイセの｛対価と（ルミと［タミと〔タメキと【ルタカと《田部野と〈大樹と『ウイと「妻も父の母のこのナナの子の母の父も待つ」と言う』と聞いた〉と述べた》と語る】と決めた〕と見た］と見る）と書いた｝のせいだ。",
+          "adds": "文レベル外枠：理由化",
+          "japanese_quality": "C",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 9,
+          "wrapper_id": "cause",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "だいせ",
+              "display": "ダイセ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "だんなきろくのだいせのたいかとるみとたみとためきとるたかとたべのとたいきとういとつまもちちのははのこのななのこのははのちちもまつというときいたとのべたとかたるときめたとみたとみるとかいたのせいだのくろきなんだ",
+          "display": "旦那、記録の＜ダイセの｛対価と（ルミと［タミと〔タメキと【ルタカと《田部野と〈大樹と『ウイと「妻も父の母のこのナナの子の母の父も待つ」と言う』と聞いた〉と述べた》と語る】と決めた〕と見た］と見る）と書いた｝のせいだ＞の黒木なんだ。",
+          "adds": "文レベル外枠：記録・同定",
+          "japanese_quality": "C",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 10,
+          "wrapper_id": "record-identity",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "だんな",
+              "display": "旦那",
+              "kind": "role"
+            },
+            {
+              "reading": "きろく",
+              "display": "記録",
+              "kind": "common"
+            },
+            {
+              "reading": "くろき",
+              "display": "黒木",
+              "kind": "person"
+            }
+          ]
         }
-      ]
+      ],
+      "collision_policy": "outer nouns must not repeat inside/outside"
     }
   ],
   "quality_note": "物語型は全段階を独立した日本語文として読める形へ修正。stageごとに行為→相手→経緯/関係を追加する。",
   "sentence_level_wrappers": [
+    {
+      "id": "say",
+      "left_reading": "ういと",
+      "left_display": "ウイと",
+      "right_reading": "という",
+      "right_display": "と言う。",
+      "semantic": "発言",
+      "quality": "B+",
+      "weirdness_floor": 3,
+      "auto_priority": 10,
+      "outer_lexemes": [
+        {
+          "reading": "うい",
+          "display": "ウイ",
+          "kind": "person"
+        }
+      ]
+    },
     {
       "id": "hear",
       "left_reading": "たいきと",
@@ -1481,7 +2025,87 @@
       "right_display": "と聞いた。",
       "semantic": "伝聞",
       "quality": "B+",
-      "weirdness_floor": 3
+      "weirdness_floor": 3,
+      "auto_priority": 20,
+      "outer_lexemes": [
+        {
+          "reading": "たいき",
+          "display": "大樹",
+          "kind": "person"
+        }
+      ]
+    },
+    {
+      "id": "state",
+      "left_reading": "たべのと",
+      "left_display": "田部野と",
+      "right_reading": "とのべた",
+      "right_display": "と述べた。",
+      "semantic": "陳述",
+      "quality": "B+",
+      "weirdness_floor": 3,
+      "auto_priority": 30,
+      "outer_lexemes": [
+        {
+          "reading": "たべの",
+          "display": "田部野",
+          "kind": "person"
+        }
+      ]
+    },
+    {
+      "id": "ask",
+      "left_reading": "うとと",
+      "left_display": "ウトと",
+      "right_reading": "ととう",
+      "right_display": "と問う。",
+      "semantic": "質問",
+      "quality": "B",
+      "weirdness_floor": 3,
+      "auto_priority": 40,
+      "outer_lexemes": [
+        {
+          "reading": "うと",
+          "display": "ウト",
+          "kind": "person"
+        }
+      ]
+    },
+    {
+      "id": "narrate",
+      "left_reading": "るたかと",
+      "left_display": "ルタカと",
+      "right_reading": "とかたる",
+      "right_display": "と語る。",
+      "semantic": "語り",
+      "quality": "B",
+      "weirdness_floor": 3,
+      "auto_priority": 50,
+      "outer_lexemes": [
+        {
+          "reading": "るたか",
+          "display": "ルタカ",
+          "kind": "person"
+        }
+      ]
+    },
+    {
+      "id": "decide",
+      "left_reading": "ためきと",
+      "left_display": "タメキと",
+      "right_reading": "ときめた",
+      "right_display": "と決めた。",
+      "semantic": "決定",
+      "quality": "B",
+      "weirdness_floor": 4,
+      "auto_priority": 60,
+      "outer_lexemes": [
+        {
+          "reading": "ためき",
+          "display": "タメキ",
+          "kind": "person"
+        }
+      ]
     },
     {
       "id": "judge",
@@ -1491,7 +2115,15 @@
       "right_display": "と見た。",
       "semantic": "判断",
       "quality": "B+",
-      "weirdness_floor": 3
+      "weirdness_floor": 3,
+      "auto_priority": 70,
+      "outer_lexemes": [
+        {
+          "reading": "たみ",
+          "display": "タミ",
+          "kind": "person"
+        }
+      ]
     },
     {
       "id": "interpret",
@@ -1501,7 +2133,15 @@
       "right_display": "と見る。",
       "semantic": "解釈",
       "quality": "B",
-      "weirdness_floor": 3
+      "weirdness_floor": 3,
+      "auto_priority": 80,
+      "outer_lexemes": [
+        {
+          "reading": "るみ",
+          "display": "ルミ",
+          "kind": "person"
+        }
+      ]
     },
     {
       "id": "write",
@@ -1511,7 +2151,15 @@
       "right_display": "と書いた。",
       "semantic": "記述",
       "quality": "B",
-      "weirdness_floor": 4
+      "weirdness_floor": 4,
+      "auto_priority": 90,
+      "outer_lexemes": [
+        {
+          "reading": "たいか",
+          "display": "対価",
+          "kind": "abstract"
+        }
+      ]
     },
     {
       "id": "cause",
@@ -1521,7 +2169,15 @@
       "right_display": "のせいだ。",
       "semantic": "理由化",
       "quality": "B",
-      "weirdness_floor": 4
+      "weirdness_floor": 4,
+      "auto_priority": 100,
+      "outer_lexemes": [
+        {
+          "reading": "だいせ",
+          "display": "ダイセ",
+          "kind": "person"
+        }
+      ]
     },
     {
       "id": "record-identity",
@@ -1531,7 +2187,31 @@
       "right_display": "の黒木なんだ。",
       "semantic": "記録・同定",
       "quality": "B-",
-      "weirdness_floor": 5
+      "weirdness_floor": 5,
+      "auto_priority": 110,
+      "outer_lexemes": [
+        {
+          "reading": "だんな",
+          "display": "旦那",
+          "kind": "role"
+        },
+        {
+          "reading": "きろく",
+          "display": "記録",
+          "kind": "common"
+        },
+        {
+          "reading": "くろき",
+          "display": "黒木",
+          "kind": "person"
+        }
+      ]
     }
-  ]
+  ],
+  "noun_collision_policy": {
+    "enabled": true,
+    "scope": "sentence_wrapper",
+    "rule": "Do not use a wrapper when any of its outer_lexemes already appears in the inner sentence by display or reading.",
+    "include_prior_wrappers": true
+  }
 }
