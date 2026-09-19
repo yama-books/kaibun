@@ -1249,3 +1249,133 @@ Route A が原画像アクセス待ちになったため、
 ## 再開時の最短一文
 
 **「HANDOFF 23節から再開。v0.43は完了・CI成功。Route Aの画像確認を再試行し、詰まる場合は秋・月12首から可変span辞書 v0.44 を作る。」**
+
+
+---
+
+# 24. 2026-09-19 17:18 JST 研究generator実装チェックポイント
+
+## 全体進捗目安
+
+- 歴史回文研究・生成原理の確立: **約78%**
+- 最終目標「怪文回文メーカーへ安全に統合し、実用生成品質まで持っていく」: **約60%**
+
+これは厳密な工数比ではなく、残課題の難度を含む研究進捗の目安。
+公開UI統合・実出力品質評価・別scene family拡張がまだ残るため、研究層の進捗より全体進捗は低く見る。
+
+## v0.59 central-E-swap研究generator
+
+実装:
+- `scripts/generate-central-pivot-research.mjs`
+- `data/generated-central-pivot-research-v59.json`
+
+機能:
+- repeated-D の E3-only 交換を決定論的に列挙
+- 12候補を生成
+- v0.57 fixtureと一致確認
+- 候補ごとに gate trace を保持
+- strict palindrome / meter / stage / trace drift を検査
+
+CI:
+- `node scripts/generate-central-pivot-research.mjs --check`
+- GitHub Actionsで成功確認済み
+
+確認済みrun:
+- run `35431653368`
+- conclusion: **success**
+- head: `ceeeb579bd136b3015598c4b020bcece4d8fa5f6`
+
+fixture内容比較を追加したcommit:
+- `38a55f97dfd27d4dd88d209bcf1497bf8beb9290`
+- Validate run `35431689810`: **success**
+
+## v0.60 scene-microgrammar研究generator
+
+実装:
+- `scripts/generate-scene-microgrammar-research.mjs`
+- `data/generated-scene-microgrammar-v60.json`
+
+対象scene:
+- `autumn-night-garden-moon`
+
+再現:
+- shoju-035
+- hybrid-008
+- hybrid-016
+- hybrid-022
+
+構造:
+- A 2択 × E 2択
+- B/C/D中央回廊固定
+- total 4
+- historical source 1
+- novel cento 3
+
+CI:
+- `node scripts/generate-scene-microgrammar-research.mjs --check`
+- GitHub Actions成功確認済み
+
+確認済みrun:
+- run `35431713137`
+- conclusion: **success**
+- head: `61330ed332140a07042b1fffab4a2086f68fc53e`
+
+fixture固定:
+- `4fbbdec4a3ef87193f54ba171c4127885e7945be`
+- fixture drift検査追加:
+  `4a2460973f471ffe8317c34fb8bc9064800ddd9f`
+
+## v0.44〜v0.58で今回固まった主要理論
+
+1. topic-first: 題 → scene → phrase/factor → 31かな制約
+2. broad field一致だけでは不十分
+3. scene compatibilityが必要
+4. 同じsceneでも factor semantic role が必要
+5. central E3-only交換は現在最も安全に説明できる生成操作
+6. source-specific seamはglobal seamへ昇格させない
+7. 「動かした要素」だけtransfer判定する
+8. 全候補にgate traceを残す
+9. machineはaccepted/naturalを自動生成しない
+10. negative controlsを回帰fixtureとして残す
+
+## central-E-swapの現在のfixture
+
+新規12件:
+- deep-review-supported: hybrid-016 / hybrid-019
+- deep-review-needed-role: hybrid-002
+- hold-semantic-role-incompatible: hybrid-017
+- hold-scene-mismatch: 8件
+- automatic acceptance: 0
+
+## 史料側の現在地
+
+v0.51で:
+- B=たま: conditional-source-specific
+- D=むす: conditional-source-specific
+- D=こた: blocked継続
+
+ただし原画像/PDFを直接確認していないため:
+- source-image-confirmed昇格なし
+- wave2 v39は verified 14 / held 5 のまま
+- 50首baseline固定
+
+## 公開側
+
+- 公開UIは変更していない
+- public generatorはv0.26系のまま
+- v0.59/v0.60は research-only
+- general-factor-crossover は disabled
+
+## 次の大工程
+
+1. v0.60 fixture drift CI成功を確認
+2. 第二の positive scene family を作る
+3. 研究generator共通出力schemaへ統一
+4. modern 怪文回文向けbridge設計
+5. 限定的に公開generatorへ統合
+6. 実出力の人間的品質評価
+7. 回帰試験後に公開UI更新
+
+## 次回の最短再開文
+
+**「HANDOFF 24節から再開。全体進捗約60%。v0.59 central-E-swap と v0.60 scene-microgrammar の2研究generatorはCI成功。v0.60 fixture driftの最終CIを確認し、第二positive scene familyまたは共通generator schemaへ進む。」**
