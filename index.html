@@ -60,7 +60,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 <div class="wrap">
 <header>
   <div><h1>怪文回文メーカー</h1><div class="sub">まず、日本語として通す。そこから一段ずつ、鏡の奥へ伸ばす。</div></div>
-  <div class="badge">v0.30 / 反応まで伸びる長文化</div>
+  <div class="badge">v0.25 / 境界ずらしDNA</div>
 </header>
 
 <div class="card">
@@ -75,7 +75,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
     <span class="stat" id="recursiveStat">再帰候補 –</span>
     <span class="stat" id="pairStat">逆語ペア –</span>
     <span class="stat" id="uniqueStat">実効候補 –</span>
-    <span class="stat" id="storyStat">物語型 –</span><span class="stat" id="benchmarkStat">100かな基準 –</span><span class="stat" id="wrapperStat">外枠 –</span>
+    <span class="stat" id="storyStat">物語型 –</span><span class="stat" id="benchmarkStat">100かな基準 –</span><span class="stat" id="wrapperStat">外枠 –</span><span class="stat" id="seamStat">継ぎ目 –</span>
     <span class="stat">全件回文検証</span>
   </div>
   <div class="controls">
@@ -124,7 +124,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
   <div class="toolbar">
     <button class="primary" id="seedGen">原種から1本</button>
     <button class="dna" id="dnaGen">DNAで1本生成</button>
-    <button id="pairGen">逆語ペア</button>
+    <button id="pairGen">逆語ペア</button><button id="seamGen">継ぎ目型DNA</button>
     <button id="growCurrent">この文から伸ばす</button>
     <button id="ten">10本比較</button>
   </div>
@@ -144,7 +144,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 </div>
 
 <script>
-let data=null,rules=null,pairs=null,growth=null,layer="L1",seen=new Set(),currentShown=null;
+let data=null,rules=null,pairs=null,growth=null,seams=null,layer="L1",seen=new Set(),currentShown=null;
 let growthState={mode:"structural",dimension:"all",familyId:null,stage:0,lastCenter:null,history:{}};
 
 const $=s=>document.querySelector(s);
@@ -152,11 +152,12 @@ const rev=s=>[...s].reverse().join("");
 const isPal=s=>s===rev(s);
 
 async function init(){
-  [data,rules,pairs,growth]=await Promise.all([
+  [data,rules,pairs,growth,seams]=await Promise.all([
     fetch("./data/layered-seeds-v08.json").then(r=>r.json()),
     fetch("./data/generation-rules-v08.json").then(r=>r.json()),
     fetch("./data/reverse-lexeme-pairs-v09.json").then(r=>r.json()),
-    fetch("./data/growth-engine-v10.json").then(r=>r.json())
+    fetch("./data/growth-engine-v10.json").then(r=>r.json()),
+    fetch("./data/seam-grammar-v25.json").then(r=>r.json())
   ]);
   $("#c1").textContent=data.counts.L1+"本";
   $("#c2").textContent=data.counts.L2+"本";
@@ -328,8 +329,26 @@ function syncSentenceWrapControls(){
   $("#wrapDepth").textContent="外枠 "+d+"段 / 候補 "+compatible.length+" / 重複除外 "+(total-compatible.length);
   $("#wrapMeta").textContent="外枠 "+d;
 }
+function seamPool(){
+  if(!seams)return [];
+  return (seams.recipes||[])
+    .filter(r=>r.layer===layer && (r.weirdness??1)<=maxWeird())
+    .map(r=>({
+      display:r.display,
+      reading:r.reading,
+      family:"継ぎ目型DNA",
+      origin:"SEAM:"+r.id,
+      japanese_quality:r.japanese_quality||"A-",
+      weirdness:r.weirdness??2,
+      why:"語境界を鏡像位置とそろえず、助詞ヒンジと役割転換で全文を成立させています。境界ずらし "+(r.boundary_shift_shells||0)+" / 助詞ヒンジ "+(r.particle_hinges||0),
+      seam_recipe:r.id,
+      boundary_shift_shells:r.boundary_shift_shells||0,
+      particle_hinges:r.particle_hinges||0
+    }));
+}
+function seamOne(){show(chooseFresh(seamPool()))}
 function updateCandidateCount(){
-  const all=uniqueByReading([...pool().map(x=>({...x,origin:"原種"})),...dnaPool(true)]);
+  const all=uniqueByReading([...pool().map(x=>({...x,origin:"原種"})),...dnaPool(true),...seamPool()]);
   $("#uniqueStat").textContent="実効候補 "+all.length.toLocaleString()+"種";
 }
 function syncControls(){
@@ -337,6 +356,8 @@ function syncControls(){
   if(maxWeird()<need){$("#weird").value=need;$("#weirdVal").textContent=need}
   $("#pairGen").disabled=layer==="L3";
   $("#dnaGen").disabled=layer==="L3";
+  $("#seamGen").disabled=seamPool().length===0;
+  $("#seamGen").style.opacity=$("#seamGen").disabled?".38":"1";
 
   const structuralOption=[...$("#growthMode").options].find(o=>o.value==="structural");
   const narrativeOption=[...$("#growthMode").options].find(o=>o.value==="narrative");
@@ -661,6 +682,7 @@ $("#weird").oninput=e=>{
 $("#seedGen").onclick=seedOne;
 $("#dnaGen").onclick=dnaOne;
 $("#pairGen").onclick=pairOne;
+$("#seamGen").onclick=seamOne;
 $("#growCurrent").onclick=startGrowthFromCurrent;
 $("#wrapSentence").onclick=wrapCurrentSentence;
 $("#unwrapSentence").onclick=unwrapCurrentSentence;
@@ -670,7 +692,7 @@ $("#growAgain").onclick=growAgain;
 $("#growBack").onclick=growBack;
 $("#ten").onclick=()=>{
   const box=$("#list");box.innerHTML="";
-  const p=uniqueByReading([...pool().map(x=>({...x,origin:"原種"})),...dnaPool(true)]);
+  const p=uniqueByReading([...pool().map(x=>({...x,origin:"原種"})),...dnaPool(true),...seamPool()]);
   const used=new Set();
   for(let i=0;i<10&&used.size<p.length;i++){
     let x;do{x=p[Math.floor(Math.random()*p.length)]}while(used.has(x.reading));
