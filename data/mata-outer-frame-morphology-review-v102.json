@@ -1,0 +1,82 @@
+{
+  "version": "1.02",
+  "updated_on": "2026-09-19",
+  "title": "B=また outer-frame morphology review",
+  "purpose": "Re-evaluate the v0.64 B=また spring/plants outer-frame lane using Yamauchi's surfaced transcription and lexical analysis, without treating equal kana as morphology identity.",
+  "operation_under_review": {
+    "id": "shared-B-outer-frame-swap",
+    "changed_factor": "A",
+    "shared_B": "また",
+    "reverse_B": "たま",
+    "affected_candidates": ["hybrid-001", "hybrid-012"]
+  },
+  "source_contexts": [
+    {
+      "id": "shoju-001-komatsuhiki",
+      "title": "小松引",
+      "source_number": 1,
+      "B": "また",
+      "local_transcription": "しける葉の またひけよもつ まこのての こまつもよけひ 玉のはるけし",
+      "lexical_evidence": {
+        "explicit_nearby_verb": "引け",
+        "B_parse": "unresolved",
+        "note": "The surfaced transcription preserves また immediately before ひけ. Current evidence does not establish that this また is the same 待た- morphology as poem 10."
+      }
+    },
+    {
+      "id": "shoju-010-somokuka",
+      "title": "草木花",
+      "source_number": 10,
+      "B": "また",
+      "local_transcription": "はるのみと またるるけしき さく花は くさきしけるる 玉とみのるは",
+      "lexical_evidence": {
+        "explicit_analysis": "待た(るる)",
+        "B_parse": "待た-",
+        "note": "Yamauchi's lexical analysis explicitly gives 待た(るる), so this B is morphologically anchored as the verb stem 待た-."
+      }
+    }
+  ],
+  "evidence_source": {
+    "author": "山内潤三",
+    "title": "廻文歌の限界と効用（下）―高野山釈教長歌を頂点として―",
+    "journal": "密教文化",
+    "issue": "107",
+    "date": "1974-07-25",
+    "doi": "10.11168/jeb1947.1974.107_1",
+    "mirror_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+    "source_image_checked": false
+  },
+  "finding": {
+    "same_raw_B": true,
+    "morphology_equivalence_confirmed": false,
+    "morphology_non_equivalence_proven": false,
+    "reason": "Poem 10 explicitly supports 待た-, whereas poem 1 does not yet have an equivalent B-level parse. Raw B=また equality cannot establish a shared morphology node.",
+    "v064_source_specific_review_resolved_to": "hold-source-specific-morphology"
+  },
+  "candidate_impact": [
+    {
+      "id": "hybrid-001",
+      "status": "hold-source-specific",
+      "reopen": false,
+      "reason": "The outer-frame swap would join source contexts across B=また before morphology equivalence is established."
+    },
+    {
+      "id": "hybrid-012",
+      "status": "hold-source-specific",
+      "reopen": false,
+      "reason": "Reverse directed swap has the same unresolved shared-B identity premise."
+    }
+  ],
+  "regression_value": {
+    "negative_fixture": true,
+    "principle": "equal palindrome-cell kana do not imply morphology identity",
+    "relation_to_v100": "Independent B-slot analogue of the D=みつ normalization/source-identity guard; here the risk is source-specific morphology rather than devoicing normalization."
+  },
+  "decision": {
+    "positive_family": false,
+    "global_B_mata_rule_changed": false,
+    "B_mata_global_transferable": false,
+    "general_factor_crossover_enabled": false,
+    "next_lane": "Review the source-specific D=むす corridor, prioritizing hybrid-007."
+  }
+}
