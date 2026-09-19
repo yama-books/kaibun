@@ -2507,3 +2507,76 @@ human-review validatorにv0.98 review ID連携も追加。
 ## 再開最短文
 
 **「HANDOFF 31節から再開。全体約85%。公開v0.33・growth 53 family/366段・比較/露出/reading hint/人間評価基盤まで安定。最新コードCI green。次はhybrid-002 deep review。」**
+
+
+---
+
+# 32. 2026-09-19 hybrid-002 deep review — normalization collision 発見
+
+## 結論
+
+31節から再開し、最優先の **hybrid-002 deep review** を実施した。
+
+従来:
+- v0.55: `promising-but-source-parse-needed`
+- v0.56: `review-needed`
+- v0.57/v0.59: `deep-review-needed-role`
+
+今回の再判定:
+- **`hold-morphology-normalization-collision`**
+
+semantic-role より前の morphology gate へ差し戻す。
+
+詳細:
+- `docs/HYBRID_002_DEEP_REVIEW_V99.md`
+- `data/hybrid-002-deep-review-v99.json`
+
+## 決定的な発見
+
+`shoju-five-elements` の D=`みつ` は、
+trusted data 上の元読みでは **`みづ`（水）** であり、
+回文判定用の normalization で `みつ` になっている。
+
+一方 `shoju-068` は山内翻刻転写が
+**`みつの世の`** であり、D の morphology は未確定。
+
+したがって:
+- normalized D は両方 `みつ`
+- しかし pre-normalization reading / morphology identity は同一と確認されていない
+
+v0.34/v0.59 が normalized `sample.D` だけで repeated-D group を作ったため、
+normalization collision が起きた。
+
+これは v0.58 の `raw_kana_node_merge_forbidden` と衝突する。
+
+## hybrid-017 への波及
+
+逆向きの hybrid-017 も同じ D 同一視に依存するため、
+current pipeline では morphology gate で先に止める。
+
+ただし v0.56 の「五大列挙を壊す」という role-negative は、
+旧pipelineの研究fixtureとして保存する。
+
+## 固定方針
+
+- v0.55〜v0.59 は当時の研究履歴として**書き換えない**
+- v0.99 を correction overlay とする
+- 今後 D node を共有するときは normalized kana 一致だけでは不可
+- pre-normalization reading / morphology / source-specific parse を分離する
+- 歌68の `みつ` を「三つ」と自動確定しない。仏教語として plausible でも source review 待ち
+
+## 次の優先順位
+
+1. **normalization-aware / source-sensitive D guard を generator に実装**
+2. Route A source-image verification を再試行（とくに歌68）
+3. corrected repeated-D universe を再計算
+4. 次の positive family 探索
+
+## 進捗目安
+
+- 歴史回文研究・生成原理: **約87%**
+- 怪文回文メーカー全体目標: **約85%**
+
+進捗が大きく跳ねないのは、候補1件の昇格ではなく、
+**生成器の誤結合を1種類発見して安全側へ戻した**ため。
+これは候補数より生成原理の信頼性に効く更新である。

@@ -34,7 +34,7 @@ const pivotSurvey = JSON.parse(fs.readFileSync("data/central-pivot-exchange-surv
 const mitsuPivotExchange = JSON.parse(fs.readFileSync("data/mitsu-central-pivot-exchange-v55.json", "utf8"));
 const semanticRoleGate = JSON.parse(fs.readFileSync("data/factor-semantic-role-gate-v56.json", "utf8"));
 const pivotPipeline = JSON.parse(fs.readFileSync("data/central-pivot-candidate-pipeline-v57.json", "utf8"));
-const generatorContract = JSON.parse(fs.readFileSync("data/historical-generator-contract-v58.json", "utf8"));
+const generatorContract = JSON.parse(fs.readFileSync("data/historical-generator-contract-v58.json", "utf8"));\nconst hybrid002DeepReview = JSON.parse(fs.readFileSync("data/hybrid-002-deep-review-v99.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -466,6 +466,16 @@ const v58General=(generatorContract.supported_operations??[]).find(x=>x.id==="ge
 if(v58General?.enabled!==false)errors.push("GENERATOR CONTRACT V58 general factor crossover must remain disabled");
 if(generatorContract.trace_policy?.accepted_status_not_generated_by_machine!==true)errors.push("GENERATOR CONTRACT V58 must forbid machine accepted status");
 if((generatorContract.regression_examples?.positive??[]).sort().join(",")!==["hybrid-016","hybrid-019"].sort().join(","))errors.push("GENERATOR CONTRACT V58 positive fixtures changed");
+if(hybrid002DeepReview.version!=="0.99")errors.push(`HYBRID002 V99 version mismatch: ${hybrid002DeepReview.version}`);
+if(hybrid002DeepReview.candidate?.id!=="hybrid-002")errors.push("HYBRID002 V99 candidate id mismatch");
+if(hybrid002DeepReview.finding?.normalization_collision!==true)errors.push("HYBRID002 V99 must record normalization collision");
+if(hybrid002DeepReview.evidence?.donor_D?.pre_normalization_reading!=="みづ")errors.push("HYBRID002 V99 donor D must preserve pre-normalization みづ");
+if(hybrid002DeepReview.evidence?.host_D?.transcribed_D!=="みつ")errors.push("HYBRID002 V99 host D transcription must remain みつ");
+if(hybrid002DeepReview.evidence?.host_D?.morphology_equivalence_with_donor_confirmed!==false)errors.push("HYBRID002 V99 must not claim D morphology equivalence");
+if(hybrid002DeepReview.verdict?.current_status!=="hold-morphology-normalization-collision")errors.push("HYBRID002 V99 verdict changed");
+if(hybrid002DeepReview.verdict?.automatic_acceptance!==false||hybrid002DeepReview.verdict?.positive_fixture!==false)errors.push("HYBRID002 V99 must not promote candidate");
+if((hybrid002DeepReview.paired_impact?.affected_ids??[]).sort().join(",")!==["hybrid-002","hybrid-017"].sort().join(","))errors.push("HYBRID002 V99 paired impact set changed");
+if(hybrid002DeepReview.generator_correction?.v59_frozen_snapshot_preserved!==true)errors.push("HYBRID002 V99 must preserve v59 as historical snapshot");
 
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
@@ -505,4 +515,4 @@ console.log(`Pivot survey v54 groups: ${(pivotSurvey.groups??[]).length}`);
 console.log(`Mitsu v55 directed swaps: ${(mitsuPivotExchange.outputs??[]).length}`);
 console.log(`Semantic-role v56 cases: ${(semanticRoleGate.case_studies??[]).length}`);
 console.log(`Pivot pipeline v57: total=${(pivotPipeline.results??[]).length}, deep-review=${pivotPipeline.summary?.reaches_deep_review??0}`);
-console.log(`Generator contract v58 operations: ${(generatorContract.supported_operations??[]).length}`);
+console.log(`Generator contract v58 operations: ${(generatorContract.supported_operations??[]).length}`);\nconsole.log(`Hybrid-002 v99 verdict: ${hybrid002DeepReview.verdict?.current_status}`);
