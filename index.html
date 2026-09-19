@@ -49,6 +49,10 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 .trailItem{border-left:3px solid var(--line);padding:7px 9px;background:var(--soft);border-radius:0 8px 8px 0;font-size:12px;cursor:pointer;line-height:1.5}
 .trailItem.current{border-left-color:var(--green);background:#eef8f5;font-weight:700}
 .trailItem span{color:var(--sub);margin-right:6px}
+.wrapBox{margin-top:14px;padding-top:13px;border-top:1px solid var(--line)}
+.wrapActions{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:9px}
+.wrapActions button{border:1px solid var(--line);background:white;padding:9px 12px;border-radius:10px;cursor:pointer}
+.wrapActions #wrapSentence{background:var(--wine);border-color:var(--wine);color:white;font-weight:800}
 @media(max-width:650px){header{display:block}.badge{display:inline-block;margin-top:8px}.layers{grid-template-columns:1fr}}
 </style>
 </head>
@@ -56,7 +60,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 <div class="wrap">
 <header>
   <div><h1>怪文回文メーカー</h1><div class="sub">まず、日本語として通す。そこから一段ずつ、鏡の奥へ伸ばす。</div></div>
-  <div class="badge">v0.16 / 多系統長文化</div>
+  <div class="badge">v0.18 / 文レベル長文化</div>
 </header>
 
 <div class="card">
@@ -103,6 +107,16 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
       <button id="growBack">1段戻す</button>
     </div>
     <div class="growthTrail" id="growthTrail"></div>
+    <div class="wrapBox">
+      <b>文レベル長文化</b>
+      <div class="sub" style="font-size:12px">今の文全体を引用内容として外側から包みます。何段でも繰り返せます。</div>
+      <div class="wrapActions">
+        <select id="sentenceWrapper"></select>
+        <button id="wrapSentence">文を1段包む</button>
+        <button id="unwrapSentence">1段ほどく</button>
+        <span class="stat" id="wrapDepth">外枠 0段</span>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -154,6 +168,7 @@ async function init(){
   $("#storyStat").textContent="物語 "+(growth.verified?.narrative_family_count||0)+"系統 / "+(growth.verified?.narrative_variants||0)+"段階 / 最長 "+(growth.verified?.longest_narrative_kana||"–")+"かな";
   populateGrowthDimensions();
   populateGrowthFamilies();
+  populateSentenceWrappers();
   updatePolicy();
   seedOne();
 }
@@ -250,6 +265,29 @@ function syncGrowCurrentButton(){
   $("#growCurrent").style.opacity=m?"1":".38";
   $("#growCurrent").title=m?"この文に対応する長文化系統を開きます":"この文にはまだ長文化系統がありません";
 }
+function populateSentenceWrappers(){
+  const sel=$("#sentenceWrapper");sel.innerHTML="";
+  for(const w of growth.sentence_level_wrappers||[]){
+    const o=document.createElement("option");
+    o.value=w.id;
+    o.textContent=w.semantic+"："+w.left_display+"…"+w.right_display;
+    sel.appendChild(o);
+  }
+}
+function sentenceWrapper(){
+  return (growth.sentence_level_wrappers||[]).find(w=>w.id===$("#sentenceWrapper").value)||(growth.sentence_level_wrappers||[])[0]||null;
+}
+function stripFinalPeriod(text){return text?.endsWith("。")?text.slice(0,-1):text}
+function syncSentenceWrapControls(){
+  const canWrap=!!currentShown&&isPal(currentShown.reading)&&layer!=="L3"&&(growth.sentence_level_wrappers||[]).length>0;
+  $("#wrapSentence").disabled=!canWrap;
+  $("#unwrapSentence").disabled=!currentShown?.wrapped_from;
+  $("#wrapSentence").style.opacity=$("#wrapSentence").disabled?".38":"1";
+  $("#unwrapSentence").style.opacity=$("#unwrapSentence").disabled?".38":"1";
+  const d=currentShown?.wrap_depth||0;
+  $("#wrapDepth").textContent="外枠 "+d+"段";
+  $("#wrapMeta").textContent="外枠 "+d;
+}
 function updateCandidateCount(){
   const all=uniqueByReading([...pool().map(x=>({...x,origin:"原種"})),...dnaPool(true)]);
   $("#uniqueStat").textContent="実効候補 "+all.length.toLocaleString()+"種";
@@ -303,6 +341,7 @@ function show(x){
   $("#origin").textContent=x.origin||"原種コーパス";
   $("#why").textContent=x.why||x.rationale||"検証済み原種。";
   syncGrowCurrentButton();
+  syncSentenceWrapControls();
   const m=$("#mirror");m.innerHTML="";
   const a=[...x.reading];
   a.forEach((c,i)=>{
@@ -447,7 +486,7 @@ function growAgain(){
   if(layer!=="L1")return;
   const current=(currentShown?.growth_mode===growthState.mode&&currentShown?.growth_family===growthState.familyId)?(currentShown.growth_stage??growthState.stage):growthState.stage;
   if(growthState.mode==="structural"){show(makeGrowth(current,true));return}
-  const eligible=(growth.narrative_families||[]).filter(f=>f.id!==growthState.familyId&&f.stages.length>current);
+  const eligible=growthFamilies().filter(f=>f.id!==growthState.familyId&&f.stages.length>current);
   if(eligible.length){
     const f=eligible[Math.floor(Math.random()*eligible.length)];
     growthState.familyId=f.id;$("#growthFamily").value=f.id;
@@ -462,6 +501,7 @@ function startGrowthFromCurrent(){
   if(layer!==m.layer){
     layer=m.layer;
     document.querySelectorAll(".layer").forEach(x=>x.classList.toggle("active",x.dataset.layer===layer));
+    updatePolicy();
   }
   growthState.mode=m.mode;$("#growthMode").value=m.mode;
   growthState.dimension=m.dimension||"all";
@@ -475,7 +515,45 @@ function startGrowthFromCurrent(){
   }else{
     show(makeStructuralGrowth(0));
   }
-  syncControls();
+}
+
+function switchLayerWithoutGenerating(nextLayer){
+  if(layer===nextLayer)return;
+  layer=nextLayer;
+  document.querySelectorAll(".layer").forEach(x=>x.classList.toggle("active",x.dataset.layer===layer));
+  updatePolicy();
+}
+function wrapCurrentSentence(){
+  const w=sentenceWrapper();
+  if(!w||!currentShown||!isPal(currentShown.reading)||layer==="L3")return;
+  const parent=currentShown;
+  const parentLayer=layer;
+  const depth=(parent.wrap_depth||0)+1;
+  const q=depth%2===1?["「","」"]:["『","』"];
+  const reading=w.left_reading+parent.reading+w.right_reading;
+  if(!isPal(reading))return;
+  const display=w.left_display+q[0]+stripFinalPeriod(parent.display)+q[1]+w.right_display;
+  const x={
+    display,reading,
+    family:"文レベル長文化",
+    origin:"WRAP:"+w.id,
+    japanese_quality:w.quality||"B",
+    weirdness:Math.min(5,2+depth),
+    why:w.semantic+"の外枠を追加。内側の文はそのまま保持しています。",
+    wrap_depth:depth,
+    wrapper_id:w.id,
+    wrapped_from:parent,
+    wrapped_from_layer:parentLayer
+  };
+  switchLayerWithoutGenerating("L2");
+  show(x);
+}
+function unwrapCurrentSentence(){
+  if(!currentShown?.wrapped_from)return;
+  const child=currentShown;
+  const parent=child.wrapped_from;
+  switchLayerWithoutGenerating(child.wrapped_from_layer||"L2");
+  show(parent);
 }
 
 document.querySelectorAll(".layer").forEach(b=>b.onclick=()=>{
@@ -494,7 +572,7 @@ $("#growthDimension").onchange=e=>{
 };
 $("#growthFamily").onchange=e=>{
   growthState.familyId=e.target.value;resetGrowthHistory();
-  if(layer==="L1")growthStart();
+  if(growthFamilies().length)growthStart();
 };
 $("#weird").oninput=e=>{
   $("#weirdVal").textContent=e.target.value;seen.clear();$("#list").innerHTML="";updateCandidateCount();seedOne();
@@ -503,6 +581,8 @@ $("#seedGen").onclick=seedOne;
 $("#dnaGen").onclick=dnaOne;
 $("#pairGen").onclick=pairOne;
 $("#growCurrent").onclick=startGrowthFromCurrent;
+$("#wrapSentence").onclick=wrapCurrentSentence;
+$("#unwrapSentence").onclick=unwrapCurrentSentence;
 $("#growthStart").onclick=growthStart;
 $("#growOne").onclick=growOne;
 $("#growAgain").onclick=growAgain;
