@@ -4,6 +4,7 @@ const corpus = JSON.parse(fs.readFileSync("data/layered-seeds-v08.json", "utf8")
 const rules = JSON.parse(fs.readFileSync("data/generation-rules-v08.json", "utf8"));
 const pairs = JSON.parse(fs.readFileSync("data/reverse-lexeme-pairs-v09.json", "utf8"));
 const growth = JSON.parse(fs.readFileSync("data/growth-engine-v10.json", "utf8"));
+const seams = JSON.parse(fs.readFileSync("data/seam-grammar-v25.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -170,6 +171,25 @@ if(hundred){
   }
 }
 
+let seamRecipeCount=0;
+for(const r of seams.recipes??[]){
+  check({id:"SEAM:"+r.id},r.display,r.reading);
+  if(!["L1","L2","L3"].includes(r.layer))errors.push(`SEAM invalid layer: ${r.id} / ${r.layer}`);
+  if(!Number.isInteger(r.boundary_shift_shells)||r.boundary_shift_shells<0)errors.push(`SEAM invalid boundary_shift_shells: ${r.id}`);
+  if(!Number.isInteger(r.particle_hinges)||r.particle_hinges<0)errors.push(`SEAM invalid particle_hinges: ${r.id}`);
+  seamRecipeCount++;
+}
+if(seams.verified?.recipe_count!=null&&seams.verified.recipe_count!==seamRecipeCount)errors.push(`SEAM COUNT mismatch: declared=${seams.verified.recipe_count} actual=${seamRecipeCount}`);
+for(const sh of seams.shells??[]){
+  if(reverse(sh.left.reading)!==sh.right.reading)errors.push(`SEAM shell reverse mismatch: ${sh.id}`);
+}
+for(const c of seams.cores??[]){
+  if(!isPalindrome(c.reading))errors.push(`SEAM core not palindrome: ${c.id}`);
+}
+for(const ref of seams.reference_specimens??[]){
+  if(ref.strict_palindrome_under_normalization&&!isPalindrome(ref.normalized_reading))errors.push(`SEAM reference not palindrome: ${ref.id}`);
+}
+
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
 if(rules.rule_count!==rules.rules.length)errors.push(`RULE COUNT mismatch: declared=${rules.rule_count} actual=${rules.rules.length}`);
@@ -183,3 +203,4 @@ console.log(`Reverse lexeme pairs: ${pairs.pair_count}, variants: ${pairVariants
 console.log(`Stepwise growth variants: ${growthVariants}`);
 console.log(`Narrative growth variants: ${narrativeVariants}`);
 console.log(`Sentence-level wrappers: ${sentenceWrapperCount}`);
+console.log(`Seam-shift recipes: ${seamRecipeCount}`);
