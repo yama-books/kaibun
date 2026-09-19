@@ -1,0 +1,53 @@
+{
+  "version": "0.85",
+  "title": "Ten-item comparison family-balance audit",
+  "public_behavior_changed": false,
+  "scope": "L1 default 10-item comparison pool",
+  "current_pool": {
+    "seed_unique": 159,
+    "dna_unique": 451,
+    "seam_unique_after_bridge_merge": 19,
+    "combined_unique_after_first_reading_dedup": 489,
+    "recursive_kinship_readings": 216,
+    "recursive_share": 0.4417,
+    "expected_recursive_items_in_uniform_ten": 4.417
+  },
+  "diagnosis": [
+    "Uniform sampling over materialized readings overrepresents the recursive kinship grammar because one grammar expands to many readings.",
+    "The comparison surface is intended to show variety, so candidate-count proportional sampling is not the best product objective.",
+    "The issue is separate from dnaOne() v0.84 because the comparison button builds a new combined pool."
+  ],
+  "proposed_l1_strata": [
+    {
+      "stratum": "seed",
+      "count": 3,
+      "definition": "public seed pool, excluding readings already selected"
+    },
+    {
+      "stratum": "nonrecursive-dna",
+      "count": 3,
+      "definition": "dnaPool(true) readings not in recursivePool()"
+    },
+    {
+      "stratum": "recursive-kinship",
+      "count": 2,
+      "definition": "readings in recursivePool()"
+    },
+    {
+      "stratum": "seam-and-bridge",
+      "count": 2,
+      "definition": "seamPool(), including public bridge candidates"
+    }
+  ],
+  "fallback": "If a stratum cannot fill its quota, fill remaining slots from the combined unused pool.",
+  "invariants": [
+    "Exactly 10 unique readings when at least 10 candidates exist.",
+    "No candidate data is removed.",
+    "L2/L3 comparison behavior remains unchanged initially.",
+    "The comparison list continues to show origin, japanese_quality, and weirdness."
+  ],
+  "expected_effect": {
+    "recursive_items": "about 4.4 average -> exactly 2 under normal L1 conditions",
+    "mechanism_diversity": "At least seed, nonrecursive DNA, recursive DNA, and seam mechanisms appear in each normal L1 comparison."
+  }
+}
