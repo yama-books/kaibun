@@ -4443,3 +4443,274 @@ guardが適切にnegativeを止めた。
 ## 再開最短文
 
 **「HANDOFF 40節から再開。v1.15-v1.27でwave3・歴史表記diagnostic・bidirectional tankaを分離実装。o/wo正例は94/110/115/118、he/e=107、ye/e=117だがstrict promotions=0。wave3 strict 116/119はそれぞれsemantic-role/scene、source-specific morphologyでblock。119↔72は寄○恋でもB=つま morphology未確認のため第三familyにしない。v1.24で124-129のbidirectional tankaを別層化。Validate 35471808274 green。次はsafe same-scene A/E contact探索か、収穫逓減ならhuman review/product integrationへ。」**
+
+
+---
+
+# 41. 2026-09-20 v1.28〜v1.30 bidirectional seam / lattice再導出 / human review準備 チェックポイント
+
+## 実施概要
+
+40節から、追加採掘より先に
+v1.24で分離したbidirectional tankaを
+strict generator研究へどう還元できるかを監査した。
+
+結果、
+既存v0.34の五変数格子が
+fixed50へのfitとは独立に、
+前後両方向5/7/5/7/7のmeter geometryから
+完全に再導出できた。
+
+これは今回の最重要収穫。
+
+そのうえで、
+第三familyの残り課題を機械規則追加ではなく
+human philological reviewへ渡せるqueueをv1.30として準備した。
+
+## v1.28 bidirectional seam contrast
+
+file:
+`data/bidirectional-tanka-seam-contrast-v128.json`
+
+commit:
+`77ee62f92e06f7495c8bbcbfb94b0a3d9eb22862`
+
+input:
+`data/historical-bidirectional-tanka-v124.json`
+
+clear cases:
+124〜129の6例。
+
+全例:
+- 31かな
+- forward != reverse
+- forward 5/7/5/7/7
+- reverse 5/7/5/7/7
+- strict self-palindromeではない
+
+forward boundaries:
+`5,12,17,24`
+
+reverse側の句境界をforward coordinateへ写すと:
+`7,14,19,26`
+
+したがって差は全て:
+`+2,+2,+2,+2`
+
+new research feature:
+**two-kana-directional-boundary-shift**
+
+ただし:
+- meter geometryであってlexical boundary保証ではない
+- strict positivesへ入れない
+- public injectionなし
+
+## v1.29 independent lattice derivation
+
+file:
+`data/tanka-mirror-lattice-independent-derivation-v129.json`
+
+commit:
+`979946f05bb7074b1c90b145ac2b9061bf7fe201`
+
+forward/reverse seam union:
+
+`0,5,7,12,14,17,19,24,26,31`
+
+隣接差:
+
+`5,2,5,2,3,2,5,2,5`
+
+これはv0.34:
+
+`A5 | B2 | C5 | D2 | E3 | rev(D)2 | rev(C)5 | rev(B)2 | rev(A)5`
+
+と完全一致。
+
+### 研究上の意味
+
+v0.34:
+fixed50 strict self-palindromeから抽出。
+
+v1.29:
+self-palindromeではないbidirectional historical corpusから独立再導出。
+
+したがって9-cell latticeは
+単なるcorpus fittingではなく、
+**31かな短歌のforward/reverse meterを重ねた自然なmirror coordinate**
+として強く支持される。
+
+B/Dが2かなになるのは
+forward/reverse seam差が2かなだから。
+
+Eが3かなになるのは
+中央mapped reverse boundary=14、
+forward boundary=17の間が3かなだから。
+
+strict palindromeではさらに:
+- right cells = reverse(left cells)
+- E self-reversing
+
+が加わる。
+
+### generator policy
+
+強化:
+- 9-cell latticeをcanonical internal representationとして維持
+
+変更なし:
+- new operation = 0
+- general-factor-crossover disabled
+- morphology/scene/role/source gates維持
+- public effectなし
+
+validator integration:
+- initial commit `674c13409c4ed695cf62b50a77cad75b7a6b1bdf`
+- variable reference typoでrun `35473274563` failure
+- typo fix commit `b83f3cad2fceba09a9679f0a0408c78d374e2cb0`
+- rerun `35473306125` **success**
+
+docs:
+- `docs/BIDIRECTIONAL_SEAM_LATTICE_V128_V129.md`
+- commit `d367ff963fc3c02fa11095cd03dab88f96d3f5a7`
+
+## v1.30 third-family human review queue
+
+file:
+`data/historical-third-family-human-review-v130.json`
+
+commit:
+`81610e4657bded224e93fc5e61c4bf34ebfc4a7d`
+
+validator:
+`4746e3920a31e2bdbb945ac0d2d2446035d3ca8c`
+
+対象を2件に限定:
+
+### A hybrid-007
+family:
+`musu-night-sky-family-moon`
+
+status:
+`promising-but-parse-needed`
+
+主要未解決:
+- 来つるみそらは
+- すむはらそ見る
+
+### B wave2-travel-090-host-093-outer
+family:
+`wave2-travel-maha`
+
+status:
+`promising-but-parse-needed`
+
+既に強い:
+- 全5句が90/93のYamauchi poem-specific scholarly transcriptionでattested
+- 91番によるseries phrase topology
+- same narrow travel series
+
+残り:
+- donor outer / host middleを繋いだwhole-sentence syntax
+
+### human review fields
+
+- whole_sentence_parse
+- boundary_shift_legitimacy
+- source_locality
+- blocking_span
+- proposed_parse
+- notes
+
+queueは未記入で固定。
+
+promotion条件:
+- whole_sentence_parse = yes-with-parse
+- boundary_shift_legitimacy = supported
+- source_locality = supported
+- proposed_parse documented
+- machine/source invariants pass
+
+partly/uncertainなら:
+`promising-but-parse-needed` 維持。
+
+machine auto-promotion禁止。
+
+## CI
+
+v1.30 head:
+`4746e3920a31e2bdbb945ac0d2d2446035d3ca8c`
+
+Validate run:
+`35473341662`
+
+確認時点で主要validation stepsは全てsuccess:
+- corpus/DNA
+- historical generators
+- orthographic diagnostic
+- public bridge
+- growth/quality
+- human review protocol/importer
+- public UI
+
+残っていたのはGitHub Actionsのpost-cleanupのみ。
+コード検証stepのfailureはなし。
+
+## 現在の研究判断
+
+歴史回文の構造原理については、
+新operationを探す段階はほぼ終了。
+
+特にv1.29により:
+
+**5|2|5|2|3|2|5|2|5 lattice自体は独立史料から再導出された**
+
+ため、
+構造設計の不確実性はかなり下がった。
+
+残る不確実性は主にlinguistic/human side:
+
+1. whole-sentence classical syntax
+2. target-specific morphology
+3. source glyph / reading resolution
+4. human naturalness / adjudication
+
+第三positive familyを機械的に作るために
+guardを緩める理由はない。
+
+## 固定事項
+
+変更なし:
+- fixed50
+- wave2 verified14 / held5
+- public bridge6
+- v0.76
+- general-factor-crossover disabled
+- machine accepted/natural禁止
+- public UI変更なし
+- historical source text public injectionなし
+
+追加固定:
+- bidirectional seam +2 geometryはstructural evidence
+- +2 geometry != lexical permission
+- nine-cell lattice canonical
+- human review queue自体はpromotionを起こさない
+
+## 進捗目安
+
+- 歴史回文研究・生成原理: **約97%**
+- 怪文回文メーカー全体目標: **約95%**
+- 残り: **約5%**
+
+## 次
+
+優先:
+1. v1.30 human reviewを実際に埋められるphilological evidenceが得られるか探索
+2. 得られなければ第三familyを無理に確定しない
+3. research収穫が逓減しているため、public v0.33 / quality benchmark / human review側へ統合重点を移す
+4. v0.96 public human review入力が得られればv0.97 adjudication
+5. product側へ歴史研究由来の安全な構造ルールだけを反映する
+
+## 再開最短文
+
+**「HANDOFF 41節から再開。v1.28でbidirectional 124-129のreverse meter seamがforward seamから全て+2と確認。v1.29でforward/reverse境界unionから5|2|5|2|3|2|5|2|5を独立再導出しv0.34を構造的に強化。新operationは0。v1.30でhybrid-007とtravel bestのhuman philological review queueを準備、未記入・自動昇格なし。次はwhole-sentence evidence探索、なければresearchをfreezeしてhuman review/product integrationへ。」**
