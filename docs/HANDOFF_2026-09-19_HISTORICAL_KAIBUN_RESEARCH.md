@@ -1,0 +1,869 @@
+# 怪文回文メーカー / 江戸回文歌研究 引き継ぎ
+
+更新日: 2026-09-19  
+Repository: `yama-books/kaibun`  
+Public: https://yama-books.github.io/kaibun/
+
+---
+
+## 0. この文書の位置づけ
+
+長大化した会話を切り替えるための引き継ぎ正本。
+
+次セッションでは、まずこの文書と下記の主要データを読み、**既存研究を再推測せず、この地点から継続すること**。
+
+現在の主課題は、怪文回文メーカーを「左右に逆読み部品を置くだけの生成器」から進め、**江戸期の回文短歌・狂歌に見られる、語境界のずれ・意味場・統語役割転換を利用する生成器**へ発展させること。
+
+---
+
+# 1. ユーザーの最重要意図
+
+目標は、単に長い完全回文を作ることではない。
+
+良い回文の理想:
+
+- かな列では完全回文
+- 文法が壊れていない
+- 局所的な意味が追える
+- 読み終えると「なぜそうなった？」という怪文性がある
+- 回文のために作った左右一対一の部品感が表面に出すぎない
+- 語境界・品詞・統語役割が左右で異なってよい
+- 全文として一つの場面・出来事・意味場を持つ
+
+ユーザーの重要な指摘:
+
+1. セリフの内外で同じ名詞を反復すると人工感が強いので避ける。
+2. sentence wrapper は長文化には便利だが、外枠文法を左右一対一で作ると無理やり感が残る。
+3. 江戸の著名な回文短歌  
+   「長き夜の 遠の眠りの 皆目覚め 波乗り舟の 音の良きかな」  
+   のように、**前後が一対一の語対応ではなく、全文を組み合わせたとき自然に意味が通る構造**を学びたい。
+4. 歴史作例を広く採掘し、技法を経験則ではなく生成規則へ落としたい。
+5. API/LLMによる無制約生成は当面主役にしない。規則・資料・検証可能性を重視。
+
+---
+
+# 2. 公開アプリの現状
+
+公開URL:
+https://yama-books.github.io/kaibun/
+
+公開UIラベル:
+`v0.26 / 境界ずらしDNA`
+
+注意:
+研究データは v0.42 まで進んでいるが、**研究成果をそのまま公開生成器へ全面統合してはいない**。
+研究層と公開生成層を混同しないこと。
+
+現行 growth engine:
+- `data/growth-engine-v10.json`
+- version: 0.30
+- narrative family: 45
+- narrative variants: 322
+- sentence wrapper: 36
+- wrapper名詞衝突回避あり
+- 長文固定例は100かな超を検証済み
+
+現行 seam grammar:
+- `data/seam-grammar-v25.json`
+- version: 0.26
+- recipe: 42
+- 「庭↔ワニ」「記録↔黒木」等の境界ずらし系
+
+sentence wrapper は今後も補助機能として保持するが、歴史研究の主成果は **wrapper依存から離れる方向**。
+
+---
+
+# 3. 江戸回文歌研究の資料層
+
+## 3.1 信頼済み歴史サンプル
+
+`data/historical-kaibunka-samples-v27.json`
+
+10首。
+
+内訳:
+- 石田未得『吾吟我集』 4首
+- 大福窓笑寿『廻文歌百首』 4首
+- 仙代庵 1首
+- 宝船歌 1首
+
+宝船歌は江戸の宝船・初夢文化で著名だが、成立自体は江戸以前まで遡る可能性があるため、江戸作者作品ではなく比較基準扱い。
+
+歴史回文は現代かな厳密回文とは正規化が異なるため、
+- display
+- reading_display
+- normalized_reading
+- normalization
+を分離して保存。
+
+---
+
+## 3.2 安定比較用 mining 40首
+
+`data/historical-kaibunka-mining-v28.json`
+
+山内潤三「廻文歌の限界と効用（下）」の翻刻を主資料として採掘。
+
+現在:
+- mining 40首
+- trusted 10首
+- 合計50首を**安定比較用ベースライン**として固定
+
+この50首から v28〜v42 の理論を作っている。
+
+重要:
+50首モデルの再現性を保つため、第二波14首をまだ自動統合しない。
+
+---
+
+## 3.3 第二波 mining
+
+`data/historical-mining-wave2-v39.json`
+
+山内翻刻78番以降から追加調査。
+
+そのままの転写で:
+- 31かな
+- 完全回文
+
+を満たしたもの: **14首**
+
+番号:
+78, 79, 80, 81, 83, 84, 85, 86, 87, 90, 91, 93, 95, 96
+
+保留:
+82, 88, 89, 92, 94
+
+保留理由:
+OCR・踊り字・を/お・歴史仮名などの転写に疑義あり。
+
+**絶対に「回文になるはずだから」と推測補正しないこと。**
+原画像または信頼できるPDFで確認する。
+
+---
+
+# 4. 31かな回文短歌の構造上の大発見
+
+## 4.1 韻律境界と鏡像境界
+
+短歌:
+`5 / 7 / 5 / 7 / 7 = 31かな`
+
+通常句境界:
+`5 / 12 / 17 / 24`
+
+31かな回文で鏡像に写した境界:
+`26 / 19 / 14 / 7`
+
+両方を統合:
+`5 / 7 / 12 / 14 / 17 / 19 / 24 / 26`
+
+セル長:
+**5 | 2 | 5 | 2 | 3 | 2 | 5 | 2 | 5**
+
+ファイル:
+`data/tanka-mirror-lattice-v28.json`
+`docs/TANKA_MIRROR_LATTICE_V28.md`
+
+意味:
+句境界と鏡像境界は構造上一致しない。
+したがって、回文短歌では**語境界の再分節が特殊技ではなく形式的にほぼ必須**。
+
+---
+
+## 4.2 5変数文法
+
+`data/tanka-five-variable-grammar-v34.json`
+
+31かなを
+
+`A5 | B2 | C5 | D2 | E3 | reverse(D)2 | reverse(C)5 | reverse(B)2 | reverse(A)5`
+
+と表せる。
+
+五句:
+- 第一句 = A
+- 第二句 = B + C
+- 第三句 = D + E
+- 第四句 = reverse(D) + reverse(C)
+- 第五句 = reverse(B) + reverse(A)
+
+つまり独立に選ぶ主要要素は
+- A5
+- B2
+- C5
+- D2
+- E3
+
+だけ。
+
+E3は構造上必ず ABA 型。
+
+ただし重要なのは、A/B/C/D/Eを「単語」と見なさないこと。
+**左右の形態素境界は別々に解析する。**
+
+---
+
+# 5. 50首から得た実証結果
+
+## 5.1 第三句そのものは回文ではない
+
+50首中:
+- 第三句5かな自体が回文: **0 / 50**
+- 中央3かな（15〜17字）は自己回文: **50 / 50**
+
+したがって、
+「中央に5かなの自己回文語を置く」
+設計は歴史実作とはずれる。
+
+中央3かなを、
+- 単独語
+- 助詞を跨ぐ列
+- 活用語尾を跨ぐ列
+として扱う。
+
+例:
+- めさめ
+- はなは
+- のよの
+- りけり
+- りなり
+
+中央3かなの外側文字が助詞系だったもの:
+**32 / 50 = 64%**
+
+これは助詞・境界が中央ピボットで大きな役割を持つことを示唆。
+
+---
+
+## 5.2 意味場
+
+`data/historical-semantic-fields-v32.json`
+
+50首の大分類:
+
+- 春・草木: 12
+- 秋・月: 12
+- 信仰: 8
+- 恋・人事: 6
+- 冬・雪: 4
+- 夏・行事: 4
+- その他: 4
+
+mining層の分類は、本文を勝手に解釈せず**題を根拠とする暫定分類**。
+
+重要な結論:
+歴史作の自然さは「逆読みに都合のよい語」より、
+**一首全体の意味場を統一すること**に強く依存している可能性が高い。
+
+---
+
+# 6. 端の法則
+
+`data/historical-edge-pairs-v33.json`
+
+50首で冒頭2かな ↔ 末尾2かなを調査。
+
+主な頻出:
+
+- なか ↔ かな : 7首
+- みな ↔ なみ : 3首
+- やま ↔ まや : 3首
+- もと ↔ とも : 2首
+- やと ↔ とや : 2首
+
+高価値例:
+
+- なか ↔ かな  
+  内容語の入口 → 終助詞「かな」
+- みな ↔ なみ  
+  皆 → 波
+- みの ↔ のみ  
+  名詞＋助詞 → 限定助詞
+- しら ↔ らし  
+  語彙的語頭 → 推量・様態
+- ふゆ ↔ ゆふ  
+  冬 → 夕
+- わか ↔ かわ  
+  若… → 川
+- いけ ↔ けい  
+  池 → 景 等
+- むめ ↔ めむ  
+  梅（歴史仮名）→ 助動詞的終止
+
+生成原理:
+**入口として自然で、逆側では別の自然な出口になる音を優先する。**
+
+---
+
+# 7. 継ぎ目署名
+
+`data/historical-seam-signatures-v36.json`
+
+かな列が同じでも、形態解析が違えば同じノードとして扱わない。
+
+高信頼例:
+
+### B2
+- なは ↔ はな
+  - 名は ↔ 花
+  - transferable=true
+
+### D2
+- はに ↔ には
+  - 葉に ↔ 庭
+- みな ↔ なみ
+  - 皆 ↔ 波
+- みつ ↔ つみ
+  - 水 ↔ 罪
+- けふ ↔ ふけ
+  - 今日 ↔ 更け
+
+conditional:
+- きつ ↔ つき
+  - 反転側「月」は強いが前向き側の形態解析を個別確認
+
+危険:
+- ほと
+  - ほととぎす / ほど… / 仏
+- また
+  - 文脈で形態境界が変わる
+
+**raw kana一致だけで交配してはいけない。**
+
+---
+
+# 8. 因子グラフ / 歴史作交配
+
+## 8.1 v35
+
+`data/historical-factor-hybrids-v35.json`
+
+50首から
+- AB
+- BC
+- CD
+- DE
+
+の局所接続を正例としてグラフ化。
+
+歴史作で実際に使われた局所接続だけを通る新規経路:
+
+**51候補**
+
+そのうち大意味場が同じ:
+**23候補**
+
+注意:
+局所接続がすべて実例でも、全文が自然とは限らない。
+
+---
+
+## 8.2 v37 フィルタ
+
+`data/historical-hybrid-review-v37.json`
+
+継ぎ目署名＋意味場でフィルタ。
+
+- priority-semantic-review: 10
+- review-unclassified-seam: 10
+- hold-morphological-seam: 3
+- hold-mixed-semantic-field: 28
+
+---
+
+## 8.3 v38 centoモデル
+
+`data/historical-cento-candidates-v38.json`
+
+重要な発見:
+
+因子グラフ交配では、新しい31かな候補の
+- 第一句
+- 第二句
+- 第三句
+- 第四句
+- 第五句
+
+が**それぞれ歴史作で実在する句**になりうる。
+
+新規性は句そのものではなく組み合わせ。
+
+仮称:
+**historical palindrome tanka cento**
+
+本歌取りそのものとは呼ばない。
+
+---
+
+# 9. v40 人手レビュー
+
+`data/historical-hybrid-curation-v40.json`
+`docs/HISTORICAL_HYBRID_CURATION_V40.md`
+
+priority 10件を人間的にレビュー。
+
+結果:
+- strong-promising: 1
+- promising-but-parse-needed: 2
+- hold-source-parse: 3
+- hold-too-many-sources: 1
+- reject-for-now: 3
+
+最重要候補:
+### hybrid-008
+reading:
+`なかきよのきつるもはきのはにてりてにはのきはもるつきのよきかな`
+
+暫定分節:
+- 長き夜の
+- 来つるも萩の
+- 葉に照りて
+- 庭のきはもる
+- 月の良きかな
+
+status:
+**strong-promising**
+
+naturalness:
+B+ tentative-classical
+
+sources:
+- shoju-038
+- shoju-035
+
+ただし:
+- 「きつるも」の係り先
+- 「きはもる」の漢字・語義
+は原画像/校訂本文で要確認。
+
+次点:
+- hybrid-016
+- hybrid-022
+
+これらも source parse 確定前に正式採用しない。
+
+---
+
+# 10. v41 山内式可変spanモデル
+
+`data/yamauchi-tokenization-model-v41.json`
+`docs/YAMAUCHI_TOKENIZATION_V41.md`
+
+山内潤三の語彙調査方法から生成器へ抽出した原理:
+
+1. **可変長単位**
+   - 固定長の「単語」に限定しない
+   - 1〜7かな程度
+   - 単語 / 複合語 / 助詞付き句 / 句全体を同じグラフ上で扱う
+
+2. **助詞付き署名**
+   - 助詞を切り捨てない
+   - 例: 名(は) ↔ 花
+   - 葉(に) ↔ 庭
+
+3. **句レベル実証を強く評価**
+   - 5かな・7かなの歴史的実例を、短いセル一致より高く評価
+
+4. **不確実性保持**
+   - trusted / mining / source-image-needed を分離
+   - 回文性だけでOCR修正しない
+
+5. **複数解析**
+   - 同じreadingでも形態署名が違えば別node
+
+推奨unit schema:
+- reading
+- span_length
+- surface_candidates
+- morphology_signature
+- attached_particles
+- semantic_field
+- source_attestation
+- reverse_reading
+- reverse_analysis_candidates
+- confidence
+- transferable
+
+---
+
+# 11. v42 「題を先に選ぶ」
+
+`data/historical-topic-first-model-v42.json`
+`docs/HISTORICAL_TOPIC_FIRST_V42.md`
+
+現在の研究の最重要方針。
+
+従来:
+`回文になる音 → 意味を付ける`
+
+今後:
+`題 → 意味場 → 句候補 → 31かな制約`
+
+優先研究題:
+
+### 秋・月
+最優先。
+- 月
+- 萩
+- 露
+- 紅葉
+- 初雁
+- 田毎月
+- 月夜
+- 海上月
+
+推奨継ぎ目:
+- なか↔かな
+- きつ↔つき
+- はに↔には
+- けふ↔ふけ
+
+### 春・草木
+最優先。
+- 梅
+- 桜
+- 若草
+- 七草
+- 小松
+- 霞
+
+推奨:
+- なは↔はな
+- むめ↔めむ
+- わか↔かわ
+
+### 神祇・釈教
+- みつ↔つみ
+- けふ↔ふけ
+
+### 冬・雪
+- ふゆ↔ゆふ
+- しら↔らし
+- はに↔には
+
+### 羈旅・恋・人事
+- みの↔のみ
+- さよ↔よさ
+- やま↔まや
+
+v42 scoring weights:
+- global_topic_coherence: 5
+- each_ku_naturalness: 4
+- seam_signature_compatibility: 4
+- historical_phrase_attestation: 3
+- boundary_shift_quality: 3
+- pivot_quality: 2
+- surface_palindrome_obviousness_penalty: -2
+- proper_name_forcedness_penalty: -3
+
+最重要:
+**五句すべてが同じ場所・季節・時間・出来事を見ているかを最優先する。**
+
+---
+
+# 12. 史料上の重要候補
+
+## 『廻文歌詞之種』
+
+国文学研究資料館 国書データベース:
+
+- 書名: 廻文歌詞之種
+- よみ: かいぶんうたことばのたね
+- BID: 100437979
+- デジタル画像: DIG-SEKD-70815
+- URL: https://kokusho.nijl.ac.jp/biblio/100437979
+
+記録:
+`docs/HISTORICAL_RESEARCH_LEADS_V29.md`
+
+未確定:
+- 著者
+- 成立年代
+- 内容
+- 実際に「回文作成用の語彙・作法集」なのか
+- 『廻文歌百首』等との関係
+
+**画像を確認するまで内容を推測しない。**
+
+もし本当に「ことばの種」資料なら、
+現在の
+- reverse lexeme pair
+- seam signature
+- seed corpus
+- semantic field
+と歴史的作法を直接比較できる可能性がある。
+
+---
+
+# 13. 情報源の扱い
+
+主な資料:
+
+1. 山内潤三
+   「廻文歌の限界と効用（下）―高野山釈教長歌を頂点として―」
+   『密教文化』107号, 1974
+
+2. 京都大学貴重資料デジタルアーカイブ
+   『吾吟我集』
+
+3. 国立国会図書館 レファレンス協同DB
+   宝船歌の由来
+
+4. 国文学研究資料館 国書データベース
+   『廻文歌詞之種』
+
+5. 仙代庵・作並関係地域資料
+
+注意:
+ウェブ上の二次転写は採掘用には使えるが、
+**漢字復元・踊り字・歴史仮名・OCR疑義があるものを trusted に昇格しない。**
+
+---
+
+# 14. 現在のCI / Pages
+
+この引き継ぎ作成直前:
+
+- Latest corpus validation:
+  - run 35414961088
+  - conclusion: success
+  - head: `40183aa3b7a8529af067a7d033ef06c3e21919e3`
+
+- Latest Pages:
+  - run 35414975841
+  - conclusion: success
+  - head: `a3fc2c6f74eb0e184d0d0f6a2eba9d04e5119349`
+
+`scripts/validate-corpus.mjs` は歴史研究層も検査対象。
+
+研究データを更新したら必ずCI結果を見ること。
+
+---
+
+# 15. 次セッションの推奨作業順
+
+## Phase A: 史料の精度を上げる
+
+### A1
+wave2保留5件:
+- 82
+- 88
+- 89
+- 92
+- 94
+
+をJ-STAGE PDFまたは原画像で確認。
+
+**回文になるよう推測修正しない。**
+
+### A2
+『廻文歌詞之種』のデジタル画像を確認できるか調査。
+
+目的:
+- どんな単位で語を集めているか
+- 助詞込みか
+- 逆読みに対応する語を並べているか
+- 題別か
+- 実際の作歌手順があるか
+
+---
+
+## Phase B: コーパス拡大
+
+現行50首は比較ベースラインとして残す。
+
+第二波14首を統合する場合:
+- 旧50モデルを上書きしない
+- 64首版として新versionを作る
+- v28/v32/v33/v34/v36の統計を再計算
+- 50→64で法則が維持されるか比較
+
+その後:
+- 100首
+- 150首
+- 可能なら山内の303首
+へ段階的に増やす。
+
+---
+
+## Phase C: 生成器研究
+
+最優先は **秋・月**。
+
+理由:
+- 歴史50首中12首
+- hybrid-008など有望候補が出ている
+- 月・萩・露・庭・夜など相互に意味場を作りやすい
+- 高信頼継ぎ目が複数ある
+
+### C1 可変span辞書
+固定A/B/C/D/Eだけでなく、
+1〜7かな span + morphology_signature + semantic_field
+の辞書を作る。
+
+### C2 題別句候補
+秋・月について
+- 5かな句
+- 7かな句
+- 助詞付きspan
+- 逆側の再解析
+を蓄積。
+
+### C3 制約充足
+題を固定して
+- A
+- B+C
+- D+E
+- Dᴿ+Cᴿ
+- Bᴿ+Aᴿ
+を同時に自然化する探索器を作る。
+
+### C4 評価
+機械スコアだけで「自然」と断定しない。
+
+必須:
+- 全文意味場
+- 各句文法
+- 視点
+- 時間
+- 主体
+- 古典語/現代語の適切さ
+- forced proper name penalty
+- 回文部品露出 penalty
+
+---
+
+# 16. 現代「怪文回文メーカー」への還元
+
+歴史回文短歌研究は、古典短歌生成だけが目的ではない。
+
+最終的には現代散文の怪文メーカーへ、
+
+- 境界ずらし
+- 左右で異なる形態解析
+- 内容語→助詞/語尾への転換
+- 意味場を先に決める
+- 中央ピボット
+- 語ではなく可変spanで生成
+- 全文評価
+
+を輸入する。
+
+特に今後、
+**sentence wrapperを何重にも重ねる方式より、1文内部で語境界が自然にずれる長文**
+を優先する。
+
+---
+
+# 17. やってはいけないこと
+
+1. OCRが回文にならないからという理由で勝手に文字を補う。
+2. miningデータをtrusted扱いする。
+3. かな列一致だけで同じ継ぎ目nodeとみなす。
+4. 意味場が違う歴史作を、回文になるというだけで交配する。
+5. 第三句5かなを自己回文核として固定する。
+6. 左右の語境界を一致させることを要求する。
+7. sentence wrapperの長さだけを「進歩」とみなす。
+8. proper nameを対称性のためだけに大量導入する。
+9. hybrid-008を「自然な古典短歌として確定」と扱う。
+10. 50首統計と、今後の64/100/303首統計を同じものとして上書きする。
+
+---
+
+# 18. 主要ファイル一覧
+
+## 公開生成器
+- `index.html`
+- `data/layered-seeds-v08.json`
+- `data/generation-rules-v08.json`
+- `data/reverse-lexeme-pairs-v09.json`
+- `data/growth-engine-v10.json`
+- `data/seam-grammar-v25.json`
+
+## 歴史研究
+- `data/historical-kaibunka-samples-v27.json`
+- `data/historical-kaibunka-mining-v28.json`
+- `data/tanka-mirror-lattice-v28.json`
+- `data/historical-mining-wave2-v39.json`
+- `data/historical-semantic-fields-v32.json`
+- `data/historical-edge-pairs-v33.json`
+- `data/tanka-five-variable-grammar-v34.json`
+- `data/historical-factor-hybrids-v35.json`
+- `data/historical-seam-signatures-v36.json`
+- `data/historical-hybrid-review-v37.json`
+- `data/historical-cento-candidates-v38.json`
+- `data/historical-hybrid-curation-v40.json`
+- `data/yamauchi-tokenization-model-v41.json`
+- `data/historical-topic-first-model-v42.json`
+
+## 主要docs
+- `docs/CLASSIC_KAIBUN_SEAMS_V25.md`
+- `docs/EDO_KAIBUNKA_SAMPLES_V27.md`
+- `docs/TANKA_MIRROR_LATTICE_V28.md`
+- `docs/HISTORICAL_RESEARCH_LEADS_V29.md`
+- `docs/HISTORICAL_SEMANTIC_FIELDS_V32.md`
+- `docs/HISTORICAL_EDGE_PAIRS_V33.md`
+- `docs/TANKA_FIVE_VARIABLE_GRAMMAR_V34.md`
+- `docs/HISTORICAL_FACTOR_HYBRIDS_V35.md`
+- `docs/HISTORICAL_SEAM_SIGNATURES_V36.md`
+- `docs/HISTORICAL_HYBRID_REVIEW_V37.md`
+- `docs/HISTORICAL_CENTO_V38.md`
+- `docs/HISTORICAL_MINING_WAVE2_V39.md`
+- `docs/HISTORICAL_HYBRID_CURATION_V40.md`
+- `docs/YAMAUCHI_TOKENIZATION_V41.md`
+- `docs/HISTORICAL_TOPIC_FIRST_V42.md`
+
+## 検証
+- `scripts/validate-corpus.mjs`
+- `.github/workflows/validate.yml`
+
+---
+
+# 19. 次セッション用プロンプト
+
+以下をそのまま次セッションに渡せる。
+
+> 怪文回文メーカーの研究を引き継ぎます。  
+> GitHub `yama-books/kaibun` の  
+> `docs/HANDOFF_2026-09-19_HISTORICAL_KAIBUN_RESEARCH.md`  
+> を最初に読み、そこを正本として再開してください。
+>
+> 現在は江戸回文短歌研究を生成器へ還元する段階です。公開UIの機能追加を急ぐより、歴史資料の解析と生成原理の精緻化を優先します。
+>
+> 特に重要なのは、
+> - 31かなの 5|2|5|2|3|2|5|2|5 鏡像格子
+> - A5/B2/C5/D2/E3 の5変数文法
+> - 語境界を左右で一致させない
+> - raw kana一致ではなく形態的 seam signature を使う
+> - 題→意味場→句候補→31かな制約、の topic-first 方針
+> - OCRを回文性だけで推測補正しない
+> - 現行50首ベースラインは固定し、第二波14首は別層
+> です。
+>
+> まず引き継ぎ文書と v40〜v42 のデータを確認して、現在地点を短く報告してください。その後、作業を止めずに次の優先課題へ進んでください。
+>
+> 優先順位は、
+> 1. wave2保留5件の一次資料確認、または『廻文歌詞之種』の画像・内容調査
+> 2. 50首→64首へ統合する場合の比較可能な新version設計
+> 3. 秋・月を第一題として、山内式の可変span＋seam signatureを使うtopic-first生成器の研究実装
+> 4. 生成候補は機械スコアだけで自然と判定せず、人間的文法・意味レビューを行う
+> です。
+>
+> 作業結果はこまめにGitHubへ記録し、長くなる場合はdocs/dataへ中間成果を保存して断絶を防いでください。公開UIは、研究生成器の品質が十分に確認されるまで無理に変更しなくて構いません。
+
+---
+
+# 20. 再開時の最初の確認
+
+次セッション開始時に最低限確認すること:
+
+1. このHANDOFFを読む。
+2. `data/historical-hybrid-curation-v40.json`
+3. `data/yamauchi-tokenization-model-v41.json`
+4. `data/historical-topic-first-model-v42.json`
+5. 最新 `scripts/validate-corpus.mjs`
+6. GitHub Actionsの最新Validate / Pages結果
+7. その後、史料調査またはtopic-first生成研究へ進む。
+
+以上。
