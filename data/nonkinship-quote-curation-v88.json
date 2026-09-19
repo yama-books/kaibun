@@ -1,7 +1,7 @@
 {
   "version": "0.88",
   "title": "Non-kinship quote expansion curation",
-  "source_version": "0.87",
+  "source_version": "0.87.1",
   "decision": "partial-public-candidate",
   "public_behavior_changed": false,
   "summary": {
@@ -22,7 +22,8 @@
     "Depth 0-5 stages are A/B+/B under the same runtime wrapper-quality rule used by public wrapping.",
     "Depth 6-9 stages are uniformly C and weirdness 5.",
     "The goal is to diversify growth semantics, not merely replace kinship repetition with deeper reporting-stack repetition.",
-    "Held C stages remain useful as research evidence and are not deleted."
+    "Held C stages remain useful as research evidence and are not deleted.",
+    "v0.87.1 rotates first wrappers across the four new families and keeps them outside the legacy quote-* first-wrapper-diversity metric."
   ],
   "accepted_family_policy": {
     "public_family_suffix": "-short",
@@ -30,7 +31,8 @@
     "max_wrapper_depth": 5,
     "resulting_stages_per_family": 6,
     "family_layer": "L2",
-    "dimension": "引用・伝聞"
+    "dimension": "引用・伝聞",
+    "public_family_prefix": "report-simple-"
   },
   "held_policy": {
     "keep_in_research_fixture": true,
