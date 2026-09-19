@@ -44,6 +44,8 @@ const musuMoonFamily = JSON.parse(fs.readFileSync("data/musu-moon-family-review-
 const generatedMusuMoonV104 = JSON.parse(fs.readFileSync("data/generated-musu-moon-outer-frame-v104.json", "utf8"));
 const hybrid007SyntaxV105 = JSON.parse(fs.readFileSync("data/hybrid-007-syntax-deep-review-v105.json", "utf8"));
 const wave2TravelMahaV106 = JSON.parse(fs.readFileSync("data/wave2-travel-maha-outer-frame-prospect-v106.json", "utf8"));
+const wave2RepeatedSeamV107 = JSON.parse(fs.readFileSync("data/wave2-repeated-seam-survey-v107.json", "utf8"));
+const generatedWave2TravelV108 = JSON.parse(fs.readFileSync("data/generated-wave2-travel-outer-frame-v108.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -555,6 +557,30 @@ for(const x of wave2TravelMahaV106.generated_prospects??[]){
 }
 if(wave2TravelMahaV106.summary?.positive_family_established!==false||wave2TravelMahaV106.summary?.automatic_acceptance!==0)errors.push("WAVE2 TRAVEL V106 must remain prospect-only");
 
+if(wave2RepeatedSeamV107.version!=="1.07")errors.push(`WAVE2 SEAM V107 version mismatch: ${wave2RepeatedSeamV107.version}`);
+if(wave2RepeatedSeamV107.scope?.fixed50_unchanged!==true)errors.push("WAVE2 SEAM V107 must preserve fixed50");
+if(wave2RepeatedSeamV107.scope?.wave2_verified!==14||wave2RepeatedSeamV107.scope?.wave2_held!==5)errors.push("WAVE2 SEAM V107 wave2 counts drift");
+if((wave2RepeatedSeamV107.repeated_B_groups??[]).length!==6)errors.push("WAVE2 SEAM V107 repeated B group count must be 6");
+if((wave2RepeatedSeamV107.repeated_D_groups??[]).length!==6)errors.push("WAVE2 SEAM V107 repeated D group count must be 6");
+const v107Maha=(wave2RepeatedSeamV107.repeated_B_groups??[]).find(x=>x.B==="まは");
+if(v107Maha?.classification!=="same-title-family-novel")errors.push("WAVE2 SEAM V107 B=まは classification changed");
+if(v107Maha?.novel_exchange_value!=="best-wave2-outer-frame-prospect")errors.push("WAVE2 SEAM V107 B=まは priority changed");
+if(wave2RepeatedSeamV107.summary?.new_safe_positive_family_established!==false)errors.push("WAVE2 SEAM V107 must not establish a positive family");
+if(wave2RepeatedSeamV107.source_access_audit?.direct_image_inspection_completed!==false)errors.push("WAVE2 SEAM V107 must preserve image-not-inspected state");
+
+if(generatedWave2TravelV108.version!=="1.08"||generatedWave2TravelV108.candidate_count!==4)errors.push("GENERATED WAVE2 TRAVEL V108 count/version mismatch");
+const v108Ids=(generatedWave2TravelV108.candidates??[]).map(x=>x.id).sort().join(",");
+if(v108Ids!==["shoju-next-090","shoju-next-093","wave2-travel-090-host-093-outer","wave2-travel-093-host-090-outer"].sort().join(","))errors.push(`GENERATED WAVE2 TRAVEL V108 ids mismatch: ${v108Ids}`);
+for(const x of generatedWave2TravelV108.candidates??[]){
+  if(!isPalindrome(x.reading))errors.push(`GENERATED WAVE2 TRAVEL V108 non-palindrome: ${x.id}`);
+  if(x.meter.map(y=>[...y].length).join(",")!=="5,7,5,7,7")errors.push(`GENERATED WAVE2 TRAVEL V108 meter mismatch: ${x.id}`);
+  if(x.morphology_trace?.reverse_B_lexeme!=="unresolved")errors.push(`GENERATED WAVE2 TRAVEL V108 reverse B lexical drift: ${x.id}`);
+  if(x.source_confidence_trace?.source_image_checked!==false)errors.push(`GENERATED WAVE2 TRAVEL V108 source-image claim drift: ${x.id}`);
+  if(["accepted","natural","deep-review-supported"].includes(x.review_status))errors.push(`GENERATED WAVE2 TRAVEL V108 premature positive: ${x.id}`);
+}
+const v108Novel=(generatedWave2TravelV108.candidates??[]).filter(x=>x.id.startsWith("wave2-travel-"));
+if(v108Novel.length!==2||v108Novel.some(x=>x.review_status!=="hold-source-confirmation"))errors.push("GENERATED WAVE2 TRAVEL V108 novel prospects must remain source-held");
+
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
 if(rules.rule_count!==rules.rules.length)errors.push(`RULE COUNT mismatch: declared=${rules.rule_count} actual=${rules.rules.length}`);
@@ -602,3 +628,5 @@ console.log(`Musu moon family v1.03: outputs=${(musuMoonFamily.outputs??[]).leng
 console.log(`Musu moon generator v1.04: candidates=${generatedMusuMoonV104.candidate_count}`);
 console.log(`Hybrid-007 syntax v1.05: status=${hybrid007SyntaxV105.verdict?.current_review_status}, third-family=${hybrid007SyntaxV105.verdict?.third_positive_family_established}`);
 console.log(`Wave2 travel v1.06: prospects=${(wave2TravelMahaV106.generated_prospects??[]).length}, positive=${wave2TravelMahaV106.summary?.positive_family_established}`);
+console.log(`Wave2 repeated-seam v1.07: B=${(wave2RepeatedSeamV107.repeated_B_groups??[]).length}, D=${(wave2RepeatedSeamV107.repeated_D_groups??[]).length}, next=${wave2RepeatedSeamV107.summary?.next_generator_family}`);
+console.log(`Wave2 travel generator v1.08: candidates=${generatedWave2TravelV108.candidate_count}`);
