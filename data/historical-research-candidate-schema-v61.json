@@ -1,0 +1,110 @@
+{
+  "version": "0.61",
+  "title": "Historical research candidate common schema",
+  "purpose": "Unify central-E-swap and scene-microgrammar outputs so research candidates can be compared, filtered, reviewed, and later bridged to the modern public generator without losing provenance.",
+  "candidate_required_fields": [
+    "id",
+    "operation",
+    "reading",
+    "meter",
+    "factors",
+    "strict_palindrome",
+    "host_source_id",
+    "donor_source_ids",
+    "provenance",
+    "attestation_trace",
+    "morphology_trace",
+    "scene_trace",
+    "semantic_role_trace",
+    "source_confidence_trace",
+    "review_status",
+    "cautions"
+  ],
+  "field_definitions": {
+    "id": "Stable research candidate identifier.",
+    "operation": "Generator operation that produced or selected the candidate.",
+    "reading": "Normalized 31-kana strict research reading.",
+    "meter": "Five readings in 5/7/5/7/7.",
+    "factors": "A/B/C/D/E five-variable factors.",
+    "strict_palindrome": "Machine strict palindrome result.",
+    "host_source_id": "Primary context source retained by the operation.",
+    "donor_source_ids": "Sources contributing changed factors.",
+    "provenance": "Per-factor or per-phrase source lineage.",
+    "attestation_trace": "Historical phrase/local-factor evidence used.",
+    "morphology_trace": "Moved/fixed seam evidence and transferability scope.",
+    "scene_trace": "Broad topic, narrow scene, evidence tier and gate outcome.",
+    "semantic_role_trace": "Host/donor semantic-role compatibility and outcome.",
+    "source_confidence_trace": "trusted/mining/transcription/source-image-needed separation.",
+    "review_status": "Research-stage status only; machine must not emit accepted/natural.",
+    "cautions": "Explicit unresolved issues."
+  },
+  "allowed_review_status_classes": [
+    "historical-source",
+    "deep-review-supported",
+    "deep-review-needed",
+    "promising-but-parse-needed",
+    "hold-morphology",
+    "hold-scene-mismatch",
+    "hold-semantic-role-incompatible",
+    "hold-source-confirmation",
+    "hold-source-specific",
+    "reject-for-now"
+  ],
+  "source_confidence_levels": [
+    "trusted",
+    "mining",
+    "transcription-supported",
+    "source-image-needed"
+  ],
+  "operation_profiles": {
+    "central-E-swap": {
+      "host_context": "A/B/C/D fixed",
+      "changed_slots": [
+        "E"
+      ],
+      "donor_requirement": "same D with attested D+E",
+      "expected_gate_trace": [
+        "structural",
+        "attestation",
+        "morphology",
+        "scene",
+        "semantic-role",
+        "source-confidence",
+        "deep-review"
+      ]
+    },
+    "scene-microgrammar": {
+      "host_context": "curated scene family",
+      "changed_slots": [
+        "declared-by-family"
+      ],
+      "donor_requirement": "attested neighboring connections + curated scene compatibility",
+      "expected_gate_trace": [
+        "structural",
+        "attestation",
+        "morphology",
+        "scene",
+        "source-confidence",
+        "deep-review"
+      ]
+    }
+  },
+  "invariants": [
+    "No raw-kana-only node merging.",
+    "Every changed factor has provenance.",
+    "Source-specific seams remain source-specific in morphology_trace.",
+    "Missing evidence produces hold/review-needed rather than fabricated parse.",
+    "Negative controls are valid records.",
+    "Public UI consumption is not implied by schema conformance."
+  ],
+  "bridge_readiness": {
+    "current_status": "research-only",
+    "minimum_before_public_bridge": [
+      "Both v0.59 and v0.60 emit this common schema.",
+      "Schema validation is in CI.",
+      "At least two positive scene families exist.",
+      "Public bridge only consumes explicitly whitelisted review statuses.",
+      "Modern-language adaptation rules are separate from historical-source claims."
+    ]
+  }
+}
