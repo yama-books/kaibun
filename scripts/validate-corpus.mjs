@@ -19,6 +19,7 @@ const wave2 = JSON.parse(fs.readFileSync("data/historical-mining-wave2-v39.json"
 const hybridCuration = JSON.parse(fs.readFileSync("data/historical-hybrid-curation-v40.json", "utf8"));
 const yamauchiTokenization = JSON.parse(fs.readFileSync("data/yamauchi-tokenization-model-v41.json", "utf8"));
 const topicFirst = JSON.parse(fs.readFileSync("data/historical-topic-first-model-v42.json", "utf8"));
+const wave2Triage = JSON.parse(fs.readFileSync("data/historical-wave2-source-triage-v43.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -330,6 +331,13 @@ if(!(yamauchiTokenization.interpretation_for_engine??[]).length)errors.push("YAM
 if(!(yamauchiTokenization.unit_schema?.reading))errors.push("YAMAUCHI TOKENIZATION schema missing");
 if(!(topicFirst.topic_hierarchy??[]).length)errors.push("TOPIC FIRST hierarchy missing");
 if(topicFirst.source_findings?.local_50_sample_counts?.reduce((n,x)=>n+x[1],0)!==50)errors.push("TOPIC FIRST local counts must total 50");
+if(wave2Triage.version!=="0.43")errors.push(`WAVE2 TRIAGE version mismatch: ${wave2Triage.version}`);
+const triageNumbers=(wave2Triage.cases??[]).map(x=>x.source_number).sort((a,b)=>a-b);
+if(triageNumbers.join(",")!=="82,88,89,92,94")errors.push(`WAVE2 TRIAGE case set mismatch: ${triageNumbers.join(",")}`);
+const triage89=(wave2Triage.cases??[]).find(x=>x.source_number===89);
+if(!triage89||triage89.strict_palindrome!==true||!isPalindrome(triage89.candidate_reading??""))errors.push("WAVE2 TRIAGE 89 candidate must remain an exact candidate palindrome");
+if(wave2Triage.summary?.promoted_to_wave2_verified!==0)errors.push("WAVE2 TRIAGE must not promote source-image-unconfirmed records");
+if(wave2.verified_count!==14||wave2.held_count!==5)errors.push("WAVE2 v39 baseline changed during v43 triage");
 
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
@@ -353,4 +361,4 @@ console.log(`Historical factor hybrids: ${factorHybrids.novel_path_count}`);
 console.log(`Historical cento candidates: ${cento.total}`);
 console.log(`Wave2 verified samples: ${wave2.verified_count}, held: ${wave2.held_count}`);
 console.log(`Manual hybrid reviews: ${hybridCuration.reviews?.length??0}`);
-console.log(`Topic-first models: ${topicFirst.topic_hierarchy?.length??0}`);
+console.log(`Topic-first models: ${topicFirst.topic_hierarchy?.length??0}`);\nconsole.log(`Wave2 source triage: ${(wave2Triage.cases??[]).length} held records, promoted=${wave2Triage.summary?.promoted_to_wave2_verified??"?"}`);
