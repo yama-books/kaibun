@@ -1,0 +1,119 @@
+{
+  "version": "0.71",
+  "title": "Growth sentence-wrapper auto-selection audit",
+  "source": "data/growth-engine-v10.json",
+  "scope": "45 narrative families, final stage of each family, current noun-collision filter, top 5 wrappers by auto_priority",
+  "public_behavior_changed": false,
+  "family_count": 45,
+  "dimension_counts": {
+    "出来事": 10,
+    "関係": 6,
+    "場所": 2,
+    "理由": 1,
+    "状況": 1,
+    "属性": 2,
+    "時間": 1,
+    "存在": 1,
+    "引用・伝聞": 18,
+    "反応": 3
+  },
+  "top5_frequency": [
+    {
+      "wrapper": "narrate-topic",
+      "families": 34
+    },
+    {
+      "wrapper": "say-topic",
+      "families": 33
+    },
+    {
+      "wrapper": "hear-topic",
+      "families": 31
+    },
+    {
+      "wrapper": "state-topic",
+      "families": 31
+    },
+    {
+      "wrapper": "ask-topic",
+      "families": 30
+    },
+    {
+      "wrapper": "interpret-topic",
+      "families": 9
+    },
+    {
+      "wrapper": "write-topic",
+      "families": 8
+    },
+    {
+      "wrapper": "hear-kuki",
+      "families": 8
+    },
+    {
+      "wrapper": "judge-topic",
+      "families": 7
+    },
+    {
+      "wrapper": "read-muyo-topic",
+      "families": 6
+    },
+    {
+      "wrapper": "know-rushi",
+      "families": 6
+    },
+    {
+      "wrapper": "decide-topic",
+      "families": 5
+    },
+    {
+      "wrapper": "ack-topic",
+      "families": 5
+    },
+    {
+      "wrapper": "tell-topic",
+      "families": 4
+    },
+    {
+      "wrapper": "reply-topic",
+      "families": 3
+    },
+    {
+      "wrapper": "state-rubeno-topic",
+      "families": 2
+    },
+    {
+      "wrapper": "react-cry",
+      "families": 1
+    },
+    {
+      "wrapper": "react-troubled",
+      "families": 1
+    },
+    {
+      "wrapper": "react-silent",
+      "families": 1
+    }
+  ],
+  "finding": {
+    "primary": "For non-quotation dimensions, top-5 auto selection is almost completely determined by auto_priority rather than semantic compatibility.",
+    "evidence": [
+      "出来事 10/10 families have the same top five: say-topic, hear-topic, state-topic, ask-topic, narrate-topic.",
+      "関係 6/6 families have the same top five.",
+      "場所, 理由, 状況, 属性, 時間, 存在 show the same pattern.",
+      "ask-topic appears in the top five of 30/45 families even when the inner sentence is declarative."
+    ]
+  },
+  "existing_strength": {
+    "noun_collision_filter": "effective and retained",
+    "palindrome_structure": "wrapper pairs already reverse-verified",
+    "semantic_gap": "wrapper speech-act/role is not used in automatic ranking"
+  },
+  "research_hypotheses": [
+    "Question wrappers should require interrogative evidence before automatic selection.",
+    "Specialized read/write/ack/tell/reply wrappers should be preferred mainly for quotation/hearsay contexts.",
+    "Reaction wrappers should not enter general auto-selection merely because their priority is numerically low enough after lexical conflicts.",
+    "General reporting wrappers may remain broad fallbacks."
+  ],
+  "next": "Create a conservative wrapper semantic-role gate and simulate it on the same 45 final-stage contexts before any public behavior change."
+}
