@@ -35,6 +35,8 @@ const mitsuPivotExchange = JSON.parse(fs.readFileSync("data/mitsu-central-pivot-
 const semanticRoleGate = JSON.parse(fs.readFileSync("data/factor-semantic-role-gate-v56.json", "utf8"));
 const pivotPipeline = JSON.parse(fs.readFileSync("data/central-pivot-candidate-pipeline-v57.json", "utf8"));
 const generatorContract = JSON.parse(fs.readFileSync("data/historical-generator-contract-v58.json", "utf8"));\nconst hybrid002DeepReview = JSON.parse(fs.readFileSync("data/hybrid-002-deep-review-v99.json", "utf8"));
+const pivotMorphologyGuard = JSON.parse(fs.readFileSync("data/central-pivot-morphology-guard-v100.json", "utf8"));
+const generatedPivotV100 = JSON.parse(fs.readFileSync("data/generated-central-pivot-research-v100.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -476,6 +478,15 @@ if(hybrid002DeepReview.verdict?.current_status!=="hold-morphology-normalization-
 if(hybrid002DeepReview.verdict?.automatic_acceptance!==false||hybrid002DeepReview.verdict?.positive_fixture!==false)errors.push("HYBRID002 V99 must not promote candidate");
 if((hybrid002DeepReview.paired_impact?.affected_ids??[]).sort().join(",")!==["hybrid-002","hybrid-017"].sort().join(","))errors.push("HYBRID002 V99 paired impact set changed");
 if(hybrid002DeepReview.generator_correction?.v59_frozen_snapshot_preserved!==true)errors.push("HYBRID002 V99 must preserve v59 as historical snapshot");
+if(pivotMorphologyGuard.version!=="1.00")errors.push(`PIVOT MORPHOLOGY V100 version mismatch: ${pivotMorphologyGuard.version}`);
+if(pivotMorphologyGuard.policy?.normalized_D_equality_is_sufficient!==false)errors.push("PIVOT MORPHOLOGY V100 normalized D must not be sufficient");
+if(pivotMorphologyGuard.normalization_collision?.morphology_equivalence_confirmed!==false)errors.push("PIVOT MORPHOLOGY V100 must keep mitsu morphology unresolved");
+if((pivotMorphologyGuard.invalidated_candidate_ids_for_current_generator??[]).sort().join(",")!==["hybrid-002","hybrid-017"].sort().join(","))errors.push("PIVOT MORPHOLOGY V100 invalidated set changed");
+if(pivotMorphologyGuard.counts?.current_candidates!==10)errors.push("PIVOT MORPHOLOGY V100 current candidate count must be 10");
+if(generatedPivotV100.version!=="1.00"||generatedPivotV100.candidate_count!==10)errors.push("GENERATED PIVOT V100 count/version mismatch");
+const generatedPivotV100Ids=(generatedPivotV100.candidates??[]).map(x=>x.id);
+for(const id of ["hybrid-002","hybrid-017"])if(generatedPivotV100Ids.includes(id))errors.push(`GENERATED PIVOT V100 normalization-collision leak: ${id}`);
+for(const id of ["hybrid-016","hybrid-019"])if(!generatedPivotV100Ids.includes(id))errors.push(`GENERATED PIVOT V100 positive research candidate missing: ${id}`);
 
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
@@ -516,3 +527,4 @@ console.log(`Mitsu v55 directed swaps: ${(mitsuPivotExchange.outputs??[]).length
 console.log(`Semantic-role v56 cases: ${(semanticRoleGate.case_studies??[]).length}`);
 console.log(`Pivot pipeline v57: total=${(pivotPipeline.results??[]).length}, deep-review=${pivotPipeline.summary?.reaches_deep_review??0}`);
 console.log(`Generator contract v58 operations: ${(generatorContract.supported_operations??[]).length}`);\nconsole.log(`Hybrid-002 v99 verdict: ${hybrid002DeepReview.verdict?.current_status}`);
+console.log(`Pivot morphology guard v1.00: candidates=${generatedPivotV100.candidate_count}, blocked=${pivotMorphologyGuard.counts?.blocked_by_normalization_guard}`);

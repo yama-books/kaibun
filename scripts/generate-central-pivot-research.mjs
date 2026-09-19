@@ -10,12 +10,15 @@ const seamSignatures = readJson("data/historical-seam-signatures-v36.json");
 const hybrids = readJson("data/historical-factor-hybrids-v35.json");
 const curatedPipeline = readJson("data/central-pivot-candidate-pipeline-v57.json");
 const contract = readJson("data/historical-generator-contract-v58.json");
-const frozenFixture = readJson("data/generated-central-pivot-research-v59.json");
+const deepReviewCorrection = readJson("data/hybrid-002-deep-review-v99.json");
+const morphologyGuard = readJson("data/central-pivot-morphology-guard-v100.json");
+const frozenFixture = readJson("data/generated-central-pivot-research-v100.json");
 const commonSchema = readJson("data/historical-research-candidate-schema-v61.json");
 
 const semanticById = new Map((semanticFields.entries ?? []).map(x => [x.id, x]));
 const hybridByReading = new Map((hybrids.candidates ?? []).map(x => [x.reading, x]));
 const curatedById = new Map((curatedPipeline.results ?? []).map(x => [x.id, x]));
+const blockedPairs = new Map((morphologyGuard.blocked_source_pairs ?? []).map(x => [`${x.host}->${x.donor}`, x]));
 
 function assemble({ A, B, C, D, E }) {
   const reading = A + B + C + D + E + reverse(D) + reverse(C) + reverse(B) + reverse(A);
@@ -79,6 +82,8 @@ for (const [D, group] of groups) {
   for (const host of group) {
     for (const donor of group) {
       if (host.id === donor.id || host.E === donor.E) continue;
+      const blockedPair = blockedPairs.get(`${host.id}->${donor.id}`);
+      if (blockedPair) continue;
 
       const factors = { A: host.A, B: host.B, C: host.C, D: host.D, E: donor.E };
       const built = assemble(factors);
@@ -154,8 +159,10 @@ for (const [D, group] of groups) {
 generated.sort((a, b) => a.id.localeCompare(b.id));
 
 const output = {
-  version: "0.59",
+  version: "1.00",
   generator_contract_version: contract.version,
+  correction_overlay_version: deepReviewCorrection.version,
+  morphology_guard_version: morphologyGuard.version,
   operation: "central-E-swap",
   candidate_count: generated.length,
   candidates: generated,
@@ -164,17 +171,21 @@ const output = {
 function check() {
   const errors = [];
   if (contract.version !== "0.58") errors.push(`contract version is ${contract.version}, expected 0.58`);
+  if (deepReviewCorrection.version !== "0.99") errors.push(`deep-review correction version is ${deepReviewCorrection.version}, expected 0.99`);
+  if (morphologyGuard.version !== "1.00") errors.push(`morphology guard version is ${morphologyGuard.version}, expected 1.00`);
   if (commonSchema.version !== "0.61") errors.push(`common schema version is ${commonSchema.version}, expected 0.61`);
-  if (output.candidate_count !== 12) errors.push(`candidate count ${output.candidate_count}, expected 12`);
+  if (output.candidate_count !== 10) errors.push(`candidate count ${output.candidate_count}, expected 10`);
 
   const generatedIds = generated.map(x => x.id).sort();
-  const fixtureIds = (curatedPipeline.results ?? []).map(x => x.id).sort();
+  const blockedIds = new Set(morphologyGuard.invalidated_candidate_ids_for_current_generator ?? []);
+  const fixtureIds = (curatedPipeline.results ?? []).map(x => x.id).filter(id => !blockedIds.has(id)).sort();
   if (generatedIds.join(",") !== fixtureIds.join(",")) {
-    errors.push(`candidate IDs differ from v0.57 fixture: generated=${generatedIds.join(",")} fixture=${fixtureIds.join(",")}`);
+    errors.push(`candidate IDs differ from guarded v0.57 fixture: generated=${generatedIds.join(",")} fixture=${fixtureIds.join(",")}`);
   }
+  for (const id of blockedIds) if (generatedIds.includes(id)) errors.push(`normalization-collision candidate leaked through morphology guard: ${id}`);
 
   const frozenIds = (frozenFixture.candidates ?? []).map(x => x.id).sort();
-  if (frozenFixture.version !== "0.59") errors.push(`frozen fixture version is ${frozenFixture.version}, expected 0.59`);
+  if (frozenFixture.version !== "1.00") errors.push(`frozen fixture version is ${frozenFixture.version}, expected 1.00`);
   if (frozenFixture.candidate_count !== output.candidate_count) errors.push(`frozen fixture count ${frozenFixture.candidate_count}, generated ${output.candidate_count}`);
   if (frozenIds.join(",") !== generatedIds.join(",")) errors.push(`frozen fixture IDs differ: frozen=${frozenIds.join(",")} generated=${generatedIds.join(",")}`);
   const frozenById = new Map((frozenFixture.candidates ?? []).map(x => [x.id, x]));
@@ -200,8 +211,8 @@ function check() {
     return acc;
   }, {});
   if ((stages["deep-review-supported"] ?? 0) !== 2) errors.push("expected 2 deep-review-supported");
-  if ((stages["deep-review-needed-role"] ?? 0) !== 1) errors.push("expected 1 deep-review-needed-role");
-  if ((stages["hold-semantic-role-incompatible"] ?? 0) !== 1) errors.push("expected 1 role-incompatible hold");
+  if ((stages["deep-review-needed-role"] ?? 0) !== 0) errors.push("expected 0 deep-review-needed-role after morphology guard");
+  if ((stages["hold-semantic-role-incompatible"] ?? 0) !== 0) errors.push("expected 0 role-incompatible candidates after earlier morphology hold");
   if ((stages["hold-scene-mismatch"] ?? 0) !== 8) errors.push("expected 8 scene-mismatch holds");
 
   if (errors.length) {
@@ -209,7 +220,7 @@ function check() {
     process.exit(1);
   }
 
-  console.log("OK: historical central-pivot research generator");
+  console.log("OK: historical central-pivot research generator v1.00 morphology guard");
   console.log(`Candidates: ${output.candidate_count}`);
   console.log(`Stages: ${JSON.stringify(stages)}`);
 }

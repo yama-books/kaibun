@@ -2580,3 +2580,64 @@ current pipeline では morphology gate で先に止める。
 進捗が大きく跳ねないのは、候補1件の昇格ではなく、
 **生成器の誤結合を1種類発見して安全側へ戻した**ため。
 これは候補数より生成原理の信頼性に効く更新である。
+
+
+---
+
+# 33. 2026-09-19 v1.00 morphology guard — generator修正
+
+## 実施
+
+32節の hybrid-002 deep review で判明した normalization collision を、
+research generator の実行経路へ反映した。
+
+追加:
+- `data/central-pivot-morphology-guard-v100.json`
+- `data/generated-central-pivot-research-v100.json`
+- `docs/CENTRAL_PIVOT_MORPHOLOGY_GUARD_V100.md`
+
+更新:
+- `scripts/generate-central-pivot-research.mjs`
+- `scripts/validate-corpus.mjs`
+
+## generator の現在値
+
+v0.59 historical snapshot:
+- 12 candidate
+
+v1.00 current guarded generator:
+- **10 candidate**
+- normalization collision で先に止める: **2**
+  - hybrid-002
+  - hybrid-017
+- deep-review-supported: **2**
+  - hybrid-016
+  - hybrid-019
+- scene mismatch hold: **8**
+
+## 重要
+
+v0.59データは書き換えていない。
+
+旧研究:
+- role-negative hybrid-017
+- deep-review-needed hybrid-002
+
+は、研究過程を再現するnegative / correction fixtureとして残る。
+
+一方、現在の生成器は
+**normalized D が同じだけでは cross-source node を共有しない。**
+
+この区別を固定した。
+
+## 次
+
+1. CI / Pages確認
+2. Route A source-image verification再試行（歌68を優先）
+3. guarded universe で次のpositive family探索
+4. source imageで歌68 D morphologyが明示できた場合だけ hybrid-002/017 reopenを検討
+
+## 進捗目安
+
+- 歴史回文研究・生成原理: **約88%**
+- 怪文回文メーカー全体目標: **約86%**

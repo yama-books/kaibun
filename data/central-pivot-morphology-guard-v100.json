@@ -1,0 +1,75 @@
+{
+  "version": "1.00",
+  "updated_on": "2026-09-19",
+  "purpose": "Prevent repeated-D grouping from merging distinct pre-normalization readings or unresolved morphologies solely because palindrome-normalized kana are equal.",
+  "supersedes_for_current_generation": {
+    "generated_fixture": "data/generated-central-pivot-research-v59.json",
+    "note": "v0.59 is retained as a historical pre-v0.99 snapshot; current generation uses this guard."
+  },
+  "policy": {
+    "normalized_D_equality_is_sufficient": false,
+    "cross_source_D_requires_morphology_equivalence": true,
+    "unresolved_equivalence_action": "hold-before-scene-gate",
+    "source_surface_or_pre_normalization_reading_must_be_preserved_when_available": true
+  },
+  "normalization_collision": {
+    "normalized_D": "みつ",
+    "sources": [
+      {
+        "id": "shoju-five-elements",
+        "title": "地水火風空",
+        "pre_normalization_reading": "みづ",
+        "normalized_D": "みつ",
+        "morphology": "水",
+        "confidence": "trusted"
+      },
+      {
+        "id": "shoju-068",
+        "title": "釈教",
+        "transcribed_reading": "みつ",
+        "normalized_D": "みつ",
+        "morphology": "unresolved",
+        "confidence": "mining-source-parse-needed"
+      }
+    ],
+    "morphology_equivalence_confirmed": false
+  },
+  "blocked_source_pairs": [
+    {
+      "candidate_id": "hybrid-002",
+      "host": "shoju-068",
+      "donor": "shoju-five-elements",
+      "normalized_D": "みつ",
+      "status": "hold-morphology-normalization-collision",
+      "reason": "donor 水 is read みづ before normalization; host みつ morphology is unresolved"
+    },
+    {
+      "candidate_id": "hybrid-017",
+      "host": "shoju-five-elements",
+      "donor": "shoju-068",
+      "normalized_D": "みつ",
+      "status": "hold-morphology-normalization-collision",
+      "reason": "same unresolved D-identity premise in the reverse direction"
+    }
+  ],
+  "invalidated_candidate_ids_for_current_generator": [
+    "hybrid-002",
+    "hybrid-017"
+  ],
+  "counts": {
+    "pre_guard_v59_candidates": 12,
+    "blocked_by_normalization_guard": 2,
+    "current_candidates": 10,
+    "deep_review_supported": 2,
+    "hold_scene_mismatch": 8
+  },
+  "current_positive_research_ids": [
+    "hybrid-016",
+    "hybrid-019"
+  ],
+  "notes": [
+    "The v0.56 semantic-role negative for hybrid-017 remains useful as a historical fixture, but current gate order stops it earlier at morphology.",
+    "Do not infer shoju-068 みつ as 三つ automatically. That remains a plausible but unconfirmed linguistic hypothesis.",
+    "Route A source-image review can reopen the pair only if explicit morphology compatibility is established."
+  ]
+}

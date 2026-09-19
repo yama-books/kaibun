@@ -1,0 +1,670 @@
+{
+  "version": "1.00",
+  "generator_contract_version": "0.58",
+  "correction_overlay_version": "0.99",
+  "morphology_guard_version": "1.00",
+  "operation": "central-E-swap",
+  "candidate_count": 10,
+  "candidates": [
+    {
+      "id": "hybrid-016",
+      "operation": "central-E-swap",
+      "host_source_id": "shoju-035",
+      "donor_source_id": "shoju-031",
+      "factors": {
+        "A": "はれつみよ",
+        "B": "きつ",
+        "C": "るもはきの",
+        "D": "はに",
+        "E": "しけし"
+      },
+      "changed_factor": {
+        "slot": "E",
+        "host_reading": "てりて",
+        "donor_reading": "しけし"
+      },
+      "reading": "はれつみよきつるもはきのはにしけしにはのきはもるつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつるもはきの",
+        "はにしけし",
+        "にはのきはもる",
+        "つきよみつれは"
+      ],
+      "strict_palindrome": true,
+      "provenance": {
+        "host_group": "mining",
+        "donor_group": "mining",
+        "host_title": "同（月）",
+        "donor_title": "同（露）"
+      },
+      "semantic_context": {
+        "host_broad_field": "秋・月",
+        "host_primary_field": "秋・月",
+        "donor_broad_field": "秋・月",
+        "donor_primary_field": "秋・露"
+      },
+      "gate_trace": {
+        "structural_palindrome": {
+          "status": "pass"
+        },
+        "historical_attestation": {
+          "status": "pass",
+          "reason": "host A/B/C/D remains intact; donor D+E is attested in donor source"
+        },
+        "morphology": {
+          "status": "pass-or-conditional",
+          "D_confidence": "high",
+          "D_transferable": true,
+          "D_signature": "noun+particle -> place-noun"
+        },
+        "scene": {
+          "status": "pass-or-reviewed",
+          "reason": "curated-v57 advanced beyond scene gate"
+        },
+        "semantic_role": {
+          "status": "compatible-by-reviewed-context",
+          "reason": "curated-v57 support"
+        },
+        "deep_review": {
+          "status": "deep-review-supported"
+        }
+      },
+      "final_research_stage": "deep-review-supported"
+    },
+    {
+      "id": "hybrid-019",
+      "operation": "central-E-swap",
+      "host_source_id": "shoju-031",
+      "donor_source_id": "shoju-035",
+      "factors": {
+        "A": "やとるつゆ",
+        "B": "たま",
+        "C": "はのきはの",
+        "D": "はに",
+        "E": "てりて"
+      },
+      "changed_factor": {
+        "slot": "E",
+        "host_reading": "しけし",
+        "donor_reading": "てりて"
+      },
+      "reading": "やとるつゆたまはのきはのはにてりてにはのはきのはまたゆつるとや",
+      "meter": [
+        "やとるつゆ",
+        "たまはのきはの",
+        "はにてりて",
+        "にはのはきのは",
+        "またゆつるとや"
+      ],
+      "strict_palindrome": true,
+      "provenance": {
+        "host_group": "mining",
+        "donor_group": "mining",
+        "host_title": "同（露）",
+        "donor_title": "同（月）"
+      },
+      "semantic_context": {
+        "host_broad_field": "秋・月",
+        "host_primary_field": "秋・露",
+        "donor_broad_field": "秋・月",
+        "donor_primary_field": "秋・月"
+      },
+      "gate_trace": {
+        "structural_palindrome": {
+          "status": "pass"
+        },
+        "historical_attestation": {
+          "status": "pass",
+          "reason": "host A/B/C/D remains intact; donor D+E is attested in donor source"
+        },
+        "morphology": {
+          "status": "pass-or-conditional",
+          "D_confidence": "high",
+          "D_transferable": true,
+          "D_signature": "noun+particle -> place-noun"
+        },
+        "scene": {
+          "status": "pass-or-reviewed",
+          "reason": "curated-v57 advanced beyond scene gate"
+        },
+        "semantic_role": {
+          "status": "compatible-by-reviewed-context",
+          "reason": "curated-v57 support"
+        },
+        "deep_review": {
+          "status": "deep-review-supported"
+        }
+      },
+      "final_research_stage": "deep-review-supported"
+    },
+    {
+      "id": "hybrid-025",
+      "operation": "central-E-swap",
+      "host_source_id": "shoju-027",
+      "donor_source_id": "shoju-064",
+      "factors": {
+        "A": "さよきつる",
+        "B": "けふ",
+        "C": "そまたきし",
+        "D": "すす",
+        "E": "かけか"
+      },
+      "changed_factor": {
+        "slot": "E",
+        "host_reading": "かせか",
+        "donor_reading": "かけか"
+      },
+      "reading": "さよきつるけふそまたきしすすかけかすすしきたまそふけるつきよさ",
+      "meter": [
+        "さよきつる",
+        "けふそまたきし",
+        "すすかけか",
+        "すすしきたまそ",
+        "ふけるつきよさ"
+      ],
+      "strict_palindrome": true,
+      "provenance": {
+        "host_group": "mining",
+        "donor_group": "mining",
+        "host_title": "納涼",
+        "donor_title": "社頭祝"
+      },
+      "semantic_context": {
+        "host_broad_field": "夏・行事",
+        "host_primary_field": "夏・納涼",
+        "donor_broad_field": "信仰",
+        "donor_primary_field": "神祇・祝"
+      },
+      "gate_trace": {
+        "structural_palindrome": {
+          "status": "pass"
+        },
+        "historical_attestation": {
+          "status": "pass",
+          "reason": "host A/B/C/D remains intact; donor D+E is attested in donor source"
+        },
+        "morphology": {
+          "status": "pass-or-conditional",
+          "D_confidence": "medium",
+          "D_transferable": "conditional",
+          "D_signature": "self-reversing-two-kana"
+        },
+        "scene": {
+          "status": "hold",
+          "reason": "curated-v57 scene mismatch"
+        },
+        "semantic_role": {
+          "status": "skipped",
+          "reason": "scene gate stopped candidate first"
+        },
+        "deep_review": {
+          "status": "hold-scene-mismatch"
+        }
+      },
+      "final_research_stage": "hold-scene-mismatch"
+    },
+    {
+      "id": "hybrid-028",
+      "operation": "central-E-swap",
+      "host_source_id": "mitoku-shirayuki",
+      "donor_source_id": "shoju-031",
+      "factors": {
+        "A": "しらゆきは",
+        "B": "けさ",
+        "C": "のらくさの",
+        "D": "はに",
+        "E": "しけし"
+      },
+      "changed_factor": {
+        "slot": "E",
+        "host_reading": "もつも",
+        "donor_reading": "しけし"
+      },
+      "reading": "しらゆきはけさのらくさのはにしけしにはのさくらのさけはきゆらし",
+      "meter": [
+        "しらゆきは",
+        "けさのらくさの",
+        "はにしけし",
+        "にはのさくらの",
+        "さけはきゆらし"
+      ],
+      "strict_palindrome": true,
+      "provenance": {
+        "host_group": "trusted",
+        "donor_group": "mining",
+        "host_title": "白雪",
+        "donor_title": "同（露）"
+      },
+      "semantic_context": {
+        "host_broad_field": "冬・雪",
+        "host_primary_field": "雪・植物",
+        "donor_broad_field": "秋・月",
+        "donor_primary_field": "秋・露"
+      },
+      "gate_trace": {
+        "structural_palindrome": {
+          "status": "pass"
+        },
+        "historical_attestation": {
+          "status": "pass",
+          "reason": "host A/B/C/D remains intact; donor D+E is attested in donor source"
+        },
+        "morphology": {
+          "status": "pass-or-conditional",
+          "D_confidence": "high",
+          "D_transferable": true,
+          "D_signature": "noun+particle -> place-noun"
+        },
+        "scene": {
+          "status": "hold",
+          "reason": "curated-v57 scene mismatch"
+        },
+        "semantic_role": {
+          "status": "skipped",
+          "reason": "scene gate stopped candidate first"
+        },
+        "deep_review": {
+          "status": "hold-scene-mismatch"
+        }
+      },
+      "final_research_stage": "hold-scene-mismatch"
+    },
+    {
+      "id": "hybrid-029",
+      "operation": "central-E-swap",
+      "host_source_id": "mitoku-shirayuki",
+      "donor_source_id": "shoju-035",
+      "factors": {
+        "A": "しらゆきは",
+        "B": "けさ",
+        "C": "のらくさの",
+        "D": "はに",
+        "E": "てりて"
+      },
+      "changed_factor": {
+        "slot": "E",
+        "host_reading": "もつも",
+        "donor_reading": "てりて"
+      },
+      "reading": "しらゆきはけさのらくさのはにてりてにはのさくらのさけはきゆらし",
+      "meter": [
+        "しらゆきは",
+        "けさのらくさの",
+        "はにてりて",
+        "にはのさくらの",
+        "さけはきゆらし"
+      ],
+      "strict_palindrome": true,
+      "provenance": {
+        "host_group": "trusted",
+        "donor_group": "mining",
+        "host_title": "白雪",
+        "donor_title": "同（月）"
+      },
+      "semantic_context": {
+        "host_broad_field": "冬・雪",
+        "host_primary_field": "雪・植物",
+        "donor_broad_field": "秋・月",
+        "donor_primary_field": "秋・月"
+      },
+      "gate_trace": {
+        "structural_palindrome": {
+          "status": "pass"
+        },
+        "historical_attestation": {
+          "status": "pass",
+          "reason": "host A/B/C/D remains intact; donor D+E is attested in donor source"
+        },
+        "morphology": {
+          "status": "pass-or-conditional",
+          "D_confidence": "high",
+          "D_transferable": true,
+          "D_signature": "noun+particle -> place-noun"
+        },
+        "scene": {
+          "status": "hold",
+          "reason": "curated-v57 scene mismatch"
+        },
+        "semantic_role": {
+          "status": "skipped",
+          "reason": "scene gate stopped candidate first"
+        },
+        "deep_review": {
+          "status": "hold-scene-mismatch"
+        }
+      },
+      "final_research_stage": "hold-scene-mismatch"
+    },
+    {
+      "id": "hybrid-030",
+      "operation": "central-E-swap",
+      "host_source_id": "shoju-040",
+      "donor_source_id": "edo-popular-takarabune",
+      "factors": {
+        "A": "てりつうみ",
+        "B": "きつ",
+        "C": "しもなかの",
+        "D": "みな",
+        "E": "めさめ"
+      },
+      "changed_factor": {
+        "slot": "E",
+        "host_reading": "かりか",
+        "donor_reading": "めさめ"
+      },
+      "reading": "てりつうみきつしもなかのみなめさめなみのかなもしつきみうつりて",
+      "meter": [
+        "てりつうみ",
+        "きつしもなかの",
+        "みなめさめ",
+        "なみのかなもし",
+        "つきみうつりて"
+      ],
+      "strict_palindrome": true,
+      "provenance": {
+        "host_group": "mining",
+        "donor_group": "trusted",
+        "host_title": "月明海上鴻鷹渡",
+        "donor_title": "宝船回文歌"
+      },
+      "semantic_context": {
+        "host_broad_field": "秋・月",
+        "host_primary_field": "秋・月・海・鳥",
+        "donor_broad_field": "その他",
+        "donor_primary_field": "夜・夢・舟"
+      },
+      "gate_trace": {
+        "structural_palindrome": {
+          "status": "pass"
+        },
+        "historical_attestation": {
+          "status": "pass",
+          "reason": "host A/B/C/D remains intact; donor D+E is attested in donor source"
+        },
+        "morphology": {
+          "status": "pass-or-conditional",
+          "D_confidence": "high",
+          "D_transferable": true,
+          "D_signature": "collective-noun -> nature-noun"
+        },
+        "scene": {
+          "status": "hold",
+          "reason": "curated-v57 scene mismatch"
+        },
+        "semantic_role": {
+          "status": "skipped",
+          "reason": "scene gate stopped candidate first"
+        },
+        "deep_review": {
+          "status": "hold-scene-mismatch"
+        }
+      },
+      "final_research_stage": "hold-scene-mismatch"
+    },
+    {
+      "id": "hybrid-033",
+      "operation": "central-E-swap",
+      "host_source_id": "edo-popular-takarabune",
+      "donor_source_id": "shoju-040",
+      "factors": {
+        "A": "なかきよの",
+        "B": "とを",
+        "C": "のねふりの",
+        "D": "みな",
+        "E": "かりか"
+      },
+      "changed_factor": {
+        "slot": "E",
+        "host_reading": "めさめ",
+        "donor_reading": "かりか"
+      },
+      "reading": "なかきよのとをのねふりのみなかりかなみのりふねのをとのよきかな",
+      "meter": [
+        "なかきよの",
+        "とをのねふりの",
+        "みなかりか",
+        "なみのりふねの",
+        "をとのよきかな"
+      ],
+      "strict_palindrome": true,
+      "provenance": {
+        "host_group": "trusted",
+        "donor_group": "mining",
+        "host_title": "宝船回文歌",
+        "donor_title": "月明海上鴻鷹渡"
+      },
+      "semantic_context": {
+        "host_broad_field": "その他",
+        "host_primary_field": "夜・夢・舟",
+        "donor_broad_field": "秋・月",
+        "donor_primary_field": "秋・月・海・鳥"
+      },
+      "gate_trace": {
+        "structural_palindrome": {
+          "status": "pass"
+        },
+        "historical_attestation": {
+          "status": "pass",
+          "reason": "host A/B/C/D remains intact; donor D+E is attested in donor source"
+        },
+        "morphology": {
+          "status": "pass-or-conditional",
+          "D_confidence": "high",
+          "D_transferable": true,
+          "D_signature": "collective-noun -> nature-noun"
+        },
+        "scene": {
+          "status": "hold",
+          "reason": "curated-v57 scene mismatch"
+        },
+        "semantic_role": {
+          "status": "skipped",
+          "reason": "scene gate stopped candidate first"
+        },
+        "deep_review": {
+          "status": "hold-scene-mismatch"
+        }
+      },
+      "final_research_stage": "hold-scene-mismatch"
+    },
+    {
+      "id": "hybrid-034",
+      "operation": "central-E-swap",
+      "host_source_id": "shoju-035",
+      "donor_source_id": "mitoku-shirayuki",
+      "factors": {
+        "A": "はれつみよ",
+        "B": "きつ",
+        "C": "るもはきの",
+        "D": "はに",
+        "E": "もつも"
+      },
+      "changed_factor": {
+        "slot": "E",
+        "host_reading": "てりて",
+        "donor_reading": "もつも"
+      },
+      "reading": "はれつみよきつるもはきのはにもつもにはのきはもるつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつるもはきの",
+        "はにもつも",
+        "にはのきはもる",
+        "つきよみつれは"
+      ],
+      "strict_palindrome": true,
+      "provenance": {
+        "host_group": "mining",
+        "donor_group": "trusted",
+        "host_title": "同（月）",
+        "donor_title": "白雪"
+      },
+      "semantic_context": {
+        "host_broad_field": "秋・月",
+        "host_primary_field": "秋・月",
+        "donor_broad_field": "冬・雪",
+        "donor_primary_field": "雪・植物"
+      },
+      "gate_trace": {
+        "structural_palindrome": {
+          "status": "pass"
+        },
+        "historical_attestation": {
+          "status": "pass",
+          "reason": "host A/B/C/D remains intact; donor D+E is attested in donor source"
+        },
+        "morphology": {
+          "status": "pass-or-conditional",
+          "D_confidence": "high",
+          "D_transferable": true,
+          "D_signature": "noun+particle -> place-noun"
+        },
+        "scene": {
+          "status": "hold",
+          "reason": "curated-v57 scene mismatch"
+        },
+        "semantic_role": {
+          "status": "skipped",
+          "reason": "scene gate stopped candidate first"
+        },
+        "deep_review": {
+          "status": "hold-scene-mismatch"
+        }
+      },
+      "final_research_stage": "hold-scene-mismatch"
+    },
+    {
+      "id": "hybrid-038",
+      "operation": "central-E-swap",
+      "host_source_id": "shoju-031",
+      "donor_source_id": "mitoku-shirayuki",
+      "factors": {
+        "A": "やとるつゆ",
+        "B": "たま",
+        "C": "はのきはの",
+        "D": "はに",
+        "E": "もつも"
+      },
+      "changed_factor": {
+        "slot": "E",
+        "host_reading": "しけし",
+        "donor_reading": "もつも"
+      },
+      "reading": "やとるつゆたまはのきはのはにもつもにはのはきのはまたゆつるとや",
+      "meter": [
+        "やとるつゆ",
+        "たまはのきはの",
+        "はにもつも",
+        "にはのはきのは",
+        "またゆつるとや"
+      ],
+      "strict_palindrome": true,
+      "provenance": {
+        "host_group": "mining",
+        "donor_group": "trusted",
+        "host_title": "同（露）",
+        "donor_title": "白雪"
+      },
+      "semantic_context": {
+        "host_broad_field": "秋・月",
+        "host_primary_field": "秋・露",
+        "donor_broad_field": "冬・雪",
+        "donor_primary_field": "雪・植物"
+      },
+      "gate_trace": {
+        "structural_palindrome": {
+          "status": "pass"
+        },
+        "historical_attestation": {
+          "status": "pass",
+          "reason": "host A/B/C/D remains intact; donor D+E is attested in donor source"
+        },
+        "morphology": {
+          "status": "pass-or-conditional",
+          "D_confidence": "high",
+          "D_transferable": true,
+          "D_signature": "noun+particle -> place-noun"
+        },
+        "scene": {
+          "status": "hold",
+          "reason": "curated-v57 scene mismatch"
+        },
+        "semantic_role": {
+          "status": "skipped",
+          "reason": "scene gate stopped candidate first"
+        },
+        "deep_review": {
+          "status": "hold-scene-mismatch"
+        }
+      },
+      "final_research_stage": "hold-scene-mismatch"
+    },
+    {
+      "id": "hybrid-041",
+      "operation": "central-E-swap",
+      "host_source_id": "shoju-064",
+      "donor_source_id": "shoju-027",
+      "factors": {
+        "A": "らくてみの",
+        "B": "よみ",
+        "C": "やきよめし",
+        "D": "すす",
+        "E": "かせか"
+      },
+      "changed_factor": {
+        "slot": "E",
+        "host_reading": "かけか",
+        "donor_reading": "かせか"
+      },
+      "reading": "らくてみのよみやきよめしすすかせかすすしめよきやみよのみてくら",
+      "meter": [
+        "らくてみの",
+        "よみやきよめし",
+        "すすかせか",
+        "すすしめよきや",
+        "みよのみてくら"
+      ],
+      "strict_palindrome": true,
+      "provenance": {
+        "host_group": "mining",
+        "donor_group": "mining",
+        "host_title": "社頭祝",
+        "donor_title": "納涼"
+      },
+      "semantic_context": {
+        "host_broad_field": "信仰",
+        "host_primary_field": "神祇・祝",
+        "donor_broad_field": "夏・行事",
+        "donor_primary_field": "夏・納涼"
+      },
+      "gate_trace": {
+        "structural_palindrome": {
+          "status": "pass"
+        },
+        "historical_attestation": {
+          "status": "pass",
+          "reason": "host A/B/C/D remains intact; donor D+E is attested in donor source"
+        },
+        "morphology": {
+          "status": "pass-or-conditional",
+          "D_confidence": "medium",
+          "D_transferable": "conditional",
+          "D_signature": "self-reversing-two-kana"
+        },
+        "scene": {
+          "status": "hold",
+          "reason": "curated-v57 scene mismatch"
+        },
+        "semantic_role": {
+          "status": "skipped",
+          "reason": "scene gate stopped candidate first"
+        },
+        "deep_review": {
+          "status": "hold-scene-mismatch"
+        }
+      },
+      "final_research_stage": "hold-scene-mismatch"
+    }
+  ]
+}
