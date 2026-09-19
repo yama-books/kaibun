@@ -6,6 +6,8 @@ const pairs = JSON.parse(fs.readFileSync("data/reverse-lexeme-pairs-v09.json", "
 const growth = JSON.parse(fs.readFileSync("data/growth-engine-v10.json", "utf8"));
 const seams = JSON.parse(fs.readFileSync("data/seam-grammar-v25.json", "utf8"));
 const historical = JSON.parse(fs.readFileSync("data/historical-kaibunka-samples-v27.json", "utf8"));
+const historicalMining = JSON.parse(fs.readFileSync("data/historical-kaibunka-mining-v28.json", "utf8"));
+const tankaLattice = JSON.parse(fs.readFileSync("data/tanka-mirror-lattice-v28.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -203,6 +205,46 @@ for(const h of historical.samples??[]){
 if(historical.sample_count!==historicalCount)errors.push(`HISTORICAL COUNT mismatch: declared=${historical.sample_count} actual=${historicalCount}`);
 if(historical.all_normalized_palindromes!==true)errors.push("HISTORICAL corpus is not declared fully verified");
 
+let miningCount=0;
+let miningThirdKuPal=0;
+for(const h of historicalMining.candidates??[]){
+  const reading=h.source_transcription_normalized;
+  if(!reading||!isPalindrome(reading))errors.push(`MINING sample not palindrome: ${h.id}`);
+  if([...(reading||"")].length!==31)errors.push(`MINING sample not 31 kana: ${h.id}`);
+  if((h.meter_segments??[]).join("")!==reading)errors.push(`MINING meter segments mismatch: ${h.id}`);
+  if((h.meter_segments??[]).map(x=>[...x].length).join(",")!=="5,7,5,7,7")errors.push(`MINING meter mismatch: ${h.id}`);
+  if(h.meter_segments?.[2]&&isPalindrome(h.meter_segments[2]))miningThirdKuPal++;
+  miningCount++;
+}
+if(historicalMining.candidates?.length!==miningCount)errors.push(`MINING COUNT mismatch`);
+
+const expectedMeter=[5,12,17,24];
+const expectedReflected=[26,19,14,7];
+const expectedCombined=[5,7,12,14,17,19,24,26];
+const expectedCells=[5,2,5,2,3,2,5,2,5];
+const eq=(a,b)=>JSON.stringify(a)===JSON.stringify(b);
+if(tankaLattice.total_kana!==31)errors.push("LATTICE total_kana must be 31");
+if(!eq(tankaLattice.meter_boundaries,expectedMeter))errors.push("LATTICE meter boundaries mismatch");
+if(!eq(tankaLattice.reflected_meter_boundaries,expectedReflected))errors.push("LATTICE reflected boundaries mismatch");
+if(!eq(tankaLattice.combined_boundaries,expectedCombined))errors.push("LATTICE combined boundaries mismatch");
+if(!eq(tankaLattice.symmetric_cells,expectedCells))errors.push("LATTICE cells mismatch");
+if(tankaLattice.center_position_1_based!==16)errors.push("LATTICE center mismatch");
+
+const allHistorical=[...(historical.samples??[]),...(historicalMining.candidates??[])];
+let thirdKuPalCount=0;
+for(const x of allHistorical){
+  const reading=x.normalized_reading||x.source_transcription_normalized;
+  if(!reading||[...reading].length!==31)continue;
+  const a=[...reading];
+  const ku3=a.slice(12,17).join("");
+  if(isPalindrome(ku3))thirdKuPalCount++;
+}
+const empirical=tankaLattice.empirical_check;
+if(empirical){
+  if(empirical.sample_count!==allHistorical.length)errors.push(`LATTICE empirical sample count mismatch: declared=${empirical.sample_count} actual=${allHistorical.length}`);
+  if(empirical.third_ku_palindrome_count!==thirdKuPalCount)errors.push(`LATTICE third-ku count mismatch: declared=${empirical.third_ku_palindrome_count} actual=${thirdKuPalCount}`);
+}
+
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
 if(rules.rule_count!==rules.rules.length)errors.push(`RULE COUNT mismatch: declared=${rules.rule_count} actual=${rules.rules.length}`);
@@ -218,3 +260,5 @@ console.log(`Narrative growth variants: ${narrativeVariants}`);
 console.log(`Sentence-level wrappers: ${sentenceWrapperCount}`);
 console.log(`Seam-shift recipes: ${seamRecipeCount}`);
 console.log(`Historical kaibunka samples: ${historicalCount}`);
+console.log(`Historical mining samples: ${miningCount}`);
+console.log(`Tanka lattice third-ku palindromes: ${thirdKuPalCount}/${allHistorical.length}`);
