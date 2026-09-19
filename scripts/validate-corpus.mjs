@@ -52,6 +52,8 @@ const wave2GraphAuditV111 = JSON.parse(fs.readFileSync("data/wave2-factor-graph-
 const yamauchiVisibleV112 = JSON.parse(fs.readFileSync("data/yamauchi-visible-transcription-review-v112.json", "utf8"));
 const wave2TravelDeepV113 = JSON.parse(fs.readFileSync("data/wave2-travel-deep-syntax-review-v113.json", "utf8"));
 const generatedWave2TravelV114 = JSON.parse(fs.readFileSync("data/generated-wave2-travel-outer-frame-v114.json", "utf8"));
+const wave2HeldPolicyV115 = JSON.parse(fs.readFileSync("data/wave2-held-evidence-policy-review-v115.json", "utf8"));
+const orthographicEquivalenceV116 = JSON.parse(fs.readFileSync("data/historical-orthographic-equivalence-v116.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -661,6 +663,22 @@ const v114reverse=(generatedWave2TravelV114.candidates??[]).find(x=>x.id==="wave
 if(v114best?.review_status!=="promising-but-parse-needed"||v114best?.semantic_role_trace?.status!=="compatible-tentative")errors.push("GENERATED WAVE2 TRAVEL V114 best candidate drift");
 if(v114reverse?.review_status!=="deep-review-needed"||v114reverse?.semantic_role_trace?.blocking_span!=="はまもくかもと")errors.push("GENERATED WAVE2 TRAVEL V114 reverse candidate drift");
 
+if(wave2HeldPolicyV115.version!=="1.15")errors.push(`WAVE2 HELD POLICY V115 version mismatch: ${wave2HeldPolicyV115.version}`);
+if(wave2HeldPolicyV115.poem_89?.current_status!=="strongest-held-reading-resolution")errors.push("WAVE2 HELD POLICY V115 poem89 status drift");
+if(wave2HeldPolicyV115.poem_89?.promote_to_wave2_verified!==false)errors.push("WAVE2 HELD POLICY V115 poem89 must remain held");
+if(wave2HeldPolicyV115.poem_89?.policy_review?.revised_blocker!=="target-specific-reading-resolution-required")errors.push("WAVE2 HELD POLICY V115 poem89 blocker drift");
+if(wave2HeldPolicyV115.poem_94?.current_status!=="hold-strict-orthographic-equivalence")errors.push("WAVE2 HELD POLICY V115 poem94 status drift");
+if(wave2HeldPolicyV115.poem_94?.promote_to_strict_wave2_verified!==false)errors.push("WAVE2 HELD POLICY V115 poem94 must not enter strict verified set");
+if(wave2HeldPolicyV115.wave2_counts?.verified_snapshot_v039!==14||wave2HeldPolicyV115.wave2_counts?.held_snapshot_v039!==5||wave2HeldPolicyV115.wave2_counts?.current_counts_changed!==false)errors.push("WAVE2 HELD POLICY V115 counts drift");
+
+if(orthographicEquivalenceV116.version!=="1.16")errors.push(`ORTHOGRAPHIC EQ V116 version mismatch: ${orthographicEquivalenceV116.version}`);
+if(orthographicEquivalenceV116.mode!=="research-diagnostic-only")errors.push("ORTHOGRAPHIC EQ V116 mode drift");
+if(orthographicEquivalenceV116.strict_baseline?.changed!==false)errors.push("ORTHOGRAPHIC EQ V116 must not change strict baseline");
+if(orthographicEquivalenceV116.strict_baseline?.wave2_verified_snapshot!==14||orthographicEquivalenceV116.strict_baseline?.wave2_held_snapshot!==5)errors.push("ORTHOGRAPHIC EQ V116 wave2 counts drift");
+const v116Positive=(orthographicEquivalenceV116.cases??[]).filter(x=>x.o_wo_diagnostic_palindrome&&!x.strict_palindrome).map(x=>x.source_number);
+if(v116Positive.join(",")!=="94")errors.push(`ORTHOGRAPHIC EQ V116 positive diagnostic set drift: ${v116Positive.join(",")}`);
+if(orthographicEquivalenceV116.verdict?.strict_promotions!==0||orthographicEquivalenceV116.verdict?.public_generator_effect!=="none")errors.push("ORTHOGRAPHIC EQ V116 must remain diagnostic-only");
+
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
 if(rules.rule_count!==rules.rules.length)errors.push(`RULE COUNT mismatch: declared=${rules.rule_count} actual=${rules.rules.length}`);
@@ -716,3 +734,5 @@ console.log(`Wave2 graph audit v1.11: wave2-paths=${wave2GraphAuditV111.counts?.
 console.log(`Yamauchi visible v1.12: travel-transcription=${yamauchiVisibleV112.travel_family_effect?.sources_90_93_poem_specific_scholarly_transcription_confirmed}, p94=${v112p94?.current_hold_class}`);
 console.log(`Wave2 travel deep v1.13: best=${wave2TravelDeepV113.family_verdict?.best_novel_status}, established=${wave2TravelDeepV113.family_verdict?.established_positive_family}`);
 console.log(`Wave2 travel generator v1.14: candidates=${generatedWave2TravelV114.candidate_count}, best=${v114best?.review_status}`);
+console.log(`Wave2 held policy v1.15: p89=${wave2HeldPolicyV115.verdict?.poem_89}, p94=${wave2HeldPolicyV115.verdict?.poem_94}`);
+console.log(`Orthographic equivalence v1.16: positives=${v116Positive.join(",")||"none"}, strict-promotions=${orthographicEquivalenceV116.verdict?.strict_promotions}`);
