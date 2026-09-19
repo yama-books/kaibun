@@ -6,6 +6,7 @@ const isPalindrome = s => s === reverse(s);
 
 const family = readJson("data/naha-outer-frame-exchange-v62.json");
 const schema = readJson("data/historical-research-candidate-schema-v61.json");
+const frozenFixture = readJson("data/generated-naha-outer-frame-v63.json");
 
 function assemble({A,B,C,D,E}) {
   const reading = A+B+C+D+E+reverse(D)+reverse(C)+reverse(B)+reverse(A);
@@ -128,6 +129,16 @@ function check(){
   const expectedIds=(family.outputs??[]).map(x=>x.id).sort().join(",");
   const ids=generated.map(x=>x.id).sort().join(",");
   if(ids!==expectedIds) errors.push(`IDs mismatch generated=${ids} expected=${expectedIds}`);
+  if(frozenFixture.version!=="0.63") errors.push(`frozen fixture version ${frozenFixture.version}, expected 0.63`);
+  if(frozenFixture.candidate_count!==generated.length) errors.push(`frozen fixture count ${frozenFixture.candidate_count}, generated ${generated.length}`);
+  const frozenById=new Map((frozenFixture.candidates??[]).map(x=>[x.id,x]));
+  for(const c of generated){
+    const frozen=frozenById.get(c.id);
+    if(!frozen) { errors.push(`missing frozen candidate: ${c.id}`); continue; }
+    if(frozen.reading!==c.reading) errors.push(`frozen reading drift: ${c.id}`);
+    if(frozen.review_status!==c.review_status) errors.push(`frozen review drift: ${c.id}`);
+    if(JSON.stringify(frozen.semantic_role_trace)!==JSON.stringify(c.semantic_role_trace)) errors.push(`frozen role trace drift: ${c.id}`);
+  }
   for(const c of generated){
     for(const field of schema.candidate_required_fields??[]) if(!(field in c)) errors.push(`missing field ${field}: ${c.id}`);
     if(!c.strict_palindrome) errors.push(`non-palindrome: ${c.id}`);
