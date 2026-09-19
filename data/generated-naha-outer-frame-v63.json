@@ -1,0 +1,314 @@
+{
+  "version": "0.63",
+  "source_family_version": "0.62",
+  "common_schema_version": "0.61",
+  "operation": "shared-B-outer-frame-swap",
+  "family": "naha-spring-plants",
+  "candidate_count": 4,
+  "candidates": [
+    {
+      "id": "hybrid-018",
+      "operation": "shared-B-outer-frame-swap",
+      "reading": "みなくさのなはしらすみるともとちともとるみすらしはなのさくなみ",
+      "meter": [
+        "みなくさの",
+        "なはしらすみる",
+        "ともとちと",
+        "もとるみすらし",
+        "はなのさくなみ"
+      ],
+      "factors": {
+        "A": "みなくさの",
+        "B": "なは",
+        "C": "しらすみる",
+        "D": "とも",
+        "E": "とちと"
+      },
+      "strict_palindrome": true,
+      "host_source_id": "shoju-wakakusa",
+      "donor_source_ids": [
+        "sendai-sakunami"
+      ],
+      "provenance": {
+        "host_middle_source": "shoju-wakakusa",
+        "outer_frame_A_source": "sendai-sakunami",
+        "B_shared_reading": "なは",
+        "B_reverse_reading": "はな"
+      },
+      "attestation_trace": {
+        "donor_AB_attested": true,
+        "host_BC_attested": true,
+        "host_CD_attested": true,
+        "host_DE_attested": true,
+        "source_pair_trusted": true
+      },
+      "morphology_trace": {
+        "moved_slots": [
+          "A"
+        ],
+        "fixed_slots": [
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "shared_B": "なは",
+        "reverse_B": "はな",
+        "B_confidence": "high",
+        "B_transferable": true,
+        "B_signature": "topic-name -> lexical-flower"
+      },
+      "scene_trace": {
+        "host_broad_field": "春・草木",
+        "donor_broad_field": "春・草木",
+        "host_primary_field": "春景・遊行",
+        "donor_primary_field": "草木・薬・地名",
+        "status": "broad-pass"
+      },
+      "semantic_role_trace": {
+        "status": "compatible-by-reviewed-context",
+        "basis": [
+          "Both source poems are trusted and share the broad spring/plant field.",
+          "The shared B=なは seam is high-confidence and unchanged.",
+          "The host middle three ku preserve the original 野遊 sequence of seeing plants with companions and returning.",
+          "The imported outer frame changes 若草/花の咲く川 to みな草/花の作並, which remains vegetation/place scenery rather than importing a foreign topic.",
+          "The resulting first two ku can be read as みな草の／名は知らず見る, which is semantically plausible within the plant-observation scene."
+        ]
+      },
+      "source_confidence_trace": {
+        "host": "trusted",
+        "donor": "trusted",
+        "host_source_confidence": "B",
+        "donor_source_confidence": "A",
+        "source_image_needed": false
+      },
+      "review_status": "deep-review-supported",
+      "cautions": [
+        "The full classical syntax of 戻る身すらし / 花の作並 should still receive linguistic review.",
+        "This is a novel cento, not an attested historical waka."
+      ]
+    },
+    {
+      "id": "hybrid-020",
+      "operation": "shared-B-outer-frame-swap",
+      "reading": "わかくさのなははくとしれくすりなりすくれしとくははなのさくかわ",
+      "meter": [
+        "わかくさの",
+        "なははくとしれ",
+        "くすりなり",
+        "すくれしとくは",
+        "はなのさくかわ"
+      ],
+      "factors": {
+        "A": "わかくさの",
+        "B": "なは",
+        "C": "はくとしれ",
+        "D": "くす",
+        "E": "りなり"
+      },
+      "strict_palindrome": true,
+      "host_source_id": "sendai-sakunami",
+      "donor_source_ids": [
+        "shoju-wakakusa"
+      ],
+      "provenance": {
+        "host_middle_source": "sendai-sakunami",
+        "outer_frame_A_source": "shoju-wakakusa",
+        "B_shared_reading": "なは",
+        "B_reverse_reading": "はな"
+      },
+      "attestation_trace": {
+        "donor_AB_attested": true,
+        "host_BC_attested": true,
+        "host_CD_attested": true,
+        "host_DE_attested": true,
+        "source_pair_trusted": true
+      },
+      "morphology_trace": {
+        "moved_slots": [
+          "A"
+        ],
+        "fixed_slots": [
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "shared_B": "なは",
+        "reverse_B": "はな",
+        "B_confidence": "high",
+        "B_transferable": true,
+        "B_signature": "topic-name -> lexical-flower"
+      },
+      "scene_trace": {
+        "host_broad_field": "春・草木",
+        "donor_broad_field": "春・草木",
+        "host_primary_field": "草木・薬・地名",
+        "donor_primary_field": "春景・遊行",
+        "status": "broad-pass"
+      },
+      "semantic_role_trace": {
+        "status": "incompatible-for-this-host",
+        "basis": [
+          "The broad spring/plant field remains compatible and the B seam is structurally safe.",
+          "However the Sakunami host middle builds a medicine/virtue statement whose original final landing is the place-name 作並.",
+          "Replacing that outer landing with 花の咲く川 leaves すぐれし徳は followed by a scenic river phrase, weakening the host's semantic-role completion."
+        ]
+      },
+      "source_confidence_trace": {
+        "host": "trusted",
+        "donor": "trusted",
+        "host_source_confidence": "A",
+        "donor_source_confidence": "B",
+        "source_image_needed": false
+      },
+      "review_status": "hold-semantic-role-mismatch",
+      "cautions": [
+        "The candidate is held for this host/donor direction only; the 野遊 outer frame is not globally rejected.",
+        "A different syntactic analysis could revise the judgment, so retain as a negative/control fixture rather than delete."
+      ]
+    },
+    {
+      "id": "sendai-sakunami",
+      "operation": "shared-B-outer-frame-swap",
+      "reading": "みなくさのなははくとしれくすりなりすくれしとくははなのさくなみ",
+      "meter": [
+        "みなくさの",
+        "なははくとしれ",
+        "くすりなり",
+        "すくれしとくは",
+        "はなのさくなみ"
+      ],
+      "factors": {
+        "A": "みなくさの",
+        "B": "なは",
+        "C": "はくとしれ",
+        "D": "くす",
+        "E": "りなり"
+      },
+      "strict_palindrome": true,
+      "host_source_id": "sendai-sakunami",
+      "donor_source_ids": [],
+      "provenance": {
+        "host_middle_source": "sendai-sakunami",
+        "outer_frame_A_source": "sendai-sakunami",
+        "B_shared_reading": "なは",
+        "B_reverse_reading": "はな"
+      },
+      "attestation_trace": {
+        "donor_AB_attested": true,
+        "host_BC_attested": true,
+        "host_CD_attested": true,
+        "host_DE_attested": true,
+        "source_pair_trusted": true
+      },
+      "morphology_trace": {
+        "moved_slots": [
+          "A"
+        ],
+        "fixed_slots": [
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "shared_B": "なは",
+        "reverse_B": "はな",
+        "B_confidence": "high",
+        "B_transferable": true,
+        "B_signature": "topic-name -> lexical-flower"
+      },
+      "scene_trace": {
+        "host_broad_field": "春・草木",
+        "donor_broad_field": "春・草木",
+        "host_primary_field": "草木・薬・地名",
+        "donor_primary_field": "草木・薬・地名",
+        "status": "broad-pass"
+      },
+      "semantic_role_trace": {
+        "status": "source-member",
+        "basis": []
+      },
+      "source_confidence_trace": {
+        "host": "trusted",
+        "donor": "trusted",
+        "host_source_confidence": "A",
+        "donor_source_confidence": "A",
+        "source_image_needed": false
+      },
+      "review_status": "historical-source",
+      "cautions": []
+    },
+    {
+      "id": "shoju-wakakusa",
+      "operation": "shared-B-outer-frame-swap",
+      "reading": "わかくさのなはしらすみるともとちともとるみすらしはなのさくかわ",
+      "meter": [
+        "わかくさの",
+        "なはしらすみる",
+        "ともとちと",
+        "もとるみすらし",
+        "はなのさくかわ"
+      ],
+      "factors": {
+        "A": "わかくさの",
+        "B": "なは",
+        "C": "しらすみる",
+        "D": "とも",
+        "E": "とちと"
+      },
+      "strict_palindrome": true,
+      "host_source_id": "shoju-wakakusa",
+      "donor_source_ids": [],
+      "provenance": {
+        "host_middle_source": "shoju-wakakusa",
+        "outer_frame_A_source": "shoju-wakakusa",
+        "B_shared_reading": "なは",
+        "B_reverse_reading": "はな"
+      },
+      "attestation_trace": {
+        "donor_AB_attested": true,
+        "host_BC_attested": true,
+        "host_CD_attested": true,
+        "host_DE_attested": true,
+        "source_pair_trusted": true
+      },
+      "morphology_trace": {
+        "moved_slots": [
+          "A"
+        ],
+        "fixed_slots": [
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "shared_B": "なは",
+        "reverse_B": "はな",
+        "B_confidence": "high",
+        "B_transferable": true,
+        "B_signature": "topic-name -> lexical-flower"
+      },
+      "scene_trace": {
+        "host_broad_field": "春・草木",
+        "donor_broad_field": "春・草木",
+        "host_primary_field": "春景・遊行",
+        "donor_primary_field": "春景・遊行",
+        "status": "broad-pass"
+      },
+      "semantic_role_trace": {
+        "status": "source-member",
+        "basis": []
+      },
+      "source_confidence_trace": {
+        "host": "trusted",
+        "donor": "trusted",
+        "host_source_confidence": "B",
+        "donor_source_confidence": "B",
+        "source_image_needed": false
+      },
+      "review_status": "historical-source",
+      "cautions": []
+    }
+  ]
+}
