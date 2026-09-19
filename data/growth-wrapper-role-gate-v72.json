@@ -43,10 +43,11 @@
       "auto_condition": {
         "type": "dimension",
         "allowed": [
-          "反応"
+          "反応",
+          "引用・伝聞"
         ]
       },
-      "rationale": "反応外枠は反応sceneに限定する。"
+      "rationale": "反応外枠は反応scene、または引用内容そのものへの反応として引用・伝聞sceneに限定する。"
     },
     {
       "match_ids": [
@@ -143,8 +144,9 @@
   "success_criteria": [
     "Every one of the 45 narrative family final-stage contexts retains at least five eligible wrappers after noun-collision and role gating.",
     "ask/ask-topic is absent from declarative auto pools unless interrogative evidence exists.",
-    "reaction wrappers are absent from non-反応 dimensions.",
+    "reaction wrappers are absent from dimensions other than 反応 and 引用・伝聞.",
     "specialized quotation wrappers are absent from non-引用・伝聞 dimensions.",
     "No existing growth reading is changed."
-  ]
+  ],
+  "revision_note": "Initial strict reaction-only gate left quote-matsutake with four eligible wrappers because noun-collision removed most reporting names. Allowing reaction wrappers for 引用・伝聞 provides a semantically plausible fallback while preserving the minimum pool."
 }
