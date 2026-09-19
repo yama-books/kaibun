@@ -1,6 +1,6 @@
 {
-  "version": "0.25",
-  "principle": "段階長文化は、(1)構文骨格を保って中心名詞句を伸ばす structural family と、(2)全文を個別監査した narrative family の二系統。どちらも1段ずつ必ず長くする。 物語型の後半は、述語を固定したまま受け手の親族関係を鏡型に外側へ追加し、50文字級まで段階的に伸長する。 v0.14では場所・理由・状況をdimensionとして明示し、L2でも物語型長文化を許可する。 v0.15では時間・属性のdimensionを追加し、述語や観察行為を維持したまま修飾情報を厚くする。 v0.16では貸借以外に待機・来訪・存在・睡眠の述語系統を追加し、長文の述語偏りを減らす。 v0.17では完全回文文そのものを引用節として外側から包み、伝聞・判断・解釈・記述を追加するsentence-level wrapperを導入する。 v0.18では任意の完全回文文を、逆読み関係にある引用外枠で何段でも包める汎用sentence wrapper engineを公開UIへ解放する。 v0.18.1では100かな超の固定benchmarkを保持し、長文域の回文成立をCIで回帰検証する。 v0.19では引用・伝聞だけでなく、引用文を原因や記録タイトルとして名詞化する外枠を追加する。 v0.20ではセリフ内外で同じ名詞を再使用しないcollision policyをsentence wrapperの必須条件とし、外枠語彙を11種へ拡張する。 v0.21では「Xは『P』はV」の主題型wrapperを優先し、同じ外側名詞を共有する別wrapperもreading衝突で同時に除外する。 v0.22では引用長文化の母体を12系統へ拡張し、元文に含まれる名詞に応じて外枠候補を個別除外する。 v0.23では固定引用familyの外枠開始位置を元文ごとに安定分散し、長文間でも同じ人物から始まる偏りを抑制する。 v0.24では認定・告知・応答の外枠を追加し、外側人物語彙をさらに分散する。 v0.25では12個の固定引用familyの第一外枠をすべて別wrapperへ割り当て、family間の話者偏りも除去する。",
+  "version": "0.26",
+  "principle": "段階長文化は、(1)構文骨格を保って中心名詞句を伸ばす structural family と、(2)全文を個別監査した narrative family の二系統。どちらも1段ずつ必ず長くする。 物語型の後半は、述語を固定したまま受け手の親族関係を鏡型に外側へ追加し、50文字級まで段階的に伸長する。 v0.14では場所・理由・状況をdimensionとして明示し、L2でも物語型長文化を許可する。 v0.15では時間・属性のdimensionを追加し、述語や観察行為を維持したまま修飾情報を厚くする。 v0.16では貸借以外に待機・来訪・存在・睡眠の述語系統を追加し、長文の述語偏りを減らす。 v0.17では完全回文文そのものを引用節として外側から包み、伝聞・判断・解釈・記述を追加するsentence-level wrapperを導入する。 v0.18では任意の完全回文文を、逆読み関係にある引用外枠で何段でも包める汎用sentence wrapper engineを公開UIへ解放する。 v0.18.1では100かな超の固定benchmarkを保持し、長文域の回文成立をCIで回帰検証する。 v0.19では引用・伝聞だけでなく、引用文を原因や記録タイトルとして名詞化する外枠を追加する。 v0.20ではセリフ内外で同じ名詞を再使用しないcollision policyをsentence wrapperの必須条件とし、外枠語彙を11種へ拡張する。 v0.21では「Xは『P』はV」の主題型wrapperを優先し、同じ外側名詞を共有する別wrapperもreading衝突で同時に除外する。 v0.22では引用長文化の母体を12系統へ拡張し、元文に含まれる名詞に応じて外枠候補を個別除外する。 v0.23では固定引用familyの外枠開始位置を元文ごとに安定分散し、長文間でも同じ人物から始まる偏りを抑制する。 v0.24では認定・告知・応答の外枠を追加し、外側人物語彙をさらに分散する。 v0.25では12個の固定引用familyの第一外枠をすべて別wrapperへ割り当て、family間の話者偏りも除去する。 v0.26では引用の母体となる短・中文も増補し、自然なL1『草が咲く／草も桃も咲く』と、L2の舞う・追う・呼ぶ・寝る・焼く系統を追加する。",
   "families": [
     {
       "id": "wife-wait",
@@ -249,8 +249,8 @@
     "generated_growth_variants": 208,
     "all_palindromes": true,
     "minimum_stage_increases_length": true,
-    "narrative_family_count": 30,
-    "narrative_variants": 226,
+    "narrative_family_count": 36,
+    "narrative_variants": 247,
     "longest_narrative_kana": 175,
     "longest_narrative_example": {
       "family": "quote-matsutake",
@@ -260,12 +260,12 @@
       "len": 175
     },
     "narrative_families_by_layer": {
-      "L1": 12,
-      "L2": 18,
+      "L1": 13,
+      "L2": 23,
       "L3": 0
     },
     "narrative_families_by_dimension": {
-      "出来事": 4,
+      "出来事": 10,
       "関係": 6,
       "場所": 2,
       "理由": 1,
@@ -3509,6 +3509,228 @@
         }
       ],
       "wrapper_order": "preferred-first collision-free"
+    },
+    {
+      "id": "event-bloom",
+      "label": "出来事：草と桃が咲く",
+      "layer": "L1",
+      "dimension": "出来事",
+      "mode": "curated_full_stages",
+      "stages": [
+        {
+          "reading": "くさがさく",
+          "display": "草が咲く。",
+          "adds": "出来事の核",
+          "japanese_quality": "A",
+          "weirdness": 1,
+          "dimension": "出来事"
+        },
+        {
+          "reading": "くさももももさく",
+          "display": "草も桃も咲く。",
+          "adds": "並列する植物",
+          "japanese_quality": "A",
+          "weirdness": 1,
+          "dimension": "出来事"
+        }
+      ]
+    },
+    {
+      "id": "event-burn-tire",
+      "label": "出来事：タイヤとトマトを焼く",
+      "layer": "L2",
+      "dimension": "出来事",
+      "mode": "curated_full_stages",
+      "stages": [
+        {
+          "reading": "たいやをやいた",
+          "display": "タイヤを焼いた。",
+          "adds": "出来事の核",
+          "japanese_quality": "A",
+          "weirdness": 3,
+          "dimension": "出来事"
+        },
+        {
+          "reading": "たいやもとまともやいた",
+          "display": "タイヤもトマトも焼いた。",
+          "adds": "対象を追加",
+          "japanese_quality": "A",
+          "weirdness": 3,
+          "dimension": "出来事"
+        }
+      ]
+    },
+    {
+      "id": "event-horse-dance",
+      "label": "出来事：馬と人が舞う",
+      "layer": "L2",
+      "dimension": "出来事",
+      "mode": "curated_full_stages",
+      "stages": [
+        {
+          "reading": "うまがまう",
+          "display": "馬が舞う。",
+          "adds": "出来事の核",
+          "japanese_quality": "A-",
+          "weirdness": 2,
+          "dimension": "出来事"
+        },
+        {
+          "reading": "うまもななもまう",
+          "display": "馬もナナも舞う。",
+          "adds": "並列対象",
+          "japanese_quality": "A",
+          "weirdness": 2,
+          "dimension": "出来事"
+        },
+        {
+          "reading": "うまもこのななのこもまう",
+          "display": "馬もこのナナの子も舞う。",
+          "adds": "人物関係",
+          "japanese_quality": "A",
+          "weirdness": 3,
+          "dimension": "出来事"
+        },
+        {
+          "reading": "うまもははのこのななのこのははもまう",
+          "display": "馬も母のこのナナの子の母も舞う。",
+          "adds": "親族関係",
+          "japanese_quality": "A-",
+          "weirdness": 4,
+          "dimension": "出来事"
+        },
+        {
+          "reading": "うまもちちのははのこのななのこのははのちちもまう",
+          "display": "馬も父の母のこのナナの子の母の父も舞う。",
+          "adds": "親族関係",
+          "japanese_quality": "A-",
+          "weirdness": 5,
+          "dimension": "出来事"
+        }
+      ]
+    },
+    {
+      "id": "event-chase",
+      "label": "出来事：魚と人を追う",
+      "layer": "L2",
+      "dimension": "出来事",
+      "mode": "curated_full_stages",
+      "stages": [
+        {
+          "reading": "うおをおう",
+          "display": "魚を追う。",
+          "adds": "出来事の核",
+          "japanese_quality": "A-",
+          "weirdness": 2,
+          "dimension": "出来事"
+        },
+        {
+          "reading": "うおもななもおう",
+          "display": "魚もナナも追う。",
+          "adds": "並列対象",
+          "japanese_quality": "A",
+          "weirdness": 3,
+          "dimension": "出来事"
+        },
+        {
+          "reading": "うおもこのななのこもおう",
+          "display": "魚もこのナナの子も追う。",
+          "adds": "人物関係",
+          "japanese_quality": "A",
+          "weirdness": 4,
+          "dimension": "出来事"
+        },
+        {
+          "reading": "うおもははのこのななのこのははもおう",
+          "display": "魚も母のこのナナの子の母も追う。",
+          "adds": "親族関係",
+          "japanese_quality": "A-",
+          "weirdness": 5,
+          "dimension": "出来事"
+        }
+      ]
+    },
+    {
+      "id": "event-call",
+      "label": "出来事：ブヨと人を呼ぶ",
+      "layer": "L2",
+      "dimension": "出来事",
+      "mode": "curated_full_stages",
+      "stages": [
+        {
+          "reading": "ぶよをよぶ",
+          "display": "ブヨを呼ぶ。",
+          "adds": "出来事の核",
+          "japanese_quality": "A-",
+          "weirdness": 2,
+          "dimension": "出来事"
+        },
+        {
+          "reading": "ぶよもななもよぶ",
+          "display": "ブヨもナナも呼ぶ。",
+          "adds": "並列対象",
+          "japanese_quality": "A",
+          "weirdness": 3,
+          "dimension": "出来事"
+        },
+        {
+          "reading": "ぶよもこのななのこもよぶ",
+          "display": "ブヨもこのナナの子も呼ぶ。",
+          "adds": "人物関係",
+          "japanese_quality": "A",
+          "weirdness": 4,
+          "dimension": "出来事"
+        },
+        {
+          "reading": "ぶよもははのこのななのこのははもよぶ",
+          "display": "ブヨも母のこのナナの子の母も呼ぶ。",
+          "adds": "親族関係",
+          "japanese_quality": "A-",
+          "weirdness": 5,
+          "dimension": "出来事"
+        }
+      ]
+    },
+    {
+      "id": "event-seed-sleep",
+      "label": "出来事：種と人が寝る",
+      "layer": "L2",
+      "dimension": "出来事",
+      "mode": "curated_full_stages",
+      "stages": [
+        {
+          "reading": "たねがねた",
+          "display": "種が寝た。",
+          "adds": "出来事の核",
+          "japanese_quality": "A-",
+          "weirdness": 3,
+          "dimension": "出来事"
+        },
+        {
+          "reading": "たねもななもねた",
+          "display": "種もナナも寝た。",
+          "adds": "並列対象",
+          "japanese_quality": "A",
+          "weirdness": 3,
+          "dimension": "出来事"
+        },
+        {
+          "reading": "たねもこのななのこもねた",
+          "display": "種もこのナナの子も寝た。",
+          "adds": "人物関係",
+          "japanese_quality": "A",
+          "weirdness": 4,
+          "dimension": "出来事"
+        },
+        {
+          "reading": "たねもははのこのななのこのははもねた",
+          "display": "種も母のこのナナの子の母も寝た。",
+          "adds": "親族関係",
+          "japanese_quality": "A-",
+          "weirdness": 5,
+          "dimension": "出来事"
+        }
+      ]
     }
   ],
   "quality_note": "物語型は全段階を独立した日本語文として読める形へ修正。stageごとに行為→相手→経緯/関係を追加する。",
