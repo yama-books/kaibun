@@ -1,0 +1,71 @@
+{
+  "version": "0.41",
+  "source": {
+    "author": "山内潤三",
+    "article": "廻文歌の限界と効用（下）―高野山釈教長歌を頂点として―",
+    "journal": "密教文化 107",
+    "year": 1974,
+    "methodology_note": [
+      "接続する助詞は括弧内に入れる。",
+      "できるだけ複合名詞・複合動詞の形で示す。",
+      "時に句の長さで採る。",
+      "意味不明瞭で漢字を与えにくいものは慎重に扱い、それでも不明なものは採らない。"
+    ]
+  },
+  "interpretation_for_engine": [
+    {
+      "id": "variable-span-unit",
+      "principle": "学習単位を固定長の単語に限定しない。",
+      "implementation": "1〜7かな程度の可変長spanを候補とし、単語・複合語・助詞付き句・句全体を同じグラフ上で扱う。"
+    },
+    {
+      "id": "particle-attached-signature",
+      "principle": "助詞は独立トークンとして切り捨てず、前後語との接続情報を保持する。",
+      "implementation": "例: なは = 名(は) ↔ 花、はに = 葉(に) ↔ 庭。readingだけでなく morphological_signature を持つ。"
+    },
+    {
+      "id": "phrase-level-attestation",
+      "principle": "局所セルより、歴史上実際に現れた5/7かな句を強い正例とする。",
+      "implementation": "cento/factor graphでは句全体のprovenanceを保持し、短いセル一致だけより高い重みを与える。"
+    },
+    {
+      "id": "uncertainty-preservation",
+      "principle": "回文になるはずという理由でOCR・語義・漢字を補正しない。",
+      "implementation": "trusted / mining / source-image-needed を分離。unknownはunknownのまま保存する。"
+    },
+    {
+      "id": "multi-analysis",
+      "principle": "同じかな列に複数の形態素解析を許す。",
+      "implementation": "ほと = ほととぎす / ほど… / ほとけ のような場合、raw reading nodeを統合せず解析署名ごとに別nodeとする。"
+    }
+  ],
+  "unit_schema": {
+    "reading": "kana string",
+    "span_length": "integer",
+    "surface_candidates": "array",
+    "morphology_signature": "role + boundary pattern",
+    "attached_particles": "array",
+    "semantic_field": "array",
+    "source_attestation": "source poem ids",
+    "reverse_reading": "reverse(reading)",
+    "reverse_analysis_candidates": "array",
+    "confidence": "high/medium/low",
+    "transferable": "true/conditional/false"
+  },
+  "ranking": {
+    "strong_positive": [
+      "7-kana or 5-kana phrase attested in historical source",
+      "same semantic field",
+      "same morphological signature across multiple sources",
+      "particle-boundary resegmentation verified in multiple sources",
+      "source transcription confirmed"
+    ],
+    "penalties": [
+      "raw kana match with incompatible morphology",
+      "semantic-field mismatch",
+      "OCR-only reconstruction",
+      "word-for-word mirror with no boundary shift",
+      "forced proper name introduced only for symmetry"
+    ]
+  }
+}
