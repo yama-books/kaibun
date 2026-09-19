@@ -1,0 +1,164 @@
+{
+  "version": "0.53",
+  "title": "Hani central-pivot exchange family",
+  "concept": "Two historical contexts sharing D=はに exchange only their central E3 pivots, yielding two source poems plus two one-ku substitution centos.",
+  "source_contexts": {
+    "shoju-031": {
+      "title": "同（露）",
+      "factors": {
+        "A": "やとるつゆ",
+        "B": "たま",
+        "C": "はのきはの",
+        "D": "はに",
+        "E": "しけし"
+      },
+      "surfaced_context": [
+        "玉は軒端の",
+        "葉にしけし",
+        "庭のはきのは"
+      ],
+      "evidence": "v0.51 source-transcription evidence; source image not checked"
+    },
+    "shoju-035": {
+      "title": "同（月）",
+      "factors": {
+        "A": "はれつみよ",
+        "B": "きつ",
+        "C": "るもはきの",
+        "D": "はに",
+        "E": "てりて"
+      },
+      "surfaced_context": [
+        "きつるもはきの",
+        "葉にてりて",
+        "庭のきはもる"
+      ],
+      "evidence": "Yamauchi transcription mirror and v0.40; source image not checked"
+    }
+  },
+  "invariant": {
+    "D": "はに",
+    "morphology_signature": "noun+particle -> place-noun",
+    "confidence": "high-structural",
+    "rule": "Only E3 is exchanged; A/B/C/D and their mirrored outer material remain in the original context."
+  },
+  "E_options": [
+    {
+      "reading": "しけし",
+      "source_id": "shoju-031",
+      "parse_status": "human-tentative 繁し"
+    },
+    {
+      "reading": "てりて",
+      "source_id": "shoju-035",
+      "parse_status": "human-tentative 照りて"
+    }
+  ],
+  "outputs": [
+    {
+      "id": "shoju-031",
+      "kind": "historical-source",
+      "context": "shoju-031",
+      "E_source": "shoju-031",
+      "reading": "やとるつゆたまはのきはのはにしけしにはのはきのはまたゆつるとや",
+      "meter": [
+        "やとるつゆ",
+        "たまはのきはの",
+        "はにしけし",
+        "にはのはきのは",
+        "またゆつるとや"
+      ],
+      "review": {
+        "status": "source-member"
+      }
+    },
+    {
+      "id": "hybrid-019",
+      "kind": "novel-cento",
+      "context": "shoju-031",
+      "E_source": "shoju-035",
+      "reading": "やとるつゆたまはのきはのはにてりてにはのはきのはまたゆつるとや",
+      "meter": [
+        "やとるつゆ",
+        "たまはのきはの",
+        "はにてりて",
+        "にはのはきのは",
+        "またゆつるとや"
+      ],
+      "review": {
+        "status": "promising-but-parse-needed",
+        "origin": "model-assisted-research-review-2026-09-19",
+        "semantic_coherence": "high-tentative",
+        "reasons": [
+          "Four of five meter phrases remain exactly in the shoju-031 context; only ku3 changes.",
+          "The replacement ku3 はにてりて is historically attested in shoju-035.",
+          "Both source contexts share the high structural D=はに boundary shift, so the E3 swap does not alter the D seam.",
+          "The surfaced shoju-031 transcription explicitly carries 玉・軒端・葉・庭, while the inserted source phrase carries 葉にてりて, keeping the candidate inside a foliage/garden/light scene."
+        ],
+        "cautions": [
+          "B=たま↔また is only conditional-source-specific, not a global transferable seam.",
+          "The lexical/syntactic function of reverse また and the full reading of またゆつるとや remain source-image pending.",
+          "The relation created by 玉は軒端の / 葉にてりて is plausible but not source-confirmed as an original historical sentence."
+        ]
+      }
+    },
+    {
+      "id": "shoju-035",
+      "kind": "historical-source",
+      "context": "shoju-035",
+      "E_source": "shoju-035",
+      "reading": "はれつみよきつるもはきのはにてりてにはのきはもるつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつるもはきの",
+        "はにてりて",
+        "にはのきはもる",
+        "つきよみつれは"
+      ],
+      "review": {
+        "status": "source-member"
+      }
+    },
+    {
+      "id": "hybrid-016",
+      "kind": "novel-cento",
+      "context": "shoju-035",
+      "E_source": "shoju-031",
+      "reading": "はれつみよきつるもはきのはにしけしにはのきはもるつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつるもはきの",
+        "はにしけし",
+        "にはのきはもる",
+        "つきよみつれは"
+      ],
+      "review": {
+        "status": "promising-but-parse-needed",
+        "origin": "v0.40",
+        "semantic_coherence": "high",
+        "cautions": [
+          "The subject-predicate relation around 葉に繁し after transplantation remains unresolved.",
+          "Source-image/editorial confirmation remains pending."
+        ]
+      }
+    }
+  ],
+  "counts": {
+    "historical_sources": 2,
+    "novel_cento": 2,
+    "total_outputs": 4,
+    "one_ku_substitution_novel": 2
+  },
+  "research_conclusion": [
+    "hybrid-016 and hybrid-019 are reciprocal central-pivot substitutions, not arbitrary multi-factor recombinations.",
+    "Because E3 sits at the palindrome center and is self-reversing, changing E leaves the outer mirror construction untouched.",
+    "A shared high-confidence D seam plus scene-compatible E phrases appears to be a safer generative operation than changing an outer A across unrelated subscenes."
+  ],
+  "safety": {
+    "no_global_promotion_of_B_tama": true,
+    "no_source_image_claim": true,
+    "hybrid_019_not_historical_original": true,
+    "human_or_source_review_still_required": true
+  },
+  "next_step": "Compare central-pivot swaps across other repeated D seams to see whether this operation generalizes beyond D=はに."
+}
