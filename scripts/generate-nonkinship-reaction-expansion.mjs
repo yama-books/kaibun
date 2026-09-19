@@ -94,4 +94,4 @@ if(errors.length){
   process.exit(1);
 }
 console.log("OK: non-kinship reaction expansion v89");
-console.log(`Families=4, stages=20, combined projected kinship share=${(projected*100).toFixed(1)}%`);
+console.log(`Families=4, stages=20, combined projected kinship share=${((projection.projected_kinship_share??0)*100).toFixed(1)}%`);
