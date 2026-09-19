@@ -46,6 +46,7 @@ const hybrid007SyntaxV105 = JSON.parse(fs.readFileSync("data/hybrid-007-syntax-d
 const wave2TravelMahaV106 = JSON.parse(fs.readFileSync("data/wave2-travel-maha-outer-frame-prospect-v106.json", "utf8"));
 const wave2RepeatedSeamV107 = JSON.parse(fs.readFileSync("data/wave2-repeated-seam-survey-v107.json", "utf8"));
 const generatedWave2TravelV108 = JSON.parse(fs.readFileSync("data/generated-wave2-travel-outer-frame-v108.json", "utf8"));
+const wave2TravelSyntaxV109 = JSON.parse(fs.readFileSync("data/wave2-travel-syntax-source-review-v109.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -581,6 +582,24 @@ for(const x of generatedWave2TravelV108.candidates??[]){
 const v108Novel=(generatedWave2TravelV108.candidates??[]).filter(x=>x.id.startsWith("wave2-travel-"));
 if(v108Novel.length!==2||v108Novel.some(x=>x.review_status!=="hold-source-confirmation"))errors.push("GENERATED WAVE2 TRAVEL V108 novel prospects must remain source-held");
 
+if(wave2TravelSyntaxV109.version!=="1.09")errors.push(`WAVE2 TRAVEL SYNTAX V109 version mismatch: ${wave2TravelSyntaxV109.version}`);
+if(wave2TravelSyntaxV109.baseline_policy?.fixed50_unchanged!==true)errors.push("WAVE2 TRAVEL SYNTAX V109 must preserve fixed50");
+if(wave2TravelSyntaxV109.baseline_policy?.wave2_verified_count_unchanged!==14||wave2TravelSyntaxV109.baseline_policy?.wave2_held_count_unchanged!==5)errors.push("WAVE2 TRAVEL SYNTAX V109 wave2 counts drift");
+if(wave2TravelSyntaxV109.sources?.yamauchi_1974?.pdf_or_source_image_directly_inspected_in_this_review!==false)errors.push("WAVE2 TRAVEL SYNTAX V109 must not claim PDF/source-image inspection");
+if(wave2TravelSyntaxV109.new_safety_rule?.id!=="author-parallel-is-not-source-glyph-evidence")errors.push("WAVE2 TRAVEL SYNTAX V109 author-parallel guard missing");
+if(wave2TravelSyntaxV109.new_safety_rule?.applies_beyond_travel_family!==true)errors.push("WAVE2 TRAVEL SYNTAX V109 guard must apply beyond travel family");
+if(wave2TravelSyntaxV109.verdict?.source_90_parse_status!=="partial-support-with-unresolved-ku5")errors.push("WAVE2 TRAVEL SYNTAX V109 source 90 status drift");
+if(wave2TravelSyntaxV109.verdict?.source_93_parse_status!=="partial-lexical-support-with-unresolved-syntax-and-ku5")errors.push("WAVE2 TRAVEL SYNTAX V109 source 93 status drift");
+if(wave2TravelSyntaxV109.verdict?.travel_family_status!=="hold-source-confirmation")errors.push("WAVE2 TRAVEL SYNTAX V109 family must remain source-held");
+if(wave2TravelSyntaxV109.verdict?.generator_v108_reopen!==false)errors.push("WAVE2 TRAVEL SYNTAX V109 must not reopen v108 generator");
+if(wave2TravelSyntaxV109.verdict?.positive_family_established!==false||wave2TravelSyntaxV109.verdict?.automatic_acceptance!==false)errors.push("WAVE2 TRAVEL SYNTAX V109 must not promote family");
+const v109Impact=(wave2TravelSyntaxV109.novel_candidate_impact??[]).map(x=>[x.id,x.current_status]);
+if(v109Impact.length!==2||v109Impact.some(([,st])=>st!=="hold-source-confirmation"))errors.push("WAVE2 TRAVEL SYNTAX V109 novel statuses must remain hold-source-confirmation");
+for(const [id,status] of v109Impact){
+  const v108=generatedWave2TravelV108.candidates?.find(x=>x.id===id);
+  if(v108?.review_status!==status)errors.push(`WAVE2 TRAVEL SYNTAX V109/V108 status mismatch: ${id}`);
+}
+
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
 if(rules.rule_count!==rules.rules.length)errors.push(`RULE COUNT mismatch: declared=${rules.rule_count} actual=${rules.rules.length}`);
@@ -630,3 +649,4 @@ console.log(`Hybrid-007 syntax v1.05: status=${hybrid007SyntaxV105.verdict?.curr
 console.log(`Wave2 travel v1.06: prospects=${(wave2TravelMahaV106.generated_prospects??[]).length}, positive=${wave2TravelMahaV106.summary?.positive_family_established}`);
 console.log(`Wave2 repeated-seam v1.07: B=${(wave2RepeatedSeamV107.repeated_B_groups??[]).length}, D=${(wave2RepeatedSeamV107.repeated_D_groups??[]).length}, next=${wave2RepeatedSeamV107.summary?.next_generator_family}`);
 console.log(`Wave2 travel generator v1.08: candidates=${generatedWave2TravelV108.candidate_count}`);
+console.log(`Wave2 travel syntax v1.09: family=${wave2TravelSyntaxV109.verdict?.travel_family_status}, source90=${wave2TravelSyntaxV109.verdict?.source_90_parse_status}`);
