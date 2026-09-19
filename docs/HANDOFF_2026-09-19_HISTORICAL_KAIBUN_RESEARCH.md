@@ -3599,3 +3599,365 @@ best wave2 prospect:
 ## 再開最短文
 
 **「HANDOFF 38節から再開。v1.07でfixed50+wave2 repeated seamを全走査し、新規same-title laneは旅行90/93のB=まはだけと確認。原画像は複数所蔵ルートまで確認したが該当丁未読なのでhold継続。v1.08で4件のdeterministic generator/fixtureを実装し、novel2件はhold-source-confirmation固定。Validate run 35444301341 green。次は90/93 source確認、不可ならsafe syntax review→別operation探索。」**
+
+
+---
+
+# 39. 2026-09-20 v1.09〜v1.14 source-confirmation / operation-saturation チェックポイント
+
+## 実施概要
+
+38節から以下を実施した。
+
+1. travel 90/93 source-safe syntax review v1.09
+2. fixed50 minimum-operation audit v1.10
+3. fixed50 + wave2 factor-graph audit v1.11
+4. 山内論文のpoem-specific可読転写を再取得 v1.12
+5. travel family deep syntax review v1.13
+6. current deterministic travel generator v1.14
+
+最大の更新は二つ。
+
+- **operation不足ではなくsource coverage / source confirmationが現在のbottleneck**と機械監査で確認
+- 旅行90/93は山内の該当歌転写を直接読めるようになり、best directionが
+  `hold-source-confirmation` から
+  **`promising-but-parse-needed`**
+  へ進んだ
+
+第三positive familyそのものはまだ確定しない。
+
+## v1.09 travel syntax source review
+
+追加:
+- `data/wave2-travel-syntax-source-review-v109.json`
+- `docs/WAVE2_TRAVEL_SYNTAX_SOURCE_REVIEW_V109.md`
+
+commits:
+- data `96fa661a5038ca9e14e151cd2bf517e0527d25dc`
+- doc `4bb33395e528e210faf2500e22fc3147861bcb63`
+- validator `0d497e4a46943122a18b788acd9b542958e93bf7`
+
+Validate:
+- run `35469932928`
+- success
+
+同作者・笑寿の「高野山釈教長歌」から:
+- `参るなかたひ` → 長旅
+- `よき日たかなる` → 佳き日髙なる
+
+というparallelを確認。
+
+これで90番の:
+- `なかたひ`
+- `よきひたかなる`
+
+のlexical / phrase-pattern plausibilityが上がった。
+
+ただし
+**author parallel ≠ target source glyph**
+を新安全規則として固定。
+
+## v1.10 fixed50 minimal-operation audit
+
+追加:
+- `data/fixed50-minimal-operation-audit-v110.json`
+- commit `a29962b9a945c1bb9373c4ef1167415ba67281ea`
+
+fixed50由来51 hybridを、
+各歴史sourceからのA/B/C/D/E Hamming distanceで再分類。
+
+結果:
+- minimum distance 1: 38
+- distance 2: 13
+- >2: 0
+
+distance-1:
+- A-only = 26
+- E-only = 12
+- B-only = 0
+- C-only = 0
+- D-only = 0
+
+distance-2:
+- A+E = 11
+- D+E = 2
+- A+B = 2
+- B+C = 1
+
+semantic_cohesion=3のdistance-2は:
+- hybrid-021
+- hybrid-022
+- hybrid-023
+
+すべて秋・月のA+E。
+
+したがって
+安全な低リスクoperationの未実装が第三familyを阻んでいる、
+という仮説は支持されない。
+
+## v1.11 fixed50 + wave2 graph audit
+
+追加:
+- `data/wave2-factor-graph-expansion-audit-v111.json`
+- commit `b27b81e3e12f88820a5fe01554a47400a8520d4d`
+
+docs:
+- `docs/MINIMAL_OPERATION_COVERAGE_V110_V111.md`
+- commit `4ce3cd091516e2956284bd6c77b22f21a20464ff`
+
+validator:
+- `4e21ef86079ed843da1a5560c5b28934edf8b50b`
+- Validate run `35470085034`
+- **success**
+
+fixed50 + wave2 verified14をresearch graphとして
+AB / BC / CD / DE edgeで全列挙。
+
+counts:
+- combined novel paths = 90
+- wave2 provenance含む = 48
+- v0.35既存path再出現 = 9
+- genuinely new = 39
+- min-distance1 = 35
+- min-distance2 = 13
+
+min-distance1:
+- A-only = 24
+- E-only = 11
+- B/C/D-only = 0
+
+したがってwave2を加えても
+single-factor low-risk operation空間はA/Eのみ。
+
+title-level same-sceneで新規min1なのは、
+旅行90/93の2方向A-onlyだけ。
+
+現在のbottleneckを:
+
+**operation invention → source coverage / source confirmation**
+
+へ正式に移す。
+
+## v1.12 Yamauchi visible poem-specific transcription
+
+追加:
+- `data/yamauchi-visible-transcription-review-v112.json`
+- commit `d42b5b9f127bc239d0ca3a1e1fe6c334e3f4170c`
+
+検索可能な山内1974記事再現から、
+89〜96付近のpoem-specific scholarly transcriptionを直接確認可能になった。
+
+重要なlayer分離:
+- J-STAGE official metadata = verified
+- 山内article transcription surface = readable
+- article PDF direct inspection = false
+- original Edo source image inspection = false
+
+### 90
+
+山内転写:
+- ともかくも
+- まはるなかたひ
+- きよくゆく
+- よき日たかなる
+- はまもくかもと
+
+target poem transcription自体が確認できた。
+
+### 93
+
+山内転写:
+- やとちかく
+- まはるなり 今
+- みかきよき
+- 神まいりなる
+- はまくかちとや
+
+`今` と `神` は山内転写で明示。
+
+### 89
+
+`八十や ...`
+
+が山内転写で明示。
+八十=`やそ` は辞書支持あり。
+
+v0.43 source-image promotion policyはまだ変更せず、
+`hold-by-existing-source-image-promotion-policy`。
+
+### 94
+
+山内転写:
+- なかたひも
+- ついおそきはる
+- 友とちと
+- もとるは 木曽を
+- いつも 日たかな
+
+`木曽を` が学術転写レイヤで見えるため、
+v0.43の お/を mismatchはgeneric OCR問題ではなく
+literal orthographic issueとして再分類。
+
+current hold:
+`hold-strict-orthographic-equivalence`
+
+strict baselineは変更しない。
+
+## v1.13 travel deep syntax review
+
+追加:
+- `data/wave2-travel-deep-syntax-review-v113.json`
+- commit `e70048e60deb5f4f0c2fb31b074544a7874d31fe`
+
+93番についてdictionary-supported hypothesis:
+
+### やとちかく
+`宿近く`
+hypothesis。
+
+宿=`やど`。
+normalized devoicingとの関係はhypothesisのみ。
+
+### みかき
+`御垣`
+hypothesis。
+
+御垣は宮中・神社周囲の垣。
+直後の山内転写 `神まいりなる` とscene上整合。
+
+### はまくかちとや
+
+辞書上:
+- 浜
+- 陸地（くがち／くがぢ）
+- とや（と＋や）
+
+が成立。
+
+したがって:
+`浜 + 陸地（くがち） + とや`
+
+というboundary-shift parseは
+dictionary-supported hypothesisとして有力。
+
+ただしsource glyph reconstructionではない。
+
+### best direction
+
+`wave2-travel-090-host-093-outer`
+
+meter:
+- やとちかく
+- まはるなかたひ
+- きよくゆく
+- よきひたかなる
+- はまくかちとや
+
+5句すべてが90/93の山内poem-specific転写で句単位attested。
+
+same travel series。
+
+旧:
+`hold-source-confirmation`
+
+新:
+**`promising-but-parse-needed`**
+
+combined syntax未解決なので
+deep-review-supportedにはしない。
+
+### reverse direction
+
+`wave2-travel-093-host-090-outer`
+
+90 ku5
+`はまもくかもと`
+がopaque。
+
+新status:
+`deep-review-needed`
+
+## v1.14 current deterministic generator
+
+追加:
+- `data/generated-wave2-travel-outer-frame-v114.json`
+- fixture commit `5dd8342d64f2e52786b80166a45bcc970750c0b9`
+
+generator更新:
+- `scripts/generate-wave2-travel-outer-frame-research.mjs`
+- commit `1ca5072c3b24cacdb89d91dc28def9854eba148c`
+
+v1.08はhistorical snapshotとして維持。
+
+current candidate statuses:
+- shoju-next-090 = historical-source
+- shoju-next-093 = historical-source
+- wave2-travel-090-host-093-outer = promising-but-parse-needed
+- wave2-travel-093-host-090-outer = deep-review-needed
+
+validator:
+- commit `0147ca52bae9a94a9e6ac79225e3ca1d9057caa3`
+
+Validate:
+- run `35470400190`
+- conclusion **success**
+
+専用generatorも同runでsuccess。
+
+docs:
+- `docs/YAMAUCHI_VISIBLE_TRAVEL_REVIEW_V112_V114.md`
+- commit `ed377e5d00e856b199a6620e8c17ec89a71e64ae`
+
+## 現在のfamily状態
+
+確立positive:
+1. autumn-night-garden-moon
+2. naha-spring-plants
+
+strong unresolved:
+3. musu-night-sky-family-moon
+   - hybrid-007
+   - promising-but-parse-needed
+
+4. wave2-travel-maha
+   - best = wave2-travel-090-host-093-outer
+   - promising-but-parse-needed
+   - reverse = deep-review-needed
+
+第三positive family:
+- **まだ確定しない**
+
+## 固定事項
+
+変更なし:
+- fixed50
+- wave2 verified14 / held5
+- public bridge6
+- v0.76 baseline
+- general-factor-crossover disabled
+- historical source textをpublic poolへ注入しない
+- machine accepted/natural禁止
+
+新たに強化:
+- searchable scholarly transcriptionとoriginal source imageを分離
+- author parallelとtarget glyphを分離
+- dictionary-supported parse hypothesisをsource restorationと分離
+- operation inventionを候補数増加目的で行わない
+
+## 進捗目安
+
+- 歴史回文研究・生成原理: **約94%**
+- 怪文回文メーカー全体目標: **約92%**
+
+## 次
+
+優先:
+1. 89「老賀」のsource-image promotion policyを再監査
+2. 94をお/を historical-equivalence controlとして整理
+3. 90 ku5 `はまもくかもと` のsource-safe parse探索
+4. 93 `宿近く ↔ 陸地とや` hypothesisのpoem-specific裏づけ探索
+5. それでも第三family確定に届かなければ、new verified historical source expansionへ移る
+
+## 再開最短文
+
+**「HANDOFF 39節から再開。v1.10/v1.11でA/E以外の低リスクoperation余地なしを確認。v1.12で山内の90/93該当歌転写を直接確認し、v1.13でtravel best directionをpromising-but-parse-neededへ昇格。v1.14 current generator/fixture、Validate run 35470400190 green。第三family未確定。次は89のpromotion policy、94の お/を equivalence、90 ku5 parse。」**
