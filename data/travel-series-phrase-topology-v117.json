@@ -1,0 +1,160 @@
+{
+  "version": "1.17",
+  "updated_on": "2026-09-20",
+  "title": "Travel-series phrase-topology review",
+  "purpose": "Use repeated phrases inside Shoju's travel-poem series as source-local evidence for lexical boundaries and scene continuity, without treating phrase repetition as proof of the recombined candidate's whole-sentence naturalness.",
+  "sources": [
+    {
+      "id": "shoju-next-090",
+      "source_number": 90,
+      "status": "wave2-verified-audio-string-pending-integration",
+      "meter": ["ともかくも","まはるなかたひ","きよくゆく","よきひたかなる","はまもくかもと"]
+    },
+    {
+      "id": "shoju-next-091",
+      "source_number": 91,
+      "status": "wave2-verified-audio-string-pending-integration",
+      "meter": ["くかちとや","いつしかたひも","まはるはる","はまもひたかし","ついやとちかく"]
+    },
+    {
+      "id": "shoju-next-093",
+      "source_number": 93,
+      "status": "wave2-verified-audio-string-pending-integration",
+      "meter": ["やとちかく","まはるなりいま","みかきよき","かみまいりなる","はまくかちとや"]
+    },
+    {
+      "id": "shoju-next-094",
+      "source_number": 94,
+      "status": "held-strict-orthographic-equivalence",
+      "meter": ["なかたひも","ついおそきはる","ともとちと","もとるはきそを","いつもひたかな"]
+    }
+  ],
+  "exact_or_embedded_repetitions": [
+    {
+      "phrase": "くかちとや",
+      "source_91": {
+        "location": "ku1",
+        "surface": "くかちとや"
+      },
+      "source_93": {
+        "location": "ku5 suffix after はま",
+        "surface": "はまくかちとや"
+      },
+      "evidence_value": "strong-series-internal-boundary-support",
+      "interpretive_hypothesis": "陸地（くがち）+ とや",
+      "dictionary_support": true,
+      "source_kanji_verified": false
+    },
+    {
+      "phrase": "やとちかく",
+      "source_93": {
+        "location": "ku1",
+        "surface": "やとちかく"
+      },
+      "source_91": {
+        "location": "ku5 suffix after つい",
+        "surface": "ついやとちかく"
+      },
+      "evidence_value": "strong-series-internal-phrase-support",
+      "interpretive_hypothesis": "宿近く",
+      "dictionary_support": true,
+      "source_kanji_verified": false
+    },
+    {
+      "phrase": "なかたひ",
+      "sources": [
+        {"source_number":90,"location":"ku2 suffix","surface":"まはるなかたひ"},
+        {"source_number":94,"location":"ku1 prefix","surface":"なかたひも"}
+      ],
+      "additional_same_author_support": "高野山釈教長歌 参るなかたひ -> 長旅",
+      "evidence_value": "strong-author-and-series-phrase-support",
+      "interpretive_hypothesis": "長旅",
+      "source_90_94_kanji_verified": false
+    },
+    {
+      "phrase": "まはる",
+      "sources": [
+        {"source_number":90,"location":"ku2 prefix"},
+        {"source_number":91,"location":"ku3 prefix"},
+        {"source_number":93,"location":"ku2 prefix"}
+      ],
+      "evidence_value": "series-recurrent-verbal-surface",
+      "dictionary_support": "まはる / 回る・廻る is historical ラ行四段",
+      "source_kanji_verified": false
+    },
+    {
+      "phrase": "はまも",
+      "sources": [
+        {"source_number":90,"location":"ku5 prefix","surface":"はまもくかもと"},
+        {"source_number":91,"location":"ku4 prefix","surface":"はまもひたかし"}
+      ],
+      "evidence_value": "series-recurrent-surface",
+      "interpretive_hypothesis": "浜も",
+      "dictionary_support": true,
+      "source_kanji_verified": false
+    },
+    {
+      "phrase": "ひたか",
+      "sources": [
+        {"source_number":90,"location":"ku4","surface":"よきひたかなる"},
+        {"source_number":91,"location":"ku4","surface":"はまもひたかし"},
+        {"source_number":94,"location":"ku5","surface":"いつもひたかな"}
+      ],
+      "evidence_value": "series-recurrent-surface",
+      "note": "Yamauchi's visible transcription explicitly prints 日 in the relevant 90/91/94 contexts, strengthening a 日-related reading without resolving every syntax."
+    }
+  ],
+  "poem_90_ku5_review": {
+    "surface": "はまもくかもと",
+    "palindrome_derivation": {
+      "reverse_B": "はま",
+      "reverse_A_from_ともかくも": "もくかもと"
+    },
+    "series_evidence": [
+      "はまも recurs as the start of poem 91 ku4.",
+      "The travel series repeatedly contrasts/combines shore/land-like surfaces such as はま and くかち."
+    ],
+    "dictionary_supported_hypothesis": {
+      "segmentation": "はまも + くが + も + と",
+      "gloss_candidate": "浜も + 陸 + も + と",
+      "support": [
+        "浜（はま） is attested.",
+        "陸（くが） is an attested classical noun for land and land-route context.",
+        "Normalized くか may correspond to voiced くが in the research normalization layer."
+      ],
+      "status": "lexically-plausible-but-syntax-incomplete"
+    },
+    "blocking_issue": "The final と and whole ku/sentence relation are not poem-specifically annotated; do not promote this segmentation to source text."
+  },
+  "travel_candidate_effect": {
+    "candidate_id": "wave2-travel-090-host-093-outer",
+    "current_status": "promising-but-parse-needed",
+    "status_change": false,
+    "confidence_change": "phrase-boundary-and-scene-support-strengthened",
+    "reasons_not_to_promote_to_deep_review_supported": [
+      "The recombined sentence-level syntax across donor/host ku boundaries remains unannotated.",
+      "Dictionary and series-internal phrase topology do not equal original source-glyph confirmation.",
+      "The family still lacks a clean negative control showing the boundary of the same operation inside the same narrow travel scene."
+    ]
+  },
+  "reverse_candidate_effect": {
+    "candidate_id": "wave2-travel-093-host-090-outer",
+    "current_status": "deep-review-needed",
+    "status_change": false,
+    "confidence_change": "poem-90-ku5 lexical plausibility improved slightly",
+    "blocking_issue": "はまもくかもと still lacks a complete source-safe syntax parse."
+  },
+  "family_verdict": {
+    "status": "third-positive-family-candidate-not-yet-established",
+    "positive_family_established": false,
+    "best_candidate": "wave2-travel-090-host-093-outer",
+    "best_status": "promising-but-parse-needed",
+    "new_insight": "The travel series is not merely title-coherent; it contains a network of repeated mirrored phrases that likely function as reusable authorial palindrome building blocks."
+  },
+  "safety_rule": {
+    "id": "series-phrase-repetition-supports-boundary-not-whole-sentence",
+    "rule": "Exact phrase recurrence within the same authorial series may support segmentation, morphology, and scene continuity, but it does not by itself certify the naturalness or syntax of a newly recombined whole poem.",
+    "applies_beyond_travel_series": true
+  },
+  "next_action": "Search Yamauchi's lexical analysis or original images for explicit interpretation of くかち／やとちかく／はまも; otherwise retain the travel candidate at promising-but-parse-needed and shift corpus-expansion effort to new verified poems."
+}
