@@ -1,0 +1,48 @@
+{
+  "version": "0.83",
+  "title": "Kinship template repetition audit",
+  "public_behavior_changed": false,
+  "scope": "Current public L1 one-shot DNA generation and narrative growth data.",
+  "one_shot": {
+    "recursive_rule_id": "L1-RECURSIVE-KINSHIP",
+    "max_depth_defined": 3,
+    "public_dna_depth_used": 1,
+    "generated_unique_at_public_depth": 216,
+    "depth0": 72,
+    "depth1": 144,
+    "default_visible": 216,
+    "estimated_l1_dna_rule_outputs": 290,
+    "l1_reverse_pair_outputs_added_by_dna_pool": 21,
+    "dna_button_pool_estimate": 311,
+    "recursive_share_of_dna_button": 0.6945,
+    "interpretation": "Roughly seven in ten L1 DNA-button candidates come from one recursive kinship grammar."
+  },
+  "seed_context": {
+    "default_l1_seed_count": 159,
+    "displays_containing_mother_or_father": 20,
+    "share": 0.1258
+  },
+  "growth": {
+    "narrative_family_count": 45,
+    "kinship_touched_families": 38,
+    "family_share": 0.8444,
+    "stage_count": 322,
+    "kinship_stages": 216,
+    "stage_share": 0.6708,
+    "interpretation": "Kinship material is not limited to one-shot generation; it is also the dominant long-tail expansion strategy."
+  },
+  "diagnosis": {
+    "structural_quality": "The kinship grammar is productive and mostly grammatical.",
+    "product_problem": "It over-concentrates public output style around 母/父 nesting, making distinct generation mechanisms feel repetitive.",
+    "risk": "Users may perceive nominal candidate diversity as high while semantic/narrative diversity is much lower."
+  },
+  "recommended_policy": [
+    "Do not delete recursive kinship candidates or reduce the verified combinatorial space.",
+    "Throttle random one-shot DNA exposure separately from candidate inventory.",
+    "Prefer a cap around 25% for recursive kinship in the L1 DNA button as an initial product experiment.",
+    "Keep direct/manual access to recursive outputs available.",
+    "For 10-item comparison, use source/family-balanced sampling rather than uniform sampling over every materialized candidate.",
+    "For growth, stop extending every compatible family through the same mother/father long-tail; add non-kinship long-tail families before further increasing depth."
+  ],
+  "next_step": "Create a one-shot DNA family exposure policy and simulate the expected mix before changing public selection."
+}
