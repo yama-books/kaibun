@@ -47,6 +47,8 @@ const wave2TravelMahaV106 = JSON.parse(fs.readFileSync("data/wave2-travel-maha-o
 const wave2RepeatedSeamV107 = JSON.parse(fs.readFileSync("data/wave2-repeated-seam-survey-v107.json", "utf8"));
 const generatedWave2TravelV108 = JSON.parse(fs.readFileSync("data/generated-wave2-travel-outer-frame-v108.json", "utf8"));
 const wave2TravelSyntaxV109 = JSON.parse(fs.readFileSync("data/wave2-travel-syntax-source-review-v109.json", "utf8"));
+const fixed50OperationAuditV110 = JSON.parse(fs.readFileSync("data/fixed50-minimal-operation-audit-v110.json", "utf8"));
+const wave2GraphAuditV111 = JSON.parse(fs.readFileSync("data/wave2-factor-graph-expansion-audit-v111.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -600,6 +602,24 @@ for(const [id,status] of v109Impact){
   if(v108?.review_status!==status)errors.push(`WAVE2 TRAVEL SYNTAX V109/V108 status mismatch: ${id}`);
 }
 
+if(fixed50OperationAuditV110.version!=="1.10")errors.push(`FIXED50 OP AUDIT V110 version mismatch: ${fixed50OperationAuditV110.version}`);
+if(fixed50OperationAuditV110.inputs?.source_sample_count!==50||fixed50OperationAuditV110.inputs?.hybrid_count!==51)errors.push("FIXED50 OP AUDIT V110 input counts drift");
+if(fixed50OperationAuditV110.results?.minimum_distance_counts?.["1"]!==38||fixed50OperationAuditV110.results?.minimum_distance_counts?.["2"]!==13)errors.push("FIXED50 OP AUDIT V110 distance counts drift");
+const v110single=fixed50OperationAuditV110.results?.single_factor_findings;
+if(v110single?.candidate_count!==38||JSON.stringify(v110single?.observed_patterns)!==JSON.stringify(["A","E"]))errors.push("FIXED50 OP AUDIT V110 single-factor space changed");
+for(const slot of ["B","C","D"])if(!v110single?.unobserved_patterns?.includes(slot))errors.push(`FIXED50 OP AUDIT V110 must keep ${slot}-only unsupported`);
+if(fixed50OperationAuditV110.policy?.general_factor_crossover_enabled!==false)errors.push("FIXED50 OP AUDIT V110 must keep general crossover disabled");
+if(fixed50OperationAuditV110.policy?.fixed50_unchanged!==true)errors.push("FIXED50 OP AUDIT V110 must preserve fixed50");
+
+if(wave2GraphAuditV111.version!=="1.11")errors.push(`WAVE2 GRAPH AUDIT V111 version mismatch: ${wave2GraphAuditV111.version}`);
+if(wave2GraphAuditV111.scope?.fixed_sources!==50||wave2GraphAuditV111.scope?.wave2_verified_sources!==14||wave2GraphAuditV111.scope?.wave2_held_sources_excluded!==5)errors.push("WAVE2 GRAPH AUDIT V111 scope counts drift");
+if(wave2GraphAuditV111.scope?.wave2_integrated_into_fixed_baseline!==false)errors.push("WAVE2 GRAPH AUDIT V111 must remain research graph only");
+if(wave2GraphAuditV111.counts?.novel_paths_involving_wave2_provenance!==48||wave2GraphAuditV111.counts?.genuinely_new_paths_beyond_v035!==39)errors.push("WAVE2 GRAPH AUDIT V111 graph counts drift");
+if(wave2GraphAuditV111.counts?.wave2_involving_min_distance_1!==35||wave2GraphAuditV111.counts?.wave2_involving_min_distance_2!==13)errors.push("WAVE2 GRAPH AUDIT V111 distance counts drift");
+if(wave2GraphAuditV111.minimum_distance_patterns?.distance_1?.A!==24||wave2GraphAuditV111.minimum_distance_patterns?.distance_1?.E!==11)errors.push("WAVE2 GRAPH AUDIT V111 A/E min1 counts drift");
+for(const slot of ["B","C","D"])if(wave2GraphAuditV111.minimum_distance_patterns?.distance_1?.[slot]!==0)errors.push(`WAVE2 GRAPH AUDIT V111 ${slot}-only must remain zero`);
+if(wave2GraphAuditV111.policy?.general_factor_crossover_enabled!==false||wave2GraphAuditV111.policy?.operation_contract_expansion!==false)errors.push("WAVE2 GRAPH AUDIT V111 must not expand crossover contract");
+
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
 if(rules.rule_count!==rules.rules.length)errors.push(`RULE COUNT mismatch: declared=${rules.rule_count} actual=${rules.rules.length}`);
@@ -650,3 +670,5 @@ console.log(`Wave2 travel v1.06: prospects=${(wave2TravelMahaV106.generated_pros
 console.log(`Wave2 repeated-seam v1.07: B=${(wave2RepeatedSeamV107.repeated_B_groups??[]).length}, D=${(wave2RepeatedSeamV107.repeated_D_groups??[]).length}, next=${wave2RepeatedSeamV107.summary?.next_generator_family}`);
 console.log(`Wave2 travel generator v1.08: candidates=${generatedWave2TravelV108.candidate_count}`);
 console.log(`Wave2 travel syntax v1.09: family=${wave2TravelSyntaxV109.verdict?.travel_family_status}, source90=${wave2TravelSyntaxV109.verdict?.source_90_parse_status}`);
+console.log(`Fixed50 operation audit v1.10: min1=${fixed50OperationAuditV110.results?.minimum_distance_counts?.["1"]}, patterns=${fixed50OperationAuditV110.results?.single_factor_findings?.observed_patterns?.join("/")}`);
+console.log(`Wave2 graph audit v1.11: wave2-paths=${wave2GraphAuditV111.counts?.novel_paths_involving_wave2_provenance}, new=${wave2GraphAuditV111.counts?.genuinely_new_paths_beyond_v035}`);
