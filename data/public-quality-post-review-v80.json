@@ -1,0 +1,630 @@
+{
+  "version": "0.80",
+  "title": "Post-calibration public quality model-assisted review",
+  "benchmark_version": "0.79",
+  "baseline_benchmark_version": "0.76",
+  "baseline_review_version": "0.77",
+  "evaluator_type": "model-assisted linguistic pre-review",
+  "final_human_adjudication_required": true,
+  "summary": {
+    "sample_size": 50,
+    "keep": 49,
+    "review": 1,
+    "hold": 0,
+    "by_layer": {
+      "L1": {
+        "keep": 25,
+        "review": 0,
+        "hold": 0
+      },
+      "L2": {
+        "keep": 20,
+        "review": 1,
+        "hold": 0
+      },
+      "L3": {
+        "keep": 4,
+        "review": 0,
+        "hold": 0
+      }
+    }
+  },
+  "baseline_summary": {
+    "sample_size": 50,
+    "keep": 47,
+    "review": 2,
+    "hold": 1,
+    "by_layer": {
+      "L1": {
+        "keep": 24,
+        "review": 1,
+        "hold": 0
+      },
+      "L2": {
+        "keep": 19,
+        "review": 1,
+        "hold": 1
+      },
+      "L3": {
+        "keep": 4,
+        "review": 0,
+        "hold": 0
+      }
+    }
+  },
+  "comparison": {
+    "keep_change": 2,
+    "review_change": -1,
+    "hold_change": -1,
+    "interpretation": "Targeted recalibration removes the baseline review item from L1 and the baseline hold item from default L2; replacements are layer-fit in this first-pass review."
+  },
+  "changed_items": {
+    "removed_from_sample": [
+      {
+        "id": "QB-021",
+        "source": "seam",
+        "layer": "L1",
+        "display": "タミも今朝のキキの酒も見た。",
+        "reading": "たみもけさのききのさけもみた"
+      },
+      {
+        "id": "QB-042",
+        "source": "seam",
+        "layer": "L2",
+        "display": "タミも声のエコも見た。",
+        "reading": "たみもこえのえこもみた"
+      }
+    ],
+    "added_to_sample": [
+      {
+        "id": "QB-022",
+        "source": "seam",
+        "layer": "L1",
+        "display": "井川もこのナナの子も若い。",
+        "reading": "いかわもこのななのこもわかい"
+      },
+      {
+        "id": "QB-041",
+        "source": "seam",
+        "layer": "L2",
+        "display": "タミも今朝の石井の酒も見た。",
+        "reading": "たみもけさのいしいのさけもみた"
+      }
+    ]
+  },
+  "caveat": "This is a model-assisted diagnostic comparison, not final human naturalness adjudication.",
+  "reviews": [
+    {
+      "benchmark_id": "QB-001",
+      "grammar": 2,
+      "semantic_coherence": 2,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-002",
+      "grammar": 2,
+      "semantic_coherence": 2,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-003",
+      "grammar": 2,
+      "semantic_coherence": 2,
+      "productive_value": 1,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [
+        "Kinship chain is mechanically conspicuous but interpretable."
+      ],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-004",
+      "grammar": 2,
+      "semantic_coherence": 2,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-005",
+      "grammar": 2,
+      "semantic_coherence": 2,
+      "productive_value": 1,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [
+        "Long kinship NP is valid but repetitive as a production pattern."
+      ],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-006",
+      "grammar": 2,
+      "semantic_coherence": 2,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-007",
+      "grammar": 2,
+      "semantic_coherence": 2,
+      "productive_value": 1,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-008",
+      "grammar": 2,
+      "semantic_coherence": 2,
+      "productive_value": 1,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [
+        "Nested kinship is grammatical but template-like."
+      ],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-009",
+      "grammar": 2,
+      "semantic_coherence": 2,
+      "productive_value": 1,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-010",
+      "grammar": 2,
+      "semantic_coherence": 2,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-011",
+      "grammar": 2,
+      "semantic_coherence": 2,
+      "productive_value": 1,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [
+        "Nested kinship is grammatical but template-like."
+      ],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-012",
+      "grammar": 2,
+      "semantic_coherence": 2,
+      "productive_value": 1,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-013",
+      "grammar": 2,
+      "semantic_coherence": 2,
+      "productive_value": 1,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-014",
+      "grammar": 2,
+      "semantic_coherence": 2,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-015",
+      "grammar": 2,
+      "semantic_coherence": 2,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-016",
+      "grammar": 2,
+      "semantic_coherence": 2,
+      "productive_value": 2,
+      "display_reading_fidelity": "warn",
+      "layer_fit": "keep",
+      "notes": [
+        "魚 can be read multiple ways; palindrome reading depends on the intended lexical reading."
+      ],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-017",
+      "grammar": 2,
+      "semantic_coherence": 2,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-018",
+      "grammar": 2,
+      "semantic_coherence": 2,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-019",
+      "grammar": 2,
+      "semantic_coherence": 1,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [
+        "海のミウ is semantically unusual but a normal genitive construction."
+      ],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-020",
+      "grammar": 2,
+      "semantic_coherence": 1,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [
+        "山のマヤ is semantically unusual but syntactically normal."
+      ],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-021",
+      "grammar": 2,
+      "semantic_coherence": 1,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-022",
+      "grammar": 2,
+      "semantic_coherence": 2,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [
+        "Clear predicative coordination. Stronger L1 replacement for the removed morning-sake seam item."
+      ],
+      "inherited_from_v77": false
+    },
+    {
+      "benchmark_id": "QB-023",
+      "grammar": 2,
+      "semantic_coherence": 1,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-024",
+      "grammar": 2,
+      "semantic_coherence": 1,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-025",
+      "grammar": 2,
+      "semantic_coherence": 2,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-026",
+      "grammar": 2,
+      "semantic_coherence": 2,
+      "productive_value": 1,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-027",
+      "grammar": 1,
+      "semantic_coherence": 2,
+      "productive_value": 1,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [
+        "Noun phrase rather than full sentence; acceptable as L2 compact expression."
+      ],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-028",
+      "grammar": 1,
+      "semantic_coherence": 2,
+      "productive_value": 1,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [
+        "Noun phrase rather than full sentence; acceptable as L2 compact expression."
+      ],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-029",
+      "grammar": 2,
+      "semantic_coherence": 2,
+      "productive_value": 1,
+      "display_reading_fidelity": "warn",
+      "layer_fit": "keep",
+      "notes": [
+        "高田 has multiple common readings; display alone does not lock the palindrome reading."
+      ],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-030",
+      "grammar": 2,
+      "semantic_coherence": 1,
+      "productive_value": 1,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "review",
+      "notes": [
+        "ココ may be a name or deictic expression; intended referent is underdetermined."
+      ],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-031",
+      "grammar": 2,
+      "semantic_coherence": 2,
+      "productive_value": 1,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-032",
+      "grammar": 2,
+      "semantic_coherence": 1,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-033",
+      "grammar": 2,
+      "semantic_coherence": 2,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-034",
+      "grammar": 2,
+      "semantic_coherence": 1,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-035",
+      "grammar": 2,
+      "semantic_coherence": 2,
+      "productive_value": 1,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-036",
+      "grammar": 2,
+      "semantic_coherence": 1,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-037",
+      "grammar": 2,
+      "semantic_coherence": 1,
+      "productive_value": 1,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-038",
+      "grammar": 2,
+      "semantic_coherence": 2,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-039",
+      "grammar": 2,
+      "semantic_coherence": 1,
+      "productive_value": 1,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-040",
+      "grammar": 2,
+      "semantic_coherence": 1,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-041",
+      "grammar": 1,
+      "semantic_coherence": 1,
+      "productive_value": 1,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [
+        "Temporal/genitive stacking remains forced, but L2 placement now matches the time-observation family policy."
+      ],
+      "inherited_from_v77": false
+    },
+    {
+      "benchmark_id": "QB-042",
+      "grammar": 2,
+      "semantic_coherence": 1,
+      "productive_value": 1,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-043",
+      "grammar": 2,
+      "semantic_coherence": 1,
+      "productive_value": 1,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [
+        "嘘の層 is metaphorical but interpretable in L2."
+      ],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-044",
+      "grammar": 2,
+      "semantic_coherence": 1,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-045",
+      "grammar": 2,
+      "semantic_coherence": 1,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-046",
+      "grammar": 2,
+      "semantic_coherence": 1,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-047",
+      "grammar": 1,
+      "semantic_coherence": 2,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [
+        "Particle omission is experimental but immediately recoverable in L3."
+      ],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-048",
+      "grammar": 1,
+      "semantic_coherence": 2,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [
+        "Spoken/elliptical construction fits L3."
+      ],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-049",
+      "grammar": 1,
+      "semantic_coherence": 2,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    },
+    {
+      "benchmark_id": "QB-050",
+      "grammar": 1,
+      "semantic_coherence": 2,
+      "productive_value": 2,
+      "display_reading_fidelity": "pass",
+      "layer_fit": "keep",
+      "notes": [],
+      "inherited_from_v77": true
+    }
+  ]
+}
