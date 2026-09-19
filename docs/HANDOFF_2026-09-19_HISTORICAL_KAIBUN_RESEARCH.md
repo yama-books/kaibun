@@ -1483,3 +1483,249 @@ scene:
 
 ## 再開最短文
 **「HANDOFF 25節から再開。全体約61%。v0.59/v0.60研究generatorはfixture+CI+v0.61共通schemaまで完成。次は第二positive scene family探索。」**
+
+
+---
+
+# 26. 2026-09-19 18:38 JST 第二positive family〜modern bridge公開統合チェックポイント
+
+## 全体進捗目安
+- 歴史回文研究・生成原理: **約84%**
+- 怪文回文メーカー全体目標: **約72%**
+
+研究原理は大半が出揃い、重心は「現代語generatorへの品質付き移植」と公開回帰へ移った。
+
+## v0.62 第二positive family: なは outer-frame exchange
+
+追加:
+- `data/naha-outer-frame-exchange-v62.json`
+- `docs/NAHA_OUTER_FRAME_EXCHANGE_V62.md`
+
+対象trusted 2首:
+- shoju-wakakusa「野遊」
+- sendai-sakunami「作並」
+
+共有:
+- B=`なは`
+- reverse(B)=`はな`
+- v0.36 confidence=high
+- transferable=true
+
+operation:
+- Aだけ交換
+- B/C/D/Eはhost固定
+- mirror側で第5句外枠も同時交換
+
+結果:
+- hybrid-018: promising / deep-review-supported方向
+- hybrid-020: hold-semantic-role-mismatch
+
+交換は意味的に非対称。
+
+## v0.63 なは family generator
+
+実装:
+- `scripts/generate-naha-outer-frame-research.mjs`
+- `data/generated-naha-outer-frame-v63.json`
+
+fixture drift + CI成功済み。
+
+代表成功run:
+- Validate `35433865120`: success
+
+## v0.64 repeated-B outer-frame survey
+
+追加:
+- `data/outer-frame-exchange-survey-v64.json`
+- `docs/OUTER_FRAME_EXCHANGE_SURVEY_V64.md`
+
+固定50のrepeated-B:
+- なは: high stable positive
+- また: source-specific review
+- ほと: cross-scene + morphology hold
+- きつ: scene-dependent
+
+重要補正:
+A-only outer-frame swapでは、global B transferabilityだけで禁止しない。
+実際に動かした境界とsource-local contextを見る。
+ただしglobal seam定義自体は変更しない。
+
+## v0.65 historical → modern bridge contract
+
+追加:
+- `data/historical-modern-bridge-contract-v65.json`
+- `docs/HISTORICAL_MODERN_BRIDGE_V65.md`
+
+移植するもの:
+- operation-specific validation
+- scene gate
+- semantic-role gate
+- directional compatibility
+- negative controls
+- trace
+
+移植しないもの:
+- 歴史短歌本文そのもの
+- 古語表記
+- 31かな短歌meter強制
+
+第一target:
+- seam grammar
+
+## v0.66 modern seam semantic-role matrix
+
+追加:
+- `data/modern-seam-role-matrix-v66.json`
+
+frame:
+- see
+- loan
+
+既存shellだけを使用し、新語は発明しない。
+
+loan:
+- person: pass
+- animal: semantic pass / public layerは既存方針に合わせL2
+- event: review-needed
+- object/abstract: hold
+
+## v0.67 modern seam bridge generator
+
+実装:
+- `scripts/generate-modern-seam-bridge.mjs`
+- `data/generated-modern-seam-bridge-v67.json`
+
+新規構造候補:
+- total 13
+- accepted 7
+- review-needed 1
+- hold-semantic-role 5
+
+CI成功:
+- run `35434128259`: success
+
+## v0.68 human curation
+
+追加:
+- `data/modern-seam-bridge-curation-v68.json`
+
+人手レビュー:
+- accepted 7
+- review-needed 1
+- held 5
+
+重要:
+「確かにイカの会に貸した。」は、会を団体義に勝手に変更せずreview-needed維持。
+
+## public重複検査
+
+accepted 7件を
+- seed
+- DNA rules
+- reverse-pair
+- seam recipe
+へ照合。
+
+既存重複1件:
+- `たしかににわのわににかした`
+- 「確かに、庭のワニに貸した。」
+- seed `V05-0065`
+- rule `L1-TASHIKANI-LOAN`
+
+これは研究上のpositive再発見例として残すが、public bridge追加から除外。
+
+## v0.69 public whitelist
+
+追加:
+- `data/modern-bridge-public-v69.json`
+
+真の新規:
+- 6件
+- L1=3
+- L2=3
+
+L1:
+1. タミも庭のワニも見た。
+2. タミも店のセミも見た。
+3. タミも今朝の酒も見た。
+
+L2:
+1. 確かに店のセミに貸した。
+2. 確かに家のエイに貸した。
+3. 確かにリスのスリに貸した。
+
+public validator:
+- `scripts/validate-modern-bridge-public.mjs`
+- strict palindrome
+- curation一致
+- excluded漏れなし
+- seed/DNA/reverse-pair/seam全pool重複なし
+- L1/L2 count
+
+validator修復commit:
+- `13782b3713f68f7d1b6efcb4f568edc2548b2072`
+- run `35435285604`: success
+
+loan+animalの公開layerを既存方針へ合わせるgenerator修正:
+- `7b9f081db05d884f71e5f090dae017a51d4d8abf`
+- run `35435293420`: success
+
+## 公開UI v0.27 integration
+
+index.html commit:
+- `89826b886785133c9c91c25c3d06c15bfb7687c7`
+
+変更:
+- badge: `v0.27 / 研究由来DNA`
+- `modern-bridge-public-v69.json` を読込
+- `bridgePool()` 新設
+- `seamPool()` に6件を合流
+- 新ボタンなし
+- 既存「継ぎ目型DNA」から利用
+- 10本比較・実効候補数へ反映
+
+UI validator追加:
+- `d94d0f805ff7767ebd04d4d18b7fdf05ff82067e`
+- Validate run `35435345530`: success
+- Pages run `35435345531`: success
+
+## 既存UI bug修復
+
+公開前確認でJSが参照する
+- `lengthMeta`
+- `wrapMeta`
+
+がHTMLに存在しないことを発見。
+
+修復:
+- `fc5d7a6d8fbfb049ee54acf19103692652cc7f97`
+- Validate `35435369533`: success
+- Pages `35435369544`: success
+
+validatorにも存在検査を追加:
+- `db7a22d77c5ac4752c96f7dae818f860a49af4e0`
+
+bridge総括文書:
+- `docs/MODERN_SEAM_BRIDGE_V66_V69.md`
+
+## 固定事項
+
+変更なし:
+- historical fixed baseline = 50
+- wave2 = verified14 / held5
+- general-factor-crossover disabled
+- 歴史短歌そのものはpublic候補に入れない
+- machine automatic natural/accepted判定を最終判断にしない
+
+## 次工程
+
+1. 最新 `db7a22...` のValidate/Pagesを最終確認
+2. 公開ページv0.27の静的確認
+3. bridge 6件の露出頻度を評価
+4. semantic-role matrixを第三frameへ拡張するか検討
+5. growth-engineへ scene-compatible wrapper selection を移植
+6. 最終的に「候補数」より「自然な怪文の生成率」を主要評価へ移す
+
+## 再開最短文
+
+**「HANDOFF 26節から再開。全体約72%。第二positive family（なは）とmodern seam bridge v0.66-v0.69を実装。公開v0.27へ6件をbridgePoolで限定統合済み。次は最新CI/Pages確認後、bridge露出頻度評価とgrowthへのscene/role gate移植。」**
