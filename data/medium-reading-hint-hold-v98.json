@@ -1,0 +1,52 @@
+{
+  "version": "0.98",
+  "title": "Medium-risk reading-hint hold policy",
+  "source_audit_version": "0.81",
+  "source_blind_review_version": "0.96",
+  "public_behavior_changed": false,
+  "decision": "metadata-only-until-human-review",
+  "lexemes": [
+    {
+      "display": "主",
+      "canonical_reading": "ぬし",
+      "risk": "medium",
+      "benchmark_review_ids": [
+        "QB-038"
+      ],
+      "current_action": "no-explicit-pill",
+      "promotion_trigger": "Human blind review marks display_reading_fidelity=hint-needed or mismatch."
+    },
+    {
+      "display": "種",
+      "canonical_reading": "たね",
+      "risk": "medium",
+      "benchmark_review_ids": [
+        "QB-034",
+        "QB-036"
+      ],
+      "current_action": "no-explicit-pill",
+      "promotion_trigger": "Human blind review marks display_reading_fidelity=hint-needed or mismatch."
+    },
+    {
+      "display": "井川",
+      "canonical_reading": "いかわ",
+      "risk": "medium",
+      "benchmark_review_ids": [
+        "QB-022"
+      ],
+      "current_action": "no-explicit-pill",
+      "promotion_trigger": "Human blind review marks display_reading_fidelity=hint-needed or mismatch."
+    }
+  ],
+  "rationale": [
+    "The canonical kana line is already visible for every candidate.",
+    "Unlike 高田=たかた and 魚=うお, these medium-risk items do not yet justify more UI chrome without user evidence.",
+    "All three lexemes are represented in the blind 50-item human review benchmark, so the decision can be evidence-driven.",
+    "Keeping the high-risk hint list at two lexemes prevents reading-hint pills from becoming visual noise."
+  ],
+  "invariants": [
+    "public-reading-hints-v82 remains high-risk-only with two lexemes.",
+    "No candidate reading, display, layer, or quality changes.",
+    "Human review results, when available, must be stored separately before changing this policy."
+  ]
+}
