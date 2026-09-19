@@ -808,7 +808,7 @@ if(bidirectionalSeamV128.generator_implications?.strict_palindrome_generator?.di
 if(tankaLatticeDerivationV129.version!=="1.29")errors.push(`TANKA LATTICE DERIVATION V129 version mismatch: ${tankaLatticeDerivationV129.version}`);
 if(tankaLatticeDerivationV129.derivation?.exact_match_to_v034!==true)errors.push("TANKA LATTICE DERIVATION V129 must match v0.34");
 if(JSON.stringify(tankaLatticeDerivationV129.derivation?.successive_cell_lengths)!==JSON.stringify([5,2,5,2,3,2,5,2,5]))errors.push("TANKA LATTICE DERIVATION V129 cell lengths drift");
-if(tankaLatticeDerivationV129.derivation?.strict_grammar_formula!==tankaGrammar.formula)errors.push("TANKA LATTICE DERIVATION V129 formula must equal v0.34");
+if(tankaLatticeDerivationV129.derivation?.strict_grammar_formula!==fiveVar.formula)errors.push("TANKA LATTICE DERIVATION V129 formula must equal v0.34");
 if(tankaLatticeDerivationV129.evidence_classes?.v034?.sample_count!==50||tankaLatticeDerivationV129.evidence_classes?.v128?.sample_count!==6)errors.push("TANKA LATTICE DERIVATION V129 evidence counts drift");
 if(tankaLatticeDerivationV129.generator_consequences?.new_operation_enabled!==false||tankaLatticeDerivationV129.generator_consequences?.general_factor_crossover_enabled!==false)errors.push("TANKA LATTICE DERIVATION V129 must not expand operations");
 
