@@ -60,7 +60,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 <div class="wrap">
 <header>
   <div><h1>怪文回文メーカー</h1><div class="sub">まず、日本語として通す。そこから一段ずつ、鏡の奥へ伸ばす。</div></div>
-  <div class="badge">v0.19 / 文構造wrapper</div>
+  <div class="badge">v0.20 / 名詞重複回避</div>
 </header>
 
 <div class="card">
@@ -266,27 +266,57 @@ function syncGrowCurrentButton(){
   $("#growCurrent").style.opacity=m?"1":".38";
   $("#growCurrent").title=m?"この文に対応する長文化系統を開きます":"この文にはまだ長文化系統がありません";
 }
+function wrapperConflicts(w,x=currentShown){
+  if(!x)return false;
+  return (w.outer_lexemes||[]).some(l=>
+    (l.display&&String(x.display||"").includes(l.display))||
+    (l.reading&&String(x.reading||"").includes(l.reading))
+  );
+}
+function compatibleSentenceWrappers(x=currentShown){
+  return [...(growth.sentence_level_wrappers||[])]
+    .filter(w=>!wrapperConflicts(w,x))
+    .sort((a,b)=>(a.auto_priority??999)-(b.auto_priority??999));
+}
 function populateSentenceWrappers(){
-  const sel=$("#sentenceWrapper");sel.innerHTML="";
-  for(const w of growth.sentence_level_wrappers||[]){
+  const sel=$("#sentenceWrapper");
+  const previous=sel.value||"auto";
+  const list=compatibleSentenceWrappers();
+  sel.innerHTML="";
+  const auto=document.createElement("option");
+  auto.value="auto";
+  auto.textContent="自動（名詞重複回避）";
+  sel.appendChild(auto);
+  for(const w of list){
     const o=document.createElement("option");
     o.value=w.id;
     o.textContent=w.semantic+"："+w.left_display+"…"+w.right_display;
     sel.appendChild(o);
   }
+  sel.value=list.some(w=>w.id===previous)?previous:"auto";
+  sel.title=list.length+"種類の衝突なし外枠";
 }
 function sentenceWrapper(){
-  return (growth.sentence_level_wrappers||[]).find(w=>w.id===$("#sentenceWrapper").value)||(growth.sentence_level_wrappers||[])[0]||null;
+  const list=compatibleSentenceWrappers();
+  if(!list.length)return null;
+  const selected=$("#sentenceWrapper").value;
+  if(selected&&selected!=="auto"){
+    const manual=list.find(w=>w.id===selected);
+    if(manual)return manual;
+  }
+  return list[0];
 }
 function stripFinalPeriod(text){return text?.endsWith("。")?text.slice(0,-1):text}
 function syncSentenceWrapControls(){
-  const canWrap=!!currentShown&&isPal(currentShown.reading)&&(layer!=="L3"||currentShown?.wrap_depth>0)&&(growth.sentence_level_wrappers||[]).length>0;
+  populateSentenceWrappers();
+  const compatible=compatibleSentenceWrappers();
+  const canWrap=!!currentShown&&isPal(currentShown.reading)&&(layer!=="L3"||currentShown?.wrap_depth>0)&&compatible.length>0;
   $("#wrapSentence").disabled=!canWrap;
   $("#unwrapSentence").disabled=!currentShown?.wrapped_from;
   $("#wrapSentence").style.opacity=$("#wrapSentence").disabled?".38":"1";
   $("#unwrapSentence").style.opacity=$("#unwrapSentence").disabled?".38":"1";
   const d=currentShown?.wrap_depth||0;
-  $("#wrapDepth").textContent="外枠 "+d+"段";
+  $("#wrapDepth").textContent="外枠 "+d+"段 / 候補 "+compatible.length;
   $("#wrapMeta").textContent="外枠 "+d;
 }
 function updateCandidateCount(){
@@ -408,7 +438,7 @@ function updateGrowthStageLabel(){
   const wrapped=currentShown?.wrap_depth||0;
   $("#growthStage").textContent=wrapped>0?"外枠 "+wrapped+"段":"段階 "+growthState.stage+" / "+max;
   const available=growthFamilies().length>0;
-  const canWrap=(layer!=="L3"||wrapped>0)&&(growth.sentence_level_wrappers||[]).length>0;
+  const canWrap=(layer!=="L3"||wrapped>0)&&compatibleSentenceWrappers().length>0;
   $("#growOne").disabled=!available&&!canWrap;
   $("#growBack").disabled=wrapped>0?!currentShown?.wrapped_from:(!available||growthState.stage<=0);
   $("#growthStart").disabled=!available;
@@ -577,9 +607,10 @@ function wrapCurrentSentence(){
     origin:"WRAP:"+w.id,
     japanese_quality:depth>=6?"C":(depth>=3?"B":(w.quality||"B+")),
     weirdness:Math.max(w.weirdness_floor||3,Math.min(5,2+depth)),
-    why:w.semantic+"の外枠を追加。内側の文はそのまま保持しています。"+(depth>=6?" 6段以上のためL3実験域です。":""),
+    why:w.semantic+"の外枠を追加。内側に同じ名詞がある外枠は自動除外しています。"+(depth>=6?" 6段以上のためL3実験域です。":""),
     wrap_depth:depth,
     wrapper_id:w.id,
+    wrapper_outer_lexemes:w.outer_lexemes||[],
     wrapped_from:parent,
     wrapped_from_layer:parentLayer,
     growth_context:parent.growth_context||(parent.wrap_depth?null:snapshotGrowthContext())
