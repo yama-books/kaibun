@@ -2707,3 +2707,135 @@ v1.00 実装直後:
 1. shoju-068「釈教」の原資料/画像で `みつの世の` 周辺を確認
 2. D=`みつ` の語義・形態を、画像から確認できる範囲と解釈を分離して記録
 3. 確認不能なら v0.99 hold を維持し、次positive family探索へ進む
+
+
+---
+
+# 35. 2026-09-19 Route A shoju-068 source review v1.01 チェックポイント
+
+## 実施
+
+34節から Route A source verification を再試行し、shoju-068「釈教」の D=`みつ` を
+**原画像 / 学術翻刻 / 語義解釈** の3層に分離して再監査した。
+
+追加:
+- `data/shoju-068-source-review-v101.json`
+- `docs/SHOJU_068_SOURCE_REVIEW_V101.md`
+
+コミット:
+- data: `52fc0736d4f64b909411556d05fef7f033595502`
+- doc: `3dd42eb393c539842eb9108910f915eb2ac0c078`
+
+## 原画像レイヤ
+
+国文学研究資料館 国書データベースで
+`風車塵の言の葉` の書誌を特定した。
+
+- 書誌ID: `100080596`
+- 所蔵一覧上に画像View導線あり
+
+ただし今回の実行環境では Mirador / IIIF の該当コマへ直接到達できず、
+**原画像の字形確認済みとはしない**。
+
+東京都立図書館の `廻文歌百首` も確認したが、
+検索時点では画像なし / 画像取得中表示。
+
+## 学術翻刻レイヤ
+
+山内潤三
+「廻文歌の限界と効用（下）―高野山釈教長歌を頂点として―」
+（『密教文化』107号、1974-07-25、pp.1-38、DOI 10.11168/jeb1947.1974.107_1）
+の翻刻を再確認。
+
+翻刻凡例:
+- 原文どおりを旨とする
+- 字体は現行漢字・平仮名へ改める
+- 仮名遣いの誤用は原則そのまま
+
+歌68:
+`釈教　品もなく ほとけのをしへ みつの世の つみへしをのけ とほくなもなし`
+
+したがって山内翻刻レベルでは、
+shoju-068 の D surface は **`みつ`** であり、`みづ` ではない。
+
+## 語義・morphology レイヤ
+
+新纂浄土宗大辞典「三世」は、
+三世を過去・現在・未来の「三つの世」と説明する。
+
+歌68は:
+- 題 = 釈教
+- 直前 = ほとけのをしへ
+- 問題箇所 = みつの世の
+
+であるため、語義・統語上は
+**`三つ + の + 世`**
+と読む解釈が強く支持される。
+
+ただしこれは原画像の字形を `三つ` と復元したという意味ではない。
+source-image evidence と linguistic interpretation は今後も分離する。
+
+## hybrid-002 / hybrid-017 の裁定
+
+比較:
+
+shoju-five-elements:
+- pre-normalization `みづ`
+- lexeme = 水
+- normalized D = `みつ`
+
+shoju-068:
+- scholarly transcription = `みつ`
+- strongly supported interpretation = 三つ
+- normalized D = `みつ`
+
+よって両者は palindrome key では一致しても、
+morphology identity は共有しない。
+
+現行扱い:
+- hybrid-002: `hold-morphology-non-equivalence-supported`
+- hybrid-017: `hold-morphology-non-equivalence-supported`
+- reopen = false
+- v1.00 guard 維持
+- current generator = 10 candidate のまま
+- positive = hybrid-016 / hybrid-019 のまま
+
+整合性点検:
+- v1.01 JSON parse: pass
+- source_image_verified = false
+- scholarly_transcription_verified = true
+- automatic_reopen_allowed = false
+- v1.00 generator に hybrid-002 / 017 が含まれないことを再確認
+- v1.00 guard の blocked IDs も 002 / 017 のまま
+
+## 研究原則の更新
+
+今回、次をより明確に固定した。
+
+**source glyph / transcription surface / linguistic morphology / palindrome-normalized key を別レイヤとして保持する。**
+
+特に
+`みづ（水）→みつ`
+と
+`みつ（三つ と強く解釈される形）`
+を、回文key一致だけで同一nodeへ統合しない。
+
+## 進捗目安
+
+- 歴史回文研究・生成原理: **約89%**
+- 怪文回文メーカー全体目標: **約87%**
+
+## 次
+
+Route A の歌68は、原画像字形のみ未確認として追補待ちにし、
+研究上のblocking decisionは十分安全側に固定できた。
+
+次の優先:
+1. guarded universe で次positive historical family探索
+2. source-image該当コマに到達できる環境が得られた場合のみ歌68字形を追補
+3. general-factor-crossover は引き続き disabled
+4. v0.96 human review入力があれば v0.97 adjudication
+
+## 再開最短文
+
+**「HANDOFF 35節から再開。Route Aでshoju-068歌68の山内翻刻『みつの世の』を再確認。原画像字形は未確認のまま分離保持。語義上は三つ＋の＋世が強く支持され、水（みづ→みつ）とはmorphology非同一。hybrid-002/017はreopenせず、current generator10件を維持。次はguarded universeの次positive family探索。」**
