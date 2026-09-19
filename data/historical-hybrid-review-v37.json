@@ -1,0 +1,2924 @@
+{
+  "version": "0.37",
+  "source": "historical-factor-hybrids-v35 + historical-seam-signatures-v36",
+  "total": 51,
+  "status_counts": {
+    "hold-morphological-seam": 3,
+    "review-unclassified-seam": 10,
+    "priority-semantic-review": 10,
+    "hold-mixed-semantic-field": 28
+  },
+  "policy": "No hybrid is promoted to production automatically. priority-semantic-review only means same broad semantic field and no known incompatible B/D seam.",
+  "candidates": [
+    {
+      "reading": "しけるはのまたるるけしきさくはなはくさきしけるるたまのはるけし",
+      "meter": [
+        "しけるはの",
+        "またるるけしき",
+        "さくはなは",
+        "くさきしけるる",
+        "たまのはるけし"
+      ],
+      "A": "しけるはの",
+      "B": "また",
+      "C": "るるけしき",
+      "D": "さく",
+      "E": "はなは",
+      "factor_sources": {
+        "AB": [
+          "shoju-001-komatsuhiki"
+        ],
+        "BC": [
+          "shoju-010-somokuka"
+        ],
+        "CD": [
+          "shoju-010-somokuka"
+        ],
+        "DE": [
+          "shoju-010-somokuka"
+        ]
+      },
+      "source_ids": [
+        "shoju-001-komatsuhiki",
+        "shoju-010-somokuka"
+      ],
+      "source_fields": [
+        "春・草木"
+      ],
+      "source_titles": [
+        "小松引",
+        "草木花"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-001",
+      "seam_review": {
+        "B": {
+          "status": "blocked",
+          "reason": "B2:また is morphologically ambiguous"
+        },
+        "D": {
+          "status": "unclassified",
+          "reason": "D2:さく has no signature yet"
+        }
+      },
+      "research_status": "hold-morphological-seam"
+    },
+    {
+      "reading": "しなもなくほとけのをしへみつもひもつみへしをのけとほくなもなし",
+      "meter": [
+        "しなもなく",
+        "ほとけのをしへ",
+        "みつもひも",
+        "つみへしをのけ",
+        "とほくなもなし"
+      ],
+      "A": "しなもなく",
+      "B": "ほと",
+      "C": "けのをしへ",
+      "D": "みつ",
+      "E": "もひも",
+      "factor_sources": {
+        "AB": [
+          "shoju-068"
+        ],
+        "BC": [
+          "shoju-068"
+        ],
+        "CD": [
+          "shoju-068"
+        ],
+        "DE": [
+          "shoju-five-elements"
+        ]
+      },
+      "source_ids": [
+        "shoju-068",
+        "shoju-five-elements"
+      ],
+      "source_fields": [
+        "信仰"
+      ],
+      "source_titles": [
+        "釈教",
+        "地水火風空"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-002",
+      "seam_review": {
+        "B": {
+          "status": "blocked",
+          "reason": "B2:ほと is morphologically ambiguous"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:みつ transferable seam"
+        }
+      },
+      "research_status": "hold-morphological-seam"
+    },
+    {
+      "reading": "てりつうみきつるみそらはむすめよめすむはらそみるつきみうつりて",
+      "meter": [
+        "てりつうみ",
+        "きつるみそらは",
+        "むすめよめ",
+        "すむはらそみる",
+        "つきみうつりて"
+      ],
+      "A": "てりつうみ",
+      "B": "きつ",
+      "C": "るみそらは",
+      "D": "むす",
+      "E": "めよめ",
+      "factor_sources": {
+        "AB": [
+          "shoju-040"
+        ],
+        "BC": [
+          "shoju-add-109"
+        ],
+        "CD": [
+          "shoju-add-109"
+        ],
+        "DE": [
+          "shoju-add-109"
+        ]
+      },
+      "source_ids": [
+        "shoju-040",
+        "shoju-add-109"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "月明海上鴻鷹渡",
+        "嫁娘見月"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-003",
+      "seam_review": {
+        "B": {
+          "status": "conditional-pass",
+          "reason": "B2:きつ conditional seam; same semantic field"
+        },
+        "D": {
+          "status": "unclassified",
+          "reason": "D2:むす has no signature yet"
+        }
+      },
+      "research_status": "review-unclassified-seam"
+    },
+    {
+      "reading": "てりつうみきつるみちもとこたしろしたこともちみるつきみうつりて",
+      "meter": [
+        "てりつうみ",
+        "きつるみちもと",
+        "こたしろし",
+        "たこともちみる",
+        "つきみうつりて"
+      ],
+      "A": "てりつうみ",
+      "B": "きつ",
+      "C": "るみちもと",
+      "D": "こた",
+      "E": "しろし",
+      "factor_sources": {
+        "AB": [
+          "shoju-040"
+        ],
+        "BC": [
+          "shoju-038"
+        ],
+        "CD": [
+          "shoju-038"
+        ],
+        "DE": [
+          "shoju-038"
+        ]
+      },
+      "source_ids": [
+        "shoju-040",
+        "shoju-038"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "月明海上鴻鷹渡",
+        "田毎月"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-004",
+      "seam_review": {
+        "B": {
+          "status": "conditional-pass",
+          "reason": "B2:きつ conditional seam; same semantic field"
+        },
+        "D": {
+          "status": "unclassified",
+          "reason": "D2:こた has no signature yet"
+        }
+      },
+      "research_status": "review-unclassified-seam"
+    },
+    {
+      "reading": "てりつうみきつるもはきのはにてりてにはのきはもるつきみうつりて",
+      "meter": [
+        "てりつうみ",
+        "きつるもはきの",
+        "はにてりて",
+        "にはのきはもる",
+        "つきみうつりて"
+      ],
+      "A": "てりつうみ",
+      "B": "きつ",
+      "C": "るもはきの",
+      "D": "はに",
+      "E": "てりて",
+      "factor_sources": {
+        "AB": [
+          "shoju-040"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "shoju-035"
+        ]
+      },
+      "source_ids": [
+        "shoju-040",
+        "shoju-035"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "月明海上鴻鷹渡",
+        "同（月）"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-005",
+      "seam_review": {
+        "B": {
+          "status": "conditional-pass",
+          "reason": "B2:きつ conditional seam; same semantic field"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:はに transferable seam"
+        }
+      },
+      "research_status": "priority-semantic-review"
+    },
+    {
+      "reading": "なかきよのきつしもなかのみなかりかなみのかなもしつきのよきかな",
+      "meter": [
+        "なかきよの",
+        "きつしもなかの",
+        "みなかりか",
+        "なみのかなもし",
+        "つきのよきかな"
+      ],
+      "A": "なかきよの",
+      "B": "きつ",
+      "C": "しもなかの",
+      "D": "みな",
+      "E": "かりか",
+      "factor_sources": {
+        "AB": [
+          "shoju-038"
+        ],
+        "BC": [
+          "shoju-040"
+        ],
+        "CD": [
+          "shoju-040"
+        ],
+        "DE": [
+          "shoju-040"
+        ]
+      },
+      "source_ids": [
+        "shoju-038",
+        "shoju-040"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "田毎月",
+        "月明海上鴻鷹渡"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-006",
+      "seam_review": {
+        "B": {
+          "status": "conditional-pass",
+          "reason": "B2:きつ conditional seam; same semantic field"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:みな transferable seam"
+        }
+      },
+      "research_status": "priority-semantic-review"
+    },
+    {
+      "reading": "なかきよのきつるみそらはむすめよめすむはらそみるつきのよきかな",
+      "meter": [
+        "なかきよの",
+        "きつるみそらは",
+        "むすめよめ",
+        "すむはらそみる",
+        "つきのよきかな"
+      ],
+      "A": "なかきよの",
+      "B": "きつ",
+      "C": "るみそらは",
+      "D": "むす",
+      "E": "めよめ",
+      "factor_sources": {
+        "AB": [
+          "shoju-038"
+        ],
+        "BC": [
+          "shoju-add-109"
+        ],
+        "CD": [
+          "shoju-add-109"
+        ],
+        "DE": [
+          "shoju-add-109"
+        ]
+      },
+      "source_ids": [
+        "shoju-038",
+        "shoju-add-109"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "田毎月",
+        "嫁娘見月"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-007",
+      "seam_review": {
+        "B": {
+          "status": "conditional-pass",
+          "reason": "B2:きつ conditional seam; same semantic field"
+        },
+        "D": {
+          "status": "unclassified",
+          "reason": "D2:むす has no signature yet"
+        }
+      },
+      "research_status": "review-unclassified-seam"
+    },
+    {
+      "reading": "なかきよのきつるもはきのはにてりてにはのきはもるつきのよきかな",
+      "meter": [
+        "なかきよの",
+        "きつるもはきの",
+        "はにてりて",
+        "にはのきはもる",
+        "つきのよきかな"
+      ],
+      "A": "なかきよの",
+      "B": "きつ",
+      "C": "るもはきの",
+      "D": "はに",
+      "E": "てりて",
+      "factor_sources": {
+        "AB": [
+          "shoju-038"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "shoju-035"
+        ]
+      },
+      "source_ids": [
+        "shoju-038",
+        "shoju-035"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "田毎月",
+        "同（月）"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-008",
+      "seam_review": {
+        "B": {
+          "status": "conditional-pass",
+          "reason": "B2:きつ conditional seam; same semantic field"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:はに transferable seam"
+        }
+      },
+      "research_status": "priority-semantic-review"
+    },
+    {
+      "reading": "なかよさのきつしもなかのみなかりかなみのかなもしつきのさよかな",
+      "meter": [
+        "なかよさの",
+        "きつしもなかの",
+        "みなかりか",
+        "なみのかなもし",
+        "つきのさよかな"
+      ],
+      "A": "なかよさの",
+      "B": "きつ",
+      "C": "しもなかの",
+      "D": "みな",
+      "E": "かりか",
+      "factor_sources": {
+        "AB": [
+          "shoju-add-109"
+        ],
+        "BC": [
+          "shoju-040"
+        ],
+        "CD": [
+          "shoju-040"
+        ],
+        "DE": [
+          "shoju-040"
+        ]
+      },
+      "source_ids": [
+        "shoju-add-109",
+        "shoju-040"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "嫁娘見月",
+        "月明海上鴻鷹渡"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-009",
+      "seam_review": {
+        "B": {
+          "status": "conditional-pass",
+          "reason": "B2:きつ conditional seam; same semantic field"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:みな transferable seam"
+        }
+      },
+      "research_status": "priority-semantic-review"
+    },
+    {
+      "reading": "なかよさのきつるみちもとこたしろしたこともちみるつきのさよかな",
+      "meter": [
+        "なかよさの",
+        "きつるみちもと",
+        "こたしろし",
+        "たこともちみる",
+        "つきのさよかな"
+      ],
+      "A": "なかよさの",
+      "B": "きつ",
+      "C": "るみちもと",
+      "D": "こた",
+      "E": "しろし",
+      "factor_sources": {
+        "AB": [
+          "shoju-add-109"
+        ],
+        "BC": [
+          "shoju-038"
+        ],
+        "CD": [
+          "shoju-038"
+        ],
+        "DE": [
+          "shoju-038"
+        ]
+      },
+      "source_ids": [
+        "shoju-add-109",
+        "shoju-038"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "嫁娘見月",
+        "田毎月"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-010",
+      "seam_review": {
+        "B": {
+          "status": "conditional-pass",
+          "reason": "B2:きつ conditional seam; same semantic field"
+        },
+        "D": {
+          "status": "unclassified",
+          "reason": "D2:こた has no signature yet"
+        }
+      },
+      "research_status": "review-unclassified-seam"
+    },
+    {
+      "reading": "なかよさのきつるもはきのはにてりてにはのきはもるつきのさよかな",
+      "meter": [
+        "なかよさの",
+        "きつるもはきの",
+        "はにてりて",
+        "にはのきはもる",
+        "つきのさよかな"
+      ],
+      "A": "なかよさの",
+      "B": "きつ",
+      "C": "るもはきの",
+      "D": "はに",
+      "E": "てりて",
+      "factor_sources": {
+        "AB": [
+          "shoju-add-109"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "shoju-035"
+        ]
+      },
+      "source_ids": [
+        "shoju-add-109",
+        "shoju-035"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "嫁娘見月",
+        "同（月）"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-011",
+      "seam_review": {
+        "B": {
+          "status": "conditional-pass",
+          "reason": "B2:きつ conditional seam; same semantic field"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:はに transferable seam"
+        }
+      },
+      "research_status": "priority-semantic-review"
+    },
+    {
+      "reading": "はるのみとまたひけよもつまこのてのこまつもよけひたまとみのるは",
+      "meter": [
+        "はるのみと",
+        "またひけよもつ",
+        "まこのての",
+        "こまつもよけひ",
+        "たまとみのるは"
+      ],
+      "A": "はるのみと",
+      "B": "また",
+      "C": "ひけよもつ",
+      "D": "まこ",
+      "E": "のての",
+      "factor_sources": {
+        "AB": [
+          "shoju-010-somokuka"
+        ],
+        "BC": [
+          "shoju-001-komatsuhiki"
+        ],
+        "CD": [
+          "shoju-001-komatsuhiki"
+        ],
+        "DE": [
+          "shoju-001-komatsuhiki"
+        ]
+      },
+      "source_ids": [
+        "shoju-010-somokuka",
+        "shoju-001-komatsuhiki"
+      ],
+      "source_fields": [
+        "春・草木"
+      ],
+      "source_titles": [
+        "草木花",
+        "小松引"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-012",
+      "seam_review": {
+        "B": {
+          "status": "blocked",
+          "reason": "B2:また is morphologically ambiguous"
+        },
+        "D": {
+          "status": "unclassified",
+          "reason": "D2:まこ has no signature yet"
+        }
+      },
+      "research_status": "hold-morphological-seam"
+    },
+    {
+      "reading": "はれつみよきつしもなかのみなかりかなみのかなもしつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつしもなかの",
+        "みなかりか",
+        "なみのかなもし",
+        "つきよみつれは"
+      ],
+      "A": "はれつみよ",
+      "B": "きつ",
+      "C": "しもなかの",
+      "D": "みな",
+      "E": "かりか",
+      "factor_sources": {
+        "AB": [
+          "shoju-035"
+        ],
+        "BC": [
+          "shoju-040"
+        ],
+        "CD": [
+          "shoju-040"
+        ],
+        "DE": [
+          "shoju-040"
+        ]
+      },
+      "source_ids": [
+        "shoju-035",
+        "shoju-040"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "同（月）",
+        "月明海上鴻鷹渡"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-013",
+      "seam_review": {
+        "B": {
+          "status": "conditional-pass",
+          "reason": "B2:きつ conditional seam; same semantic field"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:みな transferable seam"
+        }
+      },
+      "research_status": "priority-semantic-review"
+    },
+    {
+      "reading": "はれつみよきつるみそらはむすめよめすむはらそみるつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつるみそらは",
+        "むすめよめ",
+        "すむはらそみる",
+        "つきよみつれは"
+      ],
+      "A": "はれつみよ",
+      "B": "きつ",
+      "C": "るみそらは",
+      "D": "むす",
+      "E": "めよめ",
+      "factor_sources": {
+        "AB": [
+          "shoju-035"
+        ],
+        "BC": [
+          "shoju-add-109"
+        ],
+        "CD": [
+          "shoju-add-109"
+        ],
+        "DE": [
+          "shoju-add-109"
+        ]
+      },
+      "source_ids": [
+        "shoju-035",
+        "shoju-add-109"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "同（月）",
+        "嫁娘見月"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-014",
+      "seam_review": {
+        "B": {
+          "status": "conditional-pass",
+          "reason": "B2:きつ conditional seam; same semantic field"
+        },
+        "D": {
+          "status": "unclassified",
+          "reason": "D2:むす has no signature yet"
+        }
+      },
+      "research_status": "review-unclassified-seam"
+    },
+    {
+      "reading": "はれつみよきつるみちもとこたしろしたこともちみるつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつるみちもと",
+        "こたしろし",
+        "たこともちみる",
+        "つきよみつれは"
+      ],
+      "A": "はれつみよ",
+      "B": "きつ",
+      "C": "るみちもと",
+      "D": "こた",
+      "E": "しろし",
+      "factor_sources": {
+        "AB": [
+          "shoju-035"
+        ],
+        "BC": [
+          "shoju-038"
+        ],
+        "CD": [
+          "shoju-038"
+        ],
+        "DE": [
+          "shoju-038"
+        ]
+      },
+      "source_ids": [
+        "shoju-035",
+        "shoju-038"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "同（月）",
+        "田毎月"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-015",
+      "seam_review": {
+        "B": {
+          "status": "conditional-pass",
+          "reason": "B2:きつ conditional seam; same semantic field"
+        },
+        "D": {
+          "status": "unclassified",
+          "reason": "D2:こた has no signature yet"
+        }
+      },
+      "research_status": "review-unclassified-seam"
+    },
+    {
+      "reading": "はれつみよきつるもはきのはにしけしにはのきはもるつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつるもはきの",
+        "はにしけし",
+        "にはのきはもる",
+        "つきよみつれは"
+      ],
+      "A": "はれつみよ",
+      "B": "きつ",
+      "C": "るもはきの",
+      "D": "はに",
+      "E": "しけし",
+      "factor_sources": {
+        "AB": [
+          "shoju-035"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "shoju-031"
+        ]
+      },
+      "source_ids": [
+        "shoju-035",
+        "shoju-031"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "同（月）",
+        "同（露）"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-016",
+      "seam_review": {
+        "B": {
+          "status": "conditional-pass",
+          "reason": "B2:きつ conditional seam; same semantic field"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:はに transferable seam"
+        }
+      },
+      "research_status": "priority-semantic-review"
+    },
+    {
+      "reading": "みなくうのせかいなりちもみつのよのつみもちりないかせのうくなみ",
+      "meter": [
+        "みなくうの",
+        "せかいなりちも",
+        "みつのよの",
+        "つみもちりない",
+        "かせのうくなみ"
+      ],
+      "A": "みなくうの",
+      "B": "せか",
+      "C": "いなりちも",
+      "D": "みつ",
+      "E": "のよの",
+      "factor_sources": {
+        "AB": [
+          "shoju-five-elements"
+        ],
+        "BC": [
+          "shoju-five-elements"
+        ],
+        "CD": [
+          "shoju-five-elements"
+        ],
+        "DE": [
+          "shoju-068"
+        ]
+      },
+      "source_ids": [
+        "shoju-five-elements",
+        "shoju-068"
+      ],
+      "source_fields": [
+        "信仰"
+      ],
+      "source_titles": [
+        "地水火風空",
+        "釈教"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-017",
+      "seam_review": {
+        "B": {
+          "status": "unclassified",
+          "reason": "B2:せか has no signature yet"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:みつ transferable seam"
+        }
+      },
+      "research_status": "review-unclassified-seam"
+    },
+    {
+      "reading": "みなくさのなはしらすみるともとちともとるみすらしはなのさくなみ",
+      "meter": [
+        "みなくさの",
+        "なはしらすみる",
+        "ともとちと",
+        "もとるみすらし",
+        "はなのさくなみ"
+      ],
+      "A": "みなくさの",
+      "B": "なは",
+      "C": "しらすみる",
+      "D": "とも",
+      "E": "とちと",
+      "factor_sources": {
+        "AB": [
+          "sendai-sakunami"
+        ],
+        "BC": [
+          "shoju-wakakusa"
+        ],
+        "CD": [
+          "shoju-wakakusa"
+        ],
+        "DE": [
+          "shoju-wakakusa"
+        ]
+      },
+      "source_ids": [
+        "sendai-sakunami",
+        "shoju-wakakusa"
+      ],
+      "source_fields": [
+        "春・草木"
+      ],
+      "source_titles": [
+        "作並",
+        "野遊"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-018",
+      "seam_review": {
+        "B": {
+          "status": "pass",
+          "reason": "B2:なは transferable seam"
+        },
+        "D": {
+          "status": "unclassified",
+          "reason": "D2:とも has no signature yet"
+        }
+      },
+      "research_status": "review-unclassified-seam"
+    },
+    {
+      "reading": "やとるつゆたまはのきはのはにてりてにはのはきのはまたゆつるとや",
+      "meter": [
+        "やとるつゆ",
+        "たまはのきはの",
+        "はにてりて",
+        "にはのはきのは",
+        "またゆつるとや"
+      ],
+      "A": "やとるつゆ",
+      "B": "たま",
+      "C": "はのきはの",
+      "D": "はに",
+      "E": "てりて",
+      "factor_sources": {
+        "AB": [
+          "shoju-031"
+        ],
+        "BC": [
+          "shoju-031"
+        ],
+        "CD": [
+          "shoju-031"
+        ],
+        "DE": [
+          "shoju-035"
+        ]
+      },
+      "source_ids": [
+        "shoju-031",
+        "shoju-035"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "同（露）",
+        "同（月）"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-019",
+      "seam_review": {
+        "B": {
+          "status": "unclassified",
+          "reason": "B2:たま has no signature yet"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:はに transferable seam"
+        }
+      },
+      "research_status": "review-unclassified-seam"
+    },
+    {
+      "reading": "わかくさのなははくとしれくすりなりすくれしとくははなのさくかわ",
+      "meter": [
+        "わかくさの",
+        "なははくとしれ",
+        "くすりなり",
+        "すくれしとくは",
+        "はなのさくかわ"
+      ],
+      "A": "わかくさの",
+      "B": "なは",
+      "C": "はくとしれ",
+      "D": "くす",
+      "E": "りなり",
+      "factor_sources": {
+        "AB": [
+          "shoju-wakakusa"
+        ],
+        "BC": [
+          "sendai-sakunami"
+        ],
+        "CD": [
+          "sendai-sakunami"
+        ],
+        "DE": [
+          "sendai-sakunami"
+        ]
+      },
+      "source_ids": [
+        "shoju-wakakusa",
+        "sendai-sakunami"
+      ],
+      "source_fields": [
+        "春・草木"
+      ],
+      "source_titles": [
+        "野遊",
+        "作並"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-020",
+      "seam_review": {
+        "B": {
+          "status": "pass",
+          "reason": "B2:なは transferable seam"
+        },
+        "D": {
+          "status": "unclassified",
+          "reason": "D2:くす has no signature yet"
+        }
+      },
+      "research_status": "review-unclassified-seam"
+    },
+    {
+      "reading": "てりつうみきつるもはきのはにしけしにはのきはもるつきみうつりて",
+      "meter": [
+        "てりつうみ",
+        "きつるもはきの",
+        "はにしけし",
+        "にはのきはもる",
+        "つきみうつりて"
+      ],
+      "A": "てりつうみ",
+      "B": "きつ",
+      "C": "るもはきの",
+      "D": "はに",
+      "E": "しけし",
+      "factor_sources": {
+        "AB": [
+          "shoju-040"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "shoju-031"
+        ]
+      },
+      "source_ids": [
+        "shoju-040",
+        "shoju-035",
+        "shoju-031"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "月明海上鴻鷹渡",
+        "同（月）",
+        "同（露）"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-021",
+      "seam_review": {
+        "B": {
+          "status": "conditional-pass",
+          "reason": "B2:きつ conditional seam; same semantic field"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:はに transferable seam"
+        }
+      },
+      "research_status": "priority-semantic-review"
+    },
+    {
+      "reading": "なかきよのきつるもはきのはにしけしにはのきはもるつきのよきかな",
+      "meter": [
+        "なかきよの",
+        "きつるもはきの",
+        "はにしけし",
+        "にはのきはもる",
+        "つきのよきかな"
+      ],
+      "A": "なかきよの",
+      "B": "きつ",
+      "C": "るもはきの",
+      "D": "はに",
+      "E": "しけし",
+      "factor_sources": {
+        "AB": [
+          "shoju-038"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "shoju-031"
+        ]
+      },
+      "source_ids": [
+        "shoju-038",
+        "shoju-035",
+        "shoju-031"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "田毎月",
+        "同（月）",
+        "同（露）"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-022",
+      "seam_review": {
+        "B": {
+          "status": "conditional-pass",
+          "reason": "B2:きつ conditional seam; same semantic field"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:はに transferable seam"
+        }
+      },
+      "research_status": "priority-semantic-review"
+    },
+    {
+      "reading": "なかよさのきつるもはきのはにしけしにはのきはもるつきのさよかな",
+      "meter": [
+        "なかよさの",
+        "きつるもはきの",
+        "はにしけし",
+        "にはのきはもる",
+        "つきのさよかな"
+      ],
+      "A": "なかよさの",
+      "B": "きつ",
+      "C": "るもはきの",
+      "D": "はに",
+      "E": "しけし",
+      "factor_sources": {
+        "AB": [
+          "shoju-add-109"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "shoju-031"
+        ]
+      },
+      "source_ids": [
+        "shoju-add-109",
+        "shoju-035",
+        "shoju-031"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "嫁娘見月",
+        "同（月）",
+        "同（露）"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-023",
+      "seam_review": {
+        "B": {
+          "status": "conditional-pass",
+          "reason": "B2:きつ conditional seam; same semantic field"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:はに transferable seam"
+        }
+      },
+      "research_status": "priority-semantic-review"
+    },
+    {
+      "reading": "きつるままちもきよけらしかわのへのわかしらけよきもちままるつき",
+      "meter": [
+        "きつるまま",
+        "ちもきよけらし",
+        "かわのへの",
+        "わかしらけよき",
+        "もちままるつき"
+      ],
+      "A": "きつるまま",
+      "B": "ちも",
+      "C": "きよけらし",
+      "D": "かわ",
+      "E": "のへの",
+      "factor_sources": {
+        "AB": [
+          "shoju-033"
+        ],
+        "BC": [
+          "shoju-033"
+        ],
+        "CD": [
+          "shoju-070"
+        ],
+        "DE": [
+          "shoju-070"
+        ]
+      },
+      "source_ids": [
+        "shoju-033",
+        "shoju-070"
+      ],
+      "source_fields": [
+        "秋・月",
+        "信仰"
+      ],
+      "source_titles": [
+        "月",
+        "同（釈教）"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-024",
+      "seam_review": {
+        "B": {
+          "status": "unclassified",
+          "reason": "B2:ちも has no signature yet"
+        },
+        "D": {
+          "status": "unclassified",
+          "reason": "D2:かわ has no signature yet"
+        }
+      },
+      "research_status": "hold-mixed-semantic-field"
+    },
+    {
+      "reading": "さよきつるけふそまたきしすすかけかすすしきたまそふけるつきよさ",
+      "meter": [
+        "さよきつる",
+        "けふそまたきし",
+        "すすかけか",
+        "すすしきたまそ",
+        "ふけるつきよさ"
+      ],
+      "A": "さよきつる",
+      "B": "けふ",
+      "C": "そまたきし",
+      "D": "すす",
+      "E": "かけか",
+      "factor_sources": {
+        "AB": [
+          "shoju-027"
+        ],
+        "BC": [
+          "shoju-027"
+        ],
+        "CD": [
+          "shoju-027"
+        ],
+        "DE": [
+          "shoju-064"
+        ]
+      },
+      "source_ids": [
+        "shoju-027",
+        "shoju-064"
+      ],
+      "source_fields": [
+        "夏・行事",
+        "信仰"
+      ],
+      "source_titles": [
+        "納涼",
+        "社頭祝"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-025",
+      "seam_review": {
+        "B": {
+          "status": "unclassified",
+          "reason": "B2:けふ has no signature yet"
+        },
+        "D": {
+          "status": "blocked",
+          "reason": "D2:すす is conditional and semantic fields differ"
+        }
+      },
+      "research_status": "hold-mixed-semantic-field"
+    },
+    {
+      "reading": "しなもなくほとしらぬみちみもしはしもみちみぬらしとほくなもなし",
+      "meter": [
+        "しなもなく",
+        "ほとしらぬみち",
+        "みもしはし",
+        "もみちみぬらし",
+        "とほくなもなし"
+      ],
+      "A": "しなもなく",
+      "B": "ほと",
+      "C": "しらぬみち",
+      "D": "みも",
+      "E": "しはし",
+      "factor_sources": {
+        "AB": [
+          "shoju-068"
+        ],
+        "BC": [
+          "shoju-044"
+        ],
+        "CD": [
+          "shoju-044"
+        ],
+        "DE": [
+          "shoju-044"
+        ]
+      },
+      "source_ids": [
+        "shoju-068",
+        "shoju-044"
+      ],
+      "source_fields": [
+        "信仰",
+        "秋・月"
+      ],
+      "source_titles": [
+        "釈教",
+        "紅葉"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-026",
+      "seam_review": {
+        "B": {
+          "status": "blocked",
+          "reason": "B2:ほと is morphologically ambiguous"
+        },
+        "D": {
+          "status": "unclassified",
+          "reason": "D2:みも has no signature yet"
+        }
+      },
+      "research_status": "hold-mixed-semantic-field"
+    },
+    {
+      "reading": "しなもなくほとときすはやきつなけなつきやはすきととほくなもなし",
+      "meter": [
+        "しなもなく",
+        "ほとときすはや",
+        "きつなけな",
+        "つきやはすきと",
+        "とほくなもなし"
+      ],
+      "A": "しなもなく",
+      "B": "ほと",
+      "C": "ときすはや",
+      "D": "きつ",
+      "E": "なけな",
+      "factor_sources": {
+        "AB": [
+          "shoju-068"
+        ],
+        "BC": [
+          "shoju-021"
+        ],
+        "CD": [
+          "shoju-021"
+        ],
+        "DE": [
+          "shoju-021"
+        ]
+      },
+      "source_ids": [
+        "shoju-068",
+        "shoju-021"
+      ],
+      "source_fields": [
+        "信仰",
+        "夏・行事"
+      ],
+      "source_titles": [
+        "釈教",
+        "子規"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-027",
+      "seam_review": {
+        "B": {
+          "status": "blocked",
+          "reason": "B2:ほと is morphologically ambiguous"
+        },
+        "D": {
+          "status": "unclassified",
+          "reason": "D2:きつ has no signature yet"
+        }
+      },
+      "research_status": "hold-mixed-semantic-field"
+    },
+    {
+      "reading": "しらゆきはけさのらくさのはにしけしにはのさくらのさけはきゆらし",
+      "meter": [
+        "しらゆきは",
+        "けさのらくさの",
+        "はにしけし",
+        "にはのさくらの",
+        "さけはきゆらし"
+      ],
+      "A": "しらゆきは",
+      "B": "けさ",
+      "C": "のらくさの",
+      "D": "はに",
+      "E": "しけし",
+      "factor_sources": {
+        "AB": [
+          "mitoku-shirayuki"
+        ],
+        "BC": [
+          "mitoku-shirayuki"
+        ],
+        "CD": [
+          "mitoku-shirayuki"
+        ],
+        "DE": [
+          "shoju-031"
+        ]
+      },
+      "source_ids": [
+        "mitoku-shirayuki",
+        "shoju-031"
+      ],
+      "source_fields": [
+        "冬・雪",
+        "秋・月"
+      ],
+      "source_titles": [
+        "白雪",
+        "同（露）"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-028",
+      "seam_review": {
+        "B": {
+          "status": "unclassified",
+          "reason": "B2:けさ has no signature yet"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:はに transferable seam"
+        }
+      },
+      "research_status": "hold-mixed-semantic-field"
+    },
+    {
+      "reading": "しらゆきはけさのらくさのはにてりてにはのさくらのさけはきゆらし",
+      "meter": [
+        "しらゆきは",
+        "けさのらくさの",
+        "はにてりて",
+        "にはのさくらの",
+        "さけはきゆらし"
+      ],
+      "A": "しらゆきは",
+      "B": "けさ",
+      "C": "のらくさの",
+      "D": "はに",
+      "E": "てりて",
+      "factor_sources": {
+        "AB": [
+          "mitoku-shirayuki"
+        ],
+        "BC": [
+          "mitoku-shirayuki"
+        ],
+        "CD": [
+          "mitoku-shirayuki"
+        ],
+        "DE": [
+          "shoju-035"
+        ]
+      },
+      "source_ids": [
+        "mitoku-shirayuki",
+        "shoju-035"
+      ],
+      "source_fields": [
+        "冬・雪",
+        "秋・月"
+      ],
+      "source_titles": [
+        "白雪",
+        "同（月）"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-029",
+      "seam_review": {
+        "B": {
+          "status": "unclassified",
+          "reason": "B2:けさ has no signature yet"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:はに transferable seam"
+        }
+      },
+      "research_status": "hold-mixed-semantic-field"
+    },
+    {
+      "reading": "てりつうみきつしもなかのみなめさめなみのかなもしつきみうつりて",
+      "meter": [
+        "てりつうみ",
+        "きつしもなかの",
+        "みなめさめ",
+        "なみのかなもし",
+        "つきみうつりて"
+      ],
+      "A": "てりつうみ",
+      "B": "きつ",
+      "C": "しもなかの",
+      "D": "みな",
+      "E": "めさめ",
+      "factor_sources": {
+        "AB": [
+          "shoju-040"
+        ],
+        "BC": [
+          "shoju-040"
+        ],
+        "CD": [
+          "shoju-040"
+        ],
+        "DE": [
+          "edo-popular-takarabune"
+        ]
+      },
+      "source_ids": [
+        "shoju-040",
+        "edo-popular-takarabune"
+      ],
+      "source_fields": [
+        "秋・月",
+        "その他"
+      ],
+      "source_titles": [
+        "月明海上鴻鷹渡",
+        "宝船回文歌"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-030",
+      "seam_review": {
+        "B": {
+          "status": "blocked",
+          "reason": "B2:きつ is conditional and semantic fields differ"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:みな transferable seam"
+        }
+      },
+      "research_status": "hold-mixed-semantic-field"
+    },
+    {
+      "reading": "とひてかやなはしらすみるともとちともとるみすらしはなやかてひと",
+      "meter": [
+        "とひてかや",
+        "なはしらすみる",
+        "ともとちと",
+        "もとるみすらし",
+        "はなやかてひと"
+      ],
+      "A": "とひてかや",
+      "B": "なは",
+      "C": "しらすみる",
+      "D": "とも",
+      "E": "とちと",
+      "factor_sources": {
+        "AB": [
+          "shoju-058"
+        ],
+        "BC": [
+          "shoju-wakakusa"
+        ],
+        "CD": [
+          "shoju-wakakusa"
+        ],
+        "DE": [
+          "shoju-wakakusa"
+        ]
+      },
+      "source_ids": [
+        "shoju-058",
+        "shoju-wakakusa"
+      ],
+      "source_fields": [
+        "恋・人事",
+        "春・草木"
+      ],
+      "source_titles": [
+        "士",
+        "野遊"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-031",
+      "seam_review": {
+        "B": {
+          "status": "pass",
+          "reason": "B2:なは transferable seam"
+        },
+        "D": {
+          "status": "unclassified",
+          "reason": "D2:とも has no signature yet"
+        }
+      },
+      "research_status": "hold-mixed-semantic-field"
+    },
+    {
+      "reading": "とひてかやなははくとしれくすりなりすくれしとくははなやかてひと",
+      "meter": [
+        "とひてかや",
+        "なははくとしれ",
+        "くすりなり",
+        "すくれしとくは",
+        "はなやかてひと"
+      ],
+      "A": "とひてかや",
+      "B": "なは",
+      "C": "はくとしれ",
+      "D": "くす",
+      "E": "りなり",
+      "factor_sources": {
+        "AB": [
+          "shoju-058"
+        ],
+        "BC": [
+          "sendai-sakunami"
+        ],
+        "CD": [
+          "sendai-sakunami"
+        ],
+        "DE": [
+          "sendai-sakunami"
+        ]
+      },
+      "source_ids": [
+        "shoju-058",
+        "sendai-sakunami"
+      ],
+      "source_fields": [
+        "恋・人事",
+        "春・草木"
+      ],
+      "source_titles": [
+        "士",
+        "作並"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-032",
+      "seam_review": {
+        "B": {
+          "status": "pass",
+          "reason": "B2:なは transferable seam"
+        },
+        "D": {
+          "status": "unclassified",
+          "reason": "D2:くす has no signature yet"
+        }
+      },
+      "research_status": "hold-mixed-semantic-field"
+    },
+    {
+      "reading": "なかきよのとをのねふりのみなかりかなみのりふねのをとのよきかな",
+      "meter": [
+        "なかきよの",
+        "とをのねふりの",
+        "みなかりか",
+        "なみのりふねの",
+        "をとのよきかな"
+      ],
+      "A": "なかきよの",
+      "B": "とを",
+      "C": "のねふりの",
+      "D": "みな",
+      "E": "かりか",
+      "factor_sources": {
+        "AB": [
+          "edo-popular-takarabune"
+        ],
+        "BC": [
+          "edo-popular-takarabune"
+        ],
+        "CD": [
+          "edo-popular-takarabune"
+        ],
+        "DE": [
+          "shoju-040"
+        ]
+      },
+      "source_ids": [
+        "edo-popular-takarabune",
+        "shoju-040"
+      ],
+      "source_fields": [
+        "その他",
+        "秋・月"
+      ],
+      "source_titles": [
+        "宝船回文歌",
+        "月明海上鴻鷹渡"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-033",
+      "seam_review": {
+        "B": {
+          "status": "unclassified",
+          "reason": "B2:とを has no signature yet"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:みな transferable seam"
+        }
+      },
+      "research_status": "hold-mixed-semantic-field"
+    },
+    {
+      "reading": "はれつみよきつるもはきのはにもつもにはのきはもるつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつるもはきの",
+        "はにもつも",
+        "にはのきはもる",
+        "つきよみつれは"
+      ],
+      "A": "はれつみよ",
+      "B": "きつ",
+      "C": "るもはきの",
+      "D": "はに",
+      "E": "もつも",
+      "factor_sources": {
+        "AB": [
+          "shoju-035"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "mitoku-shirayuki"
+        ]
+      },
+      "source_ids": [
+        "shoju-035",
+        "mitoku-shirayuki"
+      ],
+      "source_fields": [
+        "秋・月",
+        "冬・雪"
+      ],
+      "source_titles": [
+        "同（月）",
+        "白雪"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-034",
+      "seam_review": {
+        "B": {
+          "status": "blocked",
+          "reason": "B2:きつ is conditional and semantic fields differ"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:はに transferable seam"
+        }
+      },
+      "research_status": "hold-mixed-semantic-field"
+    },
+    {
+      "reading": "みなくさのなはゆみとりとかたきよきたかとりとみゆはなのさくなみ",
+      "meter": [
+        "みなくさの",
+        "なはゆみとりと",
+        "かたきよき",
+        "たかとりとみゆ",
+        "はなのさくなみ"
+      ],
+      "A": "みなくさの",
+      "B": "なは",
+      "C": "ゆみとりと",
+      "D": "かた",
+      "E": "きよき",
+      "factor_sources": {
+        "AB": [
+          "sendai-sakunami"
+        ],
+        "BC": [
+          "shoju-058"
+        ],
+        "CD": [
+          "shoju-058"
+        ],
+        "DE": [
+          "shoju-058"
+        ]
+      },
+      "source_ids": [
+        "sendai-sakunami",
+        "shoju-058"
+      ],
+      "source_fields": [
+        "春・草木",
+        "恋・人事"
+      ],
+      "source_titles": [
+        "作並",
+        "士"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-035",
+      "seam_review": {
+        "B": {
+          "status": "pass",
+          "reason": "B2:なは transferable seam"
+        },
+        "D": {
+          "status": "unclassified",
+          "reason": "D2:かた has no signature yet"
+        }
+      },
+      "research_status": "hold-mixed-semantic-field"
+    },
+    {
+      "reading": "もとつたそほとけのをしへみつのよのつみへしをのけとほそたつとも",
+      "meter": [
+        "もとつたそ",
+        "ほとけのをしへ",
+        "みつのよの",
+        "つみへしをのけ",
+        "とほそたつとも"
+      ],
+      "A": "もとつたそ",
+      "B": "ほと",
+      "C": "けのをしへ",
+      "D": "みつ",
+      "E": "のよの",
+      "factor_sources": {
+        "AB": [
+          "shoju-021"
+        ],
+        "BC": [
+          "shoju-068"
+        ],
+        "CD": [
+          "shoju-068"
+        ],
+        "DE": [
+          "shoju-068"
+        ]
+      },
+      "source_ids": [
+        "shoju-021",
+        "shoju-068"
+      ],
+      "source_fields": [
+        "夏・行事",
+        "信仰"
+      ],
+      "source_titles": [
+        "子規",
+        "釈教"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-036",
+      "seam_review": {
+        "B": {
+          "status": "blocked",
+          "reason": "B2:ほと is morphologically ambiguous"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:みつ transferable seam"
+        }
+      },
+      "research_status": "hold-mixed-semantic-field"
+    },
+    {
+      "reading": "もとつたそほとしらぬみちみもしはしもみちみぬらしとほそたつとも",
+      "meter": [
+        "もとつたそ",
+        "ほとしらぬみち",
+        "みもしはし",
+        "もみちみぬらし",
+        "とほそたつとも"
+      ],
+      "A": "もとつたそ",
+      "B": "ほと",
+      "C": "しらぬみち",
+      "D": "みも",
+      "E": "しはし",
+      "factor_sources": {
+        "AB": [
+          "shoju-021"
+        ],
+        "BC": [
+          "shoju-044"
+        ],
+        "CD": [
+          "shoju-044"
+        ],
+        "DE": [
+          "shoju-044"
+        ]
+      },
+      "source_ids": [
+        "shoju-021",
+        "shoju-044"
+      ],
+      "source_fields": [
+        "夏・行事",
+        "秋・月"
+      ],
+      "source_titles": [
+        "子規",
+        "紅葉"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-037",
+      "seam_review": {
+        "B": {
+          "status": "blocked",
+          "reason": "B2:ほと is morphologically ambiguous"
+        },
+        "D": {
+          "status": "unclassified",
+          "reason": "D2:みも has no signature yet"
+        }
+      },
+      "research_status": "hold-mixed-semantic-field"
+    },
+    {
+      "reading": "やとるつゆたまはのきはのはにもつもにはのはきのはまたゆつるとや",
+      "meter": [
+        "やとるつゆ",
+        "たまはのきはの",
+        "はにもつも",
+        "にはのはきのは",
+        "またゆつるとや"
+      ],
+      "A": "やとるつゆ",
+      "B": "たま",
+      "C": "はのきはの",
+      "D": "はに",
+      "E": "もつも",
+      "factor_sources": {
+        "AB": [
+          "shoju-031"
+        ],
+        "BC": [
+          "shoju-031"
+        ],
+        "CD": [
+          "shoju-031"
+        ],
+        "DE": [
+          "mitoku-shirayuki"
+        ]
+      },
+      "source_ids": [
+        "shoju-031",
+        "mitoku-shirayuki"
+      ],
+      "source_fields": [
+        "秋・月",
+        "冬・雪"
+      ],
+      "source_titles": [
+        "同（露）",
+        "白雪"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-038",
+      "seam_review": {
+        "B": {
+          "status": "unclassified",
+          "reason": "B2:たま has no signature yet"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:はに transferable seam"
+        }
+      },
+      "research_status": "hold-mixed-semantic-field"
+    },
+    {
+      "reading": "やまのおくほとけのをしへみつのよのつみへしをのけとほくおのまや",
+      "meter": [
+        "やまのおく",
+        "ほとけのをしへ",
+        "みつのよの",
+        "つみへしをのけ",
+        "とほくおのまや"
+      ],
+      "A": "やまのおく",
+      "B": "ほと",
+      "C": "けのをしへ",
+      "D": "みつ",
+      "E": "のよの",
+      "factor_sources": {
+        "AB": [
+          "shoju-044"
+        ],
+        "BC": [
+          "shoju-068"
+        ],
+        "CD": [
+          "shoju-068"
+        ],
+        "DE": [
+          "shoju-068"
+        ]
+      },
+      "source_ids": [
+        "shoju-044",
+        "shoju-068"
+      ],
+      "source_fields": [
+        "秋・月",
+        "信仰"
+      ],
+      "source_titles": [
+        "紅葉",
+        "釈教"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-039",
+      "seam_review": {
+        "B": {
+          "status": "blocked",
+          "reason": "B2:ほと is morphologically ambiguous"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:みつ transferable seam"
+        }
+      },
+      "research_status": "hold-mixed-semantic-field"
+    },
+    {
+      "reading": "やまのおくほとときすはやきつなけなつきやはすきととほくおのまや",
+      "meter": [
+        "やまのおく",
+        "ほとときすはや",
+        "きつなけな",
+        "つきやはすきと",
+        "とほくおのまや"
+      ],
+      "A": "やまのおく",
+      "B": "ほと",
+      "C": "ときすはや",
+      "D": "きつ",
+      "E": "なけな",
+      "factor_sources": {
+        "AB": [
+          "shoju-044"
+        ],
+        "BC": [
+          "shoju-021"
+        ],
+        "CD": [
+          "shoju-021"
+        ],
+        "DE": [
+          "shoju-021"
+        ]
+      },
+      "source_ids": [
+        "shoju-044",
+        "shoju-021"
+      ],
+      "source_fields": [
+        "秋・月",
+        "夏・行事"
+      ],
+      "source_titles": [
+        "紅葉",
+        "子規"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-040",
+      "seam_review": {
+        "B": {
+          "status": "blocked",
+          "reason": "B2:ほと is morphologically ambiguous"
+        },
+        "D": {
+          "status": "unclassified",
+          "reason": "D2:きつ has no signature yet"
+        }
+      },
+      "research_status": "hold-mixed-semantic-field"
+    },
+    {
+      "reading": "らくてみのよみやきよめしすすかせかすすしめよきやみよのみてくら",
+      "meter": [
+        "らくてみの",
+        "よみやきよめし",
+        "すすかせか",
+        "すすしめよきや",
+        "みよのみてくら"
+      ],
+      "A": "らくてみの",
+      "B": "よみ",
+      "C": "やきよめし",
+      "D": "すす",
+      "E": "かせか",
+      "factor_sources": {
+        "AB": [
+          "shoju-064"
+        ],
+        "BC": [
+          "shoju-064"
+        ],
+        "CD": [
+          "shoju-064"
+        ],
+        "DE": [
+          "shoju-027"
+        ]
+      },
+      "source_ids": [
+        "shoju-064",
+        "shoju-027"
+      ],
+      "source_fields": [
+        "信仰",
+        "夏・行事"
+      ],
+      "source_titles": [
+        "社頭祝",
+        "納涼"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-041",
+      "seam_review": {
+        "B": {
+          "status": "unclassified",
+          "reason": "B2:よみ has no signature yet"
+        },
+        "D": {
+          "status": "blocked",
+          "reason": "D2:すす is conditional and semantic fields differ"
+        }
+      },
+      "research_status": "hold-mixed-semantic-field"
+    },
+    {
+      "reading": "わかくさのなはゆみとりとかたきよきたかとりとみゆはなのさくかわ",
+      "meter": [
+        "わかくさの",
+        "なはゆみとりと",
+        "かたきよき",
+        "たかとりとみゆ",
+        "はなのさくかわ"
+      ],
+      "A": "わかくさの",
+      "B": "なは",
+      "C": "ゆみとりと",
+      "D": "かた",
+      "E": "きよき",
+      "factor_sources": {
+        "AB": [
+          "shoju-wakakusa"
+        ],
+        "BC": [
+          "shoju-058"
+        ],
+        "CD": [
+          "shoju-058"
+        ],
+        "DE": [
+          "shoju-058"
+        ]
+      },
+      "source_ids": [
+        "shoju-wakakusa",
+        "shoju-058"
+      ],
+      "source_fields": [
+        "春・草木",
+        "恋・人事"
+      ],
+      "source_titles": [
+        "野遊",
+        "士"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-042",
+      "seam_review": {
+        "B": {
+          "status": "pass",
+          "reason": "B2:なは transferable seam"
+        },
+        "D": {
+          "status": "unclassified",
+          "reason": "D2:かた has no signature yet"
+        }
+      },
+      "research_status": "hold-mixed-semantic-field"
+    },
+    {
+      "reading": "てりつうみきつるもはきのはにもつもにはのきはもるつきみうつりて",
+      "meter": [
+        "てりつうみ",
+        "きつるもはきの",
+        "はにもつも",
+        "にはのきはもる",
+        "つきみうつりて"
+      ],
+      "A": "てりつうみ",
+      "B": "きつ",
+      "C": "るもはきの",
+      "D": "はに",
+      "E": "もつも",
+      "factor_sources": {
+        "AB": [
+          "shoju-040"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "mitoku-shirayuki"
+        ]
+      },
+      "source_ids": [
+        "shoju-040",
+        "shoju-035",
+        "mitoku-shirayuki"
+      ],
+      "source_fields": [
+        "秋・月",
+        "冬・雪"
+      ],
+      "source_titles": [
+        "月明海上鴻鷹渡",
+        "同（月）",
+        "白雪"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-043",
+      "seam_review": {
+        "B": {
+          "status": "blocked",
+          "reason": "B2:きつ is conditional and semantic fields differ"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:はに transferable seam"
+        }
+      },
+      "research_status": "hold-mixed-semantic-field"
+    },
+    {
+      "reading": "なかきよのきつしもなかのみなめさめなみのかなもしつきのよきかな",
+      "meter": [
+        "なかきよの",
+        "きつしもなかの",
+        "みなめさめ",
+        "なみのかなもし",
+        "つきのよきかな"
+      ],
+      "A": "なかきよの",
+      "B": "きつ",
+      "C": "しもなかの",
+      "D": "みな",
+      "E": "めさめ",
+      "factor_sources": {
+        "AB": [
+          "shoju-038"
+        ],
+        "BC": [
+          "shoju-040"
+        ],
+        "CD": [
+          "shoju-040"
+        ],
+        "DE": [
+          "edo-popular-takarabune"
+        ]
+      },
+      "source_ids": [
+        "shoju-038",
+        "shoju-040",
+        "edo-popular-takarabune"
+      ],
+      "source_fields": [
+        "秋・月",
+        "その他"
+      ],
+      "source_titles": [
+        "田毎月",
+        "月明海上鴻鷹渡",
+        "宝船回文歌"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-044",
+      "seam_review": {
+        "B": {
+          "status": "blocked",
+          "reason": "B2:きつ is conditional and semantic fields differ"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:みな transferable seam"
+        }
+      },
+      "research_status": "hold-mixed-semantic-field"
+    },
+    {
+      "reading": "なかきよのきつるもはきのはにもつもにはのきはもるつきのよきかな",
+      "meter": [
+        "なかきよの",
+        "きつるもはきの",
+        "はにもつも",
+        "にはのきはもる",
+        "つきのよきかな"
+      ],
+      "A": "なかきよの",
+      "B": "きつ",
+      "C": "るもはきの",
+      "D": "はに",
+      "E": "もつも",
+      "factor_sources": {
+        "AB": [
+          "shoju-038"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "mitoku-shirayuki"
+        ]
+      },
+      "source_ids": [
+        "shoju-038",
+        "shoju-035",
+        "mitoku-shirayuki"
+      ],
+      "source_fields": [
+        "秋・月",
+        "冬・雪"
+      ],
+      "source_titles": [
+        "田毎月",
+        "同（月）",
+        "白雪"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-045",
+      "seam_review": {
+        "B": {
+          "status": "blocked",
+          "reason": "B2:きつ is conditional and semantic fields differ"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:はに transferable seam"
+        }
+      },
+      "research_status": "hold-mixed-semantic-field"
+    },
+    {
+      "reading": "なかよさのきつしもなかのみなめさめなみのかなもしつきのさよかな",
+      "meter": [
+        "なかよさの",
+        "きつしもなかの",
+        "みなめさめ",
+        "なみのかなもし",
+        "つきのさよかな"
+      ],
+      "A": "なかよさの",
+      "B": "きつ",
+      "C": "しもなかの",
+      "D": "みな",
+      "E": "めさめ",
+      "factor_sources": {
+        "AB": [
+          "shoju-add-109"
+        ],
+        "BC": [
+          "shoju-040"
+        ],
+        "CD": [
+          "shoju-040"
+        ],
+        "DE": [
+          "edo-popular-takarabune"
+        ]
+      },
+      "source_ids": [
+        "shoju-add-109",
+        "shoju-040",
+        "edo-popular-takarabune"
+      ],
+      "source_fields": [
+        "秋・月",
+        "その他"
+      ],
+      "source_titles": [
+        "嫁娘見月",
+        "月明海上鴻鷹渡",
+        "宝船回文歌"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-046",
+      "seam_review": {
+        "B": {
+          "status": "blocked",
+          "reason": "B2:きつ is conditional and semantic fields differ"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:みな transferable seam"
+        }
+      },
+      "research_status": "hold-mixed-semantic-field"
+    },
+    {
+      "reading": "なかよさのきつるもはきのはにもつもにはのきはもるつきのさよかな",
+      "meter": [
+        "なかよさの",
+        "きつるもはきの",
+        "はにもつも",
+        "にはのきはもる",
+        "つきのさよかな"
+      ],
+      "A": "なかよさの",
+      "B": "きつ",
+      "C": "るもはきの",
+      "D": "はに",
+      "E": "もつも",
+      "factor_sources": {
+        "AB": [
+          "shoju-add-109"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "mitoku-shirayuki"
+        ]
+      },
+      "source_ids": [
+        "shoju-add-109",
+        "shoju-035",
+        "mitoku-shirayuki"
+      ],
+      "source_fields": [
+        "秋・月",
+        "冬・雪"
+      ],
+      "source_titles": [
+        "嫁娘見月",
+        "同（月）",
+        "白雪"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-047",
+      "seam_review": {
+        "B": {
+          "status": "blocked",
+          "reason": "B2:きつ is conditional and semantic fields differ"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:はに transferable seam"
+        }
+      },
+      "research_status": "hold-mixed-semantic-field"
+    },
+    {
+      "reading": "はれつみよきつしもなかのみなめさめなみのかなもしつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつしもなかの",
+        "みなめさめ",
+        "なみのかなもし",
+        "つきよみつれは"
+      ],
+      "A": "はれつみよ",
+      "B": "きつ",
+      "C": "しもなかの",
+      "D": "みな",
+      "E": "めさめ",
+      "factor_sources": {
+        "AB": [
+          "shoju-035"
+        ],
+        "BC": [
+          "shoju-040"
+        ],
+        "CD": [
+          "shoju-040"
+        ],
+        "DE": [
+          "edo-popular-takarabune"
+        ]
+      },
+      "source_ids": [
+        "shoju-035",
+        "shoju-040",
+        "edo-popular-takarabune"
+      ],
+      "source_fields": [
+        "秋・月",
+        "その他"
+      ],
+      "source_titles": [
+        "同（月）",
+        "月明海上鴻鷹渡",
+        "宝船回文歌"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-048",
+      "seam_review": {
+        "B": {
+          "status": "blocked",
+          "reason": "B2:きつ is conditional and semantic fields differ"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:みな transferable seam"
+        }
+      },
+      "research_status": "hold-mixed-semantic-field"
+    },
+    {
+      "reading": "もとつたそほとけのをしへみつもひもつみへしをのけとほそたつとも",
+      "meter": [
+        "もとつたそ",
+        "ほとけのをしへ",
+        "みつもひも",
+        "つみへしをのけ",
+        "とほそたつとも"
+      ],
+      "A": "もとつたそ",
+      "B": "ほと",
+      "C": "けのをしへ",
+      "D": "みつ",
+      "E": "もひも",
+      "factor_sources": {
+        "AB": [
+          "shoju-021"
+        ],
+        "BC": [
+          "shoju-068"
+        ],
+        "CD": [
+          "shoju-068"
+        ],
+        "DE": [
+          "shoju-five-elements"
+        ]
+      },
+      "source_ids": [
+        "shoju-021",
+        "shoju-068",
+        "shoju-five-elements"
+      ],
+      "source_fields": [
+        "夏・行事",
+        "信仰"
+      ],
+      "source_titles": [
+        "子規",
+        "釈教",
+        "地水火風空"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-049",
+      "seam_review": {
+        "B": {
+          "status": "blocked",
+          "reason": "B2:ほと is morphologically ambiguous"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:みつ transferable seam"
+        }
+      },
+      "research_status": "hold-mixed-semantic-field"
+    },
+    {
+      "reading": "やまのおくほとけのをしへみつもひもつみへしをのけとほくおのまや",
+      "meter": [
+        "やまのおく",
+        "ほとけのをしへ",
+        "みつもひも",
+        "つみへしをのけ",
+        "とほくおのまや"
+      ],
+      "A": "やまのおく",
+      "B": "ほと",
+      "C": "けのをしへ",
+      "D": "みつ",
+      "E": "もひも",
+      "factor_sources": {
+        "AB": [
+          "shoju-044"
+        ],
+        "BC": [
+          "shoju-068"
+        ],
+        "CD": [
+          "shoju-068"
+        ],
+        "DE": [
+          "shoju-five-elements"
+        ]
+      },
+      "source_ids": [
+        "shoju-044",
+        "shoju-068",
+        "shoju-five-elements"
+      ],
+      "source_fields": [
+        "秋・月",
+        "信仰"
+      ],
+      "source_titles": [
+        "紅葉",
+        "釈教",
+        "地水火風空"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-050",
+      "seam_review": {
+        "B": {
+          "status": "blocked",
+          "reason": "B2:ほと is morphologically ambiguous"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:みつ transferable seam"
+        }
+      },
+      "research_status": "hold-mixed-semantic-field"
+    },
+    {
+      "reading": "なかるへきみつきよけらしけふのよのふけしらけよきつみきへるかな",
+      "meter": [
+        "なかるへき",
+        "みつきよけらし",
+        "けふのよの",
+        "ふけしらけよき",
+        "つみきへるかな"
+      ],
+      "A": "なかるへき",
+      "B": "みつ",
+      "C": "きよけらし",
+      "D": "けふ",
+      "E": "のよの",
+      "factor_sources": {
+        "AB": [
+          "shoju-070"
+        ],
+        "BC": [
+          "shoju-070"
+        ],
+        "CD": [
+          "shoju-033"
+        ],
+        "DE": [
+          "shoju-033",
+          "shoju-072"
+        ]
+      },
+      "source_ids": [
+        "shoju-070",
+        "shoju-033",
+        "shoju-072"
+      ],
+      "source_fields": [
+        "信仰",
+        "秋・月",
+        "恋・人事"
+      ],
+      "source_titles": [
+        "同（釈教）",
+        "月",
+        "寄琴恋"
+      ],
+      "semantic_cohesion": 1,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-051",
+      "seam_review": {
+        "B": {
+          "status": "unclassified",
+          "reason": "B2:みつ has no signature yet"
+        },
+        "D": {
+          "status": "pass",
+          "reason": "D2:けふ transferable seam"
+        }
+      },
+      "research_status": "hold-mixed-semantic-field"
+    }
+  ]
+}
