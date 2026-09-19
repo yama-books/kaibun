@@ -1,0 +1,836 @@
+{
+  "version": "0.96",
+  "title": "Public quality benchmark blind human-review form",
+  "source_benchmark_version": "0.79",
+  "review_mode": "blind-first-pass",
+  "instructions": [
+    "Evaluate only the displayed sentence and the intended kana reading. Do not consult source pool, current layer, japanese_quality, weirdness, or model-assisted v0.80 review before completing the first pass.",
+    "The task is not to reward clever palindrome structure. Judge whether the Japanese works and whether this pattern should remain productive in the app.",
+    "Use notes whenever a judgment depends on an intended proper-name reading, ellipsis, metaphor, or special context."
+  ],
+  "rubric": {
+    "grammar": {
+      "values": [
+        "pass",
+        "marginal",
+        "fail"
+      ],
+      "definitions": {
+        "pass": "Ordinary or clearly acceptable Japanese construction.",
+        "marginal": "Recoverable Japanese, but ellipsis, attachment, or phrasing is noticeably strained.",
+        "fail": "Construction does not work as Japanese without substantial repair."
+      }
+    },
+    "semantic_coherence": {
+      "values": [
+        "clear",
+        "strained",
+        "opaque"
+      ],
+      "definitions": {
+        "clear": "The described situation or relation is readily interpretable.",
+        "strained": "Interpretation is possible but selectional relation, reference, or modification feels forced.",
+        "opaque": "No stable intended meaning can be recovered."
+      }
+    },
+    "display_reading_fidelity": {
+      "values": [
+        "pass",
+        "hint-needed",
+        "mismatch"
+      ],
+      "definitions": {
+        "pass": "The displayed form reasonably supports the intended kana reading.",
+        "hint-needed": "The reading is legitimate/intended but the display is liable to be read another way.",
+        "mismatch": "The display does not reasonably support the canonical reading."
+      }
+    },
+    "productive_value": {
+      "values": [
+        "expand",
+        "keep-only",
+        "hold"
+      ],
+      "definitions": {
+        "expand": "A useful pattern worth generating more examples from.",
+        "keep-only": "This example can remain, but the pattern should not be expanded aggressively.",
+        "hold": "Do not expose as a normal productive pattern without correction."
+      }
+    },
+    "overall_naturalness": {
+      "values": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "definitions": {
+        "1": "Broken or essentially uninterpretable.",
+        "2": "Understandable only with substantial strain.",
+        "3": "Odd but works as a deliberate 怪文.",
+        "4": "Good Japanese with a noticeable palindrome/wordplay flavor.",
+        "5": "Natural enough that the palindrome constraint barely intrudes."
+      }
+    },
+    "confidence": {
+      "values": [
+        "low",
+        "medium",
+        "high"
+      ]
+    }
+  },
+  "candidates": [
+    {
+      "review_id": "QB-001",
+      "display": "ルイも母もいる。",
+      "canonical_reading": "るいもははもいる",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-002",
+      "display": "中身かな？",
+      "canonical_reading": "なかみかな",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-003",
+      "display": "妻と父の母の父と待つ。",
+      "canonical_reading": "つまとちちのははのちちとまつ",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-004",
+      "display": "確かに、キキに貸した。",
+      "canonical_reading": "たしかにききにかした",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-005",
+      "display": "妻も母の父の母も待つ。",
+      "canonical_reading": "つまもははのちちのははもまつ",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-006",
+      "display": "ルイといる。",
+      "canonical_reading": "るいといる",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-007",
+      "display": "タミも父の父も見た。",
+      "canonical_reading": "たみもちちのちちもみた",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-008",
+      "display": "ルミも父の子の子の父も見る。",
+      "canonical_reading": "るみもちちのこのこのちちもみる",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-009",
+      "display": "タキと母の子の母と来た。",
+      "canonical_reading": "たきとははのこのははときた",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-010",
+      "display": "モカかも。",
+      "canonical_reading": "もかかも",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-011",
+      "display": "確かに、子の母の母の子に貸した。",
+      "canonical_reading": "たしかにこのははのははのこにかした",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-012",
+      "display": "タキと母の子の子の母と来た。",
+      "canonical_reading": "たきとははのこのこのははときた",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-013",
+      "display": "ルイも父の子の父もいる。",
+      "canonical_reading": "るいもちちのこのちちもいる",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-014",
+      "display": "夜、留守にするよ。",
+      "canonical_reading": "よるすにするよ",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-015",
+      "display": "タミを見た。",
+      "canonical_reading": "たみをみた",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-016",
+      "display": "魚も追う。",
+      "canonical_reading": "うおもおう",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-017",
+      "display": "ルネと寝る。",
+      "canonical_reading": "るねとねる",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-018",
+      "display": "妻が待つ。",
+      "canonical_reading": "つまがまつ",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-019",
+      "display": "タミも海のミウも見た。",
+      "canonical_reading": "たみもうみのみうもみた",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-020",
+      "display": "確かに山のマヤに貸した。",
+      "canonical_reading": "たしかにやまのまやにかした",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-021",
+      "display": "確かに池のケイに貸した。",
+      "canonical_reading": "たしかにいけのけいにかした",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-022",
+      "display": "井川もこのナナの子も若い。",
+      "canonical_reading": "いかわもこのななのこもわかい",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-023",
+      "display": "タミも店のセミも見た。",
+      "canonical_reading": "たみもみせのせみもみた",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-024",
+      "display": "タミも庭のワニも見た。",
+      "canonical_reading": "たみもにわのわにもみた",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-025",
+      "display": "タミも今朝の酒も見た。",
+      "canonical_reading": "たみもけさのさけもみた",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-026",
+      "display": "旦那、ナナなんだ。",
+      "canonical_reading": "だんななななんだ",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-027",
+      "display": "磨かぬ鏡。",
+      "canonical_reading": "みがかぬかがみ",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-028",
+      "display": "軽いイルカ。",
+      "canonical_reading": "かるいいるか",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-029",
+      "display": "旦那、高田なんだ。",
+      "canonical_reading": "だんなたかたなんだ",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-030",
+      "display": "旦那、ココなんだ。",
+      "canonical_reading": "だんなここなんだ",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-031",
+      "display": "旦那、ルルなんだ。",
+      "canonical_reading": "だんなるるなんだ",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-032",
+      "display": "遺体は痛い。",
+      "canonical_reading": "いたいはいたい",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-033",
+      "display": "馬が舞う。",
+      "canonical_reading": "うまがまう",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-034",
+      "display": "種は寝た。",
+      "canonical_reading": "たねはねた",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-035",
+      "display": "旦那、石井なんだ。",
+      "canonical_reading": "だんないしいなんだ",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-036",
+      "display": "種が寝た。",
+      "canonical_reading": "たねがねた",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-037",
+      "display": "熊も巻く。",
+      "canonical_reading": "くまもまく",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-038",
+      "display": "主は死ぬ。",
+      "canonical_reading": "ぬしはしぬ",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-039",
+      "display": "ブヨは呼ぶ。",
+      "canonical_reading": "ぶよはよぶ",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-040",
+      "display": "タミもリスのスリも見た。",
+      "canonical_reading": "たみもりすのすりもみた",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-041",
+      "display": "タミも今朝の石井の酒も見た。",
+      "canonical_reading": "たみもけさのいしいのさけもみた",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-042",
+      "display": "ダイセの山のマヤのせいだ。",
+      "canonical_reading": "だいせのやまのまやのせいだ",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-043",
+      "display": "タミも嘘の層も見た。",
+      "canonical_reading": "たみもうそのそうもみた",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-044",
+      "display": "確かに家のエイに貸した。",
+      "canonical_reading": "たしかにいえのえいにかした",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-045",
+      "display": "確かにリスのスリに貸した。",
+      "canonical_reading": "たしかにりすのすりにかした",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-046",
+      "display": "確かに店のセミに貸した。",
+      "canonical_reading": "たしかにみせのせみにかした",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-047",
+      "display": "ルミ、ココ見る。",
+      "canonical_reading": "るみここみる",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-048",
+      "display": "須田、お顔出す。",
+      "canonical_reading": "すだおかおだす",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-049",
+      "display": "ルミ、桃見る。",
+      "canonical_reading": "るみももみる",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "QB-050",
+      "display": "ルミ、新聞紙見る。",
+      "canonical_reading": "るみしんぶんしみる",
+      "human_review": {
+        "reviewer_id": null,
+        "grammar": null,
+        "semantic_coherence": null,
+        "display_reading_fidelity": null,
+        "productive_value": null,
+        "overall_naturalness": null,
+        "confidence": null,
+        "notes": []
+      }
+    }
+  ]
+}
