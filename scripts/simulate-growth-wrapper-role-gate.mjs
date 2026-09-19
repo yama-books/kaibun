@@ -4,7 +4,7 @@ const readJson = p => JSON.parse(fs.readFileSync(p, "utf8"));
 
 const growth = readJson("data/growth-engine-v10.json");
 const gate = readJson("data/growth-wrapper-role-gate-v72.json");
-const frozen = readJson("data/growth-wrapper-role-simulation-v73.json");
+const frozen = readJson("data/growth-wrapper-role-simulation-v91.json");
 
 const ruleById = new Map();
 for (const rule of gate.wrapper_rules ?? []) {
@@ -99,14 +99,14 @@ const output = {
 
 function check() {
   const errors = [];
-  if (growth.version !== "0.30") errors.push(`growth version ${growth.version}, expected 0.30`);
+  if (growth.version !== "0.31") errors.push(`growth version ${growth.version}, expected 0.31`);
   if (gate.version !== "0.72") errors.push(`gate version ${gate.version}, expected 0.72`);
-  if (summary.family_count !== 45) errors.push(`family count ${summary.family_count}, expected 45`);
+  if (summary.family_count !== 53) errors.push(`family count ${summary.family_count}, expected 53`);
   if (summary.min_gated_eligible_count < 5) errors.push(`minimum gated eligible count ${summary.min_gated_eligible_count}, expected >=5`);
   if (summary.declarative_ask_top5_count !== 0) errors.push(`declarative ask top5 count ${summary.declarative_ask_top5_count}, expected 0`);
   if (summary.non_quote_specialized_top5_count !== 0) errors.push(`non-quote specialized top5 count ${summary.non_quote_specialized_top5_count}, expected 0`);
   if (summary.changed_top5_count < 30) errors.push(`changed top5 count ${summary.changed_top5_count}, expected >=30`);
-  if (frozen.version !== "0.73") errors.push(`frozen simulation version ${frozen.version}, expected 0.73`);
+  if (frozen.version !== "0.91") errors.push(`frozen simulation version ${frozen.version}, expected 0.91`);
   for (const key of ["family_count","min_gated_eligible_count","changed_top5_count","declarative_ask_top5_count","non_quote_specialized_top5_count"]) {
     if (frozen.summary?.[key] !== summary[key]) errors.push(`frozen summary drift ${key}: frozen=${frozen.summary?.[key]} generated=${summary[key]}`);
   }
