@@ -1,0 +1,140 @@
+{
+  "version": "1.12",
+  "updated_on": "2026-09-20",
+  "title": "Yamauchi visible poem-specific transcription review",
+  "purpose": "Upgrade source confidence for selected wave2 travel/held poems using directly readable poem-specific transcription reproduced from Yamauchi 1974 in a searchable article mirror, while explicitly separating that layer from the original Edo source image and from direct PDF inspection.",
+  "source_layers": {
+    "official_article_metadata": {
+      "author": "山内潤三",
+      "article": "廻文歌の限界と効用 (下)――高野山釈教長歌を頂点として――",
+      "journal": "密教文化",
+      "issue": 107,
+      "published": "1974-07-25",
+      "pages": "1-38",
+      "doi": "10.11168/jeb1947.1974.107_1",
+      "official_jstage_confirmed": true
+    },
+    "readable_article_mirror": {
+      "url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "role": "searchable reproduction/OCR of Yamauchi's scholarly article transcription",
+      "poem_specific_transcription_readable": true,
+      "direct_article_pdf_inspection": false,
+      "direct_original_edo_source_image_inspection": false,
+      "caution": "Readable article-mirror text is stronger than a repository-only normalized string, but it is not the original Edo-book glyph layer and is not equivalent to direct inspection of the J-STAGE PDF."
+    }
+  },
+  "poem_reviews": [
+    {
+      "source_number": 89,
+      "title": "老賀",
+      "visible_transcription": "八十や おい 家内よろこひます としとすまひ ころよい なかいおやそや",
+      "critical_surface": "八十",
+      "dictionary_reading_support": {
+        "surface": "八十",
+        "reading": "やそ",
+        "status": "dictionary-attested"
+      },
+      "normalized_candidate": "やそやおいかないよろこひますとしとすまひころよいなかいおやそや",
+      "strict_palindrome_under_declared_reading": true,
+      "previous_v043_status": "strongest-held-candidate",
+      "current_evidence_status": "poem-specific-scholarly-transcription-visible-and-reading-supported",
+      "promotion_status": "hold-by-existing-source-image-promotion-policy",
+      "reason": "Yamauchi's poem-specific transcription visibly has 八十 and the reading やそ is independently dictionary-attested. This substantially reduces reading uncertainty, but v0.43 explicitly requires source-image confirmation for promotion; that policy is not silently relaxed here."
+    },
+    {
+      "source_number": 90,
+      "title": "旅行の人々え",
+      "visible_transcription_lines": [
+        "ともかくも",
+        "まはるなかたひ",
+        "きよくゆく",
+        "よき日たかなる",
+        "はまもくかもと"
+      ],
+      "critical_observations": [
+        "The target poem itself is visibly present in Yamauchi's article transcription.",
+        "日 is explicit in よき日たかなる.",
+        "なかたひ remains kana in the scholarly transcription.",
+        "The fifth ku remains kana and is not source-safely segmented."
+      ],
+      "current_evidence_status": "poem-specific-scholarly-transcription-visible",
+      "original_source_glyph_status": "unverified",
+      "syntax_status": "partial",
+      "generator_effect": "eligible-for-deep-syntax-review-not-automatic-promotion"
+    },
+    {
+      "source_number": 92,
+      "title": "旅行（同）",
+      "visible_transcription": "日たかな 惹はまいそくかちとほやまやほとちかくそいまはるなかたひ",
+      "critical_observation": "The readable mirror itself contains a suspicious character/reading around 惹..., so the poem remains unsafe for repair or promotion.",
+      "current_evidence_status": "poem-specific-article-surface-visible-but-corrupt-or-unclear",
+      "promotion_status": "hold-source-image"
+    },
+    {
+      "source_number": 93,
+      "title": "旅行（同）",
+      "visible_transcription_lines": [
+        "やとちかく",
+        "まはるなり 今",
+        "みかきよき",
+        "神まいりなる",
+        "はまくかちとや"
+      ],
+      "critical_observations": [
+        "今 is explicit in Yamauchi's transcription.",
+        "神 is explicit in 神まいりなる.",
+        "みかき remains kana; 御垣 is a dictionary-supported interpretation, not a source-glyph claim.",
+        "The first and fifth ku remain kana-rich and require lexical/syntactic review."
+      ],
+      "current_evidence_status": "poem-specific-scholarly-transcription-visible",
+      "original_source_glyph_status": "unverified",
+      "syntax_status": "partial",
+      "generator_effect": "eligible-for-deep-syntax-review-not-automatic-promotion"
+    },
+    {
+      "source_number": 94,
+      "title": "旅行（同）",
+      "visible_transcription_lines": [
+        "なかたひも",
+        "ついおそきはる",
+        "友とちと",
+        "もとるは 木曽を",
+        "いつも 日たかな"
+      ],
+      "critical_observations": [
+        "友, 木曽を, and 日 are explicit in the scholarly transcription reproduced by the article mirror.",
+        "The strict normalized candidate remains mismatched only at the お/を mirror positions under the current literal-kana policy.",
+        "Because 木曽を is visible in the scholarly transcription layer, the お/を mismatch should no longer be treated merely as generic OCR uncertainty."
+      ],
+      "previous_v043_status": "hold-normalization-policy-and-source-image",
+      "current_evidence_status": "poem-specific-scholarly-transcription-visible",
+      "current_hold_class": "hold-strict-orthographic-equivalence",
+      "promotion_status": "held",
+      "reason": "The target poem's scholarly transcription supports 木曽を, so literal お/を asymmetry is evidence to model rather than silently normalize away. The strict-kana baseline remains unchanged."
+    }
+  ],
+  "travel_family_effect": {
+    "sources_90_93_poem_specific_scholarly_transcription_confirmed": true,
+    "source_confirmation_blocker_reduced": true,
+    "original_source_image_confirmed": false,
+    "automatic_candidate_status_change": false,
+    "next_required_gate": "deep syntax and semantic-role review",
+    "note": "v1.08 candidate statuses are not rewritten in this source-evidence overlay. A separate deep review must decide whether hold-source-confirmation can become promising-but-parse-needed."
+  },
+  "wave2_policy_effect": {
+    "verified_count_unchanged": 14,
+    "held_count_unchanged": 5,
+    "v039_untouched": true,
+    "v043_untouched": true,
+    "source_image_promotion_policy_untouched": true,
+    "strict_kana_policy_untouched": true
+  },
+  "safety_rules": [
+    "Searchable scholarly-article transcription is not original-source glyph evidence.",
+    "Visible kanji in Yamauchi's transcription may be recorded as scholarly-transcription evidence, but kana-only spans are not silently restored to kanji.",
+    "Do not convert お/を to equality inside the strict-kana baseline merely to make a palindrome.",
+    "Do not promote 89 solely by relaxing v0.43's source-image requirement without an explicit policy revision.",
+    "Do not repair 92 from palindrome expectation."
+  ],
+  "next_action": "Deep-review poems 90 and 93 with poem-specific scholarly transcription now confirmed; separately retain 89 and 94 as high-value held cases for source-image/orthographic-policy research."
+}
