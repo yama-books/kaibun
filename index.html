@@ -258,7 +258,8 @@ function syncControls(){
 
   const growthDisabled=growthFamilies().length===0;
   for(const id of ["growthStart","growOne","growAgain","growBack"])$("#"+id).disabled=growthDisabled;
-  for(const id of ["growthStart","growOne","growAgain","growBack","pairGen","dnaGen"])$("#"+id).style.opacity=$("#"+id).disabled?".38":"1";
+  for(const id of ["pairGen","dnaGen"])$("#"+id).style.opacity=$("#"+id).disabled?".38":"1";
+  updateGrowthStageLabel();
 }
 function updatePolicy(){$("#policy").textContent=data.policy[layer];syncControls();updateCandidateCount()}
 
@@ -279,6 +280,7 @@ function show(x){
   $("#pal").className="pill "+(isPal(x.reading)?"ok":"");
   $("#quality").textContent="日本語 "+(x.japanese_quality||(layer==="L1"?"A":layer==="L2"?"B":"C"));
   $("#weirdMeta").textContent="怪文 "+(x.weirdness??defaultWeird(layer));
+  $("#lengthMeta").textContent="長さ "+[...x.reading].length+"かな";
   $("#family").textContent=x.family||x.subgroup||layer;
   $("#origin").textContent=x.origin||"原種コーパス";
   $("#why").textContent=x.why||x.rationale||"検証済み原種。";
@@ -342,7 +344,14 @@ function growthMaxStage(){
   return growthState.mode==="narrative"?Math.max(0,(f?.stages?.length||1)-1):4;
 }
 function updateGrowthStageLabel(){
-  $("#growthStage").textContent="段階 "+growthState.stage+" / "+growthMaxStage();
+  const max=growthMaxStage();
+  $("#growthStage").textContent="段階 "+growthState.stage+" / "+max;
+  const available=growthFamilies().length>0;
+  $("#growOne").disabled=!available||growthState.stage>=max;
+  $("#growBack").disabled=!available||growthState.stage<=0;
+  $("#growthStart").disabled=!available;
+  $("#growAgain").disabled=!available;
+  for(const id of ["growthStart","growOne","growAgain","growBack"])$("#"+id).style.opacity=$("#"+id).disabled?".38":"1";
 }
 function trimGrowthHistory(afterStage){
   for(const k of Object.keys(growthState.history))if(+k>afterStage)delete growthState.history[k];
