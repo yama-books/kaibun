@@ -6,6 +6,7 @@ const rules=readJson("data/generation-rules-v08.json");
 const pairs=readJson("data/reverse-lexeme-pairs-v09.json");
 const seams=readJson("data/seam-grammar-v25.json");
 const bridge=readJson("data/modern-bridge-public-v69.json");
+const frozen=readJson("data/public-quality-benchmark-v76.json");
 
 const rev=s=>[...s].reverse().join("");
 const isPal=s=>s===rev(s);
@@ -139,6 +140,15 @@ const output={
 function check(){
   const errors=[];
   if(output.sample_size!==50)errors.push(`sample size ${output.sample_size}, expected 50`);
+  if(frozen.version!=="0.76")errors.push(`frozen benchmark version ${frozen.version}, expected 0.76`);
+  if(frozen.sample_size!==output.sample_size)errors.push(`frozen sample size ${frozen.sample_size}, generated ${output.sample_size}`);
+  const frozenById=new Map((frozen.candidates??[]).map(x=>[x.benchmark_id,x]));
+  for(const c of benchmark){
+    const prev=frozenById.get(c.benchmark_id);
+    if(!prev){errors.push(`missing frozen benchmark item ${c.benchmark_id}`);continue}
+    if(prev.reading!==c.reading)errors.push(`benchmark reading drift ${c.benchmark_id}`);
+    if(prev.source_pool!==c.source_pool||prev.layer!==c.layer)errors.push(`benchmark stratum drift ${c.benchmark_id}`);
+  }
   for(const c of benchmark){
     if(!isPal(c.reading))errors.push(`non-palindrome ${c.benchmark_id}`);
     if(c.review.overall!==null)errors.push(`benchmark seed must begin unreviewed: ${c.benchmark_id}`);
