@@ -28,6 +28,13 @@ const required = [
   "./data/seam-grammar-v25.json",
   "./data/modern-bridge-public-v69.json"
 ];
+for (const id of ["lengthMeta","wrapMeta"]) {
+  if (!html.includes(`id="${id}"`)) {
+    failed = true;
+    console.error("index.html is missing runtime metadata element: " + id);
+  }
+}
+
 if (!html.includes("function bridgePool()")) {
   failed = true;
   console.error("index.html is missing bridgePool()");
