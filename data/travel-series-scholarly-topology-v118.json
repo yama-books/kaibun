@@ -1,0 +1,142 @@
+{
+  "version": "1.18",
+  "updated_on": "2026-09-20",
+  "title": "Travel-series poem-specific scholarly phrase topology",
+  "purpose": "Upgrade the v1.17 travel-series phrase network from repository-normalized recurrence to poem-specific scholarly-transcription recurrence visible in Yamauchi 1974, without claiming original Edo glyph verification or whole-candidate naturalness.",
+  "source": {
+    "author": "山内潤三",
+    "article": "廻文歌の限界と効用 (下)――高野山釈教長歌を頂点として――",
+    "journal": "密教文化",
+    "issue": 107,
+    "year": 1974,
+    "pages": "1-38",
+    "doi": "10.11168/jeb1947.1974.107_1",
+    "searchable_article_mirror": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+    "poem_specific_transcription_visible": true,
+    "direct_jstage_pdf_inspection": false,
+    "direct_edo_source_image_inspection": false
+  },
+  "verified_series_repetitions": [
+    {
+      "phrase": "くかちとや",
+      "poem_91": {
+        "location": "ku1",
+        "visible_surface": "くかちとや"
+      },
+      "poem_93": {
+        "location": "ku5 suffix",
+        "visible_surface": "はまくかちとや"
+      },
+      "evidence_class": "poem-specific-scholarly-transcription-recurrence",
+      "boundary_support": "strong",
+      "kanji_restoration": "not-verified"
+    },
+    {
+      "phrase": "やとちかく",
+      "poem_93": {
+        "location": "ku1",
+        "visible_surface": "やとちかく"
+      },
+      "poem_91": {
+        "location": "ku5 suffix",
+        "visible_surface": "ついやとちかく"
+      },
+      "evidence_class": "poem-specific-scholarly-transcription-recurrence",
+      "boundary_support": "strong",
+      "kanji_restoration": "not-verified"
+    },
+    {
+      "phrase": "なかたひ",
+      "poem_90": {
+        "location": "ku2 suffix",
+        "visible_surface": "まはるなかたひ"
+      },
+      "poem_94": {
+        "location": "ku1 prefix",
+        "visible_surface": "なかたひも"
+      },
+      "same_author_parallel": "高野山釈教長歌: 参るなかたひ -> 参る長旅",
+      "evidence_class": "poem-specific-series-recurrence-plus-same-author-parallel",
+      "boundary_support": "strong",
+      "kanji_restoration": "hypothesis-only"
+    },
+    {
+      "phrase": "まはる",
+      "poem_90": "まはるなかたひ",
+      "poem_91": "まはるはる",
+      "poem_93": "まはるなり今",
+      "evidence_class": "poem-specific-series-recurrence",
+      "morphology_support": "strong-surface",
+      "kanji_restoration": "not-verified"
+    },
+    {
+      "phrase": "はまも",
+      "poem_90": "はまもくかもと",
+      "poem_91": "はまも日たかし",
+      "evidence_class": "poem-specific-series-recurrence",
+      "boundary_support": "moderate-to-strong",
+      "kanji_restoration": "not-verified"
+    },
+    {
+      "phrase": "日たか",
+      "poem_90": "よき日たかなる",
+      "poem_91": "はまも日たかし",
+      "poem_94": "いつも日たかな",
+      "evidence_class": "poem-specific-scholarly-transcription-recurrence-with-explicit-kanji",
+      "source_layer_claim": "Yamauchi scholarly transcription explicitly prints 日",
+      "original_edo_glyph_claim": false
+    }
+  ],
+  "travel_90_93_outer_frame_assessment": {
+    "candidate_id": "wave2-travel-090-host-093-outer",
+    "outer_donor": 93,
+    "host": 90,
+    "outer_ku1": "やとちかく",
+    "outer_ku5": "はまくかちとや",
+    "new_evidence": [
+      "The complete ku1 やとちかく recurs inside poem 91 ku5.",
+      "The ku5 suffix くかちとや is independently a complete ku1 in poem 91.",
+      "Thus both major lexical spans of the donor outer frame participate in the same travel-series phrase network independently of the generated candidate."
+    ],
+    "status_before": "promising-but-parse-needed",
+    "status_after": "promising-but-parse-needed",
+    "confidence_change": "stronger-source-local-boundary-evidence",
+    "why_not_deep_review_supported": [
+      "The generated poem's whole sentence-level syntax remains unannotated.",
+      "The first and fifth ku being source-attested and series-recurrent does not prove how they syntactically connect to the host middle.",
+      "No original Edo source image has been inspected."
+    ]
+  },
+  "travel_90_ku5_assessment": {
+    "surface": "はまもくかもと",
+    "series_support": "はまも recurs in poem 91 as はまも日たかし",
+    "dictionary_hypothesis": "はまも + くが + も + と",
+    "hypothesis_status": "lexically-plausible-but-syntax-incomplete",
+    "status_effect_on_reverse_candidate": "none",
+    "reverse_candidate": "wave2-travel-093-host-090-outer",
+    "reverse_candidate_status": "deep-review-needed"
+  },
+  "series_model": {
+    "finding": "Travel poems 90, 91, 93 and 94 reuse mirrored phrase fragments across different metrical positions, consistent with an authorial phrase-bank or phrase-topology strategy for palindrome composition.",
+    "evidence_scope": "descriptive-series-level",
+    "not_claimed": [
+      "that every repeated phrase has identical kanji in the original source",
+      "that every repeated phrase has identical morphology in every occurrence",
+      "that any newly recombined full poem is natural classical Japanese"
+    ]
+  },
+  "safety_rule": {
+    "id": "poem-specific-series-recurrence-strengthens-local-attestation-not-global-syntax",
+    "rule": "Repeated spans visible in poem-specific scholarly transcriptions may strengthen local boundary and source-attestation evidence, but they do not by themselves certify cross-boundary syntax in a generated hybrid.",
+    "applies_beyond_travel_series": true
+  },
+  "family_verdict": {
+    "family_id": "wave2-travel-maha",
+    "status": "third-positive-family-candidate-not-yet-established",
+    "best_candidate": "wave2-travel-090-host-093-outer",
+    "best_status": "promising-but-parse-needed",
+    "positive_family_established": false,
+    "automatic_acceptance": 0
+  },
+  "next_action": "Freeze the travel family at promising-but-parse-needed unless poem-specific lexical/syntactic annotation or original source images resolve the remaining cross-ku syntax; shift active effort to verified corpus expansion."
+}
