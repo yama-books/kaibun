@@ -31,7 +31,8 @@ const required = [
   "./data/growth-wrapper-role-gate-v72.json",
   "./data/growth-wrapper-role-public-v74.json",
   "./data/public-reading-hints-v82.json",
-  "./data/dna-kinship-exposure-policy-v84.json"
+  "./data/dna-kinship-exposure-policy-v84.json",
+  "./data/ten-comparison-balance-policy-v86.json"
 ];
 for (const id of ["lengthMeta","wrapMeta","readingHintMeta"]) {
   if (!html.includes(`id="${id}"`)) {
@@ -77,6 +78,17 @@ if (!html.includes("recursive_probability_cap")) {
 if (!html.includes("const recursiveReadings=new Set(recursivePool().map(x=>x.reading));")) {
   failed = true;
   console.error("dnaOne() does not classify recursive readings via recursivePool()");
+}
+
+for (const fn of ["tenComparisonItems","takeRandomUnused","shuffleItems"]) {
+  if (!html.includes("function " + fn + "(")) {
+    failed = true;
+    console.error("index.html is missing ten-comparison helper: " + fn);
+  }
+}
+if (!html.includes('const items=tenComparisonItems();')) {
+  failed = true;
+  console.error("ten-item comparison handler does not use balanced selector");
 }
 
 if (!html.includes("function standardSeamPool()")) {
@@ -152,6 +164,16 @@ if (dnaExposure.version !== "0.84") {
 if (dnaExposure.policy?.recursive_probability_cap !== 0.25) {
   failed = true;
   console.error("Unexpected DNA kinship exposure cap: " + dnaExposure.policy?.recursive_probability_cap);
+}
+
+const tenBalance = JSON.parse(fs.readFileSync("data/ten-comparison-balance-policy-v86.json", "utf8"));
+if (tenBalance.version !== "0.86.1") {
+  failed = true;
+  console.error("Unexpected ten-item comparison policy version: " + tenBalance.version);
+}
+if ((tenBalance.quotas ?? []).reduce((n,q)=>n+(q.count??0),0) !== 10) {
+  failed = true;
+  console.error("Ten-item comparison quota total is not 10");
 }
 
 if (failed) process.exit(1);
