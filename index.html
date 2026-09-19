@@ -93,6 +93,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
           <option value="narrative">物語型</option>
         </select>
       </label>
+      <label>足す情報 <select id="growthDimension"></select></label>
       <label>骨格 <select id="growthFamily"></select></label>
     </div>
     <div class="growthActions">
@@ -129,7 +130,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 
 <script>
 let data=null,rules=null,pairs=null,growth=null,layer="L1",seen=new Set(),currentShown=null;
-let growthState={mode:"structural",familyId:null,stage:0,lastCenter:null,history:{}};
+let growthState={mode:"structural",dimension:"all",familyId:null,stage:0,lastCenter:null,history:{}};
 
 const $=s=>document.querySelector(s);
 const rev=s=>[...s].reverse().join("");
@@ -150,6 +151,7 @@ async function init(){
   $("#recursiveStat").textContent=rs?("再帰 "+rs.sentence_variants.toLocaleString()+"文"):"再帰候補 –";
   $("#pairStat").textContent="逆語 "+pairs.pair_count+"組 / "+pairs.variant_count+"文";
   $("#storyStat").textContent="物語 "+(growth.verified?.narrative_family_count||0)+"系統 / "+(growth.verified?.narrative_variants||0)+"段階 / 最長 "+(growth.verified?.longest_narrative_kana||"–")+"かな";
+  populateGrowthDimensions();
   populateGrowthFamilies();
   updatePolicy();
   seedOne();
@@ -247,12 +249,12 @@ function syncControls(){
   narrativeOption.disabled=!narrativeAvailable;
 
   if(layer!=="L1"&&growthState.mode==="structural"&&narrativeAvailable){
-    growthState.mode="narrative";$("#growthMode").value="narrative";populateGrowthFamilies();
+    growthState.mode="narrative";$("#growthMode").value="narrative";
   }else if(!narrativeAvailable&&growthState.mode==="narrative"&&layer==="L1"){
-    growthState.mode="structural";$("#growthMode").value="structural";populateGrowthFamilies();
-  }else{
-    populateGrowthFamilies();
+    growthState.mode="structural";$("#growthMode").value="structural";
   }
+  populateGrowthDimensions();
+  populateGrowthFamilies();
 
   const growthDisabled=growthFamilies().length===0;
   for(const id of ["growthStart","growOne","growAgain","growBack"])$("#"+id).disabled=growthDisabled;
@@ -292,11 +294,29 @@ function seedOne(){const x=chooseFresh(pool());show(x?{...x,origin:"原種コー
 function dnaOne(){show(chooseFresh(dnaPool(true)))}
 function pairOne(){show(chooseFresh(pairPool()))}
 
+function narrativeFamiliesForLayer(){
+  return (growth.narrative_families||[]).filter(f=>(f.layer||"L1")===layer);
+}
 function growthFamilies(){
   if(growthState.mode==="narrative"){
-    return (growth.narrative_families||[]).filter(f=>(f.layer||"L1")===layer);
+    return narrativeFamiliesForLayer().filter(f=>growthState.dimension==="all"||f.dimension===growthState.dimension);
   }
   return layer==="L1"?(growth.families||[]):[];
+}
+function populateGrowthDimensions(){
+  const sel=$("#growthDimension");sel.innerHTML="";
+  if(growthState.mode!=="narrative"){
+    const o=document.createElement("option");o.value="all";o.textContent="構文型では未使用";sel.appendChild(o);
+    sel.disabled=true;growthState.dimension="all";return;
+  }
+  sel.disabled=false;
+  const dims=[...new Set(narrativeFamiliesForLayer().map(f=>f.dimension||"物語"))];
+  const all=document.createElement("option");all.value="all";all.textContent="すべて";sel.appendChild(all);
+  for(const d of dims){
+    const o=document.createElement("option");o.value=d;o.textContent=d;sel.appendChild(o);
+  }
+  if(!["all",...dims].includes(growthState.dimension))growthState.dimension="all";
+  sel.value=growthState.dimension;
 }
 function resetGrowthHistory(){
   growthState.history={};growthState.stage=0;growthState.lastCenter=null;
@@ -415,8 +435,13 @@ document.querySelectorAll(".layer").forEach(b=>b.onclick=()=>{
   updatePolicy();seedOne();
 });
 $("#growthMode").onchange=e=>{
-  growthState.mode=e.target.value;populateGrowthFamilies();
-  if(layer==="L1")growthStart();
+  growthState.mode=e.target.value;growthState.dimension="all";
+  populateGrowthDimensions();populateGrowthFamilies();
+  if(growthFamilies().length)growthStart();
+};
+$("#growthDimension").onchange=e=>{
+  growthState.dimension=e.target.value;populateGrowthFamilies();
+  if(growthFamilies().length)growthStart();
 };
 $("#growthFamily").onchange=e=>{
   growthState.familyId=e.target.value;resetGrowthHistory();
