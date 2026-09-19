@@ -1,0 +1,1125 @@
+{
+  "version": "0.97",
+  "title": "Public quality benchmark post-blind adjudication ledger",
+  "benchmark_version": "0.79",
+  "blind_review_form_version": "0.96",
+  "status": "awaiting-human-review",
+  "workflow": [
+    "Complete v0.96 blind review first.",
+    "Import the completed human review fields by review_id.",
+    "Only then inspect current product metadata in this ledger.",
+    "Use the human review plus product context to choose an adjudication action.",
+    "Consult model-assisted v0.80 only as secondary diagnostic context after human judgment, never as a substitute."
+  ],
+  "allowed_actions": [
+    "keep-current",
+    "promote-layer",
+    "demote-layer",
+    "hold",
+    "display-fix",
+    "reading-hint",
+    "metadata-only"
+  ],
+  "candidates": [
+    {
+      "review_id": "QB-001",
+      "display": "ルイも母もいる。",
+      "canonical_reading": "るいもははもいる",
+      "current_product_metadata": {
+        "source_pool": "seed",
+        "source_id": "V07-0255",
+        "layer": "L1",
+        "japanese_quality": "A",
+        "weirdness": 1
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-002",
+      "display": "中身かな？",
+      "canonical_reading": "なかみかな",
+      "current_product_metadata": {
+        "source_pool": "seed",
+        "source_id": "V06-0203",
+        "layer": "L1",
+        "japanese_quality": "A",
+        "weirdness": 1
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-003",
+      "display": "妻と父の母の父と待つ。",
+      "canonical_reading": "つまとちちのははのちちとまつ",
+      "current_product_metadata": {
+        "source_pool": "seed",
+        "source_id": "V08-0266",
+        "layer": "L1",
+        "japanese_quality": "A",
+        "weirdness": 2
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-004",
+      "display": "確かに、キキに貸した。",
+      "canonical_reading": "たしかにききにかした",
+      "current_product_metadata": {
+        "source_pool": "seed",
+        "source_id": "V05-0014",
+        "layer": "L1",
+        "japanese_quality": "A",
+        "weirdness": 1
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-005",
+      "display": "妻も母の父の母も待つ。",
+      "canonical_reading": "つまもははのちちのははもまつ",
+      "current_product_metadata": {
+        "source_pool": "seed",
+        "source_id": "V08-0265",
+        "layer": "L1",
+        "japanese_quality": "A",
+        "weirdness": 2
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-006",
+      "display": "ルイといる。",
+      "canonical_reading": "るいといる",
+      "current_product_metadata": {
+        "source_pool": "seed",
+        "source_id": "V07-0230",
+        "layer": "L1",
+        "japanese_quality": "A",
+        "weirdness": 1
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-007",
+      "display": "タミも父の父も見た。",
+      "canonical_reading": "たみもちちのちちもみた",
+      "current_product_metadata": {
+        "source_pool": "dna",
+        "source_id": "L1-RECURSIVE-KINSHIP",
+        "layer": "L1",
+        "japanese_quality": "A",
+        "weirdness": 1
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-008",
+      "display": "ルミも父の子の子の父も見る。",
+      "canonical_reading": "るみもちちのこのこのちちもみる",
+      "current_product_metadata": {
+        "source_pool": "dna",
+        "source_id": "L1-RECURSIVE-KINSHIP",
+        "layer": "L1",
+        "japanese_quality": "A",
+        "weirdness": 2
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-009",
+      "display": "タキと母の子の母と来た。",
+      "canonical_reading": "たきとははのこのははときた",
+      "current_product_metadata": {
+        "source_pool": "dna",
+        "source_id": "L1-RECURSIVE-KINSHIP",
+        "layer": "L1",
+        "japanese_quality": "A",
+        "weirdness": 2
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-010",
+      "display": "モカかも。",
+      "canonical_reading": "もかかも",
+      "current_product_metadata": {
+        "source_pool": "dna",
+        "source_id": "L1-MOKA-KAMO",
+        "layer": "L1",
+        "japanese_quality": "A",
+        "weirdness": 2
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-011",
+      "display": "確かに、子の母の母の子に貸した。",
+      "canonical_reading": "たしかにこのははのははのこにかした",
+      "current_product_metadata": {
+        "source_pool": "dna",
+        "source_id": "L1-RECURSIVE-KINSHIP",
+        "layer": "L1",
+        "japanese_quality": "A",
+        "weirdness": 2
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-012",
+      "display": "タキと母の子の子の母と来た。",
+      "canonical_reading": "たきとははのこのこのははときた",
+      "current_product_metadata": {
+        "source_pool": "dna",
+        "source_id": "L1-RECURSIVE-KINSHIP",
+        "layer": "L1",
+        "japanese_quality": "A",
+        "weirdness": 2
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-013",
+      "display": "ルイも父の子の父もいる。",
+      "canonical_reading": "るいもちちのこのちちもいる",
+      "current_product_metadata": {
+        "source_pool": "dna",
+        "source_id": "L1-RECURSIVE-KINSHIP",
+        "layer": "L1",
+        "japanese_quality": "A",
+        "weirdness": 2
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-014",
+      "display": "夜、留守にするよ。",
+      "canonical_reading": "よるすにするよ",
+      "current_product_metadata": {
+        "source_pool": "dna",
+        "source_id": "L1-YORUSUNI-SURUYO",
+        "layer": "L1",
+        "japanese_quality": "A",
+        "weirdness": 2
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-015",
+      "display": "タミを見た。",
+      "canonical_reading": "たみをみた",
+      "current_product_metadata": {
+        "source_pool": "pair",
+        "source_id": "tami-mita",
+        "layer": "L1",
+        "japanese_quality": "A",
+        "weirdness": 1
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-016",
+      "display": "魚も追う。",
+      "canonical_reading": "うおもおう",
+      "current_product_metadata": {
+        "source_pool": "pair",
+        "source_id": "uo-ou",
+        "layer": "L1",
+        "japanese_quality": "A",
+        "weirdness": 1
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-017",
+      "display": "ルネと寝る。",
+      "canonical_reading": "るねとねる",
+      "current_product_metadata": {
+        "source_pool": "pair",
+        "source_id": "rene-neru",
+        "layer": "L1",
+        "japanese_quality": "A",
+        "weirdness": 1
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-018",
+      "display": "妻が待つ。",
+      "canonical_reading": "つまがまつ",
+      "current_product_metadata": {
+        "source_pool": "pair",
+        "source_id": "tsuma-matsu",
+        "layer": "L1",
+        "japanese_quality": "A",
+        "weirdness": 1
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-019",
+      "display": "タミも海のミウも見た。",
+      "canonical_reading": "たみもうみのみうもみた",
+      "current_product_metadata": {
+        "source_pool": "seam",
+        "source_id": "see-sea-miu",
+        "layer": "L1",
+        "japanese_quality": "A",
+        "weirdness": 2
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-020",
+      "display": "確かに山のマヤに貸した。",
+      "canonical_reading": "たしかにやまのまやにかした",
+      "current_product_metadata": {
+        "source_pool": "seam",
+        "source_id": "loan-mountain-maya",
+        "layer": "L1",
+        "japanese_quality": "A",
+        "weirdness": 2
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-021",
+      "display": "確かに池のケイに貸した。",
+      "canonical_reading": "たしかにいけのけいにかした",
+      "current_product_metadata": {
+        "source_pool": "seam",
+        "source_id": "loan-pond-kei",
+        "layer": "L1",
+        "japanese_quality": "A",
+        "weirdness": 2
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-022",
+      "display": "井川もこのナナの子も若い。",
+      "canonical_reading": "いかわもこのななのこもわかい",
+      "current_product_metadata": {
+        "source_pool": "seam",
+        "source_id": "young-nana-child",
+        "layer": "L1",
+        "japanese_quality": "A",
+        "weirdness": 1
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-023",
+      "display": "タミも店のセミも見た。",
+      "canonical_reading": "たみもみせのせみもみた",
+      "current_product_metadata": {
+        "source_pool": "bridge",
+        "source_id": "BRIDGE-0003",
+        "layer": "L1",
+        "japanese_quality": "A",
+        "weirdness": 2
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-024",
+      "display": "タミも庭のワニも見た。",
+      "canonical_reading": "たみもにわのわにもみた",
+      "current_product_metadata": {
+        "source_pool": "bridge",
+        "source_id": "BRIDGE-0001",
+        "layer": "L1",
+        "japanese_quality": "A",
+        "weirdness": 2
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-025",
+      "display": "タミも今朝の酒も見た。",
+      "canonical_reading": "たみもけさのさけもみた",
+      "current_product_metadata": {
+        "source_pool": "bridge",
+        "source_id": "BRIDGE-0005",
+        "layer": "L1",
+        "japanese_quality": "A",
+        "weirdness": 2
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-026",
+      "display": "旦那、ナナなんだ。",
+      "canonical_reading": "だんななななんだ",
+      "current_product_metadata": {
+        "source_pool": "seed",
+        "source_id": "V05-0072",
+        "layer": "L2",
+        "japanese_quality": "B",
+        "weirdness": 3
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-027",
+      "display": "磨かぬ鏡。",
+      "canonical_reading": "みがかぬかがみ",
+      "current_product_metadata": {
+        "source_pool": "seed",
+        "source_id": "V05-0070",
+        "layer": "L2",
+        "japanese_quality": "B",
+        "weirdness": 3
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-028",
+      "display": "軽いイルカ。",
+      "canonical_reading": "かるいいるか",
+      "current_product_metadata": {
+        "source_pool": "seed",
+        "source_id": "V05-0068",
+        "layer": "L2",
+        "japanese_quality": "B",
+        "weirdness": 3
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-029",
+      "display": "旦那、高田なんだ。",
+      "canonical_reading": "だんなたかたなんだ",
+      "current_product_metadata": {
+        "source_pool": "seed",
+        "source_id": "V05-0082",
+        "layer": "L2",
+        "japanese_quality": "B",
+        "weirdness": 3
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-030",
+      "display": "旦那、ココなんだ。",
+      "canonical_reading": "だんなここなんだ",
+      "current_product_metadata": {
+        "source_pool": "seed",
+        "source_id": "V05-0074",
+        "layer": "L2",
+        "japanese_quality": "B",
+        "weirdness": 3
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-031",
+      "display": "旦那、ルルなんだ。",
+      "canonical_reading": "だんなるるなんだ",
+      "current_product_metadata": {
+        "source_pool": "seed",
+        "source_id": "V05-0078",
+        "layer": "L2",
+        "japanese_quality": "B",
+        "weirdness": 3
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-032",
+      "display": "遺体は痛い。",
+      "canonical_reading": "いたいはいたい",
+      "current_product_metadata": {
+        "source_pool": "dna",
+        "source_id": "L2-ITAI-ITAI",
+        "layer": "L2",
+        "japanese_quality": "A-",
+        "weirdness": 3
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-033",
+      "display": "馬が舞う。",
+      "canonical_reading": "うまがまう",
+      "current_product_metadata": {
+        "source_pool": "dna",
+        "source_id": "L2-UMA-MAU",
+        "layer": "L2",
+        "japanese_quality": "A-",
+        "weirdness": 3
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-034",
+      "display": "種は寝た。",
+      "canonical_reading": "たねはねた",
+      "current_product_metadata": {
+        "source_pool": "dna",
+        "source_id": "L2-TANE-NETA",
+        "layer": "L2",
+        "japanese_quality": "A-",
+        "weirdness": 3
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-035",
+      "display": "旦那、石井なんだ。",
+      "canonical_reading": "だんないしいなんだ",
+      "current_product_metadata": {
+        "source_pool": "dna",
+        "source_id": "L2-DANNA-NANDA",
+        "layer": "L2",
+        "japanese_quality": "A-",
+        "weirdness": 3
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-036",
+      "display": "種が寝た。",
+      "canonical_reading": "たねがねた",
+      "current_product_metadata": {
+        "source_pool": "pair",
+        "source_id": "tane-neta",
+        "layer": "L2",
+        "japanese_quality": "A-",
+        "weirdness": 3
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-037",
+      "display": "熊も巻く。",
+      "canonical_reading": "くまもまく",
+      "current_product_metadata": {
+        "source_pool": "pair",
+        "source_id": "kuma-maku",
+        "layer": "L2",
+        "japanese_quality": "A-",
+        "weirdness": 3
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-038",
+      "display": "主は死ぬ。",
+      "canonical_reading": "ぬしはしぬ",
+      "current_product_metadata": {
+        "source_pool": "pair",
+        "source_id": "nushi-shinu",
+        "layer": "L2",
+        "japanese_quality": "A-",
+        "weirdness": 3
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-039",
+      "display": "ブヨは呼ぶ。",
+      "canonical_reading": "ぶよはよぶ",
+      "current_product_metadata": {
+        "source_pool": "pair",
+        "source_id": "buyo-yobu",
+        "layer": "L2",
+        "japanese_quality": "A-",
+        "weirdness": 3
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-040",
+      "display": "タミもリスのスリも見た。",
+      "canonical_reading": "たみもりすのすりもみた",
+      "current_product_metadata": {
+        "source_pool": "seam",
+        "source_id": "see-squirrel-pickpocket",
+        "layer": "L2",
+        "japanese_quality": "A-",
+        "weirdness": 3
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-041",
+      "display": "タミも今朝の石井の酒も見た。",
+      "canonical_reading": "たみもけさのいしいのさけもみた",
+      "current_product_metadata": {
+        "source_pool": "seam",
+        "source_id": "time-see-ishii",
+        "layer": "L2",
+        "japanese_quality": "A-",
+        "weirdness": 3
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-042",
+      "display": "ダイセの山のマヤのせいだ。",
+      "canonical_reading": "だいせのやまのまやのせいだ",
+      "current_product_metadata": {
+        "source_pool": "seam",
+        "source_id": "cause-mountain-maya",
+        "layer": "L2",
+        "japanese_quality": "A-",
+        "weirdness": 3
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-043",
+      "display": "タミも嘘の層も見た。",
+      "canonical_reading": "たみもうそのそうもみた",
+      "current_product_metadata": {
+        "source_pool": "seam",
+        "source_id": "see-lie-layer",
+        "layer": "L2",
+        "japanese_quality": "A-",
+        "weirdness": 3
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-044",
+      "display": "確かに家のエイに貸した。",
+      "canonical_reading": "たしかにいえのえいにかした",
+      "current_product_metadata": {
+        "source_pool": "bridge",
+        "source_id": "BRIDGE-0006",
+        "layer": "L2",
+        "japanese_quality": "B",
+        "weirdness": 3
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-045",
+      "display": "確かにリスのスリに貸した。",
+      "canonical_reading": "たしかにりすのすりにかした",
+      "current_product_metadata": {
+        "source_pool": "bridge",
+        "source_id": "BRIDGE-0007",
+        "layer": "L2",
+        "japanese_quality": "A-",
+        "weirdness": 3
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-046",
+      "display": "確かに店のセミに貸した。",
+      "canonical_reading": "たしかにみせのせみにかした",
+      "current_product_metadata": {
+        "source_pool": "bridge",
+        "source_id": "BRIDGE-0004",
+        "layer": "L2",
+        "japanese_quality": "B",
+        "weirdness": 3
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-047",
+      "display": "ルミ、ココ見る。",
+      "canonical_reading": "るみここみる",
+      "current_product_metadata": {
+        "source_pool": "seed",
+        "source_id": "V05-0152",
+        "layer": "L3",
+        "japanese_quality": "C",
+        "weirdness": 4
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-048",
+      "display": "須田、お顔出す。",
+      "canonical_reading": "すだおかおだす",
+      "current_product_metadata": {
+        "source_pool": "seed",
+        "source_id": "V05-0120",
+        "layer": "L3",
+        "japanese_quality": "C",
+        "weirdness": 4
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-049",
+      "display": "ルミ、桃見る。",
+      "canonical_reading": "るみももみる",
+      "current_product_metadata": {
+        "source_pool": "seed",
+        "source_id": "V05-0146",
+        "layer": "L3",
+        "japanese_quality": "C",
+        "weirdness": 4
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    },
+    {
+      "review_id": "QB-050",
+      "display": "ルミ、新聞紙見る。",
+      "canonical_reading": "るみしんぶんしみる",
+      "current_product_metadata": {
+        "source_pool": "seed",
+        "source_id": "V05-0151",
+        "layer": "L3",
+        "japanese_quality": "C",
+        "weirdness": 4
+      },
+      "imported_human_review": null,
+      "adjudication": {
+        "action": null,
+        "target_layer": null,
+        "target_japanese_quality": null,
+        "target_weirdness": null,
+        "rationale": [],
+        "adjudicator_id": null,
+        "status": "pending"
+      }
+    }
+  ]
+}
