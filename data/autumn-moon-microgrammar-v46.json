@@ -1,0 +1,303 @@
+{
+  "version": "0.46",
+  "title": "Autumn/Moon night-garden microgrammar",
+  "concept": "A 2×2 topic-first microgrammar extracted from the v0.44/v0.45 evidence around shoju-035, shoju-038 and shoju-031.",
+  "scene": {
+    "id": "autumn-night-garden-moon",
+    "evidence_basis": "v0.40 human review of hybrid-008/016/022",
+    "tentative_elements": [
+      "夜",
+      "月",
+      "萩",
+      "葉",
+      "庭"
+    ],
+    "caution": "Scene label summarizes prior tentative parses; it is not a new source-text restoration."
+  },
+  "formula": "A5 | B2 | C5 | D2 | E3 | reverse(D)2 | reverse(C)5 | reverse(B)2 | reverse(A)5",
+  "fixed_factors": {
+    "B": {
+      "reading": "きつ",
+      "source_ids": [
+        "shoju-035",
+        "shoju-038"
+      ],
+      "seam": "conditional; reverse 月"
+    },
+    "C": {
+      "reading": "るもはきの",
+      "source_ids": [
+        "shoju-035"
+      ]
+    },
+    "D": {
+      "reading": "はに",
+      "source_ids": [
+        "shoju-035",
+        "shoju-031"
+      ],
+      "seam": "high transferable; 葉に -> 庭"
+    }
+  },
+  "variable_factors": {
+    "A": [
+      {
+        "id": "A-shoju-035",
+        "reading": "はれつみよ",
+        "source_id": "shoju-035",
+        "title": "同（月）"
+      },
+      {
+        "id": "A-shoju-038",
+        "reading": "なかきよの",
+        "source_id": "shoju-038",
+        "title": "田毎月"
+      }
+    ],
+    "E": [
+      {
+        "id": "E-shoju-035",
+        "reading": "てりて",
+        "source_id": "shoju-035",
+        "title": "同（月）"
+      },
+      {
+        "id": "E-shoju-031",
+        "reading": "しけし",
+        "source_id": "shoju-031",
+        "title": "同（露）"
+      }
+    ]
+  },
+  "invariants": [
+    "Every A+B combination in this microgrammar is historically attested as an AB factor in its A source.",
+    "B+C and C+D remain fixed to shoju-035.",
+    "Every D+E combination is historically attested in the E source.",
+    "All five output meter phrases are historically attested in the fixed-50 baseline.",
+    "All outputs are strict 31-kana palindromes.",
+    "No proper name or unattested filler is introduced."
+  ],
+  "outputs": [
+    {
+      "id": "shoju-035",
+      "kind": "historical-source",
+      "A_option": "A-shoju-035",
+      "E_option": "E-shoju-035",
+      "reading": "はれつみよきつるもはきのはにてりてにはのきはもるつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつるもはきの",
+        "はにてりて",
+        "にはのきはもる",
+        "つきよみつれは"
+      ],
+      "strict_palindrome": true,
+      "prior_review": {
+        "status": "source-member",
+        "naturalness": null,
+        "semantic_coherence": null
+      },
+      "provenance": {
+        "AB": [
+          "shoju-035"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "shoju-035"
+        ]
+      },
+      "phrase_attestation": {
+        "ku1": [
+          "shoju-035"
+        ],
+        "ku2": [
+          "shoju-035"
+        ],
+        "ku3": [
+          "shoju-035"
+        ],
+        "ku4": [
+          "shoju-035"
+        ],
+        "ku5": [
+          "shoju-035"
+        ]
+      }
+    },
+    {
+      "id": "hybrid-016",
+      "kind": "novel-cento",
+      "A_option": "A-shoju-035",
+      "E_option": "E-shoju-031",
+      "reading": "はれつみよきつるもはきのはにしけしにはのきはもるつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつるもはきの",
+        "はにしけし",
+        "にはのきはもる",
+        "つきよみつれは"
+      ],
+      "strict_palindrome": true,
+      "prior_review": {
+        "status": "promising-but-parse-needed",
+        "naturalness": "B tentative",
+        "semantic_coherence": "high"
+      },
+      "provenance": {
+        "AB": [
+          "shoju-035"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "shoju-031"
+        ]
+      },
+      "phrase_attestation": {
+        "ku1": [
+          "shoju-035"
+        ],
+        "ku2": [
+          "shoju-035"
+        ],
+        "ku3": [
+          "shoju-031"
+        ],
+        "ku4": [
+          "shoju-035"
+        ],
+        "ku5": [
+          "shoju-035"
+        ]
+      }
+    },
+    {
+      "id": "hybrid-008",
+      "kind": "novel-cento",
+      "A_option": "A-shoju-038",
+      "E_option": "E-shoju-035",
+      "reading": "なかきよのきつるもはきのはにてりてにはのきはもるつきのよきかな",
+      "meter": [
+        "なかきよの",
+        "きつるもはきの",
+        "はにてりて",
+        "にはのきはもる",
+        "つきのよきかな"
+      ],
+      "strict_palindrome": true,
+      "prior_review": {
+        "status": "strong-promising",
+        "naturalness": "B+ tentative-classical",
+        "semantic_coherence": "high"
+      },
+      "provenance": {
+        "AB": [
+          "shoju-038"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "shoju-035"
+        ]
+      },
+      "phrase_attestation": {
+        "ku1": [
+          "shoju-038"
+        ],
+        "ku2": [
+          "shoju-035"
+        ],
+        "ku3": [
+          "shoju-035"
+        ],
+        "ku4": [
+          "shoju-035"
+        ],
+        "ku5": [
+          "shoju-038"
+        ]
+      }
+    },
+    {
+      "id": "hybrid-022",
+      "kind": "novel-cento",
+      "A_option": "A-shoju-038",
+      "E_option": "E-shoju-031",
+      "reading": "なかきよのきつるもはきのはにしけしにはのきはもるつきのよきかな",
+      "meter": [
+        "なかきよの",
+        "きつるもはきの",
+        "はにしけし",
+        "にはのきはもる",
+        "つきのよきかな"
+      ],
+      "strict_palindrome": true,
+      "prior_review": {
+        "status": "promising-but-parse-needed",
+        "naturalness": "B- tentative",
+        "semantic_coherence": "high"
+      },
+      "provenance": {
+        "AB": [
+          "shoju-038"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "shoju-031"
+        ]
+      },
+      "phrase_attestation": {
+        "ku1": [
+          "shoju-038"
+        ],
+        "ku2": [
+          "shoju-035"
+        ],
+        "ku3": [
+          "shoju-031"
+        ],
+        "ku4": [
+          "shoju-035"
+        ],
+        "ku5": [
+          "shoju-038"
+        ]
+      }
+    }
+  ],
+  "counts": {
+    "A_options": 2,
+    "E_options": 2,
+    "total_outputs": 4,
+    "historical_sources": 1,
+    "novel_cento": 3
+  },
+  "research_value": [
+    "Turns the abstract five-variable grammar into a small scene-conditioned productive family.",
+    "Explains hybrid-008, hybrid-016 and hybrid-022 as three cells of one 2×2 lattice rather than isolated accidents.",
+    "Shows that useful generation can vary only A and E while holding the morphologically sensitive B/C/D corridor fixed."
+  ],
+  "stop_conditions": [
+    "Do not add a new A unless A+B is historically attested or independently morphologically reviewed.",
+    "Do not add a new E unless D+E is historically attested or independently reviewed.",
+    "Do not promote any novel output to natural classical Japanese without source parse and human review."
+  ]
+}
