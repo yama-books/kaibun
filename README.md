@@ -267,3 +267,18 @@ sentence wrapper に `outer_lexemes` を持たせ、内側の文に同じ名詞�
 - 外枠名詞衝突: 0件
 
 引用の内側にすでに存在する名詞は、次の外枠候補から自動除外します。主題型 wrapper を自動選択で優先し、深い引用では括弧も段階的に変えて視認性を保ちます。
+
+
+## v0.25 第一話者の分散
+
+固定引用長文12系統の第一wrapperを12種類すべて別にしました。
+
+- wrapper: 28種類
+- distinct outer readings: 18
+- fixed quote families: 12
+- first-wrapper diversity: 12 / 12
+- narrative stages: 226
+- longest fixed example: 175かな
+- noun collisions: 0
+
+CIでも distinct outer readings と first-wrapper diversity を回帰検査します。
