@@ -1,0 +1,116 @@
+{
+  "version": "1.30",
+  "updated_on": "2026-09-20",
+  "title": "Historical unresolved-family human review queue",
+  "purpose": "Prepare a compact, provenance-preserving review queue for the two strongest unresolved third-family candidates without exposing machine verdicts as human instructions or changing generator/public status.",
+  "review_policy": {
+    "blind_to_machine_rank": true,
+    "show_source_provenance": true,
+    "reason": "This is a philological/syntactic review rather than a public naturalness A/B test; source provenance is necessary to judge whether recombined clauses remain interpretable.",
+    "machine_acceptance_forbidden": true,
+    "automatic_family_promotion": false
+  },
+  "questions": [
+    {
+      "id": "whole_sentence_parse",
+      "prompt": "Can the five ku be parsed as one coherent classical-Japanese sentence or tightly connected utterance without adding omitted material that is not independently justified?",
+      "allowed": ["yes-with-parse","partly","no","uncertain"]
+    },
+    {
+      "id": "boundary_shift_legitimacy",
+      "prompt": "Are the critical mirrored boundary shifts lexically and morphologically defensible in this candidate, rather than merely character-reversal artifacts?",
+      "allowed": ["supported","partly-supported","unsupported","uncertain"]
+    },
+    {
+      "id": "source_locality",
+      "prompt": "Does the recombination preserve the source-local scene and discourse role closely enough that the moved factor does not create an unexplained semantic jump?",
+      "allowed": ["supported","partly-supported","unsupported","uncertain"]
+    },
+    {
+      "id": "blocking_span",
+      "prompt": "Record the smallest span that still prevents a confident parse. Do not repair it from palindrome expectation.",
+      "allowed": ["free-text-or-none"]
+    }
+  ],
+  "candidates": [
+    {
+      "review_id": "historical-third-family-A",
+      "candidate_id": "hybrid-007",
+      "family_id": "musu-night-sky-family-moon",
+      "reading": "なかきよのきつるみそらはむすめよめすむはらそみるつきのよきかな",
+      "meter": ["なかきよの","きつるみそらは","むすめよめ","すむはらそみる","つきのよきかな"],
+      "operation": "A-only outer-frame swap",
+      "source_provenance": {
+        "host_middle": "shoju-add-109",
+        "outer_donor": "shoju-038"
+      },
+      "known_supported_points": [
+        "strict 31-kana palindrome and 5/7/5/7/7 meter",
+        "D=むす is retained inside the source-specific shoju-add-109 corridor",
+        "outer donor contributes a night/moon frame compatible with the host's moon/family scene"
+      ],
+      "known_unresolved_spans": [
+        "来つるみそらは",
+        "すむはらそ見る"
+      ],
+      "human_review": {
+        "reviewer_id": null,
+        "whole_sentence_parse": null,
+        "boundary_shift_legitimacy": null,
+        "source_locality": null,
+        "blocking_span": null,
+        "proposed_parse": null,
+        "notes": []
+      }
+    },
+    {
+      "review_id": "historical-third-family-B",
+      "candidate_id": "wave2-travel-090-host-093-outer",
+      "family_id": "wave2-travel-maha",
+      "reading": "やとちかくまはるなかたひきよくゆくよきひたかなるはまくかちとや",
+      "meter": ["やとちかく","まはるなかたひ","きよくゆく","よきひたかなる","はまくかちとや"],
+      "operation": "A-only outer-frame swap",
+      "source_provenance": {
+        "host_middle": "shoju-next-090",
+        "outer_donor": "shoju-next-093",
+        "series_support": "travel poems 90/91/93/94"
+      },
+      "known_supported_points": [
+        "strict 31-kana palindrome and 5/7/5/7/7 meter",
+        "all five ku are attested at the Yamauchi poem-specific scholarly-transcription layer across sources 90 and 93",
+        "やとちかく and くかちとや recur in the same travel series via poem 91",
+        "same narrow travel series"
+      ],
+      "known_unresolved_spans": [
+        "cross-ku whole-sentence connection between donor outer frame and host middle",
+        "source-glyph restoration for kana-rich spans remains intentionally unresolved"
+      ],
+      "human_review": {
+        "reviewer_id": null,
+        "whole_sentence_parse": null,
+        "boundary_shift_legitimacy": null,
+        "source_locality": null,
+        "blocking_span": null,
+        "proposed_parse": null,
+        "notes": []
+      }
+    }
+  ],
+  "adjudication_rule": {
+    "establish_third_family_only_if": [
+      "whole_sentence_parse = yes-with-parse",
+      "boundary_shift_legitimacy = supported",
+      "source_locality = supported",
+      "proposed_parse is documented",
+      "machine/source invariants remain satisfied"
+    ],
+    "partly_or_uncertain": "retain promising-but-parse-needed",
+    "unsupported": "demote/hold the candidate but do not generalize rejection to the source factor globally"
+  },
+  "current_state": {
+    "completed_reviews": 0,
+    "family_promotions": 0,
+    "public_effect": "none"
+  },
+  "next_action": "Use this queue only when a qualified human philological review is available; until then keep both candidates at their existing research statuses."
+}
