@@ -60,7 +60,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 <div class="wrap">
 <header>
   <div><h1>怪文回文メーカー</h1><div class="sub">まず、日本語として通す。そこから一段ずつ、鏡の奥へ伸ばす。</div></div>
-  <div class="badge">v0.27 / 研究由来DNA</div>
+  <div class="badge">v0.28 / 研究由来DNA＋意味役割外枠</div>
 </header>
 
 <div class="card">
@@ -146,7 +146,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 </div>
 
 <script>
-let data=null,rules=null,pairs=null,growth=null,seams=null,bridge=null,bridgeExposure=null,layer="L1",seen=new Set(),currentShown=null;
+let data=null,rules=null,pairs=null,growth=null,seams=null,bridge=null,bridgeExposure=null,growthRoleGate=null,growthRolePublic=null,layer="L1",seen=new Set(),currentShown=null;
 let growthState={mode:"structural",dimension:"all",familyId:null,stage:0,lastCenter:null,history:{}};
 
 const $=s=>document.querySelector(s);
@@ -154,14 +154,16 @@ const rev=s=>[...s].reverse().join("");
 const isPal=s=>s===rev(s);
 
 async function init(){
-  [data,rules,pairs,growth,seams,bridge,bridgeExposure]=await Promise.all([
+  [data,rules,pairs,growth,seams,bridge,bridgeExposure,growthRoleGate,growthRolePublic]=await Promise.all([
     fetch("./data/layered-seeds-v08.json").then(r=>r.json()),
     fetch("./data/generation-rules-v08.json").then(r=>r.json()),
     fetch("./data/reverse-lexeme-pairs-v09.json").then(r=>r.json()),
     fetch("./data/growth-engine-v10.json").then(r=>r.json()),
     fetch("./data/seam-grammar-v25.json").then(r=>r.json()),
     fetch("./data/modern-bridge-public-v69.json").then(r=>r.json()),
-    fetch("./data/public-bridge-exposure-policy-v70.json").then(r=>r.json())
+    fetch("./data/public-bridge-exposure-policy-v70.json").then(r=>r.json()),
+    fetch("./data/growth-wrapper-role-gate-v72.json").then(r=>r.json()),
+    fetch("./data/growth-wrapper-role-public-v74.json").then(r=>r.json())
   ]);
   $("#c1").textContent=data.counts.L1+"本";
   $("#c2").textContent=data.counts.L2+"本";
@@ -280,19 +282,55 @@ function wrapperConflicts(w,x=currentShown){
     (l.reading&&String(x.reading||"").includes(l.reading))
   );
 }
-function compatibleSentenceWrappers(x=currentShown){
+function nounCompatibleSentenceWrappers(x=currentShown){
   return [...(growth.sentence_level_wrappers||[])]
     .filter(w=>!wrapperConflicts(w,x))
     .sort((a,b)=>(a.auto_priority??999)-(b.auto_priority??999));
 }
+function growthDimensionFor(x=currentShown){
+  let cur=x;
+  for(let i=0;i<24&&cur;i++,cur=cur.wrapped_from){
+    if(cur.growth_family){
+      const f=(growth.narrative_families||[]).find(y=>y.id===cur.growth_family);
+      if(f?.dimension)return f.dimension;
+    }
+  }
+  return null;
+}
+function textHasAny(text,cues){
+  return (cues||[]).some(c=>String(text||"").includes(c));
+}
+function wrapperRoleAllowed(w,x=currentShown){
+  if(!growthRoleGate||growthRolePublic?.decision!=="approve-auto-selection-only")return true;
+  const rule=(growthRoleGate.wrapper_rules||[]).find(r=>(r.match_ids||[]).includes(w.id));
+  if(!rule)return true;
+  const c=rule.auto_condition||{};
+  if(c.type==="interrogative-evidence"){
+    return textHasAny(x?.display,growthRoleGate.context_detection?.interrogative_evidence||["？","?"]);
+  }
+  if(c.type==="lexical-cue"){
+    return textHasAny(x?.display,c.cues||growthRoleGate.context_detection?.decision_lexical_cues||[]);
+  }
+  if(c.type==="dimension"){
+    const dimension=growthDimensionFor(x);
+    return (c.allowed||[]).includes(dimension);
+  }
+  return true;
+}
+function autoCompatibleSentenceWrappers(x=currentShown){
+  const nounSafe=nounCompatibleSentenceWrappers(x);
+  const gated=nounSafe.filter(w=>wrapperRoleAllowed(w,x));
+  return gated.length?gated:nounSafe;
+}
 function populateSentenceWrappers(){
   const sel=$("#sentenceWrapper");
   const previous=sel.value||"auto";
-  const list=compatibleSentenceWrappers();
+  const list=nounCompatibleSentenceWrappers();
+  const autoList=autoCompatibleSentenceWrappers();
   sel.innerHTML="";
   const auto=document.createElement("option");
   auto.value="auto";
-  auto.textContent="自動（名詞重複回避＋語彙分散）";
+  auto.textContent="自動（名詞重複回避＋意味役割）";
   sel.appendChild(auto);
   for(const w of list){
     const o=document.createElement("option");
@@ -301,7 +339,7 @@ function populateSentenceWrappers(){
     sel.appendChild(o);
   }
   sel.value=list.some(w=>w.id===previous)?previous:"auto";
-  sel.title=list.length+"種類の衝突なし外枠";
+  sel.title=list.length+"種類の衝突なし外枠 / 自動候補 "+autoList.length+"種類";
 }
 function stableReadingHash(text){
   let h=0;
@@ -309,29 +347,32 @@ function stableReadingHash(text){
   return h;
 }
 function sentenceWrapper(){
-  const list=compatibleSentenceWrappers();
-  if(!list.length)return null;
+  const manualList=nounCompatibleSentenceWrappers();
+  if(!manualList.length)return null;
   const selected=$("#sentenceWrapper").value;
   if(selected&&selected!=="auto"){
-    const manual=list.find(w=>w.id===selected);
+    const manual=manualList.find(w=>w.id===selected);
     if(manual)return manual;
   }
-  const top=list.slice(0,Math.min(5,list.length));
+  const autoList=autoCompatibleSentenceWrappers();
+  const top=autoList.slice(0,Math.min(5,autoList.length));
+  if(!top.length)return null;
   const depth=currentShown?.wrap_depth||0;
   return top[(stableReadingHash(currentShown?.reading)+depth)%top.length];
 }
 function stripFinalPeriod(text){return text?.endsWith("。")?text.slice(0,-1):text}
 function syncSentenceWrapControls(){
   populateSentenceWrappers();
-  const compatible=compatibleSentenceWrappers();
-  const canWrap=!!currentShown&&isPal(currentShown.reading)&&(layer!=="L3"||currentShown?.wrap_depth>0)&&compatible.length>0;
+  const manualList=nounCompatibleSentenceWrappers();
+  const autoList=autoCompatibleSentenceWrappers();
+  const canWrap=!!currentShown&&isPal(currentShown.reading)&&(layer!=="L3"||currentShown?.wrap_depth>0)&&autoList.length>0;
   $("#wrapSentence").disabled=!canWrap;
   $("#unwrapSentence").disabled=!currentShown?.wrapped_from;
   $("#wrapSentence").style.opacity=$("#wrapSentence").disabled?".38":"1";
   $("#unwrapSentence").style.opacity=$("#unwrapSentence").disabled?".38":"1";
   const d=currentShown?.wrap_depth||0;
   const total=(growth.sentence_level_wrappers||[]).length;
-  $("#wrapDepth").textContent="外枠 "+d+"段 / 候補 "+compatible.length+" / 重複除外 "+(total-compatible.length);
+  $("#wrapDepth").textContent="外枠 "+d+"段 / 自動 "+autoList.length+" / 手動 "+manualList.length+" / 重複除外 "+(total-manualList.length);
   $("#wrapMeta").textContent="外枠 "+d;
 }
 function bridgePool(){
@@ -499,7 +540,7 @@ function updateGrowthStageLabel(){
   const wrapped=currentShown?.wrap_depth||0;
   $("#growthStage").textContent=wrapped>0?"外枠 "+wrapped+"段":"段階 "+growthState.stage+" / "+max;
   const available=growthFamilies().length>0;
-  const canWrap=(layer!=="L3"||wrapped>0)&&compatibleSentenceWrappers().length>0;
+  const canWrap=(layer!=="L3"||wrapped>0)&&autoCompatibleSentenceWrappers().length>0;
   $("#growOne").disabled=!available&&!canWrap;
   $("#growBack").disabled=wrapped>0?!currentShown?.wrapped_from:(!available||growthState.stage<=0);
   $("#growthStart").disabled=!available;
