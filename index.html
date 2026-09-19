@@ -60,7 +60,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 <div class="wrap">
 <header>
   <div><h1>怪文回文メーカー</h1><div class="sub">まず、日本語として通す。そこから一段ずつ、鏡の奥へ伸ばす。</div></div>
-  <div class="badge">v0.28 / 研究由来DNA＋意味役割外枠</div>
+  <div class="badge">v0.29 / 研究由来DNA＋読み指定</div>
 </header>
 
 <div class="card">
@@ -136,6 +136,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
     <span class="pill" id="weirdMeta">怪文 –</span>
     <span class="pill" id="lengthMeta">長さ –</span>
     <span class="pill" id="wrapMeta">外枠 0</span>
+    <span class="pill" id="readingHintMeta" hidden></span>
     <span class="pill" id="family">–</span>
     <span class="pill dnaPill" id="origin">–</span>
   </div>
@@ -146,7 +147,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 </div>
 
 <script>
-let data=null,rules=null,pairs=null,growth=null,seams=null,bridge=null,bridgeExposure=null,growthRoleGate=null,growthRolePublic=null,layer="L1",seen=new Set(),currentShown=null;
+let data=null,rules=null,pairs=null,growth=null,seams=null,bridge=null,bridgeExposure=null,growthRoleGate=null,growthRolePublic=null,readingHints=null,layer="L1",seen=new Set(),currentShown=null;
 let growthState={mode:"structural",dimension:"all",familyId:null,stage:0,lastCenter:null,history:{}};
 
 const $=s=>document.querySelector(s);
@@ -154,7 +155,7 @@ const rev=s=>[...s].reverse().join("");
 const isPal=s=>s===rev(s);
 
 async function init(){
-  [data,rules,pairs,growth,seams,bridge,bridgeExposure,growthRoleGate,growthRolePublic]=await Promise.all([
+  [data,rules,pairs,growth,seams,bridge,bridgeExposure,growthRoleGate,growthRolePublic,readingHints]=await Promise.all([
     fetch("./data/layered-seeds-v08.json").then(r=>r.json()),
     fetch("./data/generation-rules-v08.json").then(r=>r.json()),
     fetch("./data/reverse-lexeme-pairs-v09.json").then(r=>r.json()),
@@ -163,7 +164,8 @@ async function init(){
     fetch("./data/modern-bridge-public-v69.json").then(r=>r.json()),
     fetch("./data/public-bridge-exposure-policy-v70.json").then(r=>r.json()),
     fetch("./data/growth-wrapper-role-gate-v72.json").then(r=>r.json()),
-    fetch("./data/growth-wrapper-role-public-v74.json").then(r=>r.json())
+    fetch("./data/growth-wrapper-role-public-v74.json").then(r=>r.json()),
+    fetch("./data/public-reading-hints-v82.json").then(r=>r.json())
   ]);
   $("#c1").textContent=data.counts.L1+"本";
   $("#c2").textContent=data.counts.L2+"本";
@@ -360,6 +362,21 @@ function sentenceWrapper(){
   const depth=currentShown?.wrap_depth||0;
   return top[(stableReadingHash(currentShown?.reading)+depth)%top.length];
 }
+function activeReadingHints(x=currentShown){
+  if(!x||!readingHints)return [];
+  return (readingHints.lexemes||[]).filter(h=>
+    String(x.display||"").includes(h.display)&&
+    String(x.reading||"").includes(h.canonical_reading)
+  );
+}
+function syncReadingHint(x=currentShown){
+  const el=$("#readingHintMeta");
+  if(!el)return;
+  const list=activeReadingHints(x);
+  if(!list.length){el.hidden=true;el.textContent="";return}
+  el.textContent="読み指定 "+list.map(h=>h.label).join(" / ");
+  el.hidden=false;
+}
 function stripFinalPeriod(text){return text?.endsWith("。")?text.slice(0,-1):text}
 function syncSentenceWrapControls(){
   populateSentenceWrappers();
@@ -473,6 +490,7 @@ function show(x){
   $("#family").textContent=x.family||x.subgroup||layer;
   $("#origin").textContent=x.origin||"原種コーパス";
   $("#why").textContent=x.why||x.rationale||"検証済み原種。";
+  syncReadingHint(x);
   syncGrowCurrentButton();
   syncSentenceWrapControls();
   updateGrowthStageLabel();
