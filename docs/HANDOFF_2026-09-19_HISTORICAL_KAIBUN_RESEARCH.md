@@ -1036,3 +1036,216 @@ wave2保留5件:
 > 怪文回文メーカー研究を再開します。GitHub `yama-books/kaibun` の `docs/HANDOFF_2026-09-19_HISTORICAL_KAIBUN_RESEARCH.md` を正本として読み、**22節を最新停止地点**として引き継いでください。v40〜v42とwave2を確認し、まず現在地点を短く報告した後、Route A（史料精度）またはRoute B（秋・月topic-first生成研究）の優先度を判断して、そのまま作業を継続してください。
 
 **今回のセッションはここで終了。**
+
+
+---
+
+# 23. 2026-09-19 16:15 JST 一時停止チェックポイント
+
+ユーザー判断により、ここで一時区切る。
+次回は本節を最新停止地点として再開すること。
+
+## 今回追加した研究層
+
+### v0.43 wave2 source triage
+
+新規:
+- `data/historical-wave2-source-triage-v43.json`
+- `docs/WAVE2_SOURCE_TRIAGE_V43.md`
+
+目的:
+v0.39で一括保留していた 82 / 88 / 89 / 92 / 94 を、
+「全部同じOCR疑義」とせず、問題の型ごとに分解した。
+
+重要:
+- **50首固定ベースラインは変更していない。**
+- **wave2 v0.39 の verified 14首 / held 5首も変更していない。**
+- 原画像未確認の候補を verified / trusted に昇格していない。
+- 回文性を根拠にOCRを補正していない。
+
+### 保留5件の再分類
+
+1. **89 老賀**
+   - 候補読み:
+     `やそやおいかないよろこひますとしとすまひころよいなかいおやそや`
+   - `八十=やそ` と読む場合、31かなの strict 完全回文。
+   - 5件中もっとも昇格に近い。
+   - ただし「回文になるからやそと読む」という循環を避けるため、
+     原画像または明示的な読み根拠を確認するまで hold。
+   - v0.43 status: `strongest-held-candidate`
+
+2. **94 旅行（同）**
+   - 31かな。
+   - strict 不一致は、鏡像位置の **お/を** のみ。
+   - 単なるOCR誤りとして潰さず、
+     `strict_kana_palindrome` と
+     `historical_equivalence_palindrome`
+     を分離する将来設計の重要例として保持。
+   - ただし現時点で歴史的等価規則は確定しない。
+
+3. **82 音羽滝**
+   - 31かな候補。
+   - お/を に加え、踊り字・濁りの転写が絡む。
+   - 原画像確認前に補正しない。
+
+4. **88 百千鳥**
+   - 現状の露出OCRでは32かな。
+   - 中央部のOCR/分節崩れが大きい。
+   - 画像なしで修復しない。
+
+5. **92 旅行（同）**
+   - 現状の露出OCRでは30かな。
+   - 鏡像不一致が広く、OCR崩れが大きい。
+   - 画像なしで修復しない。
+
+v0.43 の画像確認優先順位:
+**89 → 94 → 82 → 88 → 92**
+
+## 史料アクセス状況
+
+### 山内潤三論文
+
+J-STAGE公式書誌で以下を確認:
+- 山内潤三
+- 「廻文歌の限界と効用（下）―高野山釈教長歌を頂点として―」
+- 『密教文化』107号
+- 1974
+- pp.1-38
+- DOI: `10.11168/jeb1947.1974.107_1`
+
+ただし今回の実行環境では本文PDFを直接画像として取得できなかった。
+検索インデックス上に露出したOCR/転写は、
+**トリアージ用の二次証拠**に限定して使った。
+
+### 『廻文歌詞之種』
+
+国文学研究資料館 国書データベースで一次情報として以下を確認:
+- 書名: 廻文歌詞之種
+- よみ: かいぶんうたことばのたね
+- BID: `100437979`
+- 所蔵: 静嘉堂文庫
+- 所蔵者函架番号: `５２１函２３架　２２４２６`
+- デジタル請求記号: `DIG-SEKD-70815`
+- 書誌URL: `https://kokusho.nijl.ac.jp/biblio/100437979`
+
+画像本文は今回の環境では取得できなかったため、
+次は未確認:
+- 著者
+- 成立年代
+- 丁数・構成
+- 語彙集 / 作例集 / 作歌手引きのどれか
+- 題別配列か
+- 助詞込みの語を収録するか
+- 逆読み対応を明示するか
+
+**書名から内容を推測しない。**
+
+## validator 更新
+
+`scripts/validate-corpus.mjs` に v0.43 の検証を追加。
+
+検証すること:
+- v0.43 version が 0.43
+- 対象が 82 / 88 / 89 / 92 / 94 の5件
+- 89候補列が機械的に完全回文
+- source-image-unconfirmed を wave2 verified に昇格していない
+- v0.39 baseline が verified 14 / held 5 のまま
+
+初回 validator 追記コミット `7e0cec3...` は
+文字列中に literal `\\n` が入り SyntaxError で Validate が失敗した。
+
+その後修正し、最終修正コミット:
+`6d3ad02a524ad7d185f77115c47876f41ecd8aa9`
+
+最終確認:
+- Validate palindrome corpus
+  - run `35428038875`
+  - conclusion: **success**
+  - head: `6d3ad02a524ad7d185f77115c47876f41ecd8aa9`
+- Deploy GitHub Pages
+  - run `35428038877`
+  - conclusion: **success**
+  - head: `6d3ad02a524ad7d185f77115c47876f41ecd8aa9`
+
+## 今回の主要コミット
+
+- `2b5a9f0230467527f6899ac916a86a8834d9608d`
+  - Add wave2 source triage v43
+- `c9b79ed41c3f535206d106a503a80ca833c954c0`
+  - Document wave2 source triage v43
+- `7e0cec3ca46b3e80007b726bfcf916cc4a59bcd6`
+  - Validate wave2 source triage v43
+  - ※このコミット時点のValidateはSyntaxErrorで失敗
+- `fa9ea81d73273b4cff1c741d41201ed2306f91bf`
+  - Fix v43 validator syntax
+- `6d3ad02a524ad7d185f77115c47876f41ecd8aa9`
+  - Fix newline in v43 validator
+  - **Validate / Pages とも success**
+
+## Route B の停止位置
+
+Route A が原画像アクセス待ちになったため、
+並行して秋・月 topic-first 生成研究の準備に着手した。
+
+確認済み:
+- `data/historical-semantic-fields-v32.json`
+- `data/tanka-five-variable-grammar-v34.json`
+- `data/historical-edge-pairs-v33.json`
+- `data/historical-seam-signatures-v36.json`
+
+固定50首のうち秋・月 broad field は12首:
+- shoju-030 露
+- shoju-031 同（露）
+- shoju-033 月
+- shoju-035 同（月）
+- shoju-038 田毎月
+- shoju-040 月明海上鴻鷹渡
+- shoju-041 初鷹
+- shoju-043 名所苅
+- shoju-044 紅葉
+- shoju-045 九月尽
+- shoju-add-109 嫁娘見月
+- shoju-add-111 出来秋
+
+既に確認した秋・月で重要な seam / edge:
+- `なか↔かな`
+- `きつ↔つき`
+- `はに↔には`
+- `けふ↔ふけ`
+- `やと↔とや`
+- `ゆつ↔つゆ`
+- `やま↔まや`
+- `てり↔りて`
+
+特に:
+- B2 `きつ↔つき`: conditional
+- D2 `はに↔には`: high / transferable
+- D2 `けふ↔ふけ`: high / transferable
+- D2 `みな↔なみ`: high / transferable
+
+**まだ作っていないもの**:
+- 秋・月 1〜7かな可変span辞書
+- 新しい topic-first candidate
+- 50→64 の再統計
+
+したがって次回は、ここから再開する。
+
+## 次回の優先順位
+
+1. 可能なら Route A:
+   - 89 → 94 → 82 の原画像確認
+   - 『廻文歌詞之種』画像取得
+2. 画像アクセスが引き続き詰まる場合は Route B:
+   - 固定50首の秋・月12首だけから
+     **可変span辞書 v0.44** を作る
+   - まず5かな/7かなの歴史実証句を最上位nodeとして登録
+   - 1〜4かなの短spanは seam signature が明示できるものだけを優先
+   - raw substring の全列挙はしない
+3. v0.44 では
+   `reading / span_length / surface_candidates / morphology_signature / attached_particles / semantic_field / provenance / confidence / transferable`
+   を最低限持たせる。
+4. その後に秋・月の制約充足候補を作る。
+
+## 再開時の最短一文
+
+**「HANDOFF 23節から再開。v0.43は完了・CI成功。Route Aの画像確認を再試行し、詰まる場合は秋・月12首から可変span辞書 v0.44 を作る。」**
