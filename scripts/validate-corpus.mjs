@@ -23,6 +23,8 @@ const wave2Triage = JSON.parse(fs.readFileSync("data/historical-wave2-source-tri
 const autumnMoonSpans = JSON.parse(fs.readFileSync("data/autumn-moon-variable-spans-v44.json", "utf8"));
 const topicFirstGate = JSON.parse(fs.readFileSync("data/historical-topic-first-gate-v45.json", "utf8"));
 const autumnMoonMicrogrammar = JSON.parse(fs.readFileSync("data/autumn-moon-microgrammar-v46.json", "utf8"));
+const autumnMoonControl = JSON.parse(fs.readFileSync("data/autumn-moon-control-microgrammar-v47.json", "utf8"));
+const sceneGate = JSON.parse(fs.readFileSync("data/scene-compatibility-gate-v48.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -372,6 +374,16 @@ if(v46Ids!==["hybrid-008","hybrid-016","hybrid-022","shoju-035"].sort().join(","
 const v46A=new Map((autumnMoonMicrogrammar.variable_factors?.A??[]).map(x=>[x.id,x.reading]));
 const v46E=new Map((autumnMoonMicrogrammar.variable_factors?.E??[]).map(x=>[x.id,x.reading]));
 for(const x of autumnMoonMicrogrammar.outputs??[]){const A=v46A.get(x.A_option),E=v46E.get(x.E_option),B=autumnMoonMicrogrammar.fixed_factors?.B?.reading,C=autumnMoonMicrogrammar.fixed_factors?.C?.reading,D=autumnMoonMicrogrammar.fixed_factors?.D?.reading;const expected=A+B+C+D+E+reverse(D)+reverse(C)+reverse(B)+reverse(A);if(x.reading!==expected||!isPalindrome(x.reading))errors.push(`AUTUMN MOON V46 derivation mismatch: ${x.id}`);}
+if(autumnMoonControl.version!=="0.47")errors.push(`AUTUMN MOON V47 version mismatch: ${autumnMoonControl.version}`);
+if(autumnMoonControl.counts?.total_outputs!==4||(autumnMoonControl.outputs??[]).length!==4)errors.push("AUTUMN MOON V47 output count must be 4");
+if(autumnMoonControl.comparison?.human_review_pattern?.strong_or_promising_novel!==0)errors.push("AUTUMN MOON V47 control must have zero strong/promising novel outputs");
+const v47A=new Map((autumnMoonControl.variable_factors?.A??[]).map(x=>[x.id,x.reading]));
+for(const x of autumnMoonControl.outputs??[]){const A=v47A.get(x.A_option),B=autumnMoonControl.fixed_factors?.B?.reading,C=autumnMoonControl.fixed_factors?.C?.reading,D=autumnMoonControl.fixed_factors?.D?.reading,E=autumnMoonControl.fixed_factors?.E?.reading;const expected=A+B+C+D+E+reverse(D)+reverse(C)+reverse(B)+reverse(A);if(x.reading!==expected||!isPalindrome(x.reading))errors.push(`AUTUMN MOON V47 derivation mismatch: ${x.id}`);}
+if(sceneGate.version!=="0.48")errors.push(`SCENE GATE V48 version mismatch: ${sceneGate.version}`);
+if(sceneGate.status!=="research-hypothesis")errors.push("SCENE GATE V48 must remain a research hypothesis");
+if((sceneGate.generic_tags??[]).join(",")!=="秋,月")errors.push("SCENE GATE V48 generic tags changed unexpectedly");
+if((sceneGate.case_studies??[]).length!==2)errors.push("SCENE GATE V48 must contain positive and control case studies");
+if(!sceneGate.design_consequences?.includes("Missing scene metadata is not evidence of incompatibility; it triggers human review rather than rejection."))errors.push("SCENE GATE V48 missing conservative hold rule");
 
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
@@ -400,3 +412,5 @@ console.log(`Wave2 source triage: ${(wave2Triage.cases??[]).length} held records
 console.log(`Autumn/moon v44 spans: phrases=${autumnMoonSpans.counts?.phrase_instances??0}, pivots=${autumnMoonSpans.counts?.pivot_units??0}, seams=${autumnMoonSpans.counts?.seam_units??0}, edges=${autumnMoonSpans.counts?.edge_units??0}`);
 console.log(`Topic-first v45 candidates: ${(topicFirstGate.candidates??[]).length}, seam-complete=${topicFirstGate.summary?.seam_complete_nonblocked??0}`);
 console.log(`Autumn/moon v46 microgrammar outputs: ${(autumnMoonMicrogrammar.outputs??[]).length}`);
+console.log(`Autumn/moon v47 control outputs: ${(autumnMoonControl.outputs??[]).length}`);
+console.log(`Scene gate v48 case studies: ${(sceneGate.case_studies??[]).length}`);
