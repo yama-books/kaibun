@@ -49,9 +49,9 @@ if (!html.includes("function bridgePool()")) {
   failed = true;
   console.error("index.html is missing bridgePool()");
 }
-if (!html.includes("return uniqueByReading([...base,...bridgePool()])")) {
+if (!html.includes("return uniqueByReading([...standardSeamPool(),...bridgePool()])")) {
   failed = true;
-  console.error("seamPool() does not merge bridgePool()");
+  console.error("seamPool() does not merge standardSeamPool() and bridgePool()");
 }
 
 for (const ref of required) {
