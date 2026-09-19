@@ -1,0 +1,185 @@
+{
+  "version": "0.65",
+  "title": "Historical-research to modern palindrome bridge contract",
+  "mode": "research-bridge-only",
+  "public_ui_enabled": false,
+  "objective": "Transfer validated generation principles from the historical 31-kana research layer into the modern 怪文回文 generator without publishing historical diction or weakening current Japanese-quality gates.",
+  "bridge_principles": [
+    {
+      "id": "operation-specific-validation",
+      "from_research": [
+        "v0.53",
+        "v0.54",
+        "v0.62",
+        "v0.64"
+      ],
+      "rule": "Validate only boundaries/factors actually moved by an operation; unchanged host context keeps its source-local analysis."
+    },
+    {
+      "id": "scene-before-volume",
+      "from_research": [
+        "v0.47",
+        "v0.48",
+        "v0.57"
+      ],
+      "rule": "Do not maximize combinatorics. Narrow candidate pools by scene before semantic-role review."
+    },
+    {
+      "id": "semantic-role-compatibility",
+      "from_research": [
+        "v0.55",
+        "v0.56",
+        "v0.62"
+      ],
+      "rule": "A replacement must preserve the host segment's discourse/semantic job, not merely share vocabulary or part of speech."
+    },
+    {
+      "id": "directional-compatibility",
+      "from_research": [
+        "v0.55",
+        "v0.62"
+      ],
+      "rule": "A<-B and B<-A are separate judgments."
+    },
+    {
+      "id": "negative-controls",
+      "from_research": [
+        "v0.57",
+        "v0.63"
+      ],
+      "rule": "Held and rejected combinations remain regression fixtures."
+    },
+    {
+      "id": "trace-every-candidate",
+      "from_research": [
+        "v0.58",
+        "v0.61"
+      ],
+      "rule": "Generated candidates retain structural, morphology, scene, semantic-role, and source/provenance traces."
+    }
+  ],
+  "modern_targets": [
+    {
+      "priority": 1,
+      "target": "seam-grammar",
+      "current_version": "0.26",
+      "files": [
+        "data/seam-grammar-v25.json"
+      ],
+      "reason": "Already decomposes candidates into core and ordered shells with boundary-shift and particle-hinge metadata.",
+      "initial_operation": "curated-shell-substitution"
+    },
+    {
+      "priority": 2,
+      "target": "growth-engine",
+      "current_version": "0.30",
+      "files": [
+        "data/growth-engine-v10.json"
+      ],
+      "reason": "Narrative families already carry dimensions/stages and can adopt scene/role compatibility when choosing extensions or wrappers.",
+      "initial_operation": "scene-compatible-wrapper-selection"
+    },
+    {
+      "priority": 3,
+      "target": "generation-rules",
+      "current_version": "0.8.1",
+      "files": [
+        "data/generation-rules-v08.json"
+      ],
+      "reason": "Productive rules are already grammar-curated; research gates can later help combine rules into longer coherent structures.",
+      "initial_operation": "none-yet"
+    }
+  ],
+  "public_candidate_adapter": {
+    "required_public_fields": [
+      "display",
+      "reading",
+      "family",
+      "origin",
+      "why",
+      "japanese_quality",
+      "weirdness"
+    ],
+    "research_only_fields": [
+      "operation",
+      "provenance",
+      "attestation_trace",
+      "morphology_trace",
+      "scene_trace",
+      "semantic_role_trace",
+      "review_status",
+      "cautions"
+    ],
+    "rule": "Research trace remains in data/test artifacts. Public candidate gets a concise human-readable why string and only whitelisted quality metadata."
+  },
+  "whitelist_policy": {
+    "research_operation_may_inform_public_generation_if": [
+      "deterministic generator exists",
+      "fixture exists",
+      "CI regression exists",
+      "at least one positive candidate and one negative/control candidate exist",
+      "operation has explicit scene and semantic-role gates"
+    ],
+    "currently_qualified_as_rule_sources": [
+      {
+        "operation": "scene-microgrammar",
+        "evidence": [
+          "v0.46",
+          "v0.60"
+        ],
+        "note": "Qualified as a generation principle, not for publishing historical outputs."
+      },
+      {
+        "operation": "shared-B-outer-frame-swap",
+        "evidence": [
+          "v0.62",
+          "v0.63",
+          "v0.64"
+        ],
+        "note": "Qualified as a generation principle with trusted positive/control pair."
+      },
+      {
+        "operation": "central-E-swap",
+        "evidence": [
+          "v0.53",
+          "v0.55",
+          "v0.57",
+          "v0.59"
+        ],
+        "note": "Qualified as a constrained-center substitution principle."
+      }
+    ]
+  },
+  "historical_content_policy": {
+    "direct_historical_candidate_in_public_pool": false,
+    "historical_orthography_auto_conversion": false,
+    "research_rule_transfer_only": true,
+    "reason": "The public app is a modern 怪文回文 maker; historical corpus is evidence for generation architecture, not a content feed."
+  },
+  "first_modern_prototype": {
+    "target": "seam-grammar",
+    "operation": "curated-shell-substitution",
+    "plan": [
+      "Inspect existing cores/shells/recipes for repeated shell corridors.",
+      "Assign scene and semantic-role metadata only where current display/recipe evidence supports it.",
+      "Generate candidate substitutions in a research script, never directly in index.html.",
+      "Require strict palindrome, shell alignment validity, scene compatibility and semantic-role compatibility.",
+      "Freeze positive and negative controls before UI exposure."
+    ]
+  },
+  "public_integration_sequence": [
+    "research prototype data/script",
+    "fixture + CI",
+    "manual Japanese-quality review",
+    "public adapter data with explicit whitelist",
+    "add separate pool function to index.html",
+    "only then consider a new button or inclusion in DNA pool"
+  ],
+  "non_goals": [
+    "Publishing historical waka as modern generator output",
+    "Replacing existing L1/L2/L3 quality rules",
+    "LLM runtime generation in the browser",
+    "Increasing candidate count without coherence gates",
+    "Changing public UI before research prototype passes regression"
+  ]
+}
