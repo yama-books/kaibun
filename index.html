@@ -286,7 +286,7 @@ function populateSentenceWrappers(){
   sel.innerHTML="";
   const auto=document.createElement("option");
   auto.value="auto";
-  auto.textContent="自動（名詞重複回避）";
+  auto.textContent="自動（名詞重複回避＋語彙分散）";
   sel.appendChild(auto);
   for(const w of list){
     const o=document.createElement("option");
@@ -297,6 +297,11 @@ function populateSentenceWrappers(){
   sel.value=list.some(w=>w.id===previous)?previous:"auto";
   sel.title=list.length+"種類の衝突なし外枠";
 }
+function stableReadingHash(text){
+  let h=0;
+  for(const c of String(text||""))h=(h*31+c.codePointAt(0))>>>0;
+  return h;
+}
 function sentenceWrapper(){
   const list=compatibleSentenceWrappers();
   if(!list.length)return null;
@@ -305,7 +310,9 @@ function sentenceWrapper(){
     const manual=list.find(w=>w.id===selected);
     if(manual)return manual;
   }
-  return list[0];
+  const top=list.slice(0,Math.min(5,list.length));
+  const depth=currentShown?.wrap_depth||0;
+  return top[(stableReadingHash(currentShown?.reading)+depth)%top.length];
 }
 function stripFinalPeriod(text){return text?.endsWith("。")?text.slice(0,-1):text}
 function syncSentenceWrapControls(){
@@ -317,7 +324,8 @@ function syncSentenceWrapControls(){
   $("#wrapSentence").style.opacity=$("#wrapSentence").disabled?".38":"1";
   $("#unwrapSentence").style.opacity=$("#unwrapSentence").disabled?".38":"1";
   const d=currentShown?.wrap_depth||0;
-  $("#wrapDepth").textContent="外枠 "+d+"段 / 候補 "+compatible.length;
+  const total=(growth.sentence_level_wrappers||[]).length;
+  $("#wrapDepth").textContent="外枠 "+d+"段 / 候補 "+compatible.length+" / 重複除外 "+(total-compatible.length);
   $("#wrapMeta").textContent="外枠 "+d;
 }
 function updateCandidateCount(){
