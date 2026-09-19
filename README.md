@@ -282,3 +282,29 @@ sentence wrapper に `outer_lexemes` を持たせ、内側の文に同じ名詞�
 - noun collisions: 0
 
 CIでも distinct outer readings と first-wrapper diversity を回帰検査します。
+
+
+## v0.30 反応まで伸びる長文化
+
+長文化のdimensionに「反応」を追加しました。
+
+固定監査済み反応family:
+- reaction-wait
+- reaction-reason
+- reaction-light
+
+例:
+- クナは「P」は泣く
+- ルマコは「P」は困る
+- ルマダは「P」は黙る
+- 浦和は「P」は笑う
+
+現在:
+- sentence wrapper: 36種類
+- distinct outer readings: 24
+- narrative family: 45
+- narrative stages: 322
+- fixed quote families: 18
+- first-wrapper diversity: 18 / 18
+- longest fixed example: 175かな
+- noun collisions: 0
