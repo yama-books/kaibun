@@ -4,11 +4,14 @@ const readJson=p=>JSON.parse(fs.readFileSync(p,"utf8"));
 const benchmark=readJson("data/public-quality-benchmark-v79.json");
 const blind=readJson("data/public-quality-human-review-blind-v96.json");
 const ledger=readJson("data/public-quality-human-adjudication-v97.json");
+const mediumHints=readJson("data/medium-reading-hint-hold-v98.json");
 
 const errors=[];
 if(benchmark.version!=="0.79")errors.push(`benchmark version ${benchmark.version}, expected 0.79`);
 if(blind.version!=="0.96")errors.push(`blind review version ${blind.version}, expected 0.96`);
 if(ledger.version!=="0.97")errors.push(`ledger version ${ledger.version}, expected 0.97`);
+if(mediumHints.version!=="0.98")errors.push(`medium hint policy version ${mediumHints.version}, expected 0.98`);
+if(mediumHints.decision!=="metadata-only-until-human-review")errors.push("medium hint policy must remain human-review-gated");
 if((blind.candidates??[]).length!==50)errors.push("blind review candidate count must be 50");
 if((ledger.candidates??[]).length!==50)errors.push("adjudication ledger candidate count must be 50");
 
@@ -39,6 +42,14 @@ for(const src of benchmark.candidates??[]){
   }
   if(x.imported_human_review!==null)errors.push(`ledger must await human review ${src.benchmark_id}`);
   if(x.adjudication?.status!=="pending"||x.adjudication?.action!==null)errors.push(`ledger adjudication must start pending ${src.benchmark_id}`);
+}
+
+const blindIds=new Set((blind.candidates??[]).map(x=>x.review_id));
+for(const lex of mediumHints.lexemes??[]){
+  for(const id of lex.benchmark_review_ids??[]){
+    if(!blindIds.has(id))errors.push(`medium reading hint review id missing from blind form: ${lex.display} / ${id}`);
+  }
+  if(lex.current_action!=="no-explicit-pill")errors.push(`medium reading hint unexpectedly public: ${lex.display}`);
 }
 
 const allowed=new Set(ledger.allowed_actions??[]);
