@@ -38,6 +38,10 @@ const generatorContract = JSON.parse(fs.readFileSync("data/historical-generator-
 const hybrid002DeepReview = JSON.parse(fs.readFileSync("data/hybrid-002-deep-review-v99.json", "utf8"));
 const pivotMorphologyGuard = JSON.parse(fs.readFileSync("data/central-pivot-morphology-guard-v100.json", "utf8"));
 const generatedPivotV100 = JSON.parse(fs.readFileSync("data/generated-central-pivot-research-v100.json", "utf8"));
+const shoju068SourceReview = JSON.parse(fs.readFileSync("data/shoju-068-source-review-v101.json", "utf8"));
+const mataOuterReview = JSON.parse(fs.readFileSync("data/mata-outer-frame-morphology-review-v102.json", "utf8"));
+const musuMoonFamily = JSON.parse(fs.readFileSync("data/musu-moon-family-review-v103.json", "utf8"));
+const generatedMusuMoonV104 = JSON.parse(fs.readFileSync("data/generated-musu-moon-outer-frame-v104.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -489,6 +493,41 @@ const generatedPivotV100Ids=(generatedPivotV100.candidates??[]).map(x=>x.id);
 for(const id of ["hybrid-002","hybrid-017"])if(generatedPivotV100Ids.includes(id))errors.push(`GENERATED PIVOT V100 normalization-collision leak: ${id}`);
 for(const id of ["hybrid-016","hybrid-019"])if(!generatedPivotV100Ids.includes(id))errors.push(`GENERATED PIVOT V100 positive research candidate missing: ${id}`);
 
+if(shoju068SourceReview.version!=="1.01")errors.push(`SHOJU068 V101 version mismatch: ${shoju068SourceReview.version}`);
+if(shoju068SourceReview.decision?.source_image_verified!==false)errors.push("SHOJU068 V101 must preserve source-image-unverified state");
+if(shoju068SourceReview.decision?.scholarly_transcription_verified!==true)errors.push("SHOJU068 V101 transcription verification missing");
+if(shoju068SourceReview.decision?.automatic_reopen_allowed!==false)errors.push("SHOJU068 V101 must not reopen automatically");
+if(shoju068SourceReview.morphology_comparison?.lexical_identity_equal!==false)errors.push("SHOJU068 V101 must keep 水 and interpreted 三つ lexically distinct");
+
+if(mataOuterReview.version!=="1.02")errors.push(`MATA OUTER V102 version mismatch: ${mataOuterReview.version}`);
+if(mataOuterReview.finding?.morphology_equivalence_confirmed!==false)errors.push("MATA OUTER V102 must not claim B morphology equivalence");
+if(mataOuterReview.finding?.morphology_non_equivalence_proven!==false)errors.push("MATA OUTER V102 must preserve poem1 parse uncertainty");
+if(mataOuterReview.decision?.positive_family!==false)errors.push("MATA OUTER V102 must remain negative/hold lane");
+if(mataOuterReview.decision?.B_mata_global_transferable!==false)errors.push("MATA OUTER V102 must not promote B=また globally");
+const mataAffected=(mataOuterReview.candidate_impact??[]).map(x=>x.id).sort().join(",");
+if(mataAffected!==["hybrid-001","hybrid-012"].sort().join(","))errors.push(`MATA OUTER V102 affected set mismatch: ${mataAffected}`);
+
+if(musuMoonFamily.version!=="1.03")errors.push(`MUSU MOON V103 version mismatch: ${musuMoonFamily.version}`);
+if(musuMoonFamily.operation?.source_specific_corridor?.D!=="むす")errors.push("MUSU MOON V103 D corridor must remain むす");
+if(musuMoonFamily.operation?.source_specific_corridor?.global_transferability!==false)errors.push("MUSU MOON V103 must keep D=むす source-specific");
+if((musuMoonFamily.outputs??[]).length!==4)errors.push("MUSU MOON V103 output count must be 4");
+for(const x of musuMoonFamily.outputs??[]){
+  if(!isPalindrome(x.reading))errors.push(`MUSU MOON V103 non-palindrome: ${x.id}`);
+  for(const field of ["id","operation","reading","meter","factors","strict_palindrome","host_source_id","donor_source_ids","provenance","attestation_trace","morphology_trace","scene_trace","semantic_role_trace","source_confidence_trace","review_status","cautions"])if(!(field in x))errors.push(`MUSU MOON V103 missing field ${field}: ${x.id}`);
+}
+const musu7=(musuMoonFamily.outputs??[]).find(x=>x.id==="hybrid-007");
+const musu3=(musuMoonFamily.outputs??[]).find(x=>x.id==="hybrid-003");
+const musu14=(musuMoonFamily.outputs??[]).find(x=>x.id==="hybrid-014");
+if(musu7?.review_status!=="promising-but-parse-needed")errors.push("MUSU MOON V103 hybrid-007 promotion drift");
+if(musu3?.review_status!=="hold-scene-mismatch")errors.push("MUSU MOON V103 hybrid-003 control drift");
+if(musu14?.review_status!=="hold-source-confirmation")errors.push("MUSU MOON V103 hybrid-014 control drift");
+if(musuMoonFamily.summary?.automatic_acceptance!==0)errors.push("MUSU MOON V103 automatic acceptance must remain zero");
+if(musuMoonFamily.family_verdict?.status!=="third-positive-family-candidate-not-yet-established")errors.push("MUSU MOON V103 family verdict changed");
+
+if(generatedMusuMoonV104.version!=="1.04"||generatedMusuMoonV104.candidate_count!==4)errors.push("GENERATED MUSU MOON V104 count/version mismatch");
+const musuV104Ids=(generatedMusuMoonV104.candidates??[]).map(x=>x.id).sort().join(",");
+if(musuV104Ids!==["shoju-add-109","hybrid-003","hybrid-007","hybrid-014"].sort().join(","))errors.push(`GENERATED MUSU MOON V104 ids mismatch: ${musuV104Ids}`);
+
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
 if(rules.rule_count!==rules.rules.length)errors.push(`RULE COUNT mismatch: declared=${rules.rule_count} actual=${rules.rules.length}`);
@@ -530,3 +569,7 @@ console.log(`Pivot pipeline v57: total=${(pivotPipeline.results??[]).length}, de
 console.log(`Generator contract v58 operations: ${(generatorContract.supported_operations??[]).length}`);
 console.log(`Hybrid-002 v99 verdict: ${hybrid002DeepReview.verdict?.current_status}`);
 console.log(`Pivot morphology guard v1.00: candidates=${generatedPivotV100.candidate_count}, blocked=${pivotMorphologyGuard.counts?.blocked_by_normalization_guard}`);
+console.log(`Shoju-068 source review v1.01: image=${shoju068SourceReview.decision?.source_image_verified}, transcription=${shoju068SourceReview.decision?.scholarly_transcription_verified}`);
+console.log(`B=mata morphology review v1.02: positive=${mataOuterReview.decision?.positive_family}`);
+console.log(`Musu moon family v1.03: outputs=${(musuMoonFamily.outputs??[]).length}, best=${musuMoonFamily.summary?.best_novel_candidate}`);
+console.log(`Musu moon generator v1.04: candidates=${generatedMusuMoonV104.candidate_count}`);
