@@ -1,6 +1,6 @@
 {
-  "version": "0.18.2",
-  "principle": "段階長文化は、(1)構文骨格を保って中心名詞句を伸ばす structural family と、(2)全文を個別監査した narrative family の二系統。どちらも1段ずつ必ず長くする。 物語型の後半は、述語を固定したまま受け手の親族関係を鏡型に外側へ追加し、50文字級まで段階的に伸長する。 v0.14では場所・理由・状況をdimensionとして明示し、L2でも物語型長文化を許可する。 v0.15では時間・属性のdimensionを追加し、述語や観察行為を維持したまま修飾情報を厚くする。 v0.16では貸借以外に待機・来訪・存在・睡眠の述語系統を追加し、長文の述語偏りを減らす。 v0.17では完全回文文そのものを引用節として外側から包み、伝聞・判断・解釈・記述を追加するsentence-level wrapperを導入する。 v0.18では任意の完全回文文を、逆読み関係にある引用外枠で何段でも包める汎用sentence wrapper engineを公開UIへ解放する。 v0.18.1では100かな超の固定benchmarkを保持し、長文域の回文成立をCIで回帰検証する。",
+  "version": "0.19",
+  "principle": "段階長文化は、(1)構文骨格を保って中心名詞句を伸ばす structural family と、(2)全文を個別監査した narrative family の二系統。どちらも1段ずつ必ず長くする。 物語型の後半は、述語を固定したまま受け手の親族関係を鏡型に外側へ追加し、50文字級まで段階的に伸長する。 v0.14では場所・理由・状況をdimensionとして明示し、L2でも物語型長文化を許可する。 v0.15では時間・属性のdimensionを追加し、述語や観察行為を維持したまま修飾情報を厚くする。 v0.16では貸借以外に待機・来訪・存在・睡眠の述語系統を追加し、長文の述語偏りを減らす。 v0.17では完全回文文そのものを引用節として外側から包み、伝聞・判断・解釈・記述を追加するsentence-level wrapperを導入する。 v0.18では任意の完全回文文を、逆読み関係にある引用外枠で何段でも包める汎用sentence wrapper engineを公開UIへ解放する。 v0.18.1では100かな超の固定benchmarkを保持し、長文域の回文成立をCIで回帰検証する。 v0.19では引用・伝聞だけでなく、引用文を原因や記録タイトルとして名詞化する外枠を追加する。",
   "families": [
     {
       "id": "wife-wait",
@@ -276,7 +276,7 @@
       "引用・伝聞": 4
     },
     "quote_wrapper_count": 5,
-    "sentence_level_wrapper_count": 4,
+    "sentence_level_wrapper_count": 6,
     "sentence_level_wrappers_reverse_verified": true,
     "hundred_kana_benchmark": {
       "family": "quote-matsutake",
@@ -1480,7 +1480,8 @@
       "right_reading": "ときいた",
       "right_display": "と聞いた。",
       "semantic": "伝聞",
-      "quality": "B+"
+      "quality": "B+",
+      "weirdness_floor": 3
     },
     {
       "id": "judge",
@@ -1489,7 +1490,8 @@
       "right_reading": "とみた",
       "right_display": "と見た。",
       "semantic": "判断",
-      "quality": "B+"
+      "quality": "B+",
+      "weirdness_floor": 3
     },
     {
       "id": "interpret",
@@ -1498,7 +1500,8 @@
       "right_reading": "とみる",
       "right_display": "と見る。",
       "semantic": "解釈",
-      "quality": "B"
+      "quality": "B",
+      "weirdness_floor": 3
     },
     {
       "id": "write",
@@ -1507,7 +1510,28 @@
       "right_reading": "とかいた",
       "right_display": "と書いた。",
       "semantic": "記述",
-      "quality": "B"
+      "quality": "B",
+      "weirdness_floor": 4
+    },
+    {
+      "id": "cause",
+      "left_reading": "だいせの",
+      "left_display": "ダイセの",
+      "right_reading": "のせいだ",
+      "right_display": "のせいだ。",
+      "semantic": "理由化",
+      "quality": "B",
+      "weirdness_floor": 4
+    },
+    {
+      "id": "record-identity",
+      "left_reading": "だんなきろくの",
+      "left_display": "旦那、記録の",
+      "right_reading": "のくろきなんだ",
+      "right_display": "の黒木なんだ。",
+      "semantic": "記録・同定",
+      "quality": "B-",
+      "weirdness_floor": 5
     }
   ]
 }
