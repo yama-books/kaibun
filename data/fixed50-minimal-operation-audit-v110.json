@@ -1,0 +1,122 @@
+{
+  "version": "1.10",
+  "updated_on": "2026-09-20",
+  "title": "Fixed-50 minimal-operation coverage audit",
+  "purpose": "Determine whether a genuinely new low-risk factor operation remains hidden in the existing 51 historical hybrids before expanding the generator contract.",
+  "inputs": {
+    "grammar": "data/tanka-five-variable-grammar-v34.json",
+    "hybrids": "data/historical-factor-hybrids-v35.json",
+    "source_sample_count": 50,
+    "hybrid_count": 51
+  },
+  "method": {
+    "distance": "For each hybrid, compute Hamming distance over A/B/C/D/E from every fixed-50 historical source and retain its minimum distance.",
+    "pattern": "Record which factor slots differ at each nearest source.",
+    "scene_proxy": "Use v0.35 semantic_cohesion/source_fields only as a historical research filter, not as a naturalness verdict."
+  },
+  "results": {
+    "minimum_distance_counts": {
+      "1": 38,
+      "2": 13,
+      "greater_than_2": 0
+    },
+    "nearest_change_pattern_unique_candidate_counts": {
+      "A": 26,
+      "E": 12,
+      "A+E": 11,
+      "D+E": 2,
+      "A+B": 2,
+      "B+C": 1
+    },
+    "single_factor_findings": {
+      "candidate_count": 38,
+      "observed_patterns": ["A", "E"],
+      "unobserved_patterns": ["B", "C", "D"],
+      "interpretation": "The existing fixed-50 factor graph yields no novel hybrid that is a one-factor B-only, C-only, or D-only edit of a historical source."
+    },
+    "two_factor_findings": {
+      "candidate_count": 13,
+      "same_field_semantic_cohesion_3": [
+        {
+          "id": "hybrid-021",
+          "nearest_pattern": "A+E",
+          "field": "秋・月"
+        },
+        {
+          "id": "hybrid-022",
+          "nearest_pattern": "A+E",
+          "field": "秋・月"
+        },
+        {
+          "id": "hybrid-023",
+          "nearest_pattern": "A+E",
+          "field": "秋・月"
+        }
+      ],
+      "all_other_distance_2_candidates": "semantic_cohesion<=2 and/or cross-field",
+      "interpretation": "The only high-cohesion two-factor paths are A+E compositions inside the already-established autumn/moon family."
+    }
+  },
+  "operation_assessment": [
+    {
+      "operation": "A-only outer-frame swap",
+      "coverage": "already modeled",
+      "examples": ["naha-spring-plants", "autumn/moon outer-frame", "musu candidate", "wave2 travel prospect"],
+      "new_contract_needed": false
+    },
+    {
+      "operation": "E-only central pivot swap",
+      "coverage": "already modeled",
+      "examples": ["hybrid-016", "hybrid-019"],
+      "new_contract_needed": false
+    },
+    {
+      "operation": "B-only",
+      "coverage": "no minimum-distance-1 candidate in fixed50 hybrid graph",
+      "new_contract_needed": false,
+      "reason": "No empirical positive lane to justify adding the operation."
+    },
+    {
+      "operation": "C-only",
+      "coverage": "no minimum-distance-1 candidate in fixed50 hybrid graph",
+      "new_contract_needed": false,
+      "reason": "No empirical positive lane to justify adding the operation."
+    },
+    {
+      "operation": "D-only",
+      "coverage": "no minimum-distance-1 candidate in fixed50 hybrid graph",
+      "new_contract_needed": false,
+      "reason": "No empirical positive lane to justify adding the operation."
+    },
+    {
+      "operation": "A+E composition",
+      "coverage": "11 candidates; 3 high-cohesion examples",
+      "new_contract_needed": "not-yet",
+      "reason": "The high-cohesion examples remain inside the already-established autumn/moon family and can be understood as composition of two already-modeled low-risk operations rather than evidence for a third family."
+    },
+    {
+      "operation": "A+B / B+C / D+E two-factor blocks",
+      "coverage": "only cross-field or low-cohesion nearest paths",
+      "new_contract_needed": false,
+      "reason": "Current fixed50 evidence does not justify enabling these blocks as a new low-risk operation."
+    }
+  ],
+  "bottleneck": {
+    "statement": "Within the current fixed-50 hybrid graph, operation invention is no longer the main bottleneck for establishing a third positive family.",
+    "reasons": [
+      "All minimum-distance-1 novelty is already captured by A-only or E-only operations.",
+      "High-cohesion minimum-distance-2 novelty is confined to A+E compositions within the existing autumn/moon family.",
+      "Other two-factor patterns are cross-field/low-cohesion and would require relaxing current safety gates."
+    ],
+    "implication": "A third positive family now requires either stronger source confirmation for an unresolved candidate (musu or travel) or new historically verified source material that creates a new narrow-scene lane."
+  },
+  "policy": {
+    "general_factor_crossover_enabled": false,
+    "add_B_C_D_single_swap_operations": false,
+    "add_cross_field_two_factor_block_operations": false,
+    "fixed50_unchanged": true,
+    "public_ui_unchanged": true,
+    "machine_naturalness_certification": false
+  },
+  "next_action": "Do not expand the operation contract merely to increase candidate count. Search for source-confirmable unresolved families or new verified historical records first."
+}
