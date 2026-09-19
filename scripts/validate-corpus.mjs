@@ -8,6 +8,13 @@ const seams = JSON.parse(fs.readFileSync("data/seam-grammar-v25.json", "utf8"));
 const historical = JSON.parse(fs.readFileSync("data/historical-kaibunka-samples-v27.json", "utf8"));
 const historicalMining = JSON.parse(fs.readFileSync("data/historical-kaibunka-mining-v28.json", "utf8"));
 const tankaLattice = JSON.parse(fs.readFileSync("data/tanka-mirror-lattice-v28.json", "utf8"));
+const semanticFields = JSON.parse(fs.readFileSync("data/historical-semantic-fields-v32.json", "utf8"));
+const edgePairs = JSON.parse(fs.readFileSync("data/historical-edge-pairs-v33.json", "utf8"));
+const fiveVar = JSON.parse(fs.readFileSync("data/tanka-five-variable-grammar-v34.json", "utf8"));
+const factorHybrids = JSON.parse(fs.readFileSync("data/historical-factor-hybrids-v35.json", "utf8"));
+const seamSignatures = JSON.parse(fs.readFileSync("data/historical-seam-signatures-v36.json", "utf8"));
+const hybridReview = JSON.parse(fs.readFileSync("data/historical-hybrid-review-v37.json", "utf8"));
+const cento = JSON.parse(fs.readFileSync("data/historical-cento-candidates-v38.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -245,6 +252,62 @@ if(empirical){
   if(empirical.third_ku_palindrome_count!==thirdKuPalCount)errors.push(`LATTICE third-ku count mismatch: declared=${empirical.third_ku_palindrome_count} actual=${thirdKuPalCount}`);
 }
 
+const historicalIds=new Set(allHistorical.map(x=>x.id));
+if(semanticFields.sample_count!==allHistorical.length)errors.push(`SEMANTIC FIELD sample count mismatch: declared=${semanticFields.sample_count} actual=${allHistorical.length}`);
+if((semanticFields.entries??[]).length!==allHistorical.length)errors.push(`SEMANTIC FIELD entry count mismatch`);
+for(const e of semanticFields.entries??[]){
+  if(!historicalIds.has(e.id))errors.push(`SEMANTIC FIELD unknown id: ${e.id}`);
+  if(!e.broad_field||!e.primary_field)errors.push(`SEMANTIC FIELD missing classification: ${e.id}`);
+}
+
+let edgePairRows=0;
+for(const p of edgePairs.pairs??[]){
+  if(reverse(p.left2)!==p.right2)errors.push(`EDGE PAIR reverse mismatch: ${p.left2}/${p.right2}`);
+  edgePairRows+=p.count??0;
+}
+if(edgePairs.sample_count!==allHistorical.length)errors.push(`EDGE PAIR sample count mismatch`);
+if(edgePairRows!==allHistorical.length)errors.push(`EDGE PAIR frequency total mismatch: ${edgePairRows}/${allHistorical.length}`);
+if(edgePairs.verified_reverse_relation!==true)errors.push("EDGE PAIR verification flag false");
+
+function splitFiveVariable(reading){
+  const a=[...reading];
+  return {A:a.slice(0,5).join(""),B:a.slice(5,7).join(""),C:a.slice(7,12).join(""),D:a.slice(12,14).join(""),E:a.slice(14,17).join(""),Dr:a.slice(17,19).join(""),Cr:a.slice(19,24).join(""),Br:a.slice(24,26).join(""),Ar:a.slice(26,31).join("")};
+}
+if(fiveVar.sample_count!==allHistorical.length)errors.push(`FIVEVAR sample count mismatch`);
+for(const s of fiveVar.samples??[]){
+  const source=allHistorical.find(x=>x.id===s.id);
+  if(!source){errors.push(`FIVEVAR unknown source: ${s.id}`);continue}
+  const reading=source.normalized_reading||source.source_transcription_normalized;
+  const c=splitFiveVariable(reading);
+  for(const k of ["A","B","C","D","E"])if(c[k]!==s[k])errors.push(`FIVEVAR component mismatch: ${s.id} ${k}`);
+  if(c.Dr!==reverse(c.D)||c.Cr!==reverse(c.C)||c.Br!==reverse(c.B)||c.Ar!==reverse(c.A)||c.E!==reverse(c.E))errors.push(`FIVEVAR algebra mismatch: ${s.id}`);
+}
+
+for(const [kind,table] of Object.entries({B2:seamSignatures.B2??{},D2:seamSignatures.D2??{}})){
+  for(const [reading,sig] of Object.entries(table)){
+    for(const id of sig.evidence??[])if(!historicalIds.has(id))errors.push(`SEAM SIGNATURE unknown evidence: ${kind} ${reading} ${id}`);
+  }
+}
+
+if(factorHybrids.novel_path_count!==(factorHybrids.candidates??[]).length)errors.push("FACTOR HYBRID count mismatch");
+for(const c of factorHybrids.candidates??[]){
+  if([...(c.reading??"")].length!==31||!isPalindrome(c.reading))errors.push(`FACTOR HYBRID invalid palindrome: ${c.id}`);
+  if(c.local_factor_attested!==true)errors.push(`FACTOR HYBRID not attested flag: ${c.id}`);
+}
+if(factorHybrids.all_palindrome_verified!==true)errors.push("FACTOR HYBRID verification flag false");
+
+if(hybridReview.total!==(hybridReview.candidates??[]).length)errors.push("HYBRID REVIEW count mismatch");
+if(hybridReview.total!==(factorHybrids.candidates??[]).length)errors.push("HYBRID REVIEW/source count mismatch");
+for(const c of hybridReview.candidates??[])if(!c.research_status)errors.push(`HYBRID REVIEW missing status: ${c.id}`);
+
+if(cento.total!==(cento.candidates??[]).length)errors.push("CENTO count mismatch");
+for(const c of cento.candidates??[]){
+  if(!isPalindrome(c.reading)||[...c.reading].length!==31)errors.push(`CENTO invalid palindrome: ${c.id}`);
+  for(const kp of Object.values(c.ku_provenance??{})){
+    if(!kp.reading||!(kp.source_ids??[]).length)errors.push(`CENTO missing ku provenance: ${c.id}`);
+  }
+}
+
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
 if(rules.rule_count!==rules.rules.length)errors.push(`RULE COUNT mismatch: declared=${rules.rule_count} actual=${rules.rules.length}`);
@@ -262,3 +325,6 @@ console.log(`Seam-shift recipes: ${seamRecipeCount}`);
 console.log(`Historical kaibunka samples: ${historicalCount}`);
 console.log(`Historical mining samples: ${miningCount}`);
 console.log(`Tanka lattice third-ku palindromes: ${thirdKuPalCount}/${allHistorical.length}`);
+console.log(`Research semantic fields: ${semanticFields.sample_count}`);
+console.log(`Historical factor hybrids: ${factorHybrids.novel_path_count}`);
+console.log(`Historical cento candidates: ${cento.total}`);
