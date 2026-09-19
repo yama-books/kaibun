@@ -106,14 +106,47 @@ for(const [k,v] of Object.entries(growth.verified?.narrative_families_by_dimensi
 
 let sentenceWrapperCount=0;
 const wrapperProbe="つまがまつ";
+const wrapperMap=new Map();
 for(const w of growth.sentence_level_wrappers??[]){
+  if(wrapperMap.has(w.id))errors.push(`SENTENCE WRAPPER duplicate id: ${w.id}`);
+  wrapperMap.set(w.id,w);
   if(reverse(w.left_reading)!==w.right_reading)errors.push(`SENTENCE WRAPPER reverse mismatch: ${w.id}`);
   const wrapped=w.left_reading+wrapperProbe+w.right_reading;
   check({id:"SENTENCE-WRAPPER:"+w.id},w.semantic,wrapped);
   if(!w.left_display||!w.right_display||!w.semantic)errors.push(`SENTENCE WRAPPER metadata missing: ${w.id}`);
+  if(!Array.isArray(w.outer_lexemes)||!w.outer_lexemes.length)errors.push(`SENTENCE WRAPPER outer_lexemes missing: ${w.id}`);
+  for(const lex of w.outer_lexemes??[]){
+    if(!lex.reading||!lex.display)errors.push(`SENTENCE WRAPPER bad outer lexeme: ${w.id}`);
+    const combinedReading=w.left_reading+w.right_reading;
+    const combinedDisplay=w.left_display+w.right_display;
+    if(lex.reading&&!combinedReading.includes(lex.reading))errors.push(`SENTENCE WRAPPER lexeme reading not in wrapper: ${w.id} / ${lex.reading}`);
+    if(lex.display&&!combinedDisplay.includes(lex.display))errors.push(`SENTENCE WRAPPER lexeme display not in wrapper: ${w.id} / ${lex.display}`);
+  }
   sentenceWrapperCount++;
 }
 if(growth.verified?.sentence_level_wrapper_count!=null&&growth.verified.sentence_level_wrapper_count!==sentenceWrapperCount)errors.push(`SENTENCE WRAPPER COUNT mismatch: declared=${growth.verified.sentence_level_wrapper_count} actual=${sentenceWrapperCount}`);
+
+let quoteCollisionCount=0;
+for(const f of growth.narrative_families??[]){
+  for(let stage=1;stage<f.stages.length;stage++){
+    const st=f.stages[stage];
+    if(!st.wrapper_id)continue;
+    const prev=f.stages[stage-1];
+    const w=wrapperMap.get(st.wrapper_id);
+    if(!w){errors.push(`QUOTE wrapper id missing: ${f.id} stage=${stage} id=${st.wrapper_id}`);continue}
+    const expected=w.left_reading+prev.reading+w.right_reading;
+    if(st.reading!==expected)errors.push(`QUOTE wrapper chain mismatch: ${f.id} stage=${stage}`);
+    for(const lex of w.outer_lexemes??[]){
+      const hitDisplay=lex.display&&prev.display.includes(lex.display);
+      const hitReading=lex.reading&&prev.reading.includes(lex.reading);
+      if(hitDisplay||hitReading){
+        quoteCollisionCount++;
+        errors.push(`QUOTE noun collision: ${f.id} stage=${stage} wrapper=${w.id} lexeme=${lex.display}`);
+      }
+    }
+  }
+}
+if(growth.verified?.noun_collision_policy===true&&quoteCollisionCount!==0)errors.push(`QUOTE noun collision policy failed: ${quoteCollisionCount}`);
 
 const hundred=growth.verified?.hundred_kana_benchmark;
 if(hundred){
@@ -125,6 +158,7 @@ if(hundred){
     if(!isPalindrome(bs.reading))errors.push(`100-KANA benchmark is not palindrome`);
     if(actual!==hundred.length)errors.push(`100-KANA benchmark length mismatch: declared=${hundred.length} actual=${actual}`);
     if(actual<(hundred.min_required??100))errors.push(`100-KANA benchmark too short: ${actual}`);
+    if(hundred.noun_collision_free&&quoteCollisionCount!==0)errors.push(`100-KANA benchmark noun collision policy failed`);
   }
 }
 
