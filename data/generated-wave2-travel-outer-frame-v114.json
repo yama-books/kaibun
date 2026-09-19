@@ -1,0 +1,318 @@
+{
+  "version": "1.14",
+  "historical_fixture_version": "1.08",
+  "source_review_version": "1.12",
+  "deep_review_version": "1.13",
+  "common_schema_version": "0.61",
+  "operation": "shared-B-outer-frame-swap",
+  "family": "wave2-travel-maha",
+  "candidate_count": 4,
+  "candidates": [
+    {
+      "id": "shoju-next-090",
+      "operation": "shared-B-outer-frame-swap",
+      "reading": "ともかくもまはるなかたひきよくゆくよきひたかなるはまもくかもと",
+      "meter": [
+        "ともかくも",
+        "まはるなかたひ",
+        "きよくゆく",
+        "よきひたかなる",
+        "はまもくかもと"
+      ],
+      "factors": {
+        "A": "ともかくも",
+        "B": "まは",
+        "C": "るなかたひ",
+        "D": "きよ",
+        "E": "くゆく"
+      },
+      "strict_palindrome": true,
+      "host_source_id": "shoju-next-090",
+      "donor_source_ids": [],
+      "provenance": {
+        "host_middle_source": "shoju-next-090",
+        "outer_frame_A_source": "shoju-next-090",
+        "wave2_source_number": 90
+      },
+      "attestation_trace": {
+        "historical_source_string": true,
+        "wave2_verified_audio_string": true,
+        "source_integrated_into_fixed50": false
+      },
+      "morphology_trace": {
+        "moved_slots": [],
+        "fixed_slots": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "shared_B": "まは",
+        "forward_BC_surface": "まはるなかたひ",
+        "forward_B_morphology": "supported-by-surface-まはる",
+        "reverse_B": "はま",
+        "reverse_B_lexeme": "unresolved",
+        "global_B_transferability": "not-asserted"
+      },
+      "scene_trace": {
+        "host_title": "旅行の人々え",
+        "scene": "旅行",
+        "basis": "source title",
+        "status": "source-member"
+      },
+      "semantic_role_trace": {
+        "status": "source-member"
+      },
+      "source_confidence_trace": {
+        "layer": "poem-specific-scholarly-transcription-visible",
+        "source_image_checked": false,
+        "source_image_needed": true,
+        "article_pdf_directly_inspected": false
+      },
+      "review_status": "historical-source",
+      "cautions": [
+        "The normalized reading is verified as a strict palindrome, but source-image glyphs and full lexical parsing remain pending.",
+        "This source remains outside the fixed-50 baseline."
+      ]
+    },
+    {
+      "id": "shoju-next-093",
+      "operation": "shared-B-outer-frame-swap",
+      "reading": "やとちかくまはるなりいまみかきよきかみまいりなるはまくかちとや",
+      "meter": [
+        "やとちかく",
+        "まはるなりいま",
+        "みかきよき",
+        "かみまいりなる",
+        "はまくかちとや"
+      ],
+      "factors": {
+        "A": "やとちかく",
+        "B": "まは",
+        "C": "るなりいま",
+        "D": "みか",
+        "E": "きよき"
+      },
+      "strict_palindrome": true,
+      "host_source_id": "shoju-next-093",
+      "donor_source_ids": [],
+      "provenance": {
+        "host_middle_source": "shoju-next-093",
+        "outer_frame_A_source": "shoju-next-093",
+        "wave2_source_number": 93
+      },
+      "attestation_trace": {
+        "historical_source_string": true,
+        "wave2_verified_audio_string": true,
+        "source_integrated_into_fixed50": false
+      },
+      "morphology_trace": {
+        "moved_slots": [],
+        "fixed_slots": [
+          "A",
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "shared_B": "まは",
+        "forward_BC_surface": "まはるなりいま",
+        "forward_B_morphology": "supported-by-surface-まはる",
+        "reverse_B": "はま",
+        "reverse_B_lexeme": "unresolved",
+        "global_B_transferability": "not-asserted"
+      },
+      "scene_trace": {
+        "host_title": "旅行（同）",
+        "scene": "旅行",
+        "basis": "source title",
+        "status": "source-member"
+      },
+      "semantic_role_trace": {
+        "status": "source-member"
+      },
+      "source_confidence_trace": {
+        "layer": "poem-specific-scholarly-transcription-visible",
+        "source_image_checked": false,
+        "source_image_needed": true,
+        "article_pdf_directly_inspected": false
+      },
+      "review_status": "historical-source",
+      "cautions": [
+        "The normalized reading is verified as a strict palindrome, but source-image glyphs and full lexical parsing remain pending.",
+        "This source remains outside the fixed-50 baseline."
+      ]
+    },
+    {
+      "id": "wave2-travel-090-host-093-outer",
+      "operation": "shared-B-outer-frame-swap",
+      "reading": "やとちかくまはるなかたひきよくゆくよきひたかなるはまくかちとや",
+      "meter": [
+        "やとちかく",
+        "まはるなかたひ",
+        "きよくゆく",
+        "よきひたかなる",
+        "はまくかちとや"
+      ],
+      "factors": {
+        "A": "やとちかく",
+        "B": "まは",
+        "C": "るなかたひ",
+        "D": "きよ",
+        "E": "くゆく"
+      },
+      "strict_palindrome": true,
+      "host_source_id": "shoju-next-090",
+      "donor_source_ids": [
+        "shoju-next-093"
+      ],
+      "provenance": {
+        "host_middle_source": "shoju-next-090",
+        "outer_frame_A_source": "shoju-next-093",
+        "changed_factor": "A"
+      },
+      "attestation_trace": {
+        "donor_AB_attested": true,
+        "host_BC_attested": true,
+        "host_CD_attested": true,
+        "host_DE_attested": true,
+        "donor_reverseB_reverseA_outer_attested": true,
+        "both_sources_wave2_verified_audio_strings": true
+      },
+      "morphology_trace": {
+        "moved_slots": [
+          "A"
+        ],
+        "fixed_slots": [
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "shared_B": "まは",
+        "host_forward_BC_surface": "まはるなかたひ",
+        "donor_forward_BC_surface": "まはるなりいま",
+        "forward_B_morphology": "conditional-pass-operation-specific",
+        "reverse_B": "はま",
+        "reverse_B_lexeme": "unresolved",
+        "reverse_B_global_transferability": "not-asserted"
+      },
+      "scene_trace": {
+        "host_scene": "旅行",
+        "donor_scene": "旅行",
+        "basis": "source titles only",
+        "status": "pass-title-level-same-travel"
+      },
+      "semantic_role_trace": {
+        "status": "compatible-tentative",
+        "basis": [
+          "All five metrical lines are attested in Yamauchi's poem-specific scholarly transcription across travel poems 90 and 93.",
+          "Host middle corridor remains source-local to poem 90.",
+          "Donor outer ku1/ku5 remain source-local to poem 93.",
+          "Dictionary-supported boundary-shift hypotheses improve the poem-93 outer frame, but full combined syntax is not independently annotated."
+        ]
+      },
+      "source_confidence_trace": {
+        "host": "wave2-verified-audio-string-pending-integration",
+        "donor": "wave2-verified-audio-string-pending-integration",
+        "source_image_checked": false,
+        "source_image_needed": true,
+        "layer": "poem-specific-scholarly-transcription-visible",
+        "article_pdf_directly_inspected": false
+      },
+      "review_status": "promising-but-parse-needed",
+      "cautions": [
+        "Do not rewrite やとちかく as 宿近く in the source layer without original-glyph confirmation.",
+        "Do not rewrite はまくかちとや as 浜＋陸地＋とや in the source layer; this is a dictionary-supported parse hypothesis only.",
+        "Full sentence-level syntax across the recombined ku boundaries remains unresolved.",
+        "This family remains research-only and outside the fixed-50 baseline."
+      ]
+    },
+    {
+      "id": "wave2-travel-093-host-090-outer",
+      "operation": "shared-B-outer-frame-swap",
+      "reading": "ともかくもまはるなりいまみかきよきかみまいりなるはまもくかもと",
+      "meter": [
+        "ともかくも",
+        "まはるなりいま",
+        "みかきよき",
+        "かみまいりなる",
+        "はまもくかもと"
+      ],
+      "factors": {
+        "A": "ともかくも",
+        "B": "まは",
+        "C": "るなりいま",
+        "D": "みか",
+        "E": "きよき"
+      },
+      "strict_palindrome": true,
+      "host_source_id": "shoju-next-093",
+      "donor_source_ids": [
+        "shoju-next-090"
+      ],
+      "provenance": {
+        "host_middle_source": "shoju-next-093",
+        "outer_frame_A_source": "shoju-next-090",
+        "changed_factor": "A"
+      },
+      "attestation_trace": {
+        "donor_AB_attested": true,
+        "host_BC_attested": true,
+        "host_CD_attested": true,
+        "host_DE_attested": true,
+        "donor_reverseB_reverseA_outer_attested": true,
+        "both_sources_wave2_verified_audio_strings": true
+      },
+      "morphology_trace": {
+        "moved_slots": [
+          "A"
+        ],
+        "fixed_slots": [
+          "B",
+          "C",
+          "D",
+          "E"
+        ],
+        "shared_B": "まは",
+        "host_forward_BC_surface": "まはるなりいま",
+        "donor_forward_BC_surface": "まはるなかたひ",
+        "forward_B_morphology": "conditional-pass-operation-specific",
+        "reverse_B": "はま",
+        "reverse_B_lexeme": "unresolved",
+        "reverse_B_global_transferability": "not-asserted"
+      },
+      "scene_trace": {
+        "host_scene": "旅行",
+        "donor_scene": "旅行",
+        "basis": "source titles only",
+        "status": "pass-title-level-same-travel"
+      },
+      "semantic_role_trace": {
+        "status": "review-needed",
+        "basis": [
+          "All five metrical lines are attested in Yamauchi's poem-specific scholarly transcription across travel poems 90 and 93.",
+          "Host middle corridor remains source-local to poem 93.",
+          "Donor outer ku1/ku5 remain source-local to poem 90.",
+          "Poem 90 ku5 はまもくかもと remains lexically opaque, preventing a stronger role judgment."
+        ],
+        "blocking_span": "はまもくかもと"
+      },
+      "source_confidence_trace": {
+        "host": "wave2-verified-audio-string-pending-integration",
+        "donor": "wave2-verified-audio-string-pending-integration",
+        "source_image_checked": false,
+        "source_image_needed": true,
+        "layer": "poem-specific-scholarly-transcription-visible",
+        "article_pdf_directly_inspected": false
+      },
+      "review_status": "deep-review-needed",
+      "cautions": [
+        "Do not restore はまもくかもと to kanji or a segmented phrase from palindrome expectation.",
+        "Full sentence-level syntax remains unresolved.",
+        "This family remains research-only and outside the fixed-50 baseline."
+      ]
+    }
+  ]
+}
