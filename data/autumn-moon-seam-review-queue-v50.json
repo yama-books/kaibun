@@ -1,0 +1,179 @@
+{
+  "version": "0.50",
+  "title": "Autumn/Moon seam review queue",
+  "purpose": "Collapse the seven v0.45 autumn/moon candidates blocked by unclassified seams into three source-review tasks, without guessing morphology.",
+  "source_layers": [
+    "historical-topic-first-gate-v45",
+    "tanka-five-variable-grammar-v34",
+    "historical-seam-signatures-v36"
+  ],
+  "policy": {
+    "classify_by_source_evidence_not_palindrome_expectation": true,
+    "raw_reverse_is_not_morphology": true,
+    "missing_signature_means_hold_not_reject": true,
+    "source_image_or_independent_textual_evidence_preferred": true
+  },
+  "summary": {
+    "blocked_candidates": 7,
+    "unique_unclassified_seams": 3,
+    "high_impact_tasks": 2,
+    "single_impact_tasks": 1
+  },
+  "queue": [
+    {
+      "id": "review:D:むす",
+      "slot": "D2",
+      "reading": "むす",
+      "reverse_reading": "すむ",
+      "impact_count": 3,
+      "affected_candidates": [
+        "hybrid-003",
+        "hybrid-007",
+        "hybrid-014"
+      ],
+      "source_context": {
+        "source_id": "shoju-add-109",
+        "title": "嫁娘見月",
+        "source_group": "mining",
+        "primary_field": "月・家族",
+        "field_tags": [
+          "月",
+          "嫁",
+          "娘"
+        ],
+        "B": "きつ",
+        "C": "るみそらは",
+        "D": "むす",
+        "E": "めよめ",
+        "ku3": "むすめよめ",
+        "ku4": "すむはらそみる"
+      },
+      "corpus_evidence": {
+        "occurrences_of_reading_or_reverse_in_five_variable_slots": 1,
+        "other_attested_signature": false
+      },
+      "status": "source-parse-needed",
+      "required_questions": [
+        "D=むす is what morphological segment in the source reading?",
+        "reverse D=すむ is what segment/function in ku4?",
+        "Does the D boundary remain compatible when the outer A factor changes?"
+      ],
+      "forbidden_inference": "Do not infer 娘/住む solely because the kana can be segmented that way; confirm from source text or independent textual evidence.",
+      "review_priority_band": "high-impact"
+    },
+    {
+      "id": "review:D:こた",
+      "slot": "D2",
+      "reading": "こた",
+      "reverse_reading": "たこ",
+      "impact_count": 3,
+      "affected_candidates": [
+        "hybrid-004",
+        "hybrid-010",
+        "hybrid-015"
+      ],
+      "source_context": {
+        "source_id": "shoju-038",
+        "title": "田毎月",
+        "source_group": "mining",
+        "primary_field": "秋・月・田",
+        "field_tags": [
+          "田毎月",
+          "月",
+          "田"
+        ],
+        "B": "きつ",
+        "C": "るみちもと",
+        "D": "こた",
+        "E": "しろし",
+        "ku3": "こたしろし",
+        "ku4": "たこともちみる"
+      },
+      "corpus_evidence": {
+        "occurrences_of_reading_or_reverse_in_five_variable_slots": 1,
+        "other_attested_signature": false
+      },
+      "status": "source-parse-needed",
+      "required_questions": [
+        "Where is the actual morpheme boundary inside こたしろし?",
+        "What is the parse/function of reverse D=たこ in たこともちみる?",
+        "Is this seam source-specific or transferable?"
+      ],
+      "forbidden_inference": "Do not assign こた/たこ a lexical analysis from sound resemblance or palindrome structure.",
+      "review_priority_band": "high-impact"
+    },
+    {
+      "id": "review:B:たま",
+      "slot": "B2",
+      "reading": "たま",
+      "reverse_reading": "また",
+      "impact_count": 1,
+      "affected_candidates": [
+        "hybrid-019"
+      ],
+      "source_context": {
+        "source_id": "shoju-031",
+        "title": "同（露）",
+        "source_group": "mining",
+        "primary_field": "秋・露",
+        "field_tags": [
+          "露",
+          "秋"
+        ],
+        "B": "たま",
+        "C": "はのきはの",
+        "D": "はに",
+        "E": "しけし",
+        "ku2": "たまはのきはの",
+        "ku5": "またゆつるとや"
+      },
+      "corpus_evidence": {
+        "same_reading_occurrences": 1,
+        "reverse_reading_occurrences": [
+          {
+            "source_id": "shoju-001-komatsuhiki",
+            "title": "小松引",
+            "slot": "B",
+            "reading": "また"
+          },
+          {
+            "source_id": "shoju-010-somokuka",
+            "title": "草木花",
+            "slot": "B",
+            "reading": "また"
+          }
+        ],
+        "known_reverse_side_signature": {
+          "id": "B2:また",
+          "confidence": "low-for-crossover",
+          "transferable": false,
+          "note": "v0.36 already treats また as morphologically ambiguous."
+        }
+      },
+      "status": "blocked-until-independent-parse",
+      "required_questions": [
+        "What is B=たま in the source phrase たまはのきはの?",
+        "What is reverse B=また at the beginning of ku5-side mirror span?",
+        "Does the known ambiguity of B=また make this pair source-specific?"
+      ],
+      "forbidden_inference": "Do not treat たま as safe merely because it reverses to an already attested また; that side is explicitly blocked in v0.36.",
+      "review_priority_band": "single-impact-high-caution"
+    }
+  ],
+  "review_order": {
+    "first_parallel": [
+      "review:D:むす",
+      "review:D:こた"
+    ],
+    "then": [
+      "review:B:たま"
+    ],
+    "rationale": "むす and こた each block three candidates; たま blocks one and is additionally shadowed by the known blocked また signature."
+  },
+  "expected_effect": {
+    "if_D_musu_is_transferable": "up to 3 candidates become eligible for semantic review, not automatically accepted.",
+    "if_D_kota_is_transferable": "up to 3 candidates become eligible for semantic review, not automatically accepted.",
+    "if_B_tama_is_transferable": "hybrid-019 becomes eligible for semantic review, but the existing また ambiguity must be reconciled.",
+    "if_any_is_nontransferable": "affected candidates remain held; no candidate is deleted."
+  }
+}
