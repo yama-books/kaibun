@@ -1,0 +1,150 @@
+{
+  "version": "0.72",
+  "title": "Growth wrapper semantic-role gate prototype",
+  "mode": "research-only",
+  "source_audit_version": "0.71",
+  "public_behavior_changed": false,
+  "principle": "Apply conservative eligibility gates before auto_priority sorting. Do not rewrite wrapper text or generate new wrappers.",
+  "wrapper_rules": [
+    {
+      "match_ids": [
+        "ask",
+        "ask-topic"
+      ],
+      "class": "question",
+      "auto_condition": {
+        "type": "interrogative-evidence"
+      },
+      "rationale": "「問う」は内側が質問として読める場合だけ自動候補にする。"
+    },
+    {
+      "match_ids": [
+        "decide",
+        "decide-topic"
+      ],
+      "class": "decision",
+      "auto_condition": {
+        "type": "lexical-cue",
+        "cues": [
+          "決め",
+          "決定"
+        ]
+      },
+      "rationale": "決定内容の証拠がない文を自動で「決めた」で包まない。"
+    },
+    {
+      "match_ids": [
+        "react-cry",
+        "react-troubled",
+        "react-silent",
+        "react-laugh"
+      ],
+      "class": "reaction",
+      "auto_condition": {
+        "type": "dimension",
+        "allowed": [
+          "反応"
+        ]
+      },
+      "rationale": "反応外枠は反応sceneに限定する。"
+    },
+    {
+      "match_ids": [
+        "cause"
+      ],
+      "class": "cause",
+      "auto_condition": {
+        "type": "dimension",
+        "allowed": [
+          "理由"
+        ]
+      },
+      "rationale": "理由化外枠は理由sceneに限定する。"
+    },
+    {
+      "match_ids": [
+        "record-identity"
+      ],
+      "class": "identity",
+      "auto_condition": {
+        "type": "dimension",
+        "allowed": [
+          "状況"
+        ]
+      },
+      "rationale": "記録・同定外枠は状況sceneに限定する。"
+    },
+    {
+      "match_ids": [
+        "write",
+        "write-topic",
+        "read-muyo-topic",
+        "read-muyo-with",
+        "ack-topic",
+        "ack-with",
+        "tell-topic",
+        "tell-with",
+        "reply-topic",
+        "reply-with"
+      ],
+      "class": "quotation-specialized",
+      "auto_condition": {
+        "type": "dimension",
+        "allowed": [
+          "引用・伝聞"
+        ]
+      },
+      "rationale": "読解・記述・認定・告知・応答は引用・伝聞familyで自動候補にする。"
+    }
+  ],
+  "broad_fallback_classes": [
+    {
+      "ids": [
+        "say",
+        "say-topic",
+        "hear",
+        "hear-topic",
+        "state",
+        "state-topic",
+        "narrate",
+        "narrate-topic",
+        "judge",
+        "judge-topic",
+        "interpret",
+        "interpret-topic",
+        "hear-kuki",
+        "know-rushi",
+        "state-rubeno-topic",
+        "state-rubeno-with"
+      ],
+      "role": "general-report-or-cognition",
+      "auto_condition": "allowed unless noun collision"
+    }
+  ],
+  "context_detection": {
+    "dimension_source": "growth narrative family dimension when growth_family is known",
+    "interrogative_evidence": [
+      "？",
+      "?"
+    ],
+    "decision_lexical_cues": [
+      "決め",
+      "決定"
+    ],
+    "unknown_context_policy": "specialized wrappers requiring a dimension are not auto-selected; broad fallback wrappers remain available"
+  },
+  "invariants": [
+    "Noun-collision filtering runs first and remains unchanged.",
+    "Strict palindrome structure is inherited from existing sentence-level wrappers.",
+    "Manual wrapper selection is not restricted by this research prototype.",
+    "The gate affects automatic selection only.",
+    "A wrapper rejected by the gate is not deleted from growth-engine data."
+  ],
+  "success_criteria": [
+    "Every one of the 45 narrative family final-stage contexts retains at least five eligible wrappers after noun-collision and role gating.",
+    "ask/ask-topic is absent from declarative auto pools unless interrogative evidence exists.",
+    "reaction wrappers are absent from non-反応 dimensions.",
+    "specialized quotation wrappers are absent from non-引用・伝聞 dimensions.",
+    "No existing growth reading is changed."
+  ]
+}
