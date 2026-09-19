@@ -1,0 +1,159 @@
+{
+  "version": "1.07",
+  "updated_on": "2026-09-19",
+  "title": "Wave2 repeated-seam guarded survey",
+  "purpose": "Re-scan repeated B2 and D2 cells created by combining the fixed-50 grammar with wave2 verified audio strings, without integrating wave2 into the fixed baseline.",
+  "scope": {
+    "fixed50_unchanged": true,
+    "wave2_verified": 14,
+    "wave2_held": 5,
+    "survey_only": true,
+    "public_ui": false
+  },
+  "rules": [
+    "Raw kana equality is only a discovery key, not morphology identity.",
+    "Exact/near duplicate historical records do not count as novel families.",
+    "Cross-scene repeated seams remain controls unless source-specific evidence says otherwise.",
+    "For A-only outer-frame swap, evaluate the moved A/B edge and preserve host B/C/D/E corridor.",
+    "For central-E swap, D morphology identity remains mandatory before scene review.",
+    "Wave2 records remain pending integration even when their normalized 31-kana strings are verified."
+  ],
+  "repeated_B_groups": [
+    {
+      "B": "せか",
+      "sources": ["shoju-five-elements", "shoju-next-085"],
+      "titles": ["地水火風空", "地水火風空"],
+      "classification": "duplicate-or-parallel-record",
+      "novel_exchange_value": "none",
+      "reason": "The wave2 record reproduces the same historical reading/factors already represented by the trusted fixed record."
+    },
+    {
+      "B": "なか",
+      "sources": ["shoju-ise", "shoju-next-095"],
+      "titles": ["伊勢参宮", "伊勢参宮"],
+      "classification": "duplicate-or-parallel-record",
+      "novel_exchange_value": "none",
+      "reason": "The wave2 record reproduces the same historical reading/factors already represented by the trusted fixed record."
+    },
+    {
+      "B": "なみ",
+      "sources": ["shoju-water-plum", "shoju-next-084"],
+      "titles": ["水辺梅", "東西南北"],
+      "classification": "cross-scene",
+      "novel_exchange_value": "hold",
+      "reason": "Spring/waterside plum and directional-geographic title contexts do not provide a narrow shared scene."
+    },
+    {
+      "B": "きつ",
+      "sources": ["shoju-035", "shoju-038", "shoju-040", "shoju-add-109", "shoju-next-096"],
+      "titles": ["同（月）", "田毎月", "月明海上鴻鷹渡", "嫁娘見月", "大和廻"],
+      "classification": "existing-scene-family-plus-cross-scene-wave2",
+      "novel_exchange_value": "no-new-positive-from-wave2",
+      "reason": "The fixed autumn/moon family is already modeled; wave2 source 96 is a travel/place title and does not create a new narrow same-scene B=きつ positive lane."
+    },
+    {
+      "B": "いつ",
+      "sources": ["shoju-054", "shoju-next-079", "shoju-next-080", "shoju-next-091"],
+      "titles": ["鶴", "待恋", "無常", "旅行（同）"],
+      "classification": "heterogeneous-cross-scene",
+      "novel_exchange_value": "hold",
+      "reason": "Bird/longevity, love, impermanence, and travel contexts are heterogeneous; raw B equality is insufficient."
+    },
+    {
+      "B": "まは",
+      "sources": ["shoju-next-090", "shoju-next-093"],
+      "titles": ["旅行の人々え", "旅行（同）"],
+      "classification": "same-title-family-novel",
+      "novel_exchange_value": "best-wave2-outer-frame-prospect",
+      "forward_surface_evidence": ["まはるなかたひ", "まはるなりいま"],
+      "reason": "Both records are distinct travel poems and preserve B+C surface onset まはる..., giving operation-specific morphology evidence stronger than raw B equality."
+    }
+  ],
+  "repeated_D_groups": [
+    {
+      "D": "みな",
+      "sources": ["edo-popular-takarabune", "shoju-040", "shoju-next-086"],
+      "titles": ["宝船回文歌", "月明海上鴻鷹渡", "古歌にならひ"],
+      "classification": "no-new-same-scene-E-diversity",
+      "reason": "The wave2 source shares E=めさめ with the takarabune-type source; novelty comes only through shoju-040, which is a different sea/bird/moon scene."
+    },
+    {
+      "D": "みつ",
+      "sources": ["shoju-five-elements", "shoju-068", "shoju-next-085"],
+      "titles": ["地水火風空", "釈教", "地水火風空"],
+      "classification": "normalization-collision-guarded",
+      "reason": "v1.00-v1.01 already prove that normalized D equality cannot merge 水（みづ→みつ） and shoju-068 みつ; wave2 source 85 duplicates the five-elements lane and adds no safe novelty."
+    },
+    {
+      "D": "いま",
+      "sources": ["shoju-ise", "shoju-next-095"],
+      "titles": ["伊勢参宮", "伊勢参宮"],
+      "classification": "duplicate-or-parallel-record",
+      "reason": "No novel E diversity."
+    },
+    {
+      "D": "きよ",
+      "sources": ["shoju-055", "shoju-next-090"],
+      "titles": ["春亀", "旅行の人々え"],
+      "classification": "cross-scene",
+      "reason": "Spring/animal and travel title contexts do not create a narrow shared scene."
+    },
+    {
+      "D": "ひと",
+      "sources": ["shoju-061", "shoju-next-080"],
+      "titles": ["商", "無常"],
+      "classification": "cross-scene",
+      "reason": "Commerce/human-affairs and impermanence contexts diverge."
+    },
+    {
+      "D": "かわ",
+      "sources": ["shoju-070", "shoju-next-078"],
+      "titles": ["同（釈教）", "寄川恋"],
+      "classification": "cross-scene",
+      "reason": "Buddhist and river-love title contexts diverge."
+    }
+  ],
+  "source_access_audit": {
+    "work": "風車塵の言の葉 / 廻文歌百首",
+    "direct_image_inspection_completed": false,
+    "routes": [
+      {
+        "institution": "国文学研究資料館 国書データベース / 大阪大学附属図書館 忍頂寺文庫画像一覧",
+        "bibliographic_id": "100080596",
+        "holder_call_no": "C-38",
+        "film_call_no": "228-0019-014",
+        "image_link_listed": true,
+        "relevant_frame_reached": false
+      },
+      {
+        "institution": "東京都立図書館 Digital BookShelf",
+        "title": "廻文歌百首",
+        "call_or_item": "加07316",
+        "current_web_state": "画像取得中 / 画像なし",
+        "relevant_frame_reached": false
+      },
+      {
+        "institution": "大阪公立大学 杉本図書館",
+        "title": "風車塵の言の葉",
+        "call_no": "911.158//SHO//MORI J-6984",
+        "evidence_type": "CiNii Books holding metadata",
+        "relevant_frame_reached": false
+      },
+      {
+        "institution": "東北大学 狩野文庫",
+        "title": "風車塵の言の葉",
+        "catalog_number": "4468",
+        "evidence_type": "collection catalog metadata",
+        "relevant_frame_reached": false
+      }
+    ]
+  },
+  "summary": {
+    "wave2_involving_repeated_B_groups": 6,
+    "wave2_involving_repeated_D_groups": 6,
+    "new_same_title_family_with_novel_exchange": ["B=まは / travel 90-93"],
+    "new_safe_positive_family_established": false,
+    "next_generator_family": "wave2-travel-maha",
+    "reason": "It is the only novel same-title repeated-seam lane found in the wave2 re-scan, while remaining conservatively source-held."
+  }
+}
