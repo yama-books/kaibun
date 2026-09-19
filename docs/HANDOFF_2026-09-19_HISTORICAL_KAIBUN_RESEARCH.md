@@ -1983,3 +1983,229 @@ CI:
 ## 再開最短文
 
 **「HANDOFF 27節から再開。全体約78%。公開v0.28、bridge6件+15%露出cap、growth wrapper role gate、v0.76→v0.79品質benchmark校正までCI成功。次はdisplay-reading fidelity v0.81。」**
+
+
+---
+
+# 28. 2026-09-19 公開バランス・非親族long-tail v0.81〜v0.91 チェックポイント
+
+## 進捗目安
+- 歴史回文研究・生成原理: **約86%**
+- 怪文回文メーカー全体目標: **約83%**
+
+今回は「候補を増やす」よりも、公開surfaceごとの偏りと読みの曖昧さを補正した。
+
+## v0.81 / v0.82 display-reading fidelity
+
+監査:
+- 高田=たかた: 14 unique候補
+- 魚=うお: 4 unique候補
+- high risk合計18件
+
+中リスク:
+- 主=ぬし
+- 種=たね
+- 井川=いかわ
+
+追加:
+- `data/public-reading-fidelity-audit-v81.json`
+- `data/public-reading-hints-v82.json`
+- `scripts/validate-public-reading-hints.mjs`
+
+公開:
+- high-risk候補だけ `読み指定 高田＝たかた / 魚＝うお` pill
+- sentence display/canonical readingは変更しない
+
+CI coverage:
+- takata 14
+- uo 4
+- total 18
+
+## v0.83.1 kinship repetition audit
+
+L1 DNA buttonを実装どおり再構成。
+
+正確値:
+- unique 451
+- recursive kinship reading 216
+- natural share 47.9%
+
+初回v0.83の約7割推定はsource分類の粗い概算で過大だったため、v0.83.1で訂正済み。
+
+## v0.84 one-shot DNA exposure
+
+追加:
+- `data/dna-kinship-exposure-policy-v84.json`
+- `scripts/validate-dna-kinship-exposure.mjs`
+
+公開L1 DNA一発抽選:
+- recursive natural share 47.9%
+- cap 25%
+
+inventoryは451のまま。
+
+## v0.85 / v0.86.1 10本比較
+
+uniform比較pool:
+- unique 489
+- recursive reading 216
+- share 44.2%
+- uniform 10本の期待値 約4.4本
+
+v0.86.1 L1 stratified:
+- seed nonrecursive 3
+- nonrecursive DNA 3
+- recursive kinship 2
+- seam + bridge nonrecursive 2
+
+重要:
+親族判定はsource labelではなくrecursive reading set membership。
+seedに同readingがあってもquotaを迂回しない。
+
+実装:
+- `tenComparisonItems()`
+- `takeRandomUnused()`
+- `shuffleItems()`
+
+validator:
+- `scripts/validate-ten-comparison-balance.mjs`
+
+正常pool:
+- seed nonrecursive 139
+- nonrecursive DNA 235
+- recursive 216
+- seam/bridge nonrecursive 19
+
+## v0.87.1 non-kinship quote research
+
+親族化前stage1:
+- 馬もナナも舞う。
+- 魚もナナも追う。
+- ブヨもナナも呼ぶ。
+- 種もナナも寝た。
+
+4 family × 10 stage = 40 research stage。
+
+v0.87.1:
+- report-simple-* lane
+- first wrapperを4 familyで分散
+  - say-topic
+  - narrate-topic
+  - hear-kuki
+  - tell-topic
+
+既存18 fixed quoteの18-way first-wrapper diversityを壊さない。
+
+追加:
+- `data/nonkinship-quote-expansion-v87.json`
+- `scripts/generate-nonkinship-quote-expansion.mjs`
+
+## v0.88 curation
+
+40段のうち:
+- depth 0-5 = 24段 accepted
+- depth 6-9 = 16段 held
+
+heldは全てquality C / weirdness5。
+研究fixtureには残すがpublic growthには入れない。
+
+## v0.89 non-kinship reaction research
+
+同じ4核へ既存reaction chain:
+- cry
+- troubled
+- silent
+- laugh
+
+4 family × 5 stage = 20。
+
+追加:
+- `data/nonkinship-reaction-expansion-v89.json`
+- `scripts/generate-nonkinship-reaction-expansion.mjs`
+
+既存 reaction-light と同じwrapper chain。
+
+## v0.90 public growth rollout
+
+追加:
+- `data/nonkinship-growth-rollout-v90.json`
+- `scripts/validate-nonkinship-growth-rollout.mjs`
+
+growth-engine:
+- internal version 0.31
+
+追加:
+- report-simple-* 4 family × 6 = 24 stage
+- reaction-simple-* 4 family × 5 = 20 stage
+
+合計:
+- +8 family
+- +44 stage
+
+結果:
+- narrative family 45 -> 53
+- narrative stage 322 -> 366
+- L1 13 family
+- L2 40 family
+- 引用・伝聞 18 -> 22
+- 反応 3 -> 7
+
+親族stage:
+- 216のまま
+
+親族stage share:
+- 67.1% -> **59.0%**
+
+legacy fixed quote:
+- 18 family維持
+- first-wrapper diversity 18維持
+
+## v0.91 role gate post-rollout
+
+追加:
+- `data/growth-wrapper-role-simulation-v91.json`
+
+53 familyで再検証:
+- min gated pool 8
+- changed top5 42
+- declarative ask top5 0
+- non-quote specialized top5 0
+
+新規8 familyでもrole gateは正常。
+
+## CI / Pages
+
+途中、旧v0.73 fixtureと反応validatorのlog変数が原因で一時赤になったが修正済み。
+
+最終:
+- Validate `35438220984`: success
+- Pages `35438220963`: success
+
+詳細:
+- `docs/PUBLIC_BALANCE_AND_GROWTH_DIVERSIFICATION_V81_V91.md`
+
+## 固定事項
+
+変更なし:
+- historical fixed baseline = 50
+- wave2 = verified14 / held5
+- bridge public = 6
+- bridge seam-one cap = 15%
+- general-factor-crossover disabled
+- v0.76 quality benchmark baselineは上書きしない
+
+## 次工程
+
+優先:
+1. **L2 10本比較のsource-family偏重監査**
+2. 53 familyになったgrowth選択UIの操作性監査
+3. quality benchmark 50件の人間最終判定用フォーマット整備
+4. 中リスクreading hint（主/種/井川）を出す必要があるか再評価
+
+研究:
+5. hybrid-002 deep review
+6. Route A source-image verification
+
+## 再開最短文
+
+**「HANDOFF 28節から再開。全体約83%。公開v0.31、L1 DNA親族cap25%、10本比較を3/3/2/2層化、reading hint18件、growthを53 family/366段へ非親族diversifyし親族比59.0%。Validate/Pagesともgreen。次はL2比較偏重監査。」**
