@@ -5,6 +5,7 @@ const rules = JSON.parse(fs.readFileSync("data/generation-rules-v08.json", "utf8
 const pairs = JSON.parse(fs.readFileSync("data/reverse-lexeme-pairs-v09.json", "utf8"));
 const growth = JSON.parse(fs.readFileSync("data/growth-engine-v10.json", "utf8"));
 const seams = JSON.parse(fs.readFileSync("data/seam-grammar-v25.json", "utf8"));
+const historical = JSON.parse(fs.readFileSync("data/historical-kaibunka-samples-v27.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -190,6 +191,18 @@ for(const ref of seams.reference_specimens??[]){
   if(ref.strict_palindrome_under_normalization&&!isPalindrome(ref.normalized_reading))errors.push(`SEAM reference not palindrome: ${ref.id}`);
 }
 
+let historicalCount=0;
+for(const h of historical.samples??[]){
+  if(!h.normalized_reading||!isPalindrome(h.normalized_reading))errors.push(`HISTORICAL sample not palindrome after declared normalization: ${h.id}`);
+  if(h.kana_length!==[...h.normalized_reading].length)errors.push(`HISTORICAL length mismatch: ${h.id}`);
+  if(!Array.isArray(h.normalization)||!h.normalization.length)errors.push(`HISTORICAL normalization metadata missing: ${h.id}`);
+  if(!Array.isArray(h.learning_tags)||!h.learning_tags.length)errors.push(`HISTORICAL learning tags missing: ${h.id}`);
+  if(!h.source_confidence)errors.push(`HISTORICAL source confidence missing: ${h.id}`);
+  historicalCount++;
+}
+if(historical.sample_count!==historicalCount)errors.push(`HISTORICAL COUNT mismatch: declared=${historical.sample_count} actual=${historicalCount}`);
+if(historical.all_normalized_palindromes!==true)errors.push("HISTORICAL corpus is not declared fully verified");
+
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
 if(rules.rule_count!==rules.rules.length)errors.push(`RULE COUNT mismatch: declared=${rules.rule_count} actual=${rules.rules.length}`);
@@ -204,3 +217,4 @@ console.log(`Stepwise growth variants: ${growthVariants}`);
 console.log(`Narrative growth variants: ${narrativeVariants}`);
 console.log(`Sentence-level wrappers: ${sentenceWrapperCount}`);
 console.log(`Seam-shift recipes: ${seamRecipeCount}`);
+console.log(`Historical kaibunka samples: ${historicalCount}`);
