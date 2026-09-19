@@ -2839,3 +2839,233 @@ Route A の歌68は、原画像字形のみ未確認として追補待ちにし�
 ## 再開最短文
 
 **「HANDOFF 35節から再開。Route Aでshoju-068歌68の山内翻刻『みつの世の』を再確認。原画像字形は未確認のまま分離保持。語義上は三つ＋の＋世が強く支持され、水（みづ→みつ）とはmorphology非同一。hybrid-002/017はreopenせず、current generator10件を維持。次はguarded universeの次positive family探索。」**
+
+
+---
+
+# 36. 2026-09-19 第三positive family探索 v1.02〜v1.04 チェックポイント
+
+## 実施概要
+
+35節から、guarded historical universe で第三positive family探索へ進んだ。
+
+今回の結論は二段階。
+
+1. B=`また` spring/plants outer-frame lane は positive化せず、negative regressionとして固定
+2. D=`むす` source-specific corridor の **hybrid-007** を第三family最有力候補として研究generatorへ固定
+
+ただし hybrid-007 はまだ
+`promising-but-parse-needed`
+であり、第三positive family **確定**とはしない。
+
+詳細:
+- `docs/THIRD_FAMILY_SEARCH_V102_V104.md`
+
+## v1.02 B=また morphology review
+
+追加:
+- `data/mata-outer-frame-morphology-review-v102.json`
+
+commit:
+- `085fb015ff2bea3f1dd3b7636490fd202ef91b8c`
+
+対象:
+- shoju-001-komatsuhiki
+- shoju-010-somokuka
+- hybrid-001
+- hybrid-012
+
+山内翻刻・語彙分析では、
+草木花の `またるる` は **待た(るる)** と明示される。
+
+一方、小松引は `またひけ` と表出し、
+近接述語 `引け` は確認できるが、
+B=`また` 自体を草木花と同じ 待た- morphology と確定する根拠は不足。
+
+したがって:
+- same raw B = true
+- morphology equivalence confirmed = false
+- morphology non-equivalence proven = false
+- B=また global transferable = false
+- hybrid-001 / hybrid-012 = `hold-source-specific`
+
+重要:
+**「違うと断定」ではなく、「同じと確認できないので結ばない」。**
+
+v1.00 `みつ` guardと独立したB-slot regressionとして保存する。
+
+## v1.03 D=むす family review
+
+追加:
+- `data/musu-moon-family-review-v103.json`
+
+commit:
+- `35acd954a457b1a45779b953b79b06f91196b6ed`
+
+host:
+- shoju-add-109「嫁娘見月」
+
+固定corridor:
+- B=`きつ`
+- C=`るみそらは`
+- D=`むす`
+- E=`めよめ`
+
+D=`むす` は v0.51/v0.52 の source-specific ruleを維持。
+BC/CD/DEがshoju-add-109由来である場合だけreview可能。
+global seamへは昇格しない。
+
+### hybrid-007
+
+reading:
+`なかきよのきつるみそらはむすめよめすむはらそみるつきのよきかな`
+
+outer frame donor:
+- shoju-038「田毎月」
+
+既存scene evidence:
+- `なかきよの` = 長き夜の（human-tentative / time）
+- `つきのよきかな` = 月の良きかな（human-tentative / celestial + evaluation）
+- host側は題「嫁娘見月」、翻刻中に みそら / 見る / 月 / 夜
+
+裁定:
+- structure: pass
+- local attestation: pass
+- source-specific morphology corridor: pass
+- scene: review-pass
+- semantic role: compatible-tentative
+- final: **`promising-but-parse-needed`**
+
+未解決:
+1. `来つるみそらは` の厳密な統語
+2. `すむはらそ見る` の厳密な語彙・統語
+
+この2点が残るため deep-review-supported へは上げない。
+
+### controls
+
+hybrid-003:
+- sea outer frame
+- host family/sky/moon corridorとのscene mismatch
+- `hold-scene-mismatch`
+
+hybrid-014:
+- donor shoju-035 の A=`はれつみよ` semantics が v0.49 で unresolved
+- `hold-source-confirmation`
+
+## v1.04 deterministic generator
+
+追加:
+- `data/generated-musu-moon-outer-frame-v104.json`
+- `scripts/generate-musu-moon-outer-frame-research.mjs`
+
+commits:
+- fixture: `e8dc1cf23bfcf61fcc5ed80d9c9f7f6bc83152e0`
+- generator: `8c9b94fb974c74ff74a412ce20c6bbfaf261259e`
+
+output:
+- shoju-add-109 historical source
+- hybrid-007 promising-but-parse-needed
+- hybrid-003 hold-scene-mismatch
+- hybrid-014 hold-source-confirmation
+
+invariants:
+- host B/C/D/E fixed
+- A only moves
+- D=むす source-specific
+- strict 31-kana palindrome
+- 5/7/5/7/7
+- accepted/natural machine status禁止
+- common schema v0.61
+- frozen fixture drift check
+
+## validator / CI
+
+`scripts/validate-corpus.mjs` を更新し、
+v1.01〜v1.04 の安全条件・status・candidate setを検査。
+
+commit:
+- `9cf128d27ec74b1a75c60afec3ed3ccf7553002e`
+
+workflowへ専用step追加:
+- `node scripts/generate-musu-moon-outer-frame-research.mjs --check`
+
+commit:
+- `fe4d8825a4cb1002aec58321470cb178f99d43ac`
+
+Validate:
+- run `35442541085`
+- conclusion: **success**
+- head: `fe4d8825a4cb1002aec58321470cb178f99d43ac`
+
+専用step:
+- **Validate musu moon outer-frame generator: success**
+
+同runで既存の
+- corpus
+- central-pivot
+- scene microgrammar
+- naha outer-frame
+- modern bridge
+- growth / quality / UI validators
+
+もすべてsuccess。
+
+途中のrun `35442536862` がcancelledだが、
+これは連続push時のworkflow concurrency cancelであり、
+後続headのrun `35442541085` がsuccessしている。
+
+docs:
+- `docs/THIRD_FAMILY_SEARCH_V102_V104.md`
+- commit `f27bb608ea0f2790d36eb990c5088ce9a667b370`
+
+latest Pages:
+- run `35442621562`
+- conclusion: **success**
+- head: `f27bb608ea0f2790d36eb990c5088ce9a667b370`
+
+## 現在のfamily状態
+
+確立済み positive:
+1. autumn-night-garden-moon
+2. naha-spring-plants
+
+candidate:
+3. **musu-night-sky-family-moon**
+   - best novel = hybrid-007
+   - status = `third-positive-family-candidate-not-yet-established`
+
+automatic acceptance:
+- 0
+
+general-factor-crossover:
+- disabled 継続
+
+## 研究上の更新
+
+今回さらに次を固定した。
+
+1. raw kana equalityだけではsource間morphology nodeを共有しない
+2. source-specific seamは、corridorを保つ操作なら研究利用できる
+3. source-specific利用はglobal transfer昇格を意味しない
+4. sceneが通っても統語未解決ならpositive確定へ進めない
+5. positive候補と同時にscene/source-parse negative controlをfixture化する
+
+## 進捗目安
+
+- 歴史回文研究・生成原理: **約90%**
+- 怪文回文メーカー全体目標: **約88%**
+
+## 次
+
+最優先:
+1. hybrid-007 syntax deep review
+   - `来つるみそらは`
+   - `すむはらそ見る`
+2. 独立転写・原画像・信頼できる語釈で確認できれば第三family昇格可否を判断
+3. 確認できない場合は無理に昇格せず別family探索へ移る
+4. historical fixed50 / wave2 verified14-held5 / public bridge6 / v0.76 baselineは変更しない
+
+## 再開最短文
+
+**「HANDOFF 36節から再開。B=またはv1.02でsource-specific morphology hold。D=むす corridorではhybrid-007を第三family最有力としてv1.03 review、v1.04 deterministic generator+fixture+CIまで完成。hybrid-007はpromising-but-parse-neededで、未解決は『来つるみそらは』『すむはらそ見る』。Validate run 35442541085 green。次はこの2箇所のsyntax deep review。」**
