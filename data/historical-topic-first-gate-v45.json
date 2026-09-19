@@ -1,0 +1,1349 @@
+{
+  "version": "0.45",
+  "title": "Autumn/Moon topic-first candidate gate",
+  "purpose": "Apply v0.44 phrase/seam evidence to the existing v0.38 historical cento candidate universe without generating new sound-first combinations.",
+  "source_layers": [
+    "historical-cento-candidates-v38",
+    "historical-hybrid-curation-v40",
+    "autumn-moon-variable-spans-v44"
+  ],
+  "policy": {
+    "no_new_candidate_generation": true,
+    "no_numeric_naturalness_score": true,
+    "human_review_overrides_mechanical_priority": true,
+    "reject_blocked_seams": true,
+    "unclassified_seams_require_review": true,
+    "all_full_candidates_require_human_review": true
+  },
+  "gate_definition": {
+    "topic_gate": "all source_ids belong to the fixed-50 秋・月 subset",
+    "phrase_gate": "all five meter phrases exist as v0.44 attested-meter-phrase units",
+    "seam_gate": "both B2 and D2 exist in v0.44 morphology-signed seams and neither has transferable=false",
+    "note": "The seam gate is a research-review gate, not a correctness proof."
+  },
+  "summary": {
+    "autumn_only_cento_candidates": 17,
+    "all_five_phrase_attested": 17,
+    "seam_complete_nonblocked": 10,
+    "seam_incomplete_or_unclassified": 7,
+    "prior_human_review_count": 10,
+    "mechanical_gate_matches_prior_review_set": true,
+    "priorities": {
+      "source-parse-hold": 3,
+      "research-priority": 1,
+      "reject-for-now": 3,
+      "parse-priority": 2,
+      "seam-classification-needed": 7,
+      "multi-source-hold": 1
+    }
+  },
+  "mechanical_gate_ids": [
+    "hybrid-005",
+    "hybrid-006",
+    "hybrid-008",
+    "hybrid-009",
+    "hybrid-011",
+    "hybrid-013",
+    "hybrid-016",
+    "hybrid-021",
+    "hybrid-022",
+    "hybrid-023"
+  ],
+  "prior_review_ids": [
+    "hybrid-005",
+    "hybrid-006",
+    "hybrid-008",
+    "hybrid-009",
+    "hybrid-011",
+    "hybrid-013",
+    "hybrid-016",
+    "hybrid-021",
+    "hybrid-022",
+    "hybrid-023"
+  ],
+  "candidates": [
+    {
+      "id": "hybrid-005",
+      "reading": "てりつうみきつるもはきのはにてりてにはのきはもるつきみうつりて",
+      "meter": [
+        "てりつうみ",
+        "きつるもはきの",
+        "はにてりて",
+        "にはのきはもる",
+        "つきみうつりて"
+      ],
+      "source_ids": [
+        "shoju-040",
+        "shoju-035"
+      ],
+      "source_titles": [
+        "月明海上鴻鷹渡",
+        "同（月）"
+      ],
+      "factors": {
+        "A": "てりつうみ",
+        "B": "きつ",
+        "C": "るもはきの",
+        "D": "はに",
+        "E": "てりて"
+      },
+      "phrase_support": [
+        {
+          "ku": 1,
+          "reading": "てりつうみ",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 2,
+          "reading": "きつるもはきの",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 3,
+          "reading": "はにてりて",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 4,
+          "reading": "にはのきはもる",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 5,
+          "reading": "つきみうつりて",
+          "attested_in_v44": true
+        }
+      ],
+      "all_five_phrases_attested": true,
+      "seam_support": {
+        "B": {
+          "id": "seam:B2:きつ",
+          "confidence": "medium",
+          "transferable": "conditional",
+          "morphology_signature": "verbal/lexical onset -> moon"
+        },
+        "D": {
+          "id": "seam:D2:はに",
+          "confidence": "high",
+          "transferable": true,
+          "morphology_signature": "noun+particle -> place-noun"
+        }
+      },
+      "seam_gate": "complete-nonblocked",
+      "prior_human_review": {
+        "status": "hold-source-parse",
+        "naturalness": "B tentative",
+        "semantic_coherence": "medium-high",
+        "action": "hold",
+        "cautions": [
+          "第一句『てりつうみ』と第五句『つきみうつりて』の正確な漢字・統語解釈を先に確定したい。",
+          "海景と庭景の視点移動が一首として自然か未確定。"
+        ]
+      },
+      "topic_first_priority": "source-parse-hold",
+      "strict_palindrome": true
+    },
+    {
+      "id": "hybrid-006",
+      "reading": "なかきよのきつしもなかのみなかりかなみのかなもしつきのよきかな",
+      "meter": [
+        "なかきよの",
+        "きつしもなかの",
+        "みなかりか",
+        "なみのかなもし",
+        "つきのよきかな"
+      ],
+      "source_ids": [
+        "shoju-038",
+        "shoju-040"
+      ],
+      "source_titles": [
+        "田毎月",
+        "月明海上鴻鷹渡"
+      ],
+      "factors": {
+        "A": "なかきよの",
+        "B": "きつ",
+        "C": "しもなかの",
+        "D": "みな",
+        "E": "かりか"
+      },
+      "phrase_support": [
+        {
+          "ku": 1,
+          "reading": "なかきよの",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 2,
+          "reading": "きつしもなかの",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 3,
+          "reading": "みなかりか",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 4,
+          "reading": "なみのかなもし",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 5,
+          "reading": "つきのよきかな",
+          "attested_in_v44": true
+        }
+      ],
+      "all_five_phrases_attested": true,
+      "seam_support": {
+        "B": {
+          "id": "seam:B2:きつ",
+          "confidence": "medium",
+          "transferable": "conditional",
+          "morphology_signature": "verbal/lexical onset -> moon"
+        },
+        "D": {
+          "id": "seam:D2:みな",
+          "confidence": "high",
+          "transferable": true,
+          "morphology_signature": "collective-noun -> nature-noun"
+        }
+      },
+      "seam_gate": "complete-nonblocked",
+      "prior_human_review": {
+        "status": "hold-source-parse",
+        "naturalness": "C+ tentative",
+        "semantic_coherence": "medium",
+        "action": "hold",
+        "cautions": [
+          "40番由来の中三句『きつしもなかの／みなかりか／なみのかなもし』自体の語分節が難しい。",
+          "意味場一致だけで全文自然さを保証できない例。"
+        ]
+      },
+      "topic_first_priority": "source-parse-hold",
+      "strict_palindrome": true
+    },
+    {
+      "id": "hybrid-008",
+      "reading": "なかきよのきつるもはきのはにてりてにはのきはもるつきのよきかな",
+      "meter": [
+        "なかきよの",
+        "きつるもはきの",
+        "はにてりて",
+        "にはのきはもる",
+        "つきのよきかな"
+      ],
+      "source_ids": [
+        "shoju-038",
+        "shoju-035"
+      ],
+      "source_titles": [
+        "田毎月",
+        "同（月）"
+      ],
+      "factors": {
+        "A": "なかきよの",
+        "B": "きつ",
+        "C": "るもはきの",
+        "D": "はに",
+        "E": "てりて"
+      },
+      "phrase_support": [
+        {
+          "ku": 1,
+          "reading": "なかきよの",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 2,
+          "reading": "きつるもはきの",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 3,
+          "reading": "はにてりて",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 4,
+          "reading": "にはのきはもる",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 5,
+          "reading": "つきのよきかな",
+          "attested_in_v44": true
+        }
+      ],
+      "all_five_phrases_attested": true,
+      "seam_support": {
+        "B": {
+          "id": "seam:B2:きつ",
+          "confidence": "medium",
+          "transferable": "conditional",
+          "morphology_signature": "verbal/lexical onset -> moon"
+        },
+        "D": {
+          "id": "seam:D2:はに",
+          "confidence": "high",
+          "transferable": true,
+          "morphology_signature": "noun+particle -> place-noun"
+        }
+      },
+      "seam_gate": "complete-nonblocked",
+      "prior_human_review": {
+        "status": "strong-promising",
+        "naturalness": "B+ tentative-classical",
+        "semantic_coherence": "high",
+        "action": "keep-as-curated-research-candidate",
+        "cautions": [
+          "『きつるも』の係り先、第四句『きはもる』の漢字・語義は原画像または校訂本文で要確認。",
+          "古典語として完全に自然と確定する段階ではない。"
+        ]
+      },
+      "topic_first_priority": "research-priority",
+      "strict_palindrome": true
+    },
+    {
+      "id": "hybrid-009",
+      "reading": "なかよさのきつしもなかのみなかりかなみのかなもしつきのさよかな",
+      "meter": [
+        "なかよさの",
+        "きつしもなかの",
+        "みなかりか",
+        "なみのかなもし",
+        "つきのさよかな"
+      ],
+      "source_ids": [
+        "shoju-add-109",
+        "shoju-040"
+      ],
+      "source_titles": [
+        "嫁娘見月",
+        "月明海上鴻鷹渡"
+      ],
+      "factors": {
+        "A": "なかよさの",
+        "B": "きつ",
+        "C": "しもなかの",
+        "D": "みな",
+        "E": "かりか"
+      },
+      "phrase_support": [
+        {
+          "ku": 1,
+          "reading": "なかよさの",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 2,
+          "reading": "きつしもなかの",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 3,
+          "reading": "みなかりか",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 4,
+          "reading": "なみのかなもし",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 5,
+          "reading": "つきのさよかな",
+          "attested_in_v44": true
+        }
+      ],
+      "all_five_phrases_attested": true,
+      "seam_support": {
+        "B": {
+          "id": "seam:B2:きつ",
+          "confidence": "medium",
+          "transferable": "conditional",
+          "morphology_signature": "verbal/lexical onset -> moon"
+        },
+        "D": {
+          "id": "seam:D2:みな",
+          "confidence": "high",
+          "transferable": true,
+          "morphology_signature": "collective-noun -> nature-noun"
+        }
+      },
+      "seam_gate": "complete-nonblocked",
+      "prior_human_review": {
+        "status": "reject-for-now",
+        "naturalness": "C",
+        "semantic_coherence": "medium",
+        "action": "reject-until-source-reparse",
+        "cautions": [
+          "第一句『なかよさの』と第五句『つきのさよかな』の結合が、現状の校訂情報では統語的に弱い。",
+          "音列上の適合が意味上の適合を上回っている。"
+        ]
+      },
+      "topic_first_priority": "reject-for-now",
+      "strict_palindrome": true
+    },
+    {
+      "id": "hybrid-011",
+      "reading": "なかよさのきつるもはきのはにてりてにはのきはもるつきのさよかな",
+      "meter": [
+        "なかよさの",
+        "きつるもはきの",
+        "はにてりて",
+        "にはのきはもる",
+        "つきのさよかな"
+      ],
+      "source_ids": [
+        "shoju-add-109",
+        "shoju-035"
+      ],
+      "source_titles": [
+        "嫁娘見月",
+        "同（月）"
+      ],
+      "factors": {
+        "A": "なかよさの",
+        "B": "きつ",
+        "C": "るもはきの",
+        "D": "はに",
+        "E": "てりて"
+      },
+      "phrase_support": [
+        {
+          "ku": 1,
+          "reading": "なかよさの",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 2,
+          "reading": "きつるもはきの",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 3,
+          "reading": "はにてりて",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 4,
+          "reading": "にはのきはもる",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 5,
+          "reading": "つきのさよかな",
+          "attested_in_v44": true
+        }
+      ],
+      "all_five_phrases_attested": true,
+      "seam_support": {
+        "B": {
+          "id": "seam:B2:きつ",
+          "confidence": "medium",
+          "transferable": "conditional",
+          "morphology_signature": "verbal/lexical onset -> moon"
+        },
+        "D": {
+          "id": "seam:D2:はに",
+          "confidence": "high",
+          "transferable": true,
+          "morphology_signature": "noun+particle -> place-noun"
+        }
+      },
+      "seam_gate": "complete-nonblocked",
+      "prior_human_review": {
+        "status": "reject-for-now",
+        "naturalness": "C",
+        "semantic_coherence": "medium",
+        "action": "reject-until-source-reparse",
+        "cautions": [
+          "『なかよさの』外枠が中部の景と自然に係りにくい。"
+        ]
+      },
+      "topic_first_priority": "reject-for-now",
+      "strict_palindrome": true
+    },
+    {
+      "id": "hybrid-013",
+      "reading": "はれつみよきつしもなかのみなかりかなみのかなもしつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつしもなかの",
+        "みなかりか",
+        "なみのかなもし",
+        "つきよみつれは"
+      ],
+      "source_ids": [
+        "shoju-035",
+        "shoju-040"
+      ],
+      "source_titles": [
+        "同（月）",
+        "月明海上鴻鷹渡"
+      ],
+      "factors": {
+        "A": "はれつみよ",
+        "B": "きつ",
+        "C": "しもなかの",
+        "D": "みな",
+        "E": "かりか"
+      },
+      "phrase_support": [
+        {
+          "ku": 1,
+          "reading": "はれつみよ",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 2,
+          "reading": "きつしもなかの",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 3,
+          "reading": "みなかりか",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 4,
+          "reading": "なみのかなもし",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 5,
+          "reading": "つきよみつれは",
+          "attested_in_v44": true
+        }
+      ],
+      "all_five_phrases_attested": true,
+      "seam_support": {
+        "B": {
+          "id": "seam:B2:きつ",
+          "confidence": "medium",
+          "transferable": "conditional",
+          "morphology_signature": "verbal/lexical onset -> moon"
+        },
+        "D": {
+          "id": "seam:D2:みな",
+          "confidence": "high",
+          "transferable": true,
+          "morphology_signature": "collective-noun -> nature-noun"
+        }
+      },
+      "seam_gate": "complete-nonblocked",
+      "prior_human_review": {
+        "status": "hold-source-parse",
+        "naturalness": "C+",
+        "semantic_coherence": "medium-high",
+        "action": "hold",
+        "cautions": [
+          "40番由来の中三句の解析が未確定。",
+          "35番外枠『はれつみよ…つきよみつれは』との係り受けを校訂本文で確認する必要。"
+        ]
+      },
+      "topic_first_priority": "source-parse-hold",
+      "strict_palindrome": true
+    },
+    {
+      "id": "hybrid-016",
+      "reading": "はれつみよきつるもはきのはにしけしにはのきはもるつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつるもはきの",
+        "はにしけし",
+        "にはのきはもる",
+        "つきよみつれは"
+      ],
+      "source_ids": [
+        "shoju-035",
+        "shoju-031"
+      ],
+      "source_titles": [
+        "同（月）",
+        "同（露）"
+      ],
+      "factors": {
+        "A": "はれつみよ",
+        "B": "きつ",
+        "C": "るもはきの",
+        "D": "はに",
+        "E": "しけし"
+      },
+      "phrase_support": [
+        {
+          "ku": 1,
+          "reading": "はれつみよ",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 2,
+          "reading": "きつるもはきの",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 3,
+          "reading": "はにしけし",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 4,
+          "reading": "にはのきはもる",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 5,
+          "reading": "つきよみつれは",
+          "attested_in_v44": true
+        }
+      ],
+      "all_five_phrases_attested": true,
+      "seam_support": {
+        "B": {
+          "id": "seam:B2:きつ",
+          "confidence": "medium",
+          "transferable": "conditional",
+          "morphology_signature": "verbal/lexical onset -> moon"
+        },
+        "D": {
+          "id": "seam:D2:はに",
+          "confidence": "high",
+          "transferable": true,
+          "morphology_signature": "noun+particle -> place-noun"
+        }
+      },
+      "seam_gate": "complete-nonblocked",
+      "prior_human_review": {
+        "status": "promising-but-parse-needed",
+        "naturalness": "B tentative",
+        "semantic_coherence": "high",
+        "action": "keep-as-secondary-research-candidate",
+        "cautions": [
+          "第三句を替えたことで『葉に繁し』の主述関係が35番側の文脈でも成立するか要確認。",
+          "古典語の校訂本文確認前は採用しない。"
+        ]
+      },
+      "topic_first_priority": "parse-priority",
+      "strict_palindrome": true
+    },
+    {
+      "id": "hybrid-003",
+      "reading": "てりつうみきつるみそらはむすめよめすむはらそみるつきみうつりて",
+      "meter": [
+        "てりつうみ",
+        "きつるみそらは",
+        "むすめよめ",
+        "すむはらそみる",
+        "つきみうつりて"
+      ],
+      "source_ids": [
+        "shoju-040",
+        "shoju-add-109"
+      ],
+      "source_titles": [
+        "月明海上鴻鷹渡",
+        "嫁娘見月"
+      ],
+      "factors": {
+        "A": "てりつうみ",
+        "B": "きつ",
+        "C": "るみそらは",
+        "D": "むす",
+        "E": "めよめ"
+      },
+      "phrase_support": [
+        {
+          "ku": 1,
+          "reading": "てりつうみ",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 2,
+          "reading": "きつるみそらは",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 3,
+          "reading": "むすめよめ",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 4,
+          "reading": "すむはらそみる",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 5,
+          "reading": "つきみうつりて",
+          "attested_in_v44": true
+        }
+      ],
+      "all_five_phrases_attested": true,
+      "seam_support": {
+        "B": {
+          "id": "seam:B2:きつ",
+          "confidence": "medium",
+          "transferable": "conditional",
+          "morphology_signature": "verbal/lexical onset -> moon"
+        },
+        "D": null
+      },
+      "seam_gate": "incomplete-or-unclassified",
+      "prior_human_review": null,
+      "topic_first_priority": "seam-classification-needed",
+      "strict_palindrome": true
+    },
+    {
+      "id": "hybrid-004",
+      "reading": "てりつうみきつるみちもとこたしろしたこともちみるつきみうつりて",
+      "meter": [
+        "てりつうみ",
+        "きつるみちもと",
+        "こたしろし",
+        "たこともちみる",
+        "つきみうつりて"
+      ],
+      "source_ids": [
+        "shoju-040",
+        "shoju-038"
+      ],
+      "source_titles": [
+        "月明海上鴻鷹渡",
+        "田毎月"
+      ],
+      "factors": {
+        "A": "てりつうみ",
+        "B": "きつ",
+        "C": "るみちもと",
+        "D": "こた",
+        "E": "しろし"
+      },
+      "phrase_support": [
+        {
+          "ku": 1,
+          "reading": "てりつうみ",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 2,
+          "reading": "きつるみちもと",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 3,
+          "reading": "こたしろし",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 4,
+          "reading": "たこともちみる",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 5,
+          "reading": "つきみうつりて",
+          "attested_in_v44": true
+        }
+      ],
+      "all_five_phrases_attested": true,
+      "seam_support": {
+        "B": {
+          "id": "seam:B2:きつ",
+          "confidence": "medium",
+          "transferable": "conditional",
+          "morphology_signature": "verbal/lexical onset -> moon"
+        },
+        "D": null
+      },
+      "seam_gate": "incomplete-or-unclassified",
+      "prior_human_review": null,
+      "topic_first_priority": "seam-classification-needed",
+      "strict_palindrome": true
+    },
+    {
+      "id": "hybrid-007",
+      "reading": "なかきよのきつるみそらはむすめよめすむはらそみるつきのよきかな",
+      "meter": [
+        "なかきよの",
+        "きつるみそらは",
+        "むすめよめ",
+        "すむはらそみる",
+        "つきのよきかな"
+      ],
+      "source_ids": [
+        "shoju-038",
+        "shoju-add-109"
+      ],
+      "source_titles": [
+        "田毎月",
+        "嫁娘見月"
+      ],
+      "factors": {
+        "A": "なかきよの",
+        "B": "きつ",
+        "C": "るみそらは",
+        "D": "むす",
+        "E": "めよめ"
+      },
+      "phrase_support": [
+        {
+          "ku": 1,
+          "reading": "なかきよの",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 2,
+          "reading": "きつるみそらは",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 3,
+          "reading": "むすめよめ",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 4,
+          "reading": "すむはらそみる",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 5,
+          "reading": "つきのよきかな",
+          "attested_in_v44": true
+        }
+      ],
+      "all_five_phrases_attested": true,
+      "seam_support": {
+        "B": {
+          "id": "seam:B2:きつ",
+          "confidence": "medium",
+          "transferable": "conditional",
+          "morphology_signature": "verbal/lexical onset -> moon"
+        },
+        "D": null
+      },
+      "seam_gate": "incomplete-or-unclassified",
+      "prior_human_review": null,
+      "topic_first_priority": "seam-classification-needed",
+      "strict_palindrome": true
+    },
+    {
+      "id": "hybrid-010",
+      "reading": "なかよさのきつるみちもとこたしろしたこともちみるつきのさよかな",
+      "meter": [
+        "なかよさの",
+        "きつるみちもと",
+        "こたしろし",
+        "たこともちみる",
+        "つきのさよかな"
+      ],
+      "source_ids": [
+        "shoju-add-109",
+        "shoju-038"
+      ],
+      "source_titles": [
+        "嫁娘見月",
+        "田毎月"
+      ],
+      "factors": {
+        "A": "なかよさの",
+        "B": "きつ",
+        "C": "るみちもと",
+        "D": "こた",
+        "E": "しろし"
+      },
+      "phrase_support": [
+        {
+          "ku": 1,
+          "reading": "なかよさの",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 2,
+          "reading": "きつるみちもと",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 3,
+          "reading": "こたしろし",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 4,
+          "reading": "たこともちみる",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 5,
+          "reading": "つきのさよかな",
+          "attested_in_v44": true
+        }
+      ],
+      "all_five_phrases_attested": true,
+      "seam_support": {
+        "B": {
+          "id": "seam:B2:きつ",
+          "confidence": "medium",
+          "transferable": "conditional",
+          "morphology_signature": "verbal/lexical onset -> moon"
+        },
+        "D": null
+      },
+      "seam_gate": "incomplete-or-unclassified",
+      "prior_human_review": null,
+      "topic_first_priority": "seam-classification-needed",
+      "strict_palindrome": true
+    },
+    {
+      "id": "hybrid-014",
+      "reading": "はれつみよきつるみそらはむすめよめすむはらそみるつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつるみそらは",
+        "むすめよめ",
+        "すむはらそみる",
+        "つきよみつれは"
+      ],
+      "source_ids": [
+        "shoju-035",
+        "shoju-add-109"
+      ],
+      "source_titles": [
+        "同（月）",
+        "嫁娘見月"
+      ],
+      "factors": {
+        "A": "はれつみよ",
+        "B": "きつ",
+        "C": "るみそらは",
+        "D": "むす",
+        "E": "めよめ"
+      },
+      "phrase_support": [
+        {
+          "ku": 1,
+          "reading": "はれつみよ",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 2,
+          "reading": "きつるみそらは",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 3,
+          "reading": "むすめよめ",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 4,
+          "reading": "すむはらそみる",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 5,
+          "reading": "つきよみつれは",
+          "attested_in_v44": true
+        }
+      ],
+      "all_five_phrases_attested": true,
+      "seam_support": {
+        "B": {
+          "id": "seam:B2:きつ",
+          "confidence": "medium",
+          "transferable": "conditional",
+          "morphology_signature": "verbal/lexical onset -> moon"
+        },
+        "D": null
+      },
+      "seam_gate": "incomplete-or-unclassified",
+      "prior_human_review": null,
+      "topic_first_priority": "seam-classification-needed",
+      "strict_palindrome": true
+    },
+    {
+      "id": "hybrid-015",
+      "reading": "はれつみよきつるみちもとこたしろしたこともちみるつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつるみちもと",
+        "こたしろし",
+        "たこともちみる",
+        "つきよみつれは"
+      ],
+      "source_ids": [
+        "shoju-035",
+        "shoju-038"
+      ],
+      "source_titles": [
+        "同（月）",
+        "田毎月"
+      ],
+      "factors": {
+        "A": "はれつみよ",
+        "B": "きつ",
+        "C": "るみちもと",
+        "D": "こた",
+        "E": "しろし"
+      },
+      "phrase_support": [
+        {
+          "ku": 1,
+          "reading": "はれつみよ",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 2,
+          "reading": "きつるみちもと",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 3,
+          "reading": "こたしろし",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 4,
+          "reading": "たこともちみる",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 5,
+          "reading": "つきよみつれは",
+          "attested_in_v44": true
+        }
+      ],
+      "all_five_phrases_attested": true,
+      "seam_support": {
+        "B": {
+          "id": "seam:B2:きつ",
+          "confidence": "medium",
+          "transferable": "conditional",
+          "morphology_signature": "verbal/lexical onset -> moon"
+        },
+        "D": null
+      },
+      "seam_gate": "incomplete-or-unclassified",
+      "prior_human_review": null,
+      "topic_first_priority": "seam-classification-needed",
+      "strict_palindrome": true
+    },
+    {
+      "id": "hybrid-019",
+      "reading": "やとるつゆたまはのきはのはにてりてにはのはきのはまたゆつるとや",
+      "meter": [
+        "やとるつゆ",
+        "たまはのきはの",
+        "はにてりて",
+        "にはのはきのは",
+        "またゆつるとや"
+      ],
+      "source_ids": [
+        "shoju-031",
+        "shoju-035"
+      ],
+      "source_titles": [
+        "同（露）",
+        "同（月）"
+      ],
+      "factors": {
+        "A": "やとるつゆ",
+        "B": "たま",
+        "C": "はのきはの",
+        "D": "はに",
+        "E": "てりて"
+      },
+      "phrase_support": [
+        {
+          "ku": 1,
+          "reading": "やとるつゆ",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 2,
+          "reading": "たまはのきはの",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 3,
+          "reading": "はにてりて",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 4,
+          "reading": "にはのはきのは",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 5,
+          "reading": "またゆつるとや",
+          "attested_in_v44": true
+        }
+      ],
+      "all_five_phrases_attested": true,
+      "seam_support": {
+        "B": null,
+        "D": {
+          "id": "seam:D2:はに",
+          "confidence": "high",
+          "transferable": true,
+          "morphology_signature": "noun+particle -> place-noun"
+        }
+      },
+      "seam_gate": "incomplete-or-unclassified",
+      "prior_human_review": null,
+      "topic_first_priority": "seam-classification-needed",
+      "strict_palindrome": true
+    },
+    {
+      "id": "hybrid-021",
+      "reading": "てりつうみきつるもはきのはにしけしにはのきはもるつきみうつりて",
+      "meter": [
+        "てりつうみ",
+        "きつるもはきの",
+        "はにしけし",
+        "にはのきはもる",
+        "つきみうつりて"
+      ],
+      "source_ids": [
+        "shoju-040",
+        "shoju-035",
+        "shoju-031"
+      ],
+      "source_titles": [
+        "月明海上鴻鷹渡",
+        "同（月）",
+        "同（露）"
+      ],
+      "factors": {
+        "A": "てりつうみ",
+        "B": "きつ",
+        "C": "るもはきの",
+        "D": "はに",
+        "E": "しけし"
+      },
+      "phrase_support": [
+        {
+          "ku": 1,
+          "reading": "てりつうみ",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 2,
+          "reading": "きつるもはきの",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 3,
+          "reading": "はにしけし",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 4,
+          "reading": "にはのきはもる",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 5,
+          "reading": "つきみうつりて",
+          "attested_in_v44": true
+        }
+      ],
+      "all_five_phrases_attested": true,
+      "seam_support": {
+        "B": {
+          "id": "seam:B2:きつ",
+          "confidence": "medium",
+          "transferable": "conditional",
+          "morphology_signature": "verbal/lexical onset -> moon"
+        },
+        "D": {
+          "id": "seam:D2:はに",
+          "confidence": "high",
+          "transferable": true,
+          "morphology_signature": "noun+particle -> place-noun"
+        }
+      },
+      "seam_gate": "complete-nonblocked",
+      "prior_human_review": {
+        "status": "hold-too-many-sources",
+        "naturalness": "C+",
+        "semantic_coherence": "medium-high",
+        "action": "hold",
+        "cautions": [
+          "40・35・31番の3作交配で、局所句は実例でも全体の視点と統語が切り替わりやすい。",
+          "2作交配より優先度を下げる。"
+        ]
+      },
+      "topic_first_priority": "multi-source-hold",
+      "strict_palindrome": true
+    },
+    {
+      "id": "hybrid-022",
+      "reading": "なかきよのきつるもはきのはにしけしにはのきはもるつきのよきかな",
+      "meter": [
+        "なかきよの",
+        "きつるもはきの",
+        "はにしけし",
+        "にはのきはもる",
+        "つきのよきかな"
+      ],
+      "source_ids": [
+        "shoju-038",
+        "shoju-035",
+        "shoju-031"
+      ],
+      "source_titles": [
+        "田毎月",
+        "同（月）",
+        "同（露）"
+      ],
+      "factors": {
+        "A": "なかきよの",
+        "B": "きつ",
+        "C": "るもはきの",
+        "D": "はに",
+        "E": "しけし"
+      },
+      "phrase_support": [
+        {
+          "ku": 1,
+          "reading": "なかきよの",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 2,
+          "reading": "きつるもはきの",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 3,
+          "reading": "はにしけし",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 4,
+          "reading": "にはのきはもる",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 5,
+          "reading": "つきのよきかな",
+          "attested_in_v44": true
+        }
+      ],
+      "all_five_phrases_attested": true,
+      "seam_support": {
+        "B": {
+          "id": "seam:B2:きつ",
+          "confidence": "medium",
+          "transferable": "conditional",
+          "morphology_signature": "verbal/lexical onset -> moon"
+        },
+        "D": {
+          "id": "seam:D2:はに",
+          "confidence": "high",
+          "transferable": true,
+          "morphology_signature": "noun+particle -> place-noun"
+        }
+      },
+      "seam_gate": "complete-nonblocked",
+      "prior_human_review": {
+        "status": "promising-but-parse-needed",
+        "naturalness": "B- tentative",
+        "semantic_coherence": "high",
+        "action": "keep-as-secondary-research-candidate",
+        "cautions": [
+          "3作交配。",
+          "中央『葉に繁し』と第四句の接続を校訂本文で確認する必要。"
+        ]
+      },
+      "topic_first_priority": "parse-priority",
+      "strict_palindrome": true
+    },
+    {
+      "id": "hybrid-023",
+      "reading": "なかよさのきつるもはきのはにしけしにはのきはもるつきのさよかな",
+      "meter": [
+        "なかよさの",
+        "きつるもはきの",
+        "はにしけし",
+        "にはのきはもる",
+        "つきのさよかな"
+      ],
+      "source_ids": [
+        "shoju-add-109",
+        "shoju-035",
+        "shoju-031"
+      ],
+      "source_titles": [
+        "嫁娘見月",
+        "同（月）",
+        "同（露）"
+      ],
+      "factors": {
+        "A": "なかよさの",
+        "B": "きつ",
+        "C": "るもはきの",
+        "D": "はに",
+        "E": "しけし"
+      },
+      "phrase_support": [
+        {
+          "ku": 1,
+          "reading": "なかよさの",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 2,
+          "reading": "きつるもはきの",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 3,
+          "reading": "はにしけし",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 4,
+          "reading": "にはのきはもる",
+          "attested_in_v44": true
+        },
+        {
+          "ku": 5,
+          "reading": "つきのさよかな",
+          "attested_in_v44": true
+        }
+      ],
+      "all_five_phrases_attested": true,
+      "seam_support": {
+        "B": {
+          "id": "seam:B2:きつ",
+          "confidence": "medium",
+          "transferable": "conditional",
+          "morphology_signature": "verbal/lexical onset -> moon"
+        },
+        "D": {
+          "id": "seam:D2:はに",
+          "confidence": "high",
+          "transferable": true,
+          "morphology_signature": "noun+particle -> place-noun"
+        }
+      },
+      "seam_gate": "complete-nonblocked",
+      "prior_human_review": {
+        "status": "reject-for-now",
+        "naturalness": "C",
+        "semantic_coherence": "medium",
+        "action": "reject-until-source-reparse",
+        "cautions": [
+          "『なかよさの』外枠が弱く、3作交配で統語上の負担も大きい。"
+        ]
+      },
+      "topic_first_priority": "reject-for-now",
+      "strict_palindrome": true
+    }
+  ]
+}
