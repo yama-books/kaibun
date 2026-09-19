@@ -11,6 +11,13 @@ on:
       - "data/tanka-mirror-lattice-v28.json"
       - "docs/EDO_KAIBUNKA_SAMPLES_V27.md"
       - "data/historical-kaibunka-samples-v27.json"
+      - "docs/HISTORICAL_SEMANTIC_FIELDS_V32.md"
+      - "docs/HISTORICAL_EDGE_PAIRS_V33.md"
+      - "docs/TANKA_FIVE_VARIABLE_GRAMMAR_V34.md"
+      - "docs/HISTORICAL_FACTOR_HYBRIDS_V35.md"
+      - "docs/HISTORICAL_SEAM_SIGNATURES_V36.md"
+      - "docs/HISTORICAL_HYBRID_REVIEW_V37.md"
+      - "docs/HISTORICAL_CENTO_V38.md"
       - "index.html"
       - ".github/workflows/validate.yml"
   pull_request:
