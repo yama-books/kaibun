@@ -1,0 +1,125 @@
+{
+  "version": "1.25",
+  "updated_on": "2026-09-20",
+  "title": "Wave3 additional scholarly-transcription diagnostics: Shoju 106,107,110,112,113",
+  "purpose": "Mine previously unmodeled additional Shoju poems while keeping strict candidates, orthographic diagnostics, and unresolved searchable-transcription cases separate.",
+  "source": {
+    "author": "山内潤三",
+    "article": "廻文歌の限界と効用 (下)――高野山釈教長歌を頂点として――",
+    "layer": "searchable-reproduction-of-scholarly-transcription",
+    "direct_jstage_pdf_inspection": false,
+    "direct_edo_source_image_inspection": false
+  },
+  "baseline_policy": {
+    "fixed50_unchanged": true,
+    "wave2_verified_snapshot": 14,
+    "wave2_held_snapshot": 5,
+    "strict_kana_baseline_unchanged": true,
+    "public_ui": false
+  },
+  "cases": [
+    {
+      "id": "shoju-wave3-106",
+      "source_number": 106,
+      "title": "老花",
+      "visible_transcription_surface": "春へ野の ひをらくさまや ほとしはし とほやまさくら 老ののへるは",
+      "reading_assumptions": [
+        {"surface":"春","reading":"はる","basis":"ordinary lexical reading"},
+        {"surface":"野","reading":"の","basis":"ordinary lexical reading"},
+        {"surface":"老","reading":"おい","basis":"ordinary lexical reading"}
+      ],
+      "conservative_reading": "はるへののひをらくさまやほとしはしとほやまさくらおいののへるは",
+      "kana_length": 31,
+      "strict_palindrome": false,
+      "literal_mismatches": [
+        {"position_1_based":6,"forward":"ひ","mirror":"い"},
+        {"position_1_based":7,"forward":"を","mirror":"お"},
+        {"position_1_based":25,"forward":"お","mirror":"を"},
+        {"position_1_based":26,"forward":"い","mirror":"ひ"}
+      ],
+      "status": "hold-multiple-historical-reading-or-orthography-questions",
+      "diagnostic_note": "An o/wo fold alone is insufficient; an independent ひ/い issue remains.",
+      "promotion_to_strict_corpus": false
+    },
+    {
+      "id": "shoju-wave3-107",
+      "source_number": 107,
+      "title": "田",
+      "visible_transcription_surface": "手につみし はたくさたへて ひのめくめ のひて枝さく 田はしみつにて",
+      "reading_assumptions": [
+        {"surface":"手","reading":"て","basis":"ordinary lexical reading"},
+        {"surface":"枝","reading":"えた","basis":"ordinary lexical reading"},
+        {"surface":"田","reading":"た","basis":"ordinary lexical reading"}
+      ],
+      "conservative_reading": "てにつみしはたくさたへてひのめくめのひてえたさくたはしみつにて",
+      "kana_length": 31,
+      "strict_palindrome": false,
+      "literal_mismatches": [
+        {"position_1_based":11,"forward":"へ","mirror":"え"},
+        {"position_1_based":21,"forward":"え","mirror":"へ"}
+      ],
+      "status": "hold-he-e-historical-kana-equivalence",
+      "diagnostic_issue": "へ/え",
+      "promotion_to_strict_corpus": false
+    },
+    {
+      "id": "shoju-wave3-110",
+      "source_number": 110,
+      "title": "狸狢ものゝ名",
+      "visible_transcription_surface": "外さむし な おとのてそか しきぬたう たぬきしかそて のとをなしむさと",
+      "reading_assumptions": [
+        {
+          "surface":"外",
+          "reading":"と",
+          "basis":"independently attested classical noun reading 外（と） meaning outside"
+        }
+      ],
+      "conservative_reading": "とさむしなおとのてそかしきぬたうたぬきしかそてのとをなしむさと",
+      "kana_length": 31,
+      "strict_palindrome": false,
+      "literal_mismatches": [
+        {"position_1_based":6,"forward":"お","mirror":"を"},
+        {"position_1_based":26,"forward":"を","mirror":"お"}
+      ],
+      "all_mismatches_are_o_wo": true,
+      "status": "hold-strict-orthographic-equivalence",
+      "diagnostic_role": "additional-o-wo-positive-control",
+      "promotion_to_strict_corpus": false
+    },
+    {
+      "id": "shoju-wave3-112",
+      "source_number": 112,
+      "title": "達磨忌",
+      "visible_transcription_surface": "木まるたの こゝうならての むせかい かせんのてら なろこゝのたるま",
+      "conservative_reading_candidate": "きまるたのここうならてのむせかいかせんのてらなろここのたるま",
+      "kana_length": 30,
+      "strict_palindrome": false,
+      "status": "hold-searchable-transcription-incomplete-or-reading-unclear",
+      "reason": "The conservative visible reading is 30 kana. Do not add a kana or choose a nonstandard reading from symmetry."
+    },
+    {
+      "id": "shoju-wave3-113",
+      "source_number": 113,
+      "title": "閑子鳥",
+      "visible_transcription_surface": "来し身さへ ふゆやとりと こむかし 聞し ...",
+      "status": "hold-page-break-incomplete",
+      "reason": "The searchable reproduction breaks across the page and does not expose a complete target poem safely enough for normalization."
+    }
+  ],
+  "summary": {
+    "cases_added": 5,
+    "strict_candidates_added": 0,
+    "o_wo_diagnostic_added": [110],
+    "he_e_diagnostic_added": [107],
+    "multi_issue_holds": [106],
+    "incomplete_holds": [112,113],
+    "positive_family_created": false,
+    "automatic_acceptance": 0
+  },
+  "safety_rules": [
+    "Independent dictionary support can justify a reading assumption such as 外=と, but cannot promote an o/wo-mismatched record into the strict corpus.",
+    "Do not collapse へ/え or ひ/い in the strict layer to recover palindrome symmetry.",
+    "Do not repair short/incomplete searchable transcriptions 112 or 113."
+  ],
+  "next_action": "Add poem 110 to the o/wo diagnostic control set; keep 107 as a separate historical-kana case and 106/112/113 held."
+}
