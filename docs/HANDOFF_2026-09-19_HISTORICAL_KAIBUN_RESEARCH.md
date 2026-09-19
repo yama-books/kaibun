@@ -948,3 +948,91 @@ wave2保留5件:
 
 ## 再開時の一文
 **「HANDOFFの21節を停止地点として、v40〜v42を確認後、史料精度Route Aまたは秋・月topic-first Route Bから再開する。」**
+
+
+---
+
+# 22. 2026-09-19 15:06 JST セッション終了チェックポイント
+
+ユーザー判断により、この地点で今回の長大セッションを終了する。
+次セッションでは本HANDOFFを**最優先の正本**として読み、過去会話を再構成し直さず、この地点から再開すること。
+
+## 今回終了時点での研究状況
+
+- 歴史研究の理論層は **v0.42** まで到達。
+- 公開UIは研究成果を無理に全面投入せず、**v0.26系の境界ずらしDNA**を維持。
+- 安定比較ベースラインは **trusted 10首 + mining 40首 = 50首**。
+- 第二波 mining は別層で保持し、**14首を31かな完全回文として機械確認済み**。
+- wave2保留は **82 / 88 / 89 / 92 / 94**。一次資料確認前に推測補正しない。
+- 歴史50首から確定した主要構造:
+  - 31かな鏡像格子: **5|2|5|2|3|2|5|2|5**
+  - 5変数文法: **A5 / B2 / C5 / D2 / E3**
+  - 第三句5かな自体が回文: **0/50**
+  - 中央3かなABA: **50/50**
+  - 中央3かな外側文字が助詞系: **32/50 = 64%**
+- 意味場の大分類:
+  - 春・草木 12
+  - 秋・月 12
+  - 信仰 8
+  - 恋・人事 6
+  - 冬・雪 4
+  - 夏・行事 4
+  - その他 4
+- 歴史因子グラフ:
+  - 新規経路 51
+  - seam signature + 意味場フィルタ後 priority-semantic-review 10
+  - 人手レビュー最重要候補: **hybrid-008**
+- 生成研究の現在の最重要方針:
+  **題 → 意味場 → 句候補 → 31かな制約**
+- sentence wrapper は補助機構として維持するが、今後の主研究は
+  **一文内部で語境界・品詞・統語役割がずれる回文**。
+
+## 次セッションで最初に読むファイル
+
+1. `docs/HANDOFF_2026-09-19_HISTORICAL_KAIBUN_RESEARCH.md`（この文書）
+2. `data/historical-hybrid-curation-v40.json`
+3. `data/yamauchi-tokenization-model-v41.json`
+4. `data/historical-topic-first-model-v42.json`
+5. `data/historical-mining-wave2-v39.json`
+6. `scripts/validate-corpus.mjs`
+
+## 再開優先順位
+
+### 1. 史料精度 Route A
+- wave2保留 82 / 88 / 89 / 92 / 94 の一次資料確認
+- 国文学研究資料館『廻文歌詞之種』のデジタル画像・内容確認
+- 回文性を根拠にOCRを推測修正しない
+
+### 2. 生成研究 Route B
+最初の題は **秋・月** を推奨。
+
+- 1〜7かなの可変span辞書を作る
+- 各spanに `morphology_signature / attached_particles / semantic_field / provenance / confidence` を付ける
+- 5変数格子へ句単位で制約充足する
+- raw kana一致だけでnodeを接続しない
+- 歴史的5かな・7かな句の実証を短いセル一致より強く評価する
+- 生成候補は機械スコアだけで自然と判定せず、全文の意味・文法・視点・時間を人間的にレビューする
+
+## GitHub終了時点
+
+- Repository: `yama-books/kaibun`
+- Public: https://yama-books.github.io/kaibun/
+- 本HANDOFF直前のHEAD:
+  `3e8b214902bbb6e7bb9cf7ccc148bf1f2edfc019`
+  - `Finalize historical research checkpoint`
+- 直近確認済み Pages:
+  - run `35419105818`
+  - conclusion: **success**
+  - head: `3e8b214902bbb6e7bb9cf7ccc148bf1f2edfc019`
+- 直近確認済み corpus validation:
+  - run `35414961088`
+  - conclusion: **success**
+  - head: `40183aa3b7a8529af067a7d033ef06c3e21919e3`
+
+この節の追記では研究データ・生成ロジックを変更しない。
+
+## 次セッションへの最短プロンプト
+
+> 怪文回文メーカー研究を再開します。GitHub `yama-books/kaibun` の `docs/HANDOFF_2026-09-19_HISTORICAL_KAIBUN_RESEARCH.md` を正本として読み、**22節を最新停止地点**として引き継いでください。v40〜v42とwave2を確認し、まず現在地点を短く報告した後、Route A（史料精度）またはRoute B（秋・月topic-first生成研究）の優先度を判断して、そのまま作業を継続してください。
+
+**今回のセッションはここで終了。**
