@@ -13,6 +13,7 @@ on:
       - "scripts/validate-modern-bridge-public.mjs"
       - "scripts/simulate-growth-wrapper-role-gate.mjs"
       - "scripts/build-public-quality-benchmark.mjs"
+      - "scripts/validate-public-reading-hints.mjs"
       - "docs/TANKA_MIRROR_LATTICE_V28.md"
       - "data/historical-kaibunka-mining-v28.json"
       - "data/tanka-mirror-lattice-v28.json"
@@ -62,5 +63,7 @@ jobs:
         run: node scripts/simulate-growth-wrapper-role-gate.mjs --check
       - name: Validate public quality benchmark seed
         run: node scripts/build-public-quality-benchmark.mjs --check
+      - name: Validate public reading hints
+        run: node scripts/validate-public-reading-hints.mjs
       - name: Validate public UI
         run: node scripts/validate-ui.mjs
