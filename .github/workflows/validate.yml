@@ -11,6 +11,7 @@ on:
       - "scripts/generate-naha-outer-frame-research.mjs"
       - "scripts/generate-musu-moon-outer-frame-research.mjs"
       - "scripts/generate-wave2-travel-outer-frame-research.mjs"
+      - "scripts/validate-historical-orthographic-equivalence.mjs"
       - "scripts/generate-modern-seam-bridge.mjs"
       - "scripts/validate-modern-bridge-public.mjs"
       - "scripts/simulate-growth-wrapper-role-gate.mjs"
@@ -75,6 +76,8 @@ jobs:
         run: node scripts/generate-musu-moon-outer-frame-research.mjs --check
       - name: Validate wave2 travel outer-frame generator
         run: node scripts/generate-wave2-travel-outer-frame-research.mjs --check
+      - name: Validate historical orthographic equivalence diagnostic
+        run: node scripts/validate-historical-orthographic-equivalence.mjs
       - name: Validate modern seam bridge prototype
         run: node scripts/generate-modern-seam-bridge.mjs --check
       - name: Validate public bridge whitelist
