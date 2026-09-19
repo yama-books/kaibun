@@ -1,0 +1,151 @@
+{
+  "version": "0.48",
+  "title": "Scene compatibility gate for topic-first historical palindrome generation",
+  "status": "research-hypothesis",
+  "purpose": "Prevent broad-field matches such as 秋・月 from admitting scene-incompatible factor swaps before human review.",
+  "evidence_basis": {
+    "positive_family": "autumn-moon-microgrammar-v46",
+    "control_family": "autumn-moon-control-microgrammar-v47",
+    "prior_human_review": "historical-hybrid-curation-v40",
+    "semantic_fields": "historical-semantic-fields-v32"
+  },
+  "generic_tags": [
+    "秋",
+    "月"
+  ],
+  "evidence_tiers": [
+    {
+      "tier": "A",
+      "kind": "prior-human-semantic-review",
+      "use": "May approve a factor combination despite missing structured scene tags; still does not prove classical correctness."
+    },
+    {
+      "tier": "B",
+      "kind": "source-title-scene-tag",
+      "use": "May support automatic scene overlap when a non-generic scene tag is shared."
+    },
+    {
+      "tier": "C",
+      "kind": "broad-field-only",
+      "use": "Insufficient by itself for automatic crossover."
+    }
+  ],
+  "gate_v1": {
+    "prerequisites": [
+      "strict palindrome construction",
+      "all five phrases historically attested in the fixed-50 baseline",
+      "B/D seam gate complete and nonblocked"
+    ],
+    "automatic_pass": "Imported factor shares at least one non-generic scene-specific tag with the core scene.",
+    "review_pass": "If automatic_pass fails, prior or new human semantic review explicitly approves scene coherence.",
+    "hold": "If neither automatic_pass nor review_pass is satisfied.",
+    "note": "The gate filters research candidates; it does not certify grammar or historical-Japanese naturalness."
+  },
+  "case_studies": [
+    {
+      "family": "v0.46-autumn-night-garden-moon",
+      "result": "positive",
+      "core_scene": {
+        "generic": [
+          "秋",
+          "月"
+        ],
+        "scene_specific": [
+          "夜",
+          "萩",
+          "葉",
+          "庭"
+        ],
+        "evidence": "v0.40 human review / tentative parse",
+        "confidence": "tentative-human"
+      },
+      "novel_outputs": [
+        {
+          "id": "hybrid-008",
+          "structured_scene_overlap": "not-fully-encoded-in-v32",
+          "human_semantic_review": "high",
+          "gate_v1": "review-pass"
+        },
+        {
+          "id": "hybrid-016",
+          "structured_scene_overlap": "not-fully-encoded-in-v32",
+          "human_semantic_review": "high",
+          "gate_v1": "review-pass"
+        },
+        {
+          "id": "hybrid-022",
+          "structured_scene_overlap": "not-fully-encoded-in-v32",
+          "human_semantic_review": "high",
+          "gate_v1": "review-pass"
+        }
+      ],
+      "lesson": "When structured tags are sparse, human factor-level semantic review can preserve a promising family without pretending the tags are richer than the source data."
+    },
+    {
+      "family": "v0.47-sea-moon-birds",
+      "result": "control-negative",
+      "core_scene": {
+        "generic": [
+          "秋",
+          "月"
+        ],
+        "scene_specific": [
+          "海",
+          "鴻雁"
+        ],
+        "evidence": "source title / v0.32 tags",
+        "confidence": "title-based"
+      },
+      "novel_outputs": [
+        {
+          "id": "hybrid-006",
+          "import_source": "shoju-038",
+          "import_tags": [
+            "田毎月",
+            "月",
+            "田"
+          ],
+          "non_generic_overlap": [],
+          "human_semantic_review": "medium",
+          "gate_v1": "hold"
+        },
+        {
+          "id": "hybrid-013",
+          "import_source": "shoju-035",
+          "import_tags": [
+            "月",
+            "秋"
+          ],
+          "non_generic_overlap": [],
+          "human_semantic_review": "medium-high",
+          "gate_v1": "hold"
+        },
+        {
+          "id": "hybrid-009",
+          "import_source": "shoju-add-109",
+          "import_tags": [
+            "月",
+            "嫁",
+            "娘"
+          ],
+          "non_generic_overlap": [],
+          "human_semantic_review": "medium",
+          "gate_v1": "hold"
+        }
+      ],
+      "lesson": "All three novel outputs pass palindrome/local-factor/seam constraints but share only generic 月/秋-level semantics with the core; none reached strong/promising status in v0.40."
+    }
+  ],
+  "design_consequences": [
+    "Do not use broad_field alone as a generation gate.",
+    "Store scene tags at factor or phrase level where evidence permits, rather than inheriting all source-level tags blindly.",
+    "Generic tags such as 月 and 秋 should not count as scene-specific compatibility by themselves.",
+    "Missing scene metadata is not evidence of incompatibility; it triggers human review rather than rejection.",
+    "Human semantic approval and source-image/grammar verification remain separate axes."
+  ],
+  "next_data_work": [
+    "Add factor-level scene signatures only where v0.40 or source text supports them.",
+    "Test the gate on a second positive family outside the はに corridor before enforcing it globally.",
+    "Do not rewrite v0.42 scores until the gate has more than the current two-family evidence base."
+  ]
+}
