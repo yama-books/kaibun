@@ -1,0 +1,297 @@
+{
+  "version": "0.47",
+  "title": "Autumn/Moon sea-moon-birds control microgrammar",
+  "concept": "A control family around shoju-040 to test whether broad 秋・月 agreement plus attested local factors is sufficient for global naturalness.",
+  "scene": {
+    "id": "sea-moon-birds",
+    "core_source": "shoju-040",
+    "core_primary_field": "秋・月・海・鳥",
+    "core_tags": [
+      "月",
+      "海",
+      "鴻雁"
+    ],
+    "caution": "Scene tags come from title-based mining classification; they are not a full semantic parse."
+  },
+  "formula": "A5 | B2 | C5 | D2 | E3 | reverse(D)2 | reverse(C)5 | reverse(B)2 | reverse(A)5",
+  "fixed_factors": {
+    "B": {
+      "reading": "きつ",
+      "source_id": "shoju-040",
+      "seam": "conditional; reverse 月"
+    },
+    "C": {
+      "reading": "しもなかの",
+      "source_id": "shoju-040"
+    },
+    "D": {
+      "reading": "みな",
+      "source_id": "shoju-040",
+      "seam": "high transferable; 皆 -> 波"
+    },
+    "E": {
+      "reading": "かりか",
+      "source_id": "shoju-040"
+    }
+  },
+  "variable_factors": {
+    "A": [
+      {
+        "id": "A-shoju-040",
+        "reading": "てりつうみ",
+        "source_id": "shoju-040",
+        "title": "月明海上鴻鷹渡",
+        "primary_field": "秋・月・海・鳥",
+        "tags": [
+          "月",
+          "海",
+          "鴻雁"
+        ]
+      },
+      {
+        "id": "A-shoju-038",
+        "reading": "なかきよの",
+        "source_id": "shoju-038",
+        "title": "田毎月",
+        "primary_field": "秋・月・田",
+        "tags": [
+          "田毎月",
+          "月",
+          "田"
+        ]
+      },
+      {
+        "id": "A-shoju-035",
+        "reading": "はれつみよ",
+        "source_id": "shoju-035",
+        "title": "同（月）",
+        "primary_field": "秋・月",
+        "tags": [
+          "月",
+          "秋"
+        ]
+      },
+      {
+        "id": "A-shoju-add-109",
+        "reading": "なかよさの",
+        "source_id": "shoju-add-109",
+        "title": "嫁娘見月",
+        "primary_field": "月・家族",
+        "tags": [
+          "月",
+          "嫁",
+          "娘"
+        ]
+      }
+    ]
+  },
+  "invariants": [
+    "Every A+B pair is historically attested in the A source because all four A sources use B=きつ.",
+    "B+C, C+D and D+E remain fixed to shoju-040.",
+    "All outputs are strict 31-kana palindromes.",
+    "All five output phrases are historically attested in the fixed-50 baseline.",
+    "No new filler or proper name is introduced."
+  ],
+  "outputs": [
+    {
+      "id": "shoju-040",
+      "kind": "historical-source",
+      "A_option": "A-shoju-040",
+      "reading": "てりつうみきつしもなかのみなかりかなみのかなもしつきみうつりて",
+      "meter": [
+        "てりつうみ",
+        "きつしもなかの",
+        "みなかりか",
+        "なみのかなもし",
+        "つきみうつりて"
+      ],
+      "strict_palindrome": true,
+      "prior_review": {
+        "status": "source-member",
+        "naturalness": null,
+        "semantic_coherence": null
+      },
+      "provenance": {
+        "AB": [
+          "shoju-040"
+        ],
+        "BC": [
+          "shoju-040"
+        ],
+        "CD": [
+          "shoju-040"
+        ],
+        "DE": [
+          "shoju-040"
+        ]
+      },
+      "source_scene": {
+        "primary_field": "秋・月・海・鳥",
+        "tags": [
+          "月",
+          "海",
+          "鴻雁"
+        ],
+        "shared_with_core": [
+          "月",
+          "海",
+          "鴻雁"
+        ]
+      }
+    },
+    {
+      "id": "hybrid-006",
+      "kind": "novel-cento",
+      "A_option": "A-shoju-038",
+      "reading": "なかきよのきつしもなかのみなかりかなみのかなもしつきのよきかな",
+      "meter": [
+        "なかきよの",
+        "きつしもなかの",
+        "みなかりか",
+        "なみのかなもし",
+        "つきのよきかな"
+      ],
+      "strict_palindrome": true,
+      "prior_review": {
+        "status": "hold-source-parse",
+        "naturalness": "C+ tentative",
+        "semantic_coherence": "medium"
+      },
+      "provenance": {
+        "AB": [
+          "shoju-038"
+        ],
+        "BC": [
+          "shoju-040"
+        ],
+        "CD": [
+          "shoju-040"
+        ],
+        "DE": [
+          "shoju-040"
+        ]
+      },
+      "source_scene": {
+        "primary_field": "秋・月・田",
+        "tags": [
+          "田毎月",
+          "月",
+          "田"
+        ],
+        "shared_with_core": [
+          "月"
+        ]
+      }
+    },
+    {
+      "id": "hybrid-013",
+      "kind": "novel-cento",
+      "A_option": "A-shoju-035",
+      "reading": "はれつみよきつしもなかのみなかりかなみのかなもしつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつしもなかの",
+        "みなかりか",
+        "なみのかなもし",
+        "つきよみつれは"
+      ],
+      "strict_palindrome": true,
+      "prior_review": {
+        "status": "hold-source-parse",
+        "naturalness": "C+",
+        "semantic_coherence": "medium-high"
+      },
+      "provenance": {
+        "AB": [
+          "shoju-035"
+        ],
+        "BC": [
+          "shoju-040"
+        ],
+        "CD": [
+          "shoju-040"
+        ],
+        "DE": [
+          "shoju-040"
+        ]
+      },
+      "source_scene": {
+        "primary_field": "秋・月",
+        "tags": [
+          "月",
+          "秋"
+        ],
+        "shared_with_core": [
+          "月"
+        ]
+      }
+    },
+    {
+      "id": "hybrid-009",
+      "kind": "novel-cento",
+      "A_option": "A-shoju-add-109",
+      "reading": "なかよさのきつしもなかのみなかりかなみのかなもしつきのさよかな",
+      "meter": [
+        "なかよさの",
+        "きつしもなかの",
+        "みなかりか",
+        "なみのかなもし",
+        "つきのさよかな"
+      ],
+      "strict_palindrome": true,
+      "prior_review": {
+        "status": "reject-for-now",
+        "naturalness": "C",
+        "semantic_coherence": "medium"
+      },
+      "provenance": {
+        "AB": [
+          "shoju-add-109"
+        ],
+        "BC": [
+          "shoju-040"
+        ],
+        "CD": [
+          "shoju-040"
+        ],
+        "DE": [
+          "shoju-040"
+        ]
+      },
+      "source_scene": {
+        "primary_field": "月・家族",
+        "tags": [
+          "月",
+          "嫁",
+          "娘"
+        ],
+        "shared_with_core": [
+          "月"
+        ]
+      }
+    }
+  ],
+  "comparison": {
+    "successful_like_v46": false,
+    "human_review_pattern": {
+      "historical_source": 1,
+      "strong_or_promising_novel": 0,
+      "hold_novel": 2,
+      "reject_novel": 1
+    },
+    "observed_problem": "Broad 秋・月 agreement and local factor attestation do not preserve the narrower sea/moon/birds scene when A is imported from 田毎月, generic 月, or family-moon contexts.",
+    "implication": "Future topic-first search should gate on subtopic/scene compatibility, not only broad_field."
+  },
+  "counts": {
+    "A_options": 4,
+    "total_outputs": 4,
+    "historical_sources": 1,
+    "novel_cento": 3
+  },
+  "next_rule_proposal": {
+    "name": "scene_tag_overlap_gate",
+    "status": "proposed-not-yet-enforced",
+    "idea": "Before allowing an outer A into a scene family, require overlap with at least one scene-specific tag beyond the generic broad tag 月, or require human semantic approval.",
+    "reason": "All three novel outputs here pass palindrome, local-attestation, and seam checks, yet none reached strong/promising status in v0.40."
+  }
+}
