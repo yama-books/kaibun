@@ -57,6 +57,10 @@ const orthographicEquivalenceV116 = JSON.parse(fs.readFileSync("data/historical-
 const travelSeriesTopologyV117 = JSON.parse(fs.readFileSync("data/travel-series-phrase-topology-v117.json", "utf8"));
 const travelSeriesScholarlyV118 = JSON.parse(fs.readFileSync("data/travel-series-scholarly-topology-v118.json", "utf8"));
 const historicalMiningWave3V119 = JSON.parse(fs.readFileSync("data/historical-mining-wave3-v119.json", "utf8"));
+const historicalMiningWave3V120 = JSON.parse(fs.readFileSync("data/historical-mining-wave3-expansion-v120.json", "utf8"));
+const orthographicEquivalenceV121 = JSON.parse(fs.readFileSync("data/historical-orthographic-equivalence-v121.json", "utf8"));
+const historicalKanaEquivalenceV122 = JSON.parse(fs.readFileSync("data/historical-kana-equivalence-v122.json", "utf8"));
+const wave3FactorAuditV123 = JSON.parse(fs.readFileSync("data/wave3-factor-contact-audit-v123.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -716,6 +720,46 @@ if(v119p121?.graph_value!=="isolated-new-source")errors.push("WAVE3 V119 poem121
 if(v119p122?.shared_B_review?.global_transferability!==false)errors.push("WAVE3 V119 poem122 raw-B contact must remain non-transferable");
 if(historicalMiningWave3V119.summary?.strict_wave3_candidates!==2||historicalMiningWave3V119.summary?.new_positive_family_created!==false||historicalMiningWave3V119.summary?.automatic_acceptance!==0)errors.push("WAVE3 V119 summary drift");
 
+if(historicalMiningWave3V120.version!=="1.20")errors.push(`WAVE3 V120 version mismatch: ${historicalMiningWave3V120.version}`);
+if(historicalMiningWave3V120.baseline_policy?.fixed50_unchanged!==true||historicalMiningWave3V120.baseline_policy?.strict_kana_baseline_unchanged!==true)errors.push("WAVE3 V120 must preserve fixed50/strict baseline");
+if(historicalMiningWave3V120.baseline_policy?.wave2_verified_snapshot!==14||historicalMiningWave3V120.baseline_policy?.wave2_held_snapshot!==5)errors.push("WAVE3 V120 wave2 snapshots drift");
+const v120cases=historicalMiningWave3V120.cases??[];
+const v120p114=v120cases.find(x=>x.source_number===114);
+const v120p115=v120cases.find(x=>x.source_number===115);
+const v120p116=v120cases.find(x=>x.source_number===116);
+const v120p117=v120cases.find(x=>x.source_number===117);
+const v120p118=v120cases.find(x=>x.source_number===118);
+const v120p119=v120cases.find(x=>x.source_number===119);
+if(v120p114?.kana_length!==29||v120p114?.strict_palindrome!==false||v120p114?.status!=="hold-searchable-transcription-incomplete-or-unclear")errors.push("WAVE3 V120 poem114 repair guard drift");
+for(const x of [v120p116,v120p119]){
+  if(!x||x.kana_length!==31||x.strict_palindrome!==true||!isPalindrome(x.conservative_reading))errors.push(`WAVE3 V120 strict candidate drift: ${x?.source_number}`);
+  if(x?.promotion_to_fixed50!==false)errors.push(`WAVE3 V120 fixed50 promotion forbidden: ${x?.source_number}`);
+}
+for(const x of [v120p115,v120p118]){
+  if(!x||x.strict_palindrome!==false||x.all_mismatches_are_o_wo!==true||x.promotion_to_strict_corpus!==false)errors.push(`WAVE3 V120 o/wo case drift: ${x?.source_number}`);
+}
+if(v120p117?.status!=="hold-historical-kana-equivalence"||v120p117?.strict_palindrome_under_historical_kana!==false||v120p117?.palindrome_if_ye_e_folded!==true)errors.push("WAVE3 V120 poem117 historical-kana guard drift");
+if(JSON.stringify(historicalMiningWave3V120.summary?.strict_wave3_candidates)!==JSON.stringify([116,119]))errors.push("WAVE3 V120 strict candidate set drift");
+if(historicalMiningWave3V120.summary?.new_positive_family_created!==false||historicalMiningWave3V120.summary?.automatic_acceptance!==0)errors.push("WAVE3 V120 must not create/accept family");
+
+if(orthographicEquivalenceV121.version!=="1.21")errors.push(`ORTHOGRAPHIC EQ V121 version mismatch: ${orthographicEquivalenceV121.version}`);
+if(orthographicEquivalenceV121.strict_baseline?.changed!==false||orthographicEquivalenceV121.policy?.strict_promotions!==0)errors.push("ORTHOGRAPHIC EQ V121 must preserve strict baseline");
+const v121pos=(orthographicEquivalenceV121.positive_controls??[]).map(x=>x.source_number).sort((a,b)=>a-b).join(",");
+if(v121pos!=="94,115,118")errors.push(`ORTHOGRAPHIC EQ V121 positives drift: ${v121pos}`);
+if(orthographicEquivalenceV121.policy?.public_generator_effect!=="none")errors.push("ORTHOGRAPHIC EQ V121 public effect forbidden");
+
+if(historicalKanaEquivalenceV122.version!=="1.22")errors.push(`HIST KANA V122 version mismatch: ${historicalKanaEquivalenceV122.version}`);
+if(historicalKanaEquivalenceV122.results?.strict_palindrome_historical_kana!==false||historicalKanaEquivalenceV122.results?.palindrome_under_declared_ye_e_fold!==true)errors.push("HIST KANA V122 result drift");
+if(historicalKanaEquivalenceV122.verdict?.strict_baseline_changed!==false||historicalKanaEquivalenceV122.verdict?.automatic_acceptance!==false)errors.push("HIST KANA V122 must remain diagnostic-only");
+
+if(wave3FactorAuditV123.version!=="1.23")errors.push(`WAVE3 FACTOR V123 version mismatch: ${wave3FactorAuditV123.version}`);
+if(wave3FactorAuditV123.summary?.new_factor_contacts_audited!==2||wave3FactorAuditV123.summary?.positive_families_created!==0||wave3FactorAuditV123.summary?.automatic_generator_lanes_created!==0)errors.push("WAVE3 FACTOR V123 summary drift");
+const v123d=(wave3FactorAuditV123.cases??[]).find(x=>x.id==="wave3-116-vs-shoju-055-D-kiyo");
+const v123b=(wave3FactorAuditV123.cases??[]).find(x=>x.id==="wave3-119-vs-shoju-072-B-tsuma");
+if(v123d?.verdict?.status!=="hold-semantic-role-and-scene"||v123d?.verdict?.positive_family!==false)errors.push("WAVE3 FACTOR V123 D=きよ verdict drift");
+if(v123b?.verdict?.status!=="hold-source-specific-morphology"||v123b?.verdict?.positive_family!==false||v123b?.morphology_review?.global_transferability!==false)errors.push("WAVE3 FACTOR V123 B=つま verdict drift");
+if((v123b?.would_be_A_only_candidates??[]).some(x=>x.status!=="hold-source-specific-morphology"))errors.push("WAVE3 FACTOR V123 A-only candidates must remain held");
+
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
 if(rules.rule_count!==rules.rules.length)errors.push(`RULE COUNT mismatch: declared=${rules.rule_count} actual=${rules.rules.length}`);
@@ -776,3 +820,7 @@ console.log(`Orthographic equivalence v1.16: positives=${v116Positive.join(",")|
 console.log(`Travel topology v1.17: phrases=${(travelSeriesTopologyV117.exact_or_embedded_repetitions??[]).length}, best=${travelSeriesTopologyV117.travel_candidate_effect?.current_status}`);
 console.log(`Travel scholarly topology v1.18: verified-repetitions=${(travelSeriesScholarlyV118.verified_series_repetitions??[]).length}, family=${travelSeriesScholarlyV118.family_verdict?.status}`);
 console.log(`Wave3 v1.19: strict=${historicalMiningWave3V119.summary?.strict_wave3_candidates}, held=${historicalMiningWave3V119.summary?.held_visible_cases}`);
+console.log(`Wave3 v1.20: strict=${historicalMiningWave3V120.summary?.strict_wave3_candidates?.join(",")}, o/wo=${historicalMiningWave3V120.summary?.o_wo_diagnostic_candidates?.join(",")}`);
+console.log(`Orthographic v1.21: positives=${v121pos}`);
+console.log(`Historical-kana v1.22: case=${historicalKanaEquivalenceV122.source_case?.source_number}, strict=${historicalKanaEquivalenceV122.results?.strict_palindrome_historical_kana}`);
+console.log(`Wave3 factor audit v1.23: positives=${wave3FactorAuditV123.summary?.positive_families_created}, negatives=${wave3FactorAuditV123.summary?.new_negative_controls}`);
