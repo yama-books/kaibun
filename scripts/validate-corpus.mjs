@@ -126,4 +126,5 @@ console.log(`Layers: L1=${counts.L1}, L2=${counts.L2}, L3=${counts.L3}`);
 console.log(`Recursive sentence space: ${recursiveSentenceCount}`);
 console.log(`Reverse lexeme pairs: ${pairs.pair_count}, variants: ${pairVariants}`);
 console.log(`Stepwise growth variants: ${growthVariants}`);
-console.log(`Narrative growth variants: ${narrativeVariants}`);\nconsole.log(`Sentence-level wrappers: ${sentenceWrapperCount}`);
+console.log(`Narrative growth variants: ${narrativeVariants}`);
+console.log(`Sentence-level wrappers: ${sentenceWrapperCount}`);
