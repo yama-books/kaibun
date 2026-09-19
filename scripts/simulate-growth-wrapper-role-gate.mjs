@@ -4,6 +4,7 @@ const readJson = p => JSON.parse(fs.readFileSync(p, "utf8"));
 
 const growth = readJson("data/growth-engine-v10.json");
 const gate = readJson("data/growth-wrapper-role-gate-v72.json");
+const frozen = readJson("data/growth-wrapper-role-simulation-v73.json");
 
 const ruleById = new Map();
 for (const rule of gate.wrapper_rules ?? []) {
@@ -105,6 +106,17 @@ function check() {
   if (summary.declarative_ask_top5_count !== 0) errors.push(`declarative ask top5 count ${summary.declarative_ask_top5_count}, expected 0`);
   if (summary.non_quote_specialized_top5_count !== 0) errors.push(`non-quote specialized top5 count ${summary.non_quote_specialized_top5_count}, expected 0`);
   if (summary.changed_top5_count < 30) errors.push(`changed top5 count ${summary.changed_top5_count}, expected >=30`);
+  if (frozen.version !== "0.73") errors.push(`frozen simulation version ${frozen.version}, expected 0.73`);
+  for (const key of ["family_count","min_gated_eligible_count","changed_top5_count","declarative_ask_top5_count","non_quote_specialized_top5_count"]) {
+    if (frozen.summary?.[key] !== summary[key]) errors.push(`frozen summary drift ${key}: frozen=${frozen.summary?.[key]} generated=${summary[key]}`);
+  }
+  const frozenByFamily = new Map((frozen.contexts ?? []).map(x => [x.family, x]));
+  for (const ctx of contexts) {
+    const prev = frozenByFamily.get(ctx.family);
+    if (!prev) { errors.push(`missing frozen context: ${ctx.family}`); continue; }
+    if (prev.gated_eligible_count !== ctx.gated_eligible_count) errors.push(`gated pool drift: ${ctx.family}`);
+    if (JSON.stringify(prev.gated_top5) !== JSON.stringify(ctx.gated_top5)) errors.push(`gated top5 drift: ${ctx.family}`);
+  }
 
   if (errors.length) {
     console.error("Growth wrapper role-gate simulation failed:\n" + errors.map(x => "- " + x).join("\n"));
