@@ -2641,3 +2641,69 @@ v0.59データは書き換えていない。
 
 - 歴史回文研究・生成原理: **約88%**
 - 怪文回文メーカー全体目標: **約86%**
+
+
+---
+
+# 34. 2026-09-19 20:17 JST v1.00 CI復旧チェックポイント
+
+## 現在地
+
+hybrid-002 deep review から、
+normalization collision の発見と generator v1.00 guard 実装まで完了した。
+
+主要コミット:
+- v0.99 deep review: `13b79fa3469feaa4bb0bbd8684134d427af6bd63`
+- v1.00 morphology guard: `7f133a9f921c89324c48529c7f16c1415d234e2d`
+- validator syntax fix: `2d2cddadc2b79766ec469709b3986569ecdc9abf`
+
+## CI
+
+v1.00 実装直後:
+- Validate run `35439616626`: failure
+- 原因: `scripts/validate-corpus.mjs` のv0.99読込行に literal `\\n` が1箇所混入
+- 研究ロジック / fixture 不整合ではない
+- 同headの Pages run `35439616625`: success
+
+修正後:
+- Validate run `35439669508`: **success**
+- Pages run `35439669461`: **success**
+- head: `2d2cddadc2b79766ec469709b3986569ecdc9abf`
+
+既知の未解決コードエラーはない。
+
+## 現行 generator
+
+- v0.59 historical snapshot: 12 candidate
+- v1.00 current guarded universe: **10 candidate**
+- normalization collision hold: hybrid-002 / hybrid-017
+- deep-review-supported: hybrid-016 / hybrid-019
+- scene mismatch controls: 8
+
+## 研究上の重要更新
+
+回文正規化keyと morphology node を分離する。
+
+特に:
+- `みづ（水）→みつ` の正規化
+- 元から `みつ` と転写される別形態
+
+を、normalized kana一致だけで同一Dとしない。
+
+これは central-E-swap だけでなく、
+今後の historical crossover 全体へ適用する原則とする。
+
+## 進捗目安
+
+- 歴史回文研究・生成原理: **約88%**
+- 怪文回文メーカー全体目標: **約86%**
+
+## 次
+
+31節で定めた優先順位へ戻り、
+次は **Route A source-image verification 再試行**。
+
+優先対象:
+1. shoju-068「釈教」の原資料/画像で `みつの世の` 周辺を確認
+2. D=`みつ` の語義・形態を、画像から確認できる範囲と解釈を分離して記録
+3. 確認不能なら v0.99 hold を維持し、次positive family探索へ進む
