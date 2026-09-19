@@ -6,6 +6,7 @@ const isPalindrome = s => s === reverse(s);
 
 const microgrammar = readJson("data/autumn-moon-microgrammar-v46.json");
 const contract = readJson("data/historical-generator-contract-v58.json");
+const frozenFixture = readJson("data/generated-scene-microgrammar-v60.json");
 
 function assemble({ A, B, C, D, E }) {
   const reading = A + B + C + D + E + reverse(D) + reverse(C) + reverse(B) + reverse(A);
@@ -92,6 +93,18 @@ function check() {
   const expectedIds = (microgrammar.outputs ?? []).map(x => x.id).sort();
   if (ids.join(",") !== expectedIds.join(",")) {
     errors.push(`output IDs differ from v0.46: generated=${ids.join(",")} expected=${expectedIds.join(",")}`);
+  }
+
+  const frozenIds = (frozenFixture.candidates ?? []).map(x => x.id).sort();
+  if (frozenFixture.version !== "0.60") errors.push(`frozen fixture version is ${frozenFixture.version}, expected 0.60`);
+  if (frozenFixture.candidate_count !== output.candidate_count) errors.push(`frozen fixture count ${frozenFixture.candidate_count}, generated ${output.candidate_count}`);
+  if (frozenIds.join(",") !== ids.join(",")) errors.push(`frozen IDs differ: frozen=${frozenIds.join(",")} generated=${ids.join(",")}`);
+  const frozenById = new Map((frozenFixture.candidates ?? []).map(x => [x.id, x]));
+  for (const candidate of generated) {
+    const frozen = frozenById.get(candidate.id);
+    if (!frozen) continue;
+    if (frozen.reading !== candidate.reading) errors.push(`frozen reading drift: ${candidate.id}`);
+    if (JSON.stringify(frozen.gate_trace) !== JSON.stringify(candidate.gate_trace)) errors.push(`frozen gate trace drift: ${candidate.id}`);
   }
 
   for (const candidate of generated) {
