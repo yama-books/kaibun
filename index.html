@@ -60,7 +60,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 <div class="wrap">
 <header>
   <div><h1>怪文回文メーカー</h1><div class="sub">まず、日本語として通す。そこから一段ずつ、鏡の奥へ伸ばす。</div></div>
-  <div class="badge">v0.30 / 品質バランスDNA</div>
+  <div class="badge">v0.31 / 品質バランス比較</div>
 </header>
 
 <div class="card">
@@ -147,7 +147,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 </div>
 
 <script>
-let data=null,rules=null,pairs=null,growth=null,seams=null,bridge=null,bridgeExposure=null,growthRoleGate=null,growthRolePublic=null,readingHints=null,dnaExposure=null,layer="L1",seen=new Set(),currentShown=null;
+let data=null,rules=null,pairs=null,growth=null,seams=null,bridge=null,bridgeExposure=null,growthRoleGate=null,growthRolePublic=null,readingHints=null,dnaExposure=null,tenBalance=null,layer="L1",seen=new Set(),currentShown=null;
 let growthState={mode:"structural",dimension:"all",familyId:null,stage:0,lastCenter:null,history:{}};
 
 const $=s=>document.querySelector(s);
@@ -155,7 +155,7 @@ const rev=s=>[...s].reverse().join("");
 const isPal=s=>s===rev(s);
 
 async function init(){
-  [data,rules,pairs,growth,seams,bridge,bridgeExposure,growthRoleGate,growthRolePublic,readingHints,dnaExposure]=await Promise.all([
+  [data,rules,pairs,growth,seams,bridge,bridgeExposure,growthRoleGate,growthRolePublic,readingHints,dnaExposure,tenBalance]=await Promise.all([
     fetch("./data/layered-seeds-v08.json").then(r=>r.json()),
     fetch("./data/generation-rules-v08.json").then(r=>r.json()),
     fetch("./data/reverse-lexeme-pairs-v09.json").then(r=>r.json()),
@@ -166,7 +166,8 @@ async function init(){
     fetch("./data/growth-wrapper-role-gate-v72.json").then(r=>r.json()),
     fetch("./data/growth-wrapper-role-public-v74.json").then(r=>r.json()),
     fetch("./data/public-reading-hints-v82.json").then(r=>r.json()),
-    fetch("./data/dna-kinship-exposure-policy-v84.json").then(r=>r.json())
+    fetch("./data/dna-kinship-exposure-policy-v84.json").then(r=>r.json()),
+    fetch("./data/ten-comparison-balance-policy-v86.json").then(r=>r.json())
   ]);
   $("#c1").textContent=data.counts.L1+"本";
   $("#c2").textContent=data.counts.L2+"本";
@@ -477,6 +478,53 @@ function chooseFresh(p){
   const x=q[Math.floor(Math.random()*q.length)];
   seen.add(x.reading);
   return x;
+}
+function takeRandomUnused(source,count,used){
+  const available=uniqueByReading(source).filter(x=>!used.has(x.reading));
+  const out=[];
+  while(out.length<count&&available.length){
+    const i=Math.floor(Math.random()*available.length);
+    const x=available.splice(i,1)[0];
+    if(used.has(x.reading))continue;
+    used.add(x.reading);out.push(x);
+  }
+  return out;
+}
+function shuffleItems(items){
+  const a=[...items];
+  for(let i=a.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+function tenComparisonItems(){
+  const seeds=pool().map(x=>({...x,origin:"原種"}));
+  const dna=dnaPool(true);
+  const seamsForCompare=seamPool();
+  const combined=uniqueByReading([...seeds,...dna,...seamsForCompare]);
+  if(layer!=="L1")return takeRandomUnused(combined,10,new Set());
+
+  const recursiveReadings=new Set(recursivePool().map(x=>x.reading));
+  const nonrecursive=x=>!recursiveReadings.has(x.reading);
+  const byId={
+    "seed-nonrecursive":seeds.filter(nonrecursive),
+    "nonrecursive-dna":dna.filter(nonrecursive),
+    "recursive-kinship":dna.filter(x=>recursiveReadings.has(x.reading)),
+    "seam-and-bridge-nonrecursive":seamsForCompare.filter(nonrecursive)
+  };
+  const used=new Set(),selected=[];
+  for(const q of tenBalance?.quotas||[]){
+    selected.push(...takeRandomUnused(byId[q.id]||[],q.count||0,used));
+  }
+  if(selected.length<10){
+    const fallback=combined.filter(x=>nonrecursive(x));
+    selected.push(...takeRandomUnused(fallback,10-selected.length,used));
+  }
+  if(selected.length<10){
+    selected.push(...takeRandomUnused(combined,10-selected.length,used));
+  }
+  return shuffleItems(selected.slice(0,10));
 }
 function show(x){
   if(!x){$("#result").textContent="この条件では候補がありません。";return}
@@ -795,15 +843,12 @@ $("#growAgain").onclick=growAgain;
 $("#growBack").onclick=growBack;
 $("#ten").onclick=()=>{
   const box=$("#list");box.innerHTML="";
-  const p=uniqueByReading([...pool().map(x=>({...x,origin:"原種"})),...dnaPool(true),...seamPool()]);
-  const used=new Set();
-  for(let i=0;i<10&&used.size<p.length;i++){
-    let x;do{x=p[Math.floor(Math.random()*p.length)]}while(used.has(x.reading));
-    used.add(x.reading);
+  const items=tenComparisonItems();
+  items.forEach((x,i)=>{
     const e=document.createElement("div");e.className="item";
     e.innerHTML=(i+1)+". "+x.display+"<br><small>"+(x.origin||x.subgroup||"原種")+" / 日本語 "+(x.japanese_quality||"-")+" / 怪文 "+(x.weirdness??defaultWeird(layer))+"</small>";
     e.onclick=()=>show(x);box.appendChild(e);
-  }
+  });
 };
 
 init().catch(e=>{$("#result").textContent="データ読込失敗";console.error(e)});
