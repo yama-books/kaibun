@@ -30,7 +30,8 @@ const required = [
   "./data/public-bridge-exposure-policy-v70.json",
   "./data/growth-wrapper-role-gate-v72.json",
   "./data/growth-wrapper-role-public-v74.json",
-  "./data/public-reading-hints-v82.json"
+  "./data/public-reading-hints-v82.json",
+  "./data/dna-kinship-exposure-policy-v84.json"
 ];
 for (const id of ["lengthMeta","wrapMeta","readingHintMeta"]) {
   if (!html.includes(`id="${id}"`)) {
@@ -67,6 +68,15 @@ for (const fn of ["activeReadingHints","syncReadingHint"]) {
 if (!html.includes('syncReadingHint(x);')) {
   failed = true;
   console.error("show() does not synchronize reading hints");
+}
+
+if (!html.includes("recursive_probability_cap")) {
+  failed = true;
+  console.error("index.html does not apply DNA kinship exposure policy");
+}
+if (!html.includes("const recursiveReadings=new Set(recursivePool().map(x=>x.reading));")) {
+  failed = true;
+  console.error("dnaOne() does not classify recursive readings via recursivePool()");
 }
 
 if (!html.includes("function standardSeamPool()")) {
@@ -132,6 +142,16 @@ if (readingHints.version !== "0.82") {
 if ((readingHints.lexemes ?? []).length !== 2) {
   failed = true;
   console.error("Unexpected public reading hint lexeme count: " + (readingHints.lexemes ?? []).length);
+}
+
+const dnaExposure = JSON.parse(fs.readFileSync("data/dna-kinship-exposure-policy-v84.json", "utf8"));
+if (dnaExposure.version !== "0.84") {
+  failed = true;
+  console.error("Unexpected DNA kinship exposure policy version: " + dnaExposure.version);
+}
+if (dnaExposure.policy?.recursive_probability_cap !== 0.25) {
+  failed = true;
+  console.error("Unexpected DNA kinship exposure cap: " + dnaExposure.policy?.recursive_probability_cap);
 }
 
 if (failed) process.exit(1);
