@@ -1,0 +1,118 @@
+{
+  "version": "1.11",
+  "updated_on": "2026-09-20",
+  "title": "Fixed50 + wave2 factor-graph expansion audit",
+  "purpose": "Test whether adding the 14 wave2 verified audio strings creates a new low-risk operation or a new same-title family beyond the already identified travel A-only lane.",
+  "scope": {
+    "fixed_sources": 50,
+    "wave2_verified_sources": 14,
+    "wave2_held_sources_excluded": 5,
+    "wave2_integrated_into_fixed_baseline": false,
+    "research_graph_only": true
+  },
+  "method": {
+    "factorization": "A5/B2/C5/D2/E3",
+    "edge_types": ["AB","BC","CD","DE"],
+    "enumeration": "Enumerate paths whose four adjacent factor edges are attested in at least one fixed50 or wave2-verified source.",
+    "exclude": "Exact historical source paths are excluded from novel candidates.",
+    "distance_audit": "For each novel path involving wave2 provenance, compute minimum A/B/C/D/E Hamming distance from all 64 research sources."
+  },
+  "counts": {
+    "all_novel_paths_in_combined_graph": 90,
+    "novel_paths_involving_wave2_provenance": 48,
+    "fixed50_hybrid_paths_reappearing_with_wave2_provenance": 9,
+    "genuinely_new_paths_beyond_v035": 39,
+    "wave2_involving_min_distance_1": 35,
+    "wave2_involving_min_distance_2": 13,
+    "wave2_involving_min_distance_greater_than_2": 0
+  },
+  "minimum_distance_patterns": {
+    "distance_1": {
+      "A": 24,
+      "E": 11,
+      "B": 0,
+      "C": 0,
+      "D": 0
+    },
+    "distance_2": {
+      "A+E": 12,
+      "D+E": 1,
+      "B+C": 1
+    }
+  },
+  "key_findings": [
+    {
+      "id": "single-factor-operation-saturation-persists",
+      "finding": "Even after adding all 14 wave2 verified audio strings, every minimum-distance-1 novel path is still either A-only or E-only.",
+      "implication": "Wave2 does not provide empirical support for enabling B-only, C-only, or D-only operations."
+    },
+    {
+      "id": "travel-remains-unique-same-title-min1-pair",
+      "finding": "At title-level scene resolution, the only new same-title minimum-distance-1 pair is the two directed A-only swaps between travel poems 90 and 93.",
+      "candidate_keys": [
+        "ともかくも|まは|るなりいま|みか|きよき",
+        "やとちかく|まは|るなかたひ|きよ|くゆく"
+      ],
+      "implication": "v1.07's selection of wave2-travel-maha remains the unique narrow-scene priority produced by the combined graph."
+    },
+    {
+      "id": "two-factor-new-operations-not-justified",
+      "finding": "The only distance-2 patterns are A+E, D+E, and B+C; no evidence establishes a new safe same-scene operation from these paths.",
+      "implication": "Do not expand the generator contract to block swaps merely because graph paths exist."
+    }
+  ],
+  "operation_status_after_wave2": [
+    {
+      "operation": "A-only outer-frame swap",
+      "status": "empirically supported",
+      "note": "Includes v1.08 travel research fixture."
+    },
+    {
+      "operation": "E-only central pivot swap",
+      "status": "empirically supported-with-morphology-guard",
+      "note": "v1.00-v1.01 correction remains mandatory."
+    },
+    {
+      "operation": "B-only",
+      "status": "no-empirical-min1-path",
+      "enable": false
+    },
+    {
+      "operation": "C-only",
+      "status": "no-empirical-min1-path",
+      "enable": false
+    },
+    {
+      "operation": "D-only",
+      "status": "no-empirical-min1-path",
+      "enable": false
+    },
+    {
+      "operation": "B+C block",
+      "status": "graph-path-exists-but-no-safe-family",
+      "enable": false
+    },
+    {
+      "operation": "D+E block",
+      "status": "graph-path-exists-but-no-safe-family",
+      "enable": false
+    }
+  ],
+  "bottleneck_update": {
+    "previous": "Could a missing low-risk operation reveal a third family?",
+    "current": "No evidence for a missing low-risk operation in fixed50 or fixed50+wave2 verified graph.",
+    "next_bottleneck": "source coverage / source confirmation",
+    "required_to_advance": [
+      "direct target-poem evidence that resolves musu or travel holds",
+      "or newly verified historical poems that create a genuinely new narrow-scene factor lane"
+    ]
+  },
+  "policy": {
+    "general_factor_crossover_enabled": false,
+    "fixed50_unchanged": true,
+    "wave2_stays_pending_integration": true,
+    "operation_contract_expansion": false,
+    "public_ui_unchanged": true
+  },
+  "next_action": "Shift active research from operation invention to historically verified corpus expansion/source confirmation."
+}
