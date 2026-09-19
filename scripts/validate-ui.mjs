@@ -26,13 +26,23 @@ const required = [
   "./data/reverse-lexeme-pairs-v09.json",
   "./data/growth-engine-v10.json",
   "./data/seam-grammar-v25.json",
-  "./data/modern-bridge-public-v69.json"
+  "./data/modern-bridge-public-v69.json",
+  "./data/public-bridge-exposure-policy-v70.json"
 ];
 for (const id of ["lengthMeta","wrapMeta"]) {
   if (!html.includes(`id="${id}"`)) {
     failed = true;
     console.error("index.html is missing runtime metadata element: " + id);
   }
+}
+
+if (!html.includes("function standardSeamPool()")) {
+  failed = true;
+  console.error("index.html is missing standardSeamPool()");
+}
+if (!html.includes("bridge_probability_cap")) {
+  failed = true;
+  console.error("index.html does not apply bridge exposure policy");
 }
 
 if (!html.includes("function bridgePool()")) {
@@ -54,6 +64,16 @@ for (const ref of required) {
     failed = true;
     console.error("index.html does not reference expected data file: " + ref);
   }
+}
+
+const exposure = JSON.parse(fs.readFileSync("data/public-bridge-exposure-policy-v70.json", "utf8"));
+if (exposure.version !== "0.70") {
+  failed = true;
+  console.error("Unexpected bridge exposure policy version: " + exposure.version);
+}
+if (exposure.policy?.bridge_probability_cap !== 0.15) {
+  failed = true;
+  console.error("Unexpected bridge exposure policy cap: " + exposure.policy?.bridge_probability_cap);
 }
 
 if (failed) process.exit(1);
