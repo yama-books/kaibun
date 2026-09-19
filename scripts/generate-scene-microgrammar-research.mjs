@@ -7,6 +7,7 @@ const isPalindrome = s => s === reverse(s);
 const microgrammar = readJson("data/autumn-moon-microgrammar-v46.json");
 const contract = readJson("data/historical-generator-contract-v58.json");
 const frozenFixture = readJson("data/generated-scene-microgrammar-v60.json");
+const commonSchema = readJson("data/historical-research-candidate-schema-v61.json");
 
 function assemble({ A, B, C, D, E }) {
   const reading = A + B + C + D + E + reverse(D) + reverse(C) + reverse(B) + reverse(A);
@@ -67,6 +68,45 @@ for (const A of microgrammar.variable_factors?.A ?? []) {
           status: fixture.prior_review?.status ?? "source-member",
         },
       },
+      host_source_id: A.source_id,
+      donor_source_ids: [...new Set([
+        ...(A.source_id ? [A.source_id] : []),
+        ...(E.source_id ? [E.source_id] : []),
+        ...(microgrammar.fixed_factors?.B?.source_ids ?? []),
+        ...(microgrammar.fixed_factors?.C?.source_ids ?? []),
+        ...(microgrammar.fixed_factors?.D?.source_ids ?? []),
+      ])].filter(id => id && id !== A.source_id),
+      attestation_trace: {
+        all_neighbor_connections_attested: true,
+        phrase_attested: true,
+        source_microgrammar: "v0.46",
+      },
+      morphology_trace: {
+        fixed_corridor: ["B","C","D"],
+        B_seam: microgrammar.fixed_factors?.B?.seam ?? null,
+        D_seam: microgrammar.fixed_factors?.D?.seam ?? null,
+      },
+      scene_trace: {
+        status: "reviewed-family",
+        scene_id: microgrammar.scene?.id,
+        evidence_basis: microgrammar.scene?.evidence_basis,
+      },
+      semantic_role_trace: {
+        status: fixture.prior_review?.semantic_coherence === "high" ? "compatible-by-reviewed-context" : "review-needed",
+        basis: fixture.prior_review?.semantic_coherence ?? null,
+      },
+      source_confidence_trace: {
+        host: "mining",
+        donors: "mining",
+        source_image_needed: true,
+      },
+      review_status:
+        fixture.kind === "historical-source"
+          ? "historical-source"
+          : fixture.prior_review?.status === "strong-promising"
+            ? "deep-review-supported"
+            : fixture.prior_review?.status ?? "deep-review-needed",
+      cautions: [],
     });
   }
 }
@@ -86,6 +126,7 @@ const output = {
 function check() {
   const errors = [];
   if (contract.version !== "0.58") errors.push(`contract version is ${contract.version}, expected 0.58`);
+  if (commonSchema.version !== "0.61") errors.push(`common schema version is ${commonSchema.version}, expected 0.61`);
   if (microgrammar.version !== "0.46") errors.push(`microgrammar version is ${microgrammar.version}, expected 0.46`);
   if (output.candidate_count !== 4) errors.push(`candidate count ${output.candidate_count}, expected 4`);
 
@@ -108,6 +149,7 @@ function check() {
   }
 
   for (const candidate of generated) {
+    for (const field of commonSchema.candidate_required_fields ?? []) if (!(field in candidate)) errors.push(`missing common-schema field ${field}: ${candidate.id}`);
     if (!candidate.strict_palindrome) errors.push(`non-palindrome: ${candidate.id}`);
     if ((candidate.meter ?? []).map(x => [...x].length).join(",") !== "5,7,5,7,7") {
       errors.push(`meter mismatch: ${candidate.id}`);
