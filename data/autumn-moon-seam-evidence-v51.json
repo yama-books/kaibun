@@ -1,0 +1,112 @@
+{
+  "version": "0.51",
+  "title": "Source-transcription evidence for unclassified autumn/moon seams",
+  "purpose": "Record what external transcriptions actually support for B=たま, D=むす, and D=こた without converting plausible segmentations into source-image-confirmed facts.",
+  "evidence_policy": {
+    "source_image_checked": false,
+    "academic_transcription_mirror": "Yamauchi 1974 article text mirrored/indexed on 123deta",
+    "independent_secondary_for_shoju031": "KOTONOHA classical palindrome list",
+    "promotion_rule": "Transcription evidence may refine a hold status, but source-image confirmation and semantic review remain distinct.",
+    "no_palindrome_driven_repair": true
+  },
+  "findings": [
+    {
+      "id": "evidence:B:たま",
+      "queue_id": "review:B:たま",
+      "source_id": "shoju-031",
+      "title": "同（露）",
+      "surfaced_text": {
+        "yamauchi_mirror": "やとるつゆ 玉は軒端の 葉にしけし 庭のはきのは またゆつるとや",
+        "independent_secondary": "宿る露 玉は軒端の葉に繁し 庭の萩の葉 またゆず(づ)るとや"
+      },
+      "supported": [
+        "Forward B reading たま corresponds to explicit 玉 in both surfaced transcriptions.",
+        "The following は belongs after 玉 and therefore lies on the C side of the A/B/C lattice split.",
+        "Reverse reading また is visible as a separate surface sequence in the latter half."
+      ],
+      "not_supported": [
+        "A globally transferable morphology for every また occurrence.",
+        "A single lexical category/meaning for reverse また across the corpus.",
+        "Source-image confirmation."
+      ],
+      "proposed_signature": {
+        "forward_parse": "玉",
+        "reverse_parse": "また（surface token; function not globally fixed）",
+        "signature": "lexical-noun -> source-specific independent-surface-token",
+        "confidence": "medium-transcription-supported",
+        "transferable": "conditional-source-specific"
+      },
+      "queue_effect": "Can move from raw-unclassified to source-specific conditional review; do not merge with blocked B2=また signature from other poems."
+    },
+    {
+      "id": "evidence:D:むす",
+      "queue_id": "review:D:むす",
+      "source_id": "shoju-add-109",
+      "title": "嫁娘見月",
+      "surfaced_text": {
+        "yamauchi_mirror": "なかよさの 来つるみそらは むすめよめ すむはらそ見る つきのさ夜かな"
+      },
+      "supported": [
+        "The source title explicitly contains 嫁娘見月 and the central reading is surfaced as むすめよめ.",
+        "D=むす lies inside the surfaced lexical sequence むすめ.",
+        "Reverse D=すむ appears at the beginning of the following mirrored phrase すむはらそ見る."
+      ],
+      "not_supported": [
+        "The kanji or exact lexical analysis of reverse すむ.",
+        "A claim that むす↔すむ is transferable outside the shoju-add-109 corridor.",
+        "Source-image confirmation."
+      ],
+      "proposed_signature": {
+        "forward_parse": "むす…（inside surfaced むすめ; title supports 娘 context）",
+        "reverse_parse": "すむ…（independent phrase onset; lexical analysis unresolved）",
+        "signature": "word-internal noun onset -> source-specific phrase onset",
+        "confidence": "medium-transcription-supported",
+        "transferable": "conditional-source-specific"
+      },
+      "queue_effect": "Three affected hybrids may be advanced to a source-specific semantic-review queue only if the central corridor remains inherited from shoju-add-109; no global seam promotion."
+    },
+    {
+      "id": "evidence:D:こた",
+      "queue_id": "review:D:こた",
+      "source_id": "shoju-038",
+      "title": "田毎月",
+      "surfaced_text": {
+        "yamauchi_mirror": "なかきよの きつるみちもと こたしろし 田こともちみる 月のよきかな"
+      },
+      "supported": [
+        "Reverse D=たこ begins with explicit 田 followed by the next surfaced kana sequence こ..., so the mirrored D crosses a lexical boundary.",
+        "The source title is 田毎月 and the fourth phrase begins with explicit 田 in the surfaced transcription."
+      ],
+      "not_supported": [
+        "A reliable forward lexical parse for こた inside こたしろし.",
+        "Whether the following こ belongs to 毎/ごと under devoicing or another segmentation without source-image checking.",
+        "Transferability."
+      ],
+      "proposed_signature": {
+        "forward_parse": "unresolved within こたしろし",
+        "reverse_parse": "田 + following onset こ…",
+        "signature": "unresolved-forward -> noun-plus-following-onset boundary shift",
+        "confidence": "partial-transcription-supported",
+        "transferable": false
+      },
+      "queue_effect": "Remains held. The reverse boundary is clearer, but forward morphology is still insufficient for crossover."
+    }
+  ],
+  "summary": {
+    "fully_resolved_for_global_transfer": 0,
+    "source_specific_conditional": 2,
+    "remains_blocked": 1,
+    "source_specific_conditional_ids": [
+      "evidence:B:たま",
+      "evidence:D:むす"
+    ],
+    "blocked_ids": [
+      "evidence:D:こた"
+    ]
+  },
+  "next_actions": [
+    "Keep D=こた as the highest-value unresolved morphology problem because it blocks three candidates.",
+    "For B=たま and D=むす, create a separate source-specific candidate-review lane rather than changing v0.36 global seam rules.",
+    "Seek source image or another independent transcription before upgrading reverse また/すむ lexical functions."
+  ]
+}
