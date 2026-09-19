@@ -60,7 +60,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 <div class="wrap">
 <header>
   <div><h1>怪文回文メーカー</h1><div class="sub">まず、日本語として通す。そこから一段ずつ、鏡の奥へ伸ばす。</div></div>
-  <div class="badge">v0.32 / 品質バランス比較</div>
+  <div class="badge">v0.33 / 長文化ナビ整理</div>
 </header>
 
 <div class="card">
@@ -147,7 +147,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 </div>
 
 <script>
-let data=null,rules=null,pairs=null,growth=null,seams=null,bridge=null,bridgeExposure=null,growthRoleGate=null,growthRolePublic=null,readingHints=null,dnaExposure=null,tenBalance=null,l2TenPolicy=null,layer="L1",seen=new Set(),currentShown=null;
+let data=null,rules=null,pairs=null,growth=null,seams=null,bridge=null,bridgeExposure=null,growthRoleGate=null,growthRolePublic=null,readingHints=null,dnaExposure=null,tenBalance=null,l2TenPolicy=null,growthSelectorPolicy=null,layer="L1",seen=new Set(),currentShown=null;
 let growthState={mode:"structural",dimension:"all",familyId:null,stage:0,lastCenter:null,history:{}};
 
 const $=s=>document.querySelector(s);
@@ -155,7 +155,7 @@ const rev=s=>[...s].reverse().join("");
 const isPal=s=>s===rev(s);
 
 async function init(){
-  [data,rules,pairs,growth,seams,bridge,bridgeExposure,growthRoleGate,growthRolePublic,readingHints,dnaExposure,tenBalance,l2TenPolicy]=await Promise.all([
+  [data,rules,pairs,growth,seams,bridge,bridgeExposure,growthRoleGate,growthRolePublic,readingHints,dnaExposure,tenBalance,l2TenPolicy,growthSelectorPolicy]=await Promise.all([
     fetch("./data/layered-seeds-v08.json").then(r=>r.json()),
     fetch("./data/generation-rules-v08.json").then(r=>r.json()),
     fetch("./data/reverse-lexeme-pairs-v09.json").then(r=>r.json()),
@@ -168,7 +168,8 @@ async function init(){
     fetch("./data/public-reading-hints-v82.json").then(r=>r.json()),
     fetch("./data/dna-kinship-exposure-policy-v84.json").then(r=>r.json()),
     fetch("./data/ten-comparison-balance-policy-v86.json").then(r=>r.json()),
-    fetch("./data/l2-ten-comparison-policy-v93.json").then(r=>r.json())
+    fetch("./data/l2-ten-comparison-policy-v93.json").then(r=>r.json()),
+    fetch("./data/growth-selector-usability-policy-v95.json").then(r=>r.json())
   ]);
   $("#c1").textContent=data.counts.L1+"本";
   $("#c2").textContent=data.counts.L2+"本";
@@ -605,10 +606,12 @@ function populateGrowthDimensions(){
     sel.disabled=true;growthState.dimension="all";return;
   }
   sel.disabled=false;
-  const dims=[...new Set(narrativeFamiliesForLayer().map(f=>f.dimension||"物語"))];
-  const all=document.createElement("option");all.value="all";all.textContent="すべて";sel.appendChild(all);
+  const families=narrativeFamiliesForLayer();
+  const dims=[...new Set(families.map(f=>f.dimension||"物語"))];
+  const all=document.createElement("option");all.value="all";all.textContent="すべて ("+families.length+")";sel.appendChild(all);
   for(const d of dims){
-    const o=document.createElement("option");o.value=d;o.textContent=d;sel.appendChild(o);
+    const count=families.filter(f=>(f.dimension||"物語")===d).length;
+    const o=document.createElement("option");o.value=d;o.textContent=d+" ("+count+")";sel.appendChild(o);
   }
   if(!["all",...dims].includes(growthState.dimension))growthState.dimension="all";
   sel.value=growthState.dimension;
@@ -617,16 +620,37 @@ function resetGrowthHistory(){
   growthState.history={};growthState.stage=0;growthState.lastCenter=null;
   renderGrowthTrail();updateGrowthStageLabel();
 }
+function compactGrowthFamilyLabel(f){
+  let label=f.label||f.id;
+  const prefix=(f.dimension||"物語")+"：";
+  if(label.startsWith(prefix))label=label.slice(prefix.length);
+  return label+" · "+(f.stages?.length||1)+"段";
+}
+function appendGrowthFamilyOption(parent,f){
+  const o=document.createElement("option");
+  o.value=f.id;
+  o.textContent=growthState.mode==="narrative"?compactGrowthFamilyLabel(f):f.stage0[1].replace("。","");
+  parent.appendChild(o);
+}
 function populateGrowthFamilies(){
   const list=growthFamilies();
+  const previous=growthState.familyId;
   const sel=$("#growthFamily");sel.innerHTML="";
-  for(const f of list){
-    const o=document.createElement("option");
-    o.value=f.id;
-    o.textContent=growthState.mode==="narrative"?"["+(f.dimension||"物語")+"] "+f.label:f.stage0[1].replace("。","");
-    sel.appendChild(o);
+  if(growthState.mode==="narrative"&&growthState.dimension==="all"){
+    const dims=[...new Set(list.map(f=>f.dimension||"物語"))];
+    for(const d of dims){
+      const group=list.filter(f=>(f.dimension||"物語")===d);
+      const optgroup=document.createElement("optgroup");
+      optgroup.label=d+" ("+group.length+")";
+      for(const f of group)appendGrowthFamilyOption(optgroup,f);
+      sel.appendChild(optgroup);
+    }
+  }else{
+    for(const f of list)appendGrowthFamilyOption(sel,f);
   }
-  growthState.familyId=list[0]?.id||null;
+  growthState.familyId=list.some(f=>f.id===previous)?previous:(list[0]?.id||null);
+  if(growthState.familyId)sel.value=growthState.familyId;
+  sel.title=list.length+"系統 / "+(growthState.dimension==="all"?"分類別に表示":growthState.dimension);
   resetGrowthHistory();
 }
 function growthFamily(){
@@ -640,12 +664,17 @@ function updateGrowthStageLabel(){
   const max=growthMaxStage();
   const wrapped=currentShown?.wrap_depth||0;
   $("#growthStage").textContent=wrapped>0?"外枠 "+wrapped+"段":"段階 "+growthState.stage+" / "+max;
-  const available=growthFamilies().length>0;
+  const families=growthFamilies();
+  const available=families.length>0;
   const canWrap=(layer!=="L3"||wrapped>0)&&autoCompatibleSentenceWrappers().length>0;
+  const current=(currentShown?.growth_mode===growthState.mode&&currentShown?.growth_family===growthState.familyId)?(currentShown.growth_stage??growthState.stage):growthState.stage;
+  const canReroll=growthState.mode==="structural"
+    ? layer==="L1"&&available&&wrapped===0
+    : wrapped===0&&families.some(f=>f.id!==growthState.familyId&&(f.stages?.length||0)>current);
   $("#growOne").disabled=!available&&!canWrap;
   $("#growBack").disabled=wrapped>0?!currentShown?.wrapped_from:(!available||growthState.stage<=0);
   $("#growthStart").disabled=!available;
-  $("#growAgain").disabled=wrapped>0||!available;
+  $("#growAgain").disabled=!canReroll;
   $("#growOne").textContent=wrapped>0?"さらに1段包む":(available&&growthState.stage>=max&&canWrap?"文を外側へ伸ばす":"1段伸ばす");
   $("#growBack").textContent=wrapped>0?"外枠を1段戻す":"1段戻す";
   for(const id of ["growthStart","growOne","growAgain","growBack"])$("#"+id).style.opacity=$("#"+id).disabled?".38":"1";
@@ -729,16 +758,18 @@ function growBack(){
   show(makeGrowth(Math.max(0,current-1)));
 }
 function growAgain(){
-  if(layer!=="L1")return;
+  if(currentShown?.wrap_depth>0)return;
   const current=(currentShown?.growth_mode===growthState.mode&&currentShown?.growth_family===growthState.familyId)?(currentShown.growth_stage??growthState.stage):growthState.stage;
-  if(growthState.mode==="structural"){show(makeGrowth(current,true));return}
-  const eligible=growthFamilies().filter(f=>f.id!==growthState.familyId&&f.stages.length>current);
-  if(eligible.length){
-    const f=eligible[Math.floor(Math.random()*eligible.length)];
-    growthState.familyId=f.id;$("#growthFamily").value=f.id;
-    resetGrowthHistory();
-    for(let st=0;st<=Math.min(current,growthMaxStage());st++)makeNarrativeGrowth(st);
+  if(growthState.mode==="structural"){
+    if(layer!=="L1")return;
+    show(makeGrowth(current,true));return;
   }
+  const eligible=growthFamilies().filter(f=>f.id!==growthState.familyId&&f.stages.length>current);
+  if(!eligible.length)return;
+  const f=eligible[Math.floor(Math.random()*eligible.length)];
+  growthState.familyId=f.id;$("#growthFamily").value=f.id;
+  resetGrowthHistory();
+  for(let st=0;st<=Math.min(current,growthMaxStage());st++)makeNarrativeGrowth(st);
   show(growthState.history[Math.min(current,growthMaxStage())]||makeGrowth(Math.min(current,growthMaxStage())));
 }
 
