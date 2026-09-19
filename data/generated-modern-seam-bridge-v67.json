@@ -1,0 +1,467 @@
+{
+  "version": "0.67",
+  "bridge_contract_version": "0.65",
+  "semantic_matrix_version": "0.66",
+  "seam_grammar_version": "0.26",
+  "candidate_count": 13,
+  "summary": {
+    "accepted": 7,
+    "review_needed": 1,
+    "hold_semantic_role": 5
+  },
+  "candidates": [
+    {
+      "id": "modern-loan-garden-croc",
+      "operation": "curated-shell-substitution",
+      "frame": "loan",
+      "inner_shell": "garden-croc",
+      "head": "ワニ",
+      "head_category": "animal",
+      "reading": "たしかににわのわににかした",
+      "display": "確かに庭のワニに貸した。",
+      "strict_palindrome": true,
+      "shell_trace": [
+        "garden-croc",
+        "ni-hinge",
+        "certain-loan"
+      ],
+      "existing_recipe_id": null,
+      "is_new": true,
+      "semantic_role_trace": {
+        "frame_role": "recipient",
+        "head_category": "animal",
+        "outcome": "accepted"
+      },
+      "provenance": {
+        "seam_grammar_version": "0.26",
+        "semantic_matrix_version": "0.66",
+        "lexeme_policy": "existing-shells-only"
+      },
+      "review_status": "accepted",
+      "public_candidate": {
+        "display": "確かに庭のワニに貸した。",
+        "reading": "たしかににわのわににかした",
+        "family": "研究由来DNA",
+        "origin": "BRIDGE:SEAM:loan:garden-croc",
+        "why": "庭のワニの中心語「ワニ」を貸借の受け手として許可した新規回文。",
+        "japanese_quality": "A",
+        "weirdness": 3,
+        "layer": "L1"
+      }
+    },
+    {
+      "id": "modern-loan-house-ray",
+      "operation": "curated-shell-substitution",
+      "frame": "loan",
+      "inner_shell": "house-ray",
+      "head": "エイ",
+      "head_category": "animal",
+      "reading": "たしかにいえのえいにかした",
+      "display": "確かに家のエイに貸した。",
+      "strict_palindrome": true,
+      "shell_trace": [
+        "house-ray",
+        "ni-hinge",
+        "certain-loan"
+      ],
+      "existing_recipe_id": null,
+      "is_new": true,
+      "semantic_role_trace": {
+        "frame_role": "recipient",
+        "head_category": "animal",
+        "outcome": "accepted"
+      },
+      "provenance": {
+        "seam_grammar_version": "0.26",
+        "semantic_matrix_version": "0.66",
+        "lexeme_policy": "existing-shells-only"
+      },
+      "review_status": "accepted",
+      "public_candidate": {
+        "display": "確かに家のエイに貸した。",
+        "reading": "たしかにいえのえいにかした",
+        "family": "研究由来DNA",
+        "origin": "BRIDGE:SEAM:loan:house-ray",
+        "why": "家のエイの中心語「エイ」を貸借の受け手として許可した新規回文。",
+        "japanese_quality": "A",
+        "weirdness": 3,
+        "layer": "L1"
+      }
+    },
+    {
+      "id": "modern-loan-lie-layer",
+      "operation": "curated-shell-substitution",
+      "frame": "loan",
+      "inner_shell": "lie-layer",
+      "head": "層",
+      "head_category": "abstract",
+      "reading": "たしかにうそのそうにかした",
+      "display": "確かに嘘の層に貸した。",
+      "strict_palindrome": true,
+      "shell_trace": [
+        "lie-layer",
+        "ni-hinge",
+        "certain-loan"
+      ],
+      "existing_recipe_id": null,
+      "is_new": true,
+      "semantic_role_trace": {
+        "frame_role": "recipient",
+        "head_category": "abstract",
+        "outcome": "hold-semantic-role"
+      },
+      "provenance": {
+        "seam_grammar_version": "0.26",
+        "semantic_matrix_version": "0.66",
+        "lexeme_policy": "existing-shells-only"
+      },
+      "review_status": "hold-semantic-role",
+      "public_candidate": null
+    },
+    {
+      "id": "modern-loan-morning-sake",
+      "operation": "curated-shell-substitution",
+      "frame": "loan",
+      "inner_shell": "morning-sake",
+      "head": "酒",
+      "head_category": "object",
+      "reading": "たしかにけさのさけにかした",
+      "display": "確かに今朝の酒に貸した。",
+      "strict_palindrome": true,
+      "shell_trace": [
+        "morning-sake",
+        "ni-hinge",
+        "certain-loan"
+      ],
+      "existing_recipe_id": null,
+      "is_new": true,
+      "semantic_role_trace": {
+        "frame_role": "recipient",
+        "head_category": "object",
+        "outcome": "hold-semantic-role"
+      },
+      "provenance": {
+        "seam_grammar_version": "0.26",
+        "semantic_matrix_version": "0.66",
+        "lexeme_policy": "existing-shells-only"
+      },
+      "review_status": "hold-semantic-role",
+      "public_candidate": null
+    },
+    {
+      "id": "modern-loan-pear-item",
+      "operation": "curated-shell-substitution",
+      "frame": "loan",
+      "inner_shell": "pear-item",
+      "head": "品",
+      "head_category": "object",
+      "reading": "たしかになしのしなにかした",
+      "display": "確かに梨の品に貸した。",
+      "strict_palindrome": true,
+      "shell_trace": [
+        "pear-item",
+        "ni-hinge",
+        "certain-loan"
+      ],
+      "existing_recipe_id": null,
+      "is_new": true,
+      "semantic_role_trace": {
+        "frame_role": "recipient",
+        "head_category": "object",
+        "outcome": "hold-semantic-role"
+      },
+      "provenance": {
+        "seam_grammar_version": "0.26",
+        "semantic_matrix_version": "0.66",
+        "lexeme_policy": "existing-shells-only"
+      },
+      "review_status": "hold-semantic-role",
+      "public_candidate": null
+    },
+    {
+      "id": "modern-loan-sand-eggplant",
+      "operation": "curated-shell-substitution",
+      "frame": "loan",
+      "inner_shell": "sand-eggplant",
+      "head": "ナス",
+      "head_category": "object",
+      "reading": "たしかにすなのなすにかした",
+      "display": "確かに砂のナスに貸した。",
+      "strict_palindrome": true,
+      "shell_trace": [
+        "sand-eggplant",
+        "ni-hinge",
+        "certain-loan"
+      ],
+      "existing_recipe_id": null,
+      "is_new": true,
+      "semantic_role_trace": {
+        "frame_role": "recipient",
+        "head_category": "object",
+        "outcome": "hold-semantic-role"
+      },
+      "provenance": {
+        "seam_grammar_version": "0.26",
+        "semantic_matrix_version": "0.66",
+        "lexeme_policy": "existing-shells-only"
+      },
+      "review_status": "hold-semantic-role",
+      "public_candidate": null
+    },
+    {
+      "id": "modern-loan-shop-cicada",
+      "operation": "curated-shell-substitution",
+      "frame": "loan",
+      "inner_shell": "shop-cicada",
+      "head": "セミ",
+      "head_category": "animal",
+      "reading": "たしかにみせのせみにかした",
+      "display": "確かに店のセミに貸した。",
+      "strict_palindrome": true,
+      "shell_trace": [
+        "shop-cicada",
+        "ni-hinge",
+        "certain-loan"
+      ],
+      "existing_recipe_id": null,
+      "is_new": true,
+      "semantic_role_trace": {
+        "frame_role": "recipient",
+        "head_category": "animal",
+        "outcome": "accepted"
+      },
+      "provenance": {
+        "seam_grammar_version": "0.26",
+        "semantic_matrix_version": "0.66",
+        "lexeme_policy": "existing-shells-only"
+      },
+      "review_status": "accepted",
+      "public_candidate": {
+        "display": "確かに店のセミに貸した。",
+        "reading": "たしかにみせのせみにかした",
+        "family": "研究由来DNA",
+        "origin": "BRIDGE:SEAM:loan:shop-cicada",
+        "why": "店のセミの中心語「セミ」を貸借の受け手として許可した新規回文。",
+        "japanese_quality": "A",
+        "weirdness": 3,
+        "layer": "L1"
+      }
+    },
+    {
+      "id": "modern-loan-squid-meeting",
+      "operation": "curated-shell-substitution",
+      "frame": "loan",
+      "inner_shell": "squid-meeting",
+      "head": "会",
+      "head_category": "event",
+      "reading": "たしかにいかのかいにかした",
+      "display": "確かにイカの会に貸した。",
+      "strict_palindrome": true,
+      "shell_trace": [
+        "squid-meeting",
+        "ni-hinge",
+        "certain-loan"
+      ],
+      "existing_recipe_id": null,
+      "is_new": true,
+      "semantic_role_trace": {
+        "frame_role": "recipient",
+        "head_category": "event",
+        "outcome": "review-needed"
+      },
+      "provenance": {
+        "seam_grammar_version": "0.26",
+        "semantic_matrix_version": "0.66",
+        "lexeme_policy": "existing-shells-only"
+      },
+      "review_status": "review-needed",
+      "public_candidate": null
+    },
+    {
+      "id": "modern-loan-squirrel-pickpocket",
+      "operation": "curated-shell-substitution",
+      "frame": "loan",
+      "inner_shell": "squirrel-pickpocket",
+      "head": "スリ",
+      "head_category": "person",
+      "reading": "たしかにりすのすりにかした",
+      "display": "確かにリスのスリに貸した。",
+      "strict_palindrome": true,
+      "shell_trace": [
+        "squirrel-pickpocket",
+        "ni-hinge",
+        "certain-loan"
+      ],
+      "existing_recipe_id": null,
+      "is_new": true,
+      "semantic_role_trace": {
+        "frame_role": "recipient",
+        "head_category": "person",
+        "outcome": "accepted"
+      },
+      "provenance": {
+        "seam_grammar_version": "0.26",
+        "semantic_matrix_version": "0.66",
+        "lexeme_policy": "existing-shells-only"
+      },
+      "review_status": "accepted",
+      "public_candidate": {
+        "display": "確かにリスのスリに貸した。",
+        "reading": "たしかにりすのすりにかした",
+        "family": "研究由来DNA",
+        "origin": "BRIDGE:SEAM:loan:squirrel-pickpocket",
+        "why": "リスのスリの中心語「スリ」を貸借の受け手として許可した新規回文。",
+        "japanese_quality": "A-",
+        "weirdness": 3,
+        "layer": "L2"
+      }
+    },
+    {
+      "id": "modern-loan-voice-eco",
+      "operation": "curated-shell-substitution",
+      "frame": "loan",
+      "inner_shell": "voice-eco",
+      "head": "エコ",
+      "head_category": "abstract",
+      "reading": "たしかにこえのえこにかした",
+      "display": "確かに声のエコに貸した。",
+      "strict_palindrome": true,
+      "shell_trace": [
+        "voice-eco",
+        "ni-hinge",
+        "certain-loan"
+      ],
+      "existing_recipe_id": null,
+      "is_new": true,
+      "semantic_role_trace": {
+        "frame_role": "recipient",
+        "head_category": "abstract",
+        "outcome": "hold-semantic-role"
+      },
+      "provenance": {
+        "seam_grammar_version": "0.26",
+        "semantic_matrix_version": "0.66",
+        "lexeme_policy": "existing-shells-only"
+      },
+      "review_status": "hold-semantic-role",
+      "public_candidate": null
+    },
+    {
+      "id": "modern-see-garden-croc",
+      "operation": "curated-shell-substitution",
+      "frame": "see",
+      "inner_shell": "garden-croc",
+      "head": "ワニ",
+      "head_category": "animal",
+      "reading": "たみもにわのわにもみた",
+      "display": "タミも庭のワニも見た。",
+      "strict_palindrome": true,
+      "shell_trace": [
+        "garden-croc",
+        "mo-hinge",
+        "tami-see"
+      ],
+      "existing_recipe_id": null,
+      "is_new": true,
+      "semantic_role_trace": {
+        "frame_role": "perceived/theme participant",
+        "head_category": "animal",
+        "outcome": "accepted"
+      },
+      "provenance": {
+        "seam_grammar_version": "0.26",
+        "semantic_matrix_version": "0.66",
+        "lexeme_policy": "existing-shells-only"
+      },
+      "review_status": "accepted",
+      "public_candidate": {
+        "display": "タミも庭のワニも見た。",
+        "reading": "たみもにわのわにもみた",
+        "family": "研究由来DNA",
+        "origin": "BRIDGE:SEAM:see:garden-croc",
+        "why": "庭のワニを「見る対象」として、既存shellを意味役割適合させた新規回文。",
+        "japanese_quality": "A",
+        "weirdness": 2,
+        "layer": "L1"
+      }
+    },
+    {
+      "id": "modern-see-morning-sake",
+      "operation": "curated-shell-substitution",
+      "frame": "see",
+      "inner_shell": "morning-sake",
+      "head": "酒",
+      "head_category": "object",
+      "reading": "たみもけさのさけもみた",
+      "display": "タミも今朝の酒も見た。",
+      "strict_palindrome": true,
+      "shell_trace": [
+        "morning-sake",
+        "mo-hinge",
+        "tami-see"
+      ],
+      "existing_recipe_id": null,
+      "is_new": true,
+      "semantic_role_trace": {
+        "frame_role": "perceived/theme participant",
+        "head_category": "object",
+        "outcome": "accepted"
+      },
+      "provenance": {
+        "seam_grammar_version": "0.26",
+        "semantic_matrix_version": "0.66",
+        "lexeme_policy": "existing-shells-only"
+      },
+      "review_status": "accepted",
+      "public_candidate": {
+        "display": "タミも今朝の酒も見た。",
+        "reading": "たみもけさのさけもみた",
+        "family": "研究由来DNA",
+        "origin": "BRIDGE:SEAM:see:morning-sake",
+        "why": "今朝の酒を「見る対象」として、既存shellを意味役割適合させた新規回文。",
+        "japanese_quality": "A",
+        "weirdness": 2,
+        "layer": "L1"
+      }
+    },
+    {
+      "id": "modern-see-shop-cicada",
+      "operation": "curated-shell-substitution",
+      "frame": "see",
+      "inner_shell": "shop-cicada",
+      "head": "セミ",
+      "head_category": "animal",
+      "reading": "たみもみせのせみもみた",
+      "display": "タミも店のセミも見た。",
+      "strict_palindrome": true,
+      "shell_trace": [
+        "shop-cicada",
+        "mo-hinge",
+        "tami-see"
+      ],
+      "existing_recipe_id": null,
+      "is_new": true,
+      "semantic_role_trace": {
+        "frame_role": "perceived/theme participant",
+        "head_category": "animal",
+        "outcome": "accepted"
+      },
+      "provenance": {
+        "seam_grammar_version": "0.26",
+        "semantic_matrix_version": "0.66",
+        "lexeme_policy": "existing-shells-only"
+      },
+      "review_status": "accepted",
+      "public_candidate": {
+        "display": "タミも店のセミも見た。",
+        "reading": "たみもみせのせみもみた",
+        "family": "研究由来DNA",
+        "origin": "BRIDGE:SEAM:see:shop-cicada",
+        "why": "店のセミを「見る対象」として、既存shellを意味役割適合させた新規回文。",
+        "japanese_quality": "A",
+        "weirdness": 2,
+        "layer": "L1"
+      }
+    }
+  ]
+}
