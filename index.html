@@ -56,7 +56,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 <div class="wrap">
 <header>
   <div><h1>怪文回文メーカー</h1><div class="sub">まず、日本語として通す。そこから一段ずつ、鏡の奥へ伸ばす。</div></div>
-  <div class="badge">v0.13 / 50かな長文化</div>
+  <div class="badge">v0.14 / 意味を足す長文化</div>
 </header>
 
 <div class="card">
@@ -149,7 +149,7 @@ async function init(){
   const rs=rules.verified_recursive_space;
   $("#recursiveStat").textContent=rs?("再帰 "+rs.sentence_variants.toLocaleString()+"文"):"再帰候補 –";
   $("#pairStat").textContent="逆語 "+pairs.pair_count+"組 / "+pairs.variant_count+"文";
-  $("#storyStat").textContent="物語 "+(growth.verified?.narrative_family_count||0)+"系統 / 最長 "+(growth.verified?.longest_narrative_kana||"–")+"かな";
+  $("#storyStat").textContent="物語 "+(growth.verified?.narrative_family_count||0)+"系統 / "+(growth.verified?.narrative_variants||0)+"段階 / 最長 "+(growth.verified?.longest_narrative_kana||"–")+"かな";
   populateGrowthFamilies();
   updatePolicy();
   seedOne();
@@ -237,9 +237,24 @@ function updateCandidateCount(){
 function syncControls(){
   const need=layer==="L1"?1:layer==="L2"?3:4;
   if(maxWeird()<need){$("#weird").value=need;$("#weirdVal").textContent=need}
-  const growthDisabled=layer!=="L1";
   $("#pairGen").disabled=layer==="L3";
   $("#dnaGen").disabled=layer==="L3";
+
+  const structuralOption=[...$("#growthMode").options].find(o=>o.value==="structural");
+  const narrativeOption=[...$("#growthMode").options].find(o=>o.value==="narrative");
+  structuralOption.disabled=layer!=="L1";
+  const narrativeAvailable=(growth.narrative_families||[]).some(f=>(f.layer||"L1")===layer);
+  narrativeOption.disabled=!narrativeAvailable;
+
+  if(layer!=="L1"&&growthState.mode==="structural"&&narrativeAvailable){
+    growthState.mode="narrative";$("#growthMode").value="narrative";populateGrowthFamilies();
+  }else if(!narrativeAvailable&&growthState.mode==="narrative"&&layer==="L1"){
+    growthState.mode="structural";$("#growthMode").value="structural";populateGrowthFamilies();
+  }else{
+    populateGrowthFamilies();
+  }
+
+  const growthDisabled=growthFamilies().length===0;
   for(const id of ["growthStart","growOne","growAgain","growBack"])$("#"+id).disabled=growthDisabled;
   for(const id of ["growthStart","growOne","growAgain","growBack","pairGen","dnaGen"])$("#"+id).style.opacity=$("#"+id).disabled?".38":"1";
 }
@@ -278,7 +293,10 @@ function dnaOne(){show(chooseFresh(dnaPool(true)))}
 function pairOne(){show(chooseFresh(pairPool()))}
 
 function growthFamilies(){
-  return growthState.mode==="narrative"?(growth.narrative_families||[]):(growth.families||[]);
+  if(growthState.mode==="narrative"){
+    return (growth.narrative_families||[]).filter(f=>(f.layer||"L1")===layer);
+  }
+  return layer==="L1"?(growth.families||[]):[];
 }
 function resetGrowthHistory(){
   growthState.history={};growthState.stage=0;growthState.lastCenter=null;
@@ -290,7 +308,7 @@ function populateGrowthFamilies(){
   for(const f of list){
     const o=document.createElement("option");
     o.value=f.id;
-    o.textContent=growthState.mode==="narrative"?f.label:f.stage0[1].replace("。","");
+    o.textContent=growthState.mode==="narrative"?"["+(f.dimension||"物語")+"] "+f.label:f.stage0[1].replace("。","");
     sel.appendChild(o);
   }
   growthState.familyId=list[0]?.id||null;
