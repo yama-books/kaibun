@@ -146,7 +146,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 </div>
 
 <script>
-let data=null,rules=null,pairs=null,growth=null,seams=null,bridge=null,layer="L1",seen=new Set(),currentShown=null;
+let data=null,rules=null,pairs=null,growth=null,seams=null,bridge=null,bridgeExposure=null,layer="L1",seen=new Set(),currentShown=null;
 let growthState={mode:"structural",dimension:"all",familyId:null,stage:0,lastCenter:null,history:{}};
 
 const $=s=>document.querySelector(s);
@@ -154,13 +154,14 @@ const rev=s=>[...s].reverse().join("");
 const isPal=s=>s===rev(s);
 
 async function init(){
-  [data,rules,pairs,growth,seams,bridge]=await Promise.all([
+  [data,rules,pairs,growth,seams,bridge,bridgeExposure]=await Promise.all([
     fetch("./data/layered-seeds-v08.json").then(r=>r.json()),
     fetch("./data/generation-rules-v08.json").then(r=>r.json()),
     fetch("./data/reverse-lexeme-pairs-v09.json").then(r=>r.json()),
     fetch("./data/growth-engine-v10.json").then(r=>r.json()),
     fetch("./data/seam-grammar-v25.json").then(r=>r.json()),
-    fetch("./data/modern-bridge-public-v69.json").then(r=>r.json())
+    fetch("./data/modern-bridge-public-v69.json").then(r=>r.json()),
+    fetch("./data/public-bridge-exposure-policy-v70.json").then(r=>r.json())
   ]);
   $("#c1").textContent=data.counts.L1+"本";
   $("#c2").textContent=data.counts.L2+"本";
@@ -172,7 +173,7 @@ async function init(){
   $("#storyStat").textContent="物語 "+(growth.verified?.narrative_family_count||0)+"系統 / "+(growth.verified?.narrative_variants||0)+"段階 / 最長 "+(growth.verified?.longest_narrative_kana||"–")+"かな";
   $("#benchmarkStat").textContent="固定基準 "+(growth.verified?.hundred_kana_benchmark?.length||"–")+"かな";
   $("#wrapperStat").textContent="外枠 "+(growth.verified?.sentence_level_wrapper_count||0)+"種 / 外側語彙 "+(growth.verified?.wrapper_distinct_outer_readings||0)+"種 / 重複回避ON";
-  $("#seamStat").textContent="継ぎ目 "+(seams.verified?.recipe_count||0)+"種 + 研究 "+(bridge.counts?.total||0)+"種";
+  $("#seamStat").textContent="継ぎ目 "+(seams.verified?.recipe_count||0)+"種 + 研究 "+(bridge.counts?.total||0)+"種 / 抽選≤"+Math.round((bridgeExposure.policy?.bridge_probability_cap||0)*100)+"%";
   populateGrowthDimensions();
   populateGrowthFamilies();
   populateSentenceWrappers();
@@ -348,9 +349,9 @@ function bridgePool(){
       bridge_candidate:r.id
     }));
 }
-function seamPool(){
-  if(!seams)return bridgePool();
-  const base=(seams.recipes||[])
+function standardSeamPool(){
+  if(!seams)return [];
+  return (seams.recipes||[])
     .filter(r=>r.layer===layer && (r.weirdness??1)<=maxWeird())
     .map(r=>({
       display:r.display,
@@ -364,9 +365,19 @@ function seamPool(){
       boundary_shift_shells:r.boundary_shift_shells||0,
       particle_hinges:r.particle_hinges||0
     }));
-  return uniqueByReading([...base,...bridgePool()]);
 }
-function seamOne(){show(chooseFresh(seamPool()))}
+function seamPool(){
+  return uniqueByReading([...standardSeamPool(),...bridgePool()]);
+}
+function seamOne(){
+  const base=standardSeamPool(),research=bridgePool();
+  if(!base.length){show(chooseFresh(research));return}
+  if(!research.length){show(chooseFresh(base));return}
+  const naturalShare=research.length/(base.length+research.length);
+  const cap=bridgeExposure?.policy?.bridge_probability_cap??0.15;
+  const researchShare=Math.min(naturalShare,cap);
+  show(chooseFresh(Math.random()<researchShare?research:base));
+}
 function updateCandidateCount(){
   const all=uniqueByReading([...pool().map(x=>({...x,origin:"原種"})),...dnaPool(true),...seamPool()]);
   $("#uniqueStat").textContent="実効候補 "+all.length.toLocaleString()+"種";
