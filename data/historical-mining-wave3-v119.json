@@ -1,0 +1,153 @@
+{
+  "version": "1.19",
+  "updated_on": "2026-09-20",
+  "title": "Wave3 scholarly-transcription mining: Shoju 120-122",
+  "purpose": "Start a new source-expansion lane from Yamauchi's visible poem-specific transcription after v1.11 identified source coverage rather than operation invention as the main bottleneck.",
+  "source": {
+    "author": "山内潤三",
+    "article": "廻文歌の限界と効用 (下)――高野山釈教長歌を頂点として――",
+    "journal": "密教文化",
+    "issue": 107,
+    "year": 1974,
+    "pages": "1-38",
+    "doi": "10.11168/jeb1947.1974.107_1",
+    "searchable_article_mirror": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+    "direct_jstage_pdf_inspection": false,
+    "direct_edo_source_image_inspection": false,
+    "layer": "searchable-reproduction-of-scholarly-transcription"
+  },
+  "baseline_policy": {
+    "fixed50_unchanged": true,
+    "wave2_v039_unchanged": true,
+    "wave2_verified_snapshot": 14,
+    "wave2_held_snapshot": 5,
+    "wave3_separate_lane": true,
+    "public_ui": false
+  },
+  "cases": [
+    {
+      "id": "shoju-wave3-120",
+      "source_number": 120,
+      "title": "賀",
+      "visible_transcription_surface": "ときよ見るさまのよしくとこもかもことしよしよのまさるみよきと",
+      "conservative_reading_candidate": "ときよみるさまのよしくとこもかもことしよしよのまさるみよきと",
+      "kana_length": 30,
+      "strict_palindrome": false,
+      "status": "hold-searchable-transcription-incomplete-or-unclear",
+      "reason": "The searchable mirror yields only 30 kana under the conservative visible reading. Do not insert a missing kana from palindrome expectation."
+    },
+    {
+      "id": "shoju-wave3-121",
+      "source_number": 121,
+      "title": "不二雪",
+      "visible_transcription_surface": "きゆるなよ ことしふるもつ むつの名の つむつもるふし とこよなるゆき",
+      "reading_assumptions": [
+        {
+          "surface": "名",
+          "reading": "な",
+          "basis": "ordinary lexical reading in the visible phrase; no alternative reading is needed to obtain the metrical surface"
+        }
+      ],
+      "conservative_reading": "きゆるなよことしふるもつむつのなのつむつもるふしとこよなるゆき",
+      "kana_length": 31,
+      "strict_palindrome": true,
+      "meter": ["きゆるなよ","ことしふるもつ","むつのなの","つむつもるふし","とこよなるゆき"],
+      "factors": {
+        "A": "きゆるなよ",
+        "B": "こと",
+        "C": "しふるもつ",
+        "D": "むつ",
+        "E": "のなの"
+      },
+      "scene": {
+        "broad": "冬・雪",
+        "basis": "source title 不二雪",
+        "confidence": "title-supported"
+      },
+      "status": "wave3-scholarly-transcription-strict-candidate",
+      "fixed50_or_wave2_factor_matches": {
+        "A": [],
+        "B": [],
+        "C": [],
+        "D": [],
+        "E": []
+      },
+      "graph_value": "isolated-new-source",
+      "promotion_to_fixed50": false
+    },
+    {
+      "id": "shoju-wave3-122",
+      "source_number": 122,
+      "title": "むかしくを子らにならひ",
+      "visible_transcription_surface": "日ころよの 玉みのへしを もゝとせと もゝをしへのみ またのよろこひ",
+      "reading_assumptions": [
+        {
+          "surface": "日",
+          "reading": "ひ",
+          "basis": "ordinary lexical reading in 日ころ"
+        },
+        {
+          "surface": "玉",
+          "reading": "たま",
+          "basis": "ordinary lexical reading"
+        }
+      ],
+      "conservative_reading": "ひころよのたまみのへしをももとせとももをしへのみまたのよろこひ",
+      "kana_length": 31,
+      "strict_palindrome": true,
+      "meter": ["ひころよの","たまみのへしを","ももとせと","ももをしへのみ","またのよろこひ"],
+      "factors": {
+        "A": "ひころよの",
+        "B": "たま",
+        "C": "みのへしを",
+        "D": "もも",
+        "E": "とせと"
+      },
+      "scene": {
+        "broad": "賀・長寿",
+        "basis": "visible lexical material もゝとせ / よろこひ; interpretive classification only",
+        "confidence": "transcription-supported-tentative"
+      },
+      "status": "wave3-scholarly-transcription-strict-candidate",
+      "fixed50_or_wave2_factor_matches": {
+        "A": [],
+        "B": [
+          {
+            "id": "shoju-031",
+            "title": "同（露）",
+            "layer": "fixed50",
+            "shared_raw_B": "たま"
+          }
+        ],
+        "C": [],
+        "D": [],
+        "E": []
+      },
+      "shared_B_review": {
+        "raw_B_equal": true,
+        "morphology_equivalence_confirmed": false,
+        "scene_compatibility": "no-narrow-scene-match",
+        "global_transferability": false,
+        "reason": "Raw B=たま equality alone does not establish the same lexical/morphological boundary, and the tentative 賀・長寿 scene differs from shoju-031's 露/秋 context."
+      },
+      "graph_value": "new-source-with-cross-scene-raw-B-contact",
+      "promotion_to_fixed50": false
+    }
+  ],
+  "summary": {
+    "inspected_visible_cases": 3,
+    "strict_wave3_candidates": 2,
+    "held_visible_cases": 1,
+    "new_narrow_scene_factor_lane_created": false,
+    "new_positive_family_created": false,
+    "automatic_acceptance": 0,
+    "research_conclusion": "Wave3 source expansion can add real strict-palindrome evidence without immediately creating a safe crossover family. Candidate 121 is factor-isolated; candidate 122 has only a raw-B cross-scene contact that is intentionally not promoted."
+  },
+  "safety_rules": [
+    "Do not repair poem 120 to 31 kana by palindrome expectation.",
+    "A standard reading of an explicit kanji in scholarly transcription is recorded as a reading assumption, not as original-source furigana evidence.",
+    "Wave3 candidates remain separate from fixed50 and wave2 snapshots.",
+    "Raw factor equality does not create a transferable seam."
+  ],
+  "next_action": "Continue wave3 mining for additional strict 31-kana poems, prioritizing records that create narrow-scene repeated A/E-operation lanes rather than merely increasing corpus count."
+}
