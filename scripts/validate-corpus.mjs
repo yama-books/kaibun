@@ -54,6 +54,9 @@ const wave2TravelDeepV113 = JSON.parse(fs.readFileSync("data/wave2-travel-deep-s
 const generatedWave2TravelV114 = JSON.parse(fs.readFileSync("data/generated-wave2-travel-outer-frame-v114.json", "utf8"));
 const wave2HeldPolicyV115 = JSON.parse(fs.readFileSync("data/wave2-held-evidence-policy-review-v115.json", "utf8"));
 const orthographicEquivalenceV116 = JSON.parse(fs.readFileSync("data/historical-orthographic-equivalence-v116.json", "utf8"));
+const travelSeriesTopologyV117 = JSON.parse(fs.readFileSync("data/travel-series-phrase-topology-v117.json", "utf8"));
+const travelSeriesScholarlyV118 = JSON.parse(fs.readFileSync("data/travel-series-scholarly-topology-v118.json", "utf8"));
+const historicalMiningWave3V119 = JSON.parse(fs.readFileSync("data/historical-mining-wave3-v119.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -679,6 +682,40 @@ const v116Positive=(orthographicEquivalenceV116.cases??[]).filter(x=>x.o_wo_diag
 if(v116Positive.join(",")!=="94")errors.push(`ORTHOGRAPHIC EQ V116 positive diagnostic set drift: ${v116Positive.join(",")}`);
 if(orthographicEquivalenceV116.verdict?.strict_promotions!==0||orthographicEquivalenceV116.verdict?.public_generator_effect!=="none")errors.push("ORTHOGRAPHIC EQ V116 must remain diagnostic-only");
 
+if(travelSeriesTopologyV117.version!=="1.17")errors.push(`TRAVEL TOPOLOGY V117 version mismatch: ${travelSeriesTopologyV117.version}`);
+if(travelSeriesTopologyV117.travel_candidate_effect?.current_status!=="promising-but-parse-needed")errors.push("TRAVEL TOPOLOGY V117 best candidate status drift");
+if(travelSeriesTopologyV117.reverse_candidate_effect?.current_status!=="deep-review-needed")errors.push("TRAVEL TOPOLOGY V117 reverse candidate status drift");
+if(travelSeriesTopologyV117.family_verdict?.positive_family_established!==false)errors.push("TRAVEL TOPOLOGY V117 must not establish family");
+if(travelSeriesTopologyV117.safety_rule?.id!=="series-phrase-repetition-supports-boundary-not-whole-sentence")errors.push("TRAVEL TOPOLOGY V117 safety rule missing");
+if(travelSeriesTopologyV117.safety_rule?.applies_beyond_travel_series!==true)errors.push("TRAVEL TOPOLOGY V117 safety rule must generalize");
+const v117phrases=(travelSeriesTopologyV117.exact_or_embedded_repetitions??[]).map(x=>x.phrase);
+for(const p of ["くかちとや","やとちかく","なかたひ","まはる","はまも","ひたか"])if(!v117phrases.includes(p))errors.push(`TRAVEL TOPOLOGY V117 phrase missing: ${p}`);
+
+if(travelSeriesScholarlyV118.version!=="1.18")errors.push(`TRAVEL SCHOLARLY V118 version mismatch: ${travelSeriesScholarlyV118.version}`);
+if(travelSeriesScholarlyV118.source?.poem_specific_transcription_visible!==true)errors.push("TRAVEL SCHOLARLY V118 must preserve poem-specific transcription evidence");
+if(travelSeriesScholarlyV118.source?.direct_jstage_pdf_inspection!==false||travelSeriesScholarlyV118.source?.direct_edo_source_image_inspection!==false)errors.push("TRAVEL SCHOLARLY V118 must not claim PDF/original-image inspection");
+if(travelSeriesScholarlyV118.travel_90_93_outer_frame_assessment?.status_after!=="promising-but-parse-needed")errors.push("TRAVEL SCHOLARLY V118 best status drift");
+if(travelSeriesScholarlyV118.family_verdict?.positive_family_established!==false||travelSeriesScholarlyV118.family_verdict?.automatic_acceptance!==0)errors.push("TRAVEL SCHOLARLY V118 must not establish/accept family");
+if(travelSeriesScholarlyV118.safety_rule?.id!=="poem-specific-series-recurrence-strengthens-local-attestation-not-global-syntax")errors.push("TRAVEL SCHOLARLY V118 safety rule missing");
+
+if(historicalMiningWave3V119.version!=="1.19")errors.push(`WAVE3 V119 version mismatch: ${historicalMiningWave3V119.version}`);
+if(historicalMiningWave3V119.baseline_policy?.fixed50_unchanged!==true||historicalMiningWave3V119.baseline_policy?.wave2_v039_unchanged!==true)errors.push("WAVE3 V119 must preserve fixed50/wave2 snapshots");
+if(historicalMiningWave3V119.baseline_policy?.wave2_verified_snapshot!==14||historicalMiningWave3V119.baseline_policy?.wave2_held_snapshot!==5)errors.push("WAVE3 V119 wave2 snapshot counts drift");
+if(historicalMiningWave3V119.baseline_policy?.wave3_separate_lane!==true||historicalMiningWave3V119.baseline_policy?.public_ui!==false)errors.push("WAVE3 V119 must remain separate research lane");
+const v119cases=historicalMiningWave3V119.cases??[];
+const v119p120=v119cases.find(x=>x.source_number===120);
+const v119p121=v119cases.find(x=>x.source_number===121);
+const v119p122=v119cases.find(x=>x.source_number===122);
+if(v119p120?.status!=="hold-searchable-transcription-incomplete-or-unclear"||v119p120?.kana_length!==30||v119p120?.strict_palindrome!==false)errors.push("WAVE3 V119 poem120 must remain unrepaired hold");
+for(const x of [v119p121,v119p122]){
+  if(!x||x.kana_length!==31||x.strict_palindrome!==true)errors.push(`WAVE3 V119 strict candidate drift: ${x?.source_number}`);
+  if(!x?.conservative_reading||!isPalindrome(x.conservative_reading))errors.push(`WAVE3 V119 palindrome mismatch: ${x?.source_number}`);
+  if(x?.promotion_to_fixed50!==false)errors.push(`WAVE3 V119 must not promote fixed50: ${x?.source_number}`);
+}
+if(v119p121?.graph_value!=="isolated-new-source")errors.push("WAVE3 V119 poem121 graph value drift");
+if(v119p122?.shared_B_review?.global_transferability!==false)errors.push("WAVE3 V119 poem122 raw-B contact must remain non-transferable");
+if(historicalMiningWave3V119.summary?.strict_wave3_candidates!==2||historicalMiningWave3V119.summary?.new_positive_family_created!==false||historicalMiningWave3V119.summary?.automatic_acceptance!==0)errors.push("WAVE3 V119 summary drift");
+
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
 if(rules.rule_count!==rules.rules.length)errors.push(`RULE COUNT mismatch: declared=${rules.rule_count} actual=${rules.rules.length}`);
@@ -736,3 +773,6 @@ console.log(`Wave2 travel deep v1.13: best=${wave2TravelDeepV113.family_verdict?
 console.log(`Wave2 travel generator v1.14: candidates=${generatedWave2TravelV114.candidate_count}, best=${v114best?.review_status}`);
 console.log(`Wave2 held policy v1.15: p89=${wave2HeldPolicyV115.verdict?.poem_89}, p94=${wave2HeldPolicyV115.verdict?.poem_94}`);
 console.log(`Orthographic equivalence v1.16: positives=${v116Positive.join(",")||"none"}, strict-promotions=${orthographicEquivalenceV116.verdict?.strict_promotions}`);
+console.log(`Travel topology v1.17: phrases=${(travelSeriesTopologyV117.exact_or_embedded_repetitions??[]).length}, best=${travelSeriesTopologyV117.travel_candidate_effect?.current_status}`);
+console.log(`Travel scholarly topology v1.18: verified-repetitions=${(travelSeriesScholarlyV118.verified_series_repetitions??[]).length}, family=${travelSeriesScholarlyV118.family_verdict?.status}`);
+console.log(`Wave3 v1.19: strict=${historicalMiningWave3V119.summary?.strict_wave3_candidates}, held=${historicalMiningWave3V119.summary?.held_visible_cases}`);
