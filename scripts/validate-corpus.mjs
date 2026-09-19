@@ -26,6 +26,8 @@ const autumnMoonMicrogrammar = JSON.parse(fs.readFileSync("data/autumn-moon-micr
 const autumnMoonControl = JSON.parse(fs.readFileSync("data/autumn-moon-control-microgrammar-v47.json", "utf8"));
 const sceneGate = JSON.parse(fs.readFileSync("data/scene-compatibility-gate-v48.json", "utf8"));
 const factorSceneSignatures = JSON.parse(fs.readFileSync("data/autumn-moon-factor-scene-signatures-v49.json", "utf8"));
+const seamReviewQueue = JSON.parse(fs.readFileSync("data/autumn-moon-seam-review-queue-v50.json", "utf8"));
+const seamEvidence = JSON.parse(fs.readFileSync("data/autumn-moon-seam-evidence-v51.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -394,6 +396,23 @@ if(!v49Hare||v49Hare.confidence!=="unresolved"||(v49Hare.scene_tags??[]).length!
 const v49Ku4=(factorSceneSignatures.signatures??[]).find(x=>x.id==="scene:ku4:にはのきはもる");
 if(!v49Ku4||(v49Ku4.unresolved??[]).includes("きはもる の漢字・語義")!==true)errors.push("FACTOR SCENE V49 must preserve きはもる uncertainty");
 for(const x of factorSceneSignatures.signatures??[]){if(String(x.confidence??"").includes("source-image-confirmed"))errors.push(`FACTOR SCENE V49 must not claim source-image confirmation: ${x.id}`);}
+if(seamReviewQueue.version!=="0.50")errors.push(`SEAM REVIEW V50 version mismatch: ${seamReviewQueue.version}`);
+if(seamReviewQueue.summary?.blocked_candidates!==7)errors.push("SEAM REVIEW V50 blocked candidate count must be 7");
+if(seamReviewQueue.summary?.unique_unclassified_seams!==3||(seamReviewQueue.queue??[]).length!==3)errors.push("SEAM REVIEW V50 unique seam count must be 3");
+const v50Impact=(seamReviewQueue.queue??[]).reduce((n,x)=>n+(x.impact_count??0),0);
+if(v50Impact!==7)errors.push(`SEAM REVIEW V50 impact total must be 7: ${v50Impact}`);
+const v50Tama=(seamReviewQueue.queue??[]).find(x=>x.id==="review:B:たま");
+if(!v50Tama||v50Tama.corpus_evidence?.known_reverse_side_signature?.transferable!==false)errors.push("SEAM REVIEW V50 must preserve blocked reverse-side また evidence");
+if(seamEvidence.version!=="0.51")errors.push(`SEAM EVIDENCE V51 version mismatch: ${seamEvidence.version}`);
+if(seamEvidence.evidence_policy?.source_image_checked!==false)errors.push("SEAM EVIDENCE V51 must not claim source-image inspection");
+if((seamEvidence.findings??[]).length!==3)errors.push("SEAM EVIDENCE V51 finding count must be 3");
+const v51Tama=(seamEvidence.findings??[]).find(x=>x.id==="evidence:B:たま");
+const v51Musu=(seamEvidence.findings??[]).find(x=>x.id==="evidence:D:むす");
+const v51Kota=(seamEvidence.findings??[]).find(x=>x.id==="evidence:D:こた");
+if(v51Tama?.proposed_signature?.transferable!=="conditional-source-specific")errors.push("SEAM EVIDENCE V51 たま must remain source-specific conditional");
+if(v51Musu?.proposed_signature?.transferable!=="conditional-source-specific")errors.push("SEAM EVIDENCE V51 むす must remain source-specific conditional");
+if(v51Kota?.proposed_signature?.transferable!==false)errors.push("SEAM EVIDENCE V51 こた must remain blocked");
+if((seamEvidence.evidence_sources??[]).length<3)errors.push("SEAM EVIDENCE V51 provenance sources missing");
 
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
@@ -425,3 +444,5 @@ console.log(`Autumn/moon v46 microgrammar outputs: ${(autumnMoonMicrogrammar.out
 console.log(`Autumn/moon v47 control outputs: ${(autumnMoonControl.outputs??[]).length}`);
 console.log(`Scene gate v48 case studies: ${(sceneGate.case_studies??[]).length}`);
 console.log(`Factor scene v49 signatures: ${(factorSceneSignatures.signatures??[]).length}`);
+console.log(`Seam review v50 tasks: ${(seamReviewQueue.queue??[]).length}`);
+console.log(`Seam evidence v51 findings: ${(seamEvidence.findings??[]).length}`);
