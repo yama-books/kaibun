@@ -1,0 +1,190 @@
+{
+  "version": "0.54",
+  "title": "Repeated-D central-pivot exchange survey",
+  "purpose": "Test whether the v0.53 E3-only swap operation generalizes across every D2 value repeated in the fixed 50-sample baseline.",
+  "policy": {
+    "operation": "Keep host A/B/C/D fixed and replace only E3 with an E attested after the same D in another historical source.",
+    "important_correction": "Because A/B/C stay in the host context, unrelated B/C global transferability is not a prerequisite for this E-only operation.",
+    "D_requirement": "D must have a morphology signature appropriate to the host/donor contexts.",
+    "scene_requirement": "Donor E must pass scene compatibility or human review.",
+    "all_outputs_require_review": true
+  },
+  "groups": [
+    {
+      "D": "はに",
+      "seam": {
+        "confidence": "high",
+        "transferable": true,
+        "signature": "noun+particle -> place-noun"
+      },
+      "sources": [
+        {
+          "id": "mitoku-shirayuki",
+          "title": "白雪",
+          "broad_field": "冬・雪",
+          "E": "もつも"
+        },
+        {
+          "id": "shoju-031",
+          "title": "同（露）",
+          "broad_field": "秋・月",
+          "E": "しけし"
+        },
+        {
+          "id": "shoju-035",
+          "title": "同（月）",
+          "broad_field": "秋・月",
+          "E": "てりて"
+        }
+      ],
+      "novel_directed_swaps": 6,
+      "same_broad_directed_swaps": 2,
+      "same_broad_outputs": [
+        "hybrid-019",
+        "hybrid-016"
+      ],
+      "research_state": "positive-case-established-v53",
+      "note": "The same-broad pair 031↔035 is the current positive case; snow↔autumn swaps remain scene-mismatched controls."
+    },
+    {
+      "D": "みつ",
+      "seam": {
+        "confidence": "high",
+        "transferable": true,
+        "signature": "nature/substance-noun -> abstract-noun"
+      },
+      "sources": [
+        {
+          "id": "shoju-five-elements",
+          "title": "地水火風空",
+          "broad_field": "信仰",
+          "primary_field": "釈教・宇宙観",
+          "E": "もひも"
+        },
+        {
+          "id": "shoju-068",
+          "title": "釈教",
+          "broad_field": "信仰",
+          "primary_field": "釈教",
+          "E": "のよの"
+        }
+      ],
+      "novel_directed_swaps": 2,
+      "same_broad_directed_swaps": 2,
+      "same_broad_outputs": [
+        "hybrid-017",
+        "hybrid-002"
+      ],
+      "research_state": "best-next-positive-test",
+      "note": "Both sources are faith/Buddhist-field. v37 blocked the outputs because host B seams were unclassified/blocked globally, but E-only swap does not move B from its source context."
+    },
+    {
+      "D": "みな",
+      "seam": {
+        "confidence": "high",
+        "transferable": true,
+        "signature": "collective-noun -> nature-noun"
+      },
+      "sources": [
+        {
+          "id": "edo-popular-takarabune",
+          "title": "宝船回文歌",
+          "broad_field": "その他",
+          "primary_field": "夜・夢・舟",
+          "E": "めさめ"
+        },
+        {
+          "id": "shoju-040",
+          "title": "月明海上鴻鷹渡",
+          "broad_field": "秋・月",
+          "primary_field": "秋・月・海・鳥",
+          "E": "かりか"
+        }
+      ],
+      "novel_directed_swaps": 2,
+      "same_broad_directed_swaps": 0,
+      "outputs": [
+        "hybrid-033",
+        "hybrid-030"
+      ],
+      "research_state": "cross-scene-control",
+      "note": "High D seam alone is insufficient; donor E crosses dream/boat and autumn/sea/bird scenes."
+    },
+    {
+      "D": "すす",
+      "seam": {
+        "confidence": "medium",
+        "transferable": "conditional",
+        "signature": "self-reversing-two-kana"
+      },
+      "sources": [
+        {
+          "id": "shoju-027",
+          "title": "納涼",
+          "broad_field": "夏・行事",
+          "E": "かせか"
+        },
+        {
+          "id": "shoju-064",
+          "title": "社頭祝",
+          "broad_field": "信仰",
+          "E": "かけか"
+        }
+      ],
+      "novel_directed_swaps": 2,
+      "same_broad_directed_swaps": 0,
+      "outputs": [
+        "hybrid-025",
+        "hybrid-041"
+      ],
+      "research_state": "low-priority-cross-scene-control",
+      "note": "Both D confidence and scene compatibility are weaker than the current positive cases."
+    },
+    {
+      "D": "けふ",
+      "seam": {
+        "confidence": "high",
+        "transferable": true,
+        "signature": "time-noun -> verb-stem"
+      },
+      "sources": [
+        {
+          "id": "shoju-033",
+          "title": "月",
+          "broad_field": "秋・月",
+          "E": "のよの"
+        },
+        {
+          "id": "shoju-072",
+          "title": "寄琴恋",
+          "broad_field": "恋・人事",
+          "E": "のよの"
+        }
+      ],
+      "novel_directed_swaps": 0,
+      "same_broad_directed_swaps": 0,
+      "research_state": "no-E-diversity",
+      "note": "Both sources already use the same E=のよの, so E-only exchange produces no new reading."
+    }
+  ],
+  "summary": {
+    "repeated_D_groups": 5,
+    "high_confidence_D_groups": 4,
+    "same_broad_with_E_diversity": [
+      "はに",
+      "みつ"
+    ],
+    "established_positive_group": [
+      "はに"
+    ],
+    "next_test_group": "みつ",
+    "cross_scene_controls": [
+      "みな",
+      "すす"
+    ],
+    "no_novelty": [
+      "けふ"
+    ]
+  },
+  "next_step": "Build and linguistically review the D=みつ faith/釈教 E-exchange family as the first positive-test family outside はに."
+}
