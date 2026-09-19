@@ -1,0 +1,175 @@
+{
+  "version": "0.64",
+  "title": "Repeated-B outer-frame exchange survey",
+  "purpose": "Survey the constrained A-only outer-frame operation across every repeated B2 in the fixed-50 five-variable grammar, distinguishing global crossover rules from source-context-preserving swaps.",
+  "operation": {
+    "id": "shared-B-outer-frame-swap",
+    "changed_factor": "A",
+    "fixed_factors": [
+      "B",
+      "C",
+      "D",
+      "E"
+    ],
+    "mirrored_effect": "ku1 and ku5 outer frame change together",
+    "local_attestation_logic": [
+      "donor A and donor reverse(B)+reverse(A) outer frame are historically attested in donor",
+      "host B+C, C+D, D+E central corridor remains historically attested in host"
+    ]
+  },
+  "key_correction": {
+    "statement": "A global B crossover prohibition does not automatically invalidate this operation, because the generated forward B+C remains in the host context and the mirrored outer-frame material comes from the donor context.",
+    "limit": "If B morphology itself must be interpreted consistently across the joined contexts, unresolved or source-dependent B still requires a source-specific review lane. This does not change v0.36 global seam transferability."
+  },
+  "groups": [
+    {
+      "B": "なは",
+      "reverse_B": "はな",
+      "source_count": 3,
+      "directed_swaps": 6,
+      "seam": {
+        "confidence": "high",
+        "transferable": true,
+        "signature": "topic-name -> lexical-flower"
+      },
+      "source_ids": [
+        "shoju-wakakusa",
+        "sendai-sakunami",
+        "shoju-058"
+      ],
+      "results": {
+        "same_broad_spring": [
+          {
+            "id": "hybrid-018",
+            "status": "deep-review-supported",
+            "basis": "v0.62 trusted spring positive direction"
+          },
+          {
+            "id": "hybrid-020",
+            "status": "hold-semantic-role-mismatch",
+            "basis": "v0.62 trusted spring control direction"
+          }
+        ],
+        "cross_broad": [
+          "hybrid-031",
+          "hybrid-032",
+          "hybrid-035",
+          "hybrid-042"
+        ]
+      },
+      "conclusion": "Best current outer-frame positive family because both spring sources are trusted and B morphology is stable."
+    },
+    {
+      "B": "また",
+      "reverse_B": "たま",
+      "source_count": 2,
+      "directed_swaps": 2,
+      "seam": {
+        "confidence": "low-for-crossover",
+        "transferable": false,
+        "signature": "ambiguous-forward-boundary -> lexical-tama"
+      },
+      "source_ids": [
+        "shoju-001-komatsuhiki",
+        "shoju-010-somokuka"
+      ],
+      "outputs": [
+        "hybrid-012",
+        "hybrid-001"
+      ],
+      "same_broad_field": "春・草木",
+      "operation_specific_status": "source-specific-review-needed",
+      "reason": [
+        "Both source poems are mining and semantic review is pending.",
+        "The host B+C and donor outer frame can be kept source-local under A-only swap, so global B transferability is not the sole criterion.",
+        "However the forward B=また morphology differs or is ambiguous across sources, so no positive promotion is made without source parsing."
+      ],
+      "global_rule_unchanged": "B=また remains non-transferable for general crossover."
+    },
+    {
+      "B": "ほと",
+      "reverse_B": "とほ",
+      "source_count": 3,
+      "directed_swaps": 6,
+      "seam": {
+        "confidence": "low-for-crossover",
+        "transferable": false,
+        "signature": "homographic-cell-with-multiple-morphologies"
+      },
+      "source_ids": [
+        "shoju-021",
+        "shoju-044",
+        "shoju-068"
+      ],
+      "outputs": [
+        "hybrid-040",
+        "hybrid-027",
+        "hybrid-037",
+        "hybrid-026",
+        "hybrid-036",
+        "hybrid-039"
+      ],
+      "operation_specific_status": "hold-scene-mismatch-and-morphology",
+      "reason": "All directed swaps cross 夏・鳥 / 秋・紅葉 / 釈教 scenes, so scene gate already holds them before any attempt to relax source-specific B morphology."
+    },
+    {
+      "B": "きつ",
+      "reverse_B": "つき",
+      "source_count": 4,
+      "directed_swaps": 12,
+      "seam": {
+        "confidence": "medium",
+        "transferable": "conditional",
+        "signature": "verbal/lexical onset -> moon"
+      },
+      "source_ids": [
+        "shoju-035",
+        "shoju-038",
+        "shoju-040",
+        "shoju-add-109"
+      ],
+      "broad_field": "秋・月",
+      "representative_results": [
+        {
+          "id": "hybrid-008",
+          "host": "shoju-035",
+          "donor_A": "shoju-038",
+          "status": "strong-promising in v0.40",
+          "lesson": "night/garden/moon outer frame remains coherent"
+        },
+        {
+          "id": "hybrid-005",
+          "host": "shoju-035",
+          "donor_A": "shoju-040",
+          "status": "hold-source-parse in v0.40",
+          "lesson": "sea outer frame versus garden interior creates viewpoint/source-parse tension"
+        },
+        {
+          "id": "hybrid-011",
+          "host": "shoju-035",
+          "donor_A": "shoju-add-109",
+          "status": "reject-for-now in v0.40",
+          "lesson": "broad 月 agreement is insufficient when family/personal outer frame weakens the host scene"
+        }
+      ],
+      "operation_specific_status": "scene-dependent",
+      "conclusion": "The きつ group demonstrates that a structurally valid outer-frame operation still needs narrow-scene and semantic-role gates."
+    }
+  ],
+  "counts": {
+    "repeated_B_groups": 4,
+    "directed_outer_frame_swaps": 26,
+    "high_stable_positive_groups": 1,
+    "conditional_scene_dependent_groups": 1,
+    "source_specific_review_groups": 1,
+    "blocked_cross_scene_groups": 1
+  },
+  "positive_family": {
+    "id": "naha-spring-plants",
+    "source_model": "v0.62",
+    "generator_model": "v0.63",
+    "positive_candidate": "hybrid-018",
+    "control_candidate": "hybrid-020"
+  },
+  "next_step": "Keep v0.63 as the curated positive generator. Use this survey as the basis for a broader research-only outer-frame enumerator only after operation-specific B source parsing is represented in the common schema."
+}
