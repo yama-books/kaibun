@@ -6,6 +6,8 @@ on:
       - "data/**"
       - "scripts/validate-corpus.mjs"
       - "scripts/validate-ui.mjs"
+      - "docs/EDO_KAIBUNKA_SAMPLES_V27.md"
+      - "data/historical-kaibunka-samples-v27.json"
       - "index.html"
       - ".github/workflows/validate.yml"
   pull_request:
