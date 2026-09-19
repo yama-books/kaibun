@@ -1,0 +1,40 @@
+{
+  "version": "1.26",
+  "updated_on": "2026-09-20",
+  "title": "Current o/wo historical orthographic diagnostic",
+  "supersedes_for_current_research": "1.21",
+  "mode": "research-diagnostic-only",
+  "strict_baseline": {
+    "changed": false,
+    "fixed50_unchanged": true,
+    "wave2_verified_snapshot": 14,
+    "wave2_held_snapshot": 5,
+    "wave3_separate": true
+  },
+  "profile": {
+    "id": "o-wo-diagnostic",
+    "pair": ["お","を"],
+    "scope": "diagnostic-only",
+    "universal_interchangeability_claimed": false
+  },
+  "positive_controls": [
+    {"source_number":94,"id":"shoju-next-094","layer":"wave2-held","reading":"なかたひもついおそきはるともとちともとるはきそをいつもひたかな","mismatch_positions":[8,24]},
+    {"source_number":110,"id":"shoju-wave3-110","layer":"wave3","reading":"とさむしなおとのてそかしきぬたうたぬきしかそてのとをなしむさと","mismatch_positions":[6,26]},
+    {"source_number":115,"id":"shoju-wave3-115","layer":"wave3","reading":"もとるをないつもろこしとつましらしまつとしころもついなおるとも","mismatch_positions":[4,28]},
+    {"source_number":118,"id":"shoju-wave3-118","layer":"wave3","reading":"やかてみつひをのへるはもさくはなはくさもはるへのおひつみてかや","mismatch_positions":[7,25]}
+  ],
+  "negative_controls": [
+    {"source_number":82,"reason":"o/wo fold leaves voicing mismatches"},
+    {"source_number":88,"reason":"length and central transcription instability remain"},
+    {"source_number":92,"reason":"length deficit and broad mismatches remain"},
+    {"source_number":106,"reason":"o/wo fold still leaves independent ひ/い mismatches"}
+  ],
+  "finding": "The poem-specific scholarly transcription corpus now contains four independent 31-kana records whose only literal mirror difference is one お/を pair.",
+  "policy": {
+    "strict_promotions": 0,
+    "automatic_repair": false,
+    "public_generator_effect": "none",
+    "fixed50_or_wave2_count_change": false
+  },
+  "next_action": "Keep the profile as an explicit historical diagnostic axis; do not merge it into strict equality."
+}
