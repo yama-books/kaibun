@@ -1,0 +1,267 @@
+{
+  "version": "1.04",
+  "source_family_version": "1.03",
+  "common_schema_version": "0.61",
+  "operation": "shared-B-outer-frame-swap",
+  "family": "musu-night-sky-family-moon",
+  "candidate_count": 4,
+  "candidates": [
+    {
+      "id": "hybrid-003",
+      "kind": "novel-cento-control",
+      "operation": "shared-B-outer-frame-swap",
+      "reading": "てりつうみきつるみそらはむすめよめすむはらそみるつきみうつりて",
+      "meter": [
+        "てりつうみ",
+        "きつるみそらは",
+        "むすめよめ",
+        "すむはらそみる",
+        "つきみうつりて"
+      ],
+      "factors": {
+        "A": "てりつうみ",
+        "B": "きつ",
+        "C": "るみそらは",
+        "D": "むす",
+        "E": "めよめ"
+      },
+      "strict_palindrome": true,
+      "host_source_id": "shoju-add-109",
+      "donor_source_ids": [
+        "shoju-040"
+      ],
+      "provenance": {
+        "host_middle_source": "shoju-add-109",
+        "outer_frame_A_source": "shoju-040",
+        "changed_factor": "A"
+      },
+      "attestation_trace": {
+        "donor_AB_attested": true,
+        "host_BC_attested": true,
+        "host_CD_attested": true,
+        "host_DE_attested": true,
+        "source_specific_D_corridor_preserved": true
+      },
+      "morphology_trace": {
+        "D": "むす",
+        "D_scope": "conditional-source-specific",
+        "D_corridor_preserved": true,
+        "D_global_transfer": false,
+        "B": "きつ",
+        "B_scope": "conditional",
+        "moved_slots": [
+          "A"
+        ]
+      },
+      "scene_trace": {
+        "host_scene": "月・家族 / みそら・見る・月・夜",
+        "donor_outer_scene": "秋・月・海・鳥",
+        "status": "hold-scene-mismatch",
+        "reason": "The donor outer frame introduces an explicit sea-scene source into a host corridor centered on family/sky/moon; only generic moon overlap is secure."
+      },
+      "semantic_role_trace": {
+        "status": "not-reached-after-scene-hold"
+      },
+      "source_confidence_trace": {
+        "host": "mining-transcription-supported",
+        "donor": "mining-source-parse-needed",
+        "source_image_needed": true
+      },
+      "review_status": "hold-scene-mismatch",
+      "cautions": [
+        "Do not infer a coherent sea-to-family viewpoint merely from broad 秋・月 agreement.",
+        "Source-image confirmation remains pending."
+      ]
+    },
+    {
+      "id": "hybrid-007",
+      "kind": "novel-cento",
+      "operation": "shared-B-outer-frame-swap",
+      "reading": "なかきよのきつるみそらはむすめよめすむはらそみるつきのよきかな",
+      "meter": [
+        "なかきよの",
+        "きつるみそらは",
+        "むすめよめ",
+        "すむはらそみる",
+        "つきのよきかな"
+      ],
+      "factors": {
+        "A": "なかきよの",
+        "B": "きつ",
+        "C": "るみそらは",
+        "D": "むす",
+        "E": "めよめ"
+      },
+      "strict_palindrome": true,
+      "host_source_id": "shoju-add-109",
+      "donor_source_ids": [
+        "shoju-038"
+      ],
+      "provenance": {
+        "host_middle_source": "shoju-add-109",
+        "outer_frame_A_source": "shoju-038",
+        "changed_factor": "A"
+      },
+      "attestation_trace": {
+        "donor_AB_attested": true,
+        "host_BC_attested": true,
+        "host_CD_attested": true,
+        "host_DE_attested": true,
+        "source_specific_D_corridor_preserved": true
+      },
+      "morphology_trace": {
+        "D": "むす",
+        "D_scope": "conditional-source-specific",
+        "D_corridor_preserved": true,
+        "D_global_transfer": false,
+        "B": "きつ",
+        "B_scope": "conditional",
+        "moved_slots": [
+          "A"
+        ]
+      },
+      "scene_trace": {
+        "host_scene": "月・家族 / みそら・見る・月・夜",
+        "donor_outer_scene": "長き夜 / 月の良きかな",
+        "status": "review-pass",
+        "reason": "The donor outer frame adds time/celestial/evaluation material compatible with the host's explicit moon/night/family scene rather than importing a new location."
+      },
+      "semantic_role_trace": {
+        "status": "compatible-tentative",
+        "reason": "The outer frame supplies temporal opening and moon evaluation while the host family/sky/movement corridor remains intact."
+      },
+      "source_confidence_trace": {
+        "host": "mining-transcription-supported",
+        "donor": "mining-human-tentative-factor-parse",
+        "source_image_needed": true
+      },
+      "review_status": "promising-but-parse-needed",
+      "cautions": [
+        "Exact syntax of 来つるみそらは remains to be confirmed.",
+        "Exact lexical/syntactic parse of すむはらそ見る remains unresolved.",
+        "D=むす is source-specific and must not be promoted to a global transferable seam.",
+        "This is a novel cento, not an attested historical waka."
+      ]
+    },
+    {
+      "id": "hybrid-014",
+      "kind": "novel-cento-control",
+      "operation": "shared-B-outer-frame-swap",
+      "reading": "はれつみよきつるみそらはむすめよめすむはらそみるつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつるみそらは",
+        "むすめよめ",
+        "すむはらそみる",
+        "つきよみつれは"
+      ],
+      "factors": {
+        "A": "はれつみよ",
+        "B": "きつ",
+        "C": "るみそらは",
+        "D": "むす",
+        "E": "めよめ"
+      },
+      "strict_palindrome": true,
+      "host_source_id": "shoju-add-109",
+      "donor_source_ids": [
+        "shoju-035"
+      ],
+      "provenance": {
+        "host_middle_source": "shoju-add-109",
+        "outer_frame_A_source": "shoju-035",
+        "changed_factor": "A"
+      },
+      "attestation_trace": {
+        "donor_AB_attested": true,
+        "host_BC_attested": true,
+        "host_CD_attested": true,
+        "host_DE_attested": true,
+        "source_specific_D_corridor_preserved": true
+      },
+      "morphology_trace": {
+        "D": "むす",
+        "D_scope": "conditional-source-specific",
+        "D_corridor_preserved": true,
+        "D_global_transfer": false,
+        "B": "きつ",
+        "B_scope": "conditional",
+        "moved_slots": [
+          "A"
+        ]
+      },
+      "scene_trace": {
+        "host_scene": "月・家族 / みそら・見る・月・夜",
+        "donor_outer_scene": "秋・月; donor A semantics unresolved",
+        "status": "review-needed"
+      },
+      "semantic_role_trace": {
+        "status": "not-reached-source-parse-first"
+      },
+      "source_confidence_trace": {
+        "host": "mining-transcription-supported",
+        "donor": "mining-unresolved-A",
+        "source_image_needed": true
+      },
+      "review_status": "hold-source-confirmation",
+      "cautions": [
+        "v0.49 explicitly leaves A=はれつみよ semantics unresolved.",
+        "Do not use the 月-bearing ku5 alone to infer full outer-frame scene compatibility.",
+        "Source-image / reliable parse is needed before semantic promotion."
+      ]
+    },
+    {
+      "id": "shoju-add-109",
+      "kind": "historical-source",
+      "operation": "shared-B-outer-frame-swap",
+      "reading": "なかよさのきつるみそらはむすめよめすむはらそみるつきのさよかな",
+      "meter": [
+        "なかよさの",
+        "きつるみそらは",
+        "むすめよめ",
+        "すむはらそみる",
+        "つきのさよかな"
+      ],
+      "factors": {
+        "A": "なかよさの",
+        "B": "きつ",
+        "C": "るみそらは",
+        "D": "むす",
+        "E": "めよめ"
+      },
+      "strict_palindrome": true,
+      "host_source_id": "shoju-add-109",
+      "donor_source_ids": [],
+      "provenance": {
+        "host_middle_source": "shoju-add-109",
+        "outer_frame_A_source": "shoju-add-109"
+      },
+      "attestation_trace": {
+        "historical_source": true,
+        "host_BC_CD_DE_preserved": true
+      },
+      "morphology_trace": {
+        "D": "むす",
+        "scope": "source-specific",
+        "corridor_preserved": true,
+        "global_transfer": false
+      },
+      "scene_trace": {
+        "status": "source-member",
+        "scene": "月・家族"
+      },
+      "semantic_role_trace": {
+        "status": "source-member"
+      },
+      "source_confidence_trace": {
+        "source_group": "mining",
+        "transcription_supported": true,
+        "source_image_needed": true
+      },
+      "review_status": "historical-source",
+      "cautions": [
+        "Mining-layer transcription; source-image confirmation remains separate."
+      ]
+    }
+  ]
+}
