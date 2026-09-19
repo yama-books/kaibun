@@ -1,0 +1,46 @@
+{
+  "version": "0.86",
+  "title": "Ten-item comparison balanced sampling policy",
+  "source_audit_version": "0.85",
+  "public_behavior_change_planned": true,
+  "target": "L1 ten-item comparison only",
+  "quotas": [
+    {
+      "id": "seed",
+      "count": 3
+    },
+    {
+      "id": "nonrecursive-dna",
+      "count": 3
+    },
+    {
+      "id": "recursive-kinship",
+      "count": 2
+    },
+    {
+      "id": "seam-and-bridge",
+      "count": 2
+    }
+  ],
+  "algorithm": [
+    "Build the same layer/weirdness-filtered pools used by the public UI.",
+    "Classify DNA readings by membership in recursivePool().",
+    "Sample each stratum without replacement and without duplicating a reading already selected from another stratum.",
+    "Shuffle the selected ten so strata are not shown in fixed blocks.",
+    "If a stratum is short, fill from the combined unused public comparison pool."
+  ],
+  "invariants": [
+    "At least ten available readings still produce ten unique comparison items.",
+    "No public candidate is removed from inventory.",
+    "L2 and L3 comparison behavior is unchanged.",
+    "Existing origin/quality/weirdness metadata remains visible.",
+    "Bridge candidates remain part of seam-and-bridge."
+  ],
+  "expected_normal_l1": {
+    "seed": 3,
+    "nonrecursive_dna": 3,
+    "recursive_kinship": 2,
+    "seam_and_bridge": 2,
+    "recursive_share": 0.2
+  }
+}
