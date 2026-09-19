@@ -67,6 +67,7 @@ const orthographicEquivalenceV126 = JSON.parse(fs.readFileSync("data/historical-
 const kanaCasebookV127 = JSON.parse(fs.readFileSync("data/historical-kana-equivalence-casebook-v127.json", "utf8"));
 const bidirectionalSeamV128 = JSON.parse(fs.readFileSync("data/bidirectional-tanka-seam-contrast-v128.json", "utf8"));
 const tankaLatticeDerivationV129 = JSON.parse(fs.readFileSync("data/tanka-mirror-lattice-independent-derivation-v129.json", "utf8"));
+const historicalThirdFamilyHumanV130 = JSON.parse(fs.readFileSync("data/historical-third-family-human-review-v130.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -812,6 +813,18 @@ if(tankaLatticeDerivationV129.derivation?.strict_grammar_formula!==fiveVar.formu
 if(tankaLatticeDerivationV129.evidence_classes?.v034?.sample_count!==50||tankaLatticeDerivationV129.evidence_classes?.v128?.sample_count!==6)errors.push("TANKA LATTICE DERIVATION V129 evidence counts drift");
 if(tankaLatticeDerivationV129.generator_consequences?.new_operation_enabled!==false||tankaLatticeDerivationV129.generator_consequences?.general_factor_crossover_enabled!==false)errors.push("TANKA LATTICE DERIVATION V129 must not expand operations");
 
+if(historicalThirdFamilyHumanV130.version!=="1.30")errors.push(`HISTORICAL THIRD FAMILY HUMAN V130 version mismatch: ${historicalThirdFamilyHumanV130.version}`);
+if((historicalThirdFamilyHumanV130.candidates??[]).length!==2)errors.push("HISTORICAL THIRD FAMILY HUMAN V130 must contain two unresolved candidates");
+const v130ids=(historicalThirdFamilyHumanV130.candidates??[]).map(x=>x.candidate_id).sort().join(",");
+if(v130ids!==["hybrid-007","wave2-travel-090-host-093-outer"].sort().join(","))errors.push(`HISTORICAL THIRD FAMILY HUMAN V130 ids drift: ${v130ids}`);
+for(const x of historicalThirdFamilyHumanV130.candidates??[]){
+  const hr=x.human_review??{};
+  for(const k of ["reviewer_id","whole_sentence_parse","boundary_shift_legitimacy","source_locality","blocking_span","proposed_parse"])if(hr[k]!==null)errors.push(`HISTORICAL THIRD FAMILY HUMAN V130 must remain unreviewed: ${x.candidate_id}/${k}`);
+  if(!Array.isArray(hr.notes)||hr.notes.length!==0)errors.push(`HISTORICAL THIRD FAMILY HUMAN V130 notes must start empty: ${x.candidate_id}`);
+}
+if(historicalThirdFamilyHumanV130.current_state?.completed_reviews!==0||historicalThirdFamilyHumanV130.current_state?.family_promotions!==0)errors.push("HISTORICAL THIRD FAMILY HUMAN V130 must not pre-adjudicate");
+if(historicalThirdFamilyHumanV130.current_state?.public_effect!=="none")errors.push("HISTORICAL THIRD FAMILY HUMAN V130 public effect forbidden");
+
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
 if(rules.rule_count!==rules.rules.length)errors.push(`RULE COUNT mismatch: declared=${rules.rule_count} actual=${rules.rules.length}`);
@@ -882,3 +895,4 @@ console.log(`Orthographic v1.26: positives=${v126pos}`);
 console.log(`Kana casebook v1.27: profiles=${v127profiles}`);
 console.log(`Bidirectional seam v1.28: cases=${bidirectionalSeamV128.summary?.contrastive_cases}, shift=${bidirectionalSeamV128.summary?.shared_boundary_shift_signature?.join("/")}`);
 console.log(`Tanka lattice v1.29: cells=${tankaLatticeDerivationV129.summary?.derived_cell_lengths?.join("/")}, rederived=${tankaLatticeDerivationV129.summary?.v034_formula_rederived}`);
+console.log(`Historical third-family human v1.30: candidates=${historicalThirdFamilyHumanV130.candidates?.length}, completed=${historicalThirdFamilyHumanV130.current_state?.completed_reviews}`);
