@@ -1,0 +1,55 @@
+{
+  "version": "0.70",
+  "title": "Public bridge exposure policy",
+  "status": "active-public-policy",
+  "objective": "Keep research-derived candidates visible without allowing a six-item bridge family to dominate the established seam-DNA style.",
+  "measured_before_throttle": [
+    {
+      "layer": "L1",
+      "max_weirdness": 2,
+      "standard_seam": 19,
+      "bridge": 3,
+      "total": 22,
+      "bridge_share": 0.1364
+    },
+    {
+      "layer": "L2",
+      "max_weirdness": 3,
+      "standard_seam": 10,
+      "bridge": 3,
+      "total": 13,
+      "bridge_share": 0.2308
+    },
+    {
+      "layer": "L2",
+      "max_weirdness": 4,
+      "standard_seam": 21,
+      "bridge": 3,
+      "total": 24,
+      "bridge_share": 0.125
+    }
+  ],
+  "policy": {
+    "surface": "seamGen button only",
+    "bridge_probability_cap": 0.15,
+    "selection_rule": "min(natural bridge share, 0.15)",
+    "candidate_count_and_comparison_lists": "keep all whitelisted bridge candidates",
+    "rationale": [
+      "L1 default natural share is already about 13.6%, so no increase is needed.",
+      "L2 default natural share is about 23.1%, which would overrepresent one new family.",
+      "A 15% cap preserves discoverability while keeping the existing seam corpus dominant."
+    ]
+  },
+  "invariants": [
+    "No bridge candidate is removed from the public whitelist.",
+    "The 10-item comparison pool may still include bridge candidates normally.",
+    "Only random one-shot seam generation is throttled.",
+    "If either standard or bridge pool is empty, use the non-empty pool.",
+    "The cap may be revised after observed usage/quality review."
+  ],
+  "expected_effect": {
+    "L1_default": "approximately unchanged; natural share below cap",
+    "L2_default": "bridge draw probability reduced from ~23% to 15%",
+    "high_weirdness": "natural share around 12.5%, below cap"
+  }
+}
