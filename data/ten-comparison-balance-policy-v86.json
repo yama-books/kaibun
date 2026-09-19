@@ -1,12 +1,12 @@
 {
-  "version": "0.86",
+  "version": "0.86.1",
   "title": "Ten-item comparison balanced sampling policy",
   "source_audit_version": "0.85",
   "public_behavior_change_planned": true,
   "target": "L1 ten-item comparison only",
   "quotas": [
     {
-      "id": "seed",
+      "id": "seed-nonrecursive",
       "count": 3
     },
     {
@@ -18,16 +18,17 @@
       "count": 2
     },
     {
-      "id": "seam-and-bridge",
+      "id": "seam-and-bridge-nonrecursive",
       "count": 2
     }
   ],
   "algorithm": [
     "Build the same layer/weirdness-filtered pools used by the public UI.",
-    "Classify DNA readings by membership in recursivePool().",
+    "Build a recursive reading set from recursivePool(); classification follows reading membership, not source label.",
+    "Exclude recursive readings from the seed, nonrecursive-DNA, and seam/bridge strata.",
     "Sample each stratum without replacement and without duplicating a reading already selected from another stratum.",
     "Shuffle the selected ten so strata are not shown in fixed blocks.",
-    "If a stratum is short, fill from the combined unused public comparison pool."
+    "If a stratum is short, fill from the combined unused nonrecursive pool first; use any remaining public reading only as a final fallback."
   ],
   "invariants": [
     "At least ten available readings still produce ten unique comparison items.",
@@ -37,10 +38,11 @@
     "Bridge candidates remain part of seam-and-bridge."
   ],
   "expected_normal_l1": {
-    "seed": 3,
+    "seed_nonrecursive": 3,
     "nonrecursive_dna": 3,
     "recursive_kinship": 2,
-    "seam_and_bridge": 2,
+    "seam_and_bridge_nonrecursive": 2,
     "recursive_share": 0.2
-  }
+  },
+  "correction_note": "Use reading-set membership rather than source label so seed records that duplicate recursive grammar outputs do not bypass the two-item kinship quota."
 }
