@@ -1,0 +1,62 @@
+{
+  "version": "1.27",
+  "updated_on": "2026-09-20",
+  "title": "Historical kana-equivalence casebook",
+  "purpose": "Keep distinct historical-kana/script mismatch mechanisms separate from both strict equality and the o/wo diagnostic profile.",
+  "mode": "research-diagnostic-only",
+  "strict_baseline_changed": false,
+  "profiles": [
+    {
+      "id": "he-e-diagnostic",
+      "declared_pair": ["へ","え"],
+      "cases": [
+        {
+          "source_number": 107,
+          "id": "shoju-wave3-107",
+          "title": "田",
+          "reading": "てにつみしはたくさたへてひのめくめのひてえたさくたはしみつにて",
+          "strict_palindrome": false,
+          "literal_mismatch_positions": [11,21],
+          "diagnostic_palindrome": true,
+          "evidence_note": "The scholarly transcription has たへて opposite explicit 枝, read えた under the recorded reading assumption."
+        }
+      ],
+      "universal_equivalence_claimed": false
+    },
+    {
+      "id": "ye-e-diagnostic",
+      "declared_pair": ["ゑ","え"],
+      "cases": [
+        {
+          "source_number": 117,
+          "id": "shoju-wave3-117",
+          "title": "手習子にならひ",
+          "historical_kana_reading": "はやもとるさかてくるまかゑいやらやいえかまるくてかさるともやは",
+          "strict_palindrome": false,
+          "diagnostic_palindrome": true,
+          "evidence_note": "The scholarly transcription visibly uses katakana ヱ on one side and 家 contributing いえ on the mirror side."
+        }
+      ],
+      "universal_equivalence_claimed": false
+    }
+  ],
+  "excluded": [
+    {
+      "source_number": 106,
+      "reason": "Contains both o/wo and independent ひ/い mismatches; no single declared profile resolves it."
+    }
+  ],
+  "safety_invariants": [
+    "Do not alter stored scholarly transcription.",
+    "Do not set strict_palindrome=true for diagnostic passes.",
+    "Do not combine he/e, ye/e, and o/wo into a single permissive normalizer.",
+    "Each declared pair requires its own evidence and regression controls.",
+    "No diagnostic case is promoted into fixed50, wave2 verified, or public generation."
+  ],
+  "verdict": {
+    "profiles": 2,
+    "diagnostic_cases": [107,117],
+    "strict_promotions": 0,
+    "public_generator_effect": "none"
+  }
+}
