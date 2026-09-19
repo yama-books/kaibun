@@ -1,0 +1,41 @@
+{
+  "version": "0.84",
+  "title": "L1 recursive kinship DNA exposure policy",
+  "source_audit_version": "0.83.1",
+  "public_behavior_change_planned": true,
+  "baseline": {
+    "layer": "L1",
+    "selector": "dnaPool(true)",
+    "total_unique": 451,
+    "recursive_kinship_readings": 216,
+    "recursive_share": 0.4789
+  },
+  "policy": {
+    "surface": "DNAで1本生成",
+    "target_layer": "L1",
+    "recursive_probability_cap": 0.25,
+    "selection_rule": "Classify by membership in recursivePool() reading set; choose recursive with min(natural_share, 0.25), otherwise choose non-recursive.",
+    "inventory_unchanged": true,
+    "candidate_count_unchanged": true,
+    "ten_compare_unchanged_for_now": true
+  },
+  "rationale": [
+    "The recursive kinship grammar is productive and grammatical, so deletion would discard useful structure.",
+    "At 47.9% of the unique L1 DNA-button reading pool it disproportionately defines the app's voice.",
+    "A 25% cap keeps the family discoverable while roughly doubling the chance of seeing a non-kinship DNA mechanism.",
+    "This mirrors the v0.70 bridge strategy: control exposure separately from corpus size."
+  ],
+  "expected_effect": {
+    "recursive_draw_probability": "47.9% -> at most 25%",
+    "nonrecursive_draw_probability": "52.1% -> at least 75%",
+    "data_loss": "none"
+  },
+  "invariants": [
+    "No generation rule is removed.",
+    "recursivePool() remains available to candidate counting and future explicit tools.",
+    "L2/L3 behavior is unchanged.",
+    "If recursive or nonrecursive pool is empty, use the non-empty pool.",
+    "Global seen-reading behavior remains in effect."
+  ],
+  "next_step": "Integrate only into dnaOne(), validate that dnaPool(true) inventory remains unchanged, then audit 10-item comparison separately."
+}
