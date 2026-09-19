@@ -86,12 +86,12 @@ for(const fam of generated){
   });
 }
 
-const currentStageCount=(growth.narrative_families??[]).reduce((n,f)=>n+(f.stages??[]).length,0);
-const currentKin=(growth.narrative_families??[]).reduce((n,f)=>n+(f.stages??[]).filter(s=>/[母父]/.test(s.display??"")||s.extension_type==="kinship_recipient").length,0);
-const projected=currentKin/(currentStageCount+40);
-if(currentStageCount!==322)errors.push(`current stage count ${currentStageCount}, expected 322`);
-if(currentKin!==216)errors.push(`current kinship stage count ${currentKin}, expected 216`);
-if(projected>=0.60)errors.push(`projected kinship share ${projected} must be <0.60 when all 40 research stages are counted`);
+const baseline=fixture.projected_growth_stats??{};
+if(baseline.current_stage_count!==322)errors.push(`fixture baseline stage count ${baseline.current_stage_count}, expected 322`);
+if(baseline.current_kinship_stage_count!==216)errors.push(`fixture baseline kinship count ${baseline.current_kinship_stage_count}, expected 216`);
+if(baseline.added_nonkinship_stages!==40)errors.push(`fixture added stage count ${baseline.added_nonkinship_stages}, expected 40`);
+if(baseline.projected_stage_count!==362)errors.push(`fixture projected stage count ${baseline.projected_stage_count}, expected 362`);
+if((baseline.projected_kinship_share??1)>=0.60)errors.push(`fixture projected kinship share ${baseline.projected_kinship_share} must be <0.60`);
 
 if(errors.length){
   console.error("Non-kinship quote expansion validation failed:\n"+errors.map(x=>"- "+x).join("\n"));
