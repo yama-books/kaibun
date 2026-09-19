@@ -1,7 +1,7 @@
 {
-  "version": "0.25",
+  "version": "0.26",
   "name": "seam-shift grammar",
-  "thesis": "鏡像制約はかな列に課す。語境界・品詞・統語役割は左右一対一にそろえず、完成した全文の日本語として評価する。",
+  "thesis": "鏡像制約はかな列に課す。語境界・品詞・統語役割は左右一対一にそろえず、完成した全文の日本語として評価する。 v0.26では『遠↔音』『皆↔波』に相当する、逆読みによって別の自然語になる名詞ペアを増やし、助詞を介して通常の名詞句として文中へ埋め込む。",
   "reference_specimens": [
     {
       "id": "takarabune-kaibunka",
@@ -404,6 +404,186 @@
         "role": "copula-predicate"
       },
       "alignment": "role-shift"
+    },
+    {
+      "id": "record-kuroki",
+      "left": {
+        "reading": "きろく",
+        "display": "記録",
+        "role": "modifier-noun"
+      },
+      "right": {
+        "reading": "くろき",
+        "display": "黒木",
+        "role": "person"
+      },
+      "alignment": "role-shift",
+      "tier": "L1"
+    },
+    {
+      "id": "pond-kei",
+      "left": {
+        "reading": "いけ",
+        "display": "池",
+        "role": "place-noun"
+      },
+      "right": {
+        "reading": "けい",
+        "display": "ケイ",
+        "role": "person"
+      },
+      "alignment": "role-shift",
+      "tier": "L1"
+    },
+    {
+      "id": "mountain-maya",
+      "left": {
+        "reading": "やま",
+        "display": "山",
+        "role": "place-noun"
+      },
+      "right": {
+        "reading": "まや",
+        "display": "マヤ",
+        "role": "person"
+      },
+      "alignment": "role-shift",
+      "tier": "L1"
+    },
+    {
+      "id": "river-waka",
+      "left": {
+        "reading": "かわ",
+        "display": "川",
+        "role": "place-noun"
+      },
+      "right": {
+        "reading": "わか",
+        "display": "ワカ",
+        "role": "person"
+      },
+      "alignment": "role-shift",
+      "tier": "L1"
+    },
+    {
+      "id": "sea-miu",
+      "left": {
+        "reading": "うみ",
+        "display": "海",
+        "role": "place-noun"
+      },
+      "right": {
+        "reading": "みう",
+        "display": "ミウ",
+        "role": "person"
+      },
+      "alignment": "role-shift",
+      "tier": "L1"
+    },
+    {
+      "id": "house-ray",
+      "left": {
+        "reading": "いえ",
+        "display": "家",
+        "role": "place-noun"
+      },
+      "right": {
+        "reading": "えい",
+        "display": "エイ",
+        "role": "animal"
+      },
+      "alignment": "role-shift",
+      "tier": "L1"
+    },
+    {
+      "id": "pear-item",
+      "left": {
+        "reading": "なし",
+        "display": "梨",
+        "role": "noun"
+      },
+      "right": {
+        "reading": "しな",
+        "display": "品",
+        "role": "noun"
+      },
+      "alignment": "role-shift",
+      "tier": "L1"
+    },
+    {
+      "id": "squid-meeting",
+      "left": {
+        "reading": "いか",
+        "display": "イカ",
+        "role": "animal"
+      },
+      "right": {
+        "reading": "かい",
+        "display": "会",
+        "role": "event-noun"
+      },
+      "alignment": "role-shift",
+      "tier": "L2"
+    },
+    {
+      "id": "sand-eggplant",
+      "left": {
+        "reading": "すな",
+        "display": "砂",
+        "role": "material"
+      },
+      "right": {
+        "reading": "なす",
+        "display": "ナス",
+        "role": "food-noun"
+      },
+      "alignment": "role-shift",
+      "tier": "L2"
+    },
+    {
+      "id": "squirrel-pickpocket",
+      "left": {
+        "reading": "りす",
+        "display": "リス",
+        "role": "animal"
+      },
+      "right": {
+        "reading": "すり",
+        "display": "スリ",
+        "role": "person"
+      },
+      "alignment": "role-shift",
+      "tier": "L2"
+    },
+    {
+      "id": "lie-layer",
+      "left": {
+        "reading": "うそ",
+        "display": "嘘",
+        "role": "abstract"
+      },
+      "right": {
+        "reading": "そう",
+        "display": "層",
+        "role": "abstract"
+      },
+      "alignment": "role-shift",
+      "tier": "L2"
+    },
+    {
+      "id": "voice-eco",
+      "left": {
+        "reading": "こえ",
+        "display": "声",
+        "role": "abstract"
+      },
+      "right": {
+        "reading": "えこ",
+        "display": "エコ",
+        "role": "abstract"
+      },
+      "alignment": "role-shift",
+      "tier": "L2"
     }
   ],
   "recipes": [
@@ -1117,13 +1297,1226 @@
       ],
       "boundary_shift_shells": 2,
       "particle_hinges": 0
+    },
+    {
+      "id": "see-record-kuroki",
+      "layer": "L1",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "record-kuroki",
+        "mo-hinge",
+        "tami-see"
+      ],
+      "japanese_quality": "A",
+      "weirdness": 2,
+      "reading": "たみもきろくのくろきもみた",
+      "display": "タミも記録の黒木も見た。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "record-kuroki",
+          "reading": "きろくのくろき",
+          "display": "記録の黒木",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "mo-hinge",
+          "reading": "もきろくのくろきも",
+          "display": "も記録の黒木も",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "tami-see",
+          "reading": "たみもきろくのくろきもみた",
+          "display": "タミも記録の黒木も見た",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "see-pond-kei",
+      "layer": "L1",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "pond-kei",
+        "mo-hinge",
+        "tami-see"
+      ],
+      "japanese_quality": "A",
+      "weirdness": 2,
+      "reading": "たみもいけのけいもみた",
+      "display": "タミも池のケイも見た。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "pond-kei",
+          "reading": "いけのけい",
+          "display": "池のケイ",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "mo-hinge",
+          "reading": "もいけのけいも",
+          "display": "も池のケイも",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "tami-see",
+          "reading": "たみもいけのけいもみた",
+          "display": "タミも池のケイも見た",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "see-mountain-maya",
+      "layer": "L1",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "mountain-maya",
+        "mo-hinge",
+        "tami-see"
+      ],
+      "japanese_quality": "A",
+      "weirdness": 2,
+      "reading": "たみもやまのまやもみた",
+      "display": "タミも山のマヤも見た。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "mountain-maya",
+          "reading": "やまのまや",
+          "display": "山のマヤ",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "mo-hinge",
+          "reading": "もやまのまやも",
+          "display": "も山のマヤも",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "tami-see",
+          "reading": "たみもやまのまやもみた",
+          "display": "タミも山のマヤも見た",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "see-river-waka",
+      "layer": "L1",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "river-waka",
+        "mo-hinge",
+        "tami-see"
+      ],
+      "japanese_quality": "A",
+      "weirdness": 2,
+      "reading": "たみもかわのわかもみた",
+      "display": "タミも川のワカも見た。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "river-waka",
+          "reading": "かわのわか",
+          "display": "川のワカ",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "mo-hinge",
+          "reading": "もかわのわかも",
+          "display": "も川のワカも",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "tami-see",
+          "reading": "たみもかわのわかもみた",
+          "display": "タミも川のワカも見た",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "see-sea-miu",
+      "layer": "L1",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "sea-miu",
+        "mo-hinge",
+        "tami-see"
+      ],
+      "japanese_quality": "A",
+      "weirdness": 2,
+      "reading": "たみもうみのみうもみた",
+      "display": "タミも海のミウも見た。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "sea-miu",
+          "reading": "うみのみう",
+          "display": "海のミウ",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "mo-hinge",
+          "reading": "もうみのみうも",
+          "display": "も海のミウも",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "tami-see",
+          "reading": "たみもうみのみうもみた",
+          "display": "タミも海のミウも見た",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "see-house-ray",
+      "layer": "L1",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "house-ray",
+        "mo-hinge",
+        "tami-see"
+      ],
+      "japanese_quality": "A",
+      "weirdness": 2,
+      "reading": "たみもいえのえいもみた",
+      "display": "タミも家のエイも見た。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "house-ray",
+          "reading": "いえのえい",
+          "display": "家のエイ",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "mo-hinge",
+          "reading": "もいえのえいも",
+          "display": "も家のエイも",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "tami-see",
+          "reading": "たみもいえのえいもみた",
+          "display": "タミも家のエイも見た",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "see-pear-item",
+      "layer": "L1",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "pear-item",
+        "mo-hinge",
+        "tami-see"
+      ],
+      "japanese_quality": "A",
+      "weirdness": 2,
+      "reading": "たみもなしのしなもみた",
+      "display": "タミも梨の品も見た。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "pear-item",
+          "reading": "なしのしな",
+          "display": "梨の品",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "mo-hinge",
+          "reading": "もなしのしなも",
+          "display": "も梨の品も",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "tami-see",
+          "reading": "たみもなしのしなもみた",
+          "display": "タミも梨の品も見た",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "loan-record-kuroki",
+      "layer": "L1",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "record-kuroki",
+        "ni-hinge",
+        "certain-loan"
+      ],
+      "japanese_quality": "A",
+      "weirdness": 2,
+      "reading": "たしかにきろくのくろきにかした",
+      "display": "確かに記録の黒木に貸した。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "record-kuroki",
+          "reading": "きろくのくろき",
+          "display": "記録の黒木",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "ni-hinge",
+          "reading": "にきろくのくろきに",
+          "display": "に記録の黒木に",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "certain-loan",
+          "reading": "たしかにきろくのくろきにかした",
+          "display": "確かに記録の黒木に貸した",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "cause-record-kuroki",
+      "layer": "L2",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "record-kuroki",
+        "no-hinge",
+        "daise-cause"
+      ],
+      "japanese_quality": "A-",
+      "weirdness": 3,
+      "reading": "だいせのきろくのくろきのせいだ",
+      "display": "ダイセの記録の黒木のせいだ。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "record-kuroki",
+          "reading": "きろくのくろき",
+          "display": "記録の黒木",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "no-hinge",
+          "reading": "のきろくのくろきの",
+          "display": "の記録の黒木の",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "daise-cause",
+          "reading": "だいせのきろくのくろきのせいだ",
+          "display": "ダイセの記録の黒木のせいだ",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "loan-pond-kei",
+      "layer": "L1",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "pond-kei",
+        "ni-hinge",
+        "certain-loan"
+      ],
+      "japanese_quality": "A",
+      "weirdness": 2,
+      "reading": "たしかにいけのけいにかした",
+      "display": "確かに池のケイに貸した。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "pond-kei",
+          "reading": "いけのけい",
+          "display": "池のケイ",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "ni-hinge",
+          "reading": "にいけのけいに",
+          "display": "に池のケイに",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "certain-loan",
+          "reading": "たしかにいけのけいにかした",
+          "display": "確かに池のケイに貸した",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "cause-pond-kei",
+      "layer": "L2",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "pond-kei",
+        "no-hinge",
+        "daise-cause"
+      ],
+      "japanese_quality": "A-",
+      "weirdness": 3,
+      "reading": "だいせのいけのけいのせいだ",
+      "display": "ダイセの池のケイのせいだ。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "pond-kei",
+          "reading": "いけのけい",
+          "display": "池のケイ",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "no-hinge",
+          "reading": "のいけのけいの",
+          "display": "の池のケイの",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "daise-cause",
+          "reading": "だいせのいけのけいのせいだ",
+          "display": "ダイセの池のケイのせいだ",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "loan-mountain-maya",
+      "layer": "L1",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "mountain-maya",
+        "ni-hinge",
+        "certain-loan"
+      ],
+      "japanese_quality": "A",
+      "weirdness": 2,
+      "reading": "たしかにやまのまやにかした",
+      "display": "確かに山のマヤに貸した。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "mountain-maya",
+          "reading": "やまのまや",
+          "display": "山のマヤ",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "ni-hinge",
+          "reading": "にやまのまやに",
+          "display": "に山のマヤに",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "certain-loan",
+          "reading": "たしかにやまのまやにかした",
+          "display": "確かに山のマヤに貸した",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "cause-mountain-maya",
+      "layer": "L2",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "mountain-maya",
+        "no-hinge",
+        "daise-cause"
+      ],
+      "japanese_quality": "A-",
+      "weirdness": 3,
+      "reading": "だいせのやまのまやのせいだ",
+      "display": "ダイセの山のマヤのせいだ。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "mountain-maya",
+          "reading": "やまのまや",
+          "display": "山のマヤ",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "no-hinge",
+          "reading": "のやまのまやの",
+          "display": "の山のマヤの",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "daise-cause",
+          "reading": "だいせのやまのまやのせいだ",
+          "display": "ダイセの山のマヤのせいだ",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "loan-river-waka",
+      "layer": "L1",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "river-waka",
+        "ni-hinge",
+        "certain-loan"
+      ],
+      "japanese_quality": "A",
+      "weirdness": 2,
+      "reading": "たしかにかわのわかにかした",
+      "display": "確かに川のワカに貸した。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "river-waka",
+          "reading": "かわのわか",
+          "display": "川のワカ",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "ni-hinge",
+          "reading": "にかわのわかに",
+          "display": "に川のワカに",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "certain-loan",
+          "reading": "たしかにかわのわかにかした",
+          "display": "確かに川のワカに貸した",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "cause-river-waka",
+      "layer": "L2",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "river-waka",
+        "no-hinge",
+        "daise-cause"
+      ],
+      "japanese_quality": "A-",
+      "weirdness": 3,
+      "reading": "だいせのかわのわかのせいだ",
+      "display": "ダイセの川のワカのせいだ。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "river-waka",
+          "reading": "かわのわか",
+          "display": "川のワカ",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "no-hinge",
+          "reading": "のかわのわかの",
+          "display": "の川のワカの",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "daise-cause",
+          "reading": "だいせのかわのわかのせいだ",
+          "display": "ダイセの川のワカのせいだ",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "loan-sea-miu",
+      "layer": "L1",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "sea-miu",
+        "ni-hinge",
+        "certain-loan"
+      ],
+      "japanese_quality": "A",
+      "weirdness": 2,
+      "reading": "たしかにうみのみうにかした",
+      "display": "確かに海のミウに貸した。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "sea-miu",
+          "reading": "うみのみう",
+          "display": "海のミウ",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "ni-hinge",
+          "reading": "にうみのみうに",
+          "display": "に海のミウに",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "certain-loan",
+          "reading": "たしかにうみのみうにかした",
+          "display": "確かに海のミウに貸した",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "cause-sea-miu",
+      "layer": "L2",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "sea-miu",
+        "no-hinge",
+        "daise-cause"
+      ],
+      "japanese_quality": "A-",
+      "weirdness": 3,
+      "reading": "だいせのうみのみうのせいだ",
+      "display": "ダイセの海のミウのせいだ。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "sea-miu",
+          "reading": "うみのみう",
+          "display": "海のミウ",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "no-hinge",
+          "reading": "のうみのみうの",
+          "display": "の海のミウの",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "daise-cause",
+          "reading": "だいせのうみのみうのせいだ",
+          "display": "ダイセの海のミウのせいだ",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "see-squid-meeting",
+      "layer": "L2",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "squid-meeting",
+        "mo-hinge",
+        "tami-see"
+      ],
+      "japanese_quality": "A-",
+      "weirdness": 3,
+      "reading": "たみもいかのかいもみた",
+      "display": "タミもイカの会も見た。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "squid-meeting",
+          "reading": "いかのかい",
+          "display": "イカの会",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "mo-hinge",
+          "reading": "もいかのかいも",
+          "display": "もイカの会も",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "tami-see",
+          "reading": "たみもいかのかいもみた",
+          "display": "タミもイカの会も見た",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "see-sand-eggplant",
+      "layer": "L2",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "sand-eggplant",
+        "mo-hinge",
+        "tami-see"
+      ],
+      "japanese_quality": "A-",
+      "weirdness": 3,
+      "reading": "たみもすなのなすもみた",
+      "display": "タミも砂のナスも見た。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "sand-eggplant",
+          "reading": "すなのなす",
+          "display": "砂のナス",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "mo-hinge",
+          "reading": "もすなのなすも",
+          "display": "も砂のナスも",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "tami-see",
+          "reading": "たみもすなのなすもみた",
+          "display": "タミも砂のナスも見た",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "see-squirrel-pickpocket",
+      "layer": "L2",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "squirrel-pickpocket",
+        "mo-hinge",
+        "tami-see"
+      ],
+      "japanese_quality": "A-",
+      "weirdness": 3,
+      "reading": "たみもりすのすりもみた",
+      "display": "タミもリスのスリも見た。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "squirrel-pickpocket",
+          "reading": "りすのすり",
+          "display": "リスのスリ",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "mo-hinge",
+          "reading": "もりすのすりも",
+          "display": "もリスのスリも",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "tami-see",
+          "reading": "たみもりすのすりもみた",
+          "display": "タミもリスのスリも見た",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "see-lie-layer",
+      "layer": "L2",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "lie-layer",
+        "mo-hinge",
+        "tami-see"
+      ],
+      "japanese_quality": "A-",
+      "weirdness": 3,
+      "reading": "たみもうそのそうもみた",
+      "display": "タミも嘘の層も見た。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "lie-layer",
+          "reading": "うそのそう",
+          "display": "嘘の層",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "mo-hinge",
+          "reading": "もうそのそうも",
+          "display": "も嘘の層も",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "tami-see",
+          "reading": "たみもうそのそうもみた",
+          "display": "タミも嘘の層も見た",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "see-voice-eco",
+      "layer": "L2",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "voice-eco",
+        "mo-hinge",
+        "tami-see"
+      ],
+      "japanese_quality": "A-",
+      "weirdness": 3,
+      "reading": "たみもこえのえこもみた",
+      "display": "タミも声のエコも見た。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "voice-eco",
+          "reading": "こえのえこ",
+          "display": "声のエコ",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "mo-hinge",
+          "reading": "もこえのえこも",
+          "display": "も声のエコも",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "tami-see",
+          "reading": "たみもこえのえこもみた",
+          "display": "タミも声のエコも見た",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "husband-record-kuroki",
+      "layer": "L2",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "record-kuroki",
+        "husband-copula"
+      ],
+      "japanese_quality": "A-",
+      "weirdness": 4,
+      "reading": "だんなきろくのくろきなんだ",
+      "display": "旦那、記録の黒木なんだ。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "record-kuroki",
+          "reading": "きろくのくろき",
+          "display": "記録の黒木",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "husband-copula",
+          "reading": "だんなきろくのくろきなんだ",
+          "display": "旦那、記録の黒木なんだ",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 0
+    },
+    {
+      "id": "husband-pond-kei",
+      "layer": "L2",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "pond-kei",
+        "husband-copula"
+      ],
+      "japanese_quality": "A-",
+      "weirdness": 4,
+      "reading": "だんないけのけいなんだ",
+      "display": "旦那、池のケイなんだ。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "pond-kei",
+          "reading": "いけのけい",
+          "display": "池のケイ",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "husband-copula",
+          "reading": "だんないけのけいなんだ",
+          "display": "旦那、池のケイなんだ",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 0
+    },
+    {
+      "id": "husband-mountain-maya",
+      "layer": "L2",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "mountain-maya",
+        "husband-copula"
+      ],
+      "japanese_quality": "A-",
+      "weirdness": 4,
+      "reading": "だんなやまのまやなんだ",
+      "display": "旦那、山のマヤなんだ。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "mountain-maya",
+          "reading": "やまのまや",
+          "display": "山のマヤ",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "husband-copula",
+          "reading": "だんなやまのまやなんだ",
+          "display": "旦那、山のマヤなんだ",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 0
+    },
+    {
+      "id": "husband-river-waka",
+      "layer": "L2",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "river-waka",
+        "husband-copula"
+      ],
+      "japanese_quality": "A-",
+      "weirdness": 4,
+      "reading": "だんなかわのわかなんだ",
+      "display": "旦那、川のワカなんだ。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "river-waka",
+          "reading": "かわのわか",
+          "display": "川のワカ",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "husband-copula",
+          "reading": "だんなかわのわかなんだ",
+          "display": "旦那、川のワカなんだ",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 0
+    },
+    {
+      "id": "husband-sea-miu",
+      "layer": "L2",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "sea-miu",
+        "husband-copula"
+      ],
+      "japanese_quality": "A-",
+      "weirdness": 4,
+      "reading": "だんなうみのみうなんだ",
+      "display": "旦那、海のミウなんだ。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "sea-miu",
+          "reading": "うみのみう",
+          "display": "海のミウ",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "husband-copula",
+          "reading": "だんなうみのみうなんだ",
+          "display": "旦那、海のミウなんだ",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 0
+    },
+    {
+      "id": "husband-house-ray",
+      "layer": "L2",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "house-ray",
+        "husband-copula"
+      ],
+      "japanese_quality": "A-",
+      "weirdness": 4,
+      "reading": "だんないえのえいなんだ",
+      "display": "旦那、家のエイなんだ。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "house-ray",
+          "reading": "いえのえい",
+          "display": "家のエイ",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "husband-copula",
+          "reading": "だんないえのえいなんだ",
+          "display": "旦那、家のエイなんだ",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 0
     }
   ],
   "verified": {
     "core_count": 6,
-    "shell_count": 17,
-    "recipe_count": 14,
+    "shell_count": 29,
+    "recipe_count": 42,
     "all_recipe_palindromes": true,
-    "classic_palindrome": true
+    "classic_palindrome": true,
+    "role_shift_shell_count": 23
   }
 }
