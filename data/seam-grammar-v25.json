@@ -1,0 +1,1129 @@
+{
+  "version": "0.25",
+  "name": "seam-shift grammar",
+  "thesis": "鏡像制約はかな列に課す。語境界・品詞・統語役割は左右一対一にそろえず、完成した全文の日本語として評価する。",
+  "reference_specimens": [
+    {
+      "id": "takarabune-kaibunka",
+      "display": "長き夜の 遠の眠りの 皆目覚め 波乗り舟の 音の良きかな",
+      "normalized_reading": "なかきよのとをのねふりのみなめさめなみのりふねのをとのよきかな",
+      "strict_palindrome_under_normalization": true,
+      "meter": [
+        5,
+        7,
+        5,
+        7,
+        7
+      ],
+      "historical_note": "江戸期の宝船・初夢習俗で著名だが、成立時期・作者は不詳。国立国会図書館レファレンス協同DBは1592年刊『日本風土記』掲載を確認し、参考資料では1548年成立『運歩色葉集』も古い出典として挙げる。",
+      "source_notes": [
+        "国立国会図書館 レファレンス協同データベース 管理番号 いわき総合-一般307",
+        "精選版日本国語大辞典／日本大百科全書『回文歌』『回文』"
+      ],
+      "tokenization": [
+        [
+          "長き",
+          "なかき"
+        ],
+        [
+          "夜",
+          "よ"
+        ],
+        [
+          "の",
+          "の"
+        ],
+        [
+          "遠",
+          "とを"
+        ],
+        [
+          "の",
+          "の"
+        ],
+        [
+          "眠り",
+          "ねふり"
+        ],
+        [
+          "の",
+          "の"
+        ],
+        [
+          "皆",
+          "みな"
+        ],
+        [
+          "目覚め",
+          "めさめ"
+        ],
+        [
+          "波",
+          "なみ"
+        ],
+        [
+          "乗り舟",
+          "のりふね"
+        ],
+        [
+          "の",
+          "の"
+        ],
+        [
+          "音",
+          "をと"
+        ],
+        [
+          "の",
+          "の"
+        ],
+        [
+          "良き",
+          "よき"
+        ],
+        [
+          "かな",
+          "かな"
+        ]
+      ],
+      "structural_observations": [
+        "みな（皆）↔ なみ（波）: 同じ音の鏡像が、主語と次の名詞句の先頭という別の統語役割を持つ。",
+        "めさめ（目覚め）が自己回文の述語ピボットになる。",
+        "とを（遠）↔ をと（音）: 異なる名詞を逆読みで接続する。",
+        "ねふり（眠り）の反転『りふね』は単独語ではなく、隣接する『の』と再分節され『のりふね（乗り舟）』になる。",
+        "なかきよ（長き夜）↔ よきかな（良きかな）: 名詞句と評価的終止が対応し、品詞・句構造が左右で一致しない。",
+        "5-7-5-7-7の句境界そのものは鏡像位置と一致しない。韻律と回文軸を別々に成立させている。"
+      ]
+    }
+  ],
+  "principles": [
+    {
+      "id": "kana-first",
+      "label": "かな列優先",
+      "description": "回文制約は文字・音列にだけ課し、語単位の鏡像対応を要求しない。"
+    },
+    {
+      "id": "boundary-shift",
+      "label": "境界ずらし",
+      "description": "『この↔の子』『眠り↔（の）り舟』のように、鏡像位置と形態素境界をずらす。"
+    },
+    {
+      "id": "role-shift",
+      "label": "役割転換",
+      "description": "鏡像する音列が左右で別の品詞・統語役割を持ってよい。"
+    },
+    {
+      "id": "particle-hinge",
+      "label": "助詞ヒンジ",
+      "description": "の・に・も等を中央または殻として置き、前後の語の所属を変えながら文法をつなぐ。"
+    },
+    {
+      "id": "semantic-pivot",
+      "label": "意味ピボット",
+      "description": "中心に自己回文の述語・名詞を置き、左右の異なる意味領域を接続する。"
+    },
+    {
+      "id": "whole-parse",
+      "label": "全文評価",
+      "description": "各ペア単体の自然さではなく、完成文全体の構文・意味・韻律で採否を決める。"
+    }
+  ],
+  "cores": [
+    {
+      "id": "no",
+      "reading": "の",
+      "display": "の",
+      "kind": "particle"
+    },
+    {
+      "id": "nana",
+      "reading": "なな",
+      "display": "ナナ",
+      "kind": "person"
+    },
+    {
+      "id": "kiki",
+      "reading": "きき",
+      "display": "キキ",
+      "kind": "person"
+    },
+    {
+      "id": "ishii",
+      "reading": "いしい",
+      "display": "石井",
+      "kind": "person"
+    },
+    {
+      "id": "mother",
+      "reading": "はは",
+      "display": "母",
+      "kind": "kinship"
+    },
+    {
+      "id": "father",
+      "reading": "ちち",
+      "display": "父",
+      "kind": "kinship"
+    }
+  ],
+  "shells": [
+    {
+      "id": "garden-croc",
+      "left": {
+        "reading": "にわ",
+        "display": "庭",
+        "role": "noun"
+      },
+      "right": {
+        "reading": "わに",
+        "display": "ワニ",
+        "role": "noun"
+      },
+      "alignment": "lexeme-role-shift"
+    },
+    {
+      "id": "shop-cicada",
+      "left": {
+        "reading": "みせ",
+        "display": "店",
+        "role": "noun"
+      },
+      "right": {
+        "reading": "せみ",
+        "display": "セミ",
+        "role": "noun"
+      },
+      "alignment": "lexeme-role-shift"
+    },
+    {
+      "id": "morning-sake",
+      "left": {
+        "reading": "けさ",
+        "display": "今朝",
+        "role": "time-noun"
+      },
+      "right": {
+        "reading": "さけ",
+        "display": "酒",
+        "role": "object-noun"
+      },
+      "alignment": "role-shift"
+    },
+    {
+      "id": "this-child",
+      "left": {
+        "reading": "この",
+        "display": "この",
+        "role": "determiner"
+      },
+      "right": {
+        "reading": "のこ",
+        "display": "の子",
+        "role": "genitive+noun"
+      },
+      "alignment": "boundary-shift"
+    },
+    {
+      "id": "ni-hinge",
+      "left": {
+        "reading": "に",
+        "display": "に",
+        "role": "particle"
+      },
+      "right": {
+        "reading": "に",
+        "display": "に",
+        "role": "particle"
+      },
+      "alignment": "particle-hinge"
+    },
+    {
+      "id": "no-hinge",
+      "left": {
+        "reading": "の",
+        "display": "の",
+        "role": "particle"
+      },
+      "right": {
+        "reading": "の",
+        "display": "の",
+        "role": "particle"
+      },
+      "alignment": "particle-hinge"
+    },
+    {
+      "id": "mo-hinge",
+      "left": {
+        "reading": "も",
+        "display": "も",
+        "role": "particle"
+      },
+      "right": {
+        "reading": "も",
+        "display": "も",
+        "role": "particle"
+      },
+      "alignment": "particle-hinge"
+    },
+    {
+      "id": "certain-loan",
+      "left": {
+        "reading": "たしか",
+        "display": "確か",
+        "role": "adverb-base"
+      },
+      "right": {
+        "reading": "かした",
+        "display": "貸した",
+        "role": "predicate"
+      },
+      "alignment": "role-shift"
+    },
+    {
+      "id": "tami-see",
+      "left": {
+        "reading": "たみ",
+        "display": "タミ",
+        "role": "subject"
+      },
+      "right": {
+        "reading": "みた",
+        "display": "見た",
+        "role": "predicate"
+      },
+      "alignment": "role-shift"
+    },
+    {
+      "id": "wife-wait",
+      "left": {
+        "reading": "つま",
+        "display": "妻",
+        "role": "subject"
+      },
+      "right": {
+        "reading": "まつ",
+        "display": "待つ",
+        "role": "predicate"
+      },
+      "alignment": "role-shift"
+    },
+    {
+      "id": "rene-sleep",
+      "left": {
+        "reading": "るね",
+        "display": "ルネ",
+        "role": "subject"
+      },
+      "right": {
+        "reading": "ねる",
+        "display": "寝る",
+        "role": "predicate"
+      },
+      "alignment": "role-shift"
+    },
+    {
+      "id": "ikawa-young",
+      "left": {
+        "reading": "いかわ",
+        "display": "井川",
+        "role": "subject"
+      },
+      "right": {
+        "reading": "わかい",
+        "display": "若い",
+        "role": "predicate"
+      },
+      "alignment": "role-shift"
+    },
+    {
+      "id": "dolphin-light",
+      "left": {
+        "reading": "いるか",
+        "display": "イルカ",
+        "role": "subject"
+      },
+      "right": {
+        "reading": "かるい",
+        "display": "軽い",
+        "role": "predicate"
+      },
+      "alignment": "role-shift"
+    },
+    {
+      "id": "taki-came",
+      "left": {
+        "reading": "たき",
+        "display": "タキ",
+        "role": "subject"
+      },
+      "right": {
+        "reading": "きた",
+        "display": "来た",
+        "role": "predicate"
+      },
+      "alignment": "role-shift"
+    },
+    {
+      "id": "rui-exists",
+      "left": {
+        "reading": "るい",
+        "display": "ルイ",
+        "role": "subject"
+      },
+      "right": {
+        "reading": "いる",
+        "display": "いる",
+        "role": "predicate"
+      },
+      "alignment": "role-shift"
+    },
+    {
+      "id": "daise-cause",
+      "left": {
+        "reading": "だいせ",
+        "display": "ダイセ",
+        "role": "possessor"
+      },
+      "right": {
+        "reading": "せいだ",
+        "display": "せいだ",
+        "role": "nominal-predicate"
+      },
+      "alignment": "role-shift"
+    },
+    {
+      "id": "husband-copula",
+      "left": {
+        "reading": "だんな",
+        "display": "旦那、",
+        "role": "topic"
+      },
+      "right": {
+        "reading": "なんだ",
+        "display": "なんだ",
+        "role": "copula-predicate"
+      },
+      "alignment": "role-shift"
+    }
+  ],
+  "recipes": [
+    {
+      "id": "loan-garden-child",
+      "layer": "L1",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "garden-croc",
+        "this-child",
+        "ni-hinge",
+        "certain-loan"
+      ],
+      "japanese_quality": "A",
+      "weirdness": 3,
+      "reading": "たしかにこのにわのわにのこにかした",
+      "display": "確かにこの庭のワニの子に貸した。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "garden-croc",
+          "reading": "にわのわに",
+          "display": "庭のワニ",
+          "alignment": "lexeme-role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "this-child",
+          "reading": "このにわのわにのこ",
+          "display": "この庭のワニの子",
+          "alignment": "boundary-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "ni-hinge",
+          "reading": "にこのにわのわにのこに",
+          "display": "にこの庭のワニの子に",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "certain-loan",
+          "reading": "たしかにこのにわのわにのこにかした",
+          "display": "確かにこの庭のワニの子に貸した",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "loan-shop-child",
+      "layer": "L1",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "shop-cicada",
+        "this-child",
+        "ni-hinge",
+        "certain-loan"
+      ],
+      "japanese_quality": "A",
+      "weirdness": 3,
+      "reading": "たしかにこのみせのせみのこにかした",
+      "display": "確かにこの店のセミの子に貸した。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "shop-cicada",
+          "reading": "みせのせみ",
+          "display": "店のセミ",
+          "alignment": "lexeme-role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "this-child",
+          "reading": "このみせのせみのこ",
+          "display": "この店のセミの子",
+          "alignment": "boundary-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "ni-hinge",
+          "reading": "にこのみせのせみのこに",
+          "display": "にこの店のセミの子に",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "certain-loan",
+          "reading": "たしかにこのみせのせみのこにかした",
+          "display": "確かにこの店のセミの子に貸した",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "loan-kitten-child",
+      "layer": "L1",
+      "core": "nana",
+      "shells_inner_to_outer": [
+        "this-child",
+        "ni-hinge",
+        "certain-loan"
+      ],
+      "japanese_quality": "A",
+      "weirdness": 2,
+      "display_override": "確かにこのナナの子に貸した。",
+      "reading": "たしかにこのななのこにかした",
+      "display": "確かにこのナナの子に貸した。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "nana",
+          "reading": "なな",
+          "display": "ナナ"
+        },
+        {
+          "kind": "shell",
+          "id": "this-child",
+          "reading": "このななのこ",
+          "display": "このナナの子",
+          "alignment": "boundary-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "ni-hinge",
+          "reading": "にこのななのこに",
+          "display": "にこのナナの子に",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "certain-loan",
+          "reading": "たしかにこのななのこにかした",
+          "display": "確かにこのナナの子に貸した",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "time-see-nana-child",
+      "layer": "L1",
+      "core": "nana",
+      "shells_inner_to_outer": [
+        "this-child",
+        "no-hinge",
+        "morning-sake",
+        "mo-hinge",
+        "tami-see"
+      ],
+      "japanese_quality": "A",
+      "weirdness": 2,
+      "reading": "たみもけさのこのななのこのさけもみた",
+      "display": "タミも今朝のこのナナの子の酒も見た。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "nana",
+          "reading": "なな",
+          "display": "ナナ"
+        },
+        {
+          "kind": "shell",
+          "id": "this-child",
+          "reading": "このななのこ",
+          "display": "このナナの子",
+          "alignment": "boundary-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "no-hinge",
+          "reading": "のこのななのこの",
+          "display": "のこのナナの子の",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "morning-sake",
+          "reading": "けさのこのななのこのさけ",
+          "display": "今朝のこのナナの子の酒",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "mo-hinge",
+          "reading": "もけさのこのななのこのさけも",
+          "display": "も今朝のこのナナの子の酒も",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "tami-see",
+          "reading": "たみもけさのこのななのこのさけもみた",
+          "display": "タミも今朝のこのナナの子の酒も見た",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 3,
+      "particle_hinges": 2
+    },
+    {
+      "id": "time-see-ishii",
+      "layer": "L1",
+      "core": "ishii",
+      "shells_inner_to_outer": [
+        "no-hinge",
+        "morning-sake",
+        "mo-hinge",
+        "tami-see"
+      ],
+      "japanese_quality": "A",
+      "weirdness": 2,
+      "reading": "たみもけさのいしいのさけもみた",
+      "display": "タミも今朝の石井の酒も見た。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "ishii",
+          "reading": "いしい",
+          "display": "石井"
+        },
+        {
+          "kind": "shell",
+          "id": "no-hinge",
+          "reading": "のいしいの",
+          "display": "の石井の",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "morning-sake",
+          "reading": "けさのいしいのさけ",
+          "display": "今朝の石井の酒",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "mo-hinge",
+          "reading": "もけさのいしいのさけも",
+          "display": "も今朝の石井の酒も",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "tami-see",
+          "reading": "たみもけさのいしいのさけもみた",
+          "display": "タミも今朝の石井の酒も見た",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 2
+    },
+    {
+      "id": "time-see-kiki",
+      "layer": "L1",
+      "core": "kiki",
+      "shells_inner_to_outer": [
+        "no-hinge",
+        "morning-sake",
+        "mo-hinge",
+        "tami-see"
+      ],
+      "japanese_quality": "A",
+      "weirdness": 2,
+      "reading": "たみもけさのききのさけもみた",
+      "display": "タミも今朝のキキの酒も見た。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "kiki",
+          "reading": "きき",
+          "display": "キキ"
+        },
+        {
+          "kind": "shell",
+          "id": "no-hinge",
+          "reading": "のききの",
+          "display": "のキキの",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "morning-sake",
+          "reading": "けさのききのさけ",
+          "display": "今朝のキキの酒",
+          "alignment": "role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "mo-hinge",
+          "reading": "もけさのききのさけも",
+          "display": "も今朝のキキの酒も",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "tami-see",
+          "reading": "たみもけさのききのさけもみた",
+          "display": "タミも今朝のキキの酒も見た",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 2
+    },
+    {
+      "id": "wait-nana-child",
+      "layer": "L1",
+      "core": "nana",
+      "shells_inner_to_outer": [
+        "this-child",
+        "mo-hinge",
+        "wife-wait"
+      ],
+      "japanese_quality": "A",
+      "weirdness": 1,
+      "reading": "つまもこのななのこもまつ",
+      "display": "妻もこのナナの子も待つ。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "nana",
+          "reading": "なな",
+          "display": "ナナ"
+        },
+        {
+          "kind": "shell",
+          "id": "this-child",
+          "reading": "このななのこ",
+          "display": "このナナの子",
+          "alignment": "boundary-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "mo-hinge",
+          "reading": "もこのななのこも",
+          "display": "もこのナナの子も",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "wife-wait",
+          "reading": "つまもこのななのこもまつ",
+          "display": "妻もこのナナの子も待つ",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "sleep-nana-child",
+      "layer": "L1",
+      "core": "nana",
+      "shells_inner_to_outer": [
+        "this-child",
+        "mo-hinge",
+        "rene-sleep"
+      ],
+      "japanese_quality": "A",
+      "weirdness": 1,
+      "reading": "るねもこのななのこもねる",
+      "display": "ルネもこのナナの子も寝る。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "nana",
+          "reading": "なな",
+          "display": "ナナ"
+        },
+        {
+          "kind": "shell",
+          "id": "this-child",
+          "reading": "このななのこ",
+          "display": "このナナの子",
+          "alignment": "boundary-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "mo-hinge",
+          "reading": "もこのななのこも",
+          "display": "もこのナナの子も",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "rene-sleep",
+          "reading": "るねもこのななのこもねる",
+          "display": "ルネもこのナナの子も寝る",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "young-nana-child",
+      "layer": "L1",
+      "core": "nana",
+      "shells_inner_to_outer": [
+        "this-child",
+        "mo-hinge",
+        "ikawa-young"
+      ],
+      "japanese_quality": "A",
+      "weirdness": 1,
+      "reading": "いかわもこのななのこもわかい",
+      "display": "井川もこのナナの子も若い。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "nana",
+          "reading": "なな",
+          "display": "ナナ"
+        },
+        {
+          "kind": "shell",
+          "id": "this-child",
+          "reading": "このななのこ",
+          "display": "このナナの子",
+          "alignment": "boundary-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "mo-hinge",
+          "reading": "もこのななのこも",
+          "display": "もこのナナの子も",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "ikawa-young",
+          "reading": "いかわもこのななのこもわかい",
+          "display": "井川もこのナナの子も若い",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "light-garden-child",
+      "layer": "L2",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "garden-croc",
+        "this-child",
+        "mo-hinge",
+        "dolphin-light"
+      ],
+      "japanese_quality": "A-",
+      "weirdness": 4,
+      "reading": "いるかもこのにわのわにのこもかるい",
+      "display": "イルカもこの庭のワニの子も軽い。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "garden-croc",
+          "reading": "にわのわに",
+          "display": "庭のワニ",
+          "alignment": "lexeme-role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "this-child",
+          "reading": "このにわのわにのこ",
+          "display": "この庭のワニの子",
+          "alignment": "boundary-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "mo-hinge",
+          "reading": "もこのにわのわにのこも",
+          "display": "もこの庭のワニの子も",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "dolphin-light",
+          "reading": "いるかもこのにわのわにのこもかるい",
+          "display": "イルカもこの庭のワニの子も軽い",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "arrival-garden-child",
+      "layer": "L2",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "garden-croc",
+        "this-child",
+        "mo-hinge",
+        "taki-came"
+      ],
+      "japanese_quality": "A",
+      "weirdness": 4,
+      "reading": "たきもこのにわのわにのこもきた",
+      "display": "タキもこの庭のワニの子も来た。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "garden-croc",
+          "reading": "にわのわに",
+          "display": "庭のワニ",
+          "alignment": "lexeme-role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "this-child",
+          "reading": "このにわのわにのこ",
+          "display": "この庭のワニの子",
+          "alignment": "boundary-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "mo-hinge",
+          "reading": "もこのにわのわにのこも",
+          "display": "もこの庭のワニの子も",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "taki-came",
+          "reading": "たきもこのにわのわにのこもきた",
+          "display": "タキもこの庭のワニの子も来た",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "exists-garden-child",
+      "layer": "L2",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "garden-croc",
+        "this-child",
+        "mo-hinge",
+        "rui-exists"
+      ],
+      "japanese_quality": "A",
+      "weirdness": 4,
+      "reading": "るいもこのにわのわにのこもいる",
+      "display": "ルイもこの庭のワニの子もいる。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "garden-croc",
+          "reading": "にわのわに",
+          "display": "庭のワニ",
+          "alignment": "lexeme-role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "this-child",
+          "reading": "このにわのわにのこ",
+          "display": "この庭のワニの子",
+          "alignment": "boundary-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "mo-hinge",
+          "reading": "もこのにわのわにのこも",
+          "display": "もこの庭のワニの子も",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "rui-exists",
+          "reading": "るいもこのにわのわにのこもいる",
+          "display": "ルイもこの庭のワニの子もいる",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "cause-garden-child",
+      "layer": "L2",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "garden-croc",
+        "this-child",
+        "no-hinge",
+        "daise-cause"
+      ],
+      "japanese_quality": "A",
+      "weirdness": 4,
+      "reading": "だいせのこのにわのわにのこのせいだ",
+      "display": "ダイセのこの庭のワニの子のせいだ。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "garden-croc",
+          "reading": "にわのわに",
+          "display": "庭のワニ",
+          "alignment": "lexeme-role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "this-child",
+          "reading": "このにわのわにのこ",
+          "display": "この庭のワニの子",
+          "alignment": "boundary-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "no-hinge",
+          "reading": "のこのにわのわにのこの",
+          "display": "のこの庭のワニの子の",
+          "alignment": "particle-hinge"
+        },
+        {
+          "kind": "shell",
+          "id": "daise-cause",
+          "reading": "だいせのこのにわのわにのこのせいだ",
+          "display": "ダイセのこの庭のワニの子のせいだ",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 1
+    },
+    {
+      "id": "husband-garden-child",
+      "layer": "L2",
+      "core": "no",
+      "shells_inner_to_outer": [
+        "garden-croc",
+        "this-child",
+        "husband-copula"
+      ],
+      "japanese_quality": "A-",
+      "weirdness": 4,
+      "reading": "だんなこのにわのわにのこなんだ",
+      "display": "旦那、この庭のワニの子なんだ。",
+      "trace": [
+        {
+          "kind": "core",
+          "id": "no",
+          "reading": "の",
+          "display": "の"
+        },
+        {
+          "kind": "shell",
+          "id": "garden-croc",
+          "reading": "にわのわに",
+          "display": "庭のワニ",
+          "alignment": "lexeme-role-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "this-child",
+          "reading": "このにわのわにのこ",
+          "display": "この庭のワニの子",
+          "alignment": "boundary-shift"
+        },
+        {
+          "kind": "shell",
+          "id": "husband-copula",
+          "reading": "だんなこのにわのわにのこなんだ",
+          "display": "旦那、この庭のワニの子なんだ",
+          "alignment": "role-shift"
+        }
+      ],
+      "boundary_shift_shells": 2,
+      "particle_hinges": 0
+    }
+  ],
+  "verified": {
+    "core_count": 6,
+    "shell_count": 17,
+    "recipe_count": 14,
+    "all_recipe_palindromes": true,
+    "classic_palindrome": true
+  }
+}
