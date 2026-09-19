@@ -1,0 +1,230 @@
+{
+  "version": "1.09",
+  "updated_on": "2026-09-20",
+  "title": "Wave2 travel 90/93 source-safe syntax review",
+  "purpose": "Raise or bound lexical/syntactic confidence for wave2 travel poems 90 and 93 without converting author-parallel, dictionary, or secondary evidence into source-glyph claims.",
+  "baseline_policy": {
+    "fixed50_unchanged": true,
+    "wave2_verified_count_unchanged": 14,
+    "wave2_held_count_unchanged": 5,
+    "generator_v108_candidate_set_unchanged": true,
+    "public_ui": false
+  },
+  "evidence_hierarchy": [
+    {
+      "tier": "A",
+      "label": "direct-source-image-or-poem-specific-scholarly-reading",
+      "promotion_power": "can-confirm-poem-specific-glyph-or-parse",
+      "available_for_90_93": false
+    },
+    {
+      "tier": "B",
+      "label": "same-author-exact-or-near-exact-phrase-parallel",
+      "promotion_power": "supports lexical/syntactic plausibility, not poem-specific glyph identity",
+      "available_for_90_93": true
+    },
+    {
+      "tier": "C",
+      "label": "historical-dictionary-lexeme-or-morphology",
+      "promotion_power": "supports lexical/formal possibility only",
+      "available_for_90_93": true
+    },
+    {
+      "tier": "D",
+      "label": "secondary-same-collection-compilation",
+      "promotion_power": "corroboration only",
+      "available_for_90_93": true
+    }
+  ],
+  "sources": {
+    "yamauchi_1974": {
+      "author": "山内潤三",
+      "article": "廻文歌の限界と効用 (下)――高野山釈教長歌を頂点として――",
+      "journal": "密教文化",
+      "issue": 107,
+      "pages": "1-38",
+      "published": "1974-07-25",
+      "doi": "10.11168/jeb1947.1974.107_1",
+      "official_metadata_url": "https://www.jstage.jst.go.jp/browse/jeb1947/1974/107/_contents/-char/ja",
+      "official_pdf_listed": true,
+      "pdf_or_source_image_directly_inspected_in_this_review": false
+    },
+    "same_author_parallel": {
+      "work": "高野山釈教長歌",
+      "author": "笑寿",
+      "url": "https://www.komazawa-u.ac.jp/~hagi/kouyasan-syakukyotyoka.htm",
+      "surface_parallels": [
+        {
+          "surface": "参るなかたひ",
+          "decoded": "参る長旅",
+          "relevance": "Exact fragment なかたひ supports 長旅 as a same-author lexical reading hypothesis for poem 90."
+        },
+        {
+          "surface": "よき日たかなる",
+          "decoded": "佳き日髙なる",
+          "relevance": "Near-exact phrase supports poem 90 ku4 よきひたかなる as an author-internal phrase pattern."
+        }
+      ],
+      "source_status": "secondary transcription/decoding page referencing Yamauchi research; not the poem-90 source image"
+    },
+    "dictionary_checks": [
+      {
+        "surface": "まはる",
+        "candidate_lexeme": "回る／廻る",
+        "morphology": "ラ行四段活用",
+        "relevant_senses": ["迂回する・遠回りする", "あちこちをめぐり歩く"],
+        "evidence_role": "formal/lexical support only"
+      },
+      {
+        "surface": "ながたび",
+        "candidate_lexeme": "長旅",
+        "historical_attestation": "documented from medieval waka",
+        "evidence_role": "lexical support only"
+      },
+      {
+        "surface": "みかき",
+        "candidate_lexeme": "御垣",
+        "meaning": "宮中や神社などの周囲の垣",
+        "historical_attestation": "documented in classical sources",
+        "evidence_role": "lexical support only"
+      },
+      {
+        "surface": "かみまいり",
+        "candidate_lexeme": "神参り",
+        "meaning": "神社へ参ること",
+        "evidence_role": "lexical support only"
+      }
+    ]
+  },
+  "poem_reviews": [
+    {
+      "id": "shoju-next-090",
+      "title": "旅行の人々え",
+      "normalized_reading": "ともかくもまはるなかたひきよくゆくよきひたかなるはまもくかもと",
+      "meter": ["ともかくも","まはるなかたひ","きよくゆく","よきひたかなる","はまもくかもと"],
+      "segments": [
+        {
+          "surface": "ともかくも",
+          "candidate_parse": "ともかくも",
+          "evidence": "dictionary-attested adverb",
+          "confidence": "high-lexical-not-glyph"
+        },
+        {
+          "surface": "まはる",
+          "candidate_parse": "回る／廻る",
+          "evidence": "historical dictionary morphology; same surface shared by poem 93",
+          "confidence": "high-formal-not-glyph"
+        },
+        {
+          "surface": "なかたひ",
+          "candidate_parse": "長旅",
+          "evidence": "same-author exact surface fragment in 高野山釈教長歌 is decoded as 長旅; independent dictionary attestation for 長旅",
+          "confidence": "strong-author-parallel-not-poem-specific"
+        },
+        {
+          "surface": "きよくゆく",
+          "candidate_parse": "清く行く",
+          "evidence": "formally plausible adjective-adverb + verb parse only",
+          "confidence": "plausible-unconfirmed"
+        },
+        {
+          "surface": "よきひたかなる",
+          "candidate_parse": "佳き日髙なる / よき日たかなる type phrase",
+          "evidence": "same-author near-exact surface and decode in 高野山釈教長歌",
+          "confidence": "strong-author-parallel-not-poem-specific"
+        },
+        {
+          "surface": "はまもくかもと",
+          "candidate_parse": null,
+          "evidence": "no source-safe full lexical segmentation established",
+          "confidence": "unresolved"
+        }
+      ],
+      "whole_poem_parse_status": "partial-support-with-unresolved-ku5",
+      "source_specific_glyph_status": "unverified",
+      "promotion_effect": "no-promotion"
+    },
+    {
+      "id": "shoju-next-093",
+      "title": "旅行（同）",
+      "normalized_reading": "やとちかくまはるなりいまみかきよきかみまいりなるはまくかちとや",
+      "meter": ["やとちかく","まはるなりいま","みかきよき","かみまいりなる","はまくかちとや"],
+      "segments": [
+        {
+          "surface": "やとちかく",
+          "candidate_parse": "宿近く",
+          "evidence": "contextually plausible hypothesis only",
+          "confidence": "hypothesis-unconfirmed"
+        },
+        {
+          "surface": "まはるなりいま",
+          "candidate_parse": "まはる + なり + 今",
+          "evidence": "まはる is historically attested; exact boundary and syntax remain poem-specific hypotheses",
+          "confidence": "partial-formal"
+        },
+        {
+          "surface": "みかきよき",
+          "candidate_parse": "御垣 + よき",
+          "evidence": "御垣 is a classical dictionary-attested noun; poem-specific spelling/segmentation unverified",
+          "confidence": "lexically-plausible-not-glyph"
+        },
+        {
+          "surface": "かみまいりなる",
+          "candidate_parse": "神参り + なる",
+          "evidence": "神参り is an attested lexical phrase; exact copular/syntactic function in this poem remains unresolved",
+          "confidence": "lexically-plausible-syntax-unresolved"
+        },
+        {
+          "surface": "はまくかちとや",
+          "candidate_parse": null,
+          "evidence": "no source-safe full lexical segmentation established",
+          "confidence": "unresolved"
+        }
+      ],
+      "whole_poem_parse_status": "partial-lexical-support-with-unresolved-syntax-and-ku5",
+      "source_specific_glyph_status": "unverified",
+      "promotion_effect": "no-promotion"
+    }
+  ],
+  "novel_candidate_impact": [
+    {
+      "id": "wave2-travel-090-host-093-outer",
+      "previous_status": "hold-source-confirmation",
+      "current_status": "hold-source-confirmation",
+      "reason": "Host middle has improved lexical plausibility, but donor outer A and full donor ku5 remain poem-specifically unverified; source-image/annotated-poem evidence is still absent."
+    },
+    {
+      "id": "wave2-travel-093-host-090-outer",
+      "previous_status": "hold-source-confirmation",
+      "current_status": "hold-source-confirmation",
+      "reason": "Host middle has improved lexical plausibility and donor poem 90 gains same-author phrase support, but full poem-specific syntax and ku5 segmentation remain unresolved."
+    }
+  ],
+  "new_safety_rule": {
+    "id": "author-parallel-is-not-source-glyph-evidence",
+    "rule": "An exact or near-exact phrase in another work by the same author may raise lexical or syntactic plausibility, but it does not verify the source glyph, voicing, segmentation, or poem-specific interpretation of the target poem.",
+    "allowed_effects": [
+      "raise lexical plausibility",
+      "raise phrase-pattern plausibility",
+      "prioritize a source-image check"
+    ],
+    "forbidden_effects": [
+      "declare target source glyph verified",
+      "restore target kanji automatically",
+      "restore voicing automatically",
+      "promote a research candidate to deep-review-supported solely from author parallel"
+    ],
+    "applies_beyond_travel_family": true
+  },
+  "verdict": {
+    "source_90_parse_status": "partial-support-with-unresolved-ku5",
+    "source_93_parse_status": "partial-lexical-support-with-unresolved-syntax-and-ku5",
+    "travel_family_status": "hold-source-confirmation",
+    "generator_v108_reopen": false,
+    "positive_family_established": false,
+    "automatic_acceptance": false,
+    "source_image_required_for_next_confidence_jump": true,
+    "freeze_if_no_new_source": true
+  },
+  "next_action": "Freeze wave2-travel-maha at v1.08/v1.09 unless direct poem-specific evidence becomes available; move active research to a different operation/family."
+}
