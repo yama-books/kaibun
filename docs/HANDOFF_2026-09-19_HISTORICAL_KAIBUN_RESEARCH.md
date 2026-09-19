@@ -3346,3 +3346,256 @@ operation-specificに必要な証拠だけで候補空間を前進させられ�
 ## 再開最短文
 
 **「HANDOFF 37節から再開。hybrid-007はv1.05でpromising-but-parse-needed維持、そ→ぞ等の自然化補正を禁止するsource-voicing guardを追加。wave2旅行90/93は両方B+Cが『まはる…』で、B=まはのoperation-specific morphologyが有望。v1.06で2候補をhold-source-confirmationとして固定。Validate run 35443791622 green。次は90/93のsource確認。」**
+
+
+---
+
+# 38. 2026-09-19 wave2 repeated-seam survey v1.07 / travel generator v1.08 チェックポイント
+
+## 実施概要
+
+37節から、wave2旅行90/93のsource確認を継続した。
+
+原画像そのものには今回も到達できなかったため、
+v1.06 `hold-source-confirmation` は解除していない。
+
+そのうえで、
+fixed50 + wave2 verified14 を discovery level で再走査し、
+旅行90/93が本当にwave2最優先familyかを検証した。
+
+結論:
+- wave2で新しく生じる repeated seam のうち、
+  **新規交換 + 同一題群** を満たすのは B=`まは` の旅行90/93だけ
+- したがって travel lane の優先順位を全体走査で追認
+- positiveへは昇格せず deterministic research generatorへ固定
+
+詳細:
+- `docs/WAVE2_REPEATED_SEAM_SURVEY_V107_V108.md`
+
+## v1.07 repeated-seam survey
+
+追加:
+- `data/wave2-repeated-seam-survey-v107.json`
+
+commit:
+- `44c92069a92c06d5c39ee18653b284fbc3874579`
+
+### repeated B
+
+wave2関与群は6:
+
+- B=せか
+  - 地水火風空 duplicate/parallel
+  - noveltyなし
+
+- B=なか
+  - 伊勢参宮 duplicate/parallel
+  - noveltyなし
+
+- B=なみ
+  - 水辺梅 / 東西南北
+  - cross-scene hold
+
+- B=きつ
+  - fixed autumn/moon family + wave2 大和廻
+  - wave2追加は新しいsame-scene positiveを作らない
+
+- B=いつ
+  - 鶴 / 待恋 / 無常 / 旅行
+  - heterogeneous cross-scene
+
+- **B=まは**
+  - 90「旅行の人々え」
+  - 93「旅行（同）」
+  - **same-title-family-novel**
+  - best-wave2-outer-frame-prospect
+
+両sourceのB+C:
+- 90: `まはるなかたひ`
+- 93: `まはるなりいま`
+
+raw B一致だけでなく、
+forward `まはる` surfaceまで共有する。
+
+### repeated D
+
+wave2関与群は6:
+- D=みな
+- D=みつ
+- D=いま
+- D=きよ
+- D=ひと
+- D=かわ
+
+結果:
+- duplicate / no E novelty
+- v1.00 morphology guard
+- cross-scene
+
+のいずれかで、
+new same-scene positive laneなし。
+
+## source access audit
+
+複数の物理所蔵ルートを確認。
+
+### 国書DB / 大阪大学附属図書館 忍頂寺文庫
+
+『風車塵の言の葉』
+- BID: `100080596`
+- holder call no.: `C-38`
+- film call no.: `228-0019-014`
+- 画像一覧にView導線あり
+
+ただし該当フレームを直接検査できず。
+
+### 東京都立図書館
+
+『廻文歌百首』
+- 加07316
+- web上: 画像取得中 / 画像なし
+
+### 大阪公立大学 杉本図書館
+
+CiNii Books所蔵:
+- `911.158//SHO//MORI J-6984`
+
+### 東北大学 狩野文庫
+
+catalog:
+- `4468 風車塵の言の葉 1 笑寿`
+
+いずれも今回の該当丁画像直接確認には至らない。
+
+したがって:
+- physical-witness routes = multiple
+- direct image inspection = false
+- source-image claim = しない
+
+## v1.08 travel deterministic generator
+
+追加:
+- `data/generated-wave2-travel-outer-frame-v108.json`
+- `scripts/generate-wave2-travel-outer-frame-research.mjs`
+
+commits:
+- fixture: `e9693d0315a324bbccf4fe1aab5819cf88a2a8f3`
+- generator: `3ada149372ee3dbde7562c39c9699609bce8d415`
+
+candidate 4件:
+
+historical source members:
+1. shoju-next-090
+2. shoju-next-093
+
+novel:
+3. wave2-travel-090-host-093-outer
+4. wave2-travel-093-host-090-outer
+
+### invariants
+
+- operation = shared-B-outer-frame-swap
+- changed factor = A only
+- host B/C/D/E fixed
+- B=`まは`
+- forward B+C = hostの `まはる...`
+- reverse B=`はま`
+- reverse B lexeme = unresolved
+- reverse Bを「浜」等へ自動復元しない
+- global B transferabilityはassertしない
+- strict palindrome
+- meter 5/7/5/7/7
+- fixed50不変
+- wave2はpending integrationのまま
+- novel 2件 = `hold-source-confirmation`
+- accepted / natural / deep-review-supported をmachineが出さない
+
+common schema v0.61 required fieldsも付与済み。
+
+## validator / CI
+
+validator更新:
+- commit `d2cd25384ec7bd2ca7d1c4c86c019a7354f63de0`
+
+workflow更新:
+- commit `fd03db97802d5d5776f4027a4864abdad3bf9c14`
+
+専用step:
+`node scripts/generate-wave2-travel-outer-frame-research.mjs --check`
+
+Validate:
+- run `35444301341`
+- head `fd03db97802d5d5776f4027a4864abdad3bf9c14`
+- conclusion: **success**
+
+同runで:
+- corpus
+- central pivot
+- scene microgrammar
+- naha outer-frame
+- musu moon outer-frame
+- modern bridge
+- public whitelist
+- growth
+- quality
+- UI
+
+もすべてsuccess。
+
+docs commit:
+- `8a81a2c3c4e92f1af993dfc95b6f5e3391c83294`
+
+## 現在のfamily状態
+
+確立positive:
+1. autumn-night-garden-moon
+2. naha-spring-plants
+
+strong unresolved:
+3. musu-night-sky-family-moon
+   - hybrid-007
+   - `promising-but-parse-needed`
+
+best wave2 prospect:
+4. wave2-travel-maha
+   - 2 directed novel swaps
+   - both `hold-source-confirmation`
+
+第三positive familyはまだ増やさない。
+
+## 研究上の更新
+
+今回の重要点:
+
+1. wave2候補を個別intuitionではなく repeated-seam全体走査で比較した
+2. 旅行90/93が唯一のnew same-title repeated-B laneと確認
+3. source imageが取れなくても、候補・hold理由・未解決lexemeをdeterministic fixtureへ固定
+4. reverse seamの漢字復元をgenerator要件にしないoperation-specific設計を維持
+5. wave2 research use と fixed50 integration を分離
+
+固定事項:
+- fixed50変更なし
+- wave2 verified14 / held5変更なし
+- public bridge6変更なし
+- v0.76 baseline変更なし
+- general-factor-crossover disabled
+- research-only familyをpublicへ接続しない
+
+## 進捗目安
+
+- 歴史回文研究・生成原理: **約92%**
+- 怪文回文メーカー全体目標: **約90%**
+
+## 次
+
+優先:
+1. travel 90/93 source image / annotated transcription探索継続
+2. 得られなければ、surface transcriptionだけで断定せず全文syntaxのsafe review
+3. source confidenceが上がらなければtravel familyはv1.08 fixtureで凍結
+4. 次は別operation候補を探索
+5. hybrid-007は新証拠までpromising-but-parse-neededで凍結
+6. v0.96 human review入力があればv0.97 adjudication
+
+## 再開最短文
+
+**「HANDOFF 38節から再開。v1.07でfixed50+wave2 repeated seamを全走査し、新規same-title laneは旅行90/93のB=まはだけと確認。原画像は複数所蔵ルートまで確認したが該当丁未読なのでhold継続。v1.08で4件のdeterministic generator/fixtureを実装し、novel2件はhold-source-confirmation固定。Validate run 35444301341 green。次は90/93 source確認、不可ならsafe syntax review→別operation探索。」**
