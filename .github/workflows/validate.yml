@@ -7,6 +7,7 @@ on:
       - "scripts/validate-corpus.mjs"
       - "scripts/validate-ui.mjs"
       - "scripts/generate-central-pivot-research.mjs"
+      - "scripts/generate-scene-microgrammar-research.mjs"
       - "docs/TANKA_MIRROR_LATTICE_V28.md"
       - "data/historical-kaibunka-mining-v28.json"
       - "data/tanka-mirror-lattice-v28.json"
@@ -44,5 +45,7 @@ jobs:
         run: node scripts/validate-corpus.mjs
       - name: Validate historical central-pivot generator
         run: node scripts/generate-central-pivot-research.mjs --check
+      - name: Validate historical scene microgrammar generator
+        run: node scripts/generate-scene-microgrammar-research.mjs --check
       - name: Validate public UI
         run: node scripts/validate-ui.mjs
