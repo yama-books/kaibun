@@ -1,0 +1,99 @@
+{
+  "version": "1.15",
+  "updated_on": "2026-09-20",
+  "title": "Wave2 held evidence-policy review: poems 89 and 94",
+  "purpose": "Reassess why poems 89 and 94 remain held after poem-specific Yamauchi transcription became readable, without changing the fixed-50 baseline or silently altering the strict-kana verification policy.",
+  "inputs": {
+    "historical_triage": "data/historical-wave2-source-triage-v43.json",
+    "visible_transcription_review": "data/yamauchi-visible-transcription-review-v112.json"
+  },
+  "poem_89": {
+    "source_number": 89,
+    "title": "老賀",
+    "yamauchi_visible_surface": "八十や おい 家内よろこひます としとすまひ ころよい なかいおやそや",
+    "candidate_reading": "やそやおいかないよろこひますとしとすまひころよいなかいおやそや",
+    "kana_length_under_yaso": 31,
+    "strict_palindrome_under_yaso": true,
+    "reading_evidence": {
+      "八十_yaso_dictionary_attested": true,
+      "八十_has_other_possible_readings": true,
+      "target_poem_explicit_furigana_or_reading_annotation_found": false,
+      "meter_supports_yaso": true,
+      "palindrome_structure_supports_yaso": true
+    },
+    "policy_review": {
+      "old_blocker": "source-image-required-for-promotion",
+      "revised_blocker": "target-specific-reading-resolution-required",
+      "reason": [
+        "A source image may still print 八十 without furigana, so image inspection alone is not guaranteed to resolve the intended reading.",
+        "The reading やそ is independently dictionary-attested and metrically suitable, but choosing it is also favored by the expected palindrome structure.",
+        "To avoid palindrome-guided reading selection, promotion should require target-specific reading evidence or an explicit reading policy justified independently of this candidate."
+      ],
+      "source_image_still_useful": true,
+      "source_image_alone_guaranteed_sufficient": false
+    },
+    "current_status": "strongest-held-reading-resolution",
+    "promote_to_wave2_verified": false,
+    "automatic_acceptance": false
+  },
+  "poem_94": {
+    "source_number": 94,
+    "title": "旅行（同）",
+    "yamauchi_visible_surface_lines": [
+      "なかたひも",
+      "ついおそきはる",
+      "友とちと",
+      "もとるは 木曽を",
+      "いつも 日たかな"
+    ],
+    "normalized_literal_candidate": "なかたひもついおそきはるともとちともとるはきそをいつもひたかな",
+    "kana_length": 31,
+    "strict_palindrome": false,
+    "literal_mismatches": [
+      {
+        "position_1_based": 8,
+        "forward": "お",
+        "mirror": "を"
+      },
+      {
+        "position_1_based": 24,
+        "forward": "を",
+        "mirror": "お"
+      }
+    ],
+    "mismatch_pair_count": 1,
+    "all_mismatches_are_o_wo": true,
+    "scholarly_transcription_support": {
+      "木曽を_visible": true,
+      "generic_ocr_uncertainty_for_wo": false
+    },
+    "current_status": "hold-strict-orthographic-equivalence",
+    "promote_to_strict_wave2_verified": false,
+    "research_equivalence_layer_candidate": true,
+    "automatic_repair_forbidden": true
+  },
+  "policy_updates": {
+    "reading_resolution": {
+      "rule": "When scholarly transcription contains kanji with multiple viable readings, source-image inspection and reading resolution are distinct gates. Do not select a reading solely because it restores meter or palindrome symmetry.",
+      "applies_beyond_89": true
+    },
+    "historical_orthographic_equivalence": {
+      "rule": "Literal お/を asymmetry documented in scholarly transcription may be represented in a separate research equivalence layer, but must not be folded into the strict-kana baseline.",
+      "strict_baseline_changed": false,
+      "candidate_control": "shoju-next-094",
+      "applies_beyond_94": true
+    }
+  },
+  "wave2_counts": {
+    "verified_snapshot_v039": 14,
+    "held_snapshot_v039": 5,
+    "current_counts_changed": false
+  },
+  "verdict": {
+    "poem_89": "hold-reading-resolution",
+    "poem_94": "hold-strict-orthographic-equivalence",
+    "wave2_promotion_count": 0,
+    "strict_policy_relaxed": false,
+    "next_action": "Use poem 94 as the regression fixture for an explicit historical-equivalence research layer; keep poem 89 held until non-circular target-specific reading evidence or a separately justified reading policy is available."
+  }
+}
