@@ -125,6 +125,8 @@ for(const w of growth.sentence_level_wrappers??[]){
   sentenceWrapperCount++;
 }
 if(growth.verified?.sentence_level_wrapper_count!=null&&growth.verified.sentence_level_wrapper_count!==sentenceWrapperCount)errors.push(`SENTENCE WRAPPER COUNT mismatch: declared=${growth.verified.sentence_level_wrapper_count} actual=${sentenceWrapperCount}`);
+const distinctOuterReadings=new Set((growth.sentence_level_wrappers??[]).flatMap(w=>(w.outer_lexemes??[]).map(x=>x.reading))).size;
+if(growth.verified?.wrapper_distinct_outer_readings!=null&&growth.verified.wrapper_distinct_outer_readings!==distinctOuterReadings)errors.push(`WRAPPER DISTINCT OUTER mismatch: declared=${growth.verified.wrapper_distinct_outer_readings} actual=${distinctOuterReadings}`);
 
 let quoteCollisionCount=0;
 for(const f of growth.narrative_families??[]){
@@ -147,6 +149,12 @@ for(const f of growth.narrative_families??[]){
   }
 }
 if(growth.verified?.noun_collision_policy===true&&quoteCollisionCount!==0)errors.push(`QUOTE noun collision policy failed: ${quoteCollisionCount}`);
+
+const fixedQuoteFamilies=(growth.narrative_families??[]).filter(f=>f.id.startsWith("quote-"));
+const firstWrapperIds=fixedQuoteFamilies.map(f=>f.stages?.[1]?.wrapper_id).filter(Boolean);
+const firstWrapperDiversity=new Set(firstWrapperIds).size;
+if(growth.verified?.fixed_quote_family_count!=null&&growth.verified.fixed_quote_family_count!==fixedQuoteFamilies.length)errors.push(`FIXED QUOTE FAMILY COUNT mismatch: declared=${growth.verified.fixed_quote_family_count} actual=${fixedQuoteFamilies.length}`);
+if(growth.verified?.fixed_quote_first_wrapper_diversity!=null&&growth.verified.fixed_quote_first_wrapper_diversity!==firstWrapperDiversity)errors.push(`FIRST WRAPPER DIVERSITY mismatch: declared=${growth.verified.fixed_quote_first_wrapper_diversity} actual=${firstWrapperDiversity}`);
 
 const hundred=growth.verified?.hundred_kana_benchmark;
 if(hundred){
