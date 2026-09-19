@@ -1,0 +1,164 @@
+{
+  "version": "1.20",
+  "updated_on": "2026-09-20",
+  "title": "Wave3 scholarly-transcription mining expansion: Shoju 114-119",
+  "purpose": "Expand the separate wave3 lane with poem-specific scholarly transcription visible in Yamauchi 1974, preserving strict, orthographic-diagnostic, historical-kana-diagnostic, and unresolved cases as separate classes.",
+  "source": {
+    "author": "山内潤三",
+    "article": "廻文歌の限界と効用 (下)――高野山釈教長歌を頂点として――",
+    "journal": "密教文化",
+    "issue": 107,
+    "year": 1974,
+    "pages": "1-38",
+    "doi": "10.11168/jeb1947.1974.107_1",
+    "layer": "searchable-reproduction-of-scholarly-transcription",
+    "direct_jstage_pdf_inspection": false,
+    "direct_edo_source_image_inspection": false
+  },
+  "baseline_policy": {
+    "fixed50_unchanged": true,
+    "wave2_verified_snapshot": 14,
+    "wave2_held_snapshot": 5,
+    "wave3_separate_lane": true,
+    "strict_kana_baseline_unchanged": true,
+    "public_ui": false
+  },
+  "cases": [
+    {
+      "id": "shoju-wave3-114",
+      "source_number": 114,
+      "title": "心経にならひ",
+      "visible_transcription_surface": "し む く よ の こ る へ き は ら み つ た う た つ み ら は き へ る こ の よ む し く",
+      "conservative_reading_candidate": "しむくよのこるへきはらみつたうたつみらはきへるこのよむしく",
+      "kana_length": 29,
+      "strict_palindrome": false,
+      "status": "hold-searchable-transcription-incomplete-or-unclear",
+      "reason": "The visible searchable reproduction yields 29 kana. No missing kana are inserted from expected palindrome symmetry."
+    },
+    {
+      "id": "shoju-wave3-115",
+      "source_number": 115,
+      "title": "東都学長錦字楼の号を給ふかへし",
+      "visible_transcription_surface": "もとるをな いつもろこしと つましらし まつとしころも ついなおるとも",
+      "conservative_reading": "もとるをないつもろこしとつましらしまつとしころもついなおるとも",
+      "kana_length": 31,
+      "strict_palindrome": false,
+      "literal_mismatches": [
+        {"position_1_based":4,"forward":"を","mirror":"お"},
+        {"position_1_based":28,"forward":"お","mirror":"を"}
+      ],
+      "all_mismatches_are_o_wo": true,
+      "status": "hold-strict-orthographic-equivalence",
+      "diagnostic_role": "additional-o-wo-positive-control",
+      "promotion_to_strict_corpus": false
+    },
+    {
+      "id": "shoju-wave3-116",
+      "source_number": 116,
+      "title": "笹",
+      "visible_transcription_surface": "庭もせか さゝのはるけし きよきあき よきしけるはの さゝかせもはに",
+      "reading_assumptions": [
+        {"surface":"庭","reading":"には","basis":"ordinary historical lexical reading"}
+      ],
+      "conservative_reading": "にはもせかささのはるけしきよきあきよきしけるはのささかせもはに",
+      "kana_length": 31,
+      "strict_palindrome": true,
+      "meter": ["にはもせか","ささのはるけし","きよきあき","よきしけるはの","ささかせもはに"],
+      "factors": {"A":"にはもせか","B":"ささ","C":"のはるけし","D":"きよ","E":"きあき"},
+      "scene": {
+        "broad": "春・秋景物",
+        "basis": "transcription has はる and あき; source title 笹",
+        "confidence": "transcription-supported-descriptive"
+      },
+      "status": "wave3-scholarly-transcription-strict-candidate",
+      "known_factor_contacts": [
+        {"slot":"D","reading":"きよ","source_id":"shoju-055","title":"春亀","layer":"fixed50"},
+        {"slot":"D","reading":"きよ","source_id":"shoju-next-090","title":"旅行の人々え","layer":"wave2"}
+      ],
+      "graph_value": "new-strict-source-with-D-contact",
+      "promotion_to_fixed50": false
+    },
+    {
+      "id": "shoju-wave3-117",
+      "source_number": 117,
+      "title": "手習子にならひ",
+      "visible_transcription_surface": "はやもとる さかてくるまか ヱイやらや 家かまるくて かさるともやは",
+      "diagnostic_reading_historical_kana": "はやもとるさかてくるまかゑいやらやいえかまるくてかさるともやは",
+      "modernized_e_reading": "はやもとるさかてくるまかえいやらやいえかまるくてかさるともやは",
+      "kana_length": 31,
+      "strict_palindrome_under_historical_kana": false,
+      "palindrome_if_ye_e_folded": true,
+      "status": "hold-historical-kana-equivalence",
+      "diagnostic_issue": "ヱ/ゑ versus え",
+      "promotion_to_strict_corpus": false,
+      "reason": "The scholarly transcription visibly distinguishes ヱ from 家=いえ. Folding ゑ/え solely to restore symmetry would change the strict historical-kana layer."
+    },
+    {
+      "id": "shoju-wave3-118",
+      "source_number": 118,
+      "title": "老摘草",
+      "visible_transcription_surface": "やかて見つ 日をのへる葉も さく花は くさもはるへの おひつみてかや",
+      "reading_assumptions": [
+        {"surface":"見","reading":"み","basis":"ordinary lexical reading"},
+        {"surface":"日","reading":"ひ","basis":"ordinary lexical reading"},
+        {"surface":"葉","reading":"は","basis":"ordinary lexical reading"},
+        {"surface":"花","reading":"はな","basis":"ordinary lexical reading"}
+      ],
+      "conservative_reading": "やかてみつひをのへるはもさくはなはくさもはるへのおひつみてかや",
+      "kana_length": 31,
+      "strict_palindrome": false,
+      "literal_mismatches": [
+        {"position_1_based":7,"forward":"を","mirror":"お"},
+        {"position_1_based":25,"forward":"お","mirror":"を"}
+      ],
+      "all_mismatches_are_o_wo": true,
+      "status": "hold-strict-orthographic-equivalence",
+      "diagnostic_role": "additional-o-wo-positive-control",
+      "promotion_to_strict_corpus": false
+    },
+    {
+      "id": "shoju-wave3-119",
+      "source_number": 119,
+      "title": "寄山恋",
+      "visible_transcription_surface": "とひつきみ つまとしつ見る たかやまや かたるみつしと まつ身きつひと",
+      "reading_assumptions": [
+        {"surface":"見","reading":"み","basis":"ordinary lexical reading"},
+        {"surface":"身","reading":"み","basis":"ordinary lexical reading"}
+      ],
+      "conservative_reading": "とひつきみつまとしつみるたかやまやかたるみつしとまつみきつひと",
+      "kana_length": 31,
+      "strict_palindrome": true,
+      "meter": ["とひつきみ","つまとしつみる","たかやまや","かたるみつしと","まつみきつひと"],
+      "factors": {"A":"とひつきみ","B":"つま","C":"としつみる","D":"たか","E":"やまや"},
+      "scene": {
+        "broad": "恋・人事",
+        "narrow": "寄山恋",
+        "basis": "source title",
+        "confidence": "title-supported"
+      },
+      "status": "wave3-scholarly-transcription-strict-candidate",
+      "known_factor_contacts": [
+        {"slot":"B","reading":"つま","source_id":"shoju-072","title":"寄琴恋","layer":"fixed50"}
+      ],
+      "graph_value": "new-strict-source-with-narrow-love-scene-B-contact",
+      "promotion_to_fixed50": false
+    }
+  ],
+  "summary": {
+    "visible_cases": 6,
+    "strict_wave3_candidates": [116,119],
+    "o_wo_diagnostic_candidates": [115,118],
+    "historical_kana_diagnostic_candidates": [117],
+    "unresolved_short_candidates": [114],
+    "new_positive_family_created": false,
+    "automatic_acceptance": 0
+  },
+  "safety_rules": [
+    "Do not repair poem 114 from expected palindrome symmetry.",
+    "Do not fold お/を into the strict baseline for poems 115 or 118.",
+    "Do not fold ヱ/ゑ and え into the strict baseline for poem 117.",
+    "Standard readings of explicit kanji are reading assumptions, not source-furigana evidence.",
+    "Raw D/B contacts in poems 116/119 require morphology review before any crossover."
+  ],
+  "next_action": "Audit D=きよ for poem116 versus fixed50 55, and B=つま for poem119 versus fixed50 72; prioritize the latter because both titles are narrow 寄○恋 scenes."
+}
