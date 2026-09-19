@@ -20,6 +20,7 @@ const hybridCuration = JSON.parse(fs.readFileSync("data/historical-hybrid-curati
 const yamauchiTokenization = JSON.parse(fs.readFileSync("data/yamauchi-tokenization-model-v41.json", "utf8"));
 const topicFirst = JSON.parse(fs.readFileSync("data/historical-topic-first-model-v42.json", "utf8"));
 const wave2Triage = JSON.parse(fs.readFileSync("data/historical-wave2-source-triage-v43.json", "utf8"));
+const autumnMoonSpans = JSON.parse(fs.readFileSync("data/autumn-moon-variable-spans-v44.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -338,6 +339,21 @@ const triage89=(wave2Triage.cases??[]).find(x=>x.source_number===89);
 if(!triage89||triage89.strict_palindrome!==true||!isPalindrome(triage89.candidate_reading??""))errors.push("WAVE2 TRIAGE 89 candidate must remain an exact candidate palindrome");
 if(wave2Triage.summary?.promoted_to_wave2_verified!==0)errors.push("WAVE2 TRIAGE must not promote source-image-unconfirmed records");
 if(wave2.verified_count!==14||wave2.held_count!==5)errors.push("WAVE2 v39 baseline changed during v43 triage");
+if(autumnMoonSpans.version!=="0.44")errors.push(`AUTUMN MOON V44 version mismatch: ${autumnMoonSpans.version}`);
+if(autumnMoonSpans.scope?.baseline_sample_count!==50)errors.push("AUTUMN MOON V44 must preserve the 50-sample baseline");
+if(autumnMoonSpans.scope?.topic_sample_count!==12||autumnMoonSpans.counts?.source_records!==12)errors.push("AUTUMN MOON V44 source count must be 12");
+if(autumnMoonSpans.scope?.wave2_included!==false)errors.push("AUTUMN MOON V44 must not include wave2");
+if(autumnMoonSpans.scope?.raw_substring_enumeration!==false)errors.push("AUTUMN MOON V44 must not enumerate raw substrings");
+if(autumnMoonSpans.counts?.phrase_instances!==60||(autumnMoonSpans.units?.phrase_units??[]).length!==60)errors.push("AUTUMN MOON V44 phrase count must be 60");
+for(const u of autumnMoonSpans.units?.phrase_units??[]){if(![5,7].includes(u.span_length))errors.push(`AUTUMN MOON V44 invalid phrase span: ${u.id} ${u.span_length}`);}
+if(autumnMoonSpans.counts?.pivot_units!==(autumnMoonSpans.units?.pivot_units??[]).length)errors.push("AUTUMN MOON V44 pivot count mismatch");
+for(const u of autumnMoonSpans.units?.pivot_units??[]){if(u.span_length!==3||!isPalindrome(u.reading))errors.push(`AUTUMN MOON V44 bad pivot: ${u.id}`);}
+if(autumnMoonSpans.counts?.seam_units!==(autumnMoonSpans.units?.seam_units??[]).length)errors.push("AUTUMN MOON V44 seam count mismatch");
+for(const u of autumnMoonSpans.units?.seam_units??[]){if(reverse(u.reading)!==u.reverse_reading)errors.push(`AUTUMN MOON V44 seam reverse mismatch: ${u.id}`);}
+if((autumnMoonSpans.units?.seam_units??[]).find(x=>x.id==="seam:B2:ほと")?.transferable!==false)errors.push("AUTUMN MOON V44 ほと must remain non-transferable");
+for(const id of ["seam:D2:はに","seam:D2:けふ","seam:D2:みな"]){if((autumnMoonSpans.units?.seam_units??[]).find(x=>x.id===id)?.transferable!==true)errors.push(`AUTUMN MOON V44 high seam not transferable: ${id}`);}
+if(autumnMoonSpans.counts?.edge_units!==(autumnMoonSpans.units?.edge_units??[]).length)errors.push("AUTUMN MOON V44 edge count mismatch");
+for(const u of autumnMoonSpans.units?.edge_units??[]){if(reverse(u.reading)!==u.reverse_reading)errors.push(`AUTUMN MOON V44 edge reverse mismatch: ${u.id}`);}
 
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
@@ -363,3 +379,4 @@ console.log(`Wave2 verified samples: ${wave2.verified_count}, held: ${wave2.held
 console.log(`Manual hybrid reviews: ${hybridCuration.reviews?.length??0}`);
 console.log(`Topic-first models: ${topicFirst.topic_hierarchy?.length??0}`);
 console.log(`Wave2 source triage: ${(wave2Triage.cases??[]).length} held records, promoted=${wave2Triage.summary?.promoted_to_wave2_verified??"?"}`);
+console.log(`Autumn/moon v44 spans: phrases=${autumnMoonSpans.counts?.phrase_instances??0}, pivots=${autumnMoonSpans.counts?.pivot_units??0}, seams=${autumnMoonSpans.counts?.seam_units??0}, edges=${autumnMoonSpans.counts?.edge_units??0}`);
