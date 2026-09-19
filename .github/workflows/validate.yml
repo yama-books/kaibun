@@ -9,6 +9,7 @@ on:
       - "scripts/generate-central-pivot-research.mjs"
       - "scripts/generate-scene-microgrammar-research.mjs"
       - "scripts/generate-naha-outer-frame-research.mjs"
+      - "scripts/generate-musu-moon-outer-frame-research.mjs"
       - "scripts/generate-modern-seam-bridge.mjs"
       - "scripts/validate-modern-bridge-public.mjs"
       - "scripts/simulate-growth-wrapper-role-gate.mjs"
@@ -69,6 +70,8 @@ jobs:
         run: node scripts/generate-scene-microgrammar-research.mjs --check
       - name: Validate naha outer-frame generator
         run: node scripts/generate-naha-outer-frame-research.mjs --check
+      - name: Validate musu moon outer-frame generator
+        run: node scripts/generate-musu-moon-outer-frame-research.mjs --check
       - name: Validate modern seam bridge prototype
         run: node scripts/generate-modern-seam-bridge.mjs --check
       - name: Validate public bridge whitelist
