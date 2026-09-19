@@ -34,7 +34,8 @@ const pivotSurvey = JSON.parse(fs.readFileSync("data/central-pivot-exchange-surv
 const mitsuPivotExchange = JSON.parse(fs.readFileSync("data/mitsu-central-pivot-exchange-v55.json", "utf8"));
 const semanticRoleGate = JSON.parse(fs.readFileSync("data/factor-semantic-role-gate-v56.json", "utf8"));
 const pivotPipeline = JSON.parse(fs.readFileSync("data/central-pivot-candidate-pipeline-v57.json", "utf8"));
-const generatorContract = JSON.parse(fs.readFileSync("data/historical-generator-contract-v58.json", "utf8"));\nconst hybrid002DeepReview = JSON.parse(fs.readFileSync("data/hybrid-002-deep-review-v99.json", "utf8"));
+const generatorContract = JSON.parse(fs.readFileSync("data/historical-generator-contract-v58.json", "utf8"));
+const hybrid002DeepReview = JSON.parse(fs.readFileSync("data/hybrid-002-deep-review-v99.json", "utf8"));
 const pivotMorphologyGuard = JSON.parse(fs.readFileSync("data/central-pivot-morphology-guard-v100.json", "utf8"));
 const generatedPivotV100 = JSON.parse(fs.readFileSync("data/generated-central-pivot-research-v100.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
@@ -526,5 +527,6 @@ console.log(`Pivot survey v54 groups: ${(pivotSurvey.groups??[]).length}`);
 console.log(`Mitsu v55 directed swaps: ${(mitsuPivotExchange.outputs??[]).length}`);
 console.log(`Semantic-role v56 cases: ${(semanticRoleGate.case_studies??[]).length}`);
 console.log(`Pivot pipeline v57: total=${(pivotPipeline.results??[]).length}, deep-review=${pivotPipeline.summary?.reaches_deep_review??0}`);
-console.log(`Generator contract v58 operations: ${(generatorContract.supported_operations??[]).length}`);\nconsole.log(`Hybrid-002 v99 verdict: ${hybrid002DeepReview.verdict?.current_status}`);
+console.log(`Generator contract v58 operations: ${(generatorContract.supported_operations??[]).length}`);
+console.log(`Hybrid-002 v99 verdict: ${hybrid002DeepReview.verdict?.current_status}`);
 console.log(`Pivot morphology guard v1.00: candidates=${generatedPivotV100.candidate_count}, blocked=${pivotMorphologyGuard.counts?.blocked_by_normalization_guard}`);
