@@ -1,0 +1,190 @@
+{
+  "version": "0.39",
+  "purpose": "Second-wave mining from Yamauchi transcription. Kept separate from the 50-sample stable research corpus until downstream models are regenerated.",
+  "verified_candidates": [
+    {
+      "id": "shoju-next-078",
+      "source_number": 78,
+      "title": "寄川恋",
+      "reading": "きしひこそまつのみならしかわのせのわかしらなみのつまそこひしき",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "source": "Yamauchi 1974 transcription surfaced via web index",
+      "status": "verified-audio-string-pending-integration",
+      "note": "OCR/transcription as surfaced already forms an exact 31-kana palindrome; semantic/kanji review still pending."
+    },
+    {
+      "id": "shoju-next-079",
+      "source_number": 79,
+      "title": "待恋",
+      "reading": "みのねるまいつのよしらすまたもよもたますらしよのついまるねのみ",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "source": "Yamauchi 1974 transcription surfaced via web index",
+      "status": "verified-audio-string-pending-integration",
+      "note": "OCR/transcription as surfaced already forms an exact 31-kana palindrome; semantic/kanji review still pending."
+    },
+    {
+      "id": "shoju-next-080",
+      "source_number": 80,
+      "title": "無常",
+      "reading": "くゆへきにいつもみぬらしひとのよのとひしらぬみもついにきへゆく",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "source": "Yamauchi 1974 transcription surfaced via web index",
+      "status": "verified-audio-string-pending-integration",
+      "note": "OCR/transcription as surfaced already forms an exact 31-kana palindrome; semantic/kanji review still pending."
+    },
+    {
+      "id": "shoju-next-081",
+      "source_number": 81,
+      "title": "無常（同）",
+      "reading": "きしやあのつみのよるへにきとくらくときにへるよのみつのあやしき",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "source": "Yamauchi 1974 transcription surfaced via web index",
+      "status": "verified-audio-string-pending-integration",
+      "note": "OCR/transcription as surfaced already forms an exact 31-kana palindrome; semantic/kanji review still pending."
+    },
+    {
+      "id": "shoju-next-083",
+      "source_number": 83,
+      "title": "海山嶋川草木",
+      "reading": "やまみなのかわのましきしくさもきもさくしきしまのわかのなみまや",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "source": "Yamauchi 1974 transcription surfaced via web index",
+      "status": "verified-audio-string-pending-integration",
+      "note": "OCR/transcription as surfaced already forms an exact 31-kana palindrome; semantic/kanji review still pending."
+    },
+    {
+      "id": "shoju-next-084",
+      "source_number": 84,
+      "title": "東西南北",
+      "reading": "なかしてみなみをたきはせひかしにしかひせはきたをみなみてしかな",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "source": "Yamauchi 1974 transcription surfaced via web index",
+      "status": "verified-audio-string-pending-integration",
+      "note": "OCR/transcription as surfaced already forms an exact 31-kana palindrome; semantic/kanji review still pending."
+    },
+    {
+      "id": "shoju-next-085",
+      "source_number": 85,
+      "title": "地水火風空",
+      "reading": "みなくうのせかいなりちもみつもひもつみもちりないかせのうくなみ",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "source": "Yamauchi 1974 transcription surfaced via web index",
+      "status": "verified-audio-string-pending-integration",
+      "note": "OCR/transcription as surfaced already forms an exact 31-kana palindrome; semantic/kanji review still pending."
+    },
+    {
+      "id": "shoju-next-086",
+      "source_number": 86,
+      "title": "古歌にならひ",
+      "reading": "しらかわのたうのねふりのみなめさめなみのりふねのうたのわからし",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "source": "Yamauchi 1974 transcription surfaced via web index",
+      "status": "verified-audio-string-pending-integration",
+      "note": "OCR/transcription as surfaced already forms an exact 31-kana palindrome; semantic/kanji review still pending."
+    },
+    {
+      "id": "shoju-next-087",
+      "source_number": 87,
+      "title": "夢",
+      "reading": "なかるふねほみるゆくへかなみのよのみなかへくゆるみほねふるかな",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "source": "Yamauchi 1974 transcription surfaced via web index",
+      "status": "verified-audio-string-pending-integration",
+      "note": "OCR/transcription as surfaced already forms an exact 31-kana palindrome; semantic/kanji review still pending."
+    },
+    {
+      "id": "shoju-next-090",
+      "source_number": 90,
+      "title": "旅行の人々え",
+      "reading": "ともかくもまはるなかたひきよくゆくよきひたかなるはまもくかもと",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "source": "Yamauchi 1974 transcription surfaced via web index",
+      "status": "verified-audio-string-pending-integration",
+      "note": "OCR/transcription as surfaced already forms an exact 31-kana palindrome; semantic/kanji review still pending."
+    },
+    {
+      "id": "shoju-next-091",
+      "source_number": 91,
+      "title": "旅行（同）",
+      "reading": "くかちとやいつしかたひもまはるはるはまもひたかしついやとちかく",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "source": "Yamauchi 1974 transcription surfaced via web index",
+      "status": "verified-audio-string-pending-integration",
+      "note": "OCR/transcription as surfaced already forms an exact 31-kana palindrome; semantic/kanji review still pending."
+    },
+    {
+      "id": "shoju-next-093",
+      "source_number": 93,
+      "title": "旅行（同）",
+      "reading": "やとちかくまはるなりいまみかきよきかみまいりなるはまくかちとや",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "source": "Yamauchi 1974 transcription surfaced via web index",
+      "status": "verified-audio-string-pending-integration",
+      "note": "OCR/transcription as surfaced already forms an exact 31-kana palindrome; semantic/kanji review still pending."
+    },
+    {
+      "id": "shoju-next-095",
+      "source_number": 95,
+      "title": "伊勢参宮",
+      "reading": "ひころよいなかくよきはるいまいせいまいるはきよくかないよろこひ",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "source": "Yamauchi 1974 transcription surfaced via web index",
+      "status": "verified-audio-string-pending-integration",
+      "note": "OCR/transcription as surfaced already forms an exact 31-kana palindrome; semantic/kanji review still pending."
+    },
+    {
+      "id": "shoju-next-096",
+      "source_number": 96,
+      "title": "大和廻",
+      "reading": "かのかたをきつるかわちとまやしはしやまとちわかるつきをたかのか",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "source": "Yamauchi 1974 transcription surfaced via web index",
+      "status": "verified-audio-string-pending-integration",
+      "note": "OCR/transcription as surfaced already forms an exact 31-kana palindrome; semantic/kanji review still pending."
+    }
+  ],
+  "held_for_source_image_review": [
+    {
+      "source_number": 82,
+      "title": "音羽滝",
+      "reason": "iteration marks / voiced reading in surfaced transcription need image/PDF check"
+    },
+    {
+      "source_number": 88,
+      "title": "百千鳥",
+      "reason": "iteration marks and segmentation need image/PDF check"
+    },
+    {
+      "source_number": 89,
+      "title": "老賀",
+      "reason": "numeral/reading OCR ambiguity"
+    },
+    {
+      "source_number": 92,
+      "title": "旅行（同）",
+      "reason": "31 kana but surfaced transcription is not exact palindrome; do not auto-correct"
+    },
+    {
+      "source_number": 94,
+      "title": "旅行（同）",
+      "reason": "31 kana but surfaced transcription is not exact palindrome; do not auto-correct"
+    }
+  ],
+  "verified_count": 14,
+  "held_count": 5,
+  "policy": "Never repair OCR by palindrome expectation alone."
+}
