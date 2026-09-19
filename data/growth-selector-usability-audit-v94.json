@@ -1,0 +1,97 @@
+{
+  "version": "0.94",
+  "title": "Growth family selector usability audit",
+  "public_behavior_changed": false,
+  "growth_version": "0.31",
+  "current_counts": {
+    "total_narrative_families": 53,
+    "L1": {
+      "family_count": 13,
+      "dimension_count": 4,
+      "dimensions": {
+        "出来事": 4,
+        "関係": 6,
+        "場所": 2,
+        "属性": 1
+      },
+      "largest_dimension": {
+        "name": "関係",
+        "count": 6
+      }
+    },
+    "L2": {
+      "family_count": 40,
+      "dimension_count": 8,
+      "dimensions": {
+        "理由": 1,
+        "状況": 1,
+        "時間": 1,
+        "属性": 1,
+        "出来事": 6,
+        "存在": 1,
+        "引用・伝聞": 22,
+        "反応": 7
+      },
+      "largest_dimension": {
+        "name": "引用・伝聞",
+        "count": 22
+      }
+    },
+    "L3": {
+      "family_count": 0,
+      "dimension_count": 0
+    }
+  },
+  "findings": [
+    {
+      "id": "l2-grow-again-noop",
+      "severity": "functional",
+      "evidence": "growAgain() begins with if(layer!==\"L1\")return, while L2 narrative families are public and the button is not disabled for L2.",
+      "effect": "The visible 同段階で別案 button can do nothing in L2."
+    },
+    {
+      "id": "flat-all-family-list",
+      "severity": "usability",
+      "evidence": "populateGrowthFamilies() appends every matching family directly to one select. L2/all therefore presents 40 flat options.",
+      "effect": "Users must scan a long ungrouped list even though dimension metadata already exists."
+    },
+    {
+      "id": "redundant-dimension-prefix",
+      "severity": "usability",
+      "evidence": "Family option text is always [dimension] + label, even after the user has already selected a single dimension.",
+      "effect": "In 引用・伝聞, 22 options repeat the same dimension label and hide the distinguishing part of the family name."
+    },
+    {
+      "id": "dimension-count-hidden",
+      "severity": "usability",
+      "evidence": "Dimension options show only names, not how many families they contain.",
+      "effect": "Users cannot see before selecting that 引用・伝聞 contains 22 choices while several other dimensions contain only one."
+    },
+    {
+      "id": "family-stage-length-hidden",
+      "severity": "usability",
+      "evidence": "The family selector does not show stage count.",
+      "effect": "A 4-stage family and a 17-stage family look equally large until selected."
+    }
+  ],
+  "strengths_to_preserve": [
+    "Type -> information dimension -> family is the right three-level conceptual hierarchy.",
+    "Dimension filtering already reduces L1 well.",
+    "Native select controls remain touch-friendly and keyboard-accessible.",
+    "No family needs deletion to solve the usability issue."
+  ],
+  "recommended_changes": [
+    "Show family counts in dimension labels.",
+    "When dimension=all, group family options by dimension with optgroup.",
+    "When one dimension is selected, omit the redundant [dimension] prefix.",
+    "Append stage count to each narrative family option.",
+    "Retain current family selection when a repopulation still contains it.",
+    "Make 同段階で別案 work for narrative mode on L2; keep structural reroll L1-only.",
+    "Disable 同段階で別案 when no same-filter alternative has the requested stage."
+  ],
+  "non_goals": [
+    "Do not remove or merge the 53 families.",
+    "Do not introduce a custom searchable dropdown yet.",
+    "Do not change growth sentence data or palindrome readings."
+  ]
+}
