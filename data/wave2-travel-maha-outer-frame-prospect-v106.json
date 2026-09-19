@@ -1,0 +1,187 @@
+{
+  "version": "1.06",
+  "updated_on": "2026-09-19",
+  "title": "Wave2 travel B=まは outer-frame prospect",
+  "purpose": "Explore a new same-scene A-only outer-frame family from wave2 verified poems 90 and 93 without integrating wave2 into the fixed-50 baseline or inventing reverse-side lexical restoration.",
+  "baseline_policy": {
+    "fixed50_unchanged": true,
+    "wave2_verified_count_unchanged": 14,
+    "wave2_held_count_unchanged": 5,
+    "research_lane": "wave2-prospect-only",
+    "public_ui": false
+  },
+  "operation": {
+    "id": "shared-B-outer-frame-swap",
+    "changed_factor": "A",
+    "fixed_factors": ["B","C","D","E"],
+    "shared_B": "まは",
+    "reverse_B": "はま",
+    "key_operation_logic": [
+      "The generated host B+C remains exactly the host's attested second-ku onset.",
+      "The imported donor A+B edge is attested because both sources share raw B=まは.",
+      "The mirrored reverse(B)+reverse(A) outer ending equals the donor's attested ku5 outer frame.",
+      "Therefore reverse_B lexical identity need not be globally restored or generalized for this A-only operation."
+    ]
+  },
+  "sources": [
+    {
+      "id": "shoju-next-090",
+      "source_number": 90,
+      "title": "旅行の人々え",
+      "wave2_status": "verified-audio-string-pending-integration",
+      "reading": "ともかくもまはるなかたひきよくゆくよきひたかなるはまもくかもと",
+      "factors": {
+        "A": "ともかくも",
+        "B": "まは",
+        "C": "るなかたひ",
+        "D": "きよ",
+        "E": "くゆく"
+      },
+      "meter": [
+        "ともかくも",
+        "まはるなかたひ",
+        "きよくゆく",
+        "よきひたかなる",
+        "はまもくかもと"
+      ],
+      "scene": {
+        "broad": "旅行",
+        "basis": "source title",
+        "confidence": "title-supported"
+      }
+    },
+    {
+      "id": "shoju-next-093",
+      "source_number": 93,
+      "title": "旅行（同）",
+      "wave2_status": "verified-audio-string-pending-integration",
+      "reading": "やとちかくまはるなりいまみかきよきかみまいりなるはまくかちとや",
+      "factors": {
+        "A": "やとちかく",
+        "B": "まは",
+        "C": "るなりいま",
+        "D": "みか",
+        "E": "きよき"
+      },
+      "meter": [
+        "やとちかく",
+        "まはるなりいま",
+        "みかきよき",
+        "かみまいりなる",
+        "はまくかちとや"
+      ],
+      "scene": {
+        "broad": "旅行",
+        "basis": "source title",
+        "confidence": "title-supported"
+      }
+    }
+  ],
+  "shared_B_review": {
+    "raw_B_equal": true,
+    "forward_surface_context": {
+      "shoju-next-090": "まはるなかたひ",
+      "shoju-next-093": "まはるなりいま",
+      "shared_prefix": "まはる"
+    },
+    "external_lexical_check": {
+      "entry": "まはる / 回る・廻る",
+      "source": "精選版 日本国語大辞典 / コトバンク",
+      "url": "https://kotobank.jp/word/%E5%9B%9E%E3%82%8B-636503",
+      "morphology": "ラ行四段活用（historical）",
+      "relevant_senses": ["周囲に沿って動く","遠い道を取る","あちこちと歩く・めぐる"],
+      "use": "Supports that surfaced まはる can be a historical verb; it does not prove source glyphs or the exact sentence parse."
+    },
+    "forward_morphology_compatibility": "strongly-supported-by-identical-surface-continuation",
+    "reverse_B_lexeme": "unresolved",
+    "reverse_B_global_transferability": "not-asserted",
+    "source_image_checked": false,
+    "conclusion": "This pair is materially safer than raw-B-only matching because both B+C surfaces continue as まはる. Still, wave2 source images and full sentence parses remain pending."
+  },
+  "generated_prospects": [
+    {
+      "id": "wave2-travel-090-host-093-outer",
+      "host_source_id": "shoju-next-090",
+      "donor_source_id": "shoju-next-093",
+      "factors": {
+        "A": "やとちかく",
+        "B": "まは",
+        "C": "るなかたひ",
+        "D": "きよ",
+        "E": "くゆく"
+      },
+      "reading": "やとちかくまはるなかたひきよくゆくよきひたかなるはまくかちとや",
+      "meter": [
+        "やとちかく",
+        "まはるなかたひ",
+        "きよくゆく",
+        "よきひたかなる",
+        "はまくかちとや"
+      ],
+      "strict_palindrome": true,
+      "gate_trace": {
+        "structural": "pass",
+        "historical_attestation": "pass-local-overlap",
+        "morphology": "conditional-pass-operation-specific",
+        "scene": "pass-title-level-same-travel",
+        "semantic_role": "review-needed",
+        "source_confidence": "hold-wave2-source-parse"
+      },
+      "review_status": "hold-source-confirmation",
+      "cautions": [
+        "Do not restore やとちかく to a specific kanji phrase without source evidence.",
+        "Do not restore reverse_B=はま to 浜 solely because the travel scene makes it plausible.",
+        "Full syntax/semantic-role continuity has not been independently annotated."
+      ]
+    },
+    {
+      "id": "wave2-travel-093-host-090-outer",
+      "host_source_id": "shoju-next-093",
+      "donor_source_id": "shoju-next-090",
+      "factors": {
+        "A": "ともかくも",
+        "B": "まは",
+        "C": "るなりいま",
+        "D": "みか",
+        "E": "きよき"
+      },
+      "reading": "ともかくもまはるなりいまみかきよきかみまいりなるはまもくかもと",
+      "meter": [
+        "ともかくも",
+        "まはるなりいま",
+        "みかきよき",
+        "かみまいりなる",
+        "はまもくかもと"
+      ],
+      "strict_palindrome": true,
+      "gate_trace": {
+        "structural": "pass",
+        "historical_attestation": "pass-local-overlap",
+        "morphology": "conditional-pass-operation-specific",
+        "scene": "pass-title-level-same-travel",
+        "semantic_role": "review-needed",
+        "source_confidence": "hold-wave2-source-parse"
+      },
+      "review_status": "hold-source-confirmation",
+      "cautions": [
+        "Do not promote kana sequence かみまいりなる to a source-confirmed kanji parse without source evidence.",
+        "Do not restore reverse_B=はま to 浜 solely because the travel scene makes it plausible.",
+        "Full syntax/semantic-role continuity has not been independently annotated."
+      ]
+    }
+  ],
+  "summary": {
+    "source_count": 2,
+    "novel_directed_outer_swaps": 2,
+    "strict_palindrome_prospects": 2,
+    "same_scene_title_pass": 2,
+    "automatic_acceptance": 0,
+    "positive_family_established": false,
+    "best_next_action": "Obtain source-image or more explicit scholarly transcription/lexical analysis for poems 90 and 93 before promotion."
+  },
+  "research_value": [
+    "Demonstrates an operation-specific shared-B case where forward B morphology is supported by identical B+C surface continuation.",
+    "Demonstrates that reverse-side lexical restoration can remain unnecessary when the complete donor outer frame is preserved.",
+    "Provides a same-title-scene wave2 prospect without changing the fixed-50 research baseline."
+  ]
+}
