@@ -1,0 +1,68 @@
+{
+  "version": "1.29",
+  "updated_on": "2026-09-20",
+  "title": "Independent derivation of the 5|2|5|2|3|2|5|2|5 mirror lattice",
+  "purpose": "Connect the pre-existing strict-palindrome five-variable grammar v0.34 with the independently observed bidirectional-tanka seam geometry v1.28, showing that the same nine-cell lattice follows from the union of forward and reverse 5/7/5/7/7 metrical boundaries.",
+  "inputs": {
+    "strict_palindrome_grammar": "data/tanka-five-variable-grammar-v34.json",
+    "bidirectional_seam_contrast": "data/bidirectional-tanka-seam-contrast-v128.json"
+  },
+  "derivation": {
+    "tanka_length": 31,
+    "meter": [5,7,5,7,7],
+    "forward_internal_boundaries": [5,12,17,24],
+    "reverse_internal_boundaries_mapped_to_forward_coordinates": [7,14,19,26],
+    "union_with_edges": [0,5,7,12,14,17,19,24,26,31],
+    "successive_cell_lengths": [5,2,5,2,3,2,5,2,5],
+    "cell_labels": ["A","B","C","D","E","reverse(D)","reverse(C)","reverse(B)","reverse(A)"],
+    "strict_grammar_formula": "A5 | B2 | C5 | D2 | E3 | reverse(D)2 | reverse(C)5 | reverse(B)2 | reverse(A)5",
+    "exact_match_to_v034": true
+  },
+  "structural_interpretation": [
+    "The 5/2/5/2/3/2/5/2/5 lattice is not merely a convenient factorization fitted to the fixed-50 strict palindrome corpus.",
+    "It is also the atomic partition created when forward and reverse tanka meter boundaries are overlaid on the same 31-kana coordinate system.",
+    "The four 2-kana B/D/reverse(D)/reverse(B) cells are exactly the gaps between forward and reverse metrical seams.",
+    "The central E cell is 3 kana because the forward third-ku boundary is at 17 while the mapped reverse third-ku boundary is at 14, leaving a three-kana central overlap.",
+    "For a strict self-palindrome, mirror equality additionally forces the right four cells to be reversals of the left four and E to be self-reversing; for a bidirectional distinct-reverse poem, the same seam lattice exists without those equality constraints."
+  ],
+  "evidence_classes": {
+    "v034": {
+      "class": "strict-self-palindrome-corpus-fit",
+      "sample_count": 50,
+      "all_samples_fit": true
+    },
+    "v128": {
+      "class": "historical-bidirectional-contrastive-geometry",
+      "sample_count": 6,
+      "all_cases_share_boundary_shift_signature": [2,2,2,2]
+    },
+    "combined": {
+      "claim": "independent-structural-convergence",
+      "strength": "high-for-meter-geometry",
+      "linguistic_naturalness_claim": false
+    }
+  },
+  "generator_consequences": {
+    "five_variable_grammar_status": "structurally-strengthened",
+    "new_operation_enabled": false,
+    "general_factor_crossover_enabled": false,
+    "recommended_internal_representation": "retain the nine-cell mirror lattice as the canonical tanka coordinate system",
+    "future_scoring_feature": "seam-local lexical/morphological support may be attached to B/D and their mirrored cells because these cells are structurally the two-kana seam-offset zones",
+    "public_ui_effect": "none"
+  },
+  "safety_rules": [
+    "The independent derivation validates metrical geometry, not automatic linguistic compatibility of factor swaps.",
+    "Do not infer that every two-kana seam cell is a word or morpheme.",
+    "Do not relax morphology, scene, semantic-role, or source-confidence gates.",
+    "Bidirectional distinct-reverse poems remain outside the strict self-palindrome positive corpus.",
+    "No machine naturalness or acceptance label follows from structural convergence."
+  ],
+  "summary": {
+    "v034_formula_rederived": true,
+    "derived_cell_lengths": [5,2,5,2,3,2,5,2,5],
+    "independent_contrastive_cases": 6,
+    "new_generator_operations": 0,
+    "research_value": "high: historical bidirectional material independently explains why the strict palindrome tanka algebra has exactly the observed 5/2/5/2/3/2/5/2/5 shape"
+  },
+  "next_action": "Freeze the nine-cell lattice as structurally well-supported. Further research should focus on linguistic evidence attached to seam cells and human review, not on changing the lattice or adding unconstrained operations."
+}
