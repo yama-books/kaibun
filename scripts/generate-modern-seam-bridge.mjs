@@ -46,10 +46,13 @@ function publicQuality(frameId, shellMeta) {
     };
   }
   if (frameId === "loan") {
+    if (shellMeta.head_category === "animal") {
+      return { layer: "L2", japanese_quality: "B", weirdness: 3 };
+    }
     return {
       layer: isL2 ? "L2" : "L1",
       japanese_quality: isL2 ? "A-" : "A",
-      weirdness: isL2 ? 3 : 3,
+      weirdness: 3,
     };
   }
   return { layer: "L2", japanese_quality: "B+", weirdness: 4 };
