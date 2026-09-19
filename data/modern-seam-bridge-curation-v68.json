@@ -21,10 +21,15 @@
       "id": "modern-loan-garden-croc",
       "display": "確かに庭のワニに貸した。",
       "reading": "たしかににわのわににかした",
-      "layer": "L1",
-      "japanese_quality": "A",
+      "layer": "L2",
+      "japanese_quality": "B",
       "weirdness": 3,
-      "rationale": "目的語省略を許す通常の「Xに貸した」。受け手がワニなので意味は怪文だが文法は自然。"
+      "rationale": "文法構造は自然だが、既存L1-TASHIKANI-LOANの方針では動物を受け手にする直接貸借文はL2。既存seedと同一readingのため公開追加はしない。",
+      "public_duplicate": {
+        "reading": "たしかににわのわににかした",
+        "existing_seed_id": "V05-0065",
+        "existing_rule_id": "L1-TASHIKANI-LOAN"
+      }
     },
     {
       "id": "modern-see-shop-cicada",
@@ -39,10 +44,10 @@
       "id": "modern-loan-shop-cicada",
       "display": "確かに店のセミに貸した。",
       "reading": "たしかにみせのせみにかした",
-      "layer": "L1",
-      "japanese_quality": "A",
+      "layer": "L2",
+      "japanese_quality": "B",
       "weirdness": 3,
-      "rationale": "受け手がセミという内容だけが怪しく、統語は通常の貸借文。"
+      "rationale": "統語は通常の貸借文だが、セミを直接の受け手とするため既存貸借ルールの基準に合わせL2。"
     },
     {
       "id": "modern-see-morning-sake",
@@ -57,10 +62,10 @@
       "id": "modern-loan-house-ray",
       "display": "確かに家のエイに貸した。",
       "reading": "たしかにいえのえいにかした",
-      "layer": "L1",
-      "japanese_quality": "A",
+      "layer": "L2",
+      "japanese_quality": "B",
       "weirdness": 3,
-      "rationale": "「家のエイ」を受け手とする擬人的怪文。文法構造は自然。"
+      "rationale": "統語は通常の貸借文だが、エイを直接の受け手とするため既存貸借ルールの基準に合わせL2。"
     },
     {
       "id": "modern-loan-squirrel-pickpocket",
@@ -105,8 +110,9 @@
   "summary": {
     "accepted": 7,
     "review_needed": 1,
-    "held": 5
+    "held": 5,
+    "public_unique_ready": 6
   },
   "public_whitelist_ready": true,
-  "next_step": "Freeze v0.67 generator output, derive a public whitelist from only these seven accepted records, validate it, then integrate through a separate bridgePool without changing existing source data."
+  "next_step": "Exclude the one existing public duplicate, derive a six-item public whitelist, validate against seed/DNA/pair/seam pools, then integrate through bridgePool()."
 }
