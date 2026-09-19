@@ -16,6 +16,7 @@ on:
       - "scripts/validate-public-reading-hints.mjs"
       - "scripts/validate-dna-kinship-exposure.mjs"
       - "scripts/validate-ten-comparison-balance.mjs"
+      - "scripts/generate-nonkinship-quote-expansion.mjs"
       - "docs/TANKA_MIRROR_LATTICE_V28.md"
       - "data/historical-kaibunka-mining-v28.json"
       - "data/tanka-mirror-lattice-v28.json"
@@ -37,6 +38,7 @@ on:
       - "scripts/validate-ui.mjs"
       - "scripts/validate-dna-kinship-exposure.mjs"
       - "scripts/validate-ten-comparison-balance.mjs"
+      - "scripts/generate-nonkinship-quote-expansion.mjs"
       - "index.html"
 permissions:
   contents: read
@@ -73,5 +75,7 @@ jobs:
         run: node scripts/validate-dna-kinship-exposure.mjs
       - name: Validate ten-item comparison balance
         run: node scripts/validate-ten-comparison-balance.mjs
+      - name: Validate non-kinship quote expansion
+        run: node scripts/generate-nonkinship-quote-expansion.mjs --check
       - name: Validate public UI
         run: node scripts/validate-ui.mjs
