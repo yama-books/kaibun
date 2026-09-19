@@ -1,7 +1,7 @@
 {
-  "version": "0.26",
+  "version": "0.28.1",
   "name": "seam-shift grammar",
-  "thesis": "鏡像制約はかな列に課す。語境界・品詞・統語役割は左右一対一にそろえず、完成した全文の日本語として評価する。 v0.26では『遠↔音』『皆↔波』に相当する、逆読みによって別の自然語になる名詞ペアを増やし、助詞を介して通常の名詞句として文中へ埋め込む。",
+  "thesis": "鏡像制約はかな列に課す。語境界・品詞・統語役割は左右一対一にそろえず、完成した全文の日本語として評価する。 v0.26では『遠↔音』『皆↔波』に相当する、逆読みによって別の自然語になる名詞ペアを増やし、助詞を介して通常の名詞句として文中へ埋め込む。 v0.28.1では公開品質監査に基づき、今朝＋所有連鎖のsee系をL2へ整合し、意味役割の弱いvoice-eco系は既定露出を下げる。",
   "reference_specimens": [
     {
       "id": "takarabune-kaibunka",
@@ -741,7 +741,7 @@
     },
     {
       "id": "time-see-nana-child",
-      "layer": "L1",
+      "layer": "L2",
       "core": "nana",
       "shells_inner_to_outer": [
         "this-child",
@@ -750,8 +750,8 @@
         "mo-hinge",
         "tami-see"
       ],
-      "japanese_quality": "A",
-      "weirdness": 2,
+      "japanese_quality": "A-",
+      "weirdness": 4,
       "reading": "たみもけさのこのななのこのさけもみた",
       "display": "タミも今朝のこのナナの子の酒も見た。",
       "trace": [
@@ -798,11 +798,15 @@
         }
       ],
       "boundary_shift_shells": 3,
-      "particle_hinges": 2
+      "particle_hinges": 2,
+      "quality_recalibration": {
+        "version": "0.78",
+        "reason": "growth time-observation stage2 と同一reading/displayへ整合"
+      }
     },
     {
       "id": "time-see-ishii",
-      "layer": "L1",
+      "layer": "L2",
       "core": "ishii",
       "shells_inner_to_outer": [
         "no-hinge",
@@ -810,8 +814,8 @@
         "mo-hinge",
         "tami-see"
       ],
-      "japanese_quality": "A",
-      "weirdness": 2,
+      "japanese_quality": "A-",
+      "weirdness": 3,
       "reading": "たみもけさのいしいのさけもみた",
       "display": "タミも今朝の石井の酒も見た。",
       "trace": [
@@ -851,11 +855,15 @@
         }
       ],
       "boundary_shift_shells": 2,
-      "particle_hinges": 2
+      "particle_hinges": 2,
+      "quality_recalibration": {
+        "version": "0.78",
+        "reason": "morning-sake possessor familyをgrowth側L2方針へ整合"
+      }
     },
     {
       "id": "time-see-kiki",
-      "layer": "L1",
+      "layer": "L2",
       "core": "kiki",
       "shells_inner_to_outer": [
         "no-hinge",
@@ -863,8 +871,8 @@
         "mo-hinge",
         "tami-see"
       ],
-      "japanese_quality": "A",
-      "weirdness": 2,
+      "japanese_quality": "A-",
+      "weirdness": 3,
       "reading": "たみもけさのききのさけもみた",
       "display": "タミも今朝のキキの酒も見た。",
       "trace": [
@@ -904,7 +912,11 @@
         }
       ],
       "boundary_shift_shells": 2,
-      "particle_hinges": 2
+      "particle_hinges": 2,
+      "quality_recalibration": {
+        "version": "0.78",
+        "reason": "v0.77 review + morning-sake possessor family整合"
+      }
     },
     {
       "id": "wait-nana-child",
@@ -2252,8 +2264,8 @@
         "mo-hinge",
         "tami-see"
       ],
-      "japanese_quality": "A-",
-      "weirdness": 3,
+      "japanese_quality": "B",
+      "weirdness": 4,
       "reading": "たみもこえのえこもみた",
       "display": "タミも声のエコも見た。",
       "trace": [
@@ -2286,7 +2298,11 @@
         }
       ],
       "boundary_shift_shells": 2,
-      "particle_hinges": 1
+      "particle_hinges": 1,
+      "quality_recalibration": {
+        "version": "0.78",
+        "reason": "v0.77 hold。削除せずdefault L2露出から外す"
+      }
     },
     {
       "id": "husband-record-kuroki",
@@ -2518,5 +2534,18 @@
     "all_recipe_palindromes": true,
     "classic_palindrome": true,
     "role_shift_shell_count": 23
+  },
+  "quality_recalibration_v78": {
+    "benchmark_baseline": "data/public-quality-benchmark-v76.json",
+    "pre_review": "data/public-quality-first-pass-v77.json",
+    "action_plan": "data/public-quality-action-plan-v78.json",
+    "changed_recipe_ids": [
+      "time-see-nana-child",
+      "time-see-ishii",
+      "time-see-kiki",
+      "see-voice-eco"
+    ],
+    "readings_changed": false,
+    "recipes_removed": 0
   }
 }
