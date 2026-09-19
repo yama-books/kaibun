@@ -115,6 +115,19 @@ for(const w of growth.sentence_level_wrappers??[]){
 }
 if(growth.verified?.sentence_level_wrapper_count!=null&&growth.verified.sentence_level_wrapper_count!==sentenceWrapperCount)errors.push(`SENTENCE WRAPPER COUNT mismatch: declared=${growth.verified.sentence_level_wrapper_count} actual=${sentenceWrapperCount}`);
 
+const hundred=growth.verified?.hundred_kana_benchmark;
+if(hundred){
+  const bf=(growth.narrative_families??[]).find(f=>f.id===hundred.family);
+  const bs=bf?.stages?.[hundred.stage];
+  if(!bs)errors.push(`100-KANA benchmark stage missing: ${hundred.family} stage=${hundred.stage}`);
+  else{
+    const actual=[...bs.reading].length;
+    if(!isPalindrome(bs.reading))errors.push(`100-KANA benchmark is not palindrome`);
+    if(actual!==hundred.length)errors.push(`100-KANA benchmark length mismatch: declared=${hundred.length} actual=${actual}`);
+    if(actual<(hundred.min_required??100))errors.push(`100-KANA benchmark too short: ${actual}`);
+  }
+}
+
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
 if(rules.rule_count!==rules.rules.length)errors.push(`RULE COUNT mismatch: declared=${rules.rule_count} actual=${rules.rules.length}`);
