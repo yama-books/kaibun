@@ -86,7 +86,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
     <div class="growthHead">
       <div>
         <b>段階的長文化</b>
-        <div class="sub" style="font-size:12px">「1段伸ばす」を押すたび、必ず前より長くします。</div>
+        <div class="sub" style="font-size:12px">「1段伸ばす」だけで、内容を増やし、終点後は文レベルの外枠へ続きます。</div>
       </div>
       <span class="stat" id="growthStage">段階 0 / 4</span>
     </div>
@@ -343,6 +343,7 @@ function show(x){
   $("#why").textContent=x.why||x.rationale||"検証済み原種。";
   syncGrowCurrentButton();
   syncSentenceWrapControls();
+  updateGrowthStageLabel();
   const m=$("#mirror");m.innerHTML="";
   const a=[...x.reading];
   a.forEach((c,i)=>{
@@ -404,12 +405,16 @@ function growthMaxStage(){
 }
 function updateGrowthStageLabel(){
   const max=growthMaxStage();
-  $("#growthStage").textContent="段階 "+growthState.stage+" / "+max;
+  const wrapped=currentShown?.wrap_depth||0;
+  $("#growthStage").textContent=wrapped>0?"外枠 "+wrapped+"段":"段階 "+growthState.stage+" / "+max;
   const available=growthFamilies().length>0;
-  $("#growOne").disabled=!available||growthState.stage>=max;
-  $("#growBack").disabled=!available||growthState.stage<=0;
+  const canWrap=layer!=="L3"&&(growth.sentence_level_wrappers||[]).length>0;
+  $("#growOne").disabled=!available&&!canWrap;
+  $("#growBack").disabled=wrapped>0?!currentShown?.wrapped_from:(!available||growthState.stage<=0);
   $("#growthStart").disabled=!available;
-  $("#growAgain").disabled=!available;
+  $("#growAgain").disabled=!available&&wrapped===0;
+  $("#growOne").textContent=wrapped>0?"さらに1段包む":(available&&growthState.stage>=max&&canWrap?"文を外側へ伸ばす":"1段伸ばす");
+  $("#growBack").textContent=wrapped>0?"外枠を1段戻す":"1段戻す";
   for(const id of ["growthStart","growOne","growAgain","growBack"])$("#"+id).style.opacity=$("#"+id).disabled?".38":"1";
 }
 function trimGrowthHistory(afterStage){
@@ -474,12 +479,19 @@ function makeGrowth(stage,reroll=false){
 }
 function growthStart(){resetGrowthHistory();show(makeGrowth(0))}
 function growOne(){
-  if(layer!=="L1")return;
+  if(layer==="L3")return;
+  if(currentShown?.wrap_depth>0){wrapCurrentSentence();return}
   const current=(currentShown?.growth_mode===growthState.mode&&currentShown?.growth_family===growthState.familyId)?(currentShown.growth_stage??growthState.stage):growthState.stage;
-  show(makeGrowth(Math.min(growthMaxStage(),current+1)));
+  const max=growthMaxStage();
+  if(current>=max){
+    if((growth.sentence_level_wrappers||[]).length)wrapCurrentSentence();
+    return;
+  }
+  show(makeGrowth(current+1));
 }
 function growBack(){
-  if(layer!=="L1")return;
+  if(currentShown?.wrapped_from){unwrapCurrentSentence();return}
+  if(layer==="L3")return;
   const current=(currentShown?.growth_mode===growthState.mode&&currentShown?.growth_family===growthState.familyId)?(currentShown.growth_stage??growthState.stage):growthState.stage;
   show(makeGrowth(Math.max(0,current-1)));
 }
