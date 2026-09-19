@@ -1,0 +1,271 @@
+{
+  "version": "0.66",
+  "title": "Modern seam semantic-role compatibility matrix",
+  "mode": "research-only",
+  "source": "data/seam-grammar-v25.json",
+  "purpose": "Provide explicit semantic-head categories and frame requirements for the first historical-research-derived modern shell-substitution prototype.",
+  "scope": {
+    "core": "no",
+    "frames": [
+      "see",
+      "loan"
+    ],
+    "public_ui_enabled": false
+  },
+  "head_categories": {
+    "person": "Human/person-like head noun.",
+    "animal": "Animal head noun; acceptable as a weird but grammatical participant in current app style.",
+    "object": "Inanimate object/head noun.",
+    "event": "Event/group-like noun; recipient interpretation may be ambiguous.",
+    "abstract": "Abstract noun.",
+    "unknown": "Insufficient reviewed semantics."
+  },
+  "shell_semantics": [
+    {
+      "shell_id": "garden-croc",
+      "surface": "庭のワニ",
+      "head": "ワニ",
+      "head_category": "animal",
+      "evidence": "display semantics",
+      "base_tier": "L1"
+    },
+    {
+      "shell_id": "shop-cicada",
+      "surface": "店のセミ",
+      "head": "セミ",
+      "head_category": "animal",
+      "evidence": "display semantics",
+      "base_tier": "L1"
+    },
+    {
+      "shell_id": "morning-sake",
+      "surface": "今朝の酒",
+      "head": "酒",
+      "head_category": "object",
+      "evidence": "shell roles time-noun -> object-noun",
+      "base_tier": "L1"
+    },
+    {
+      "shell_id": "record-kuroki",
+      "surface": "記録の黒木",
+      "head": "黒木",
+      "head_category": "person",
+      "evidence": "right role=person",
+      "base_tier": "L1"
+    },
+    {
+      "shell_id": "pond-kei",
+      "surface": "池のケイ",
+      "head": "ケイ",
+      "head_category": "person",
+      "evidence": "right role=person",
+      "base_tier": "L1"
+    },
+    {
+      "shell_id": "mountain-maya",
+      "surface": "山のマヤ",
+      "head": "マヤ",
+      "head_category": "person",
+      "evidence": "right role=person",
+      "base_tier": "L1"
+    },
+    {
+      "shell_id": "river-waka",
+      "surface": "川のワカ",
+      "head": "ワカ",
+      "head_category": "person",
+      "evidence": "right role=person",
+      "base_tier": "L1"
+    },
+    {
+      "shell_id": "sea-miu",
+      "surface": "海のミウ",
+      "head": "ミウ",
+      "head_category": "person",
+      "evidence": "right role=person",
+      "base_tier": "L1"
+    },
+    {
+      "shell_id": "house-ray",
+      "surface": "家のエイ",
+      "head": "エイ",
+      "head_category": "animal",
+      "evidence": "right role=animal",
+      "base_tier": "L1"
+    },
+    {
+      "shell_id": "pear-item",
+      "surface": "梨の品",
+      "head": "品",
+      "head_category": "object",
+      "evidence": "right role=noun + display semantics",
+      "base_tier": "L1"
+    },
+    {
+      "shell_id": "squid-meeting",
+      "surface": "イカの会",
+      "head": "会",
+      "head_category": "event",
+      "evidence": "right role=event-noun",
+      "base_tier": "L2"
+    },
+    {
+      "shell_id": "sand-eggplant",
+      "surface": "砂のナス",
+      "head": "ナス",
+      "head_category": "object",
+      "evidence": "right role=food-noun",
+      "base_tier": "L2"
+    },
+    {
+      "shell_id": "squirrel-pickpocket",
+      "surface": "リスのスリ",
+      "head": "スリ",
+      "head_category": "person",
+      "evidence": "right role=person",
+      "base_tier": "L2"
+    },
+    {
+      "shell_id": "lie-layer",
+      "surface": "嘘の層",
+      "head": "層",
+      "head_category": "abstract",
+      "evidence": "right role=abstract",
+      "base_tier": "L2"
+    },
+    {
+      "shell_id": "voice-eco",
+      "surface": "声のエコ",
+      "head": "エコ",
+      "head_category": "abstract",
+      "evidence": "right role=abstract",
+      "base_tier": "L2"
+    }
+  ],
+  "frames": [
+    {
+      "id": "see",
+      "shell_sequence": [
+        "{inner}",
+        "mo-hinge",
+        "tami-see"
+      ],
+      "display_pattern": "タミも{inner}も見た。",
+      "semantic_role": "perceived/theme participant",
+      "allowed_head_categories": [
+        "person",
+        "animal",
+        "object",
+        "event",
+        "abstract"
+      ],
+      "disallowed_head_categories": [],
+      "policy": "Current seam corpus already contains 見た recipes over person, animal, object, event and abstract heads; use base tier to control quality/weirdness."
+    },
+    {
+      "id": "loan",
+      "shell_sequence": [
+        "{inner}",
+        "ni-hinge",
+        "certain-loan"
+      ],
+      "display_pattern": "確かに{inner}に貸した。",
+      "semantic_role": "recipient",
+      "allowed_head_categories": [
+        "person",
+        "animal"
+      ],
+      "review_head_categories": [
+        "event"
+      ],
+      "disallowed_head_categories": [
+        "object",
+        "abstract"
+      ],
+      "policy": "貸す requires a recipient-like head. Person and animal are accepted in the app's weird-but-grammatical style; event/group nouns require review; objects/abstracts are held."
+    }
+  ],
+  "expected_new_positive_examples": [
+    {
+      "frame": "see",
+      "shell_id": "garden-croc",
+      "display": "タミも庭のワニも見た。"
+    },
+    {
+      "frame": "see",
+      "shell_id": "shop-cicada",
+      "display": "タミも店のセミも見た。"
+    },
+    {
+      "frame": "see",
+      "shell_id": "morning-sake",
+      "display": "タミも今朝の酒も見た。"
+    },
+    {
+      "frame": "loan",
+      "shell_id": "garden-croc",
+      "display": "確かに庭のワニに貸した。"
+    },
+    {
+      "frame": "loan",
+      "shell_id": "shop-cicada",
+      "display": "確かに店のセミに貸した。"
+    },
+    {
+      "frame": "loan",
+      "shell_id": "house-ray",
+      "display": "確かに家のエイに貸した。"
+    },
+    {
+      "frame": "loan",
+      "shell_id": "squirrel-pickpocket",
+      "display": "確かにリスのスリに貸した。"
+    }
+  ],
+  "negative_controls": [
+    {
+      "frame": "loan",
+      "shell_id": "pear-item",
+      "display": "確かに梨の品に貸した。",
+      "expected": "hold-semantic-role"
+    },
+    {
+      "frame": "loan",
+      "shell_id": "morning-sake",
+      "display": "確かに今朝の酒に貸した。",
+      "expected": "hold-semantic-role"
+    },
+    {
+      "frame": "loan",
+      "shell_id": "sand-eggplant",
+      "display": "確かに砂のナスに貸した。",
+      "expected": "hold-semantic-role"
+    },
+    {
+      "frame": "loan",
+      "shell_id": "lie-layer",
+      "display": "確かに嘘の層に貸した。",
+      "expected": "hold-semantic-role"
+    },
+    {
+      "frame": "loan",
+      "shell_id": "voice-eco",
+      "display": "確かに声のエコに貸した。",
+      "expected": "hold-semantic-role"
+    },
+    {
+      "frame": "loan",
+      "shell_id": "squid-meeting",
+      "display": "確かにイカの会に貸した。",
+      "expected": "review-needed"
+    }
+  ],
+  "invariants": [
+    "No new lexeme is invented; every lexical shell and outer frame already exists in seam-grammar-v25.",
+    "Structural palindrome must be recomputed from shell composition.",
+    "Existing recipes are filtered out so prototype measures genuinely new combinations.",
+    "Held controls are retained in research output and never exposed to public pool.",
+    "Compatibility is directional and frame-specific."
+  ],
+  "next_step": "Implement a deterministic shell-substitution generator that emits new accepted/review/held combinations with traces and excludes existing recipes."
+}
