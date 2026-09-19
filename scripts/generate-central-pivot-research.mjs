@@ -11,6 +11,7 @@ const hybrids = readJson("data/historical-factor-hybrids-v35.json");
 const curatedPipeline = readJson("data/central-pivot-candidate-pipeline-v57.json");
 const contract = readJson("data/historical-generator-contract-v58.json");
 const frozenFixture = readJson("data/generated-central-pivot-research-v59.json");
+const commonSchema = readJson("data/historical-research-candidate-schema-v61.json");
 
 const semanticById = new Map((semanticFields.entries ?? []).map(x => [x.id, x]));
 const hybridByReading = new Map((hybrids.candidates ?? []).map(x => [x.reading, x]));
@@ -122,6 +123,29 @@ for (const [D, group] of groups) {
         },
         gate_trace: gateTrace(curated.stage, dSignature),
         final_research_stage: curated.stage,
+        donor_source_ids: [donor.id],
+        attestation_trace: {
+          host_context_fixed: ["A","B","C","D"],
+          donor_attested_connection: `D+E from ${donor.id}`,
+          local_factor_attested: true,
+        },
+        morphology_trace: {
+          moved_slots: ["E"],
+          fixed_slots: ["A","B","C","D"],
+          D_reading: D,
+          D_confidence: dSignature?.confidence ?? null,
+          D_transferable: dSignature?.transferable ?? null,
+          D_signature: dSignature?.signature ?? null,
+        },
+        scene_trace: gateTrace(curated.stage, dSignature).scene,
+        semantic_role_trace: gateTrace(curated.stage, dSignature).semantic_role,
+        source_confidence_trace: {
+          host: host.group === "trusted" ? "trusted" : "mining",
+          donor: donor.group === "trusted" ? "trusted" : "mining",
+          source_image_needed: host.group !== "trusted" || donor.group !== "trusted",
+        },
+        review_status: curated.stage,
+        cautions: [],
       });
     }
   }
@@ -140,6 +164,7 @@ const output = {
 function check() {
   const errors = [];
   if (contract.version !== "0.58") errors.push(`contract version is ${contract.version}, expected 0.58`);
+  if (commonSchema.version !== "0.61") errors.push(`common schema version is ${commonSchema.version}, expected 0.61`);
   if (output.candidate_count !== 12) errors.push(`candidate count ${output.candidate_count}, expected 12`);
 
   const generatedIds = generated.map(x => x.id).sort();
@@ -162,6 +187,7 @@ function check() {
   }
 
   for (const candidate of generated) {
+    for (const field of commonSchema.candidate_required_fields ?? []) if (!(field in candidate)) errors.push(`missing common-schema field ${field}: ${candidate.id}`);
     if (!candidate.strict_palindrome) errors.push(`non-palindrome: ${candidate.id}`);
     if (candidate.reading.length === 0) errors.push(`empty reading: ${candidate.id}`);
     if ((candidate.meter ?? []).map(x => [...x].length).join(",") !== "5,7,5,7,7") {
