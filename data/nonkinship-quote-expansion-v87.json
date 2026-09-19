@@ -1,21 +1,17 @@
 {
-  "version": "0.87",
+  "version": "0.87.1",
   "title": "Non-kinship quote long-tail expansion prototype",
   "public_behavior_changed": false,
   "source_growth_version": "0.30",
   "source_family_count": 4,
   "generated_family_count": 4,
   "generated_stage_count": 40,
-  "wrapper_sequence": [
-    "tell-topic",
-    "read-muyo-topic",
-    "state-rubeno-topic",
+  "sequence_policy": "Four rotated nine-wrapper sequences drawn from existing v0.72-compatible topic/reporting wrappers; first wrapper differs across the four new families.",
+  "first_wrapper_ids": [
     "say-topic",
-    "hear-topic",
-    "state-topic",
     "narrate-topic",
-    "judge-topic",
-    "interpret-topic"
+    "hear-kuki",
+    "tell-topic"
   ],
   "projected_growth_stats": {
     "current_stage_count": 322,
@@ -26,7 +22,7 @@
   },
   "families": [
     {
-      "id": "quote-simple-horse-dance",
+      "id": "report-simple-horse-dance",
       "label": "引用：馬と人が舞う（親族化前）",
       "layer": "L2",
       "dimension": "引用・伝聞",
@@ -34,7 +30,18 @@
       "source_family": "event-horse-dance",
       "source_stage": 1,
       "collision_policy": "outer nouns must not repeat inside/outside",
-      "wrapper_order": "v0.72-compatible fixed sequence",
+      "wrapper_order": "v0.72-compatible rotated sequence",
+      "wrapper_sequence": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic",
+        "interpret-topic",
+        "hear-kuki",
+        "know-rushi",
+        "ack-topic"
+      ],
       "stages": [
         {
           "reading": "うまもななもまう",
@@ -46,64 +53,13 @@
           "wrapper_depth": 0
         },
         {
-          "reading": "たげつはうまもななもまうはつげた",
-          "display": "タゲツは、「馬もナナも舞う」は告げた。",
-          "adds": "文レベル外枠：告知（主題）",
+          "reading": "ういはうまもななもまうはいう",
+          "display": "ウイは、「馬もナナも舞う」は言う。",
+          "adds": "文レベル外枠：発言（主題）",
           "japanese_quality": "B+",
           "weirdness": 3,
           "dimension": "引用・伝聞",
           "wrapper_depth": 1,
-          "wrapper_id": "tell-topic",
-          "wrapper_outer_lexemes": [
-            {
-              "reading": "たげつ",
-              "display": "タゲツ",
-              "kind": "person"
-            }
-          ]
-        },
-        {
-          "reading": "むよはたげつはうまもななもまうはつげたはよむ",
-          "display": "ムヨは、『タゲツは、「馬もナナも舞う」は告げた』は読む。",
-          "adds": "文レベル外枠：読解（主題）",
-          "japanese_quality": "B",
-          "weirdness": 4,
-          "dimension": "引用・伝聞",
-          "wrapper_depth": 2,
-          "wrapper_id": "read-muyo-topic",
-          "wrapper_outer_lexemes": [
-            {
-              "reading": "むよ",
-              "display": "ムヨ",
-              "kind": "person"
-            }
-          ]
-        },
-        {
-          "reading": "るべのはむよはたげつはうまもななもまうはつげたはよむはのべる",
-          "display": "ルベノは、〈ムヨは、『タゲツは、「馬もナナも舞う」は告げた』は読む〉は述べる。",
-          "adds": "文レベル外枠：陳述（継続・主題）",
-          "japanese_quality": "B",
-          "weirdness": 5,
-          "dimension": "引用・伝聞",
-          "wrapper_depth": 3,
-          "wrapper_id": "state-rubeno-topic",
-          "wrapper_outer_lexemes": [
-            {
-              "reading": "るべの",
-              "display": "ルベノ",
-              "kind": "person"
-            }
-          ]
-        },
-        {
-          "reading": "ういはるべのはむよはたげつはうまもななもまうはつげたはよむはのべるはいう",
-          "display": "ウイは、《ルベノは、〈ムヨは、『タゲツは、「馬もナナも舞う」は告げた』は読む〉は述べる》は言う。",
-          "adds": "文レベル外枠：発言（主題）",
-          "japanese_quality": "B",
-          "weirdness": 5,
-          "dimension": "引用・伝聞",
-          "wrapper_depth": 4,
           "wrapper_id": "say-topic",
           "wrapper_outer_lexemes": [
             {
@@ -114,13 +70,13 @@
           ]
         },
         {
-          "reading": "たいきはういはるべのはむよはたげつはうまもななもまうはつげたはよむはのべるはいうはきいた",
-          "display": "大樹は、【ウイは、《ルベノは、〈ムヨは、『タゲツは、「馬もナナも舞う」は告げた』は読む〉は述べる》は言う】は聞いた。",
+          "reading": "たいきはういはうまもななもまうはいうはきいた",
+          "display": "大樹は、『ウイは、「馬もナナも舞う」は言う』は聞いた。",
           "adds": "文レベル外枠：伝聞（主題）",
-          "japanese_quality": "B",
-          "weirdness": 5,
+          "japanese_quality": "B+",
+          "weirdness": 4,
           "dimension": "引用・伝聞",
-          "wrapper_depth": 5,
+          "wrapper_depth": 2,
           "wrapper_id": "hear-topic",
           "wrapper_outer_lexemes": [
             {
@@ -131,13 +87,13 @@
           ]
         },
         {
-          "reading": "たべのはたいきはういはるべのはむよはたげつはうまもななもまうはつげたはよむはのべるはいうはきいたはのべた",
-          "display": "田部野は、〔大樹は、【ウイは、《ルベノは、〈ムヨは、『タゲツは、「馬もナナも舞う」は告げた』は読む〉は述べる》は言う】は聞いた〕は述べた。",
+          "reading": "たべのはたいきはういはうまもななもまうはいうはきいたはのべた",
+          "display": "田部野は、〈大樹は、『ウイは、「馬もナナも舞う」は言う』は聞いた〉は述べた。",
           "adds": "文レベル外枠：陳述（主題）",
-          "japanese_quality": "C",
+          "japanese_quality": "B",
           "weirdness": 5,
           "dimension": "引用・伝聞",
-          "wrapper_depth": 6,
+          "wrapper_depth": 3,
           "wrapper_id": "state-topic",
           "wrapper_outer_lexemes": [
             {
@@ -148,13 +104,13 @@
           ]
         },
         {
-          "reading": "るたかはたべのはたいきはういはるべのはむよはたげつはうまもななもまうはつげたはよむはのべるはいうはきいたはのべたはかたる",
-          "display": "ルタカは、［田部野は、〔大樹は、【ウイは、《ルベノは、〈ムヨは、『タゲツは、「馬もナナも舞う」は告げた』は読む〉は述べる》は言う】は聞いた〕は述べた］は語る。",
+          "reading": "るたかはたべのはたいきはういはうまもななもまうはいうはきいたはのべたはかたる",
+          "display": "ルタカは、《田部野は、〈大樹は、『ウイは、「馬もナナも舞う」は言う』は聞いた〉は述べた》は語る。",
           "adds": "文レベル外枠：語り（主題）",
-          "japanese_quality": "C",
+          "japanese_quality": "B",
           "weirdness": 5,
           "dimension": "引用・伝聞",
-          "wrapper_depth": 7,
+          "wrapper_depth": 4,
           "wrapper_id": "narrate-topic",
           "wrapper_outer_lexemes": [
             {
@@ -165,13 +121,13 @@
           ]
         },
         {
-          "reading": "たみはるたかはたべのはたいきはういはるべのはむよはたげつはうまもななもまうはつげたはよむはのべるはいうはきいたはのべたはかたるはみた",
-          "display": "タミは、（ルタカは、［田部野は、〔大樹は、【ウイは、《ルベノは、〈ムヨは、『タゲツは、「馬もナナも舞う」は告げた』は読む〉は述べる》は言う】は聞いた〕は述べた］は語る）は見た。",
+          "reading": "たみはるたかはたべのはたいきはういはうまもななもまうはいうはきいたはのべたはかたるはみた",
+          "display": "タミは、【ルタカは、《田部野は、〈大樹は、『ウイは、「馬もナナも舞う」は言う』は聞いた〉は述べた》は語る】は見た。",
           "adds": "文レベル外枠：判断（主題）",
-          "japanese_quality": "C",
+          "japanese_quality": "B",
           "weirdness": 5,
           "dimension": "引用・伝聞",
-          "wrapper_depth": 8,
+          "wrapper_depth": 5,
           "wrapper_id": "judge-topic",
           "wrapper_outer_lexemes": [
             {
@@ -182,13 +138,13 @@
           ]
         },
         {
-          "reading": "るみはたみはるたかはたべのはたいきはういはるべのはむよはたげつはうまもななもまうはつげたはよむはのべるはいうはきいたはのべたはかたるはみたはみる",
-          "display": "ルミは、〝タミは、（ルタカは、［田部野は、〔大樹は、【ウイは、《ルベノは、〈ムヨは、『タゲツは、「馬もナナも舞う」は告げた』は読む〉は述べる》は言う】は聞いた〕は述べた］は語る）は見た〟は見る。",
+          "reading": "るみはたみはるたかはたべのはたいきはういはうまもななもまうはいうはきいたはのべたはかたるはみたはみる",
+          "display": "ルミは、〔タミは、【ルタカは、《田部野は、〈大樹は、『ウイは、「馬もナナも舞う」は言う』は聞いた〉は述べた》は語る】は見た〕は見る。",
           "adds": "文レベル外枠：解釈（主題）",
           "japanese_quality": "C",
           "weirdness": 5,
           "dimension": "引用・伝聞",
-          "wrapper_depth": 9,
+          "wrapper_depth": 6,
           "wrapper_id": "interpret-topic",
           "wrapper_outer_lexemes": [
             {
@@ -197,11 +153,62 @@
               "kind": "person"
             }
           ]
+        },
+        {
+          "reading": "くきはるみはたみはるたかはたべのはたいきはういはうまもななもまうはいうはきいたはのべたはかたるはみたはみるはきく",
+          "display": "久木は、［ルミは、〔タミは、【ルタカは、《田部野は、〈大樹は、『ウイは、「馬もナナも舞う」は言う』は聞いた〉は述べた》は語る】は見た〕は見る］は聞く。",
+          "adds": "文レベル外枠：聴取（主題）",
+          "japanese_quality": "C",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 7,
+          "wrapper_id": "hear-kuki",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "くき",
+              "display": "久木",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "るしはくきはるみはたみはるたかはたべのはたいきはういはうまもななもまうはいうはきいたはのべたはかたるはみたはみるはきくはしる",
+          "display": "ルシは、（久木は、［ルミは、〔タミは、【ルタカは、《田部野は、〈大樹は、『ウイは、「馬もナナも舞う」は言う』は聞いた〉は述べた》は語る】は見た〕は見る］は聞く）は知る。",
+          "adds": "文レベル外枠：認知（主題）",
+          "japanese_quality": "C",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 8,
+          "wrapper_id": "know-rushi",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "るし",
+              "display": "ルシ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "ためとみはるしはくきはるみはたみはるたかはたべのはたいきはういはうまもななもまうはいうはきいたはのべたはかたるはみたはみるはきくはしるはみとめた",
+          "display": "タメトミは、〝ルシは、（久木は、［ルミは、〔タミは、【ルタカは、《田部野は、〈大樹は、『ウイは、「馬もナナも舞う」は言う』は聞いた〉は述べた》は語る】は見た〕は見る］は聞く）は知る〟は認めた。",
+          "adds": "文レベル外枠：認定（主題）",
+          "japanese_quality": "C",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 9,
+          "wrapper_id": "ack-topic",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "ためとみ",
+              "display": "タメトミ",
+              "kind": "person"
+            }
+          ]
         }
       ]
     },
     {
-      "id": "quote-simple-chase",
+      "id": "report-simple-chase",
       "label": "引用：魚と人を追う（親族化前）",
       "layer": "L2",
       "dimension": "引用・伝聞",
@@ -209,7 +216,18 @@
       "source_family": "event-chase",
       "source_stage": 1,
       "collision_policy": "outer nouns must not repeat inside/outside",
-      "wrapper_order": "v0.72-compatible fixed sequence",
+      "wrapper_order": "v0.72-compatible rotated sequence",
+      "wrapper_sequence": [
+        "narrate-topic",
+        "judge-topic",
+        "interpret-topic",
+        "hear-kuki",
+        "know-rushi",
+        "ack-topic",
+        "tell-topic",
+        "reply-topic",
+        "read-muyo-topic"
+      ],
       "stages": [
         {
           "reading": "うおもななもおう",
@@ -221,115 +239,13 @@
           "wrapper_depth": 0
         },
         {
-          "reading": "たげつはうおもななもおうはつげた",
-          "display": "タゲツは、「魚もナナも追う」は告げた。",
-          "adds": "文レベル外枠：告知（主題）",
-          "japanese_quality": "B+",
+          "reading": "るたかはうおもななもおうはかたる",
+          "display": "ルタカは、「魚もナナも追う」は語る。",
+          "adds": "文レベル外枠：語り（主題）",
+          "japanese_quality": "B",
           "weirdness": 3,
           "dimension": "引用・伝聞",
           "wrapper_depth": 1,
-          "wrapper_id": "tell-topic",
-          "wrapper_outer_lexemes": [
-            {
-              "reading": "たげつ",
-              "display": "タゲツ",
-              "kind": "person"
-            }
-          ]
-        },
-        {
-          "reading": "むよはたげつはうおもななもおうはつげたはよむ",
-          "display": "ムヨは、『タゲツは、「魚もナナも追う」は告げた』は読む。",
-          "adds": "文レベル外枠：読解（主題）",
-          "japanese_quality": "B",
-          "weirdness": 4,
-          "dimension": "引用・伝聞",
-          "wrapper_depth": 2,
-          "wrapper_id": "read-muyo-topic",
-          "wrapper_outer_lexemes": [
-            {
-              "reading": "むよ",
-              "display": "ムヨ",
-              "kind": "person"
-            }
-          ]
-        },
-        {
-          "reading": "るべのはむよはたげつはうおもななもおうはつげたはよむはのべる",
-          "display": "ルベノは、〈ムヨは、『タゲツは、「魚もナナも追う」は告げた』は読む〉は述べる。",
-          "adds": "文レベル外枠：陳述（継続・主題）",
-          "japanese_quality": "B",
-          "weirdness": 5,
-          "dimension": "引用・伝聞",
-          "wrapper_depth": 3,
-          "wrapper_id": "state-rubeno-topic",
-          "wrapper_outer_lexemes": [
-            {
-              "reading": "るべの",
-              "display": "ルベノ",
-              "kind": "person"
-            }
-          ]
-        },
-        {
-          "reading": "ういはるべのはむよはたげつはうおもななもおうはつげたはよむはのべるはいう",
-          "display": "ウイは、《ルベノは、〈ムヨは、『タゲツは、「魚もナナも追う」は告げた』は読む〉は述べる》は言う。",
-          "adds": "文レベル外枠：発言（主題）",
-          "japanese_quality": "B",
-          "weirdness": 5,
-          "dimension": "引用・伝聞",
-          "wrapper_depth": 4,
-          "wrapper_id": "say-topic",
-          "wrapper_outer_lexemes": [
-            {
-              "reading": "うい",
-              "display": "ウイ",
-              "kind": "person"
-            }
-          ]
-        },
-        {
-          "reading": "たいきはういはるべのはむよはたげつはうおもななもおうはつげたはよむはのべるはいうはきいた",
-          "display": "大樹は、【ウイは、《ルベノは、〈ムヨは、『タゲツは、「魚もナナも追う」は告げた』は読む〉は述べる》は言う】は聞いた。",
-          "adds": "文レベル外枠：伝聞（主題）",
-          "japanese_quality": "B",
-          "weirdness": 5,
-          "dimension": "引用・伝聞",
-          "wrapper_depth": 5,
-          "wrapper_id": "hear-topic",
-          "wrapper_outer_lexemes": [
-            {
-              "reading": "たいき",
-              "display": "大樹",
-              "kind": "person"
-            }
-          ]
-        },
-        {
-          "reading": "たべのはたいきはういはるべのはむよはたげつはうおもななもおうはつげたはよむはのべるはいうはきいたはのべた",
-          "display": "田部野は、〔大樹は、【ウイは、《ルベノは、〈ムヨは、『タゲツは、「魚もナナも追う」は告げた』は読む〉は述べる》は言う】は聞いた〕は述べた。",
-          "adds": "文レベル外枠：陳述（主題）",
-          "japanese_quality": "C",
-          "weirdness": 5,
-          "dimension": "引用・伝聞",
-          "wrapper_depth": 6,
-          "wrapper_id": "state-topic",
-          "wrapper_outer_lexemes": [
-            {
-              "reading": "たべの",
-              "display": "田部野",
-              "kind": "person"
-            }
-          ]
-        },
-        {
-          "reading": "るたかはたべのはたいきはういはるべのはむよはたげつはうおもななもおうはつげたはよむはのべるはいうはきいたはのべたはかたる",
-          "display": "ルタカは、［田部野は、〔大樹は、【ウイは、《ルベノは、〈ムヨは、『タゲツは、「魚もナナも追う」は告げた』は読む〉は述べる》は言う】は聞いた〕は述べた］は語る。",
-          "adds": "文レベル外枠：語り（主題）",
-          "japanese_quality": "C",
-          "weirdness": 5,
-          "dimension": "引用・伝聞",
-          "wrapper_depth": 7,
           "wrapper_id": "narrate-topic",
           "wrapper_outer_lexemes": [
             {
@@ -340,13 +256,13 @@
           ]
         },
         {
-          "reading": "たみはるたかはたべのはたいきはういはるべのはむよはたげつはうおもななもおうはつげたはよむはのべるはいうはきいたはのべたはかたるはみた",
-          "display": "タミは、（ルタカは、［田部野は、〔大樹は、【ウイは、《ルベノは、〈ムヨは、『タゲツは、「魚もナナも追う」は告げた』は読む〉は述べる》は言う】は聞いた〕は述べた］は語る）は見た。",
+          "reading": "たみはるたかはうおもななもおうはかたるはみた",
+          "display": "タミは、『ルタカは、「魚もナナも追う」は語る』は見た。",
           "adds": "文レベル外枠：判断（主題）",
-          "japanese_quality": "C",
-          "weirdness": 5,
+          "japanese_quality": "B+",
+          "weirdness": 4,
           "dimension": "引用・伝聞",
-          "wrapper_depth": 8,
+          "wrapper_depth": 2,
           "wrapper_id": "judge-topic",
           "wrapper_outer_lexemes": [
             {
@@ -357,13 +273,13 @@
           ]
         },
         {
-          "reading": "るみはたみはるたかはたべのはたいきはういはるべのはむよはたげつはうおもななもおうはつげたはよむはのべるはいうはきいたはのべたはかたるはみたはみる",
-          "display": "ルミは、〝タミは、（ルタカは、［田部野は、〔大樹は、【ウイは、《ルベノは、〈ムヨは、『タゲツは、「魚もナナも追う」は告げた』は読む〉は述べる》は言う】は聞いた〕は述べた］は語る）は見た〟は見る。",
+          "reading": "るみはたみはるたかはうおもななもおうはかたるはみたはみる",
+          "display": "ルミは、〈タミは、『ルタカは、「魚もナナも追う」は語る』は見た〉は見る。",
           "adds": "文レベル外枠：解釈（主題）",
-          "japanese_quality": "C",
+          "japanese_quality": "B",
           "weirdness": 5,
           "dimension": "引用・伝聞",
-          "wrapper_depth": 9,
+          "wrapper_depth": 3,
           "wrapper_id": "interpret-topic",
           "wrapper_outer_lexemes": [
             {
@@ -372,11 +288,113 @@
               "kind": "person"
             }
           ]
+        },
+        {
+          "reading": "くきはるみはたみはるたかはうおもななもおうはかたるはみたはみるはきく",
+          "display": "久木は、《ルミは、〈タミは、『ルタカは、「魚もナナも追う」は語る』は見た〉は見る》は聞く。",
+          "adds": "文レベル外枠：聴取（主題）",
+          "japanese_quality": "B",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 4,
+          "wrapper_id": "hear-kuki",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "くき",
+              "display": "久木",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "るしはくきはるみはたみはるたかはうおもななもおうはかたるはみたはみるはきくはしる",
+          "display": "ルシは、【久木は、《ルミは、〈タミは、『ルタカは、「魚もナナも追う」は語る』は見た〉は見る》は聞く】は知る。",
+          "adds": "文レベル外枠：認知（主題）",
+          "japanese_quality": "B",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 5,
+          "wrapper_id": "know-rushi",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "るし",
+              "display": "ルシ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "ためとみはるしはくきはるみはたみはるたかはうおもななもおうはかたるはみたはみるはきくはしるはみとめた",
+          "display": "タメトミは、〔ルシは、【久木は、《ルミは、〈タミは、『ルタカは、「魚もナナも追う」は語る』は見た〉は見る》は聞く】は知る〕は認めた。",
+          "adds": "文レベル外枠：認定（主題）",
+          "japanese_quality": "C",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 6,
+          "wrapper_id": "ack-topic",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "ためとみ",
+              "display": "タメトミ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "たげつはためとみはるしはくきはるみはたみはるたかはうおもななもおうはかたるはみたはみるはきくはしるはみとめたはつげた",
+          "display": "タゲツは、［タメトミは、〔ルシは、【久木は、《ルミは、〈タミは、『ルタカは、「魚もナナも追う」は語る』は見た〉は見る》は聞く】は知る〕は認めた］は告げた。",
+          "adds": "文レベル外枠：告知（主題）",
+          "japanese_quality": "C",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 7,
+          "wrapper_id": "tell-topic",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "たげつ",
+              "display": "タゲツ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "すえかはたげつはためとみはるしはくきはるみはたみはるたかはうおもななもおうはかたるはみたはみるはきくはしるはみとめたはつげたはかえす",
+          "display": "スエカは、（タゲツは、［タメトミは、〔ルシは、【久木は、《ルミは、〈タミは、『ルタカは、「魚もナナも追う」は語る』は見た〉は見る》は聞く】は知る〕は認めた］は告げた）は返す。",
+          "adds": "文レベル外枠：応答（主題）",
+          "japanese_quality": "C",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 8,
+          "wrapper_id": "reply-topic",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "すえか",
+              "display": "スエカ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "むよはすえかはたげつはためとみはるしはくきはるみはたみはるたかはうおもななもおうはかたるはみたはみるはきくはしるはみとめたはつげたはかえすはよむ",
+          "display": "ムヨは、〝スエカは、（タゲツは、［タメトミは、〔ルシは、【久木は、《ルミは、〈タミは、『ルタカは、「魚もナナも追う」は語る』は見た〉は見る》は聞く】は知る〕は認めた］は告げた）は返す〟は読む。",
+          "adds": "文レベル外枠：読解（主題）",
+          "japanese_quality": "C",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 9,
+          "wrapper_id": "read-muyo-topic",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "むよ",
+              "display": "ムヨ",
+              "kind": "person"
+            }
+          ]
         }
       ]
     },
     {
-      "id": "quote-simple-call",
+      "id": "report-simple-call",
       "label": "引用：ブヨと人を呼ぶ（親族化前）",
       "layer": "L2",
       "dimension": "引用・伝聞",
@@ -384,7 +402,18 @@
       "source_family": "event-call",
       "source_stage": 1,
       "collision_policy": "outer nouns must not repeat inside/outside",
-      "wrapper_order": "v0.72-compatible fixed sequence",
+      "wrapper_order": "v0.72-compatible rotated sequence",
+      "wrapper_sequence": [
+        "hear-kuki",
+        "know-rushi",
+        "ack-topic",
+        "tell-topic",
+        "reply-topic",
+        "read-muyo-topic",
+        "state-rubeno-topic",
+        "write-topic",
+        "say-topic"
+      ],
       "stages": [
         {
           "reading": "ぶよもななもよぶ",
@@ -396,13 +425,64 @@
           "wrapper_depth": 0
         },
         {
-          "reading": "たげつはぶよもななもよぶはつげた",
-          "display": "タゲツは、「ブヨもナナも呼ぶ」は告げた。",
-          "adds": "文レベル外枠：告知（主題）",
+          "reading": "くきはぶよもななもよぶはきく",
+          "display": "久木は、「ブヨもナナも呼ぶ」は聞く。",
+          "adds": "文レベル外枠：聴取（主題）",
           "japanese_quality": "B+",
           "weirdness": 3,
           "dimension": "引用・伝聞",
           "wrapper_depth": 1,
+          "wrapper_id": "hear-kuki",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "くき",
+              "display": "久木",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "るしはくきはぶよもななもよぶはきくはしる",
+          "display": "ルシは、『久木は、「ブヨもナナも呼ぶ」は聞く』は知る。",
+          "adds": "文レベル外枠：認知（主題）",
+          "japanese_quality": "B",
+          "weirdness": 4,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 2,
+          "wrapper_id": "know-rushi",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "るし",
+              "display": "ルシ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "ためとみはるしはくきはぶよもななもよぶはきくはしるはみとめた",
+          "display": "タメトミは、〈ルシは、『久木は、「ブヨもナナも呼ぶ」は聞く』は知る〉は認めた。",
+          "adds": "文レベル外枠：認定（主題）",
+          "japanese_quality": "B",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 3,
+          "wrapper_id": "ack-topic",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "ためとみ",
+              "display": "タメトミ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "たげつはためとみはるしはくきはぶよもななもよぶはきくはしるはみとめたはつげた",
+          "display": "タゲツは、《タメトミは、〈ルシは、『久木は、「ブヨもナナも呼ぶ」は聞く』は知る〉は認めた》は告げた。",
+          "adds": "文レベル外枠：告知（主題）",
+          "japanese_quality": "B",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 4,
           "wrapper_id": "tell-topic",
           "wrapper_outer_lexemes": [
             {
@@ -413,13 +493,30 @@
           ]
         },
         {
-          "reading": "むよはたげつはぶよもななもよぶはつげたはよむ",
-          "display": "ムヨは、『タゲツは、「ブヨもナナも呼ぶ」は告げた』は読む。",
-          "adds": "文レベル外枠：読解（主題）",
+          "reading": "すえかはたげつはためとみはるしはくきはぶよもななもよぶはきくはしるはみとめたはつげたはかえす",
+          "display": "スエカは、【タゲツは、《タメトミは、〈ルシは、『久木は、「ブヨもナナも呼ぶ」は聞く』は知る〉は認めた》は告げた】は返す。",
+          "adds": "文レベル外枠：応答（主題）",
           "japanese_quality": "B",
-          "weirdness": 4,
+          "weirdness": 5,
           "dimension": "引用・伝聞",
-          "wrapper_depth": 2,
+          "wrapper_depth": 5,
+          "wrapper_id": "reply-topic",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "すえか",
+              "display": "スエカ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "むよはすえかはたげつはためとみはるしはくきはぶよもななもよぶはきくはしるはみとめたはつげたはかえすはよむ",
+          "display": "ムヨは、〔スエカは、【タゲツは、《タメトミは、〈ルシは、『久木は、「ブヨもナナも呼ぶ」は聞く』は知る〉は認めた》は告げた】は返す〕は読む。",
+          "adds": "文レベル外枠：読解（主題）",
+          "japanese_quality": "C",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 6,
           "wrapper_id": "read-muyo-topic",
           "wrapper_outer_lexemes": [
             {
@@ -430,13 +527,13 @@
           ]
         },
         {
-          "reading": "るべのはむよはたげつはぶよもななもよぶはつげたはよむはのべる",
-          "display": "ルベノは、〈ムヨは、『タゲツは、「ブヨもナナも呼ぶ」は告げた』は読む〉は述べる。",
+          "reading": "るべのはむよはすえかはたげつはためとみはるしはくきはぶよもななもよぶはきくはしるはみとめたはつげたはかえすはよむはのべる",
+          "display": "ルベノは、［ムヨは、〔スエカは、【タゲツは、《タメトミは、〈ルシは、『久木は、「ブヨもナナも呼ぶ」は聞く』は知る〉は認めた》は告げた】は返す〕は読む］は述べる。",
           "adds": "文レベル外枠：陳述（継続・主題）",
-          "japanese_quality": "B",
+          "japanese_quality": "C",
           "weirdness": 5,
           "dimension": "引用・伝聞",
-          "wrapper_depth": 3,
+          "wrapper_depth": 7,
           "wrapper_id": "state-rubeno-topic",
           "wrapper_outer_lexemes": [
             {
@@ -447,13 +544,30 @@
           ]
         },
         {
-          "reading": "ういはるべのはむよはたげつはぶよもななもよぶはつげたはよむはのべるはいう",
-          "display": "ウイは、《ルベノは、〈ムヨは、『タゲツは、「ブヨもナナも呼ぶ」は告げた』は読む〉は述べる》は言う。",
-          "adds": "文レベル外枠：発言（主題）",
-          "japanese_quality": "B",
+          "reading": "たいかはるべのはむよはすえかはたげつはためとみはるしはくきはぶよもななもよぶはきくはしるはみとめたはつげたはかえすはよむはのべるはかいた",
+          "display": "タイカは、（ルベノは、［ムヨは、〔スエカは、【タゲツは、《タメトミは、〈ルシは、『久木は、「ブヨもナナも呼ぶ」は聞く』は知る〉は認めた》は告げた】は返す〕は読む］は述べる）は書いた。",
+          "adds": "文レベル外枠：記述（主題）",
+          "japanese_quality": "C",
           "weirdness": 5,
           "dimension": "引用・伝聞",
-          "wrapper_depth": 4,
+          "wrapper_depth": 8,
+          "wrapper_id": "write-topic",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "たいか",
+              "display": "タイカ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "ういはたいかはるべのはむよはすえかはたげつはためとみはるしはくきはぶよもななもよぶはきくはしるはみとめたはつげたはかえすはよむはのべるはかいたはいう",
+          "display": "ウイは、〝タイカは、（ルベノは、［ムヨは、〔スエカは、【タゲツは、《タメトミは、〈ルシは、『久木は、「ブヨもナナも呼ぶ」は聞く』は知る〉は認めた》は告げた】は返す〕は読む］は述べる）は書いた〟は言う。",
+          "adds": "文レベル外枠：発言（主題）",
+          "japanese_quality": "C",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 9,
           "wrapper_id": "say-topic",
           "wrapper_outer_lexemes": [
             {
@@ -462,96 +576,11 @@
               "kind": "person"
             }
           ]
-        },
-        {
-          "reading": "たいきはういはるべのはむよはたげつはぶよもななもよぶはつげたはよむはのべるはいうはきいた",
-          "display": "大樹は、【ウイは、《ルベノは、〈ムヨは、『タゲツは、「ブヨもナナも呼ぶ」は告げた』は読む〉は述べる》は言う】は聞いた。",
-          "adds": "文レベル外枠：伝聞（主題）",
-          "japanese_quality": "B",
-          "weirdness": 5,
-          "dimension": "引用・伝聞",
-          "wrapper_depth": 5,
-          "wrapper_id": "hear-topic",
-          "wrapper_outer_lexemes": [
-            {
-              "reading": "たいき",
-              "display": "大樹",
-              "kind": "person"
-            }
-          ]
-        },
-        {
-          "reading": "たべのはたいきはういはるべのはむよはたげつはぶよもななもよぶはつげたはよむはのべるはいうはきいたはのべた",
-          "display": "田部野は、〔大樹は、【ウイは、《ルベノは、〈ムヨは、『タゲツは、「ブヨもナナも呼ぶ」は告げた』は読む〉は述べる》は言う】は聞いた〕は述べた。",
-          "adds": "文レベル外枠：陳述（主題）",
-          "japanese_quality": "C",
-          "weirdness": 5,
-          "dimension": "引用・伝聞",
-          "wrapper_depth": 6,
-          "wrapper_id": "state-topic",
-          "wrapper_outer_lexemes": [
-            {
-              "reading": "たべの",
-              "display": "田部野",
-              "kind": "person"
-            }
-          ]
-        },
-        {
-          "reading": "るたかはたべのはたいきはういはるべのはむよはたげつはぶよもななもよぶはつげたはよむはのべるはいうはきいたはのべたはかたる",
-          "display": "ルタカは、［田部野は、〔大樹は、【ウイは、《ルベノは、〈ムヨは、『タゲツは、「ブヨもナナも呼ぶ」は告げた』は読む〉は述べる》は言う】は聞いた〕は述べた］は語る。",
-          "adds": "文レベル外枠：語り（主題）",
-          "japanese_quality": "C",
-          "weirdness": 5,
-          "dimension": "引用・伝聞",
-          "wrapper_depth": 7,
-          "wrapper_id": "narrate-topic",
-          "wrapper_outer_lexemes": [
-            {
-              "reading": "るたか",
-              "display": "ルタカ",
-              "kind": "person"
-            }
-          ]
-        },
-        {
-          "reading": "たみはるたかはたべのはたいきはういはるべのはむよはたげつはぶよもななもよぶはつげたはよむはのべるはいうはきいたはのべたはかたるはみた",
-          "display": "タミは、（ルタカは、［田部野は、〔大樹は、【ウイは、《ルベノは、〈ムヨは、『タゲツは、「ブヨもナナも呼ぶ」は告げた』は読む〉は述べる》は言う】は聞いた〕は述べた］は語る）は見た。",
-          "adds": "文レベル外枠：判断（主題）",
-          "japanese_quality": "C",
-          "weirdness": 5,
-          "dimension": "引用・伝聞",
-          "wrapper_depth": 8,
-          "wrapper_id": "judge-topic",
-          "wrapper_outer_lexemes": [
-            {
-              "reading": "たみ",
-              "display": "タミ",
-              "kind": "person"
-            }
-          ]
-        },
-        {
-          "reading": "るみはたみはるたかはたべのはたいきはういはるべのはむよはたげつはぶよもななもよぶはつげたはよむはのべるはいうはきいたはのべたはかたるはみたはみる",
-          "display": "ルミは、〝タミは、（ルタカは、［田部野は、〔大樹は、【ウイは、《ルベノは、〈ムヨは、『タゲツは、「ブヨもナナも呼ぶ」は告げた』は読む〉は述べる》は言う】は聞いた〕は述べた］は語る）は見た〟は見る。",
-          "adds": "文レベル外枠：解釈（主題）",
-          "japanese_quality": "C",
-          "weirdness": 5,
-          "dimension": "引用・伝聞",
-          "wrapper_depth": 9,
-          "wrapper_id": "interpret-topic",
-          "wrapper_outer_lexemes": [
-            {
-              "reading": "るみ",
-              "display": "ルミ",
-              "kind": "person"
-            }
-          ]
         }
       ]
     },
     {
-      "id": "quote-simple-seed-sleep",
+      "id": "report-simple-seed-sleep",
       "label": "引用：種と人が寝る（親族化前）",
       "layer": "L2",
       "dimension": "引用・伝聞",
@@ -559,7 +588,18 @@
       "source_family": "event-seed-sleep",
       "source_stage": 1,
       "collision_policy": "outer nouns must not repeat inside/outside",
-      "wrapper_order": "v0.72-compatible fixed sequence",
+      "wrapper_order": "v0.72-compatible rotated sequence",
+      "wrapper_sequence": [
+        "tell-topic",
+        "reply-topic",
+        "read-muyo-topic",
+        "state-rubeno-topic",
+        "write-topic",
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic"
+      ],
       "stages": [
         {
           "reading": "たねもななもねた",
@@ -588,13 +628,30 @@
           ]
         },
         {
-          "reading": "むよはたげつはたねもななもねたはつげたはよむ",
-          "display": "ムヨは、『タゲツは、「種もナナも寝た」は告げた』は読む。",
-          "adds": "文レベル外枠：読解（主題）",
-          "japanese_quality": "B",
+          "reading": "すえかはたげつはたねもななもねたはつげたはかえす",
+          "display": "スエカは、『タゲツは、「種もナナも寝た」は告げた』は返す。",
+          "adds": "文レベル外枠：応答（主題）",
+          "japanese_quality": "B+",
           "weirdness": 4,
           "dimension": "引用・伝聞",
           "wrapper_depth": 2,
+          "wrapper_id": "reply-topic",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "すえか",
+              "display": "スエカ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "むよはすえかはたげつはたねもななもねたはつげたはかえすはよむ",
+          "display": "ムヨは、〈スエカは、『タゲツは、「種もナナも寝た」は告げた』は返す〉は読む。",
+          "adds": "文レベル外枠：読解（主題）",
+          "japanese_quality": "B",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 3,
           "wrapper_id": "read-muyo-topic",
           "wrapper_outer_lexemes": [
             {
@@ -605,13 +662,13 @@
           ]
         },
         {
-          "reading": "るべのはむよはたげつはたねもななもねたはつげたはよむはのべる",
-          "display": "ルベノは、〈ムヨは、『タゲツは、「種もナナも寝た」は告げた』は読む〉は述べる。",
+          "reading": "るべのはむよはすえかはたげつはたねもななもねたはつげたはかえすはよむはのべる",
+          "display": "ルベノは、《ムヨは、〈スエカは、『タゲツは、「種もナナも寝た」は告げた』は返す〉は読む》は述べる。",
           "adds": "文レベル外枠：陳述（継続・主題）",
           "japanese_quality": "B",
           "weirdness": 5,
           "dimension": "引用・伝聞",
-          "wrapper_depth": 3,
+          "wrapper_depth": 4,
           "wrapper_id": "state-rubeno-topic",
           "wrapper_outer_lexemes": [
             {
@@ -622,13 +679,30 @@
           ]
         },
         {
-          "reading": "ういはるべのはむよはたげつはたねもななもねたはつげたはよむはのべるはいう",
-          "display": "ウイは、《ルベノは、〈ムヨは、『タゲツは、「種もナナも寝た」は告げた』は読む〉は述べる》は言う。",
-          "adds": "文レベル外枠：発言（主題）",
+          "reading": "たいかはるべのはむよはすえかはたげつはたねもななもねたはつげたはかえすはよむはのべるはかいた",
+          "display": "タイカは、【ルベノは、《ムヨは、〈スエカは、『タゲツは、「種もナナも寝た」は告げた』は返す〉は読む》は述べる】は書いた。",
+          "adds": "文レベル外枠：記述（主題）",
           "japanese_quality": "B",
           "weirdness": 5,
           "dimension": "引用・伝聞",
-          "wrapper_depth": 4,
+          "wrapper_depth": 5,
+          "wrapper_id": "write-topic",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "たいか",
+              "display": "タイカ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "ういはたいかはるべのはむよはすえかはたげつはたねもななもねたはつげたはかえすはよむはのべるはかいたはいう",
+          "display": "ウイは、〔タイカは、【ルベノは、《ムヨは、〈スエカは、『タゲツは、「種もナナも寝た」は告げた』は返す〉は読む》は述べる】は書いた〕は言う。",
+          "adds": "文レベル外枠：発言（主題）",
+          "japanese_quality": "C",
+          "weirdness": 5,
+          "dimension": "引用・伝聞",
+          "wrapper_depth": 6,
           "wrapper_id": "say-topic",
           "wrapper_outer_lexemes": [
             {
@@ -639,13 +713,13 @@
           ]
         },
         {
-          "reading": "たいきはういはるべのはむよはたげつはたねもななもねたはつげたはよむはのべるはいうはきいた",
-          "display": "大樹は、【ウイは、《ルベノは、〈ムヨは、『タゲツは、「種もナナも寝た」は告げた』は読む〉は述べる》は言う】は聞いた。",
+          "reading": "たいきはういはたいかはるべのはむよはすえかはたげつはたねもななもねたはつげたはかえすはよむはのべるはかいたはいうはきいた",
+          "display": "大樹は、［ウイは、〔タイカは、【ルベノは、《ムヨは、〈スエカは、『タゲツは、「種もナナも寝た」は告げた』は返す〉は読む》は述べる】は書いた〕は言う］は聞いた。",
           "adds": "文レベル外枠：伝聞（主題）",
-          "japanese_quality": "B",
+          "japanese_quality": "C",
           "weirdness": 5,
           "dimension": "引用・伝聞",
-          "wrapper_depth": 5,
+          "wrapper_depth": 7,
           "wrapper_id": "hear-topic",
           "wrapper_outer_lexemes": [
             {
@@ -656,13 +730,13 @@
           ]
         },
         {
-          "reading": "たべのはたいきはういはるべのはむよはたげつはたねもななもねたはつげたはよむはのべるはいうはきいたはのべた",
-          "display": "田部野は、〔大樹は、【ウイは、《ルベノは、〈ムヨは、『タゲツは、「種もナナも寝た」は告げた』は読む〉は述べる》は言う】は聞いた〕は述べた。",
+          "reading": "たべのはたいきはういはたいかはるべのはむよはすえかはたげつはたねもななもねたはつげたはかえすはよむはのべるはかいたはいうはきいたはのべた",
+          "display": "田部野は、（大樹は、［ウイは、〔タイカは、【ルベノは、《ムヨは、〈スエカは、『タゲツは、「種もナナも寝た」は告げた』は返す〉は読む》は述べる】は書いた〕は言う］は聞いた）は述べた。",
           "adds": "文レベル外枠：陳述（主題）",
           "japanese_quality": "C",
           "weirdness": 5,
           "dimension": "引用・伝聞",
-          "wrapper_depth": 6,
+          "wrapper_depth": 8,
           "wrapper_id": "state-topic",
           "wrapper_outer_lexemes": [
             {
@@ -673,52 +747,18 @@
           ]
         },
         {
-          "reading": "るたかはたべのはたいきはういはるべのはむよはたげつはたねもななもねたはつげたはよむはのべるはいうはきいたはのべたはかたる",
-          "display": "ルタカは、［田部野は、〔大樹は、【ウイは、《ルベノは、〈ムヨは、『タゲツは、「種もナナも寝た」は告げた』は読む〉は述べる》は言う】は聞いた〕は述べた］は語る。",
+          "reading": "るたかはたべのはたいきはういはたいかはるべのはむよはすえかはたげつはたねもななもねたはつげたはかえすはよむはのべるはかいたはいうはきいたはのべたはかたる",
+          "display": "ルタカは、〝田部野は、（大樹は、［ウイは、〔タイカは、【ルベノは、《ムヨは、〈スエカは、『タゲツは、「種もナナも寝た」は告げた』は返す〉は読む》は述べる】は書いた〕は言う］は聞いた）は述べた〟は語る。",
           "adds": "文レベル外枠：語り（主題）",
           "japanese_quality": "C",
           "weirdness": 5,
           "dimension": "引用・伝聞",
-          "wrapper_depth": 7,
+          "wrapper_depth": 9,
           "wrapper_id": "narrate-topic",
           "wrapper_outer_lexemes": [
             {
               "reading": "るたか",
               "display": "ルタカ",
-              "kind": "person"
-            }
-          ]
-        },
-        {
-          "reading": "たみはるたかはたべのはたいきはういはるべのはむよはたげつはたねもななもねたはつげたはよむはのべるはいうはきいたはのべたはかたるはみた",
-          "display": "タミは、（ルタカは、［田部野は、〔大樹は、【ウイは、《ルベノは、〈ムヨは、『タゲツは、「種もナナも寝た」は告げた』は読む〉は述べる》は言う】は聞いた〕は述べた］は語る）は見た。",
-          "adds": "文レベル外枠：判断（主題）",
-          "japanese_quality": "C",
-          "weirdness": 5,
-          "dimension": "引用・伝聞",
-          "wrapper_depth": 8,
-          "wrapper_id": "judge-topic",
-          "wrapper_outer_lexemes": [
-            {
-              "reading": "たみ",
-              "display": "タミ",
-              "kind": "person"
-            }
-          ]
-        },
-        {
-          "reading": "るみはたみはるたかはたべのはたいきはういはるべのはむよはたげつはたねもななもねたはつげたはよむはのべるはいうはきいたはのべたはかたるはみたはみる",
-          "display": "ルミは、〝タミは、（ルタカは、［田部野は、〔大樹は、【ウイは、《ルベノは、〈ムヨは、『タゲツは、「種もナナも寝た」は告げた』は読む〉は述べる》は言う】は聞いた〕は述べた］は語る）は見た〟は見る。",
-          "adds": "文レベル外枠：解釈（主題）",
-          "japanese_quality": "C",
-          "weirdness": 5,
-          "dimension": "引用・伝聞",
-          "wrapper_depth": 9,
-          "wrapper_id": "interpret-topic",
-          "wrapper_outer_lexemes": [
-            {
-              "reading": "るみ",
-              "display": "ルミ",
               "kind": "person"
             }
           ]
