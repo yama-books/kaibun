@@ -1729,3 +1729,257 @@ bridge総括文書:
 ## 再開最短文
 
 **「HANDOFF 26節から再開。全体約72%。第二positive family（なは）とmodern seam bridge v0.66-v0.69を実装。公開v0.27へ6件をbridgePoolで限定統合済み。次は最新CI/Pages確認後、bridge露出頻度評価とgrowthへのscene/role gate移植。」**
+
+
+---
+
+# 27. 2026-09-19 品質ループ v0.70〜v0.80 チェックポイント
+
+## 進捗目安
+- 歴史回文研究・生成原理: **約85%**
+- 怪文回文メーカー全体目標: **約78%**
+
+歴史研究そのものより、公開generatorへ研究原理を移植して品質を測る工程へ重心が移った。
+
+## v0.70 bridge exposure
+
+追加:
+- `data/public-bridge-exposure-policy-v70.json`
+
+測定:
+- L1 default bridge share: 約13.6%
+- L2 default bridge share: 約23.1%
+
+L2で新familyが強く出すぎるため、
+一発の継ぎ目型DNA生成だけbridge drawを最大15%へ制御。
+
+候補一覧・比較poolからは削除しない。
+
+実装:
+- `standardSeamPool()`
+- `bridgePool()`
+- `seamPool()`
+- `seamOne()` で15% cap
+
+CI/Pages:
+- validator fix `29adb465cebb22c10681a7961133eb2aca81aa9d`
+- Validate `35435504577`: success
+- Pages `35435504589`: success
+
+## v0.71 wrapper audit
+
+追加:
+- `data/growth-wrapper-audit-v71.json`
+
+45 narrative family終端を監査。
+一般sceneではauto_priorityだけで
+say/hear/state/ask/narrate がほぼ固定top5になっていた。
+
+ask-topic:
+- 45 family中30 familyでtop5
+- 宣言文にも自動適用
+
+## v0.72 semantic-role gate
+
+追加:
+- `data/growth-wrapper-role-gate-v72.json`
+
+自動選択rule:
+- ask: 疑問表現のみ
+- decide: 決定語彙のみ
+- cause: 理由
+- record-identity: 状況
+- read/write/ack/tell/reply: 引用・伝聞
+- reaction: 反応 + 引用・伝聞
+- general report/cognition: broad fallback
+
+reactionを引用・伝聞にも許可した理由:
+quote-matsutakeはnoun collisionで通常wrapperが大量に消え、strict gateでは4候補まで減ったため。
+引用内容への反応としてsemanticにも許容し、minimum poolを維持。
+
+## v0.73 deterministic simulation
+
+実装:
+- `scripts/simulate-growth-wrapper-role-gate.mjs`
+- `data/growth-wrapper-role-simulation-v73.json`
+
+結果:
+- families 45
+- changed top5 34
+- min eligible 8
+- declarative ask top5 0
+- non-quote specialized top5 0
+
+CI:
+- `35435646144`: success
+- fixture lock `58d8f273b8d40a8ac2dc31e2f88dcfb3242beb7e`
+
+## v0.74 public rollout
+
+追加:
+- `data/growth-wrapper-role-public-v74.json`
+
+決定:
+- **auto-selection only**
+
+manual dropdownは従来どおりnoun-collisionのみで全wrapperを表示。
+
+比較用quality ordinalでは:
+- before 3.5422
+- after 3.6667
+
+weirdness floor:
+- before 3.0711
+- after 3.0533
+
+## 公開 v0.28
+
+index.html:
+- badge `v0.28 / 研究由来DNA＋意味役割外枠`
+- nounCompatibleSentenceWrappers()
+- autoCompatibleSentenceWrappers()
+- wrapperRoleAllowed()
+- growthDimensionFor()
+
+manualとautoを分離。
+
+公開本体commit:
+- `65b9196d46cb0da918d0e824998ff85662ce5733`
+
+CI:
+- Validate `35435750603`: success
+- Pages `35435750665`: success
+- rollout validator `35435764418`: success
+
+## v0.75 quality metadata audit
+
+追加:
+- `data/public-quality-metadata-audit-v75.json`
+
+全one-shot pool unique:
+- 649
+- palindrome failure 0
+
+default:
+- 635
+- L1 492
+- L2 60
+- L3 83
+
+重要限界:
+DNAのjapanese_qualityはlayer由来が多いため、A比率を自然さ成功率として使えない。
+
+## v0.76 fixed quality benchmark baseline
+
+実装:
+- `scripts/build-public-quality-benchmark.mjs`
+- `data/public-quality-benchmark-v76.json`
+
+source/layer層化50件。
+v0.76は改善前baselineとして保存。
+
+## v0.77 model-assisted pre-review
+
+追加:
+- `data/public-quality-first-pass-v77.json`
+
+結果:
+- keep 47
+- review 2
+- hold 1
+
+問題:
+- QB-021 今朝のキキの酒: L1には強引
+- QB-042 声のエコを見る: semantic mismatch
+
+人間評価ではなく診断用pre-review。
+
+## v0.78 calibration
+
+追加:
+- `data/public-quality-action-plan-v78.json`
+
+seam grammar補正:
+- time-see-nana-child -> L2 / A- / weird4
+- time-see-ishii -> L2 / A- / weird3
+- time-see-kiki -> L2 / A- / weird3
+- see-voice-eco -> L2 / B / weird4
+
+根拠:
+growth time-observationと同一/同構造の既存評価へ整合。
+voice-ecoは削除せずdefault L2から外す。
+
+seam data commit:
+- `48f45c9b5ee4ee850962edd9360d5b87148cfd3c`
+
+内部version:
+- 0.28.1
+
+## v0.79 post-calibration benchmark
+
+追加:
+- `data/public-quality-benchmark-v79.json`
+
+v0.76との差:
+removed:
+- タミも今朝のキキの酒も見た。
+- タミも声のエコも見た。
+
+added:
+- 井川もこのナナの子も若い。
+- タミも今朝の石井の酒も見た。
+
+builderをv79へ更新:
+- `5cd7bfc29060f3e6d7ef2584ca3e79acde5aa392`
+- Validate `35436021076`: success
+- Pages `35436021086`: success
+
+## v0.80 post-review
+
+追加:
+- `data/public-quality-post-review-v80.json`
+
+48件はreading単位でv0.77評価を継承。
+新規2件のみ一次レビュー。
+
+結果:
+- keep 49
+- review 1
+- hold 0
+
+baseline比:
+- keep +2
+- review -1
+- hold -1
+
+CI:
+- Validate `35436045725`: success
+- Pages `35436045729`: success
+
+総括:
+研究原理 → 公開生成 → 露出制御 → 固定benchmark → 問題family特定 → データ補正 → 同条件再benchmark
+という品質改善ループが初めて一巡した。
+
+詳細:
+- `docs/PUBLIC_QUALITY_LOOP_V70_V80.md`
+
+## 次の主要課題
+
+1. **display-reading fidelity v0.81**
+   - 魚（うお/さかな等）
+   - 高田（たかだ/たかた等）
+   のように、表示漢字から想定readingが一意でない候補を監査。
+2. L1 recursive kinship templateの反復率を定量化。
+3. 固定benchmarkの最終人間判定を将来導入。
+4. quality loopを壊さずsemantic-role generatorを追加拡張。
+
+固定事項:
+- historical fixed50変更なし
+- wave2 verified14 / held5変更なし
+- bridge public 6件
+- bridge seam-one exposure cap 15%
+- general-factor-crossover disabled
+
+## 再開最短文
+
+**「HANDOFF 27節から再開。全体約78%。公開v0.28、bridge6件+15%露出cap、growth wrapper role gate、v0.76→v0.79品質benchmark校正までCI成功。次はdisplay-reading fidelity v0.81。」**
