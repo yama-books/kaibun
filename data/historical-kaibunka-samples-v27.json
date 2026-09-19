@@ -1,0 +1,522 @@
+{
+  "version": "0.27",
+  "purpose": "江戸期に作られた、または江戸文化で著名になった回文短歌・狂歌を、生成原理研究用の歴史サンプルとして保持する。",
+  "caveat": "歴史的回文では濁点・歴史的仮名遣い・を/お等の扱いが現代の厳密回文と異なる場合がある。displayとnormalized_readingを分離し、正規化規則を必ず記録する。",
+  "sample_count": 10,
+  "authored_in_edo_count": 9,
+  "reference_only_count": 1,
+  "all_normalized_palindromes": true,
+  "samples": [
+    {
+      "id": "edo-popular-takarabune",
+      "title": "宝船回文歌",
+      "display": "長き夜の 遠の眠りの 皆目覚め 波乗り舟の 音の良きかな",
+      "author": "不詳",
+      "work": "宝船歌（江戸の宝船絵に添えられた歌）",
+      "period": "成立時期不詳。江戸期に宝船・初夢習俗で著名",
+      "sample_class": "edo-popular-older-origin",
+      "fame": "canonical",
+      "source_confidence": "A",
+      "reading_display": "ながきよの とおのねぶりの みなめざめ なみのりふねの おとのよきかな",
+      "normalized_reading": "なかきよのとをのねふりのみなめさめなみのりふねのをとのよきかな",
+      "normalization": [
+        "historical_kana",
+        "devoiced_historical",
+        "を/お distinction retained"
+      ],
+      "meter": [
+        5,
+        7,
+        5,
+        7,
+        7
+      ],
+      "learning_tags": [
+        "boundary_shift",
+        "role_shift",
+        "particle_hinge",
+        "semantic_pivot",
+        "meter_57577",
+        "natural_scene",
+        "resegmentation"
+      ],
+      "notes": [
+        "江戸で宝船絵・初夢習俗と結びついて広く知られたが、江戸成立と断定しない。",
+        "『ねふり』の反転側が隣接する『の』と再分節され『のりふね』になる点を最重要サンプルとする。",
+        "『みな（皆）↔なみ（波）』『とを（遠）↔をと（音）』は意味・統語役割が左右で変わる。"
+      ],
+      "sources": [
+        {
+          "label": "国立国会図書館 レファレンス協同DB",
+          "url": "https://crd.ndl.go.jp/reference/detail?page=ref_view&id=1000207065"
+        },
+        {
+          "label": "コトバンク 日本大百科全書「回文」",
+          "url": "https://kotobank.jp/word/%E5%9B%9E%E6%96%87-42885"
+        }
+      ],
+      "verified_palindrome": true,
+      "kana_length": 31
+    },
+    {
+      "id": "mitoku-shirayuki",
+      "title": "白雪",
+      "display": "白雪は 今朝野良草の 葉にもつも 庭の桜の 咲けば消ゆらし",
+      "author": "石田未得",
+      "work": "吾吟我集 巻十・廻文歌",
+      "period": "江戸前期・1649年成立",
+      "sample_class": "edo-authored",
+      "fame": "representative",
+      "source_confidence": "A-",
+      "reading_display": "しらゆきは けさのらくさの はにもつも にはのさくらの さけばきゆらし",
+      "normalized_reading": "しらゆきはけさのらくさのはにもつもにはのさくらのさけはきゆらし",
+      "normalization": [
+        "devoiced_historical"
+      ],
+      "meter": [
+        5,
+        7,
+        5,
+        7,
+        7
+      ],
+      "learning_tags": [
+        "natural_scene",
+        "seasonal_coherence",
+        "boundary_shift",
+        "historical_devoicing",
+        "meter_57577",
+        "semantic_camouflage"
+      ],
+      "notes": [
+        "雪・草・桜という一つの景物世界で全体を統一し、回文技巧を景の自然さの中へ埋め込む。",
+        "現代的な濁点表記を外した歴史的正規化で31かな回文となる。"
+      ],
+      "sources": [
+        {
+          "label": "京都大学貴重資料デジタルアーカイブ『吾吟我集』",
+          "url": "https://rmda.kulib.kyoto-u.ac.jp/item/rb00033151"
+        },
+        {
+          "label": "高柳蕗子HP 回文資料",
+          "url": "https://sites.google.com/view/takayanagifukiko/%E3%81%A1%E3%82%87%E3%82%8D%E3%81%B1%E9%80%9A%E4%BF%A1/%E3%81%A1%E3%82%87%E3%82%8D%E3%81%B1%E5%9B%9E%E6%96%87"
+        }
+      ],
+      "verified_palindrome": true,
+      "kana_length": 31
+    },
+    {
+      "id": "mitoku-rusu",
+      "title": "身の留守",
+      "display": "身の留守に 来ては折り取る この花は 残る鳥をば 敵にするのみ",
+      "author": "石田未得",
+      "work": "吾吟我集 巻十・廻文歌",
+      "period": "江戸前期・1649年成立",
+      "sample_class": "edo-authored",
+      "fame": "representative",
+      "source_confidence": "A-",
+      "reading_display": "みのるすに きてはをりとる このはなは のこるとりをば てきにするのみ",
+      "normalized_reading": "みのるすにきてはをりとるこのはなはのこるとりをはてきにするのみ",
+      "normalization": [
+        "devoiced_historical"
+      ],
+      "meter": [
+        5,
+        7,
+        5,
+        7,
+        7
+      ],
+      "learning_tags": [
+        "sentence_coherence",
+        "causal_scene",
+        "boundary_shift",
+        "historical_devoicing",
+        "meter_57577",
+        "central_pivot"
+      ],
+      "notes": [
+        "中心付近の『この花は』が意味上の軸になり、前半の出来事と後半の反応を結ぶ。",
+        "単語ペアの羅列ではなく『留守中に花を折られ、残る鳥を敵視する』という状況が通る。"
+      ],
+      "sources": [
+        {
+          "label": "京都大学貴重資料デジタルアーカイブ『吾吟我集』",
+          "url": "https://rmda.kulib.kyoto-u.ac.jp/item/rb00033151"
+        },
+        {
+          "label": "高柳蕗子HP 回文資料",
+          "url": "https://sites.google.com/view/takayanagifukiko/%E3%81%A1%E3%82%87%E3%82%8D%E3%81%B1%E9%80%9A%E4%BF%A1/%E3%81%A1%E3%82%87%E3%82%8D%E3%81%B1%E5%9B%9E%E6%96%87"
+        }
+      ],
+      "verified_palindrome": true,
+      "kana_length": 31
+    },
+    {
+      "id": "mitoku-hitodama",
+      "title": "人魂",
+      "display": "また飛びぬ 女と男と あはれ主 知らじ死ぬれば 跡をとめぬ人魂",
+      "author": "石田未得",
+      "work": "吾吟我集 巻十・廻文歌",
+      "period": "江戸前期・1649年成立",
+      "sample_class": "edo-authored",
+      "fame": "representative",
+      "source_confidence": "A-",
+      "reading_display": "またとびぬ めとをとあはれ ぬししらじ しぬればあとを とめぬひとだま",
+      "normalized_reading": "またとひぬめとをとあはれぬししらししぬれはあとをとめぬひとたま",
+      "normalization": [
+        "devoiced_historical"
+      ],
+      "meter": [
+        5,
+        7,
+        5,
+        7,
+        7
+      ],
+      "learning_tags": [
+        "narrative",
+        "role_shift",
+        "historical_devoicing",
+        "meter_57577",
+        "semantic_darkness",
+        "cross_boundary"
+      ],
+      "notes": [
+        "人物・死・人魂という意味領域を保ち、技巧だけでなく小さな物語を成立させる。",
+        "句境界と回文軸が一致しないことを学ぶサンプル。"
+      ],
+      "sources": [
+        {
+          "label": "明治大学 狂歌資料",
+          "url": "https://www.isc.meiji.ac.jp/~sota/humor/kyoka05.html"
+        },
+        {
+          "label": "高柳蕗子HP 回文資料",
+          "url": "https://sites.google.com/view/takayanagifukiko/%E3%81%A1%E3%82%87%E3%82%8D%E3%81%B1%E9%80%9A%E4%BF%A1/%E3%81%A1%E3%82%87%E3%82%8D%E3%81%B1%E5%9B%9E%E6%96%87"
+        }
+      ],
+      "verified_palindrome": true,
+      "kana_length": 31
+    },
+    {
+      "id": "mitoku-fuyu",
+      "title": "冬景色",
+      "display": "冬らしき 景色おもしろ 岩の木の 葉色霜おき 繁き白木綿",
+      "author": "石田未得",
+      "work": "吾吟我集 巻十・廻文歌",
+      "period": "江戸前期・1649年成立",
+      "sample_class": "edo-authored",
+      "fame": "representative",
+      "source_confidence": "B+",
+      "reading_display": "ふゆらしき けしきおもしろ いはのきの はいろしもおき しげきしらゆふ",
+      "normalized_reading": "ふゆらしきけしきおもしろいはのきのはいろしもおきしけきしらゆふ",
+      "normalization": [
+        "historical_kana",
+        "devoiced_historical"
+      ],
+      "meter": [
+        5,
+        7,
+        5,
+        7,
+        7
+      ],
+      "learning_tags": [
+        "natural_scene",
+        "seasonal_coherence",
+        "historical_kana",
+        "meter_57577",
+        "semantic_camouflage"
+      ],
+      "notes": [
+        "景色・岩・木の葉・霜・白という冬景色の語彙場を統一する。",
+        "意味領域を先に揃えることで、逆読み語の不自然さを目立たせない。"
+      ],
+      "sources": [
+        {
+          "label": "高柳蕗子HP 回文資料",
+          "url": "https://sites.google.com/view/takayanagifukiko/%E3%81%A1%E3%82%87%E3%82%8D%E3%81%B1%E9%80%9A%E4%BF%A1/%E3%81%A1%E3%82%87%E3%82%8D%E3%81%B1%E5%9B%9E%E6%96%87"
+        },
+        {
+          "label": "コトバンク『吾吟我集』",
+          "url": "https://kotobank.jp/word/%E5%90%BE%E5%90%9F%E6%88%91%E9%9B%86-499022"
+        }
+      ],
+      "verified_palindrome": true,
+      "kana_length": 31
+    },
+    {
+      "id": "shoju-five-elements",
+      "title": "地水火風空",
+      "display": "皆空の 世界なり地も 水も火も 罪も塵無い 風の浮く波",
+      "author": "大福窓笑寿",
+      "work": "廻文歌百首",
+      "period": "江戸後期・文政3年（1820）刊",
+      "sample_class": "edo-authored",
+      "fame": "collection-representative",
+      "source_confidence": "A-",
+      "reading_display": "みなくうの せかいなりちも みづもひも つみもちりない かぜのうくなみ",
+      "normalized_reading": "みなくうのせかいなりちもみつもひもつみもちりないかせのうくなみ",
+      "normalization": [
+        "historical_kana",
+        "devoiced_historical"
+      ],
+      "meter": [
+        5,
+        7,
+        5,
+        7,
+        7
+      ],
+      "learning_tags": [
+        "conceptual_coherence",
+        "enumeration",
+        "role_shift",
+        "historical_devoicing",
+        "meter_57577",
+        "semantic_field"
+      ],
+      "notes": [
+        "『地水火風空』という題のもと、五大・世界・罪・塵・風・波を同じ概念領域にまとめる。",
+        "意味場の統一が強く、長い回文でも『何の歌か』を見失いにくい。"
+      ],
+      "sources": [
+        {
+          "label": "山内潤三『廻文歌の限界と効用（下）』翻刻",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000000022661-i6306517"
+        },
+        {
+          "label": "日本回文協会 掲載例",
+          "url": "https://kaibun.jimdofree.com/%E6%8A%95%E7%A8%BF%E8%A8%80%E8%91%89%E3%81%AE%E3%81%94%E7%B4%B9%E4%BB%8B/"
+        }
+      ],
+      "verified_palindrome": true,
+      "kana_length": 31
+    },
+    {
+      "id": "shoju-ise",
+      "title": "伊勢参宮",
+      "display": "日頃よい 家内清くよき 春今伊勢 参るは清く 家内よろこび",
+      "author": "大福窓笑寿",
+      "work": "廻文歌百首",
+      "period": "江戸後期・文政3年（1820）刊",
+      "sample_class": "edo-authored",
+      "fame": "collection-representative",
+      "source_confidence": "B+",
+      "reading_display": "ひころよい なかくよきはる いまいせい まいるはきよく かないよろこひ",
+      "normalized_reading": "ひころよいなかくよきはるいまいせいまいるはきよくかないよろこひ",
+      "normalization": [
+        "source_transcription",
+        "devoiced_historical"
+      ],
+      "meter": [
+        5,
+        7,
+        5,
+        7,
+        7
+      ],
+      "learning_tags": [
+        "journey",
+        "household",
+        "cross_boundary",
+        "historical_devoicing",
+        "meter_57577",
+        "global_coherence"
+      ],
+      "notes": [
+        "伊勢参宮という大きな出来事を中心に、春・家内・清さ・喜びを一つの文脈に束ねる。",
+        "局所的な語境界より、全文の意味連続性を優先して読むべきサンプル。"
+      ],
+      "sources": [
+        {
+          "label": "山内潤三『廻文歌の限界と効用（下）』翻刻（歌95）",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000000022661-i6306517"
+        }
+      ],
+      "verified_palindrome": true,
+      "kana_length": 31
+    },
+    {
+      "id": "shoju-wakakusa",
+      "title": "野遊",
+      "display": "若草の 名は知らず見る 友どちと 戻る身すらし 花の咲く川",
+      "author": "大福窓笑寿",
+      "work": "廻文歌百首",
+      "period": "江戸後期・文政3年（1820）刊",
+      "sample_class": "edo-authored",
+      "fame": "collection-representative",
+      "source_confidence": "B",
+      "reading_display": "わかくさの なはしらずみる ともどちと もどるみすらし はなのさくかわ",
+      "normalized_reading": "わかくさのなはしらすみるともとちともとるみすらしはなのさくかわ",
+      "normalization": [
+        "devoiced_historical"
+      ],
+      "meter": [
+        5,
+        7,
+        5,
+        7,
+        7
+      ],
+      "learning_tags": [
+        "natural_scene",
+        "companions",
+        "motion",
+        "boundary_shift",
+        "historical_devoicing",
+        "meter_57577"
+      ],
+      "notes": [
+        "若草・花・川・友という野遊びの場面が通り、回文制約が景の中へ埋没している。",
+        "『見る／戻る』を含む動作の連続があり、静的な名詞列に依存しない。"
+      ],
+      "sources": [
+        {
+          "label": "山内潤三『廻文歌の限界と効用（下）』翻刻を含む研究",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000000022661-i6306517"
+        },
+        {
+          "label": "KOTONOHA 出典索引",
+          "url": "https://kotonohaweb.net/kaibun/2/"
+        }
+      ],
+      "verified_palindrome": true,
+      "kana_length": 31
+    },
+    {
+      "id": "sendai-sakunami",
+      "title": "作並",
+      "display": "みな草の 名は百としれ 薬なり すぐれし徳は 花の作並",
+      "author": "仙代庵（細屋勘左衛門）",
+      "work": "作並を詠んだ回文歌",
+      "period": "幕末・仙代庵（1796–1869）",
+      "sample_class": "late-edo",
+      "fame": "canonical-local",
+      "source_confidence": "A",
+      "reading_display": "みなくさの なははくとしれ くすりなり すくれしとくは はなのさくなみ",
+      "normalized_reading": "みなくさのなははくとしれくすりなりすくれしとくははなのさくなみ",
+      "normalization": [
+        "strict_historical_reading"
+      ],
+      "meter": [
+        5,
+        7,
+        5,
+        7,
+        7
+      ],
+      "learning_tags": [
+        "place_name_punchline",
+        "semantic_coherence",
+        "medicine_field",
+        "role_shift",
+        "meter_57577",
+        "proper_noun_resolution"
+      ],
+      "notes": [
+        "『薬』『徳』を積み上げ、結句の地名『作並』へ自然に着地する。",
+        "逆読みで生じた音列を固有名詞へ着地させる技法の好例。"
+      ],
+      "sources": [
+        {
+          "label": "作並回文の里 回文だより",
+          "url": "https://kaibun-no-sato.jp/wp-content/uploads/2024/02/tayori3.pdf"
+        },
+        {
+          "label": "宮城県 宮城マスター検定解説",
+          "url": "https://www.pref.miyagi.jp/documents/4480/262460.pdf"
+        }
+      ],
+      "verified_palindrome": true,
+      "kana_length": 31
+    },
+    {
+      "id": "shoju-water-plum",
+      "title": "水辺梅",
+      "display": "池の面よ 波眺めむに 香りけり ほかに梅かな 皆四方の景",
+      "author": "大福窓笑寿",
+      "work": "廻文歌百首 追加・水辺梅",
+      "period": "江戸後期・文政3年（1820）刊",
+      "sample_class": "edo-authored",
+      "fame": "research-representative",
+      "source_confidence": "B",
+      "reading_display": "いけのもよ なみながめむに かほりけり ほかにむめかな みなよものけい",
+      "normalized_reading": "いけのもよなみなかめむにかほりけりほかにむめかなみなよものけい",
+      "normalization": [
+        "source_transcription",
+        "historical_kana"
+      ],
+      "meter": [
+        5,
+        7,
+        5,
+        7,
+        7
+      ],
+      "learning_tags": [
+        "water_scene",
+        "fragrance",
+        "boundary_shift",
+        "meter_57577",
+        "semantic_field",
+        "cross_line_symmetry"
+      ],
+      "notes": [
+        "池・波・梅・香り・景という景物を一つの場面に集める。",
+        "31かなの対称性を保ちながら句ごとの意味は独立して進むため、5-7-5-7-7と回文軸を別に設計する参考になる。"
+      ],
+      "sources": [
+        {
+          "label": "山内潤三『廻文歌の限界と効用（下）』翻刻（追加301 水辺梅）",
+          "url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000000022661-i6306517"
+        }
+      ],
+      "verified_palindrome": true,
+      "kana_length": 31
+    }
+  ],
+  "learned_principles": [
+    {
+      "id": "meter-axis-independence",
+      "label": "韻律軸と回文軸を分離",
+      "description": "5-7-5-7-7の句境界を鏡像境界に合わせない。31かな全体の対称性と和歌の句切れを別々に成立させる。"
+    },
+    {
+      "id": "boundary-resegmentation",
+      "label": "語境界の再分節",
+      "description": "反転文字列を単独語にせず、隣接する助詞・語尾と結び直して自然語にする。"
+    },
+    {
+      "id": "syntactic-role-shift",
+      "label": "統語役割の転換",
+      "description": "鏡像位置の語が左右で同じ品詞・同じ係り受けを持つ必要はない。"
+    },
+    {
+      "id": "semantic-field",
+      "label": "意味場を先に統一",
+      "description": "雪・桜、池・梅、薬・徳など同一場面の語彙を集め、回文の人工感を意味のまとまりで隠す。"
+    },
+    {
+      "id": "central-pivot",
+      "label": "中央ピボット",
+      "description": "31かなの中心付近に、述語・評価・場面転換を担う語を置き、左右の意味をつなぐ。"
+    },
+    {
+      "id": "historical-normalization",
+      "label": "歴史的正規化を別管理",
+      "description": "濁点を外す、歴史的仮名遣いを保持する等の規則を現代厳密モードと混ぜない。"
+    },
+    {
+      "id": "global-parse",
+      "label": "局所ペアより全文",
+      "description": "局所的な逆語ペアの自然さより、歌全体が一つの情景・出来事として解釈できることを優先する。"
+    },
+    {
+      "id": "fixed-diction",
+      "label": "定型語を制約吸収材にする",
+      "description": "かな・らし・のみ・の・は等、和歌で自然な短い機能語を回文制約の接着剤として使う。"
+    }
+  ]
+}
