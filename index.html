@@ -60,7 +60,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 <div class="wrap">
 <header>
   <div><h1>怪文回文メーカー</h1><div class="sub">まず、日本語として通す。そこから一段ずつ、鏡の奥へ伸ばす。</div></div>
-  <div class="badge">v0.31 / 品質バランス比較</div>
+  <div class="badge">v0.32 / 品質バランス比較</div>
 </header>
 
 <div class="card">
@@ -147,7 +147,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 </div>
 
 <script>
-let data=null,rules=null,pairs=null,growth=null,seams=null,bridge=null,bridgeExposure=null,growthRoleGate=null,growthRolePublic=null,readingHints=null,dnaExposure=null,tenBalance=null,layer="L1",seen=new Set(),currentShown=null;
+let data=null,rules=null,pairs=null,growth=null,seams=null,bridge=null,bridgeExposure=null,growthRoleGate=null,growthRolePublic=null,readingHints=null,dnaExposure=null,tenBalance=null,l2TenPolicy=null,layer="L1",seen=new Set(),currentShown=null;
 let growthState={mode:"structural",dimension:"all",familyId:null,stage:0,lastCenter:null,history:{}};
 
 const $=s=>document.querySelector(s);
@@ -155,7 +155,7 @@ const rev=s=>[...s].reverse().join("");
 const isPal=s=>s===rev(s);
 
 async function init(){
-  [data,rules,pairs,growth,seams,bridge,bridgeExposure,growthRoleGate,growthRolePublic,readingHints,dnaExposure,tenBalance]=await Promise.all([
+  [data,rules,pairs,growth,seams,bridge,bridgeExposure,growthRoleGate,growthRolePublic,readingHints,dnaExposure,tenBalance,l2TenPolicy]=await Promise.all([
     fetch("./data/layered-seeds-v08.json").then(r=>r.json()),
     fetch("./data/generation-rules-v08.json").then(r=>r.json()),
     fetch("./data/reverse-lexeme-pairs-v09.json").then(r=>r.json()),
@@ -167,7 +167,8 @@ async function init(){
     fetch("./data/growth-wrapper-role-public-v74.json").then(r=>r.json()),
     fetch("./data/public-reading-hints-v82.json").then(r=>r.json()),
     fetch("./data/dna-kinship-exposure-policy-v84.json").then(r=>r.json()),
-    fetch("./data/ten-comparison-balance-policy-v86.json").then(r=>r.json())
+    fetch("./data/ten-comparison-balance-policy-v86.json").then(r=>r.json()),
+    fetch("./data/l2-ten-comparison-policy-v93.json").then(r=>r.json())
   ]);
   $("#c1").textContent=data.counts.L1+"本";
   $("#c2").textContent=data.counts.L2+"本";
@@ -498,11 +499,32 @@ function shuffleItems(items){
   }
   return a;
 }
+function repairL2Comparison(items,combined){
+  const family=l2TenPolicy?.rule?.capped_family||"同定";
+  const cap=l2TenPolicy?.rule?.max_items??2;
+  let usedFamily=0;
+  const kept=[];
+  for(const x of items){
+    if(x.family===family){
+      if(usedFamily>=cap)continue;
+      usedFamily++;
+    }
+    kept.push(x);
+  }
+  if(kept.length===items.length)return items;
+  const used=new Set(kept.map(x=>x.reading));
+  const replacements=takeRandomUnused(combined.filter(x=>x.family!==family),items.length-kept.length,used);
+  return shuffleItems([...kept,...replacements]);
+}
 function tenComparisonItems(){
   const seeds=pool().map(x=>({...x,origin:"原種"}));
   const dna=dnaPool(true);
   const seamsForCompare=seamPool();
   const combined=uniqueByReading([...seeds,...dna,...seamsForCompare]);
+  if(layer==="L2"){
+    const uniform=takeRandomUnused(combined,10,new Set());
+    return repairL2Comparison(uniform,combined);
+  }
   if(layer!=="L1")return takeRandomUnused(combined,10,new Set());
 
   const recursiveReadings=new Set(recursivePool().map(x=>x.reading));
