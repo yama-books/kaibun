@@ -61,6 +61,10 @@ const historicalMiningWave3V120 = JSON.parse(fs.readFileSync("data/historical-mi
 const orthographicEquivalenceV121 = JSON.parse(fs.readFileSync("data/historical-orthographic-equivalence-v121.json", "utf8"));
 const historicalKanaEquivalenceV122 = JSON.parse(fs.readFileSync("data/historical-kana-equivalence-v122.json", "utf8"));
 const wave3FactorAuditV123 = JSON.parse(fs.readFileSync("data/wave3-factor-contact-audit-v123.json", "utf8"));
+const bidirectionalTankaV124 = JSON.parse(fs.readFileSync("data/historical-bidirectional-tanka-v124.json", "utf8"));
+const wave3DiagnosticsV125 = JSON.parse(fs.readFileSync("data/historical-mining-wave3-diagnostics-v125.json", "utf8"));
+const orthographicEquivalenceV126 = JSON.parse(fs.readFileSync("data/historical-orthographic-equivalence-v126.json", "utf8"));
+const kanaCasebookV127 = JSON.parse(fs.readFileSync("data/historical-kana-equivalence-casebook-v127.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -760,6 +764,37 @@ if(v123d?.verdict?.status!=="hold-semantic-role-and-scene"||v123d?.verdict?.posi
 if(v123b?.verdict?.status!=="hold-source-specific-morphology"||v123b?.verdict?.positive_family!==false||v123b?.morphology_review?.global_transferability!==false)errors.push("WAVE3 FACTOR V123 B=つま verdict drift");
 if((v123b?.would_be_A_only_candidates??[]).some(x=>x.status!=="hold-source-specific-morphology"))errors.push("WAVE3 FACTOR V123 A-only candidates must remain held");
 
+if(bidirectionalTankaV124.version!=="1.24")errors.push(`BIDIRECTIONAL V124 version mismatch: ${bidirectionalTankaV124.version}`);
+if(bidirectionalTankaV124.corpus_policy?.strict_palindrome_corpus!==false||bidirectionalTankaV124.corpus_policy?.fixed50_unchanged!==true||bidirectionalTankaV124.corpus_policy?.wave2_unchanged!==true)errors.push("BIDIRECTIONAL V124 must remain separate from strict baselines");
+if((bidirectionalTankaV124.machine_clear_cases??[]).length!==6||bidirectionalTankaV124.summary?.held_cases!==2||bidirectionalTankaV124.summary?.strict_palindrome_promotions!==0)errors.push("BIDIRECTIONAL V124 counts drift");
+for(const x of bidirectionalTankaV124.machine_clear_cases??[]){
+  if([...x.forward_reading].length!==31||[...x.reverse_reading].length!==31)errors.push(`BIDIRECTIONAL V124 length drift: ${x.source_number}`);
+  if(x.forward_reading===x.reverse_reading||x.self_palindrome!==false||x.reverse_is_distinct!==true)errors.push(`BIDIRECTIONAL V124 strict/distinct drift: ${x.source_number}`);
+  if(reverse(x.forward_reading)!==x.reverse_reading)errors.push(`BIDIRECTIONAL V124 reverse mismatch: ${x.source_number}`);
+  if(x.forward_meter.map(y=>[...y].length).join(",")!=="5,7,5,7,7"||x.reverse_meter.map(y=>[...y].length).join(",")!=="5,7,5,7,7")errors.push(`BIDIRECTIONAL V124 meter drift: ${x.source_number}`);
+}
+
+if(wave3DiagnosticsV125.version!=="1.25")errors.push(`WAVE3 DIAG V125 version mismatch: ${wave3DiagnosticsV125.version}`);
+if(wave3DiagnosticsV125.baseline_policy?.fixed50_unchanged!==true||wave3DiagnosticsV125.baseline_policy?.strict_kana_baseline_unchanged!==true)errors.push("WAVE3 DIAG V125 baseline drift");
+if(wave3DiagnosticsV125.summary?.strict_candidates_added!==0||wave3DiagnosticsV125.summary?.positive_family_created!==false||wave3DiagnosticsV125.summary?.automatic_acceptance!==0)errors.push("WAVE3 DIAG V125 must not add strict/family positives");
+const v125cases=wave3DiagnosticsV125.cases??[];
+const v125p110=v125cases.find(x=>x.source_number===110);
+const v125p107=v125cases.find(x=>x.source_number===107);
+const v125p106=v125cases.find(x=>x.source_number===106);
+if(v125p110?.all_mismatches_are_o_wo!==true||v125p110?.promotion_to_strict_corpus!==false)errors.push("WAVE3 DIAG V125 poem110 drift");
+if(v125p107?.status!=="hold-he-e-historical-kana-equivalence"||v125p107?.promotion_to_strict_corpus!==false)errors.push("WAVE3 DIAG V125 poem107 drift");
+if(v125p106?.status!=="hold-multiple-historical-reading-or-orthography-questions")errors.push("WAVE3 DIAG V125 poem106 drift");
+
+if(orthographicEquivalenceV126.version!=="1.26")errors.push(`ORTHOGRAPHIC EQ V126 version mismatch: ${orthographicEquivalenceV126.version}`);
+const v126pos=(orthographicEquivalenceV126.positive_controls??[]).map(x=>x.source_number).sort((a,b)=>a-b).join(",");
+if(v126pos!=="94,110,115,118")errors.push(`ORTHOGRAPHIC EQ V126 positive set drift: ${v126pos}`);
+if(orthographicEquivalenceV126.strict_baseline?.changed!==false||orthographicEquivalenceV126.policy?.strict_promotions!==0||orthographicEquivalenceV126.policy?.public_generator_effect!=="none")errors.push("ORTHOGRAPHIC EQ V126 must remain diagnostic-only");
+
+if(kanaCasebookV127.version!=="1.27")errors.push(`KANA CASEBOOK V127 version mismatch: ${kanaCasebookV127.version}`);
+if(kanaCasebookV127.mode!=="research-diagnostic-only"||kanaCasebookV127.strict_baseline_changed!==false||kanaCasebookV127.verdict?.strict_promotions!==0)errors.push("KANA CASEBOOK V127 must remain diagnostic-only");
+const v127profiles=(kanaCasebookV127.profiles??[]).map(x=>x.id).sort().join(",");
+if(v127profiles!==["he-e-diagnostic","ye-e-diagnostic"].sort().join(","))errors.push(`KANA CASEBOOK V127 profiles drift: ${v127profiles}`);
+
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
 if(rules.rule_count!==rules.rules.length)errors.push(`RULE COUNT mismatch: declared=${rules.rule_count} actual=${rules.rules.length}`);
@@ -824,3 +859,7 @@ console.log(`Wave3 v1.20: strict=${historicalMiningWave3V120.summary?.strict_wav
 console.log(`Orthographic v1.21: positives=${v121pos}`);
 console.log(`Historical-kana v1.22: case=${historicalKanaEquivalenceV122.source_case?.source_number}, strict=${historicalKanaEquivalenceV122.results?.strict_palindrome_historical_kana}`);
 console.log(`Wave3 factor audit v1.23: positives=${wave3FactorAuditV123.summary?.positive_families_created}, negatives=${wave3FactorAuditV123.summary?.new_negative_controls}`);
+console.log(`Bidirectional tanka v1.24: clear=${(bidirectionalTankaV124.machine_clear_cases??[]).length}, strict-promotions=${bidirectionalTankaV124.summary?.strict_palindrome_promotions}`);
+console.log(`Wave3 diagnostics v1.25: o/wo=${wave3DiagnosticsV125.summary?.o_wo_diagnostic_added?.join(",")}, he/e=${wave3DiagnosticsV125.summary?.he_e_diagnostic_added?.join(",")}`);
+console.log(`Orthographic v1.26: positives=${v126pos}`);
+console.log(`Kana casebook v1.27: profiles=${v127profiles}`);
