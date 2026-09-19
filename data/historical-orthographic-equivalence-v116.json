@@ -1,0 +1,97 @@
+{
+  "version": "1.16",
+  "updated_on": "2026-09-20",
+  "title": "Historical orthographic-equivalence diagnostic layer",
+  "purpose": "Represent explicitly declared historical orthographic equivalence hypotheses separately from the strict-kana palindrome baseline, using held poem 94 as a positive diagnostic control and other held records as negatives.",
+  "mode": "research-diagnostic-only",
+  "strict_baseline": {
+    "changed": false,
+    "literal_kana_equality_remains_authoritative": true,
+    "wave2_verified_snapshot": 14,
+    "wave2_held_snapshot": 5
+  },
+  "equivalence_profiles": [
+    {
+      "id": "o-wo-diagnostic",
+      "declared_pairs": [
+        ["お","を"]
+      ],
+      "canonicalization_for_diagnostic_only": {
+        "お": "O_EQ",
+        "を": "O_EQ"
+      },
+      "linguistic_claim": "none-universal",
+      "note": "This profile records an explicit research comparison for a documented mirrored お/を difference. It does not claim that お and を are universally interchangeable in Edo-period orthography."
+    }
+  ],
+  "cases": [
+    {
+      "source_number": 82,
+      "title": "音羽滝",
+      "reading": "みのつみのきたのはとをくひびきよきひびくおとはのたきのみつのみ",
+      "length": 31,
+      "strict_palindrome": false,
+      "o_wo_diagnostic_palindrome": false,
+      "remaining_mismatch_count_after_o_wo": 4,
+      "remaining_classes": ["ひ/び"],
+      "role": "negative-control"
+    },
+    {
+      "source_number": 88,
+      "title": "百千鳥",
+      "reading": "おひかせのみなやとりとちもものよのもみねちとりとやなみのせかひを",
+      "length": 32,
+      "strict_palindrome": false,
+      "o_wo_diagnostic_palindrome": false,
+      "remaining_mismatch_count_after_o_wo": 8,
+      "remaining_classes": ["central OCR/segmentation"],
+      "role": "negative-control"
+    },
+    {
+      "source_number": 92,
+      "title": "旅行（同）",
+      "reading": "ひたかなはまいそくかちとほやまやほとちかくそいまはるなかたひ",
+      "length": 30,
+      "strict_palindrome": false,
+      "o_wo_diagnostic_palindrome": false,
+      "remaining_mismatch_count_after_o_wo": 22,
+      "remaining_classes": ["likely OCR corruption","length deficit"],
+      "role": "negative-control"
+    },
+    {
+      "source_number": 94,
+      "title": "旅行（同）",
+      "reading": "なかたひもついおそきはるともとちともとるはきそをいつもひたかな",
+      "length": 31,
+      "strict_palindrome": false,
+      "literal_mismatches": [
+        {"position_1_based":8,"forward":"お","mirror":"を"},
+        {"position_1_based":24,"forward":"を","mirror":"お"}
+      ],
+      "o_wo_diagnostic_palindrome": true,
+      "remaining_mismatch_count_after_o_wo": 0,
+      "role": "positive-diagnostic-control",
+      "source_evidence": "Yamauchi visible scholarly transcription reproduces 木曽を, so the を side is not silently treated as a generic OCR typo."
+    }
+  ],
+  "excluded_case": {
+    "source_number": 89,
+    "title": "老賀",
+    "reason": "Poem 89 concerns reading resolution for 八十, not an お/を orthographic-equivalence question. It is intentionally kept outside this diagnostic."
+  },
+  "safety_invariants": [
+    "Diagnostic canonicalization never rewrites source strings.",
+    "Diagnostic pass never upgrades strict_palindrome=true.",
+    "Diagnostic pass never promotes a held record into wave2 verified.",
+    "Only explicitly declared equivalence pairs are canonicalized.",
+    "Length mismatches remain failures.",
+    "Other voicing/OCR mismatches remain failures."
+  ],
+  "verdict": {
+    "positive_diagnostic_cases": [94],
+    "negative_controls": [82,88,92],
+    "strict_promotions": 0,
+    "public_generator_effect": "none",
+    "next_action": "Keep o/wo diagnostic as a separate research layer and use poem 94 as its regression fixture; do not merge it into the strict palindrome corpus."
+  }
+}
