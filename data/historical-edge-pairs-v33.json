@@ -1,0 +1,739 @@
+{
+  "version": "0.33",
+  "sample_count": 50,
+  "method": "31-kana historical samples: first 2 kana vs final 2 kana. In a strict palindrome final2 = reverse(first2); research value is whether both ends admit different natural Japanese parses.",
+  "verified_reverse_relation": true,
+  "pair_type_count": 38,
+  "pairs": [
+    {
+      "left2": "なか",
+      "right2": "かな",
+      "count": 7,
+      "examples": [
+        {
+          "id": "edo-popular-takarabune",
+          "title": "宝船回文歌",
+          "ku1": "なかきよの",
+          "ku5": "をとのよきかな"
+        },
+        {
+          "id": "shoju-038",
+          "title": "田毎月",
+          "ku1": "なかきよの",
+          "ku5": "つきのよきかな"
+        },
+        {
+          "id": "shoju-041",
+          "title": "初鷹",
+          "ku1": "なかきかし",
+          "ku5": "ふとしかきかな"
+        },
+        {
+          "id": "shoju-043",
+          "title": "名所苅",
+          "ku1": "なかくよふ",
+          "ku5": "もよふよくかな"
+        },
+        {
+          "id": "shoju-054",
+          "title": "鶴",
+          "ku1": "なかしひの",
+          "ku5": "ついのひしかな"
+        },
+        {
+          "id": "shoju-070",
+          "title": "同（釈教）",
+          "ku1": "なかるへき",
+          "ku5": "つみきへるかな"
+        },
+        {
+          "id": "shoju-add-109",
+          "title": "嫁娘見月",
+          "ku1": "なかよさの",
+          "ku5": "つきのさよかな"
+        }
+      ]
+    },
+    {
+      "left2": "みな",
+      "right2": "なみ",
+      "count": 3,
+      "examples": [
+        {
+          "id": "shoju-five-elements",
+          "title": "地水火風空",
+          "ku1": "みなくうの",
+          "ku5": "かせのうくなみ"
+        },
+        {
+          "id": "sendai-sakunami",
+          "title": "作並",
+          "ku1": "みなくさの",
+          "ku5": "はなのさくなみ"
+        },
+        {
+          "id": "shoju-add-111",
+          "title": "出来秋",
+          "ku1": "みなほまし",
+          "ku5": "ことしまほなみ"
+        }
+      ]
+    },
+    {
+      "left2": "やま",
+      "right2": "まや",
+      "count": 3,
+      "examples": [
+        {
+          "id": "shoju-044",
+          "title": "紅葉",
+          "ku1": "やまのおく",
+          "ku5": "とほくおのまや"
+        },
+        {
+          "id": "shoju-045",
+          "title": "九月尽",
+          "ku1": "やまのせか",
+          "ku5": "ゆふかせのまや"
+        },
+        {
+          "id": "shoju-055",
+          "title": "春亀",
+          "ku1": "やまみなの",
+          "ku5": "いけのなみまや"
+        }
+      ]
+    },
+    {
+      "left2": "もと",
+      "right2": "とも",
+      "count": 2,
+      "examples": [
+        {
+          "id": "shoju-021",
+          "title": "子規",
+          "ku1": "もとつたそ",
+          "ku5": "とほそたつとも"
+        },
+        {
+          "id": "shoju-add-101",
+          "title": "追加101",
+          "ku1": "もとすらし",
+          "ku5": "かわしらすとも"
+        }
+      ]
+    },
+    {
+      "left2": "やと",
+      "right2": "とや",
+      "count": 2,
+      "examples": [
+        {
+          "id": "shoju-031",
+          "title": "同（露）",
+          "ku1": "やとるつゆ",
+          "ku5": "またゆつるとや"
+        },
+        {
+          "id": "shoju-046",
+          "title": "冬枯",
+          "ku1": "やとよこの",
+          "ku5": "ひとのこよとや"
+        }
+      ]
+    },
+    {
+      "left2": "いけ",
+      "right2": "けい",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-water-plum",
+          "title": "水辺梅",
+          "ku1": "いけのもよ",
+          "ku5": "みなよものけい"
+        }
+      ]
+    },
+    {
+      "left2": "かす",
+      "right2": "すか",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-077",
+          "title": "寄山恋",
+          "ku1": "かすかあひ",
+          "ku5": "まよひあかすか"
+        }
+      ]
+    },
+    {
+      "left2": "かひ",
+      "right2": "ひか",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-061",
+          "title": "商",
+          "ku1": "かひたしの",
+          "ku5": "うりのしたひか"
+        }
+      ]
+    },
+    {
+      "left2": "かへ",
+      "right2": "へか",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-072",
+          "title": "寄琴恋",
+          "ku1": "かへらしの",
+          "ku5": "まつのしらへか"
+        }
+      ]
+    },
+    {
+      "left2": "きつ",
+      "right2": "つき",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-033",
+          "title": "月",
+          "ku1": "きつるまま",
+          "ku5": "もちままるつき"
+        }
+      ]
+    },
+    {
+      "left2": "きと",
+      "right2": "とき",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-066",
+          "title": "神祇",
+          "ku1": "きとうたは",
+          "ku5": "さまはたうとき"
+        }
+      ]
+    },
+    {
+      "left2": "きゆ",
+      "right2": "ゆき",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-053",
+          "title": "矢田野雪",
+          "ku1": "きゆらしな",
+          "ku5": "よきなしらゆき"
+        }
+      ]
+    },
+    {
+      "left2": "さと",
+      "right2": "とさ",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-add-105",
+          "title": "花 古歌にならひ",
+          "ku1": "さときよく",
+          "ku5": "しこくよきとさ"
+        }
+      ]
+    },
+    {
+      "left2": "さよ",
+      "right2": "よさ",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-027",
+          "title": "納涼",
+          "ku1": "さよきつる",
+          "ku5": "ふけるつきよさ"
+        }
+      ]
+    },
+    {
+      "left2": "しけ",
+      "right2": "けし",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-001-komatsuhiki",
+          "title": "小松引",
+          "ku1": "しけるはの",
+          "ku5": "たまのはるけし"
+        }
+      ]
+    },
+    {
+      "left2": "しな",
+      "right2": "なし",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-068",
+          "title": "釈教",
+          "ku1": "しなもなく",
+          "ku5": "とほくなもなし"
+        }
+      ]
+    },
+    {
+      "left2": "しら",
+      "right2": "らし",
+      "count": 1,
+      "examples": [
+        {
+          "id": "mitoku-shirayuki",
+          "title": "白雪",
+          "ku1": "しらゆきは",
+          "ku5": "さけはきゆらし"
+        }
+      ]
+    },
+    {
+      "left2": "そた",
+      "right2": "たそ",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-056",
+          "title": "松",
+          "ku1": "そたつまの",
+          "ku5": "にはのまつたそ"
+        }
+      ]
+    },
+    {
+      "left2": "そよ",
+      "right2": "よそ",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-add-108",
+          "title": "納涼",
+          "ku1": "そよしてみ",
+          "ku5": "すすみてしよそ"
+        }
+      ]
+    },
+    {
+      "left2": "つつ",
+      "right2": "つつ",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-067",
+          "title": "同（神祇）",
+          "ku1": "つつみつを",
+          "ku5": "そこをつみつつ"
+        }
+      ]
+    },
+    {
+      "left2": "つみ",
+      "right2": "みつ",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-069",
+          "title": "同（釈教）",
+          "ku1": "つみはうく",
+          "ku5": "くきくうはみつ"
+        }
+      ]
+    },
+    {
+      "left2": "てり",
+      "right2": "りて",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-040",
+          "title": "月明海上鴻鷹渡",
+          "ku1": "てりつうみ",
+          "ku5": "つきみうつりて"
+        }
+      ]
+    },
+    {
+      "left2": "とひ",
+      "right2": "ひと",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-058",
+          "title": "士",
+          "ku1": "とひてかや",
+          "ku5": "はなやかてひと"
+        }
+      ]
+    },
+    {
+      "left2": "とほ",
+      "right2": "ほと",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-004-kasumi",
+          "title": "霞（同）",
+          "ku1": "とほくまを",
+          "ku5": "よこをまくほと"
+        }
+      ]
+    },
+    {
+      "left2": "とや",
+      "right2": "やと",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-073",
+          "title": "不逢知恋",
+          "ku1": "とやかふと",
+          "ku5": "いつとふかやと"
+        }
+      ]
+    },
+    {
+      "left2": "はる",
+      "right2": "るは",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-010-somokuka",
+          "title": "草木花",
+          "ku1": "はるのみと",
+          "ku5": "たまとみのるは"
+        }
+      ]
+    },
+    {
+      "left2": "はれ",
+      "right2": "れは",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-035",
+          "title": "同（月）",
+          "ku1": "はれつみよ",
+          "ku5": "つきよみつれは"
+        }
+      ]
+    },
+    {
+      "left2": "ひこ",
+      "right2": "こひ",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-ise",
+          "title": "伊勢参宮",
+          "ku1": "ひころよい",
+          "ku5": "かないよろこひ"
+        }
+      ]
+    },
+    {
+      "left2": "ふゆ",
+      "right2": "ゆふ",
+      "count": 1,
+      "examples": [
+        {
+          "id": "mitoku-fuyu",
+          "title": "冬景色",
+          "ku1": "ふゆらしき",
+          "ku5": "しけきしらゆふ"
+        }
+      ]
+    },
+    {
+      "left2": "また",
+      "right2": "たま",
+      "count": 1,
+      "examples": [
+        {
+          "id": "mitoku-hitodama",
+          "title": "人魂",
+          "ku1": "またとひぬ",
+          "ku5": "とめぬひとたま"
+        }
+      ]
+    },
+    {
+      "left2": "みの",
+      "right2": "のみ",
+      "count": 1,
+      "examples": [
+        {
+          "id": "mitoku-rusu",
+          "title": "身の留守",
+          "ku1": "みのるすに",
+          "ku5": "てきにするのみ"
+        }
+      ]
+    },
+    {
+      "left2": "むめ",
+      "right2": "めむ",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-007-kobai",
+          "title": "紅梅",
+          "ku1": "むめかなを",
+          "ku5": "ひのをなかめむ"
+        }
+      ]
+    },
+    {
+      "left2": "やか",
+      "right2": "かや",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-002-nanakusa",
+          "title": "七種",
+          "ku1": "やかてみつ",
+          "ku5": "なはつみてかや"
+        }
+      ]
+    },
+    {
+      "left2": "やふ",
+      "right2": "ふや",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-057",
+          "title": "竹",
+          "ku1": "やふにはの",
+          "ku5": "ひなのはにふや"
+        }
+      ]
+    },
+    {
+      "left2": "やり",
+      "right2": "りや",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-024",
+          "title": "端午",
+          "ku1": "やりほのみ",
+          "ku5": "いさみのほりや"
+        }
+      ]
+    },
+    {
+      "left2": "ゆつ",
+      "right2": "つゆ",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-030",
+          "title": "露",
+          "ku1": "ゆつらしの",
+          "ku5": "くさのしらつゆ"
+        }
+      ]
+    },
+    {
+      "left2": "らく",
+      "right2": "くら",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-064",
+          "title": "社頭祝",
+          "ku1": "らくてみの",
+          "ku5": "みよのみてくら"
+        }
+      ]
+    },
+    {
+      "left2": "わか",
+      "right2": "かわ",
+      "count": 1,
+      "examples": [
+        {
+          "id": "shoju-wakakusa",
+          "title": "野遊",
+          "ku1": "わかくさの",
+          "ku5": "はなのさくかわ"
+        }
+      ]
+    }
+  ],
+  "curated_high_value_pairs": [
+    {
+      "left": "なか",
+      "right": "かな",
+      "roles": [
+        "opening-content",
+        "ending-particle"
+      ],
+      "examples": [
+        "長き…↔…良きかな"
+      ],
+      "value": "very-high",
+      "note": "内容語で始め、終助詞「かな」に自然着地できる。"
+    },
+    {
+      "left": "みな",
+      "right": "なみ",
+      "roles": [
+        "pronoun/noun",
+        "noun"
+      ],
+      "examples": [
+        "皆↔波"
+      ],
+      "value": "very-high",
+      "note": "意味役割を完全に変えられる代表例。"
+    },
+    {
+      "left": "やま",
+      "right": "まや",
+      "roles": [
+        "place-noun",
+        "proper-noun"
+      ],
+      "examples": [
+        "山↔マヤ"
+      ],
+      "value": "high",
+      "note": "普通名詞から人名・地名候補へ転換。"
+    },
+    {
+      "left": "みの",
+      "right": "のみ",
+      "roles": [
+        "noun+particle",
+        "restrictive-particle"
+      ],
+      "examples": [
+        "身の↔のみ"
+      ],
+      "value": "very-high",
+      "note": "語境界と文法機能が左右で変わる。"
+    },
+    {
+      "left": "しら",
+      "right": "らし",
+      "roles": [
+        "lexical-stem",
+        "auxiliary/ending"
+      ],
+      "examples": [
+        "白雪…↔…消ゆらし"
+      ],
+      "value": "high",
+      "note": "語彙的冒頭が推量・様態の終止へ変わる。"
+    },
+    {
+      "left": "ふゆ",
+      "right": "ゆふ",
+      "roles": [
+        "season-noun",
+        "time-noun"
+      ],
+      "examples": [
+        "冬↔夕"
+      ],
+      "value": "high",
+      "note": "同じ自然景物の意味場で転換しやすい。"
+    },
+    {
+      "left": "わか",
+      "right": "かわ",
+      "roles": [
+        "adjectival/noun-stem",
+        "place-noun"
+      ],
+      "examples": [
+        "若草↔川"
+      ],
+      "value": "high",
+      "note": "春景・野遊の同一意味場へ収められる。"
+    },
+    {
+      "left": "いけ",
+      "right": "けい",
+      "roles": [
+        "place-noun",
+        "scene/reading"
+      ],
+      "examples": [
+        "池↔景"
+      ],
+      "value": "high",
+      "note": "水辺の場所から景へ意味場を維持。"
+    },
+    {
+      "left": "さよ",
+      "right": "よさ",
+      "roles": [
+        "time-expression",
+        "evaluation-noun"
+      ],
+      "examples": [
+        "小夜↔良さ"
+      ],
+      "value": "high",
+      "note": "情景の入口から評価の出口へ役割転換。"
+    },
+    {
+      "left": "ゆつ",
+      "right": "つゆ",
+      "roles": [
+        "historical-form",
+        "nature-noun"
+      ],
+      "examples": [
+        "…↔露"
+      ],
+      "value": "research",
+      "note": "歴史的語形の裁定が必要だが、末尾「露」への着地は有用。"
+    },
+    {
+      "left": "とほ",
+      "right": "ほと",
+      "roles": [
+        "distance-expression",
+        "degree/expression"
+      ],
+      "examples": [
+        "遠…↔…ほど"
+      ],
+      "value": "high",
+      "note": "内容語から文法的程度表現へ転換可能。"
+    },
+    {
+      "left": "むめ",
+      "right": "めむ",
+      "roles": [
+        "plant-noun",
+        "auxiliary-ending"
+      ],
+      "examples": [
+        "梅↔…めむ"
+      ],
+      "value": "very-high",
+      "note": "歴史的仮名「むめ」が助動詞的終止へ化ける。"
+    }
+  ],
+  "generator_policy": [
+    "文頭候補を選ぶ際、反転した2〜3かなが自然な文末・名詞・助詞列になる候補を優先する。",
+    "特に内容語→終助詞/助動詞、普通名詞→固有名詞、時間語→評価語など統語役割が変わるペアを高評価する。",
+    "端の2かなだけで文章を固定せず、第一句5かなと第五句7かなの異なる語境界で再解析する。",
+    "意味場との整合を必須にし、音が都合よいだけのペアは採用しない。"
+  ]
+}
