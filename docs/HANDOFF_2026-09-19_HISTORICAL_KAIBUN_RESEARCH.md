@@ -2450,3 +2450,60 @@ human-review validatorにv0.98 review ID連携も追加。
 ## 再開最短文
 
 **「HANDOFF 30節から再開。全体約85%。公開v0.33でgrowth 53 familyをoptgroup/件数/段数表示へ整理しL2 reroll無反応を修正。v0.96 blind human review + v0.97 adjudication基盤を追加。中リスクreading hintはv0.98で人間判定待ち。次はhybrid-002 deep review。」**
+
+
+---
+
+# 31. 2026-09-19 20:01 JST 一時停止チェックポイント
+
+## 停止時点
+
+ここで作業を一時停止する。
+実装・研究内容の詳細は直前の **30節（v0.94〜v0.98）** を正本とする。
+
+進捗目安:
+- 歴史回文研究・生成原理: **約86%**
+- 怪文回文メーカー全体目標: **約85%**
+
+公開側の主要整備:
+- public UI: v0.33
+- growth: 53 family / 366 stage
+- L1 DNA recursive kinship抽選cap: 25%
+- L1 10本比較: 3/3/2/2層化
+- L2 10本比較: 同定family最大2本cap
+- high-risk reading hint: 高田=たかた / 魚=うお
+- medium-risk reading hint: v0.98でhuman review待ち
+- blind human quality review: v0.96
+- post-blind adjudication ledger: v0.97
+
+研究側の固定事項:
+- historical fixed baseline = 50
+- wave2 = verified14 / held5
+- bridge public = 6
+- general-factor-crossover disabled
+- v0.76 quality benchmark baselineは上書きしない
+
+## CI / Pages
+
+停止直前に確認した最新コード系CI:
+- Validate run `35438708817`: **success**
+- head `72c5933a5244abb42b08b8db521b7139a80dad6b`
+
+最新checkpoint Pages:
+- Pages run `35438725505`: **success**
+- head `0ff2c0a99efc66cba3956d1ae3a81520fdd0558a`
+
+既知の未解決エラーはない。
+
+## 次回の優先順位
+
+1. **hybrid-002 deep review**
+2. Route A source-image verification再試行
+3. historical generatorの次positive family探索
+4. v0.96に人間評価が入った場合はv0.97 adjudicationへ進む
+
+新たな公開機能追加より、まず研究側へ戻る。
+
+## 再開最短文
+
+**「HANDOFF 31節から再開。全体約85%。公開v0.33・growth 53 family/366段・比較/露出/reading hint/人間評価基盤まで安定。最新コードCI green。次はhybrid-002 deep review。」**
