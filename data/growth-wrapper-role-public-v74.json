@@ -1,0 +1,71 @@
+{
+  "version": "0.74",
+  "title": "Growth wrapper semantic-role gate public rollout review",
+  "source_gate_version": "0.72",
+  "source_simulation_version": "0.73",
+  "decision": "approve-auto-selection-only",
+  "public_scope": {
+    "automatic_sentence_wrapper_selection": true,
+    "manual_wrapper_selection": false,
+    "existing_wrapper_text": false,
+    "existing_growth_readings": false
+  },
+  "quantitative_review": {
+    "narrative_family_count": 45,
+    "changed_top5_count": 34,
+    "min_gated_eligible_count": 8,
+    "declarative_ask_top5_count": 0,
+    "non_quote_specialized_top5_count": 0,
+    "internal_quality_comparison": {
+      "note": "Ordinal mapping of existing wrapper quality labels for before/after comparison only; not a standalone quality score.",
+      "mapping": {
+        "A": 5,
+        "A-": 4.5,
+        "B+": 4,
+        "B": 3,
+        "B-": 2,
+        "C": 1
+      },
+      "current_top5_average": 3.5422,
+      "gated_top5_average": 3.6667
+    },
+    "weirdness_floor_comparison": {
+      "current_top5_average": 3.0711,
+      "gated_top5_average": 3.0533
+    }
+  },
+  "qualitative_review": [
+    {
+      "finding": "General declarative families no longer auto-select ask-topic merely because its priority is 4.",
+      "judgment": "positive"
+    },
+    {
+      "finding": "For ordinary event/relation/place contexts, judge-topic or interpret-topic can enter after question/decision wrappers are removed.",
+      "judgment": "acceptable",
+      "note": "These wrappers already carry equal or better internal quality metadata than ask-topic."
+    },
+    {
+      "finding": "Quotation/hearsay families retain specialized read/write/ack/tell/reply wrappers.",
+      "judgment": "positive"
+    },
+    {
+      "finding": "quote-matsutake needs reaction wrappers as collision-safe fallback because most reporting names are already present inside the nested text.",
+      "judgment": "acceptable-with-fallback",
+      "note": "Reaction to quoted content is semantically defensible and preserves a minimum pool of eight."
+    }
+  ],
+  "rollout_rules": [
+    "Apply noun-collision filtering first.",
+    "Apply v0.72 role gate only to automatic wrapper choice.",
+    "Manual dropdown continues to show all noun-collision-compatible wrappers.",
+    "Unknown/non-growth context uses broad fallback wrappers; dimension-restricted specialized wrappers are not auto-selected.",
+    "If the auto-compatible pool is empty, fall back to noun-compatible wrappers rather than disabling wrapping.",
+    "No wrapper text, palindrome reading, or growth family data is rewritten."
+  ],
+  "rollback_condition": [
+    "CI finds fewer than five auto-compatible wrappers for a known narrative family.",
+    "A declarative final-stage context regains ask/ask-topic in auto top five without question evidence.",
+    "Public runtime loses manual access to a wrapper solely because of role gating."
+  ],
+  "progress_effect": "This is the first transfer of the historical semantic-role gate into an existing long-form public generation path, not just a new candidate pool."
+}
