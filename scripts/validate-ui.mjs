@@ -32,7 +32,8 @@ const required = [
   "./data/growth-wrapper-role-public-v74.json",
   "./data/public-reading-hints-v82.json",
   "./data/dna-kinship-exposure-policy-v84.json",
-  "./data/ten-comparison-balance-policy-v86.json"
+  "./data/ten-comparison-balance-policy-v86.json",
+  "./data/l2-ten-comparison-policy-v93.json"
 ];
 for (const id of ["lengthMeta","wrapMeta","readingHintMeta"]) {
   if (!html.includes(`id="${id}"`)) {
@@ -89,6 +90,15 @@ for (const fn of ["tenComparisonItems","takeRandomUnused","shuffleItems"]) {
 if (!html.includes('const items=tenComparisonItems();')) {
   failed = true;
   console.error("ten-item comparison handler does not use balanced selector");
+}
+
+if (!html.includes("function repairL2Comparison(")) {
+  failed = true;
+  console.error("index.html is missing L2 comparison repair helper");
+}
+if (!html.includes('if(layer==="L2")')) {
+  failed = true;
+  console.error("tenComparisonItems() does not branch for L2");
 }
 
 if (!html.includes("function standardSeamPool()")) {
@@ -174,6 +184,16 @@ if (tenBalance.version !== "0.86.1") {
 if ((tenBalance.quotas ?? []).reduce((n,q)=>n+(q.count??0),0) !== 10) {
   failed = true;
   console.error("Ten-item comparison quota total is not 10");
+}
+
+const l2Ten = JSON.parse(fs.readFileSync("data/l2-ten-comparison-policy-v93.json", "utf8"));
+if (l2Ten.version !== "0.93") {
+  failed = true;
+  console.error("Unexpected L2 comparison policy version: " + l2Ten.version);
+}
+if (l2Ten.rule?.capped_family !== "同定" || l2Ten.rule?.max_items !== 2) {
+  failed = true;
+  console.error("Unexpected L2 comparison cap configuration");
 }
 
 if (failed) process.exit(1);
