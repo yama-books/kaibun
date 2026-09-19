@@ -1,6 +1,6 @@
 {
-  "version": "0.15",
-  "principle": "段階長文化は、(1)構文骨格を保って中心名詞句を伸ばす structural family と、(2)全文を個別監査した narrative family の二系統。どちらも1段ずつ必ず長くする。 物語型の後半は、述語を固定したまま受け手の親族関係を鏡型に外側へ追加し、50文字級まで段階的に伸長する。 v0.14では場所・理由・状況をdimensionとして明示し、L2でも物語型長文化を許可する。 v0.15では時間・属性のdimensionを追加し、述語や観察行為を維持したまま修飾情報を厚くする。",
+  "version": "0.16",
+  "principle": "段階長文化は、(1)構文骨格を保って中心名詞句を伸ばす structural family と、(2)全文を個別監査した narrative family の二系統。どちらも1段ずつ必ず長くする。 物語型の後半は、述語を固定したまま受け手の親族関係を鏡型に外側へ追加し、50文字級まで段階的に伸長する。 v0.14では場所・理由・状況をdimensionとして明示し、L2でも物語型長文化を許可する。 v0.15では時間・属性のdimensionを追加し、述語や観察行為を維持したまま修飾情報を厚くする。 v0.16では貸借以外に待機・来訪・存在・睡眠の述語系統を追加し、長文の述語偏りを減らす。",
   "families": [
     {
       "id": "wife-wait",
@@ -249,8 +249,8 @@
     "generated_growth_variants": 208,
     "all_palindromes": true,
     "minimum_stage_increases_length": true,
-    "narrative_family_count": 14,
-    "narrative_variants": 77,
+    "narrative_family_count": 18,
+    "narrative_variants": 95,
     "longest_narrative_kana": 51,
     "longest_narrative_example": {
       "family": "matsutake-wife",
@@ -260,18 +260,19 @@
       "len": 51
     },
     "narrative_families_by_layer": {
-      "L1": 10,
-      "L2": 4,
+      "L1": 12,
+      "L2": 6,
       "L3": 0
     },
     "narrative_families_by_dimension": {
-      "出来事": 1,
+      "出来事": 4,
       "関係": 6,
       "場所": 2,
       "理由": 1,
       "状況": 1,
       "属性": 2,
-      "時間": 1
+      "時間": 1,
+      "存在": 1
     }
   },
   "narrative_families": [
@@ -1013,6 +1014,186 @@
           "japanese_quality": "B+",
           "weirdness": 5,
           "dimension": "属性"
+        }
+      ]
+    },
+    {
+      "id": "event-wait",
+      "label": "出来事：妻と待つ人を増やす",
+      "layer": "L1",
+      "dimension": "出来事",
+      "mode": "curated_full_stages",
+      "stages": [
+        {
+          "reading": "つまもななもまつ",
+          "display": "妻もナナも待つ。",
+          "adds": "待つ人物",
+          "japanese_quality": "A",
+          "weirdness": 1,
+          "dimension": "出来事"
+        },
+        {
+          "reading": "つまもこのななのこもまつ",
+          "display": "妻もこのナナの子も待つ。",
+          "adds": "人物関係",
+          "japanese_quality": "A",
+          "weirdness": 1,
+          "dimension": "出来事"
+        },
+        {
+          "reading": "つまもははのこのななのこのははもまつ",
+          "display": "妻も母のこのナナの子の母も待つ。",
+          "adds": "親族関係",
+          "japanese_quality": "A-",
+          "weirdness": 2,
+          "dimension": "出来事"
+        },
+        {
+          "reading": "つまもちちのははのこのななのこのははのちちもまつ",
+          "display": "妻も父の母のこのナナの子の母の父も待つ。",
+          "adds": "親族関係を深くする",
+          "japanese_quality": "B+",
+          "weirdness": 3,
+          "dimension": "出来事"
+        }
+      ]
+    },
+    {
+      "id": "event-arrival",
+      "label": "出来事：庭のワニが来る",
+      "layer": "L2",
+      "dimension": "出来事",
+      "mode": "curated_full_stages",
+      "stages": [
+        {
+          "reading": "たきもにわのわにもきた",
+          "display": "タキも庭のワニも来た。",
+          "adds": "来訪者",
+          "japanese_quality": "A",
+          "weirdness": 3,
+          "dimension": "出来事"
+        },
+        {
+          "reading": "たきもこのにわのわにのこもきた",
+          "display": "タキもこの庭のワニの子も来た。",
+          "adds": "関係",
+          "japanese_quality": "A",
+          "weirdness": 3,
+          "dimension": "出来事"
+        },
+        {
+          "reading": "たきもこのにわのたきのきたのわにのこもきた",
+          "display": "タキもこの庭の滝の北のワニの子も来た。",
+          "adds": "場所の詳細",
+          "japanese_quality": "A",
+          "weirdness": 4,
+          "dimension": "出来事"
+        },
+        {
+          "reading": "たきもははのこのにわのたきのきたのわにのこのははもきた",
+          "display": "タキも母のこの庭の滝の北のワニの子の母も来た。",
+          "adds": "親族関係",
+          "japanese_quality": "A-",
+          "weirdness": 5,
+          "dimension": "出来事"
+        },
+        {
+          "reading": "たきもちちのははのこのにわのたきのきたのわにのこのははのちちもきた",
+          "display": "タキも父の母のこの庭の滝の北のワニの子の母の父も来た。",
+          "adds": "親族関係を深くする",
+          "japanese_quality": "B+",
+          "weirdness": 5,
+          "dimension": "出来事"
+        }
+      ]
+    },
+    {
+      "id": "existence-garden",
+      "label": "存在：庭のワニもいる",
+      "layer": "L2",
+      "dimension": "存在",
+      "mode": "curated_full_stages",
+      "stages": [
+        {
+          "reading": "るいもにわのわにもいる",
+          "display": "ルイも庭のワニもいる。",
+          "adds": "存在する対象",
+          "japanese_quality": "A",
+          "weirdness": 2,
+          "dimension": "存在"
+        },
+        {
+          "reading": "るいもこのにわのわにのこもいる",
+          "display": "ルイもこの庭のワニの子もいる。",
+          "adds": "関係",
+          "japanese_quality": "A",
+          "weirdness": 3,
+          "dimension": "存在"
+        },
+        {
+          "reading": "るいもこのにわのたきのきたのわにのこもいる",
+          "display": "ルイもこの庭の滝の北のワニの子もいる。",
+          "adds": "場所の詳細",
+          "japanese_quality": "A",
+          "weirdness": 4,
+          "dimension": "存在"
+        },
+        {
+          "reading": "るいもははのこのにわのたきのきたのわにのこのははもいる",
+          "display": "ルイも母のこの庭の滝の北のワニの子の母もいる。",
+          "adds": "親族関係",
+          "japanese_quality": "A-",
+          "weirdness": 5,
+          "dimension": "存在"
+        },
+        {
+          "reading": "るいもちちのははのこのにわのたきのきたのわにのこのははのちちもいる",
+          "display": "ルイも父の母のこの庭の滝の北のワニの子の母の父もいる。",
+          "adds": "親族関係を深くする",
+          "japanese_quality": "B+",
+          "weirdness": 5,
+          "dimension": "存在"
+        }
+      ]
+    },
+    {
+      "id": "event-sleep",
+      "label": "出来事：ルネと寝る人を増やす",
+      "layer": "L1",
+      "dimension": "出来事",
+      "mode": "curated_full_stages",
+      "stages": [
+        {
+          "reading": "るねもななもねる",
+          "display": "ルネもナナも寝る。",
+          "adds": "寝る人物",
+          "japanese_quality": "A",
+          "weirdness": 1,
+          "dimension": "出来事"
+        },
+        {
+          "reading": "るねもこのななのこもねる",
+          "display": "ルネもこのナナの子も寝る。",
+          "adds": "人物関係",
+          "japanese_quality": "A",
+          "weirdness": 1,
+          "dimension": "出来事"
+        },
+        {
+          "reading": "るねもははのこのななのこのははもねる",
+          "display": "ルネも母のこのナナの子の母も寝る。",
+          "adds": "親族関係",
+          "japanese_quality": "A-",
+          "weirdness": 2,
+          "dimension": "出来事"
+        },
+        {
+          "reading": "るねもちちのははのこのななのこのははのちちもねる",
+          "display": "ルネも父の母のこのナナの子の母の父も寝る。",
+          "adds": "親族関係を深くする",
+          "japanese_quality": "B+",
+          "weirdness": 3,
+          "dimension": "出来事"
         }
       ]
     }
