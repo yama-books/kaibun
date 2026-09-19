@@ -1,0 +1,94 @@
+{
+  "version": "0.78",
+  "title": "Public quality calibration action plan",
+  "source_benchmark": "0.76",
+  "source_pre_review": "0.77",
+  "public_behavior_change_planned": true,
+  "principle": "Correct family-level classification inconsistencies; preserve source records and palindrome readings; prefer demotion/reduced default exposure over deletion.",
+  "actions": [
+    {
+      "target": "time-see-nana-child",
+      "current": {
+        "layer": "L1",
+        "japanese_quality": "A",
+        "weirdness": 2
+      },
+      "proposed": {
+        "layer": "L2",
+        "japanese_quality": "A-",
+        "weirdness": 4
+      },
+      "evidence": [
+        "The identical reading/display exists as stage 2 of growth family time-observation.",
+        "That growth family is L2 and the identical stage is already labeled A- / weirdness 4.",
+        "v0.77 flagged the same temporal/genitive structure as forced for L1."
+      ]
+    },
+    {
+      "target": "time-see-ishii",
+      "current": {
+        "layer": "L1",
+        "japanese_quality": "A",
+        "weirdness": 2
+      },
+      "proposed": {
+        "layer": "L2",
+        "japanese_quality": "A-",
+        "weirdness": 3
+      },
+      "evidence": [
+        "Same morning-sake + possessor structure as time-observation.",
+        "Analogous growth stage with one possessor is L2 / weirdness 3.",
+        "Demotion aligns seam and growth product policy."
+      ]
+    },
+    {
+      "target": "time-see-kiki",
+      "current": {
+        "layer": "L1",
+        "japanese_quality": "A",
+        "weirdness": 2
+      },
+      "proposed": {
+        "layer": "L2",
+        "japanese_quality": "A-",
+        "weirdness": 3
+      },
+      "evidence": [
+        "Same morning-sake + possessor structure as time-observation.",
+        "QB-021 pre-review marked the construction borderline for L1.",
+        "Demotion aligns seam and growth product policy."
+      ]
+    },
+    {
+      "target": "see-voice-eco",
+      "current": {
+        "layer": "L2",
+        "japanese_quality": "A-",
+        "weirdness": 3
+      },
+      "proposed": {
+        "layer": "L2",
+        "japanese_quality": "B",
+        "weirdness": 4
+      },
+      "evidence": [
+        "QB-042 is the only v0.77 hold.",
+        "声のエコ is semantically strained and 見た adds a second role mismatch.",
+        "Raising weirdness to 4 removes it from default L2 generation without deleting the experimental record."
+      ]
+    }
+  ],
+  "invariants": [
+    "No reading changes.",
+    "All four records remain in seam-grammar data.",
+    "No historical research corpus changes.",
+    "v0.76 benchmark remains immutable as pre-change baseline.",
+    "A new post-change benchmark must be created rather than rewriting v0.76."
+  ],
+  "expected_public_effect": [
+    "The three morning-sake possessor recipes leave L1 and move to L2.",
+    "see-voice-eco remains available only when L2 weirdness threshold is raised above the default 3.",
+    "Default L1 becomes less permissive about stacked temporal/genitive seam constructions."
+  ]
+}
