@@ -1,0 +1,964 @@
+{
+  "version": "0.79",
+  "baseline_version": "0.76",
+  "purpose": "Post-calibration deterministic source-stratified public quality benchmark.",
+  "sample_size": 50,
+  "quotas": {
+    "L1": {
+      "seed": 6,
+      "dna": 8,
+      "pair": 4,
+      "seam": 4,
+      "bridge": 3
+    },
+    "L2": {
+      "seed": 6,
+      "dna": 4,
+      "pair": 4,
+      "seam": 4,
+      "bridge": 3
+    },
+    "L3": {
+      "seed": 4
+    }
+  },
+  "selection": "Same stable-hash procedure as v0.76 after v0.78 seam calibration.",
+  "candidates": [
+    {
+      "benchmark_id": "QB-001",
+      "source_pool": "seed",
+      "source_id": "V07-0255",
+      "layer": "L1",
+      "display": "ルイも母もいる。",
+      "reading": "るいもははもいる",
+      "current_japanese_quality": "A",
+      "weirdness": 1,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-002",
+      "source_pool": "seed",
+      "source_id": "V06-0203",
+      "layer": "L1",
+      "display": "中身かな？",
+      "reading": "なかみかな",
+      "current_japanese_quality": "A",
+      "weirdness": 1,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-003",
+      "source_pool": "seed",
+      "source_id": "V08-0266",
+      "layer": "L1",
+      "display": "妻と父の母の父と待つ。",
+      "reading": "つまとちちのははのちちとまつ",
+      "current_japanese_quality": "A",
+      "weirdness": 2,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-004",
+      "source_pool": "seed",
+      "source_id": "V05-0014",
+      "layer": "L1",
+      "display": "確かに、キキに貸した。",
+      "reading": "たしかにききにかした",
+      "current_japanese_quality": "A",
+      "weirdness": 1,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-005",
+      "source_pool": "seed",
+      "source_id": "V08-0265",
+      "layer": "L1",
+      "display": "妻も母の父の母も待つ。",
+      "reading": "つまもははのちちのははもまつ",
+      "current_japanese_quality": "A",
+      "weirdness": 2,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-006",
+      "source_pool": "seed",
+      "source_id": "V07-0230",
+      "layer": "L1",
+      "display": "ルイといる。",
+      "reading": "るいといる",
+      "current_japanese_quality": "A",
+      "weirdness": 1,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-007",
+      "source_pool": "dna",
+      "source_id": "L1-RECURSIVE-KINSHIP",
+      "layer": "L1",
+      "display": "タミも父の父も見た。",
+      "reading": "たみもちちのちちもみた",
+      "current_japanese_quality": "A",
+      "weirdness": 1,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-008",
+      "source_pool": "dna",
+      "source_id": "L1-RECURSIVE-KINSHIP",
+      "layer": "L1",
+      "display": "ルミも父の子の子の父も見る。",
+      "reading": "るみもちちのこのこのちちもみる",
+      "current_japanese_quality": "A",
+      "weirdness": 2,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-009",
+      "source_pool": "dna",
+      "source_id": "L1-RECURSIVE-KINSHIP",
+      "layer": "L1",
+      "display": "タキと母の子の母と来た。",
+      "reading": "たきとははのこのははときた",
+      "current_japanese_quality": "A",
+      "weirdness": 2,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-010",
+      "source_pool": "dna",
+      "source_id": "L1-MOKA-KAMO",
+      "layer": "L1",
+      "display": "モカかも。",
+      "reading": "もかかも",
+      "current_japanese_quality": "A",
+      "weirdness": 2,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-011",
+      "source_pool": "dna",
+      "source_id": "L1-RECURSIVE-KINSHIP",
+      "layer": "L1",
+      "display": "確かに、子の母の母の子に貸した。",
+      "reading": "たしかにこのははのははのこにかした",
+      "current_japanese_quality": "A",
+      "weirdness": 2,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-012",
+      "source_pool": "dna",
+      "source_id": "L1-RECURSIVE-KINSHIP",
+      "layer": "L1",
+      "display": "タキと母の子の子の母と来た。",
+      "reading": "たきとははのこのこのははときた",
+      "current_japanese_quality": "A",
+      "weirdness": 2,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-013",
+      "source_pool": "dna",
+      "source_id": "L1-RECURSIVE-KINSHIP",
+      "layer": "L1",
+      "display": "ルイも父の子の父もいる。",
+      "reading": "るいもちちのこのちちもいる",
+      "current_japanese_quality": "A",
+      "weirdness": 2,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-014",
+      "source_pool": "dna",
+      "source_id": "L1-YORUSUNI-SURUYO",
+      "layer": "L1",
+      "display": "夜、留守にするよ。",
+      "reading": "よるすにするよ",
+      "current_japanese_quality": "A",
+      "weirdness": 2,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-015",
+      "source_pool": "pair",
+      "source_id": "tami-mita",
+      "layer": "L1",
+      "display": "タミを見た。",
+      "reading": "たみをみた",
+      "current_japanese_quality": "A",
+      "weirdness": 1,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-016",
+      "source_pool": "pair",
+      "source_id": "uo-ou",
+      "layer": "L1",
+      "display": "魚も追う。",
+      "reading": "うおもおう",
+      "current_japanese_quality": "A",
+      "weirdness": 1,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-017",
+      "source_pool": "pair",
+      "source_id": "rene-neru",
+      "layer": "L1",
+      "display": "ルネと寝る。",
+      "reading": "るねとねる",
+      "current_japanese_quality": "A",
+      "weirdness": 1,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-018",
+      "source_pool": "pair",
+      "source_id": "tsuma-matsu",
+      "layer": "L1",
+      "display": "妻が待つ。",
+      "reading": "つまがまつ",
+      "current_japanese_quality": "A",
+      "weirdness": 1,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-019",
+      "source_pool": "seam",
+      "source_id": "see-sea-miu",
+      "layer": "L1",
+      "display": "タミも海のミウも見た。",
+      "reading": "たみもうみのみうもみた",
+      "current_japanese_quality": "A",
+      "weirdness": 2,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-020",
+      "source_pool": "seam",
+      "source_id": "loan-mountain-maya",
+      "layer": "L1",
+      "display": "確かに山のマヤに貸した。",
+      "reading": "たしかにやまのまやにかした",
+      "current_japanese_quality": "A",
+      "weirdness": 2,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-021",
+      "source_pool": "seam",
+      "source_id": "loan-pond-kei",
+      "layer": "L1",
+      "display": "確かに池のケイに貸した。",
+      "reading": "たしかにいけのけいにかした",
+      "current_japanese_quality": "A",
+      "weirdness": 2,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-022",
+      "source_pool": "seam",
+      "source_id": "young-nana-child",
+      "layer": "L1",
+      "display": "井川もこのナナの子も若い。",
+      "reading": "いかわもこのななのこもわかい",
+      "current_japanese_quality": "A",
+      "weirdness": 1,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-023",
+      "source_pool": "bridge",
+      "source_id": "BRIDGE-0003",
+      "layer": "L1",
+      "display": "タミも店のセミも見た。",
+      "reading": "たみもみせのせみもみた",
+      "current_japanese_quality": "A",
+      "weirdness": 2,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-024",
+      "source_pool": "bridge",
+      "source_id": "BRIDGE-0001",
+      "layer": "L1",
+      "display": "タミも庭のワニも見た。",
+      "reading": "たみもにわのわにもみた",
+      "current_japanese_quality": "A",
+      "weirdness": 2,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-025",
+      "source_pool": "bridge",
+      "source_id": "BRIDGE-0005",
+      "layer": "L1",
+      "display": "タミも今朝の酒も見た。",
+      "reading": "たみもけさのさけもみた",
+      "current_japanese_quality": "A",
+      "weirdness": 2,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-026",
+      "source_pool": "seed",
+      "source_id": "V05-0072",
+      "layer": "L2",
+      "display": "旦那、ナナなんだ。",
+      "reading": "だんななななんだ",
+      "current_japanese_quality": "B",
+      "weirdness": 3,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-027",
+      "source_pool": "seed",
+      "source_id": "V05-0070",
+      "layer": "L2",
+      "display": "磨かぬ鏡。",
+      "reading": "みがかぬかがみ",
+      "current_japanese_quality": "B",
+      "weirdness": 3,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-028",
+      "source_pool": "seed",
+      "source_id": "V05-0068",
+      "layer": "L2",
+      "display": "軽いイルカ。",
+      "reading": "かるいいるか",
+      "current_japanese_quality": "B",
+      "weirdness": 3,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-029",
+      "source_pool": "seed",
+      "source_id": "V05-0082",
+      "layer": "L2",
+      "display": "旦那、高田なんだ。",
+      "reading": "だんなたかたなんだ",
+      "current_japanese_quality": "B",
+      "weirdness": 3,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-030",
+      "source_pool": "seed",
+      "source_id": "V05-0074",
+      "layer": "L2",
+      "display": "旦那、ココなんだ。",
+      "reading": "だんなここなんだ",
+      "current_japanese_quality": "B",
+      "weirdness": 3,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-031",
+      "source_pool": "seed",
+      "source_id": "V05-0078",
+      "layer": "L2",
+      "display": "旦那、ルルなんだ。",
+      "reading": "だんなるるなんだ",
+      "current_japanese_quality": "B",
+      "weirdness": 3,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-032",
+      "source_pool": "dna",
+      "source_id": "L2-ITAI-ITAI",
+      "layer": "L2",
+      "display": "遺体は痛い。",
+      "reading": "いたいはいたい",
+      "current_japanese_quality": "A-",
+      "weirdness": 3,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-033",
+      "source_pool": "dna",
+      "source_id": "L2-UMA-MAU",
+      "layer": "L2",
+      "display": "馬が舞う。",
+      "reading": "うまがまう",
+      "current_japanese_quality": "A-",
+      "weirdness": 3,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-034",
+      "source_pool": "dna",
+      "source_id": "L2-TANE-NETA",
+      "layer": "L2",
+      "display": "種は寝た。",
+      "reading": "たねはねた",
+      "current_japanese_quality": "A-",
+      "weirdness": 3,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-035",
+      "source_pool": "dna",
+      "source_id": "L2-DANNA-NANDA",
+      "layer": "L2",
+      "display": "旦那、石井なんだ。",
+      "reading": "だんないしいなんだ",
+      "current_japanese_quality": "A-",
+      "weirdness": 3,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-036",
+      "source_pool": "pair",
+      "source_id": "tane-neta",
+      "layer": "L2",
+      "display": "種が寝た。",
+      "reading": "たねがねた",
+      "current_japanese_quality": "A-",
+      "weirdness": 3,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-037",
+      "source_pool": "pair",
+      "source_id": "kuma-maku",
+      "layer": "L2",
+      "display": "熊も巻く。",
+      "reading": "くまもまく",
+      "current_japanese_quality": "A-",
+      "weirdness": 3,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-038",
+      "source_pool": "pair",
+      "source_id": "nushi-shinu",
+      "layer": "L2",
+      "display": "主は死ぬ。",
+      "reading": "ぬしはしぬ",
+      "current_japanese_quality": "A-",
+      "weirdness": 3,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-039",
+      "source_pool": "pair",
+      "source_id": "buyo-yobu",
+      "layer": "L2",
+      "display": "ブヨは呼ぶ。",
+      "reading": "ぶよはよぶ",
+      "current_japanese_quality": "A-",
+      "weirdness": 3,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-040",
+      "source_pool": "seam",
+      "source_id": "see-squirrel-pickpocket",
+      "layer": "L2",
+      "display": "タミもリスのスリも見た。",
+      "reading": "たみもりすのすりもみた",
+      "current_japanese_quality": "A-",
+      "weirdness": 3,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-041",
+      "source_pool": "seam",
+      "source_id": "time-see-ishii",
+      "layer": "L2",
+      "display": "タミも今朝の石井の酒も見た。",
+      "reading": "たみもけさのいしいのさけもみた",
+      "current_japanese_quality": "A-",
+      "weirdness": 3,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-042",
+      "source_pool": "seam",
+      "source_id": "cause-mountain-maya",
+      "layer": "L2",
+      "display": "ダイセの山のマヤのせいだ。",
+      "reading": "だいせのやまのまやのせいだ",
+      "current_japanese_quality": "A-",
+      "weirdness": 3,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-043",
+      "source_pool": "seam",
+      "source_id": "see-lie-layer",
+      "layer": "L2",
+      "display": "タミも嘘の層も見た。",
+      "reading": "たみもうそのそうもみた",
+      "current_japanese_quality": "A-",
+      "weirdness": 3,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-044",
+      "source_pool": "bridge",
+      "source_id": "BRIDGE-0006",
+      "layer": "L2",
+      "display": "確かに家のエイに貸した。",
+      "reading": "たしかにいえのえいにかした",
+      "current_japanese_quality": "B",
+      "weirdness": 3,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-045",
+      "source_pool": "bridge",
+      "source_id": "BRIDGE-0007",
+      "layer": "L2",
+      "display": "確かにリスのスリに貸した。",
+      "reading": "たしかにりすのすりにかした",
+      "current_japanese_quality": "A-",
+      "weirdness": 3,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-046",
+      "source_pool": "bridge",
+      "source_id": "BRIDGE-0004",
+      "layer": "L2",
+      "display": "確かに店のセミに貸した。",
+      "reading": "たしかにみせのせみにかした",
+      "current_japanese_quality": "B",
+      "weirdness": 3,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-047",
+      "source_pool": "seed",
+      "source_id": "V05-0152",
+      "layer": "L3",
+      "display": "ルミ、ココ見る。",
+      "reading": "るみここみる",
+      "current_japanese_quality": "C",
+      "weirdness": 4,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-048",
+      "source_pool": "seed",
+      "source_id": "V05-0120",
+      "layer": "L3",
+      "display": "須田、お顔出す。",
+      "reading": "すだおかおだす",
+      "current_japanese_quality": "C",
+      "weirdness": 4,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-049",
+      "source_pool": "seed",
+      "source_id": "V05-0146",
+      "layer": "L3",
+      "display": "ルミ、桃見る。",
+      "reading": "るみももみる",
+      "current_japanese_quality": "C",
+      "weirdness": 4,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    },
+    {
+      "benchmark_id": "QB-050",
+      "source_pool": "seed",
+      "source_id": "V05-0151",
+      "layer": "L3",
+      "display": "ルミ、新聞紙見る。",
+      "reading": "るみしんぶんしみる",
+      "current_japanese_quality": "C",
+      "weirdness": 4,
+      "review": {
+        "grammar": null,
+        "semantic_coherence": null,
+        "weirdness_usefulness": null,
+        "display_reading_fidelity": null,
+        "overall": null,
+        "notes": []
+      }
+    }
+  ],
+  "baseline_diff": {
+    "removed_count": 2,
+    "added_count": 2,
+    "removed": [
+      {
+        "id": "QB-021",
+        "source": "seam",
+        "layer": "L1",
+        "display": "タミも今朝のキキの酒も見た。",
+        "reading": "たみもけさのききのさけもみた"
+      },
+      {
+        "id": "QB-042",
+        "source": "seam",
+        "layer": "L2",
+        "display": "タミも声のエコも見た。",
+        "reading": "たみもこえのえこもみた"
+      }
+    ],
+    "added": [
+      {
+        "id": "QB-022",
+        "source": "seam",
+        "layer": "L1",
+        "display": "井川もこのナナの子も若い。",
+        "reading": "いかわもこのななのこもわかい"
+      },
+      {
+        "id": "QB-041",
+        "source": "seam",
+        "layer": "L2",
+        "display": "タミも今朝の石井の酒も見た。",
+        "reading": "たみもけさのいしいのさけもみた"
+      }
+    ]
+  }
+}
