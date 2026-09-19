@@ -1,0 +1,128 @@
+{
+  "version": "0.69",
+  "title": "Public whitelist for research-derived modern seam candidates",
+  "status": "public-adapter-ready",
+  "source_generator_version": "0.67",
+  "source_curation_version": "0.68",
+  "policy": {
+    "explicit_whitelist_only": true,
+    "review_needed_excluded": true,
+    "held_excluded": true,
+    "runtime_llm": false,
+    "source_lexemes_existing_only": true
+  },
+  "candidates": [
+    {
+      "id": "BRIDGE-0001",
+      "research_id": "modern-see-garden-croc",
+      "display": "タミも庭のワニも見た。",
+      "reading": "たみもにわのわにもみた",
+      "family": "研究由来DNA",
+      "layer": "L1",
+      "subgroup": "bridge_seam",
+      "origin": "BRIDGE:SEAM:see:garden-croc",
+      "why": "「庭のワニ」を見る対象として、既存の継ぎ目DNAを意味役割つきで再結合。",
+      "japanese_quality": "A",
+      "weirdness": 2,
+      "register": "standard-weird"
+    },
+    {
+      "id": "BRIDGE-0002",
+      "research_id": "modern-loan-garden-croc",
+      "display": "確かに庭のワニに貸した。",
+      "reading": "たしかににわのわににかした",
+      "family": "研究由来DNA",
+      "layer": "L1",
+      "subgroup": "bridge_seam",
+      "origin": "BRIDGE:SEAM:loan:garden-croc",
+      "why": "「ワニ」を貸借の受け手として許可し、既存shellだけで再構成。",
+      "japanese_quality": "A",
+      "weirdness": 3,
+      "register": "standard-weird"
+    },
+    {
+      "id": "BRIDGE-0003",
+      "research_id": "modern-see-shop-cicada",
+      "display": "タミも店のセミも見た。",
+      "reading": "たみもみせのせみもみた",
+      "family": "研究由来DNA",
+      "layer": "L1",
+      "subgroup": "bridge_seam",
+      "origin": "BRIDGE:SEAM:see:shop-cicada",
+      "why": "「店のセミ」を見る対象として、既存の継ぎ目DNAを意味役割つきで再結合。",
+      "japanese_quality": "A",
+      "weirdness": 2,
+      "register": "standard-weird"
+    },
+    {
+      "id": "BRIDGE-0004",
+      "research_id": "modern-loan-shop-cicada",
+      "display": "確かに店のセミに貸した。",
+      "reading": "たしかにみせのせみにかした",
+      "family": "研究由来DNA",
+      "layer": "L1",
+      "subgroup": "bridge_seam",
+      "origin": "BRIDGE:SEAM:loan:shop-cicada",
+      "why": "「セミ」を貸借の受け手として許可し、既存shellだけで再構成。",
+      "japanese_quality": "A",
+      "weirdness": 3,
+      "register": "standard-weird"
+    },
+    {
+      "id": "BRIDGE-0005",
+      "research_id": "modern-see-morning-sake",
+      "display": "タミも今朝の酒も見た。",
+      "reading": "たみもけさのさけもみた",
+      "family": "研究由来DNA",
+      "layer": "L1",
+      "subgroup": "bridge_seam",
+      "origin": "BRIDGE:SEAM:see:morning-sake",
+      "why": "「今朝の酒」を見る対象として許可。語用は少し怪しいが、文法と回文構造は自然。",
+      "japanese_quality": "A",
+      "weirdness": 2,
+      "register": "standard-weird"
+    },
+    {
+      "id": "BRIDGE-0006",
+      "research_id": "modern-loan-house-ray",
+      "display": "確かに家のエイに貸した。",
+      "reading": "たしかにいえのえいにかした",
+      "family": "研究由来DNA",
+      "layer": "L1",
+      "subgroup": "bridge_seam",
+      "origin": "BRIDGE:SEAM:loan:house-ray",
+      "why": "「家のエイ」を擬人的な貸借の受け手として許可。既存shellのみ使用。",
+      "japanese_quality": "A",
+      "weirdness": 3,
+      "register": "standard-weird"
+    },
+    {
+      "id": "BRIDGE-0007",
+      "research_id": "modern-loan-squirrel-pickpocket",
+      "display": "確かにリスのスリに貸した。",
+      "reading": "たしかにりすのすりにかした",
+      "family": "研究由来DNA",
+      "layer": "L2",
+      "subgroup": "bridge_seam",
+      "origin": "BRIDGE:SEAM:loan:squirrel-pickpocket",
+      "why": "中心語「スリ」は受け手になれるが、「リスのスリ」という関係が怪しいためL2。",
+      "japanese_quality": "A-",
+      "weirdness": 3,
+      "register": "weird"
+    }
+  ],
+  "counts": {
+    "L1": 6,
+    "L2": 1,
+    "total": 7
+  },
+  "excluded_research_ids": [
+    "modern-loan-squid-meeting",
+    "modern-loan-morning-sake",
+    "modern-loan-pear-item",
+    "modern-loan-sand-eggplant",
+    "modern-loan-lie-layer",
+    "modern-loan-voice-eco"
+  ],
+  "integration_plan": "Load as a separate bridge dataset and expose through bridgePool(); include in seam-derived generation only after validator passes."
+}
