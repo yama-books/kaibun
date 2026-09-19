@@ -1,0 +1,120 @@
+{
+  "version": "1.28",
+  "updated_on": "2026-09-20",
+  "title": "Bidirectional tanka seam-contrastive dataset",
+  "purpose": "Convert the six machine-clear bidirectional tanka in v1.24 into a contrastive seam dataset that exposes how identical 31-kana material supports 5/7/5/7/7 segmentation in both reading directions without being a self-palindrome.",
+  "input": "data/historical-bidirectional-tanka-v124.json",
+  "scope": {
+    "source_numbers": [124,125,126,127,128,129],
+    "case_count": 6,
+    "strict_palindrome_cases": 0,
+    "bidirectional_distinct_reverse_cases": 6
+  },
+  "metrical_geometry": {
+    "forward_meter_lengths": [5,7,5,7,7],
+    "forward_boundaries_in_forward_coordinates": [5,12,17,24],
+    "reverse_meter_lengths": [5,7,5,7,7],
+    "reverse_boundaries_mapped_into_forward_coordinates": [7,14,19,26],
+    "boundary_pairs": [
+      {"forward":5,"reverse_mapped":7,"offset":2},
+      {"forward":12,"reverse_mapped":14,"offset":2},
+      {"forward":17,"reverse_mapped":19,"offset":2},
+      {"forward":24,"reverse_mapped":26,"offset":2}
+    ],
+    "shared_internal_boundaries": [],
+    "finding": "For a 31-kana tanka segmented 5/7/5/7/7 in both directions, the reverse segmentation maps to 7/14/19/26 in forward coordinates. Every internal reverse boundary is shifted exactly +2 kana from the corresponding forward boundary.",
+    "interpretation": "The bidirectional form supplies a historical contrastive lattice in which lexical/syntactic seams must be able to re-form across a systematic two-kana boundary shift."
+  },
+  "cases": [
+    {
+      "source_number": 124,
+      "title": "夕立返し冬枯",
+      "forward_meter": ["はしれかも","いまゆふたちを","なみはのき","いつちたかせか","たきにはのまや"],
+      "reverse_meter": ["やまのはに","きたかせかたち","ついきのは","みなをちたふゆ","まいもかれしは"],
+      "forward_boundaries": [5,12,17,24],
+      "reverse_boundaries_in_forward_coordinates": [7,14,19,26],
+      "boundary_shift_signature": [2,2,2,2],
+      "contrastive_role": "historical-positive-bidirectional / strict-negative"
+    },
+    {
+      "source_number": 125,
+      "title": "船中納涼返し虫",
+      "forward_meter": ["はなひたし","たまとはしるも","やねにたり","ふねこきをしむ","すすみしをよさ"],
+      "reverse_meter": ["さよをしみ","すすむしをきこ","ねふりたに","ねやもるしはと","またしたひなは"],
+      "forward_boundaries": [5,12,17,24],
+      "reverse_boundaries_in_forward_coordinates": [7,14,19,26],
+      "boundary_shift_signature": [2,2,2,2],
+      "contrastive_role": "historical-positive-bidirectional / strict-negative"
+    },
+    {
+      "source_number": 126,
+      "title": "月返し梅",
+      "forward_meter": ["なかめむは","くさもるほかも","いけのまや","なみしらけるは","いよふけるつき"],
+      "reverse_meter": ["きつるけふ","よいはるけらし","みなやまの","けいもかほるも","さくはむめかな"],
+      "forward_boundaries": [5,12,17,24],
+      "reverse_boundaries_in_forward_coordinates": [7,14,19,26],
+      "boundary_shift_signature": [2,2,2,2],
+      "contrastive_role": "historical-positive-bidirectional / strict-negative"
+    },
+    {
+      "source_number": 127,
+      "title": "雪返し花",
+      "forward_meter": ["けさみなは","きよしふゆのひ","いつもくる","このへんはらそ","たえなしらゆき"],
+      "reverse_meter": ["きゆらしな","えたそらはんへ","のこるくも","ついひのゆふし","よきはなみさけ"],
+      "forward_boundaries": [5,12,17,24],
+      "reverse_boundaries_in_forward_coordinates": [7,14,19,26],
+      "boundary_shift_signature": [2,2,2,2],
+      "contrastive_role": "historical-positive-bidirectional / strict-negative"
+    },
+    {
+      "source_number": 128,
+      "title": "神祇返し釈教",
+      "forward_meter": ["さとむれし","ひとはきらくに","みやもとを","たみのよかくら","いをまさるとさ"],
+      "reverse_meter": ["さとるさま","をいらくかよの","みたをとも","やみにくらきは","とひしれむとさ"],
+      "forward_boundaries": [5,12,17,24],
+      "reverse_boundaries_in_forward_coordinates": [7,14,19,26],
+      "boundary_shift_signature": [2,2,2,2],
+      "contrastive_role": "historical-positive-bidirectional / strict-negative"
+    },
+    {
+      "source_number": 129,
+      "title": "恋返し無常",
+      "forward_meter": ["したひもを","とひてはらすは","とくはとそ","つたひしなかに","いつやみるへき"],
+      "reverse_meter": ["きへるみや","ついにかなしひ","たつそとは","くとはすらはて","ひとをもひたし"],
+      "forward_boundaries": [5,12,17,24],
+      "reverse_boundaries_in_forward_coordinates": [7,14,19,26],
+      "boundary_shift_signature": [2,2,2,2],
+      "contrastive_role": "historical-positive-bidirectional / strict-negative"
+    }
+  ],
+  "generator_implications": {
+    "strict_palindrome_generator": {
+      "direct_injection": false,
+      "reason": "The six records are deliberately non-self-palindromic."
+    },
+    "seam_model": {
+      "eligible_as_contrastive_evidence": true,
+      "new_feature": "two-kana-directional-boundary-shift",
+      "use": "Score whether candidate material can support plausible alternative lexical boundaries near the 5/7/5/7/7 seam positions, without treating the bidirectional corpus as positive strict-palindrome text."
+    },
+    "future_bidirectional_mode": {
+      "structural_contract": "31 kana; forward and exact reverse both independently segment 5/7/5/7/7; forward != reverse",
+      "current_public_status": "research-only"
+    }
+  },
+  "safety_rules": [
+    "Do not count v1.28 cases as strict palindrome positives.",
+    "Do not infer lexical boundaries solely from the +2 geometry; the geometry is metrical, while lexical/syntactic boundaries require source-specific review.",
+    "Retain forward and reverse provenance separately.",
+    "Do not inject bidirectional source strings into the public candidate pool.",
+    "The +2 seam signature is a structural consequence of the meter and length, not by itself evidence of linguistic naturalness."
+  ],
+  "summary": {
+    "contrastive_cases": 6,
+    "shared_boundary_shift_signature": [2,2,2,2],
+    "strict_promotions": 0,
+    "new_generator_rule_enabled": false,
+    "new_research_feature": "two-kana-directional-boundary-shift"
+  },
+  "next_action": "Use v1.28 as a seam-contrastive research fixture. Before enabling any score or generator rule, test whether known positive strict families and known negative controls differ meaningfully on local boundary-shift lexical support."
+}
