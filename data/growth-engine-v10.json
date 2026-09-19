@@ -1,6 +1,6 @@
 {
-  "version": "0.20",
-  "principle": "段階長文化は、(1)構文骨格を保って中心名詞句を伸ばす structural family と、(2)全文を個別監査した narrative family の二系統。どちらも1段ずつ必ず長くする。 物語型の後半は、述語を固定したまま受け手の親族関係を鏡型に外側へ追加し、50文字級まで段階的に伸長する。 v0.14では場所・理由・状況をdimensionとして明示し、L2でも物語型長文化を許可する。 v0.15では時間・属性のdimensionを追加し、述語や観察行為を維持したまま修飾情報を厚くする。 v0.16では貸借以外に待機・来訪・存在・睡眠の述語系統を追加し、長文の述語偏りを減らす。 v0.17では完全回文文そのものを引用節として外側から包み、伝聞・判断・解釈・記述を追加するsentence-level wrapperを導入する。 v0.18では任意の完全回文文を、逆読み関係にある引用外枠で何段でも包める汎用sentence wrapper engineを公開UIへ解放する。 v0.18.1では100かな超の固定benchmarkを保持し、長文域の回文成立をCIで回帰検証する。 v0.19では引用・伝聞だけでなく、引用文を原因や記録タイトルとして名詞化する外枠を追加する。 v0.20ではセリフ内外で同じ名詞を再使用しないcollision policyをsentence wrapperの必須条件とし、外枠語彙を11種へ拡張する。",
+  "version": "0.21",
+  "principle": "段階長文化は、(1)構文骨格を保って中心名詞句を伸ばす structural family と、(2)全文を個別監査した narrative family の二系統。どちらも1段ずつ必ず長くする。 物語型の後半は、述語を固定したまま受け手の親族関係を鏡型に外側へ追加し、50文字級まで段階的に伸長する。 v0.14では場所・理由・状況をdimensionとして明示し、L2でも物語型長文化を許可する。 v0.15では時間・属性のdimensionを追加し、述語や観察行為を維持したまま修飾情報を厚くする。 v0.16では貸借以外に待機・来訪・存在・睡眠の述語系統を追加し、長文の述語偏りを減らす。 v0.17では完全回文文そのものを引用節として外側から包み、伝聞・判断・解釈・記述を追加するsentence-level wrapperを導入する。 v0.18では任意の完全回文文を、逆読み関係にある引用外枠で何段でも包める汎用sentence wrapper engineを公開UIへ解放する。 v0.18.1では100かな超の固定benchmarkを保持し、長文域の回文成立をCIで回帰検証する。 v0.19では引用・伝聞だけでなく、引用文を原因や記録タイトルとして名詞化する外枠を追加する。 v0.20ではセリフ内外で同じ名詞を再使用しないcollision policyをsentence wrapperの必須条件とし、外枠語彙を11種へ拡張する。 v0.21では「Xは『P』はV」の主題型wrapperを優先し、同じ外側名詞を共有する別wrapperもreading衝突で同時に除外する。",
   "families": [
     {
       "id": "wife-wait",
@@ -276,7 +276,7 @@
       "引用・伝聞": 4
     },
     "quote_wrapper_count": 5,
-    "sentence_level_wrapper_count": 11,
+    "sentence_level_wrapper_count": 22,
     "sentence_level_wrappers_reverse_verified": true,
     "hundred_kana_benchmark": {
       "family": "quote-matsutake",
@@ -285,7 +285,8 @@
       "min_required": 100,
       "noun_collision_free": true
     },
-    "noun_collision_policy": true
+    "noun_collision_policy": true,
+    "wrapper_distinct_outer_readings": 15
   },
   "narrative_families": [
     {
@@ -2008,7 +2009,7 @@
       "semantic": "発言",
       "quality": "B+",
       "weirdness_floor": 3,
-      "auto_priority": 10,
+      "auto_priority": 110,
       "outer_lexemes": [
         {
           "reading": "うい",
@@ -2026,7 +2027,7 @@
       "semantic": "伝聞",
       "quality": "B+",
       "weirdness_floor": 3,
-      "auto_priority": 20,
+      "auto_priority": 120,
       "outer_lexemes": [
         {
           "reading": "たいき",
@@ -2044,7 +2045,7 @@
       "semantic": "陳述",
       "quality": "B+",
       "weirdness_floor": 3,
-      "auto_priority": 30,
+      "auto_priority": 130,
       "outer_lexemes": [
         {
           "reading": "たべの",
@@ -2062,7 +2063,7 @@
       "semantic": "質問",
       "quality": "B",
       "weirdness_floor": 3,
-      "auto_priority": 40,
+      "auto_priority": 140,
       "outer_lexemes": [
         {
           "reading": "うと",
@@ -2080,7 +2081,7 @@
       "semantic": "語り",
       "quality": "B",
       "weirdness_floor": 3,
-      "auto_priority": 50,
+      "auto_priority": 150,
       "outer_lexemes": [
         {
           "reading": "るたか",
@@ -2098,7 +2099,7 @@
       "semantic": "決定",
       "quality": "B",
       "weirdness_floor": 4,
-      "auto_priority": 60,
+      "auto_priority": 160,
       "outer_lexemes": [
         {
           "reading": "ためき",
@@ -2116,7 +2117,7 @@
       "semantic": "判断",
       "quality": "B+",
       "weirdness_floor": 3,
-      "auto_priority": 70,
+      "auto_priority": 170,
       "outer_lexemes": [
         {
           "reading": "たみ",
@@ -2134,7 +2135,7 @@
       "semantic": "解釈",
       "quality": "B",
       "weirdness_floor": 3,
-      "auto_priority": 80,
+      "auto_priority": 180,
       "outer_lexemes": [
         {
           "reading": "るみ",
@@ -2152,7 +2153,7 @@
       "semantic": "記述",
       "quality": "B",
       "weirdness_floor": 4,
-      "auto_priority": 90,
+      "auto_priority": 190,
       "outer_lexemes": [
         {
           "reading": "たいか",
@@ -2170,7 +2171,7 @@
       "semantic": "理由化",
       "quality": "B",
       "weirdness_floor": 4,
-      "auto_priority": 100,
+      "auto_priority": 300,
       "outer_lexemes": [
         {
           "reading": "だいせ",
@@ -2188,7 +2189,7 @@
       "semantic": "記録・同定",
       "quality": "B-",
       "weirdness_floor": 5,
-      "auto_priority": 110,
+      "auto_priority": 310,
       "outer_lexemes": [
         {
           "reading": "だんな",
@@ -2203,6 +2204,204 @@
         {
           "reading": "くろき",
           "display": "黒木",
+          "kind": "person"
+        }
+      ]
+    },
+    {
+      "id": "say-topic",
+      "left_reading": "ういは",
+      "left_display": "ウイは、",
+      "right_reading": "はいう",
+      "right_display": "は言う。",
+      "semantic": "発言（主題）",
+      "quality": "B+",
+      "weirdness_floor": 3,
+      "auto_priority": 1,
+      "outer_lexemes": [
+        {
+          "reading": "うい",
+          "display": "ウイ",
+          "kind": "person"
+        }
+      ]
+    },
+    {
+      "id": "hear-topic",
+      "left_reading": "たいきは",
+      "left_display": "大樹は、",
+      "right_reading": "はきいた",
+      "right_display": "は聞いた。",
+      "semantic": "伝聞（主題）",
+      "quality": "B+",
+      "weirdness_floor": 3,
+      "auto_priority": 2,
+      "outer_lexemes": [
+        {
+          "reading": "たいき",
+          "display": "大樹",
+          "kind": "person"
+        }
+      ]
+    },
+    {
+      "id": "state-topic",
+      "left_reading": "たべのは",
+      "left_display": "田部野は、",
+      "right_reading": "はのべた",
+      "right_display": "は述べた。",
+      "semantic": "陳述（主題）",
+      "quality": "B+",
+      "weirdness_floor": 3,
+      "auto_priority": 3,
+      "outer_lexemes": [
+        {
+          "reading": "たべの",
+          "display": "田部野",
+          "kind": "person"
+        }
+      ]
+    },
+    {
+      "id": "ask-topic",
+      "left_reading": "うとは",
+      "left_display": "ウトは、",
+      "right_reading": "はとう",
+      "right_display": "は問う。",
+      "semantic": "質問（主題）",
+      "quality": "B",
+      "weirdness_floor": 3,
+      "auto_priority": 4,
+      "outer_lexemes": [
+        {
+          "reading": "うと",
+          "display": "ウト",
+          "kind": "person"
+        }
+      ]
+    },
+    {
+      "id": "narrate-topic",
+      "left_reading": "るたかは",
+      "left_display": "ルタカは、",
+      "right_reading": "はかたる",
+      "right_display": "は語る。",
+      "semantic": "語り（主題）",
+      "quality": "B",
+      "weirdness_floor": 3,
+      "auto_priority": 5,
+      "outer_lexemes": [
+        {
+          "reading": "るたか",
+          "display": "ルタカ",
+          "kind": "person"
+        }
+      ]
+    },
+    {
+      "id": "decide-topic",
+      "left_reading": "ためきは",
+      "left_display": "タメキは、",
+      "right_reading": "はきめた",
+      "right_display": "は決めた。",
+      "semantic": "決定（主題）",
+      "quality": "B",
+      "weirdness_floor": 4,
+      "auto_priority": 6,
+      "outer_lexemes": [
+        {
+          "reading": "ためき",
+          "display": "タメキ",
+          "kind": "person"
+        }
+      ]
+    },
+    {
+      "id": "judge-topic",
+      "left_reading": "たみは",
+      "left_display": "タミは、",
+      "right_reading": "はみた",
+      "right_display": "は見た。",
+      "semantic": "判断（主題）",
+      "quality": "B+",
+      "weirdness_floor": 3,
+      "auto_priority": 7,
+      "outer_lexemes": [
+        {
+          "reading": "たみ",
+          "display": "タミ",
+          "kind": "person"
+        }
+      ]
+    },
+    {
+      "id": "interpret-topic",
+      "left_reading": "るみは",
+      "left_display": "ルミは、",
+      "right_reading": "はみる",
+      "right_display": "は見る。",
+      "semantic": "解釈（主題）",
+      "quality": "B",
+      "weirdness_floor": 3,
+      "auto_priority": 8,
+      "outer_lexemes": [
+        {
+          "reading": "るみ",
+          "display": "ルミ",
+          "kind": "person"
+        }
+      ]
+    },
+    {
+      "id": "write-topic",
+      "left_reading": "たいかは",
+      "left_display": "タイカは、",
+      "right_reading": "はかいた",
+      "right_display": "は書いた。",
+      "semantic": "記述（主題）",
+      "quality": "B",
+      "weirdness_floor": 4,
+      "auto_priority": 9,
+      "outer_lexemes": [
+        {
+          "reading": "たいか",
+          "display": "タイカ",
+          "kind": "person"
+        }
+      ]
+    },
+    {
+      "id": "hear-kuki",
+      "left_reading": "くきは",
+      "left_display": "久木は、",
+      "right_reading": "はきく",
+      "right_display": "は聞く。",
+      "semantic": "聴取（主題）",
+      "quality": "B+",
+      "weirdness_floor": 3,
+      "auto_priority": 10,
+      "outer_lexemes": [
+        {
+          "reading": "くき",
+          "display": "久木",
+          "kind": "person"
+        }
+      ]
+    },
+    {
+      "id": "know-rushi",
+      "left_reading": "るしは",
+      "left_display": "ルシは、",
+      "right_reading": "はしる",
+      "right_display": "は知る。",
+      "semantic": "認知（主題）",
+      "quality": "B",
+      "weirdness_floor": 3,
+      "auto_priority": 11,
+      "outer_lexemes": [
+        {
+          "reading": "るし",
+          "display": "ルシ",
           "kind": "person"
         }
       ]
