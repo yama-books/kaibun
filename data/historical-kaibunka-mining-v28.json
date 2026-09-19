@@ -1,6 +1,6 @@
 {
-  "version": "0.28",
-  "purpose": "歴史的翻刻から機械的に抽出・回文検証できたが、意味・漢字復元をまだ人手裁定していない候補を、信頼済みコーパスと分離して保持する。",
+  "version": "0.30",
+  "purpose": "歴史的翻刻から機械的に抽出・回文検証できたが、意味・漢字復元をまだ人手裁定していない候補を、信頼済みコーパスと分離して保持する。 v0.30では山内翻刻から厳密31かな回文を追加採掘し、信頼済み10首と合わせて50首規模の構造分析へ進む。",
   "collection_metadata": {
     "yamauchi_1974_lower": {
       "article": "山内潤三「廻文歌の限界と効用（下）―高野山釈教長歌を頂点として―」",
@@ -159,6 +159,846 @@
       ]
     },
     {
+      "id": "shoju-021",
+      "title": "子規",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 21,
+      "source_transcription_normalized": "もとつたそほとときすはやきつなけなつきやはすきととほそたつとも",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "もとつたそ",
+        "ほとときすはや",
+        "きつなけな",
+        "つきやはすきと",
+        "とほそたつとも"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌21",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-024",
+      "title": "端午",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 24,
+      "source_transcription_normalized": "やりほのみさいくなりほこととかかかととこほりなくいさみのほりや",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "やりほのみ",
+        "さいくなりほこ",
+        "ととかかか",
+        "ととこほりなく",
+        "いさみのほりや"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌24",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-027",
+      "title": "納涼",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 27,
+      "source_transcription_normalized": "さよきつるけふそまたきしすすかせかすすしきたまそふけるつきよさ",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "さよきつる",
+        "けふそまたきし",
+        "すすかせか",
+        "すすしきたまそ",
+        "ふけるつきよさ"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌27",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-030",
+      "title": "露",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 30,
+      "source_transcription_normalized": "ゆつらしのさくをなてしこはきのねのきはこしてなをくさのしらつゆ",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "ゆつらしの",
+        "さくをなてしこ",
+        "はきのねの",
+        "きはこしてなを",
+        "くさのしらつゆ"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌30",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-031",
+      "title": "同（露）",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 31,
+      "source_transcription_normalized": "やとるつゆたまはのきはのはにしけしにはのはきのはまたゆつるとや",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "やとるつゆ",
+        "たまはのきはの",
+        "はにしけし",
+        "にはのはきのは",
+        "またゆつるとや"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌31",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-033",
+      "title": "月",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 33,
+      "source_transcription_normalized": "きつるままちもきよけらしけふのよのふけしらけよきもちままるつき",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "きつるまま",
+        "ちもきよけらし",
+        "けふのよの",
+        "ふけしらけよき",
+        "もちままるつき"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌33",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-035",
+      "title": "同（月）",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 35,
+      "source_transcription_normalized": "はれつみよきつるもはきのはにてりてにはのきはもるつきよみつれは",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "はれつみよ",
+        "きつるもはきの",
+        "はにてりて",
+        "にはのきはもる",
+        "つきよみつれは"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌35",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-038",
+      "title": "田毎月",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 38,
+      "source_transcription_normalized": "なかきよのきつるみちもとこたしろしたこともちみるつきのよきかな",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "なかきよの",
+        "きつるみちもと",
+        "こたしろし",
+        "たこともちみる",
+        "つきのよきかな"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌38",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-040",
+      "title": "月明海上鴻鷹渡",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 40,
+      "source_transcription_normalized": "てりつうみきつしもなかのみなかりかなみのかなもしつきみうつりて",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "てりつうみ",
+        "きつしもなかの",
+        "みなかりか",
+        "なみのかなもし",
+        "つきみうつりて"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌40",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-041",
+      "title": "初鷹",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 41,
+      "source_transcription_normalized": "なかきかしとふのはにてさはつかりかつはさてにはのふとしかきかな",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "なかきかし",
+        "とふのはにてさ",
+        "はつかりか",
+        "つはさてにはの",
+        "ふとしかきかな"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌41",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-043",
+      "title": "名所苅",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 43,
+      "source_transcription_normalized": "なかくよふよもはらたまのかしまやましかのまたらはもよふよくかな",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "なかくよふ",
+        "よもはらたまの",
+        "かしまやま",
+        "しかのまたらは",
+        "もよふよくかな"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌43",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-044",
+      "title": "紅葉",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 44,
+      "source_transcription_normalized": "やまのおくほとしらぬみちみもしはしもみちみぬらしとほくおのまや",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "やまのおく",
+        "ほとしらぬみち",
+        "みもしはし",
+        "もみちみぬらし",
+        "とほくおのまや"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌44",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-045",
+      "title": "九月尽",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 45,
+      "source_transcription_normalized": "やまのせかふゆかしてはのきあかきかあきのはてしかゆふかせのまや",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "やまのせか",
+        "ふゆかしてはの",
+        "きあかきか",
+        "あきのはてしか",
+        "ゆふかせのまや"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌45",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-046",
+      "title": "冬枯",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 46,
+      "source_transcription_normalized": "やとよこのとひきしみさへふゆかれかゆふへさみしきひとのこよとや",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "やとよこの",
+        "とひきしみさへ",
+        "ふゆかれか",
+        "ゆふへさみしき",
+        "ひとのこよとや"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌46",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-053",
+      "title": "矢田野雪",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 53,
+      "source_transcription_normalized": "きゆらしなきよしこのまややたのののたややまのこしよきなしらゆき",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "きゆらしな",
+        "きよしこのまや",
+        "やたののの",
+        "たややまのこし",
+        "よきなしらゆき"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌53",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-054",
+      "title": "鶴",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 54,
+      "source_transcription_normalized": "なかしひのいつのひまにかのほるつるほのかにまひのついのひしかな",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "なかしひの",
+        "いつのひまにか",
+        "のほるつる",
+        "ほのかにまひの",
+        "ついのひしかな"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌54",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-055",
+      "title": "春亀",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 55,
+      "source_transcription_normalized": "やまみなのけいはこのめかきよくさくよきかめのこはいけのなみまや",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "やまみなの",
+        "けいはこのめか",
+        "きよくさく",
+        "よきかめのこは",
+        "いけのなみまや"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌55",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-056",
+      "title": "松",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 56,
+      "source_transcription_normalized": "そたつまのはにもりとみてのひるはるひのてみとりもにはのまつたそ",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "そたつまの",
+        "はにもりとみて",
+        "のひるはる",
+        "ひのてみとりも",
+        "にはのまつたそ"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌56",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-057",
+      "title": "竹",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 57,
+      "source_transcription_normalized": "やふにはのなひけたるさまにきはひはきにまさるたけひなのはにふや",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "やふにはの",
+        "なひけたるさま",
+        "にきはひは",
+        "きにまさるたけ",
+        "ひなのはにふや"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌57",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-058",
+      "title": "士",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 58,
+      "source_transcription_normalized": "とひてかやなはゆみとりとかたきよきたかとりとみゆはなやかてひと",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "とひてかや",
+        "なはゆみとりと",
+        "かたきよき",
+        "たかとりとみゆ",
+        "はなやかてひと"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌58",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-061",
+      "title": "商",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 61,
+      "source_transcription_normalized": "かひたしのりうるさまにやひとのみのとひやにまさるうりのしたひか",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "かひたしの",
+        "りうるさまにや",
+        "ひとのみの",
+        "とひやにまさる",
+        "うりのしたひか"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌61",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-064",
+      "title": "社頭祝",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 64,
+      "source_transcription_normalized": "らくてみのよみやきよめしすすかけかすすしめよきやみよのみてくら",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "らくてみの",
+        "よみやきよめし",
+        "すすかけか",
+        "すすしめよきや",
+        "みよのみてくら"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌64",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-066",
+      "title": "神祇",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 66,
+      "source_transcription_normalized": "きとうたはまさしよきみかかみのさのみかかみきよしさまはたうとき",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "きとうたは",
+        "まさしよきみか",
+        "かみのさの",
+        "みかかみきよし",
+        "さまはたうとき"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌66",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-067",
+      "title": "同（神祇）",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 67,
+      "source_transcription_normalized": "つつみつをこそかなへうるすみのえのみするうへなかそこをつみつつ",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "つつみつを",
+        "こそかなへうる",
+        "すみのえの",
+        "みするうへなか",
+        "そこをつみつつ"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌67",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-068",
+      "title": "釈教",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 68,
+      "source_transcription_normalized": "しなもなくほとけのをしへみつのよのつみへしをのけとほくなもなし",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "しなもなく",
+        "ほとけのをしへ",
+        "みつのよの",
+        "つみへしをのけ",
+        "とほくなもなし"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌68",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-069",
+      "title": "同（釈教）",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 69,
+      "source_transcription_normalized": "つみはうくきくみつねかしつきのひのきつしかねつみくきくうはみつ",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "つみはうく",
+        "きくみつねかし",
+        "つきのひの",
+        "きつしかねつみ",
+        "くきくうはみつ"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌69",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-070",
+      "title": "同（釈教）",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 70,
+      "source_transcription_normalized": "なかるへきみつきよけらしかわのへのわかしらけよきつみきへるかな",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "なかるへき",
+        "みつきよけらし",
+        "かわのへの",
+        "わかしらけよき",
+        "つみきへるかな"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌70",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-072",
+      "title": "寄琴恋",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 72,
+      "source_transcription_normalized": "かへらしのつまことをもてけふのよのふけてもをとこまつのしらへか",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "かへらしの",
+        "つまことをもて",
+        "けふのよの",
+        "ふけてもをとこ",
+        "まつのしらへか"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌72",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-073",
+      "title": "不逢知恋",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 73,
+      "source_transcription_normalized": "とやかふとついちとぬれしやみのよのみやしれぬとちいつとふかやと",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "とやかふと",
+        "ついちとぬれし",
+        "やみのよの",
+        "みやしれぬとち",
+        "いつとふかやと"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌73",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
+      "id": "shoju-077",
+      "title": "寄山恋",
+      "collection": "廻文歌百首",
+      "author": "大福窓笑寿",
+      "source_number": 77,
+      "source_transcription_normalized": "かすかあひよまにとひきしいこまやまこいしきひとにまよひあかすか",
+      "kana_length": 31,
+      "verified_palindrome": true,
+      "meter_segments": [
+        "かすかあひ",
+        "よまにとひきし",
+        "いこまやま",
+        "こいしきひとに",
+        "まよひあかすか"
+      ],
+      "transcription_status": "Yamauchi 1974 web transcription; 31-kana strict symmetry mechanically rechecked; kanji/semantic review pending",
+      "semantic_review_status": "pending",
+      "promotion_status": "research-queue",
+      "source_locator": "山内潤三「廻文歌の限界と効用（下）」翻刻『廻文歌百首』歌77",
+      "source_url": "https://123deta.com/document/zwvjkmgq-%E5%AF%86%E6%95%99%E6%96%87%E5%8C%96No%E5%B1%B1%E5%86%85%E4%B8%89%E5%BB%BB%E6%96%87%E6%AD%8C%E9%99%90%E7%95%8C%E5%8A%B9%E7%94%A8%E4%B8%8B%E9%AB%98%E9%87%8E%E5%B1%B1%E9%87%88%E6%95%99%E9%95%B7%E6%AD%8C%E3%82%92%E9%A0%82%E7%82%B9%E3%81%A8%E3%81%97%E3%81%A6P.html",
+      "research_value": [
+        "31-kana strict symmetry",
+        "meter/seam interaction",
+        "historical diction",
+        "central-3 pivot analysis"
+      ]
+    },
+    {
       "id": "shoju-add-101",
       "title": "追加101",
       "collection": "廻文歌百首",
@@ -288,5 +1128,11 @@
         "historical diction"
       ]
     }
-  ]
+  ],
+  "verified": {
+    "candidate_count": 40,
+    "all_31_kana": true,
+    "all_strict_palindromes": true,
+    "added_in_v030": 30
+  }
 }
