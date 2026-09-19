@@ -1,0 +1,3416 @@
+{
+  "version": "0.44",
+  "title": "Autumn/Moon variable-span dictionary from the fixed 50-sample historical baseline",
+  "thesis": "Topic-first generation should privilege historically attested 5/7-kana phrases, then morphology-signed seams and central pivots, rather than enumerating all substrings.",
+  "scope": {
+    "baseline_sample_count": 50,
+    "topic": "秋・月",
+    "topic_sample_count": 12,
+    "source_ids": [
+      "shoju-030",
+      "shoju-031",
+      "shoju-033",
+      "shoju-035",
+      "shoju-038",
+      "shoju-040",
+      "shoju-041",
+      "shoju-043",
+      "shoju-044",
+      "shoju-045",
+      "shoju-add-109",
+      "shoju-add-111"
+    ],
+    "raw_substring_enumeration": false,
+    "wave2_included": false
+  },
+  "geometry": {
+    "tanka_kana": 31,
+    "meter": [
+      5,
+      7,
+      5,
+      7,
+      7
+    ],
+    "mirror_lattice": [
+      5,
+      2,
+      5,
+      2,
+      3,
+      2,
+      5,
+      2,
+      5
+    ],
+    "ku_mirror_geometry": [
+      {
+        "ku": 1,
+        "start": 1,
+        "end": 5,
+        "mirror_start": 27,
+        "mirror_end": 31,
+        "mirror_relation": "within-ku5-tail"
+      },
+      {
+        "ku": 2,
+        "start": 6,
+        "end": 12,
+        "mirror_start": 20,
+        "mirror_end": 26,
+        "mirror_relation": "crosses-ku4-ku5"
+      },
+      {
+        "ku": 3,
+        "start": 13,
+        "end": 17,
+        "mirror_start": 15,
+        "mirror_end": 19,
+        "mirror_relation": "crosses-ku3-ku4-around-center"
+      },
+      {
+        "ku": 4,
+        "start": 18,
+        "end": 24,
+        "mirror_start": 8,
+        "mirror_end": 14,
+        "mirror_relation": "crosses-ku2-ku3"
+      },
+      {
+        "ku": 5,
+        "start": 25,
+        "end": 31,
+        "mirror_start": 1,
+        "mirror_end": 7,
+        "mirror_relation": "crosses-ku1-ku2"
+      }
+    ]
+  },
+  "policy": {
+    "phrase_first": true,
+    "morphology_before_raw_match": true,
+    "mining_not_trusted": true,
+    "semantic_classification_basis": "Source title is the basis for mining-layer topic labels unless separately reviewed.",
+    "no_surface_restoration_without_source": true,
+    "generator_use": "Phrase units may seed topic-first search. Short units may connect only when morphology/edge status permits; every full candidate still requires human linguistic review."
+  },
+  "source_records": [
+    {
+      "id": "shoju-030",
+      "title": "露",
+      "source_group": "mining",
+      "semantic_field": {
+        "broad": "秋・月",
+        "primary": "秋・露",
+        "tags": [
+          "露",
+          "秋"
+        ],
+        "basis": "source title only; semantic review pending"
+      },
+      "factors": {
+        "A": "ゆつらしの",
+        "B": "さく",
+        "C": "をなてしこ",
+        "D": "はき",
+        "E": "のねの"
+      },
+      "ku": [
+        "ゆつらしの",
+        "さくをなてしこ",
+        "はきのねの",
+        "きはこしてなを",
+        "くさのしらつゆ"
+      ]
+    },
+    {
+      "id": "shoju-031",
+      "title": "同（露）",
+      "source_group": "mining",
+      "semantic_field": {
+        "broad": "秋・月",
+        "primary": "秋・露",
+        "tags": [
+          "露",
+          "秋"
+        ],
+        "basis": "source title only; semantic review pending"
+      },
+      "factors": {
+        "A": "やとるつゆ",
+        "B": "たま",
+        "C": "はのきはの",
+        "D": "はに",
+        "E": "しけし"
+      },
+      "ku": [
+        "やとるつゆ",
+        "たまはのきはの",
+        "はにしけし",
+        "にはのはきのは",
+        "またゆつるとや"
+      ]
+    },
+    {
+      "id": "shoju-033",
+      "title": "月",
+      "source_group": "mining",
+      "semantic_field": {
+        "broad": "秋・月",
+        "primary": "秋・月",
+        "tags": [
+          "月",
+          "秋"
+        ],
+        "basis": "source title only; semantic review pending"
+      },
+      "factors": {
+        "A": "きつるまま",
+        "B": "ちも",
+        "C": "きよけらし",
+        "D": "けふ",
+        "E": "のよの"
+      },
+      "ku": [
+        "きつるまま",
+        "ちもきよけらし",
+        "けふのよの",
+        "ふけしらけよき",
+        "もちままるつき"
+      ]
+    },
+    {
+      "id": "shoju-035",
+      "title": "同（月）",
+      "source_group": "mining",
+      "semantic_field": {
+        "broad": "秋・月",
+        "primary": "秋・月",
+        "tags": [
+          "月",
+          "秋"
+        ],
+        "basis": "source title only; semantic review pending"
+      },
+      "factors": {
+        "A": "はれつみよ",
+        "B": "きつ",
+        "C": "るもはきの",
+        "D": "はに",
+        "E": "てりて"
+      },
+      "ku": [
+        "はれつみよ",
+        "きつるもはきの",
+        "はにてりて",
+        "にはのきはもる",
+        "つきよみつれは"
+      ]
+    },
+    {
+      "id": "shoju-038",
+      "title": "田毎月",
+      "source_group": "mining",
+      "semantic_field": {
+        "broad": "秋・月",
+        "primary": "秋・月・田",
+        "tags": [
+          "田毎月",
+          "月",
+          "田"
+        ],
+        "basis": "source title only; semantic review pending"
+      },
+      "factors": {
+        "A": "なかきよの",
+        "B": "きつ",
+        "C": "るみちもと",
+        "D": "こた",
+        "E": "しろし"
+      },
+      "ku": [
+        "なかきよの",
+        "きつるみちもと",
+        "こたしろし",
+        "たこともちみる",
+        "つきのよきかな"
+      ]
+    },
+    {
+      "id": "shoju-040",
+      "title": "月明海上鴻鷹渡",
+      "source_group": "mining",
+      "semantic_field": {
+        "broad": "秋・月",
+        "primary": "秋・月・海・鳥",
+        "tags": [
+          "月",
+          "海",
+          "鴻雁"
+        ],
+        "basis": "source title only; semantic review pending"
+      },
+      "factors": {
+        "A": "てりつうみ",
+        "B": "きつ",
+        "C": "しもなかの",
+        "D": "みな",
+        "E": "かりか"
+      },
+      "ku": [
+        "てりつうみ",
+        "きつしもなかの",
+        "みなかりか",
+        "なみのかなもし",
+        "つきみうつりて"
+      ]
+    },
+    {
+      "id": "shoju-041",
+      "title": "初鷹",
+      "source_group": "mining",
+      "semantic_field": {
+        "broad": "秋・月",
+        "primary": "秋・鳥",
+        "tags": [
+          "初鷹",
+          "鳥"
+        ],
+        "basis": "source title only; semantic review pending"
+      },
+      "factors": {
+        "A": "なかきかし",
+        "B": "とふ",
+        "C": "のはにてさ",
+        "D": "はつ",
+        "E": "かりか"
+      },
+      "ku": [
+        "なかきかし",
+        "とふのはにてさ",
+        "はつかりか",
+        "つはさてにはの",
+        "ふとしかきかな"
+      ]
+    },
+    {
+      "id": "shoju-043",
+      "title": "名所苅",
+      "source_group": "mining",
+      "semantic_field": {
+        "broad": "秋・月",
+        "primary": "名所・秋",
+        "tags": [
+          "名所",
+          "苅"
+        ],
+        "basis": "source title only; semantic review pending"
+      },
+      "factors": {
+        "A": "なかくよふ",
+        "B": "よも",
+        "C": "はらたまの",
+        "D": "かし",
+        "E": "まやま"
+      },
+      "ku": [
+        "なかくよふ",
+        "よもはらたまの",
+        "かしまやま",
+        "しかのまたらは",
+        "もよふよくかな"
+      ]
+    },
+    {
+      "id": "shoju-044",
+      "title": "紅葉",
+      "source_group": "mining",
+      "semantic_field": {
+        "broad": "秋・月",
+        "primary": "秋・紅葉",
+        "tags": [
+          "紅葉",
+          "秋"
+        ],
+        "basis": "source title only; semantic review pending"
+      },
+      "factors": {
+        "A": "やまのおく",
+        "B": "ほと",
+        "C": "しらぬみち",
+        "D": "みも",
+        "E": "しはし"
+      },
+      "ku": [
+        "やまのおく",
+        "ほとしらぬみち",
+        "みもしはし",
+        "もみちみぬらし",
+        "とほくおのまや"
+      ]
+    },
+    {
+      "id": "shoju-045",
+      "title": "九月尽",
+      "source_group": "mining",
+      "semantic_field": {
+        "broad": "秋・月",
+        "primary": "秋・暦",
+        "tags": [
+          "九月尽",
+          "秋"
+        ],
+        "basis": "source title only; semantic review pending"
+      },
+      "factors": {
+        "A": "やまのせか",
+        "B": "ふゆ",
+        "C": "かしてはの",
+        "D": "きあ",
+        "E": "かきか"
+      },
+      "ku": [
+        "やまのせか",
+        "ふゆかしてはの",
+        "きあかきか",
+        "あきのはてしか",
+        "ゆふかせのまや"
+      ]
+    },
+    {
+      "id": "shoju-add-109",
+      "title": "嫁娘見月",
+      "source_group": "mining",
+      "semantic_field": {
+        "broad": "秋・月",
+        "primary": "月・家族",
+        "tags": [
+          "月",
+          "嫁",
+          "娘"
+        ],
+        "basis": "source title only; semantic review pending"
+      },
+      "factors": {
+        "A": "なかよさの",
+        "B": "きつ",
+        "C": "るみそらは",
+        "D": "むす",
+        "E": "めよめ"
+      },
+      "ku": [
+        "なかよさの",
+        "きつるみそらは",
+        "むすめよめ",
+        "すむはらそみる",
+        "つきのさよかな"
+      ]
+    },
+    {
+      "id": "shoju-add-111",
+      "title": "出来秋",
+      "source_group": "mining",
+      "semantic_field": {
+        "broad": "秋・月",
+        "primary": "秋・実り",
+        "tags": [
+          "秋",
+          "実り"
+        ],
+        "basis": "source title only; semantic review pending"
+      },
+      "factors": {
+        "A": "みなほまし",
+        "B": "とこ",
+        "C": "もみのるか",
+        "D": "をた",
+        "E": "のほの"
+      },
+      "ku": [
+        "みなほまし",
+        "とこもみのるか",
+        "をたのほの",
+        "たをかるのみも",
+        "ことしまほなみ"
+      ]
+    }
+  ],
+  "units": {
+    "phrase_units": [
+      {
+        "id": "phrase:shoju-030:ku1",
+        "unit_type": "attested-meter-phrase",
+        "reading": "ゆつらしの",
+        "span_length": 5,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "露",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-030",
+            "title": "露",
+            "source_group": "mining",
+            "ku": 1
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "のしらつゆ",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 1,
+          "end": 5
+        },
+        "mirror_position": {
+          "start": 27,
+          "end": 31,
+          "relation": "within-ku5-tail"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-030:ku2",
+        "unit_type": "attested-meter-phrase",
+        "reading": "さくをなてしこ",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "露",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-030",
+            "title": "露",
+            "source_group": "mining",
+            "ku": 2
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "こしてなをくさ",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 6,
+          "end": 12
+        },
+        "mirror_position": {
+          "start": 20,
+          "end": 26,
+          "relation": "crosses-ku4-ku5"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-030:ku3",
+        "unit_type": "attested-meter-phrase",
+        "reading": "はきのねの",
+        "span_length": 5,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "露",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-030",
+            "title": "露",
+            "source_group": "mining",
+            "ku": 3
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "のねのきは",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 13,
+          "end": 17
+        },
+        "mirror_position": {
+          "start": 15,
+          "end": 19,
+          "relation": "crosses-ku3-ku4-around-center"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-030:ku4",
+        "unit_type": "attested-meter-phrase",
+        "reading": "きはこしてなを",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "露",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-030",
+            "title": "露",
+            "source_group": "mining",
+            "ku": 4
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "をなてしこはき",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 18,
+          "end": 24
+        },
+        "mirror_position": {
+          "start": 8,
+          "end": 14,
+          "relation": "crosses-ku2-ku3"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-030:ku5",
+        "unit_type": "attested-meter-phrase",
+        "reading": "くさのしらつゆ",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "露",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-030",
+            "title": "露",
+            "source_group": "mining",
+            "ku": 5
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "ゆつらしのさく",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 25,
+          "end": 31
+        },
+        "mirror_position": {
+          "start": 1,
+          "end": 7,
+          "relation": "crosses-ku1-ku2"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-031:ku1",
+        "unit_type": "attested-meter-phrase",
+        "reading": "やとるつゆ",
+        "span_length": 5,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "露",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-031",
+            "title": "同（露）",
+            "source_group": "mining",
+            "ku": 1
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "ゆつるとや",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 1,
+          "end": 5
+        },
+        "mirror_position": {
+          "start": 27,
+          "end": 31,
+          "relation": "within-ku5-tail"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-031:ku2",
+        "unit_type": "attested-meter-phrase",
+        "reading": "たまはのきはの",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "露",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-031",
+            "title": "同（露）",
+            "source_group": "mining",
+            "ku": 2
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "のはきのはまた",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 6,
+          "end": 12
+        },
+        "mirror_position": {
+          "start": 20,
+          "end": 26,
+          "relation": "crosses-ku4-ku5"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-031:ku3",
+        "unit_type": "attested-meter-phrase",
+        "reading": "はにしけし",
+        "span_length": 5,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "露",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-031",
+            "title": "同（露）",
+            "source_group": "mining",
+            "ku": 3
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "しけしには",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 13,
+          "end": 17
+        },
+        "mirror_position": {
+          "start": 15,
+          "end": 19,
+          "relation": "crosses-ku3-ku4-around-center"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-031:ku4",
+        "unit_type": "attested-meter-phrase",
+        "reading": "にはのはきのは",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "露",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-031",
+            "title": "同（露）",
+            "source_group": "mining",
+            "ku": 4
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "はのきはのはに",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 18,
+          "end": 24
+        },
+        "mirror_position": {
+          "start": 8,
+          "end": 14,
+          "relation": "crosses-ku2-ku3"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-031:ku5",
+        "unit_type": "attested-meter-phrase",
+        "reading": "またゆつるとや",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "露",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-031",
+            "title": "同（露）",
+            "source_group": "mining",
+            "ku": 5
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "やとるつゆたま",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 25,
+          "end": 31
+        },
+        "mirror_position": {
+          "start": 1,
+          "end": 7,
+          "relation": "crosses-ku1-ku2"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-033:ku1",
+        "unit_type": "attested-meter-phrase",
+        "reading": "きつるまま",
+        "span_length": 5,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "月",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-033",
+            "title": "月",
+            "source_group": "mining",
+            "ku": 1
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "ままるつき",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 1,
+          "end": 5
+        },
+        "mirror_position": {
+          "start": 27,
+          "end": 31,
+          "relation": "within-ku5-tail"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-033:ku2",
+        "unit_type": "attested-meter-phrase",
+        "reading": "ちもきよけらし",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "月",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-033",
+            "title": "月",
+            "source_group": "mining",
+            "ku": 2
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "しらけよきもち",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 6,
+          "end": 12
+        },
+        "mirror_position": {
+          "start": 20,
+          "end": 26,
+          "relation": "crosses-ku4-ku5"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-033:ku3",
+        "unit_type": "attested-meter-phrase",
+        "reading": "けふのよの",
+        "span_length": 5,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "月",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-033",
+            "title": "月",
+            "source_group": "mining",
+            "ku": 3
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "のよのふけ",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 13,
+          "end": 17
+        },
+        "mirror_position": {
+          "start": 15,
+          "end": 19,
+          "relation": "crosses-ku3-ku4-around-center"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-033:ku4",
+        "unit_type": "attested-meter-phrase",
+        "reading": "ふけしらけよき",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "月",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-033",
+            "title": "月",
+            "source_group": "mining",
+            "ku": 4
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "きよけらしけふ",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 18,
+          "end": 24
+        },
+        "mirror_position": {
+          "start": 8,
+          "end": 14,
+          "relation": "crosses-ku2-ku3"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-033:ku5",
+        "unit_type": "attested-meter-phrase",
+        "reading": "もちままるつき",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "月",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-033",
+            "title": "月",
+            "source_group": "mining",
+            "ku": 5
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "きつるままちも",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 25,
+          "end": 31
+        },
+        "mirror_position": {
+          "start": 1,
+          "end": 7,
+          "relation": "crosses-ku1-ku2"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-035:ku1",
+        "unit_type": "attested-meter-phrase",
+        "reading": "はれつみよ",
+        "span_length": 5,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "月",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-035",
+            "title": "同（月）",
+            "source_group": "mining",
+            "ku": 1
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "よみつれは",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 1,
+          "end": 5
+        },
+        "mirror_position": {
+          "start": 27,
+          "end": 31,
+          "relation": "within-ku5-tail"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-035:ku2",
+        "unit_type": "attested-meter-phrase",
+        "reading": "きつるもはきの",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "月",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-035",
+            "title": "同（月）",
+            "source_group": "mining",
+            "ku": 2
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "のきはもるつき",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 6,
+          "end": 12
+        },
+        "mirror_position": {
+          "start": 20,
+          "end": 26,
+          "relation": "crosses-ku4-ku5"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-035:ku3",
+        "unit_type": "attested-meter-phrase",
+        "reading": "はにてりて",
+        "span_length": 5,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "月",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-035",
+            "title": "同（月）",
+            "source_group": "mining",
+            "ku": 3
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "てりてには",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 13,
+          "end": 17
+        },
+        "mirror_position": {
+          "start": 15,
+          "end": 19,
+          "relation": "crosses-ku3-ku4-around-center"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-035:ku4",
+        "unit_type": "attested-meter-phrase",
+        "reading": "にはのきはもる",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "月",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-035",
+            "title": "同（月）",
+            "source_group": "mining",
+            "ku": 4
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "るもはきのはに",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 18,
+          "end": 24
+        },
+        "mirror_position": {
+          "start": 8,
+          "end": 14,
+          "relation": "crosses-ku2-ku3"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-035:ku5",
+        "unit_type": "attested-meter-phrase",
+        "reading": "つきよみつれは",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "月",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-035",
+            "title": "同（月）",
+            "source_group": "mining",
+            "ku": 5
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "はれつみよきつ",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 25,
+          "end": 31
+        },
+        "mirror_position": {
+          "start": 1,
+          "end": 7,
+          "relation": "crosses-ku1-ku2"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-038:ku1",
+        "unit_type": "attested-meter-phrase",
+        "reading": "なかきよの",
+        "span_length": 5,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "田毎月",
+          "月",
+          "田"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-038",
+            "title": "田毎月",
+            "source_group": "mining",
+            "ku": 1
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "のよきかな",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 1,
+          "end": 5
+        },
+        "mirror_position": {
+          "start": 27,
+          "end": 31,
+          "relation": "within-ku5-tail"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-038:ku2",
+        "unit_type": "attested-meter-phrase",
+        "reading": "きつるみちもと",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "田毎月",
+          "月",
+          "田"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-038",
+            "title": "田毎月",
+            "source_group": "mining",
+            "ku": 2
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "ともちみるつき",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 6,
+          "end": 12
+        },
+        "mirror_position": {
+          "start": 20,
+          "end": 26,
+          "relation": "crosses-ku4-ku5"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-038:ku3",
+        "unit_type": "attested-meter-phrase",
+        "reading": "こたしろし",
+        "span_length": 5,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "田毎月",
+          "月",
+          "田"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-038",
+            "title": "田毎月",
+            "source_group": "mining",
+            "ku": 3
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "しろしたこ",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 13,
+          "end": 17
+        },
+        "mirror_position": {
+          "start": 15,
+          "end": 19,
+          "relation": "crosses-ku3-ku4-around-center"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-038:ku4",
+        "unit_type": "attested-meter-phrase",
+        "reading": "たこともちみる",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "田毎月",
+          "月",
+          "田"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-038",
+            "title": "田毎月",
+            "source_group": "mining",
+            "ku": 4
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "るみちもとこた",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 18,
+          "end": 24
+        },
+        "mirror_position": {
+          "start": 8,
+          "end": 14,
+          "relation": "crosses-ku2-ku3"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-038:ku5",
+        "unit_type": "attested-meter-phrase",
+        "reading": "つきのよきかな",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "田毎月",
+          "月",
+          "田"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-038",
+            "title": "田毎月",
+            "source_group": "mining",
+            "ku": 5
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "なかきよのきつ",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 25,
+          "end": 31
+        },
+        "mirror_position": {
+          "start": 1,
+          "end": 7,
+          "relation": "crosses-ku1-ku2"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-040:ku1",
+        "unit_type": "attested-meter-phrase",
+        "reading": "てりつうみ",
+        "span_length": 5,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "月",
+          "海",
+          "鴻雁"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-040",
+            "title": "月明海上鴻鷹渡",
+            "source_group": "mining",
+            "ku": 1
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "みうつりて",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 1,
+          "end": 5
+        },
+        "mirror_position": {
+          "start": 27,
+          "end": 31,
+          "relation": "within-ku5-tail"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-040:ku2",
+        "unit_type": "attested-meter-phrase",
+        "reading": "きつしもなかの",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "月",
+          "海",
+          "鴻雁"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-040",
+            "title": "月明海上鴻鷹渡",
+            "source_group": "mining",
+            "ku": 2
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "のかなもしつき",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 6,
+          "end": 12
+        },
+        "mirror_position": {
+          "start": 20,
+          "end": 26,
+          "relation": "crosses-ku4-ku5"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-040:ku3",
+        "unit_type": "attested-meter-phrase",
+        "reading": "みなかりか",
+        "span_length": 5,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "月",
+          "海",
+          "鴻雁"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-040",
+            "title": "月明海上鴻鷹渡",
+            "source_group": "mining",
+            "ku": 3
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "かりかなみ",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 13,
+          "end": 17
+        },
+        "mirror_position": {
+          "start": 15,
+          "end": 19,
+          "relation": "crosses-ku3-ku4-around-center"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-040:ku4",
+        "unit_type": "attested-meter-phrase",
+        "reading": "なみのかなもし",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "月",
+          "海",
+          "鴻雁"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-040",
+            "title": "月明海上鴻鷹渡",
+            "source_group": "mining",
+            "ku": 4
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "しもなかのみな",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 18,
+          "end": 24
+        },
+        "mirror_position": {
+          "start": 8,
+          "end": 14,
+          "relation": "crosses-ku2-ku3"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-040:ku5",
+        "unit_type": "attested-meter-phrase",
+        "reading": "つきみうつりて",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "月",
+          "海",
+          "鴻雁"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-040",
+            "title": "月明海上鴻鷹渡",
+            "source_group": "mining",
+            "ku": 5
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "てりつうみきつ",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 25,
+          "end": 31
+        },
+        "mirror_position": {
+          "start": 1,
+          "end": 7,
+          "relation": "crosses-ku1-ku2"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-041:ku1",
+        "unit_type": "attested-meter-phrase",
+        "reading": "なかきかし",
+        "span_length": 5,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "初鷹",
+          "鳥"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-041",
+            "title": "初鷹",
+            "source_group": "mining",
+            "ku": 1
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "しかきかな",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 1,
+          "end": 5
+        },
+        "mirror_position": {
+          "start": 27,
+          "end": 31,
+          "relation": "within-ku5-tail"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-041:ku2",
+        "unit_type": "attested-meter-phrase",
+        "reading": "とふのはにてさ",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "初鷹",
+          "鳥"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-041",
+            "title": "初鷹",
+            "source_group": "mining",
+            "ku": 2
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "さてにはのふと",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 6,
+          "end": 12
+        },
+        "mirror_position": {
+          "start": 20,
+          "end": 26,
+          "relation": "crosses-ku4-ku5"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-041:ku3",
+        "unit_type": "attested-meter-phrase",
+        "reading": "はつかりか",
+        "span_length": 5,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "初鷹",
+          "鳥"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-041",
+            "title": "初鷹",
+            "source_group": "mining",
+            "ku": 3
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "かりかつは",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 13,
+          "end": 17
+        },
+        "mirror_position": {
+          "start": 15,
+          "end": 19,
+          "relation": "crosses-ku3-ku4-around-center"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-041:ku4",
+        "unit_type": "attested-meter-phrase",
+        "reading": "つはさてにはの",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "初鷹",
+          "鳥"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-041",
+            "title": "初鷹",
+            "source_group": "mining",
+            "ku": 4
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "のはにてさはつ",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 18,
+          "end": 24
+        },
+        "mirror_position": {
+          "start": 8,
+          "end": 14,
+          "relation": "crosses-ku2-ku3"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-041:ku5",
+        "unit_type": "attested-meter-phrase",
+        "reading": "ふとしかきかな",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "初鷹",
+          "鳥"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-041",
+            "title": "初鷹",
+            "source_group": "mining",
+            "ku": 5
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "なかきかしとふ",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 25,
+          "end": 31
+        },
+        "mirror_position": {
+          "start": 1,
+          "end": 7,
+          "relation": "crosses-ku1-ku2"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-043:ku1",
+        "unit_type": "attested-meter-phrase",
+        "reading": "なかくよふ",
+        "span_length": 5,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "名所",
+          "苅"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-043",
+            "title": "名所苅",
+            "source_group": "mining",
+            "ku": 1
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "ふよくかな",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 1,
+          "end": 5
+        },
+        "mirror_position": {
+          "start": 27,
+          "end": 31,
+          "relation": "within-ku5-tail"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-043:ku2",
+        "unit_type": "attested-meter-phrase",
+        "reading": "よもはらたまの",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "名所",
+          "苅"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-043",
+            "title": "名所苅",
+            "source_group": "mining",
+            "ku": 2
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "のまたらはもよ",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 6,
+          "end": 12
+        },
+        "mirror_position": {
+          "start": 20,
+          "end": 26,
+          "relation": "crosses-ku4-ku5"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-043:ku3",
+        "unit_type": "attested-meter-phrase",
+        "reading": "かしまやま",
+        "span_length": 5,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "名所",
+          "苅"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-043",
+            "title": "名所苅",
+            "source_group": "mining",
+            "ku": 3
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "まやましか",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 13,
+          "end": 17
+        },
+        "mirror_position": {
+          "start": 15,
+          "end": 19,
+          "relation": "crosses-ku3-ku4-around-center"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-043:ku4",
+        "unit_type": "attested-meter-phrase",
+        "reading": "しかのまたらは",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "名所",
+          "苅"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-043",
+            "title": "名所苅",
+            "source_group": "mining",
+            "ku": 4
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "はらたまのかし",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 18,
+          "end": 24
+        },
+        "mirror_position": {
+          "start": 8,
+          "end": 14,
+          "relation": "crosses-ku2-ku3"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-043:ku5",
+        "unit_type": "attested-meter-phrase",
+        "reading": "もよふよくかな",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "名所",
+          "苅"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-043",
+            "title": "名所苅",
+            "source_group": "mining",
+            "ku": 5
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "なかくよふよも",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 25,
+          "end": 31
+        },
+        "mirror_position": {
+          "start": 1,
+          "end": 7,
+          "relation": "crosses-ku1-ku2"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-044:ku1",
+        "unit_type": "attested-meter-phrase",
+        "reading": "やまのおく",
+        "span_length": 5,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "紅葉",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-044",
+            "title": "紅葉",
+            "source_group": "mining",
+            "ku": 1
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "くおのまや",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 1,
+          "end": 5
+        },
+        "mirror_position": {
+          "start": 27,
+          "end": 31,
+          "relation": "within-ku5-tail"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-044:ku2",
+        "unit_type": "attested-meter-phrase",
+        "reading": "ほとしらぬみち",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "紅葉",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-044",
+            "title": "紅葉",
+            "source_group": "mining",
+            "ku": 2
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "ちみぬらしとほ",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 6,
+          "end": 12
+        },
+        "mirror_position": {
+          "start": 20,
+          "end": 26,
+          "relation": "crosses-ku4-ku5"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-044:ku3",
+        "unit_type": "attested-meter-phrase",
+        "reading": "みもしはし",
+        "span_length": 5,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "紅葉",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-044",
+            "title": "紅葉",
+            "source_group": "mining",
+            "ku": 3
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "しはしもみ",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 13,
+          "end": 17
+        },
+        "mirror_position": {
+          "start": 15,
+          "end": 19,
+          "relation": "crosses-ku3-ku4-around-center"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-044:ku4",
+        "unit_type": "attested-meter-phrase",
+        "reading": "もみちみぬらし",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "紅葉",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-044",
+            "title": "紅葉",
+            "source_group": "mining",
+            "ku": 4
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "しらぬみちみも",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 18,
+          "end": 24
+        },
+        "mirror_position": {
+          "start": 8,
+          "end": 14,
+          "relation": "crosses-ku2-ku3"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-044:ku5",
+        "unit_type": "attested-meter-phrase",
+        "reading": "とほくおのまや",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "紅葉",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-044",
+            "title": "紅葉",
+            "source_group": "mining",
+            "ku": 5
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "やまのおくほと",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 25,
+          "end": 31
+        },
+        "mirror_position": {
+          "start": 1,
+          "end": 7,
+          "relation": "crosses-ku1-ku2"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-045:ku1",
+        "unit_type": "attested-meter-phrase",
+        "reading": "やまのせか",
+        "span_length": 5,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "九月尽",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-045",
+            "title": "九月尽",
+            "source_group": "mining",
+            "ku": 1
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "かせのまや",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 1,
+          "end": 5
+        },
+        "mirror_position": {
+          "start": 27,
+          "end": 31,
+          "relation": "within-ku5-tail"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-045:ku2",
+        "unit_type": "attested-meter-phrase",
+        "reading": "ふゆかしてはの",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "九月尽",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-045",
+            "title": "九月尽",
+            "source_group": "mining",
+            "ku": 2
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "のはてしかゆふ",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 6,
+          "end": 12
+        },
+        "mirror_position": {
+          "start": 20,
+          "end": 26,
+          "relation": "crosses-ku4-ku5"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-045:ku3",
+        "unit_type": "attested-meter-phrase",
+        "reading": "きあかきか",
+        "span_length": 5,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "九月尽",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-045",
+            "title": "九月尽",
+            "source_group": "mining",
+            "ku": 3
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "かきかあき",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 13,
+          "end": 17
+        },
+        "mirror_position": {
+          "start": 15,
+          "end": 19,
+          "relation": "crosses-ku3-ku4-around-center"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-045:ku4",
+        "unit_type": "attested-meter-phrase",
+        "reading": "あきのはてしか",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "九月尽",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-045",
+            "title": "九月尽",
+            "source_group": "mining",
+            "ku": 4
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "かしてはのきあ",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 18,
+          "end": 24
+        },
+        "mirror_position": {
+          "start": 8,
+          "end": 14,
+          "relation": "crosses-ku2-ku3"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-045:ku5",
+        "unit_type": "attested-meter-phrase",
+        "reading": "ゆふかせのまや",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "九月尽",
+          "秋"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-045",
+            "title": "九月尽",
+            "source_group": "mining",
+            "ku": 5
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "やまのせかふゆ",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 25,
+          "end": 31
+        },
+        "mirror_position": {
+          "start": 1,
+          "end": 7,
+          "relation": "crosses-ku1-ku2"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-add-109:ku1",
+        "unit_type": "attested-meter-phrase",
+        "reading": "なかよさの",
+        "span_length": 5,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "月",
+          "嫁",
+          "娘"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-add-109",
+            "title": "嫁娘見月",
+            "source_group": "mining",
+            "ku": 1
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "のさよかな",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 1,
+          "end": 5
+        },
+        "mirror_position": {
+          "start": 27,
+          "end": 31,
+          "relation": "within-ku5-tail"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-add-109:ku2",
+        "unit_type": "attested-meter-phrase",
+        "reading": "きつるみそらは",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "月",
+          "嫁",
+          "娘"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-add-109",
+            "title": "嫁娘見月",
+            "source_group": "mining",
+            "ku": 2
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "はらそみるつき",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 6,
+          "end": 12
+        },
+        "mirror_position": {
+          "start": 20,
+          "end": 26,
+          "relation": "crosses-ku4-ku5"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-add-109:ku3",
+        "unit_type": "attested-meter-phrase",
+        "reading": "むすめよめ",
+        "span_length": 5,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "月",
+          "嫁",
+          "娘"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-add-109",
+            "title": "嫁娘見月",
+            "source_group": "mining",
+            "ku": 3
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "めよめすむ",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 13,
+          "end": 17
+        },
+        "mirror_position": {
+          "start": 15,
+          "end": 19,
+          "relation": "crosses-ku3-ku4-around-center"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-add-109:ku4",
+        "unit_type": "attested-meter-phrase",
+        "reading": "すむはらそみる",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "月",
+          "嫁",
+          "娘"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-add-109",
+            "title": "嫁娘見月",
+            "source_group": "mining",
+            "ku": 4
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "るみそらはむす",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 18,
+          "end": 24
+        },
+        "mirror_position": {
+          "start": 8,
+          "end": 14,
+          "relation": "crosses-ku2-ku3"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-add-109:ku5",
+        "unit_type": "attested-meter-phrase",
+        "reading": "つきのさよかな",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "月",
+          "嫁",
+          "娘"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-add-109",
+            "title": "嫁娘見月",
+            "source_group": "mining",
+            "ku": 5
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "なかよさのきつ",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 25,
+          "end": 31
+        },
+        "mirror_position": {
+          "start": 1,
+          "end": 7,
+          "relation": "crosses-ku1-ku2"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-add-111:ku1",
+        "unit_type": "attested-meter-phrase",
+        "reading": "みなほまし",
+        "span_length": 5,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "秋",
+          "実り"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-add-111",
+            "title": "出来秋",
+            "source_group": "mining",
+            "ku": 1
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "しまほなみ",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 1,
+          "end": 5
+        },
+        "mirror_position": {
+          "start": 27,
+          "end": 31,
+          "relation": "within-ku5-tail"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-add-111:ku2",
+        "unit_type": "attested-meter-phrase",
+        "reading": "とこもみのるか",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "秋",
+          "実り"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-add-111",
+            "title": "出来秋",
+            "source_group": "mining",
+            "ku": 2
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "かるのみもこと",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 6,
+          "end": 12
+        },
+        "mirror_position": {
+          "start": 20,
+          "end": 26,
+          "relation": "crosses-ku4-ku5"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-add-111:ku3",
+        "unit_type": "attested-meter-phrase",
+        "reading": "をたのほの",
+        "span_length": 5,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "秋",
+          "実り"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-add-111",
+            "title": "出来秋",
+            "source_group": "mining",
+            "ku": 3
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "のほのたを",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 13,
+          "end": 17
+        },
+        "mirror_position": {
+          "start": 15,
+          "end": 19,
+          "relation": "crosses-ku3-ku4-around-center"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-add-111:ku4",
+        "unit_type": "attested-meter-phrase",
+        "reading": "たをかるのみも",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "秋",
+          "実り"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-add-111",
+            "title": "出来秋",
+            "source_group": "mining",
+            "ku": 4
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "もみのるかをた",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 18,
+          "end": 24
+        },
+        "mirror_position": {
+          "start": 8,
+          "end": 14,
+          "relation": "crosses-ku2-ku3"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      },
+      {
+        "id": "phrase:shoju-add-111:ku5",
+        "unit_type": "attested-meter-phrase",
+        "reading": "ことしまほなみ",
+        "span_length": 7,
+        "surface_candidates": [],
+        "morphology_signature": "phrase-level; internal parse not asserted in v0.44",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月",
+          "秋",
+          "実り"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-add-111",
+            "title": "出来秋",
+            "source_group": "mining",
+            "ku": 5
+          }
+        ],
+        "confidence": "medium",
+        "attestation_strength": "strong-relative-to-short-spans",
+        "transferable": "conditional",
+        "reverse_reading": "みなほましとこ",
+        "reverse_analysis_candidates": [],
+        "position": {
+          "start": 25,
+          "end": 31
+        },
+        "mirror_position": {
+          "start": 1,
+          "end": 7,
+          "relation": "crosses-ku1-ku2"
+        },
+        "note": "Historically attested 5/7-kana phrase in the fixed 50-sample baseline. Mining-layer wording/kanji parse may still need source confirmation."
+      }
+    ],
+    "pivot_units": [
+      {
+        "id": "pivot:のねの",
+        "unit_type": "central-ABA-pivot",
+        "reading": "のねの",
+        "span_length": 3,
+        "surface_candidates": [],
+        "morphology_signature": "central3 ABA; lexical/morpheme parse unresolved unless separately attested",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-030",
+            "title": "露",
+            "source_group": "mining",
+            "field_tags": [
+              "露",
+              "秋"
+            ]
+          }
+        ],
+        "confidence": "medium",
+        "transferable": "conditional",
+        "reverse_reading": "のねの",
+        "reverse_analysis_candidates": [],
+        "note": "E3 from the five-variable grammar. Self-palindromic by structure; do not assume it is an independent word."
+      },
+      {
+        "id": "pivot:しけし",
+        "unit_type": "central-ABA-pivot",
+        "reading": "しけし",
+        "span_length": 3,
+        "surface_candidates": [],
+        "morphology_signature": "central3 ABA; lexical/morpheme parse unresolved unless separately attested",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-031",
+            "title": "同（露）",
+            "source_group": "mining",
+            "field_tags": [
+              "露",
+              "秋"
+            ]
+          }
+        ],
+        "confidence": "medium",
+        "transferable": "conditional",
+        "reverse_reading": "しけし",
+        "reverse_analysis_candidates": [],
+        "note": "E3 from the five-variable grammar. Self-palindromic by structure; do not assume it is an independent word."
+      },
+      {
+        "id": "pivot:のよの",
+        "unit_type": "central-ABA-pivot",
+        "reading": "のよの",
+        "span_length": 3,
+        "surface_candidates": [],
+        "morphology_signature": "central3 ABA; lexical/morpheme parse unresolved unless separately attested",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-033",
+            "title": "月",
+            "source_group": "mining",
+            "field_tags": [
+              "月",
+              "秋"
+            ]
+          }
+        ],
+        "confidence": "medium",
+        "transferable": "conditional",
+        "reverse_reading": "のよの",
+        "reverse_analysis_candidates": [],
+        "note": "E3 from the five-variable grammar. Self-palindromic by structure; do not assume it is an independent word."
+      },
+      {
+        "id": "pivot:てりて",
+        "unit_type": "central-ABA-pivot",
+        "reading": "てりて",
+        "span_length": 3,
+        "surface_candidates": [],
+        "morphology_signature": "central3 ABA; lexical/morpheme parse unresolved unless separately attested",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-035",
+            "title": "同（月）",
+            "source_group": "mining",
+            "field_tags": [
+              "月",
+              "秋"
+            ]
+          }
+        ],
+        "confidence": "medium",
+        "transferable": "conditional",
+        "reverse_reading": "てりて",
+        "reverse_analysis_candidates": [],
+        "note": "E3 from the five-variable grammar. Self-palindromic by structure; do not assume it is an independent word."
+      },
+      {
+        "id": "pivot:しろし",
+        "unit_type": "central-ABA-pivot",
+        "reading": "しろし",
+        "span_length": 3,
+        "surface_candidates": [],
+        "morphology_signature": "central3 ABA; lexical/morpheme parse unresolved unless separately attested",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-038",
+            "title": "田毎月",
+            "source_group": "mining",
+            "field_tags": [
+              "田毎月",
+              "月",
+              "田"
+            ]
+          }
+        ],
+        "confidence": "medium",
+        "transferable": "conditional",
+        "reverse_reading": "しろし",
+        "reverse_analysis_candidates": [],
+        "note": "E3 from the five-variable grammar. Self-palindromic by structure; do not assume it is an independent word."
+      },
+      {
+        "id": "pivot:かりか",
+        "unit_type": "central-ABA-pivot",
+        "reading": "かりか",
+        "span_length": 3,
+        "surface_candidates": [],
+        "morphology_signature": "central3 ABA; lexical/morpheme parse unresolved unless separately attested",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-040",
+            "title": "月明海上鴻鷹渡",
+            "source_group": "mining",
+            "field_tags": [
+              "月",
+              "海",
+              "鴻雁"
+            ]
+          },
+          {
+            "source_id": "shoju-041",
+            "title": "初鷹",
+            "source_group": "mining",
+            "field_tags": [
+              "初鷹",
+              "鳥"
+            ]
+          }
+        ],
+        "confidence": "medium",
+        "transferable": "conditional",
+        "reverse_reading": "かりか",
+        "reverse_analysis_candidates": [],
+        "note": "E3 from the five-variable grammar. Self-palindromic by structure; do not assume it is an independent word."
+      },
+      {
+        "id": "pivot:まやま",
+        "unit_type": "central-ABA-pivot",
+        "reading": "まやま",
+        "span_length": 3,
+        "surface_candidates": [],
+        "morphology_signature": "central3 ABA; lexical/morpheme parse unresolved unless separately attested",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-043",
+            "title": "名所苅",
+            "source_group": "mining",
+            "field_tags": [
+              "名所",
+              "苅"
+            ]
+          }
+        ],
+        "confidence": "medium",
+        "transferable": "conditional",
+        "reverse_reading": "まやま",
+        "reverse_analysis_candidates": [],
+        "note": "E3 from the five-variable grammar. Self-palindromic by structure; do not assume it is an independent word."
+      },
+      {
+        "id": "pivot:しはし",
+        "unit_type": "central-ABA-pivot",
+        "reading": "しはし",
+        "span_length": 3,
+        "surface_candidates": [],
+        "morphology_signature": "central3 ABA; lexical/morpheme parse unresolved unless separately attested",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-044",
+            "title": "紅葉",
+            "source_group": "mining",
+            "field_tags": [
+              "紅葉",
+              "秋"
+            ]
+          }
+        ],
+        "confidence": "medium",
+        "transferable": "conditional",
+        "reverse_reading": "しはし",
+        "reverse_analysis_candidates": [],
+        "note": "E3 from the five-variable grammar. Self-palindromic by structure; do not assume it is an independent word."
+      },
+      {
+        "id": "pivot:かきか",
+        "unit_type": "central-ABA-pivot",
+        "reading": "かきか",
+        "span_length": 3,
+        "surface_candidates": [],
+        "morphology_signature": "central3 ABA; lexical/morpheme parse unresolved unless separately attested",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-045",
+            "title": "九月尽",
+            "source_group": "mining",
+            "field_tags": [
+              "九月尽",
+              "秋"
+            ]
+          }
+        ],
+        "confidence": "medium",
+        "transferable": "conditional",
+        "reverse_reading": "かきか",
+        "reverse_analysis_candidates": [],
+        "note": "E3 from the five-variable grammar. Self-palindromic by structure; do not assume it is an independent word."
+      },
+      {
+        "id": "pivot:めよめ",
+        "unit_type": "central-ABA-pivot",
+        "reading": "めよめ",
+        "span_length": 3,
+        "surface_candidates": [],
+        "morphology_signature": "central3 ABA; lexical/morpheme parse unresolved unless separately attested",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-add-109",
+            "title": "嫁娘見月",
+            "source_group": "mining",
+            "field_tags": [
+              "月",
+              "嫁",
+              "娘"
+            ]
+          }
+        ],
+        "confidence": "medium",
+        "transferable": "conditional",
+        "reverse_reading": "めよめ",
+        "reverse_analysis_candidates": [],
+        "note": "E3 from the five-variable grammar. Self-palindromic by structure; do not assume it is an independent word."
+      },
+      {
+        "id": "pivot:のほの",
+        "unit_type": "central-ABA-pivot",
+        "reading": "のほの",
+        "span_length": 3,
+        "surface_candidates": [],
+        "morphology_signature": "central3 ABA; lexical/morpheme parse unresolved unless separately attested",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-add-111",
+            "title": "出来秋",
+            "source_group": "mining",
+            "field_tags": [
+              "秋",
+              "実り"
+            ]
+          }
+        ],
+        "confidence": "medium",
+        "transferable": "conditional",
+        "reverse_reading": "のほの",
+        "reverse_analysis_candidates": [],
+        "note": "E3 from the five-variable grammar. Self-palindromic by structure; do not assume it is an independent word."
+      }
+    ],
+    "seam_units": [
+      {
+        "id": "seam:B2:きつ",
+        "unit_type": "morphology-signed-seam",
+        "lattice_slot": "B2",
+        "reading": "きつ",
+        "span_length": 2,
+        "surface_candidates": [
+          "きつ…（来つる等の可能性。個別本文裁定要）",
+          "月（つき）"
+        ],
+        "morphology_signature": "verbal/lexical onset -> moon",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-035",
+            "title": "同（月）"
+          },
+          {
+            "source_id": "shoju-038",
+            "title": "田毎月"
+          },
+          {
+            "source_id": "shoju-040",
+            "title": "月明海上鴻鷹渡"
+          },
+          {
+            "source_id": "shoju-add-109",
+            "title": "嫁娘見月"
+          }
+        ],
+        "confidence": "medium",
+        "transferable": "conditional",
+        "reverse_reading": "つき",
+        "reverse_analysis_candidates": [
+          "月（つき）"
+        ],
+        "forward_parse": "きつ…（来つる等の可能性。個別本文裁定要）",
+        "reverse_parse": "月（つき）",
+        "note": "反転側の月は安定するが、前向き側の語境界・語義は作品ごとに確認が必要。"
+      },
+      {
+        "id": "seam:B2:ほと",
+        "unit_type": "morphology-signed-seam",
+        "lattice_slot": "B2",
+        "reading": "ほと",
+        "span_length": 2,
+        "surface_candidates": [
+          "複数: ほととぎす / ほど… / ほとけ",
+          "とほ…（遠…等）"
+        ],
+        "morphology_signature": "homographic-cell-with-multiple-morphologies",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-044",
+            "title": "紅葉"
+          }
+        ],
+        "confidence": "low-for-crossover",
+        "transferable": false,
+        "reverse_reading": "とほ",
+        "reverse_analysis_candidates": [
+          "とほ…（遠…等）"
+        ],
+        "forward_parse": "複数: ほととぎす / ほど… / ほとけ",
+        "reverse_parse": "とほ…（遠…等）",
+        "note": "同じセルでも語内部位置が異なる。文字列一致による交配は禁止。"
+      },
+      {
+        "id": "seam:D2:はに",
+        "unit_type": "morphology-signed-seam",
+        "lattice_slot": "D2",
+        "reading": "はに",
+        "span_length": 2,
+        "surface_candidates": [
+          "葉に",
+          "庭（には、歴史的表記）"
+        ],
+        "morphology_signature": "noun+particle -> place-noun",
+        "attached_particles": [
+          "context-dependent"
+        ],
+        "semantic_field": [
+          "秋・月"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-031",
+            "title": "同（露）"
+          },
+          {
+            "source_id": "shoju-035",
+            "title": "同（月）"
+          }
+        ],
+        "confidence": "high",
+        "transferable": true,
+        "reverse_reading": "には",
+        "reverse_analysis_candidates": [
+          "庭（には、歴史的表記）"
+        ],
+        "forward_parse": "葉に",
+        "reverse_parse": "庭（には、歴史的表記）",
+        "note": "境界ずらしの典型。"
+      },
+      {
+        "id": "seam:D2:みな",
+        "unit_type": "morphology-signed-seam",
+        "lattice_slot": "D2",
+        "reading": "みな",
+        "span_length": 2,
+        "surface_candidates": [
+          "皆",
+          "波"
+        ],
+        "morphology_signature": "collective-noun -> nature-noun",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-040",
+            "title": "月明海上鴻鷹渡"
+          }
+        ],
+        "confidence": "high",
+        "transferable": true,
+        "reverse_reading": "なみ",
+        "reverse_analysis_candidates": [
+          "波"
+        ],
+        "forward_parse": "皆",
+        "reverse_parse": "波",
+        "note": "宝船歌型の代表。"
+      },
+      {
+        "id": "seam:D2:けふ",
+        "unit_type": "morphology-signed-seam",
+        "lattice_slot": "D2",
+        "reading": "けふ",
+        "span_length": 2,
+        "surface_candidates": [
+          "今日",
+          "更け"
+        ],
+        "morphology_signature": "time-noun -> verb-stem",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-033",
+            "title": "月"
+          }
+        ],
+        "confidence": "high",
+        "transferable": true,
+        "reverse_reading": "ふけ",
+        "reverse_analysis_candidates": [
+          "更け"
+        ],
+        "forward_parse": "今日",
+        "reverse_parse": "更け",
+        "note": "時間語が反転側で述語へ転換する高価値例。"
+      }
+    ],
+    "edge_units": [
+      {
+        "id": "edge:なか:かな",
+        "unit_type": "attested-edge-reversal",
+        "reading": "なか",
+        "span_length": 2,
+        "surface_candidates": [],
+        "morphology_signature": "edge pair attested; detailed morphology not asserted unless separately signed",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-038",
+            "title": "田毎月",
+            "ku1": "なかきよの",
+            "ku5": "つきのよきかな"
+          },
+          {
+            "source_id": "shoju-041",
+            "title": "初鷹",
+            "ku1": "なかきかし",
+            "ku5": "ふとしかきかな"
+          },
+          {
+            "source_id": "shoju-043",
+            "title": "名所苅",
+            "ku1": "なかくよふ",
+            "ku5": "もよふよくかな"
+          },
+          {
+            "source_id": "shoju-add-109",
+            "title": "嫁娘見月",
+            "ku1": "なかよさの",
+            "ku5": "つきのさよかな"
+          }
+        ],
+        "confidence": "medium",
+        "transferable": "conditional",
+        "reverse_reading": "かな",
+        "reverse_analysis_candidates": [],
+        "corpus_count": 7,
+        "note": "Edge reversal is attested in the 50-sample corpus; reuse still requires topic and syntax review."
+      },
+      {
+        "id": "edge:みな:なみ",
+        "unit_type": "attested-edge-reversal",
+        "reading": "みな",
+        "span_length": 2,
+        "surface_candidates": [],
+        "morphology_signature": "edge pair attested; detailed morphology not asserted unless separately signed",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-add-111",
+            "title": "出来秋",
+            "ku1": "みなほまし",
+            "ku5": "ことしまほなみ"
+          }
+        ],
+        "confidence": "medium",
+        "transferable": "conditional",
+        "reverse_reading": "なみ",
+        "reverse_analysis_candidates": [],
+        "corpus_count": 3,
+        "note": "Edge reversal is attested in the 50-sample corpus; reuse still requires topic and syntax review."
+      },
+      {
+        "id": "edge:やま:まや",
+        "unit_type": "attested-edge-reversal",
+        "reading": "やま",
+        "span_length": 2,
+        "surface_candidates": [],
+        "morphology_signature": "edge pair attested; detailed morphology not asserted unless separately signed",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-044",
+            "title": "紅葉",
+            "ku1": "やまのおく",
+            "ku5": "とほくおのまや"
+          },
+          {
+            "source_id": "shoju-045",
+            "title": "九月尽",
+            "ku1": "やまのせか",
+            "ku5": "ゆふかせのまや"
+          }
+        ],
+        "confidence": "medium",
+        "transferable": "conditional",
+        "reverse_reading": "まや",
+        "reverse_analysis_candidates": [],
+        "corpus_count": 3,
+        "note": "Edge reversal is attested in the 50-sample corpus; reuse still requires topic and syntax review."
+      },
+      {
+        "id": "edge:やと:とや",
+        "unit_type": "attested-edge-reversal",
+        "reading": "やと",
+        "span_length": 2,
+        "surface_candidates": [],
+        "morphology_signature": "edge pair attested; detailed morphology not asserted unless separately signed",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-031",
+            "title": "同（露）",
+            "ku1": "やとるつゆ",
+            "ku5": "またゆつるとや"
+          }
+        ],
+        "confidence": "medium",
+        "transferable": "conditional",
+        "reverse_reading": "とや",
+        "reverse_analysis_candidates": [],
+        "corpus_count": 2,
+        "note": "Edge reversal is attested in the 50-sample corpus; reuse still requires topic and syntax review."
+      },
+      {
+        "id": "edge:きつ:つき",
+        "unit_type": "attested-edge-reversal",
+        "reading": "きつ",
+        "span_length": 2,
+        "surface_candidates": [],
+        "morphology_signature": "edge pair attested; detailed morphology not asserted unless separately signed",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-033",
+            "title": "月",
+            "ku1": "きつるまま",
+            "ku5": "もちままるつき"
+          }
+        ],
+        "confidence": "low-to-medium",
+        "transferable": "conditional",
+        "reverse_reading": "つき",
+        "reverse_analysis_candidates": [],
+        "corpus_count": 1,
+        "note": "Edge reversal is attested in the 50-sample corpus; reuse still requires topic and syntax review."
+      },
+      {
+        "id": "edge:てり:りて",
+        "unit_type": "attested-edge-reversal",
+        "reading": "てり",
+        "span_length": 2,
+        "surface_candidates": [],
+        "morphology_signature": "edge pair attested; detailed morphology not asserted unless separately signed",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-040",
+            "title": "月明海上鴻鷹渡",
+            "ku1": "てりつうみ",
+            "ku5": "つきみうつりて"
+          }
+        ],
+        "confidence": "low-to-medium",
+        "transferable": "conditional",
+        "reverse_reading": "りて",
+        "reverse_analysis_candidates": [],
+        "corpus_count": 1,
+        "note": "Edge reversal is attested in the 50-sample corpus; reuse still requires topic and syntax review."
+      },
+      {
+        "id": "edge:はれ:れは",
+        "unit_type": "attested-edge-reversal",
+        "reading": "はれ",
+        "span_length": 2,
+        "surface_candidates": [],
+        "morphology_signature": "edge pair attested; detailed morphology not asserted unless separately signed",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-035",
+            "title": "同（月）",
+            "ku1": "はれつみよ",
+            "ku5": "つきよみつれは"
+          }
+        ],
+        "confidence": "low-to-medium",
+        "transferable": "conditional",
+        "reverse_reading": "れは",
+        "reverse_analysis_candidates": [],
+        "corpus_count": 1,
+        "note": "Edge reversal is attested in the 50-sample corpus; reuse still requires topic and syntax review."
+      },
+      {
+        "id": "edge:ゆつ:つゆ",
+        "unit_type": "attested-edge-reversal",
+        "reading": "ゆつ",
+        "span_length": 2,
+        "surface_candidates": [],
+        "morphology_signature": "edge pair attested; detailed morphology not asserted unless separately signed",
+        "attached_particles": [],
+        "semantic_field": [
+          "秋・月"
+        ],
+        "provenance": [
+          {
+            "source_id": "shoju-030",
+            "title": "露",
+            "ku1": "ゆつらしの",
+            "ku5": "くさのしらつゆ"
+          }
+        ],
+        "confidence": "low-to-medium",
+        "transferable": "conditional",
+        "reverse_reading": "つゆ",
+        "reverse_analysis_candidates": [],
+        "corpus_count": 1,
+        "note": "Edge reversal is attested in the 50-sample corpus; reuse still requires topic and syntax review."
+      }
+    ]
+  },
+  "counts": {
+    "source_records": 12,
+    "phrase_instances": 60,
+    "unique_phrase_readings": 60,
+    "pivot_units": 11,
+    "seam_units": 5,
+    "edge_units": 8
+  }
+}
