@@ -1,0 +1,1157 @@
+{
+  "version": "0.73",
+  "growth_version": "0.30",
+  "gate_version": "0.72",
+  "public_behavior_changed": false,
+  "summary": {
+    "family_count": 45,
+    "min_gated_eligible_count": 8,
+    "changed_top5_count": 34,
+    "declarative_ask_top5_count": 0,
+    "non_quote_specialized_top5_count": 0,
+    "gated_top5_frequency": [
+      [
+        "judge-topic",
+        35
+      ],
+      [
+        "narrate-topic",
+        34
+      ],
+      [
+        "say-topic",
+        33
+      ],
+      [
+        "hear-topic",
+        31
+      ],
+      [
+        "state-topic",
+        31
+      ],
+      [
+        "interpret-topic",
+        12
+      ],
+      [
+        "read-muyo-topic",
+        8
+      ],
+      [
+        "write-topic",
+        8
+      ],
+      [
+        "hear-kuki",
+        8
+      ],
+      [
+        "know-rushi",
+        6
+      ],
+      [
+        "ack-topic",
+        5
+      ],
+      [
+        "tell-topic",
+        4
+      ],
+      [
+        "state-rubeno-topic",
+        3
+      ],
+      [
+        "reply-topic",
+        3
+      ],
+      [
+        "react-cry",
+        2
+      ],
+      [
+        "react-troubled",
+        1
+      ],
+      [
+        "react-silent",
+        1
+      ]
+    ],
+    "removed_frequency": [
+      [
+        "record-identity",
+        41
+      ],
+      [
+        "cause",
+        40
+      ],
+      [
+        "decide-topic",
+        34
+      ],
+      [
+        "decide",
+        34
+      ],
+      [
+        "ask-topic",
+        30
+      ],
+      [
+        "ask",
+        30
+      ],
+      [
+        "write-topic",
+        27
+      ],
+      [
+        "ack-topic",
+        27
+      ],
+      [
+        "tell-topic",
+        27
+      ],
+      [
+        "reply-topic",
+        27
+      ],
+      [
+        "read-muyo-topic",
+        27
+      ],
+      [
+        "write",
+        27
+      ],
+      [
+        "ack-with",
+        27
+      ],
+      [
+        "tell-with",
+        27
+      ],
+      [
+        "reply-with",
+        27
+      ],
+      [
+        "read-muyo-with",
+        27
+      ],
+      [
+        "react-cry",
+        24
+      ],
+      [
+        "react-troubled",
+        24
+      ],
+      [
+        "react-silent",
+        24
+      ],
+      [
+        "react-laugh",
+        24
+      ]
+    ]
+  },
+  "contexts": [
+    {
+      "family": "matsutake-wife",
+      "dimension": "出来事",
+      "layer": "L1",
+      "final_display": "確かに、母の父の母のこの松茸摘みに来て、奇跡的に見つけた妻の子の母の父の母に貸した。",
+      "current_eligible_count": 36,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic"
+      ]
+    },
+    {
+      "family": "shop-cicada",
+      "dimension": "関係",
+      "layer": "L1",
+      "final_display": "確かに、母の父の母のこの店のセミの子の母の父の母に貸した。",
+      "current_eligible_count": 36,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic"
+      ]
+    },
+    {
+      "family": "kitten",
+      "dimension": "関係",
+      "layer": "L1",
+      "final_display": "確かに、母の父の母のこの子猫の子の母の父の母に貸した。",
+      "current_eligible_count": 36,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic"
+      ]
+    },
+    {
+      "family": "woodpecker",
+      "dimension": "関係",
+      "layer": "L1",
+      "final_display": "確かに、母の父の母のこのキツツキの子の母の父の母に貸した。",
+      "current_eligible_count": 36,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic"
+      ]
+    },
+    {
+      "family": "lion",
+      "dimension": "関係",
+      "layer": "L1",
+      "final_display": "確かに、母の父の母のこの獅子の子の母の父の母に貸した。",
+      "current_eligible_count": 36,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic"
+      ]
+    },
+    {
+      "family": "nana",
+      "dimension": "関係",
+      "layer": "L1",
+      "final_display": "確かに、母の父の母のこのナナの子の母の父の母に貸した。",
+      "current_eligible_count": 36,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic"
+      ]
+    },
+    {
+      "family": "ishii",
+      "dimension": "関係",
+      "layer": "L1",
+      "final_display": "確かに、母の父の母のこの石井の子の母の父の母に貸した。",
+      "current_eligible_count": 36,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic"
+      ]
+    },
+    {
+      "family": "garden-crocodile",
+      "dimension": "場所",
+      "layer": "L1",
+      "final_display": "確かに、母の父の母のこの庭の滝の北のワニの子の母の父の母に貸した。",
+      "current_eligible_count": 36,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic"
+      ]
+    },
+    {
+      "family": "location-observation",
+      "dimension": "場所",
+      "layer": "L1",
+      "final_display": "タミも父の母のこの庭の滝の北のワニの子の母の父も見た。",
+      "current_eligible_count": 34,
+      "gated_eligible_count": 14,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "interpret-topic"
+      ]
+    },
+    {
+      "family": "reason-garden",
+      "dimension": "理由",
+      "layer": "L2",
+      "final_display": "ダイセの母のこの庭の滝の北のワニの子の母のせいだ。",
+      "current_eligible_count": 35,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic"
+      ]
+    },
+    {
+      "family": "husband-identity",
+      "dimension": "状況",
+      "layer": "L2",
+      "final_display": "旦那、母のこの庭の滝の北のワニの子の母なんだ。",
+      "current_eligible_count": 35,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic"
+      ]
+    },
+    {
+      "family": "attribute-young",
+      "dimension": "属性",
+      "layer": "L1",
+      "final_display": "も母のこのナナの子の母も",
+      "current_eligible_count": 36,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic"
+      ]
+    },
+    {
+      "family": "time-observation",
+      "dimension": "時間",
+      "layer": "L2",
+      "final_display": "タミも今朝の母のこのナナの子の母の酒も見た。",
+      "current_eligible_count": 34,
+      "gated_eligible_count": 14,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "interpret-topic"
+      ]
+    },
+    {
+      "family": "attribute-light",
+      "dimension": "属性",
+      "layer": "L2",
+      "final_display": "イルカもこの庭の滝の北のワニの子も軽い。",
+      "current_eligible_count": 36,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic"
+      ]
+    },
+    {
+      "family": "event-wait",
+      "dimension": "出来事",
+      "layer": "L1",
+      "final_display": "妻も父の母のこのナナの子の母の父も待つ。",
+      "current_eligible_count": 36,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic"
+      ]
+    },
+    {
+      "family": "event-arrival",
+      "dimension": "出来事",
+      "layer": "L2",
+      "final_display": "タキも父の母のこの庭の滝の北のワニの子の母の父も来た。",
+      "current_eligible_count": 36,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic"
+      ]
+    },
+    {
+      "family": "existence-garden",
+      "dimension": "存在",
+      "layer": "L2",
+      "final_display": "ルイも父の母のこの庭の滝の北のワニの子の母の父もいる。",
+      "current_eligible_count": 36,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic"
+      ]
+    },
+    {
+      "family": "event-sleep",
+      "dimension": "出来事",
+      "layer": "L1",
+      "final_display": "ルネも父の母のこのナナの子の母の父も寝る。",
+      "current_eligible_count": 36,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic"
+      ]
+    },
+    {
+      "family": "quote-matsutake",
+      "dimension": "引用・伝聞",
+      "layer": "L2",
+      "final_display": "旦那、記録の「ダイセの‹スエカは、«タゲツは、‘タメトミは、“ルシは、〝久木は、＜タイカは、｛ルミは、（タミは、［タメキは、〔ルタカは、【ウトは、《田部野は、〈大樹は、『ウイは、「確かに、母の父の母のこの松茸摘みに来て、奇跡的に見つけた妻の子の母の父の母に貸した」は言う』は聞いた〉は述べた》は問う】は語る〕は決めた］は見た）は見る｝は書いた＞は聞く〟は知る”は認めた’は告げた»は返す›のせいだ」の黒木なんだ。",
+      "current_eligible_count": 8,
+      "gated_eligible_count": 8,
+      "current_top5": [
+        "read-muyo-topic",
+        "state-rubeno-topic",
+        "react-cry",
+        "react-troubled",
+        "react-silent"
+      ],
+      "gated_top5": [
+        "read-muyo-topic",
+        "state-rubeno-topic",
+        "react-cry",
+        "react-troubled",
+        "react-silent"
+      ]
+    },
+    {
+      "family": "quote-garden",
+      "dimension": "引用・伝聞",
+      "layer": "L2",
+      "final_display": "ウトは、〝田部野は、＜ウイは、｛スエカは、（タゲツは、［タメトミは、〔ルシは、【久木は、《タイカは、〈ルミは、『大樹は、「確かに、母の父の母のこの庭の滝の北のワニの子の母の父の母に貸した」は聞いた』は見る〉は書いた》は聞く】は知る〕は認めた］は告げた）は返す｝は言う＞は述べた〟は問う。",
+      "current_eligible_count": 16,
+      "gated_eligible_count": 12,
+      "current_top5": [
+        "narrate-topic",
+        "decide-topic",
+        "judge-topic",
+        "read-muyo-topic",
+        "state-rubeno-topic"
+      ],
+      "gated_top5": [
+        "narrate-topic",
+        "judge-topic",
+        "read-muyo-topic",
+        "state-rubeno-topic",
+        "react-cry"
+      ]
+    },
+    {
+      "family": "quote-reason",
+      "dimension": "引用・伝聞",
+      "layer": "L2",
+      "final_display": "タミは、＜タメキは、｛ルタカは、（ウトは、［大樹は、〔ウイは、【スエカは、《タゲツは、〈タメトミは、『田部野は、「ダイセの母のこの庭の滝の北のワニの子の母のせいだ」は述べた』は認めた〉は告げた》は返す】は言う〕は聞いた］は問う）は語る｝は決めた＞は見た。",
+      "current_eligible_count": 15,
+      "gated_eligible_count": 14,
+      "current_top5": [
+        "interpret-topic",
+        "write-topic",
+        "hear-kuki",
+        "know-rushi",
+        "read-muyo-topic"
+      ],
+      "gated_top5": [
+        "interpret-topic",
+        "write-topic",
+        "hear-kuki",
+        "know-rushi",
+        "read-muyo-topic"
+      ]
+    },
+    {
+      "family": "quote-wait",
+      "dimension": "引用・伝聞",
+      "layer": "L2",
+      "final_display": "ルシは、＜久木は、｛タイカは、（ルミは、［タミは、〔タメキは、【ルタカは、《田部野は、〈大樹は、『ウトは、「妻も父の母のこのナナの子の母の父も待つ」は問う』は聞いた〉は述べた》は語る】は決めた〕は見た］は見る）は書いた｝は聞く＞は知る。",
+      "current_eligible_count": 18,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "say-topic",
+        "ack-topic",
+        "tell-topic",
+        "reply-topic",
+        "read-muyo-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "ack-topic",
+        "tell-topic",
+        "reply-topic",
+        "read-muyo-topic"
+      ]
+    },
+    {
+      "family": "quote-time",
+      "dimension": "引用・伝聞",
+      "layer": "L2",
+      "final_display": "ルシは、｛久木は、（タイカは、［ルミは、〔タメキは、【ウトは、《田部野は、〈大樹は、『ルタカは、「タミも今朝の母のこのナナの子の母の酒も見た」は語る』は聞いた〉は述べた》は問う】は決めた〕は見る］は書いた）は聞く｝は知る。",
+      "current_eligible_count": 18,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "say-topic",
+        "ack-topic",
+        "tell-topic",
+        "reply-topic",
+        "read-muyo-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "ack-topic",
+        "tell-topic",
+        "reply-topic",
+        "read-muyo-topic"
+      ]
+    },
+    {
+      "family": "quote-young",
+      "dimension": "引用・伝聞",
+      "layer": "L2",
+      "final_display": "ウトは、｛田部野は、（大樹は、［ウイは、〔スエカは、【タゲツは、《タメトミは、〈ルシは、『タメキは、「も母のこのナナの子の母も」は決めた』は知る〉は認めた》は告げた】は返す〕は言う］は聞いた）は述べた｝は問う。",
+      "current_eligible_count": 19,
+      "gated_eligible_count": 17,
+      "current_top5": [
+        "narrate-topic",
+        "judge-topic",
+        "interpret-topic",
+        "write-topic",
+        "hear-kuki"
+      ],
+      "gated_top5": [
+        "narrate-topic",
+        "judge-topic",
+        "interpret-topic",
+        "write-topic",
+        "hear-kuki"
+      ]
+    },
+    {
+      "family": "quote-light",
+      "dimension": "引用・伝聞",
+      "layer": "L2",
+      "final_display": "ルタカは、｛ウトは、（田部野は、［大樹は、〔ウイは、【スエカは、《タゲツは、〈タメトミは、『久木は、「イルカもこの庭の滝の北のワニの子も軽い」は聞く』は認めた〉は告げた》は返す】は言う〕は聞いた］は述べた）は問う｝は語る。",
+      "current_eligible_count": 19,
+      "gated_eligible_count": 15,
+      "current_top5": [
+        "decide-topic",
+        "judge-topic",
+        "interpret-topic",
+        "write-topic",
+        "know-rushi"
+      ],
+      "gated_top5": [
+        "judge-topic",
+        "interpret-topic",
+        "write-topic",
+        "know-rushi",
+        "read-muyo-topic"
+      ]
+    },
+    {
+      "family": "quote-sleep",
+      "dimension": "引用・伝聞",
+      "layer": "L2",
+      "final_display": "タメキは、｛ルタカは、（ウトは、［田部野は、〔大樹は、【ウイは、《スエカは、〈タゲツは、『ルシは、「ルネも父の母のこのナナの子の母の父も寝る」は知る』は告げた〉は返す》は言う】は聞いた〕は述べた］は問う）は語る｝は決めた。",
+      "current_eligible_count": 19,
+      "gated_eligible_count": 17,
+      "current_top5": [
+        "judge-topic",
+        "interpret-topic",
+        "write-topic",
+        "hear-kuki",
+        "ack-topic"
+      ],
+      "gated_top5": [
+        "judge-topic",
+        "interpret-topic",
+        "write-topic",
+        "hear-kuki",
+        "ack-topic"
+      ]
+    },
+    {
+      "family": "quote-arrival",
+      "dimension": "引用・伝聞",
+      "layer": "L2",
+      "final_display": "タメトミは、｛ルシは、（久木は、［タイカは、〔タミは、【タメキは、《ルタカは、〈ウトは、『ルミは、「タキも父の母のこの庭の滝の北のワニの子の母の父も来た」は見る』は問う〉は語る》は決めた】は見た〕は書いた］は聞く）は知る｝は認めた。",
+      "current_eligible_count": 20,
+      "gated_eligible_count": 18,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "tell-topic",
+        "reply-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "tell-topic",
+        "reply-topic"
+      ]
+    },
+    {
+      "family": "quote-existence",
+      "dimension": "引用・伝聞",
+      "layer": "L2",
+      "final_display": "ウトは、｛田部野は、（大樹は、［ウイは、〔スエカは、【タゲツは、《タメトミは、〈ルシは、『タイカは、「ルイも父の母のこの庭の滝の北のワニの子の母の父もいる」は書いた』は知る〉は認めた》は告げた】は返す〕は言う］は聞いた）は述べた｝は問う。",
+      "current_eligible_count": 19,
+      "gated_eligible_count": 15,
+      "current_top5": [
+        "narrate-topic",
+        "decide-topic",
+        "judge-topic",
+        "interpret-topic",
+        "hear-kuki"
+      ],
+      "gated_top5": [
+        "narrate-topic",
+        "judge-topic",
+        "interpret-topic",
+        "hear-kuki",
+        "read-muyo-topic"
+      ]
+    },
+    {
+      "family": "quote-situation",
+      "dimension": "引用・伝聞",
+      "layer": "L2",
+      "final_display": "タメキは、｛ルタカは、（ウトは、［田部野は、〔大樹は、【ウイは、《スエカは、〈タゲツは、『タミは、「旦那、母のこの庭の滝の北のワニの子の母なんだ」は見た』は告げた〉は返す》は言う】は聞いた〕は述べた］は問う）は語る｝は決めた。",
+      "current_eligible_count": 17,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "interpret-topic",
+        "write-topic",
+        "hear-kuki",
+        "know-rushi",
+        "ack-topic"
+      ],
+      "gated_top5": [
+        "interpret-topic",
+        "write-topic",
+        "hear-kuki",
+        "know-rushi",
+        "ack-topic"
+      ]
+    },
+    {
+      "family": "quote-location",
+      "dimension": "引用・伝聞",
+      "layer": "L2",
+      "final_display": "ウトは、｛田部野は、（大樹は、［ウイは、〔スエカは、【タゲツは、《ルシは、〈久木は、『タメトミは、「タミも父の母のこの庭の滝の北のワニの子の母の父も見た」は認めた』は聞く〉は知る》は告げた】は返す〕は言う］は聞いた）は述べた｝は問う。",
+      "current_eligible_count": 18,
+      "gated_eligible_count": 14,
+      "current_top5": [
+        "narrate-topic",
+        "decide-topic",
+        "interpret-topic",
+        "write-topic",
+        "read-muyo-topic"
+      ],
+      "gated_top5": [
+        "narrate-topic",
+        "interpret-topic",
+        "write-topic",
+        "read-muyo-topic",
+        "state-rubeno-topic"
+      ]
+    },
+    {
+      "family": "event-bloom",
+      "dimension": "出来事",
+      "layer": "L1",
+      "final_display": "草も桃も咲く。",
+      "current_eligible_count": 36,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic"
+      ]
+    },
+    {
+      "family": "event-burn-tire",
+      "dimension": "出来事",
+      "layer": "L2",
+      "final_display": "タイヤもトマトも焼いた。",
+      "current_eligible_count": 36,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic"
+      ]
+    },
+    {
+      "family": "event-horse-dance",
+      "dimension": "出来事",
+      "layer": "L2",
+      "final_display": "馬も父の母のこのナナの子の母の父も舞う。",
+      "current_eligible_count": 36,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic"
+      ]
+    },
+    {
+      "family": "event-chase",
+      "dimension": "出来事",
+      "layer": "L2",
+      "final_display": "魚も母のこのナナの子の母も追う。",
+      "current_eligible_count": 36,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic"
+      ]
+    },
+    {
+      "family": "event-call",
+      "dimension": "出来事",
+      "layer": "L2",
+      "final_display": "ブヨも母のこのナナの子の母も呼ぶ。",
+      "current_eligible_count": 36,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic"
+      ]
+    },
+    {
+      "family": "event-seed-sleep",
+      "dimension": "出来事",
+      "layer": "L2",
+      "final_display": "種も母のこのナナの子の母も寝た。",
+      "current_eligible_count": 36,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic"
+      ]
+    },
+    {
+      "family": "quote-bloom",
+      "dimension": "引用・伝聞",
+      "layer": "L2",
+      "final_display": "タメキは、｛ルタカは、（ウトは、［田部野は、〔大樹は、【ウイは、《ルベノは、〈ムヨは、『タゲツは、「草も桃も咲く」は告げた』は読む〉は述べる》は言う】は聞いた〕は述べた］は問う）は語る｝は決めた。",
+      "current_eligible_count": 18,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "judge-topic",
+        "interpret-topic",
+        "write-topic",
+        "hear-kuki",
+        "know-rushi"
+      ],
+      "gated_top5": [
+        "judge-topic",
+        "interpret-topic",
+        "write-topic",
+        "hear-kuki",
+        "know-rushi"
+      ]
+    },
+    {
+      "family": "quote-tire",
+      "dimension": "引用・伝聞",
+      "layer": "L2",
+      "final_display": "ルベノは、｛ムヨは、（タゲツは、［タメトミは、〔ルシは、【久木は、《タイカは、〈ルミは、『スエカは、「タイヤもトマトも焼いた」は返す』は見る〉は書いた》は聞く】は知る〕は認めた］は告げた）は読む｝は述べる。",
+      "current_eligible_count": 20,
+      "gated_eligible_count": 14,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic"
+      ]
+    },
+    {
+      "family": "quote-horse",
+      "dimension": "引用・伝聞",
+      "layer": "L2",
+      "final_display": "ウイは、｛ルベノは、（スエカは、［タゲツは、〔タメトミは、【ルシは、《久木は、〈タイカは、『ムヨは、「馬も父の母のこのナナの子の母の父も舞う」は読む』は書いた〉は聞く》は知る】は認めた〕は告げた］は返す）は述べる｝は言う。",
+      "current_eligible_count": 20,
+      "gated_eligible_count": 14,
+      "current_top5": [
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic",
+        "decide-topic"
+      ],
+      "gated_top5": [
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic",
+        "interpret-topic"
+      ]
+    },
+    {
+      "family": "quote-chase",
+      "dimension": "引用・伝聞",
+      "layer": "L2",
+      "final_display": "ムヨは、｛スエカは、（タゲツは、［タメトミは、〔ルシは、【久木は、《タイカは、〈ルミは、『ルベノは、「魚も母のこのナナの子の母も追う」は述べる』は見る〉は書いた》は聞く】は知る〕は認めた］は告げた）は返す｝は読む。",
+      "current_eligible_count": 20,
+      "gated_eligible_count": 14,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic"
+      ]
+    },
+    {
+      "family": "quote-call",
+      "dimension": "引用・伝聞",
+      "layer": "L2",
+      "final_display": "タイカは、｛ルミは、（タミは、［タメキは、〔ルタカは、【ウトは、《田部野は、〈大樹は、『ダイセの「ブヨも母のこのナナの子の母も呼ぶ」のせいだ』は聞いた〉は述べた》は問う】は語る〕は決めた］は見た）は見る｝は書いた。",
+      "current_eligible_count": 19,
+      "gated_eligible_count": 18,
+      "current_top5": [
+        "say-topic",
+        "hear-kuki",
+        "know-rushi",
+        "ack-topic",
+        "tell-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-kuki",
+        "know-rushi",
+        "ack-topic",
+        "tell-topic"
+      ]
+    },
+    {
+      "family": "quote-seed",
+      "dimension": "引用・伝聞",
+      "layer": "L2",
+      "final_display": "タメキは、｛ルタカは、（ウトは、［田部野は、〔大樹は、【ウイは、《ルベノは、〈ムヨは、『旦那、記録の「種も母のこのナナの子の母も寝た」の黒木なんだ』は読む〉は述べる》は言う】は聞いた〕は述べた］は問う）は語る｝は決めた。",
+      "current_eligible_count": 19,
+      "gated_eligible_count": 18,
+      "current_top5": [
+        "judge-topic",
+        "interpret-topic",
+        "write-topic",
+        "hear-kuki",
+        "know-rushi"
+      ],
+      "gated_top5": [
+        "judge-topic",
+        "interpret-topic",
+        "write-topic",
+        "hear-kuki",
+        "know-rushi"
+      ]
+    },
+    {
+      "family": "reaction-wait",
+      "dimension": "反応",
+      "layer": "L2",
+      "final_display": "浦和は、《ルマダは、〈ルマコは、『クナは、「妻も父の母のこのナナの子の母の父も待つ」は泣く』は困る〉は黙る》は笑う。",
+      "current_eligible_count": 32,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic"
+      ]
+    },
+    {
+      "family": "reaction-reason",
+      "dimension": "反応",
+      "layer": "L2",
+      "final_display": "浦和は、《ルマダは、〈ルマコは、『クナは、「ダイセの母のこの庭の滝の北のワニの子の母のせいだ」は泣く』は困る〉は黙る》は笑う。",
+      "current_eligible_count": 31,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic"
+      ]
+    },
+    {
+      "family": "reaction-light",
+      "dimension": "反応",
+      "layer": "L2",
+      "final_display": "浦和は、《ルマダは、〈ルマコは、『クナは、「イルカもこの庭の滝の北のワニの子も軽い」は泣く』は困る〉は黙る》は笑う。",
+      "current_eligible_count": 32,
+      "gated_eligible_count": 16,
+      "current_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "ask-topic",
+        "narrate-topic"
+      ],
+      "gated_top5": [
+        "say-topic",
+        "hear-topic",
+        "state-topic",
+        "narrate-topic",
+        "judge-topic"
+      ]
+    }
+  ]
+}
