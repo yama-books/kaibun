@@ -1,0 +1,40 @@
+{
+  "version": "0.82",
+  "title": "Public explicit reading hints",
+  "source_audit_version": "0.81",
+  "policy": {
+    "scope": "high-risk-only",
+    "display_mode": "conditional-metadata-pill",
+    "canonical_reading_unchanged": true,
+    "sentence_display_unchanged": true
+  },
+  "lexemes": [
+    {
+      "id": "takata",
+      "display": "高田",
+      "canonical_reading": "たかた",
+      "label": "高田＝たかた",
+      "ambiguity_type": "proper-name-reading",
+      "risk": "high"
+    },
+    {
+      "id": "uo",
+      "display": "魚",
+      "canonical_reading": "うお",
+      "label": "魚＝うお",
+      "ambiguity_type": "common-noun-reading",
+      "risk": "high"
+    }
+  ],
+  "expected_coverage": {
+    "unique_public_candidates": 18,
+    "takata": 14,
+    "uo": 4
+  },
+  "invariants": [
+    "A hint is shown only when both the display lexeme and canonical reading are present in the selected candidate.",
+    "The hint does not alter palindrome validation.",
+    "The hint does not alter layer, weirdness, or japanese_quality.",
+    "Medium-risk lexemes from v0.81 remain metadata-only."
+  ]
+}
