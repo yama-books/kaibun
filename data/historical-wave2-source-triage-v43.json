@@ -1,0 +1,122 @@
+{
+  "version": "0.43",
+  "purpose": "Triage the five wave2 records held in v0.39 without modifying the frozen 50-sample baseline or promoting image-unconfirmed readings.",
+  "policy": {
+    "stable_50_untouched": true,
+    "wave2_v39_untouched": true,
+    "no_palindrome_driven_ocr_repair": true,
+    "source_image_required_for_promotion": true,
+    "strict_kana_policy": "Literal kana equality remains the machine criterion. Orthographic equivalences such as お/を are recorded separately, never silently folded."
+  },
+  "sources": {
+    "yamauchi": {
+      "author": "山内潤三",
+      "title": "廻文歌の限界と効用（下）―高野山釈教長歌を頂点として―",
+      "journal": "密教文化",
+      "issue": 107,
+      "year": 1974,
+      "pages": "1-38",
+      "doi": "10.11168/jeb1947.1974.107_1",
+      "official_url": "https://www.jstage.jst.go.jp/article/jeb1947/1974/107/1974_107_1/_article/-char/ja/",
+      "evidence_note": "Official metadata confirmed on J-STAGE. Direct PDF/source-image inspection was not available in the current research environment."
+    },
+    "surfaced_transcription": {
+      "tier": "secondary-index/OCR",
+      "evidence_note": "Used only to triage likely readings and mismatch classes. It is not sufficient to promote an item to source-image-confirmed/trusted."
+    },
+    "kaibun_uta_kotoba_no_tane": {
+      "title": "廻文歌詞之種",
+      "reading": "かいぶんうたことばのたね",
+      "bid": "100437979",
+      "holder": "静嘉堂文庫",
+      "holder_call_no": "５２１函２３架　２２４２６",
+      "digital_image_call_no": "DIG-SEKD-70815",
+      "catalog_url": "https://kokusho.nijl.ac.jp/biblio/100437979",
+      "image_content_inspected": false
+    }
+  },
+  "cases": [
+    {
+      "source_number": 82,
+      "title": "音羽滝",
+      "candidate_reading": "みのつみのきたのはとをくひびきよきひびくおとはのたきのみつのみ",
+      "kana_length": 31,
+      "strict_palindrome": false,
+      "mismatch_count": 6,
+      "mismatch_classes": [
+        "お/を",
+        "iteration-mark/voicing transcription"
+      ],
+      "status": "hold-source-image",
+      "reason": "The surfaced transcription yields 31 kana, but strict symmetry depends on how iteration marks and voicing are read and also contains an お/を asymmetry. Do not normalize these away without the source image."
+    },
+    {
+      "source_number": 88,
+      "title": "百千鳥",
+      "candidate_reading": "おひかせのみなやとりとちもものよのもみねちとりとやなみのせかひを",
+      "kana_length": 32,
+      "strict_palindrome": false,
+      "mismatch_count": 10,
+      "mismatch_classes": [
+        "central OCR/segmentation",
+        "お/を"
+      ],
+      "status": "hold-source-image",
+      "reason": "The surfaced OCR expands to 32 kana and is especially unstable around the center. This is not a safe target for palindrome-guided repair."
+    },
+    {
+      "source_number": 89,
+      "title": "老賀",
+      "candidate_reading": "やそやおいかないよろこひますとしとすまひころよいなかいおやそや",
+      "kana_length": 31,
+      "strict_palindrome": true,
+      "reading_assumption": "八十 is read やそ",
+      "status": "strongest-held-candidate",
+      "reason": "Under the ordinary classical reading 八十=やそ, the surfaced transcription becomes an exact 31-kana palindrome. Because that reading has not yet been checked against the source image or an explicit reading annotation, it remains held rather than promoted."
+    },
+    {
+      "source_number": 92,
+      "title": "旅行（同）",
+      "candidate_reading": "ひたかなはまいそくかちとほやまやほとちかくそいまはるなかたひ",
+      "kana_length": 30,
+      "strict_palindrome": false,
+      "mismatch_count": 22,
+      "mismatch_classes": [
+        "likely OCR corruption",
+        "length deficit"
+      ],
+      "status": "hold-source-image",
+      "reason": "The surfaced transcription is short of 31 kana and has widespread mirror mismatches, including a suspicious OCR character in the source transcription. No repair is attempted."
+    },
+    {
+      "source_number": 94,
+      "title": "旅行（同）",
+      "candidate_reading": "なかたひもついおそきはるともとちともとるはきそをいつもひたかな",
+      "kana_length": 31,
+      "strict_palindrome": false,
+      "mismatch_count": 2,
+      "mismatch_classes": [
+        "お/を only"
+      ],
+      "status": "hold-normalization-policy-and-source-image",
+      "reason": "The surfaced transcription is 31 kana and its only strict mismatch is お versus を at the mirrored positions. This is valuable evidence for a future historical-equivalence layer, but the strict-kana corpus must not silently fold the distinction."
+    }
+  ],
+  "summary": {
+    "promoted_to_wave2_verified": 0,
+    "remains_held": 5,
+    "strongest_for_next_image_check": [
+      89,
+      94,
+      82
+    ],
+    "source_image_priority": [
+      89,
+      94,
+      82,
+      88,
+      92
+    ],
+    "research_conclusion": "The five holds are heterogeneous. They should no longer be treated as a single generic OCR bucket: 89 is an exact-palindrome candidate under an explicit numeral reading assumption; 94 isolates an お/を normalization question; 82 centers on iteration/voicing plus お/を; 88 and 92 remain strongly image-dependent."
+  }
+}
