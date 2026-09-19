@@ -1,0 +1,129 @@
+{
+  "version": "1.24",
+  "updated_on": "2026-09-20",
+  "title": "Bidirectional tanka research layer: Shoju 123-130",
+  "purpose": "Model Shoju's explicitly grouped 'one poem readable as two poems' forms separately from strict self-palindromes, using the clear 31-kana cases 124-129 as machine-checkable bidirectional controls.",
+  "source": {
+    "author": "山内潤三",
+    "article": "廻文歌の限界と効用 (下)――高野山釈教長歌を頂点として――",
+    "source_group_annotation": "右八首 一首を弐首によめる ...",
+    "group_numbers": [123,124,125,126,127,128,129,130],
+    "direct_article_pdf_inspection": false,
+    "direct_edo_source_image_inspection": false,
+    "layer": "searchable-reproduction-of-scholarly-transcription"
+  },
+  "corpus_policy": {
+    "strict_palindrome_corpus": false,
+    "fixed50_unchanged": true,
+    "wave2_unchanged": true,
+    "wave3_strict_count_unchanged": true,
+    "public_generator_effect": "none"
+  },
+  "machine_clear_cases": [
+    {
+      "source_number": 124,
+      "title": "夕立返し冬枯",
+      "forward_reading": "はしれかもいまゆふたちをなみはのきいつちたかせかたきにはのまや",
+      "forward_meter": ["はしれかも","いまゆふたちを","なみはのき","いつちたかせか","たきにはのまや"],
+      "reverse_reading": "やまのはにきたかせかたちついきのはみなをちたふゆまいもかれしは",
+      "reverse_meter": ["やまのはに","きたかせかたち","ついきのは","みなをちたふゆ","まいもかれしは"],
+      "kana_length": 31,
+      "self_palindrome": false,
+      "reverse_is_distinct": true
+    },
+    {
+      "source_number": 125,
+      "title": "船中納涼返し虫",
+      "forward_reading": "はなひたしたまとはしるもやねにたりふねこきをしむすすみしをよさ",
+      "forward_meter": ["はなひたし","たまとはしるも","やねにたり","ふねこきをしむ","すすみしをよさ"],
+      "reverse_reading": "さよをしみすすむしをきこねふりたにねやもるしはとまたしたひなは",
+      "reverse_meter": ["さよをしみ","すすむしをきこ","ねふりたに","ねやもるしはと","またしたひなは"],
+      "kana_length": 31,
+      "self_palindrome": false,
+      "reverse_is_distinct": true
+    },
+    {
+      "source_number": 126,
+      "title": "月返し梅",
+      "forward_reading": "なかめむはくさもるほかもいけのまやなみしらけるはいよふけるつき",
+      "forward_meter": ["なかめむは","くさもるほかも","いけのまや","なみしらけるは","いよふけるつき"],
+      "reverse_reading": "きつるけふよいはるけらしみなやまのけいもかほるもさくはむめかな",
+      "reverse_meter": ["きつるけふ","よいはるけらし","みなやまの","けいもかほるも","さくはむめかな"],
+      "kana_length": 31,
+      "self_palindrome": false,
+      "reverse_is_distinct": true
+    },
+    {
+      "source_number": 127,
+      "title": "雪返し花",
+      "forward_reading": "けさみなはきよしふゆのひいつもくるこのへんはらそたえなしらゆき",
+      "forward_meter": ["けさみなは","きよしふゆのひ","いつもくる","このへんはらそ","たえなしらゆき"],
+      "reverse_reading": "きゆらしなえたそらはんへのこるくもついひのゆふしよきはなみさけ",
+      "reverse_meter": ["きゆらしな","えたそらはんへ","のこるくも","ついひのゆふし","よきはなみさけ"],
+      "kana_length": 31,
+      "self_palindrome": false,
+      "reverse_is_distinct": true
+    },
+    {
+      "source_number": 128,
+      "title": "神祇返し釈教",
+      "forward_reading": "さとむれしひとはきらくにみやもとをたみのよかくらいをまさるとさ",
+      "forward_meter": ["さとむれし","ひとはきらくに","みやもとを","たみのよかくら","いをまさるとさ"],
+      "reverse_reading": "さとるさまをいらくかよのみたをともやみにくらきはとひしれむとさ",
+      "reverse_meter": ["さとるさま","をいらくかよの","みたをとも","やみにくらきは","とひしれむとさ"],
+      "kana_length": 31,
+      "self_palindrome": false,
+      "reverse_is_distinct": true
+    },
+    {
+      "source_number": 129,
+      "title": "恋返し無常",
+      "forward_reading": "したひもをとひてはらすはとくはとそつたひしなかにいつやみるへき",
+      "forward_meter": ["したひもを","とひてはらすは","とくはとそ","つたひしなかに","いつやみるへき"],
+      "reverse_reading": "きへるみやついにかなしひたつそとはくとはすらはてひとをもひたし",
+      "reverse_meter": ["きへるみや","ついにかなしひ","たつそとは","くとはすらはて","ひとをもひたし"],
+      "kana_length": 31,
+      "self_palindrome": false,
+      "reverse_is_distinct": true
+    }
+  ],
+  "held_group_members": [
+    {
+      "source_number": 123,
+      "title": "花返し月",
+      "status": "hold-repeat-mark-resolution",
+      "reason": "The searchable transcription contains a repeat-mark-like glyph around 木のもと＼; do not silently expand it in the machine corpus."
+    },
+    {
+      "source_number": 130,
+      "title": "表婚礼うら睾入",
+      "status": "hold-layout-and-segmentation",
+      "reason": "The searchable reproduction mixes the poem with the following explanatory note; preserve source grouping but do not normalize until the poem boundary is independently resolved."
+    }
+  ],
+  "structural_findings": [
+    "These records are not self-palindromes: forward reading != reverse reading.",
+    "Both directions occupy the same 31-kana mirror space and can be segmented as 5/7/5/7/7 in the clear cases.",
+    "They therefore supply historical evidence for asymmetric lexical and syntactic resegmentation under exact character reversal.",
+    "This layer is useful as contrastive evidence for seam grammar but must not be counted as strict palindrome positives."
+  ],
+  "generator_research_implication": {
+    "strict_mode": "no direct candidate injection",
+    "seam_learning": "eligible as contrastive historical evidence",
+    "possible_future_mode": "bidirectional-tanka research mode",
+    "current_priority": "lower than strict-family/source expansion"
+  },
+  "safety_rules": [
+    "Do not label bidirectional distinct-reverse poems as strict palindromes.",
+    "Do not use unresolved 123/130 readings to complete symmetry.",
+    "Do not change fixed50/wave2/wave3 strict counts.",
+    "Any future seam extraction must retain forward/reverse provenance separately."
+  ],
+  "summary": {
+    "source_group_size": 8,
+    "machine_clear_bidirectional_cases": 6,
+    "held_cases": 2,
+    "strict_palindrome_promotions": 0,
+    "new_research_layer": "bidirectional-tanka"
+  }
+}
