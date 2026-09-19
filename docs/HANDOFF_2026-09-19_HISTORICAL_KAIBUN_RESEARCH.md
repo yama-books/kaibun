@@ -2289,3 +2289,164 @@ validator:
 ## 再開最短文
 
 **「HANDOFF 29節から再開。全体約84%。L2比較は62候補中同定13件のみ軽い集中があり、uniform維持＋同定最大2本capをv0.93で公開。Validate/Pages green。次はgrowth 53 family選択UI監査。」**
+
+
+---
+
+# 30. 2026-09-19 growth UI・人間品質評価 v0.94〜v0.98 チェックポイント
+
+## 進捗目安
+- 歴史回文研究・生成原理: **約86%**
+- 怪文回文メーカー全体目標: **約85%**
+
+## v0.94 growth selector usability audit
+
+53 narrative familyをUI観点で監査。
+
+L1:
+- 13 family
+- 4 dimension
+- 最大dimension 関係=6
+
+L2:
+- 40 family
+- 8 dimension
+- 引用・伝聞=22
+- 反応=7
+- 出来事=6
+
+発見:
+1. L2で `同段階で別案` が有効表示なのに、`growAgain()` 冒頭のL1限定returnで無反応。
+2. L2/allは40 familyがflat select。
+3. dimension選択後もfamily labelに同じdimensionが重複表示。
+4. dimension件数が見えない。
+5. familyごとの段数が見えない。
+
+追加:
+- `data/growth-selector-usability-audit-v94.json`
+
+## v0.95 growth selector policy / public v0.33
+
+追加:
+- `data/growth-selector-usability-policy-v95.json`
+
+公開UI:
+- badge `v0.33 / 長文化ナビ整理`
+- dimension labelに件数
+  - 例 `すべて (40)`
+  - `引用・伝聞 (22)`
+- dimension=all時はfamily selectをoptgroup化
+- family labelから冗長なdimension prefixを除去
+- family labelに段数を追加
+- family repopulate時、まだ有効なら現在選択を保持
+- `同段階で別案` はnarrativeならL1/L2両方で有効
+- structural rerollは従来どおりL1限定
+- 同stageを持つ別familyがない時はreroll buttonをdisable
+
+family/stage data自体は不変:
+- 53 family
+- 366 stage
+
+本体commit:
+- `3e7065fd4917d01befc606b7a1a3bbc10755743c`
+
+UI validator:
+- `303d174cf2474fde1b6591ff70e71d9a6a888817`
+- Validate `35438583579`: success
+- Pages `35438583592`: success
+
+## v0.96 blind human review form
+
+追加:
+- `data/public-quality-human-review-blind-v96.json`
+
+v0.79 fixed50から50件。
+
+blindで見せる:
+- review_id
+- display
+- canonical_reading
+
+伏せる:
+- source
+- layer
+- japanese_quality
+- weirdness
+- model review
+
+評価軸:
+- grammar: pass / marginal / fail
+- semantic_coherence: clear / strained / opaque
+- display_reading_fidelity: pass / hint-needed / mismatch
+- productive_value: expand / keep-only / hold
+- overall_naturalness: 1〜5
+- confidence
+
+## v0.97 post-blind adjudication ledger
+
+追加:
+- `data/public-quality-human-adjudication-v97.json`
+
+blind完了後だけcurrent product metadataをunblind。
+
+裁定:
+- keep-current
+- promote-layer
+- demote-layer
+- hold
+- display-fix
+- reading-hint
+- metadata-only
+
+モデルv0.80はhuman review後の補助情報のみ。
+
+validator:
+- `scripts/validate-human-quality-review.mjs`
+
+CI:
+- Validate `35438654255`: success
+- Pages `35438654248`: success
+
+文書:
+- `docs/HUMAN_QUALITY_REVIEW_PROTOCOL_V96_V97.md`
+
+## v0.98 medium-risk reading hint hold
+
+中リスク:
+- 主=ぬし → QB-038
+- 種=たね → QB-034, QB-036
+- 井川=いかわ → QB-022
+
+追加:
+- `data/medium-reading-hint-hold-v98.json`
+
+裁定:
+- 現在はmetadata-only
+- explicit pillは出さない
+- v0.96 human blind reviewで `display_reading_fidelity=hint-needed/mismatch` が出た場合だけ昇格検討
+
+高リスクhintは従来どおり2語のみ:
+- 高田=たかた
+- 魚=うお
+
+human-review validatorにv0.98 review ID連携も追加。
+
+## 次工程
+
+公開側の大きな既知課題はかなり整理済み。
+
+次は研究側へ戻し、優先順:
+1. hybrid-002 deep review
+2. Route A source-image verification再試行
+3. historical generatorの次のpositive family探索
+4. 人間がv0.96を記入した場合はv0.97 adjudicationへ進む
+
+固定事項:
+- fixed50変更なし
+- wave2 verified14 / held5変更なし
+- v0.76 baseline不変
+- medium hintはhuman review待ち
+
+## 再開最短文
+
+**「HANDOFF 30節から再開。全体約85%。公開v0.33でgrowth 53 familyをoptgroup/件数/段数表示へ整理しL2 reroll無反応を修正。v0.96 blind human review + v0.97 adjudication基盤を追加。中リスクreading hintはv0.98で人間判定待ち。次はhybrid-002 deep review。」**
