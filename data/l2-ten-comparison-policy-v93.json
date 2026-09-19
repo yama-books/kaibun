@@ -1,0 +1,30 @@
+{
+  "version": "0.93",
+  "title": "L2 ten-item comparison light concentration cap",
+  "source_audit_version": "0.92",
+  "public_behavior_change_planned": true,
+  "target": "L2 ten-item comparison only",
+  "rule": {
+    "base_sampling": "uniform without replacement from the existing L2 comparison pool",
+    "capped_family": "同定",
+    "max_items": 2,
+    "repair": "If the first uniform ten contains more than two identity items, keep two and replace the extras with unused non-identity candidates."
+  },
+  "rationale": [
+    "Uniform L2 sampling is broadly acceptable and should remain the default.",
+    "Only the 13-item identity family creates a noticeable clustering risk.",
+    "A two-item cap cuts visible repetition without imposing artificial source quotas."
+  ],
+  "invariants": [
+    "Exactly ten unique items when at least ten candidates exist.",
+    "No inventory or layer metadata changes.",
+    "L1 uses v0.86.1 stratified comparison and is unaffected.",
+    "L3 remains uniform.",
+    "The cap is based on semantic family metadata, not string matching."
+  ],
+  "expected_effect": {
+    "identity_max_in_ten": 2,
+    "previous_probability_at_least_three": 0.348,
+    "previous_probability_at_least_four": 0.1195
+  }
+}
