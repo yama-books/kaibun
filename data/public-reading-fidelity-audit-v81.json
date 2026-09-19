@@ -1,0 +1,141 @@
+{
+  "version": "0.81",
+  "title": "Public display-reading fidelity audit",
+  "public_behavior_changed": false,
+  "scope": "Explicit lexeme-level audit of public candidates where the displayed kanji/proper-name spelling may not uniquely determine the palindrome reading.",
+  "principle": "The normalized kana reading remains canonical for palindrome validation. Display ambiguity is a UX/fidelity issue, not a reason to alter a valid reading.",
+  "audited_lexemes": [
+    {
+      "display": "高田",
+      "canonical_reading": "たかた",
+      "risk": "high",
+      "ambiguity_type": "proper-name-reading",
+      "total_unique_candidates": 14,
+      "default_unique_candidates": 14,
+      "by_layer": {
+        "L1": 10,
+        "L2": 1,
+        "L3": 3
+      },
+      "by_source": {
+        "seed": 5,
+        "dna": 9,
+        "pair": 0,
+        "seam": 0,
+        "bridge": 0
+      },
+      "rationale": "The displayed surname/place spelling does not by itself force the intended たかた reading. The palindrome depends on たかた.",
+      "public_action": "show-explicit-reading-hint"
+    },
+    {
+      "display": "魚",
+      "canonical_reading": "うお",
+      "risk": "high",
+      "ambiguity_type": "common-noun-reading",
+      "total_unique_candidates": 4,
+      "default_unique_candidates": 4,
+      "by_layer": {
+        "L1": 4,
+        "L2": 0,
+        "L3": 0
+      },
+      "by_source": {
+        "seed": 0,
+        "dna": 0,
+        "pair": 4,
+        "seam": 0,
+        "bridge": 0
+      },
+      "rationale": "The productive reverse-pair family uo-ou requires 魚=うお; the display may also be read さかな in ordinary Japanese.",
+      "public_action": "show-explicit-reading-hint"
+    },
+    {
+      "display": "主",
+      "canonical_reading": "ぬし",
+      "risk": "medium",
+      "ambiguity_type": "common-noun-reading",
+      "total_unique_candidates": 2,
+      "default_unique_candidates": 2,
+      "by_layer": {
+        "L1": 0,
+        "L2": 2,
+        "L3": 0
+      },
+      "by_source": {
+        "seed": 0,
+        "dna": 0,
+        "pair": 2,
+        "seam": 0,
+        "bridge": 0
+      },
+      "rationale": "The pair nushi-shinu requires 主=ぬし; the character has other lexical readings.",
+      "public_action": "metadata-first"
+    },
+    {
+      "display": "種",
+      "canonical_reading": "たね",
+      "risk": "medium",
+      "ambiguity_type": "common-noun-reading",
+      "total_unique_candidates": 3,
+      "default_unique_candidates": 3,
+      "by_layer": {
+        "L1": 0,
+        "L2": 3,
+        "L3": 0
+      },
+      "by_source": {
+        "seed": 1,
+        "dna": 2,
+        "pair": 0,
+        "seam": 0,
+        "bridge": 0
+      },
+      "rationale": "The palindrome family requires 種=たね; the character may have other readings in other contexts.",
+      "public_action": "metadata-first"
+    },
+    {
+      "display": "井川",
+      "canonical_reading": "いかわ",
+      "risk": "medium",
+      "ambiguity_type": "proper-name-reading",
+      "total_unique_candidates": 4,
+      "default_unique_candidates": 4,
+      "by_layer": {
+        "L1": 4,
+        "L2": 0,
+        "L3": 0
+      },
+      "by_source": {
+        "seed": 1,
+        "dna": 2,
+        "pair": 0,
+        "seam": 1,
+        "bridge": 0
+      },
+      "rationale": "The app consistently uses いかわ, but proper-name readings are not guaranteed from orthography alone.",
+      "public_action": "metadata-first"
+    }
+  ],
+  "counts": {
+    "audited_unique_candidate_occurrences": 27,
+    "high_risk_unique_candidates": 18,
+    "medium_risk_unique_candidates": 9,
+    "high_risk_default_candidates": 18
+  },
+  "current_mitigation": {
+    "normalized_reading_line_already_visible": true,
+    "palindrome_validation_uses_normalized_reading": true,
+    "remaining_gap": "The display line itself does not explicitly tell the user which reading of an ambiguous kanji/proper name is intended."
+  },
+  "recommended_rollout": {
+    "phase1": "Add lexeme reading-hint metadata and show a compact hint only for high-risk lexemes.",
+    "phase2": "Keep medium-risk items metadata-only unless human review shows users frequently misread them.",
+    "preferred_ui": "A small metadata pill such as 読み指定 高田＝たかた or 魚＝うお; do not rewrite the sentence display.",
+    "avoid": [
+      "Changing the canonical kana reading to match a more common reading when that breaks the palindrome.",
+      "Adding furigana to every kanji candidate.",
+      "Demoting grammatical layer solely because a kanji has multiple readings."
+    ]
+  },
+  "next_step": "Create a public reading-hint lexeme file for high-risk items, validate coverage, and integrate a conditional UI pill."
+}
