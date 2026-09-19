@@ -1,0 +1,671 @@
+{
+  "version": "0.40",
+  "scope": "manual linguistic review of the 10 priority-semantic-review historical hybrids",
+  "policy": "No candidate is treated as an Edo-period original. These are machine recombinations of historically attested lines/components. 'promising' is a research status, not a claim of canonical classical-Japanese correctness.",
+  "source_note": "Primary comparison is Yamauchi 1974 transcription; exact kanji/word boundaries remain tentative where source transcription is difficult.",
+  "summary": {
+    "strong-promising": 1,
+    "hold-source-parse": 3,
+    "reject-for-now": 3,
+    "promising-but-parse-needed": 2,
+    "hold-too-many-sources": 1
+  },
+  "reviews": [
+    {
+      "id": "hybrid-008",
+      "status": "strong-promising",
+      "naturalness": "B+ tentative-classical",
+      "semantic_coherence": "high",
+      "tentative_parse": [
+        "長き夜の",
+        "来つるも萩の",
+        "葉に照りて",
+        "庭のきはもる",
+        "月の良きかな"
+      ],
+      "reasons": [
+        "第一・第五句は田毎月38番の同一外枠。",
+        "第二〜第四句の主要部分は月35番に由来し、萩・葉・庭・月という秋月の意味場が連続する。",
+        "D=はに は『葉に↔には（庭）』の高信頼継ぎ目。",
+        "外枠を入れ替えても夜・庭・月という場面が壊れにくい。"
+      ],
+      "cautions": [
+        "『きつるも』の係り先、第四句『きはもる』の漢字・語義は原画像または校訂本文で要確認。",
+        "古典語として完全に自然と確定する段階ではない。"
+      ],
+      "action": "keep-as-curated-research-candidate",
+      "reading": "なかきよのきつるもはきのはにてりてにはのきはもるつきのよきかな",
+      "meter": [
+        "なかきよの",
+        "きつるもはきの",
+        "はにてりて",
+        "にはのきはもる",
+        "つきのよきかな"
+      ],
+      "source_ids": [
+        "shoju-038",
+        "shoju-035"
+      ],
+      "provenance": {
+        "ku1": {
+          "reading": "なかきよの",
+          "source_factor": "AB",
+          "source_ids": [
+            "shoju-038"
+          ]
+        },
+        "ku2": {
+          "reading": "きつるもはきの",
+          "source_factor": "BC",
+          "source_ids": [
+            "shoju-035"
+          ]
+        },
+        "ku3": {
+          "reading": "はにてりて",
+          "source_factor": "DE",
+          "source_ids": [
+            "shoju-035"
+          ]
+        },
+        "ku4": {
+          "reading": "にはのきはもる",
+          "source_factor": "CD",
+          "source_ids": [
+            "shoju-035"
+          ]
+        },
+        "ku5": {
+          "reading": "つきのよきかな",
+          "source_factor": "AB",
+          "source_ids": [
+            "shoju-038"
+          ]
+        }
+      },
+      "strict_palindrome": true
+    },
+    {
+      "id": "hybrid-005",
+      "status": "hold-source-parse",
+      "naturalness": "B tentative",
+      "semantic_coherence": "medium-high",
+      "reasons": [
+        "月35番の萩・葉・庭の連続を保持し、40番の海・月の外枠と同じ秋月場に属する。",
+        "D=はに は高信頼継ぎ目。"
+      ],
+      "cautions": [
+        "第一句『てりつうみ』と第五句『つきみうつりて』の正確な漢字・統語解釈を先に確定したい。",
+        "海景と庭景の視点移動が一首として自然か未確定。"
+      ],
+      "action": "hold",
+      "reading": "てりつうみきつるもはきのはにてりてにはのきはもるつきみうつりて",
+      "meter": [
+        "てりつうみ",
+        "きつるもはきの",
+        "はにてりて",
+        "にはのきはもる",
+        "つきみうつりて"
+      ],
+      "source_ids": [
+        "shoju-040",
+        "shoju-035"
+      ],
+      "provenance": {
+        "ku1": {
+          "reading": "てりつうみ",
+          "source_factor": "AB",
+          "source_ids": [
+            "shoju-040"
+          ]
+        },
+        "ku2": {
+          "reading": "きつるもはきの",
+          "source_factor": "BC",
+          "source_ids": [
+            "shoju-035"
+          ]
+        },
+        "ku3": {
+          "reading": "はにてりて",
+          "source_factor": "DE",
+          "source_ids": [
+            "shoju-035"
+          ]
+        },
+        "ku4": {
+          "reading": "にはのきはもる",
+          "source_factor": "CD",
+          "source_ids": [
+            "shoju-035"
+          ]
+        },
+        "ku5": {
+          "reading": "つきみうつりて",
+          "source_factor": "AB",
+          "source_ids": [
+            "shoju-040"
+          ]
+        }
+      },
+      "strict_palindrome": true
+    },
+    {
+      "id": "hybrid-006",
+      "status": "hold-source-parse",
+      "naturalness": "C+ tentative",
+      "semantic_coherence": "medium",
+      "reasons": [
+        "38番と40番はいずれも月題で、意味場は一致。",
+        "D=みな↔なみ は高信頼の境界ずらし。"
+      ],
+      "cautions": [
+        "40番由来の中三句『きつしもなかの／みなかりか／なみのかなもし』自体の語分節が難しい。",
+        "意味場一致だけで全文自然さを保証できない例。"
+      ],
+      "action": "hold",
+      "reading": "なかきよのきつしもなかのみなかりかなみのかなもしつきのよきかな",
+      "meter": [
+        "なかきよの",
+        "きつしもなかの",
+        "みなかりか",
+        "なみのかなもし",
+        "つきのよきかな"
+      ],
+      "source_ids": [
+        "shoju-038",
+        "shoju-040"
+      ],
+      "provenance": {
+        "ku1": {
+          "reading": "なかきよの",
+          "source_factor": "AB",
+          "source_ids": [
+            "shoju-038"
+          ]
+        },
+        "ku2": {
+          "reading": "きつしもなかの",
+          "source_factor": "BC",
+          "source_ids": [
+            "shoju-040"
+          ]
+        },
+        "ku3": {
+          "reading": "みなかりか",
+          "source_factor": "DE",
+          "source_ids": [
+            "shoju-040"
+          ]
+        },
+        "ku4": {
+          "reading": "なみのかなもし",
+          "source_factor": "CD",
+          "source_ids": [
+            "shoju-040"
+          ]
+        },
+        "ku5": {
+          "reading": "つきのよきかな",
+          "source_factor": "AB",
+          "source_ids": [
+            "shoju-038"
+          ]
+        }
+      },
+      "strict_palindrome": true
+    },
+    {
+      "id": "hybrid-009",
+      "status": "reject-for-now",
+      "naturalness": "C",
+      "semantic_coherence": "medium",
+      "reasons": [
+        "月という意味場自体は共有する。"
+      ],
+      "cautions": [
+        "第一句『なかよさの』と第五句『つきのさよかな』の結合が、現状の校訂情報では統語的に弱い。",
+        "音列上の適合が意味上の適合を上回っている。"
+      ],
+      "action": "reject-until-source-reparse",
+      "reading": "なかよさのきつしもなかのみなかりかなみのかなもしつきのさよかな",
+      "meter": [
+        "なかよさの",
+        "きつしもなかの",
+        "みなかりか",
+        "なみのかなもし",
+        "つきのさよかな"
+      ],
+      "source_ids": [
+        "shoju-add-109",
+        "shoju-040"
+      ],
+      "provenance": {
+        "ku1": {
+          "reading": "なかよさの",
+          "source_factor": "AB",
+          "source_ids": [
+            "shoju-add-109"
+          ]
+        },
+        "ku2": {
+          "reading": "きつしもなかの",
+          "source_factor": "BC",
+          "source_ids": [
+            "shoju-040"
+          ]
+        },
+        "ku3": {
+          "reading": "みなかりか",
+          "source_factor": "DE",
+          "source_ids": [
+            "shoju-040"
+          ]
+        },
+        "ku4": {
+          "reading": "なみのかなもし",
+          "source_factor": "CD",
+          "source_ids": [
+            "shoju-040"
+          ]
+        },
+        "ku5": {
+          "reading": "つきのさよかな",
+          "source_factor": "AB",
+          "source_ids": [
+            "shoju-add-109"
+          ]
+        }
+      },
+      "strict_palindrome": true
+    },
+    {
+      "id": "hybrid-011",
+      "status": "reject-for-now",
+      "naturalness": "C",
+      "semantic_coherence": "medium",
+      "reasons": [
+        "35番中部の萩・庭・月の景は保たれる。"
+      ],
+      "cautions": [
+        "『なかよさの』外枠が中部の景と自然に係りにくい。"
+      ],
+      "action": "reject-until-source-reparse",
+      "reading": "なかよさのきつるもはきのはにてりてにはのきはもるつきのさよかな",
+      "meter": [
+        "なかよさの",
+        "きつるもはきの",
+        "はにてりて",
+        "にはのきはもる",
+        "つきのさよかな"
+      ],
+      "source_ids": [
+        "shoju-add-109",
+        "shoju-035"
+      ],
+      "provenance": {
+        "ku1": {
+          "reading": "なかよさの",
+          "source_factor": "AB",
+          "source_ids": [
+            "shoju-add-109"
+          ]
+        },
+        "ku2": {
+          "reading": "きつるもはきの",
+          "source_factor": "BC",
+          "source_ids": [
+            "shoju-035"
+          ]
+        },
+        "ku3": {
+          "reading": "はにてりて",
+          "source_factor": "DE",
+          "source_ids": [
+            "shoju-035"
+          ]
+        },
+        "ku4": {
+          "reading": "にはのきはもる",
+          "source_factor": "CD",
+          "source_ids": [
+            "shoju-035"
+          ]
+        },
+        "ku5": {
+          "reading": "つきのさよかな",
+          "source_factor": "AB",
+          "source_ids": [
+            "shoju-add-109"
+          ]
+        }
+      },
+      "strict_palindrome": true
+    },
+    {
+      "id": "hybrid-013",
+      "status": "hold-source-parse",
+      "naturalness": "C+",
+      "semantic_coherence": "medium-high",
+      "reasons": [
+        "35番と40番はいずれも秋月場。",
+        "D=みな↔なみ は高信頼継ぎ目。"
+      ],
+      "cautions": [
+        "40番由来の中三句の解析が未確定。",
+        "35番外枠『はれつみよ…つきよみつれは』との係り受けを校訂本文で確認する必要。"
+      ],
+      "action": "hold",
+      "reading": "はれつみよきつしもなかのみなかりかなみのかなもしつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつしもなかの",
+        "みなかりか",
+        "なみのかなもし",
+        "つきよみつれは"
+      ],
+      "source_ids": [
+        "shoju-035",
+        "shoju-040"
+      ],
+      "provenance": {
+        "ku1": {
+          "reading": "はれつみよ",
+          "source_factor": "AB",
+          "source_ids": [
+            "shoju-035"
+          ]
+        },
+        "ku2": {
+          "reading": "きつしもなかの",
+          "source_factor": "BC",
+          "source_ids": [
+            "shoju-040"
+          ]
+        },
+        "ku3": {
+          "reading": "みなかりか",
+          "source_factor": "DE",
+          "source_ids": [
+            "shoju-040"
+          ]
+        },
+        "ku4": {
+          "reading": "なみのかなもし",
+          "source_factor": "CD",
+          "source_ids": [
+            "shoju-040"
+          ]
+        },
+        "ku5": {
+          "reading": "つきよみつれは",
+          "source_factor": "AB",
+          "source_ids": [
+            "shoju-035"
+          ]
+        }
+      },
+      "strict_palindrome": true
+    },
+    {
+      "id": "hybrid-016",
+      "status": "promising-but-parse-needed",
+      "naturalness": "B tentative",
+      "semantic_coherence": "high",
+      "reasons": [
+        "外側4句相当の大半を35番が保持し、中央だけ31番の『葉に繁し』系へ差し替えるため場面の崩れが比較的小さい。",
+        "萩・葉・庭・月という秋景の意味場が共通。"
+      ],
+      "cautions": [
+        "第三句を替えたことで『葉に繁し』の主述関係が35番側の文脈でも成立するか要確認。",
+        "古典語の校訂本文確認前は採用しない。"
+      ],
+      "action": "keep-as-secondary-research-candidate",
+      "reading": "はれつみよきつるもはきのはにしけしにはのきはもるつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつるもはきの",
+        "はにしけし",
+        "にはのきはもる",
+        "つきよみつれは"
+      ],
+      "source_ids": [
+        "shoju-035",
+        "shoju-031"
+      ],
+      "provenance": {
+        "ku1": {
+          "reading": "はれつみよ",
+          "source_factor": "AB",
+          "source_ids": [
+            "shoju-035"
+          ]
+        },
+        "ku2": {
+          "reading": "きつるもはきの",
+          "source_factor": "BC",
+          "source_ids": [
+            "shoju-035"
+          ]
+        },
+        "ku3": {
+          "reading": "はにしけし",
+          "source_factor": "DE",
+          "source_ids": [
+            "shoju-031"
+          ]
+        },
+        "ku4": {
+          "reading": "にはのきはもる",
+          "source_factor": "CD",
+          "source_ids": [
+            "shoju-035"
+          ]
+        },
+        "ku5": {
+          "reading": "つきよみつれは",
+          "source_factor": "AB",
+          "source_ids": [
+            "shoju-035"
+          ]
+        }
+      },
+      "strict_palindrome": true
+    },
+    {
+      "id": "hybrid-021",
+      "status": "hold-too-many-sources",
+      "naturalness": "C+",
+      "semantic_coherence": "medium-high",
+      "reasons": [
+        "月・秋の共有タグは強い。"
+      ],
+      "cautions": [
+        "40・35・31番の3作交配で、局所句は実例でも全体の視点と統語が切り替わりやすい。",
+        "2作交配より優先度を下げる。"
+      ],
+      "action": "hold",
+      "reading": "てりつうみきつるもはきのはにしけしにはのきはもるつきみうつりて",
+      "meter": [
+        "てりつうみ",
+        "きつるもはきの",
+        "はにしけし",
+        "にはのきはもる",
+        "つきみうつりて"
+      ],
+      "source_ids": [
+        "shoju-040",
+        "shoju-035",
+        "shoju-031"
+      ],
+      "provenance": {
+        "ku1": {
+          "reading": "てりつうみ",
+          "source_factor": "AB",
+          "source_ids": [
+            "shoju-040"
+          ]
+        },
+        "ku2": {
+          "reading": "きつるもはきの",
+          "source_factor": "BC",
+          "source_ids": [
+            "shoju-035"
+          ]
+        },
+        "ku3": {
+          "reading": "はにしけし",
+          "source_factor": "DE",
+          "source_ids": [
+            "shoju-031"
+          ]
+        },
+        "ku4": {
+          "reading": "にはのきはもる",
+          "source_factor": "CD",
+          "source_ids": [
+            "shoju-035"
+          ]
+        },
+        "ku5": {
+          "reading": "つきみうつりて",
+          "source_factor": "AB",
+          "source_ids": [
+            "shoju-040"
+          ]
+        }
+      },
+      "strict_palindrome": true
+    },
+    {
+      "id": "hybrid-022",
+      "status": "promising-but-parse-needed",
+      "naturalness": "B- tentative",
+      "semantic_coherence": "high",
+      "reasons": [
+        "第一・第五句の『長き夜…月の良きかな』が明快で、萩・葉・庭の秋景も意味場に収まる。",
+        "D=はに は高信頼継ぎ目。"
+      ],
+      "cautions": [
+        "3作交配。",
+        "中央『葉に繁し』と第四句の接続を校訂本文で確認する必要。"
+      ],
+      "action": "keep-as-secondary-research-candidate",
+      "reading": "なかきよのきつるもはきのはにしけしにはのきはもるつきのよきかな",
+      "meter": [
+        "なかきよの",
+        "きつるもはきの",
+        "はにしけし",
+        "にはのきはもる",
+        "つきのよきかな"
+      ],
+      "source_ids": [
+        "shoju-038",
+        "shoju-035",
+        "shoju-031"
+      ],
+      "provenance": {
+        "ku1": {
+          "reading": "なかきよの",
+          "source_factor": "AB",
+          "source_ids": [
+            "shoju-038"
+          ]
+        },
+        "ku2": {
+          "reading": "きつるもはきの",
+          "source_factor": "BC",
+          "source_ids": [
+            "shoju-035"
+          ]
+        },
+        "ku3": {
+          "reading": "はにしけし",
+          "source_factor": "DE",
+          "source_ids": [
+            "shoju-031"
+          ]
+        },
+        "ku4": {
+          "reading": "にはのきはもる",
+          "source_factor": "CD",
+          "source_ids": [
+            "shoju-035"
+          ]
+        },
+        "ku5": {
+          "reading": "つきのよきかな",
+          "source_factor": "AB",
+          "source_ids": [
+            "shoju-038"
+          ]
+        }
+      },
+      "strict_palindrome": true
+    },
+    {
+      "id": "hybrid-023",
+      "status": "reject-for-now",
+      "naturalness": "C",
+      "semantic_coherence": "medium",
+      "reasons": [
+        "秋・月という大意味場は一致。"
+      ],
+      "cautions": [
+        "『なかよさの』外枠が弱く、3作交配で統語上の負担も大きい。"
+      ],
+      "action": "reject-until-source-reparse",
+      "reading": "なかよさのきつるもはきのはにしけしにはのきはもるつきのさよかな",
+      "meter": [
+        "なかよさの",
+        "きつるもはきの",
+        "はにしけし",
+        "にはのきはもる",
+        "つきのさよかな"
+      ],
+      "source_ids": [
+        "shoju-add-109",
+        "shoju-035",
+        "shoju-031"
+      ],
+      "provenance": {
+        "ku1": {
+          "reading": "なかよさの",
+          "source_factor": "AB",
+          "source_ids": [
+            "shoju-add-109"
+          ]
+        },
+        "ku2": {
+          "reading": "きつるもはきの",
+          "source_factor": "BC",
+          "source_ids": [
+            "shoju-035"
+          ]
+        },
+        "ku3": {
+          "reading": "はにしけし",
+          "source_factor": "DE",
+          "source_ids": [
+            "shoju-031"
+          ]
+        },
+        "ku4": {
+          "reading": "にはのきはもる",
+          "source_factor": "CD",
+          "source_ids": [
+            "shoju-035"
+          ]
+        },
+        "ku5": {
+          "reading": "つきのさよかな",
+          "source_factor": "AB",
+          "source_ids": [
+            "shoju-add-109"
+          ]
+        }
+      },
+      "strict_palindrome": true
+    }
+  ]
+}
