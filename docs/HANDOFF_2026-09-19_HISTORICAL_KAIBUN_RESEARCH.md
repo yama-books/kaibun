@@ -2209,3 +2209,83 @@ legacy fixed quote:
 ## 再開最短文
 
 **「HANDOFF 28節から再開。全体約83%。公開v0.31、L1 DNA親族cap25%、10本比較を3/3/2/2層化、reading hint18件、growthを53 family/366段へ非親族diversifyし親族比59.0%。Validate/Pagesともgreen。次はL2比較偏重監査。」**
+
+
+---
+
+# 29. 2026-09-19 L2比較バランス v0.92〜v0.93 チェックポイント
+
+## 進捗目安
+- 歴史回文研究・生成原理: **約86%**
+- 怪文回文メーカー全体目標: **約84%**
+
+## v0.92 L2 comparison audit
+
+L2 default comparison pool:
+- unique 62
+- seed 29
+- DNA 11
+- reverse pair 8
+- seam 11
+- bridge 3
+
+最大単一family:
+- 同定 13
+- share 約21.0%
+- uniform 10本で期待値 約2.10本
+
+集中確率:
+- 同定 >=2: 67.52%
+- 同定 >=3: 34.80%
+- 同定 >=4: 11.95%
+- 同定 >=5: 2.65%
+
+L1のrecursive 44.2%ほどの大規模偏重ではないため、全面層化は不要と裁定。
+
+## v0.93 light cap
+
+追加:
+- `data/l2-ten-comparison-audit-v92.json`
+- `data/l2-ten-comparison-policy-v93.json`
+- `scripts/validate-l2-ten-comparison-policy.mjs`
+- `docs/L2_COMPARISON_BALANCE_V92_V93.md`
+
+公開UI:
+- base samplingは従来どおりuniform without replacement
+- family=`同定` が3本以上の時だけ最大2本へcap
+- 超過分は未使用の非同定候補で補充
+
+実装:
+- `repairL2Comparison(items, combined)`
+- `tenComparisonItems()` にL2分岐
+- badge `v0.32 / 品質バランス比較`
+
+変更なし:
+- candidate inventory
+- one-shot生成
+- L1 v0.86.1 stratified comparison
+- L3 uniform comparison
+
+## CI / Pages
+
+latest:
+- Validate `35438410565`: success
+- Pages `35438410553`: success
+
+validator:
+- pool 62
+- 同定 13
+- 非同定 49
+- worst-caseでも10 unique / 同定<=2へ修復可能
+
+## 次工程
+
+1. **growth 53 familyの選択UI操作性監査**
+2. dimension / family dropdownの情報密度・重複感を確認
+3. family削除ではなくgrouping/filteringで整理
+4. fixed50 quality benchmarkの人間最終判定フォーマット
+5. 中リスクreading hintは保留
+
+## 再開最短文
+
+**「HANDOFF 29節から再開。全体約84%。L2比較は62候補中同定13件のみ軽い集中があり、uniform維持＋同定最大2本capをv0.93で公開。Validate/Pages green。次はgrowth 53 family選択UI監査。」**
