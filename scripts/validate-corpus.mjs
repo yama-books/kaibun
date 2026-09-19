@@ -104,6 +104,17 @@ if(growth.verified?.narrative_variants!=null && growth.verified.narrative_varian
 for(const [k,v] of Object.entries(growth.verified?.narrative_families_by_layer??{}))if((narrativeByLayer[k]??0)!==v)errors.push(`NARRATIVE LAYER COUNT mismatch ${k}: declared=${v} actual=${narrativeByLayer[k]??0}`);
 for(const [k,v] of Object.entries(growth.verified?.narrative_families_by_dimension??{}))if((narrativeByDimension[k]??0)!==v)errors.push(`NARRATIVE DIMENSION COUNT mismatch ${k}: declared=${v} actual=${narrativeByDimension[k]??0}`);
 
+let sentenceWrapperCount=0;
+const wrapperProbe="つまがまつ";
+for(const w of growth.sentence_level_wrappers??[]){
+  if(reverse(w.left_reading)!==w.right_reading)errors.push(`SENTENCE WRAPPER reverse mismatch: ${w.id}`);
+  const wrapped=w.left_reading+wrapperProbe+w.right_reading;
+  check({id:"SENTENCE-WRAPPER:"+w.id},w.semantic,wrapped);
+  if(!w.left_display||!w.right_display||!w.semantic)errors.push(`SENTENCE WRAPPER metadata missing: ${w.id}`);
+  sentenceWrapperCount++;
+}
+if(growth.verified?.sentence_level_wrapper_count!=null&&growth.verified.sentence_level_wrapper_count!==sentenceWrapperCount)errors.push(`SENTENCE WRAPPER COUNT mismatch: declared=${growth.verified.sentence_level_wrapper_count} actual=${sentenceWrapperCount}`);
+
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
 if(rules.rule_count!==rules.rules.length)errors.push(`RULE COUNT mismatch: declared=${rules.rule_count} actual=${rules.rules.length}`);
@@ -115,4 +126,4 @@ console.log(`Layers: L1=${counts.L1}, L2=${counts.L2}, L3=${counts.L3}`);
 console.log(`Recursive sentence space: ${recursiveSentenceCount}`);
 console.log(`Reverse lexeme pairs: ${pairs.pair_count}, variants: ${pairVariants}`);
 console.log(`Stepwise growth variants: ${growthVariants}`);
-console.log(`Narrative growth variants: ${narrativeVariants}`);
+console.log(`Narrative growth variants: ${narrativeVariants}`);\nconsole.log(`Sentence-level wrappers: ${sentenceWrapperCount}`);
