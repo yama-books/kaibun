@@ -1,0 +1,384 @@
+{
+  "version": "0.89",
+  "title": "Non-kinship reaction long-tail expansion prototype",
+  "public_behavior_changed": false,
+  "source_growth_version": "0.30",
+  "generated_family_count": 4,
+  "generated_stage_count": 20,
+  "wrapper_sequence": [
+    "react-cry",
+    "react-troubled",
+    "react-silent",
+    "react-laugh"
+  ],
+  "combined_projection": {
+    "current_stage_count": 322,
+    "current_kinship_stage_count": 216,
+    "accepted_quote_stages_from_v88": 24,
+    "reaction_stages": 20,
+    "projected_stage_count": 366,
+    "projected_kinship_share": 0.5901639344262295
+  },
+  "families": [
+    {
+      "id": "reaction-simple-horse-dance",
+      "label": "反応：馬と人が舞う（親族化前）",
+      "layer": "L2",
+      "dimension": "反応",
+      "mode": "research_generated_stages",
+      "source_family": "event-horse-dance",
+      "source_stage": 1,
+      "collision_policy": "outer nouns must not repeat inside/outside",
+      "wrapper_order": "reaction sequence",
+      "stages": [
+        {
+          "reading": "うまもななもまう",
+          "display": "馬もナナも舞う。",
+          "adds": "反応する非親族の元文",
+          "japanese_quality": "A",
+          "weirdness": 2,
+          "dimension": "反応",
+          "wrapper_depth": 0
+        },
+        {
+          "reading": "くなはうまもななもまうはなく",
+          "display": "クナは、「馬もナナも舞う」は泣く。",
+          "adds": "反応・泣く",
+          "japanese_quality": "B",
+          "weirdness": 4,
+          "dimension": "反応",
+          "wrapper_depth": 1,
+          "wrapper_id": "react-cry",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "くな",
+              "display": "クナ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "るまこはくなはうまもななもまうはなくはこまる",
+          "display": "ルマコは、『クナは、「馬もナナも舞う」は泣く』は困る。",
+          "adds": "反応・困る",
+          "japanese_quality": "B",
+          "weirdness": 4,
+          "dimension": "反応",
+          "wrapper_depth": 2,
+          "wrapper_id": "react-troubled",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "るまこ",
+              "display": "ルマコ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "るまだはるまこはくなはうまもななもまうはなくはこまるはだまる",
+          "display": "ルマダは、〈ルマコは、『クナは、「馬もナナも舞う」は泣く』は困る〉は黙る。",
+          "adds": "反応・黙る",
+          "japanese_quality": "B",
+          "weirdness": 5,
+          "dimension": "反応",
+          "wrapper_depth": 3,
+          "wrapper_id": "react-silent",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "るまだ",
+              "display": "ルマダ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "うらわはるまだはるまこはくなはうまもななもまうはなくはこまるはだまるはわらう",
+          "display": "浦和は、《ルマダは、〈ルマコは、『クナは、「馬もナナも舞う」は泣く』は困る〉は黙る》は笑う。",
+          "adds": "反応・笑う",
+          "japanese_quality": "B",
+          "weirdness": 5,
+          "dimension": "反応",
+          "wrapper_depth": 4,
+          "wrapper_id": "react-laugh",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "うらわ",
+              "display": "浦和",
+              "kind": "place_or_institution"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reaction-simple-chase",
+      "label": "反応：魚と人を追う（親族化前）",
+      "layer": "L2",
+      "dimension": "反応",
+      "mode": "research_generated_stages",
+      "source_family": "event-chase",
+      "source_stage": 1,
+      "collision_policy": "outer nouns must not repeat inside/outside",
+      "wrapper_order": "reaction sequence",
+      "stages": [
+        {
+          "reading": "うおもななもおう",
+          "display": "魚もナナも追う。",
+          "adds": "反応する非親族の元文",
+          "japanese_quality": "A",
+          "weirdness": 3,
+          "dimension": "反応",
+          "wrapper_depth": 0
+        },
+        {
+          "reading": "くなはうおもななもおうはなく",
+          "display": "クナは、「魚もナナも追う」は泣く。",
+          "adds": "反応・泣く",
+          "japanese_quality": "B",
+          "weirdness": 4,
+          "dimension": "反応",
+          "wrapper_depth": 1,
+          "wrapper_id": "react-cry",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "くな",
+              "display": "クナ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "るまこはくなはうおもななもおうはなくはこまる",
+          "display": "ルマコは、『クナは、「魚もナナも追う」は泣く』は困る。",
+          "adds": "反応・困る",
+          "japanese_quality": "B",
+          "weirdness": 4,
+          "dimension": "反応",
+          "wrapper_depth": 2,
+          "wrapper_id": "react-troubled",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "るまこ",
+              "display": "ルマコ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "るまだはるまこはくなはうおもななもおうはなくはこまるはだまる",
+          "display": "ルマダは、〈ルマコは、『クナは、「魚もナナも追う」は泣く』は困る〉は黙る。",
+          "adds": "反応・黙る",
+          "japanese_quality": "B",
+          "weirdness": 5,
+          "dimension": "反応",
+          "wrapper_depth": 3,
+          "wrapper_id": "react-silent",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "るまだ",
+              "display": "ルマダ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "うらわはるまだはるまこはくなはうおもななもおうはなくはこまるはだまるはわらう",
+          "display": "浦和は、《ルマダは、〈ルマコは、『クナは、「魚もナナも追う」は泣く』は困る〉は黙る》は笑う。",
+          "adds": "反応・笑う",
+          "japanese_quality": "B",
+          "weirdness": 5,
+          "dimension": "反応",
+          "wrapper_depth": 4,
+          "wrapper_id": "react-laugh",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "うらわ",
+              "display": "浦和",
+              "kind": "place_or_institution"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reaction-simple-call",
+      "label": "反応：ブヨと人を呼ぶ（親族化前）",
+      "layer": "L2",
+      "dimension": "反応",
+      "mode": "research_generated_stages",
+      "source_family": "event-call",
+      "source_stage": 1,
+      "collision_policy": "outer nouns must not repeat inside/outside",
+      "wrapper_order": "reaction sequence",
+      "stages": [
+        {
+          "reading": "ぶよもななもよぶ",
+          "display": "ブヨもナナも呼ぶ。",
+          "adds": "反応する非親族の元文",
+          "japanese_quality": "A",
+          "weirdness": 3,
+          "dimension": "反応",
+          "wrapper_depth": 0
+        },
+        {
+          "reading": "くなはぶよもななもよぶはなく",
+          "display": "クナは、「ブヨもナナも呼ぶ」は泣く。",
+          "adds": "反応・泣く",
+          "japanese_quality": "B",
+          "weirdness": 4,
+          "dimension": "反応",
+          "wrapper_depth": 1,
+          "wrapper_id": "react-cry",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "くな",
+              "display": "クナ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "るまこはくなはぶよもななもよぶはなくはこまる",
+          "display": "ルマコは、『クナは、「ブヨもナナも呼ぶ」は泣く』は困る。",
+          "adds": "反応・困る",
+          "japanese_quality": "B",
+          "weirdness": 4,
+          "dimension": "反応",
+          "wrapper_depth": 2,
+          "wrapper_id": "react-troubled",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "るまこ",
+              "display": "ルマコ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "るまだはるまこはくなはぶよもななもよぶはなくはこまるはだまる",
+          "display": "ルマダは、〈ルマコは、『クナは、「ブヨもナナも呼ぶ」は泣く』は困る〉は黙る。",
+          "adds": "反応・黙る",
+          "japanese_quality": "B",
+          "weirdness": 5,
+          "dimension": "反応",
+          "wrapper_depth": 3,
+          "wrapper_id": "react-silent",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "るまだ",
+              "display": "ルマダ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "うらわはるまだはるまこはくなはぶよもななもよぶはなくはこまるはだまるはわらう",
+          "display": "浦和は、《ルマダは、〈ルマコは、『クナは、「ブヨもナナも呼ぶ」は泣く』は困る〉は黙る》は笑う。",
+          "adds": "反応・笑う",
+          "japanese_quality": "B",
+          "weirdness": 5,
+          "dimension": "反応",
+          "wrapper_depth": 4,
+          "wrapper_id": "react-laugh",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "うらわ",
+              "display": "浦和",
+              "kind": "place_or_institution"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "reaction-simple-seed-sleep",
+      "label": "反応：種と人が寝る（親族化前）",
+      "layer": "L2",
+      "dimension": "反応",
+      "mode": "research_generated_stages",
+      "source_family": "event-seed-sleep",
+      "source_stage": 1,
+      "collision_policy": "outer nouns must not repeat inside/outside",
+      "wrapper_order": "reaction sequence",
+      "stages": [
+        {
+          "reading": "たねもななもねた",
+          "display": "種もナナも寝た。",
+          "adds": "反応する非親族の元文",
+          "japanese_quality": "A",
+          "weirdness": 3,
+          "dimension": "反応",
+          "wrapper_depth": 0
+        },
+        {
+          "reading": "くなはたねもななもねたはなく",
+          "display": "クナは、「種もナナも寝た」は泣く。",
+          "adds": "反応・泣く",
+          "japanese_quality": "B",
+          "weirdness": 4,
+          "dimension": "反応",
+          "wrapper_depth": 1,
+          "wrapper_id": "react-cry",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "くな",
+              "display": "クナ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "るまこはくなはたねもななもねたはなくはこまる",
+          "display": "ルマコは、『クナは、「種もナナも寝た」は泣く』は困る。",
+          "adds": "反応・困る",
+          "japanese_quality": "B",
+          "weirdness": 4,
+          "dimension": "反応",
+          "wrapper_depth": 2,
+          "wrapper_id": "react-troubled",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "るまこ",
+              "display": "ルマコ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "るまだはるまこはくなはたねもななもねたはなくはこまるはだまる",
+          "display": "ルマダは、〈ルマコは、『クナは、「種もナナも寝た」は泣く』は困る〉は黙る。",
+          "adds": "反応・黙る",
+          "japanese_quality": "B",
+          "weirdness": 5,
+          "dimension": "反応",
+          "wrapper_depth": 3,
+          "wrapper_id": "react-silent",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "るまだ",
+              "display": "ルマダ",
+              "kind": "person"
+            }
+          ]
+        },
+        {
+          "reading": "うらわはるまだはるまこはくなはたねもななもねたはなくはこまるはだまるはわらう",
+          "display": "浦和は、《ルマダは、〈ルマコは、『クナは、「種もナナも寝た」は泣く』は困る〉は黙る》は笑う。",
+          "adds": "反応・笑う",
+          "japanese_quality": "B",
+          "weirdness": 5,
+          "dimension": "反応",
+          "wrapper_depth": 4,
+          "wrapper_id": "react-laugh",
+          "wrapper_outer_lexemes": [
+            {
+              "reading": "うらわ",
+              "display": "浦和",
+              "kind": "place_or_institution"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
