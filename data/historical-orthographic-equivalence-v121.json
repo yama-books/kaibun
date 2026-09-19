@@ -1,0 +1,87 @@
+{
+  "version": "1.21",
+  "updated_on": "2026-09-20",
+  "title": "Expanded historical orthographic-equivalence diagnostic layer",
+  "supersedes_for_current_research": "1.16",
+  "mode": "research-diagnostic-only",
+  "strict_baseline": {
+    "changed": false,
+    "literal_kana_equality_remains_authoritative": true,
+    "fixed50_unchanged": true,
+    "wave2_verified_snapshot": 14,
+    "wave2_held_snapshot": 5,
+    "wave3_separate": true
+  },
+  "equivalence_profile": {
+    "id": "o-wo-diagnostic",
+    "declared_pair": ["お","を"],
+    "universal_interchangeability_claimed": false,
+    "canonicalization_scope": "diagnostic-only"
+  },
+  "positive_controls": [
+    {
+      "id": "shoju-next-094",
+      "source_number": 94,
+      "layer": "wave2-held",
+      "reading": "なかたひもついおそきはるともとちともとるはきそをいつもひたかな",
+      "strict_palindrome": false,
+      "literal_mismatch_positions": [8,24],
+      "diagnostic_palindrome": true,
+      "scholarly_surface_note": "Yamauchi transcription visibly contains 木曽を."
+    },
+    {
+      "id": "shoju-wave3-115",
+      "source_number": 115,
+      "layer": "wave3",
+      "reading": "もとるをないつもろこしとつましらしまつとしころもついなおるとも",
+      "strict_palindrome": false,
+      "literal_mismatch_positions": [4,28],
+      "diagnostic_palindrome": true,
+      "scholarly_surface_note": "Visible scholarly transcription preserves を in the mirrored pair."
+    },
+    {
+      "id": "shoju-wave3-118",
+      "source_number": 118,
+      "layer": "wave3",
+      "reading": "やかてみつひをのへるはもさくはなはくさもはるへのおひつみてかや",
+      "strict_palindrome": false,
+      "literal_mismatch_positions": [7,25],
+      "diagnostic_palindrome": true,
+      "scholarly_surface_note": "Visible scholarly transcription preserves 日を... opposite ...おひ..."
+    }
+  ],
+  "negative_controls": [
+    {
+      "id": "shoju-next-082",
+      "source_number": 82,
+      "reason": "o/wo folding still leaves voicing mismatches"
+    },
+    {
+      "id": "shoju-next-088",
+      "source_number": 88,
+      "reason": "32-kana / central transcription instability remains"
+    },
+    {
+      "id": "shoju-next-092",
+      "source_number": 92,
+      "reason": "30-kana / broad mismatch remains"
+    }
+  ],
+  "interpretation": {
+    "finding": "Three independent poem-specific scholarly transcriptions produce strict 31-kana mirror structures except for a single mirrored お/を pair.",
+    "research_value": "This is now a recurrent historical-transcription phenomenon rather than a one-off anomaly in poem 94.",
+    "not_claimed": [
+      "お and を are universally interchangeable in Edo orthography",
+      "diagnostic-pass records belong in the strict palindrome corpus",
+      "the original source glyphs have been inspected"
+    ]
+  },
+  "policy": {
+    "strict_promotions": 0,
+    "wave2_counts_changed": false,
+    "wave3_promotions_to_fixed50": 0,
+    "public_generator_effect": "none",
+    "automatic_repair": false
+  },
+  "next_action": "Retain the o/wo profile as an explicit secondary historical-equivalence research axis and keep literal strict-kana verification authoritative."
+}
