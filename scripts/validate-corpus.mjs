@@ -65,6 +65,7 @@ const bidirectionalTankaV124 = JSON.parse(fs.readFileSync("data/historical-bidir
 const wave3DiagnosticsV125 = JSON.parse(fs.readFileSync("data/historical-mining-wave3-diagnostics-v125.json", "utf8"));
 const orthographicEquivalenceV126 = JSON.parse(fs.readFileSync("data/historical-orthographic-equivalence-v126.json", "utf8"));
 const kanaCasebookV127 = JSON.parse(fs.readFileSync("data/historical-kana-equivalence-casebook-v127.json", "utf8"));
+const bidirectionalSeamV128 = JSON.parse(fs.readFileSync("data/bidirectional-tanka-seam-contrast-v128.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -795,6 +796,14 @@ if(kanaCasebookV127.mode!=="research-diagnostic-only"||kanaCasebookV127.strict_b
 const v127profiles=(kanaCasebookV127.profiles??[]).map(x=>x.id).sort().join(",");
 if(v127profiles!==["he-e-diagnostic","ye-e-diagnostic"].sort().join(","))errors.push(`KANA CASEBOOK V127 profiles drift: ${v127profiles}`);
 
+if(bidirectionalSeamV128.version!=="1.28")errors.push(`BIDIRECTIONAL SEAM V128 version mismatch: ${bidirectionalSeamV128.version}`);
+if(bidirectionalSeamV128.scope?.case_count!==6||bidirectionalSeamV128.scope?.strict_palindrome_cases!==0)errors.push("BIDIRECTIONAL SEAM V128 scope drift");
+if(JSON.stringify(bidirectionalSeamV128.metrical_geometry?.forward_boundaries_in_forward_coordinates)!==JSON.stringify([5,12,17,24]))errors.push("BIDIRECTIONAL SEAM V128 forward boundary drift");
+if(JSON.stringify(bidirectionalSeamV128.metrical_geometry?.reverse_boundaries_mapped_into_forward_coordinates)!==JSON.stringify([7,14,19,26]))errors.push("BIDIRECTIONAL SEAM V128 reverse boundary drift");
+if((bidirectionalSeamV128.cases??[]).some(x=>JSON.stringify(x.boundary_shift_signature)!==JSON.stringify([2,2,2,2])))errors.push("BIDIRECTIONAL SEAM V128 +2 signature drift");
+if(bidirectionalSeamV128.summary?.strict_promotions!==0||bidirectionalSeamV128.summary?.new_generator_rule_enabled!==false)errors.push("BIDIRECTIONAL SEAM V128 must remain research-only");
+if(bidirectionalSeamV128.generator_implications?.strict_palindrome_generator?.direct_injection!==false)errors.push("BIDIRECTIONAL SEAM V128 must not inject into strict generator");
+
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
 if(rules.rule_count!==rules.rules.length)errors.push(`RULE COUNT mismatch: declared=${rules.rule_count} actual=${rules.rules.length}`);
@@ -863,3 +872,4 @@ console.log(`Bidirectional tanka v1.24: clear=${(bidirectionalTankaV124.machine_
 console.log(`Wave3 diagnostics v1.25: o/wo=${wave3DiagnosticsV125.summary?.o_wo_diagnostic_added?.join(",")}, he/e=${wave3DiagnosticsV125.summary?.he_e_diagnostic_added?.join(",")}`);
 console.log(`Orthographic v1.26: positives=${v126pos}`);
 console.log(`Kana casebook v1.27: profiles=${v127profiles}`);
+console.log(`Bidirectional seam v1.28: cases=${bidirectionalSeamV128.summary?.contrastive_cases}, shift=${bidirectionalSeamV128.summary?.shared_boundary_shift_signature?.join("/")}`);
