@@ -1,0 +1,98 @@
+{
+  "version": "1.05",
+  "updated_on": "2026-09-19",
+  "title": "hybrid-007 syntax deep review",
+  "candidate_id": "hybrid-007",
+  "family_id": "musu-night-sky-family-moon",
+  "reading": "なかきよのきつるみそらはむすめよめすむはらそみるつきのよきかな",
+  "meter": ["なかきよの","きつるみそらは","むすめよめ","すむはらそみる","つきのよきかな"],
+  "review_basis": {
+    "repository_transcription": {
+      "source_id": "shoju-add-109",
+      "title": "嫁娘見月",
+      "status": "Yamauchi-1974-transcription-derived; source image not inspected",
+      "surface": "なかよさの 来つるみそらは むすめよめ すむはらそ見る つきのさ夜かな"
+    },
+    "official_article_metadata": {
+      "publisher": "J-STAGE / 密教文化",
+      "issue": "107",
+      "pages": "1-38",
+      "published": "1974-07-25",
+      "doi": "10.11168/jeb1947.1974.107_1",
+      "pdf_publicly_listed": true,
+      "pdf_content_directly_inspected_in_this_review": false
+    },
+    "external_language_checks": [
+      {
+        "item": "つる",
+        "finding": "完了助動詞「つ」の連体形として成立し、連用形に接続する。",
+        "implication": "「来つる」を 来 + 完了「つ」連体形 とみる形態解析自体は可能。"
+      },
+      {
+        "item": "みそら",
+        "finding": "「御空」は空の美称として辞書に立項される。",
+        "implication": "「みそら」を独立名詞として読むこと自体は可能。"
+      },
+      {
+        "item": "すむ",
+        "finding": "「住む」と「澄む」は同音で、和歌では「澄む」に「住む」を掛ける用例がある。",
+        "implication": "kanaだけでは「すむ」のlexemeを一意に固定できない。"
+      },
+      {
+        "item": "ぞ / そ",
+        "finding": "係助詞「ぞ」であれば連体形結びを要求するが、原transcription-derived surfaceは「そ」であり、voicing restorationは未確認。",
+        "implication": "「原ぞ見る」と自動補正して係り結びを根拠化してはならない。さらに「見る」は上一段で終止形・連体形が同形のため、表面形だけでは判別材料にならない。"
+      }
+    ]
+  },
+  "segment_reviews": [
+    {
+      "segment": "きつるみそらは",
+      "candidate_parse": "来つる + 御空 + は",
+      "morphology": "formally-possible",
+      "lexical_support": {
+        "来つる": "morphologically possible",
+        "御空": "dictionary-attested noun"
+      },
+      "syntax_semantics": "unresolved",
+      "reason": "「来つる」が「御空」を修飾する、または句内で別の統語境界を取るというsource-specific解釈を裏づける独立注釈・原画像・校訂語釈が得られていない。形態的に作れることと、この歌で自然に解釈できることは別。",
+      "promotion_effect": "no-promotion"
+    },
+    {
+      "segment": "すむはらそみる",
+      "candidate_parses": [
+        "住む + 原 + そ + 見る",
+        "澄む + 原 + そ + 見る",
+        "住む/澄む + 原 + ぞ + 見る (only if voicing is independently established)"
+      ],
+      "lexeme_status": "ambiguous",
+      "voicing_status": "unresolved",
+      "syntax_semantics": "unresolved",
+      "reason": "「すむ」は住む/澄むをkanaだけで選べず、「そ」を「ぞ」と読む根拠も未確認。係り結びに合わせて濁点を補うのは循環的。",
+      "promotion_effect": "no-promotion"
+    }
+  ],
+  "verdict": {
+    "previous_review_status": "promising-but-parse-needed",
+    "current_review_status": "promising-but-parse-needed",
+    "promote_to_deep_review_supported": false,
+    "demote_to_scene_hold": false,
+    "third_positive_family_established": false,
+    "automatic_acceptance": false,
+    "reason": "Scene compatibility and source-specific corridor preservation remain plausible, but the two key syntax spans are not source-verified enough to support promotion."
+  },
+  "new_safety_rule": {
+    "id": "source-voicing-and-lexeme-ambiguity-guard",
+    "rule": "Do not restore voicing, kanji, lexeme identity, or kakari-musubi solely because the restored form yields a cleaner syntax or palindrome interpretation.",
+    "separate_layers": [
+      "source glyph",
+      "scholarly transcription surface",
+      "normalized palindrome reading",
+      "voicing hypothesis",
+      "lexeme hypothesis",
+      "syntax hypothesis"
+    ],
+    "applies_beyond_hybrid_007": true
+  },
+  "next_action": "Keep hybrid-007 as the strongest third-family candidate but move active search to an alternate family unless new source-image or independent annotated transcription becomes available."
+}
