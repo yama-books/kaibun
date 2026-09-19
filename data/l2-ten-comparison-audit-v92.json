@@ -1,0 +1,50 @@
+{
+  "version": "0.92",
+  "title": "L2 ten-item comparison concentration audit",
+  "public_behavior_changed": false,
+  "pool": {
+    "unique": 62,
+    "source_counts": {
+      "seed": 29,
+      "dna": 11,
+      "pair": 8,
+      "seam": 11,
+      "bridge": 3
+    },
+    "source_shares": {
+      "seed": 0.4677,
+      "dna": 0.1774,
+      "pair": 0.129,
+      "seam": 0.1774,
+      "bridge": 0.0484
+    }
+  },
+  "largest_single_family": {
+    "family": "同定",
+    "source": "seed",
+    "candidates": 13,
+    "pool_share": 0.20967741935483872,
+    "expected_in_uniform_ten": 2.096774193548387
+  },
+  "hypergeometric_risk": {
+    "population": 62,
+    "identity_candidates": 13,
+    "sample_size": 10,
+    "probability_identity_at_least_2": 0.6752,
+    "probability_identity_at_least_3": 0.348,
+    "probability_identity_at_least_4": 0.1195,
+    "probability_identity_at_least_5": 0.0265
+  },
+  "interpretation": [
+    "L2 does not have an L1-scale dominant mechanism; no source pool alone requires full stratification.",
+    "The 13-item identity family is the only concentration large enough to visibly cluster in a 10-item comparison.",
+    "A full source quota would overcorrect a relatively diverse 62-item pool."
+  ],
+  "recommended_action": "Keep uniform L2 sampling, but cap family=同定 at two displayed items and refill excess slots from unused non-identity candidates.",
+  "invariants": [
+    "No L2 candidate is removed from inventory.",
+    "Only the ten-item comparison surface changes.",
+    "One-shot seed/DNA/pair/seam behavior is unchanged.",
+    "L1 v0.86.1 stratification remains unchanged."
+  ]
+}
