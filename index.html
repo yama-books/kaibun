@@ -111,6 +111,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
     <button class="primary" id="seedGen">原種から1本</button>
     <button class="dna" id="dnaGen">DNAで1本生成</button>
     <button id="pairGen">逆語ペア</button>
+    <button id="growCurrent">この文から伸ばす</button>
     <button id="ten">10本比較</button>
   </div>
   <div class="result" id="result">読み込み中…</div>
@@ -232,6 +233,23 @@ function dnaPool(includeRecursive=true){
   return uniqueByReading(out);
 }
 
+function findGrowthMatch(reading){
+  if(!growth||!reading)return null;
+  for(const f of growth.families||[]){
+    if(f.stage0?.[0]===reading)return {mode:"structural",family:f,stage:0,dimension:"all",layer:"L1"};
+  }
+  for(const f of growth.narrative_families||[]){
+    const st=(f.stages||[]).findIndex(x=>x.reading===reading);
+    if(st>=0)return {mode:"narrative",family:f,stage:st,dimension:f.dimension||"all",layer:f.layer||"L1"};
+  }
+  return null;
+}
+function syncGrowCurrentButton(){
+  const m=findGrowthMatch(currentShown?.reading);
+  $("#growCurrent").disabled=!m;
+  $("#growCurrent").style.opacity=m?"1":".38";
+  $("#growCurrent").title=m?"この文に対応する長文化系統を開きます":"この文にはまだ長文化系統がありません";
+}
 function updateCandidateCount(){
   const all=uniqueByReading([...pool().map(x=>({...x,origin:"原種"})),...dnaPool(true)]);
   $("#uniqueStat").textContent="実効候補 "+all.length.toLocaleString()+"種";
@@ -284,6 +302,7 @@ function show(x){
   $("#family").textContent=x.family||x.subgroup||layer;
   $("#origin").textContent=x.origin||"原種コーパス";
   $("#why").textContent=x.why||x.rationale||"検証済み原種。";
+  syncGrowCurrentButton();
   const m=$("#mirror");m.innerHTML="";
   const a=[...x.reading];
   a.forEach((c,i)=>{
@@ -438,6 +457,27 @@ function growAgain(){
   show(growthState.history[Math.min(current,growthMaxStage())]||makeGrowth(Math.min(current,growthMaxStage())));
 }
 
+function startGrowthFromCurrent(){
+  const m=findGrowthMatch(currentShown?.reading);if(!m)return;
+  if(layer!==m.layer){
+    layer=m.layer;
+    document.querySelectorAll(".layer").forEach(x=>x.classList.toggle("active",x.dataset.layer===layer));
+  }
+  growthState.mode=m.mode;$("#growthMode").value=m.mode;
+  growthState.dimension=m.dimension||"all";
+  populateGrowthDimensions();
+  populateGrowthFamilies();
+  growthState.familyId=m.family.id;$("#growthFamily").value=m.family.id;
+  resetGrowthHistory();
+  if(m.mode==="narrative"){
+    for(let st=0;st<=m.stage;st++)makeNarrativeGrowth(st);
+    show(growthState.history[m.stage]);
+  }else{
+    show(makeStructuralGrowth(0));
+  }
+  syncControls();
+}
+
 document.querySelectorAll(".layer").forEach(b=>b.onclick=()=>{
   document.querySelectorAll(".layer").forEach(x=>x.classList.remove("active"));
   b.classList.add("active");layer=b.dataset.layer;seen.clear();$("#list").innerHTML="";
@@ -462,6 +502,7 @@ $("#weird").oninput=e=>{
 $("#seedGen").onclick=seedOne;
 $("#dnaGen").onclick=dnaOne;
 $("#pairGen").onclick=pairOne;
+$("#growCurrent").onclick=startGrowthFromCurrent;
 $("#growthStart").onclick=growthStart;
 $("#growOne").onclick=growOne;
 $("#growAgain").onclick=growAgain;
