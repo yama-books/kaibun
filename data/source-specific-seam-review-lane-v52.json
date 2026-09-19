@@ -1,0 +1,137 @@
+{
+  "version": "0.52",
+  "title": "Source-specific seam review lane",
+  "purpose": "Allow candidates with transcription-supported source-specific seams to advance to semantic review only when the seam's local source corridor is preserved.",
+  "sources": [
+    "historical-cento-candidates-v38",
+    "autumn-moon-seam-evidence-v51"
+  ],
+  "policy": {
+    "global_seam_rules_unchanged": true,
+    "source_specific_is_not_global_transfer": true,
+    "semantic_review_eligibility_is_not_acceptance": true,
+    "source_image_confirmation_still_pending": true
+  },
+  "corridor_rules": [
+    {
+      "seam": "D=むす",
+      "source_id": "shoju-add-109",
+      "required_factor_sources": {
+        "BC": "shoju-add-109",
+        "CD": "shoju-add-109",
+        "DE": "shoju-add-109"
+      },
+      "rationale": "D is only transcription-supported inside the shoju-add-109 central corridor, so B/C/D/E context must remain inherited from that source."
+    },
+    {
+      "seam": "B=たま",
+      "source_id": "shoju-031",
+      "required_factor_sources": {
+        "AB": "shoju-031",
+        "BC": "shoju-031",
+        "CD": "shoju-031"
+      },
+      "rationale": "B=たま is supported as 玉 in shoju-031; keep the A/B/C context and the reverse-B-bearing outer return path tied to that source."
+    }
+  ],
+  "eligible": [
+    {
+      "id": "hybrid-003",
+      "seam": "D=むす",
+      "seam_evidence": "conditional-source-specific",
+      "preserved_corridor": {
+        "BC": true,
+        "CD": true,
+        "DE": true
+      },
+      "source_corridor": "shoju-add-109",
+      "next_status": "semantic-review-eligible-source-specific",
+      "reading": "てりつうみきつるみそらはむすめよめすむはらそみるつきみうつりて",
+      "meter": [
+        "てりつうみ",
+        "きつるみそらは",
+        "むすめよめ",
+        "すむはらそみる",
+        "つきみうつりて"
+      ]
+    },
+    {
+      "id": "hybrid-007",
+      "seam": "D=むす",
+      "seam_evidence": "conditional-source-specific",
+      "preserved_corridor": {
+        "BC": true,
+        "CD": true,
+        "DE": true
+      },
+      "source_corridor": "shoju-add-109",
+      "next_status": "semantic-review-eligible-source-specific",
+      "reading": "なかきよのきつるみそらはむすめよめすむはらそみるつきのよきかな",
+      "meter": [
+        "なかきよの",
+        "きつるみそらは",
+        "むすめよめ",
+        "すむはらそみる",
+        "つきのよきかな"
+      ]
+    },
+    {
+      "id": "hybrid-014",
+      "seam": "D=むす",
+      "seam_evidence": "conditional-source-specific",
+      "preserved_corridor": {
+        "BC": true,
+        "CD": true,
+        "DE": true
+      },
+      "source_corridor": "shoju-add-109",
+      "next_status": "semantic-review-eligible-source-specific",
+      "reading": "はれつみよきつるみそらはむすめよめすむはらそみるつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつるみそらは",
+        "むすめよめ",
+        "すむはらそみる",
+        "つきよみつれは"
+      ]
+    },
+    {
+      "id": "hybrid-019",
+      "seam": "B=たま",
+      "seam_evidence": "conditional-source-specific",
+      "preserved_corridor": {
+        "AB": true,
+        "BC": true,
+        "CD": true
+      },
+      "source_corridor": "shoju-031",
+      "next_status": "semantic-review-eligible-source-specific",
+      "reading": "やとるつゆたまはのきはのはにてりてにはのはきのはまたゆつるとや",
+      "meter": [
+        "やとるつゆ",
+        "たまはのきはの",
+        "はにてりて",
+        "にはのはきのは",
+        "またゆつるとや"
+      ]
+    }
+  ],
+  "still_blocked": [
+    {
+      "ids": [
+        "hybrid-004",
+        "hybrid-010",
+        "hybrid-015"
+      ],
+      "seam": "D=こた",
+      "reason": "v0.51 clarified the reverse boundary but did not resolve forward morphology; source-specific corridor preservation is not enough."
+    }
+  ],
+  "summary": {
+    "previously_unclassified": 7,
+    "semantic_review_eligible_source_specific": 4,
+    "still_blocked": 3,
+    "global_seams_promoted": 0
+  },
+  "next_step": "Perform scene/grammar review of the four eligible candidates while keeping the three D=こた candidates blocked."
+}
