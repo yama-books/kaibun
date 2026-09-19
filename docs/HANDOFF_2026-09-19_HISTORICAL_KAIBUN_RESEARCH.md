@@ -3961,3 +3961,485 @@ strong unresolved:
 ## 再開最短文
 
 **「HANDOFF 39節から再開。v1.10/v1.11でA/E以外の低リスクoperation余地なしを確認。v1.12で山内の90/93該当歌転写を直接確認し、v1.13でtravel best directionをpromising-but-parse-neededへ昇格。v1.14 current generator/fixture、Validate run 35470400190 green。第三family未確定。次は89のpromotion policy、94の お/を equivalence、90 ku5 parse。」**
+
+
+---
+
+# 40. 2026-09-20 v1.15〜v1.27 wave3 / historical-equivalence / bidirectional チェックポイント
+
+## 実施概要
+
+39節から以下を実施。
+
+1. wave2 held evidence policy v1.15
+2. お/を orthographic diagnostic v1.16 → v1.21 → current v1.26
+3. travel phrase topology v1.17
+4. poem-specific scholarly topology v1.18
+5. wave3 mining start v1.19
+6. wave3 114〜119 expansion v1.20
+7. historical kana diagnostics v1.22 → casebook v1.27
+8. wave3 factor-contact audit v1.23
+9. bidirectional tanka layer v1.24
+10. additional 106/107/110/112/113 diagnostics v1.25
+11. main / dedicated validators更新
+12. CI green
+
+詳細文書:
+`docs/WAVE3_DIAGNOSTICS_BIDIRECTIONAL_V115_V127.md`
+
+## v1.15 poem89 / 94 evidence policy
+
+追加:
+`data/wave2-held-evidence-policy-review-v115.json`
+
+commit:
+`88e67be8b2d585c75e794b032fd4791e7fa24e4e`
+
+### 89 老賀
+
+山内可読転写:
+`八十や ...`
+
+`八十=やそ` は辞書で成立し、
+その読みなら31かなstrict palindrome。
+
+しかし:
+- source imageに八十だけならreadingは必ずしも決まらない
+- palindromeになるからやそを選ぶのは循環
+
+旧blocker:
+`source-image-required-for-promotion`
+
+新blocker:
+`target-specific-reading-resolution-required`
+
+current:
+`strongest-held-reading-resolution`
+
+promotionなし。
+
+### 94 旅行
+
+山内転写で:
+`木曽を`
+可読。
+
+31かなでstrict mismatchは
+mirrored お/を 1組のみ。
+
+current:
+`hold-strict-orthographic-equivalence`
+
+## v1.16 / v1.21 / v1.26 o/wo diagnostic
+
+files:
+- `data/historical-orthographic-equivalence-v116.json`
+- `data/historical-orthographic-equivalence-v121.json`
+- current `data/historical-orthographic-equivalence-v126.json`
+
+commits:
+- v1.16 `631eba7a201177849f01f167716bc9ae303dd752`
+- v1.21 `31bf7d5e22a4a83a203f526c61edd053153cd135`
+- v1.26 `b289d4e9a2b621bbef62ea6e364bcf336fe587b3`
+
+current positive diagnostic controls:
+1. 94
+2. 110
+3. 115
+4. 118
+
+共通:
+- 31かな
+- strict=false
+- literal mismatchは mirrored お/を 1組だけ
+- declared o/wo diagnosticではpass
+
+しかし:
+- strict promotions=0
+- fixed50変更なし
+- wave2 counts変更なし
+- public effectなし
+- お/を universal equivalenceは主張しない
+
+negative:
+- 82
+- 88
+- 92
+- 106
+
+## v1.17 / v1.18 travel phrase topology
+
+files:
+- `data/travel-series-phrase-topology-v117.json`
+- `data/travel-series-scholarly-topology-v118.json`
+
+commits:
+- v1.17 `a6fbf7227da6358ffa42a7de4e2ac073d5a62f60`
+- v1.18 `fa7d7f2e239d1c5354e10bc2e69139183b825557`
+
+poem-specific scholarly transcription recurrence:
+- 91 ku1 `くかちとや` ↔ 93 ku5 suffix
+- 93 ku1 `やとちかく` ↔ 91 ku5 suffix
+- `なかたひ`: 90 / 94 + same-author long poem
+- `まはる`: 90 / 91 / 93
+- `はまも`: 90 / 91
+- `日たか`: 90 / 91 / 94
+
+travel seriesが
+authorial phrase-bank / topology
+を持つ可能性がかなり強くなった。
+
+ただし best:
+`wave2-travel-090-host-093-outer`
+
+status:
+`promising-but-parse-needed`
+
+維持。
+
+local recurrenceはwhole-sentence syntaxを保証しない。
+
+## v1.19 wave3 start
+
+file:
+`data/historical-mining-wave3-v119.json`
+
+commit:
+`5c88fecbe616d5e5ed290e9d72e3cf9e3517eacf`
+
+120:
+- 30かな
+- hold / repair禁止
+
+121 不二雪:
+- 31かな strict
+- factor contactなし
+- isolated new source
+
+122 むかしくを子らにならひ:
+- 31かな strict
+- B=たま raw contact with shoju-031
+- morphology未確認 / scene mismatch
+- transferability=false
+
+## v1.20 114〜119 expansion
+
+file:
+`data/historical-mining-wave3-expansion-v120.json`
+
+commit:
+`2ab5f787bae0c3303e1d65c1d4c3dd6c68160de7`
+
+classification:
+
+### 114 心経にならひ
+29かな visible conservative
+→ hold
+
+### 115
+31かな
+お/を only
+→ orthographic diagnostic
+
+### 116 笹
+31かな strict
+D=きよ contacts:
+- fixed50 55 春亀
+- wave2 90 travel
+
+### 117 手習子にならひ
+source scholarly surfaceにヱ
+mirror側 家→いえ
+→ historical kana diagnostic
+strictへ入れない
+
+### 118 老摘草
+31かな
+お/を only
+→ orthographic diagnostic
+
+### 119 寄山恋
+31かな strict
+B=つま contacts:
+- fixed50 72 寄琴恋
+
+しかも両方 `寄○恋`。
+
+このため第三family候補として個別監査へ進めた。
+
+## v1.22 / v1.27 historical kana diagnostics
+
+initial:
+`data/historical-kana-equivalence-v122.json`
+
+current:
+`data/historical-kana-equivalence-casebook-v127.json`
+
+commits:
+- v1.22 `fe57fa93b0264963bf6ae1ccbbf3b928ece0a738`
+- v1.27 `96844eeb5c145db798ea9dd9ff0960fb683ce69b`
+
+profilesを分離:
+
+### he/e
+107 田
+- `たへて`
+- mirror側 枝→えた
+- へ/え diagnostic
+
+### ye/e
+117
+- ヱ/ゑ
+- mirror側 家→いえ
+- ゑ/え diagnostic
+
+106:
+- お/を
+- ひ/い
+
+複合問題なのでsingle profileに入れない。
+
+## v1.23 factor contact audit
+
+file:
+`data/wave3-factor-contact-audit-v123.json`
+
+commit:
+`c92c0f2882e6526827d9d0330903ebaa20ece407`
+
+### 116 D=きよ vs 55 春亀
+
+116:
+`きよきあき`
+
+55:
+`きよくさく`
+
+raw D=きよ一致。
+
+両方
+adjective stem `きよ-`
+の可能性があり、
+morphology mismatchを即断しない。
+
+しかしEの役割:
+- attributive + season noun
+- adverbial / verbal continuation
+
+と異なる可能性。
+
+verdict:
+`hold-semantic-role-and-scene`
+
+positive family=false。
+
+### 119 B=つま vs 72 寄琴恋
+
+72 scholarly surface:
+`つま 琴 をもて`
+
+辞書:
+`つまごと【爪琴／妻琴】`
+が独立語として成立。
+
+よって72 B=つまは
+word-internal lexical-koto onset
+の可能性が高い。
+
+119:
+`つまとしつ見る`
+
+forward morphology未解決。
+
+titleは:
+- 寄琴恋
+- 寄山恋
+
+で非常に近いが、
+scene closenessだけでmorphologyを飛び越えない。
+
+2方向A-only hypothetical:
+- structuralには可能
+- both `hold-source-specific-morphology`
+
+verdict:
+positive family=false。
+
+new guard:
+**narrow-scene-does-not-override-morphology**
+
+## v1.24 bidirectional tanka
+
+file:
+`data/historical-bidirectional-tanka-v124.json`
+
+commit:
+`9e9756b66b4157899747ee9066b7733fb5601d3b`
+
+山内sourceは123〜130を
+「一首を弐首によめる」類としてまとめる。
+
+clear:
+- 124
+- 125
+- 126
+- 127
+- 128
+- 129
+
+全て:
+- forward=31
+- reverse=31
+- forward != reverse
+- 両方向5/7/5/7/7
+
+つまりstrict self-palindromeではなく、
+exact reverseで別短歌が成立。
+
+研究価値:
+- seam grammar contrastive evidence
+- asymmetric resegmentationの歴史実例
+
+strict promotions=0。
+
+held:
+- 123 repeat-mark
+- 130 layout/segmentation
+
+## v1.25 additional diagnostics
+
+file:
+`data/historical-mining-wave3-diagnostics-v125.json`
+
+commit:
+`b9e5f1be5bf61d85082058ef212b465d490e0d68`
+
+cases:
+- 106: 31かな, お/を + ひ/い, multi-issue hold
+- 107: 31かな, へ/え only
+- 110: 外=と independent reading evidence; 31かな; お/を only
+- 112: 30かな hold
+- 113: page-break incomplete hold
+
+strict candidates added=0。
+
+## validators / CI
+
+orthographic validator initial:
+`scripts/validate-historical-orthographic-equivalence.mjs`
+
+commits:
+- initial v1.16: `5e377160396e3c3fa3fa9cd477474e077f14e7b5`
+- v1.21/v1.22: `7e775635ad0c555b03566dc96b3eeea72b13226b`
+- current v1.26/v1.27: `3fbde2ef096a5045e602c1a5c527172fe81c1282`
+
+workflow:
+- `78f3128cf991d648651684a65e3b0d20ed693360`
+- dedicated orthographic diagnostic stepあり
+
+main validator:
+- v1.17-v1.19 integration:
+  `b8eeb002276ac6c4111e24867f9e98419306a319`
+- v1.20-v1.23:
+  `230cc5f426fcfb7517be5230266d5aea7ac98fbb`
+- current v1.24-v1.27:
+  `5cf956255522a92c9ae7c731a8d068e7047fcf01`
+
+latest Validate:
+- run `35471808274`
+- conclusion **success**
+- head `5cf956255522a92c9ae7c731a8d068e7047fcf01`
+
+latest Pages same head:
+- run `35471808270`
+- conclusion **success**
+
+docs:
+- `docs/WAVE3_DIAGNOSTICS_BIDIRECTIONAL_V115_V127.md`
+- commit `31c1e96ab7770b42c9694103a0f3ffcace7fd5ce`
+
+## 現在のfamily状態
+
+確立positive:
+1. autumn-night-garden-moon
+2. naha-spring-plants
+
+strong unresolved:
+3. musu-night-sky-family-moon
+   - hybrid-007
+   - promising-but-parse-needed
+
+4. wave2-travel-maha
+   - best wave2-travel-090-host-093-outer
+   - promising-but-parse-needed
+   - reverse deep-review-needed
+
+new wave3 contacts:
+- 116 D=きよ → negative semantic-role/scene control
+- 119 B=つま → negative source-specific morphology control
+
+第三positive family:
+**未確定のまま。**
+
+## 研究判断
+
+今回のwave3は重要。
+
+新史料を増やした結果:
+- strict sourceは増えた
+- raw factor contactも増えた
+- narrow scene contactも出た
+
+にもかかわらず、
+guardが適切にnegativeを止めた。
+
+したがって
+「候補不足だから規則を緩める」
+必要はない。
+
+現在の研究原理はかなり飽和している。
+
+残る主要課題:
+1. promising candidatesのwhole-sentence syntax
+2. target-specific morphology/source interpretation
+3. 新sourceで本当にmorphology-compatibleなsame-scene laneが出るか
+4. human review / adjudication
+
+## 固定事項
+
+変更なし:
+- fixed50
+- wave2 verified14 / held5
+- public bridge6
+- v0.76
+- general-factor-crossover disabled
+- public UI
+- source/transcription/normalization layers分離
+- machine accepted/natural禁止
+
+追加固定:
+- orthographic diagnostic pass != strict pass
+- bidirectional tanka != strict palindrome
+- narrow scene != morphology permission
+- shared adjective stem != semantic-role permission
+
+## 進捗目安
+
+- 歴史回文研究・生成原理: **約96%**
+- 怪文回文メーカー全体目標: **約94%**
+- 残り: **約6%**
+
+## 次
+
+優先:
+1. wave3 miningを続ける場合、candidate数ではなくsafe same-scene A/E contactだけを優先
+2. 119↔72は新morphology evidenceまでfreeze
+3. 116↔55はnew semantic-role evidenceまでfreeze
+4. travel / musuはwhole-sentence parse evidence待ち
+5. bidirectional layerは必要ならseam contrastive datasetへ展開
+6. v0.96 human review入力があればv0.97 adjudication
+7. 研究側の追加収穫が逓減したら、残作業をhuman review / product integrationへ寄せる
+
+## 再開最短文
+
+**「HANDOFF 40節から再開。v1.15-v1.27でwave3・歴史表記diagnostic・bidirectional tankaを分離実装。o/wo正例は94/110/115/118、he/e=107、ye/e=117だがstrict promotions=0。wave3 strict 116/119はそれぞれsemantic-role/scene、source-specific morphologyでblock。119↔72は寄○恋でもB=つま morphology未確認のため第三familyにしない。v1.24で124-129のbidirectional tankaを別層化。Validate 35471808274 green。次はsafe same-scene A/E contact探索か、収穫逓減ならhuman review/product integrationへ。」**
