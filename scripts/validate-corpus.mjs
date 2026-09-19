@@ -32,6 +32,8 @@ const sourceSpecificLane = JSON.parse(fs.readFileSync("data/source-specific-seam
 const haniPivotExchange = JSON.parse(fs.readFileSync("data/hani-central-pivot-exchange-v53.json", "utf8"));
 const pivotSurvey = JSON.parse(fs.readFileSync("data/central-pivot-exchange-survey-v54.json", "utf8"));
 const mitsuPivotExchange = JSON.parse(fs.readFileSync("data/mitsu-central-pivot-exchange-v55.json", "utf8"));
+const semanticRoleGate = JSON.parse(fs.readFileSync("data/factor-semantic-role-gate-v56.json", "utf8"));
+const pivotPipeline = JSON.parse(fs.readFileSync("data/central-pivot-candidate-pipeline-v57.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -440,6 +442,20 @@ const v55h2=(mitsuPivotExchange.outputs??[]).find(x=>x.id==="hybrid-002");
 const v55h17=(mitsuPivotExchange.outputs??[]).find(x=>x.id==="hybrid-017");
 if(v55h2?.revised_operation_analysis?.research_status!=="promising-but-source-parse-needed")errors.push("MITSU PIVOT V55 hybrid-002 status changed");
 if(v55h17?.revised_operation_analysis?.research_status!=="hold-semantic-role-mismatch")errors.push("MITSU PIVOT V55 hybrid-017 status changed");
+if(semanticRoleGate.version!=="0.56")errors.push(`SEMANTIC ROLE V56 version mismatch: ${semanticRoleGate.version}`);
+if(semanticRoleGate.status!=="research-hypothesis")errors.push("SEMANTIC ROLE V56 must remain a research hypothesis");
+if((semanticRoleGate.case_studies??[]).length!==4)errors.push("SEMANTIC ROLE V56 case count must be 4");
+const v56h17=(semanticRoleGate.case_studies??[]).find(x=>x.id==="hybrid-017");
+if(v56h17?.outcome!=="incompatible-for-this-host")errors.push("SEMANTIC ROLE V56 hybrid-017 outcome changed");
+const v56h2=(semanticRoleGate.case_studies??[]).find(x=>x.id==="hybrid-002");
+if(v56h2?.outcome!=="review-needed")errors.push("SEMANTIC ROLE V56 hybrid-002 must remain review-needed");
+if(pivotPipeline.version!=="0.57")errors.push(`PIVOT PIPELINE V57 version mismatch: ${pivotPipeline.version}`);
+if(pivotPipeline.corpus?.novel_directed_E_swaps!==12||(pivotPipeline.results??[]).length!==12)errors.push("PIVOT PIPELINE V57 total must be 12");
+if(pivotPipeline.summary?.reaches_deep_review!==3)errors.push("PIVOT PIPELINE V57 deep-review count must be 3");
+if(pivotPipeline.summary?.automatic_acceptance!==0)errors.push("PIVOT PIPELINE V57 must not auto-accept");
+const v57Deep=(pivotPipeline.results??[]).filter(x=>String(x.stage).startsWith("deep-review")).map(x=>x.id).sort().join(",");
+if(v57Deep!==["hybrid-002","hybrid-016","hybrid-019"].sort().join(","))errors.push(`PIVOT PIPELINE V57 deep-review set mismatch: ${v57Deep}`);
+for(const x of pivotPipeline.results??[]){if(!isPalindrome(x.reading))errors.push(`PIVOT PIPELINE V57 non-palindrome: ${x.id}`);}
 
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
@@ -477,3 +493,5 @@ console.log(`Source-specific v52 eligible: ${(sourceSpecificLane.eligible??[]).l
 console.log(`Hani v53 pivot outputs: ${(haniPivotExchange.outputs??[]).length}`);
 console.log(`Pivot survey v54 groups: ${(pivotSurvey.groups??[]).length}`);
 console.log(`Mitsu v55 directed swaps: ${(mitsuPivotExchange.outputs??[]).length}`);
+console.log(`Semantic-role v56 cases: ${(semanticRoleGate.case_studies??[]).length}`);
+console.log(`Pivot pipeline v57: total=${(pivotPipeline.results??[]).length}, deep-review=${pivotPipeline.summary?.reaches_deep_review??0}`);
