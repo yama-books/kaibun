@@ -1,0 +1,189 @@
+{
+  "version": "0.42",
+  "thesis": "Historical palindrome waka should be generated topic-first, not sound-first.",
+  "source_findings": {
+    "yamauchi_1974": [
+      "両歌集は四季折々の題詠を試みる。",
+      "制約の強い廻文歌でも、志向する題材世界は伝統的和歌世界への追随・模倣である。",
+      "秋では月が非常に多く、ほかに朝顔・菊・初雁・紅葉などが見られる。",
+      "賀・神祇・釈教・寄物・羈旅・恋・雑・祝歌など、勅撰集的な部立に沿う分類意識がある。",
+      "語彙調査は題材別・品詞別に行う必要がある。"
+    ],
+    "local_50_sample_counts": [
+      [
+        "春・草木",
+        12
+      ],
+      [
+        "秋・月",
+        12
+      ],
+      [
+        "信仰",
+        8
+      ],
+      [
+        "恋・人事",
+        6
+      ],
+      [
+        "冬・雪",
+        4
+      ],
+      [
+        "夏・行事",
+        4
+      ],
+      [
+        "その他",
+        4
+      ]
+    ]
+  },
+  "topic_hierarchy": [
+    {
+      "id": "autumn-moon",
+      "label": "秋・月",
+      "priority": "highest-research-yield",
+      "subtopics": [
+        "月",
+        "萩",
+        "露",
+        "紅葉",
+        "初雁",
+        "田毎月",
+        "月夜",
+        "海上月"
+      ],
+      "likely_roles": [
+        "scene",
+        "light",
+        "time",
+        "reflection",
+        "evaluation"
+      ],
+      "recommended_edges": [
+        "なか↔かな",
+        "きつ↔つき",
+        "はに↔には",
+        "けふ↔ふけ"
+      ]
+    },
+    {
+      "id": "spring-plants",
+      "label": "春・草木",
+      "priority": "highest-research-yield",
+      "subtopics": [
+        "梅",
+        "桜",
+        "若草",
+        "七草",
+        "小松",
+        "霞",
+        "春景"
+      ],
+      "likely_roles": [
+        "plant",
+        "color",
+        "fragrance",
+        "growth",
+        "viewing"
+      ],
+      "recommended_edges": [
+        "なは↔はな",
+        "むめ↔めむ",
+        "わか↔かわ"
+      ]
+    },
+    {
+      "id": "religion",
+      "label": "神祇・釈教",
+      "priority": "high",
+      "subtopics": [
+        "神祇",
+        "社頭",
+        "釈教",
+        "地水火風空",
+        "罪",
+        "水"
+      ],
+      "likely_roles": [
+        "concept",
+        "ritual",
+        "purification",
+        "cosmology"
+      ],
+      "recommended_edges": [
+        "みつ↔つみ",
+        "けふ↔ふけ"
+      ]
+    },
+    {
+      "id": "winter",
+      "label": "冬・雪",
+      "priority": "medium",
+      "subtopics": [
+        "雪",
+        "霜",
+        "冬枯",
+        "白",
+        "庭"
+      ],
+      "likely_roles": [
+        "scene",
+        "color",
+        "cold",
+        "disappearance"
+      ],
+      "recommended_edges": [
+        "ふゆ↔ゆふ",
+        "しら↔らし",
+        "はに↔には"
+      ]
+    },
+    {
+      "id": "travel-love",
+      "label": "羈旅・恋・人事",
+      "priority": "medium",
+      "subtopics": [
+        "旅",
+        "伊勢参宮",
+        "待恋",
+        "川恋",
+        "琴恋",
+        "家族"
+      ],
+      "likely_roles": [
+        "motion",
+        "waiting",
+        "distance",
+        "person",
+        "emotion"
+      ],
+      "recommended_edges": [
+        "みの↔のみ",
+        "さよ↔よさ",
+        "やま↔まや"
+      ]
+    }
+  ],
+  "generation_pipeline": [
+    "1. 題（semantic topic）を一つ選ぶ。",
+    "2. 題に属する歴史的・現代的語彙候補を、名詞だけでなく動詞・形容詞・助詞付き句で準備する。",
+    "3. A5/B2/C5/D2/E3格子に、意味場を壊さない候補だけを入れる。",
+    "4. B+C / D+E / reverse(D)+reverse(C) / reverse(B)+reverse(A) を句単位で解析する。",
+    "5. seam signatureが異なるraw reading共有は接合しない。",
+    "6. 5句すべての視点・時間・主体・景物が一枚の場面になるかを最重要評価する。",
+    "7. 回文技巧の露出が低い候補を優先する。"
+  ],
+  "scoring_weights": {
+    "global_topic_coherence": 5,
+    "each_ku_naturalness": 4,
+    "seam_signature_compatibility": 4,
+    "historical_phrase_attestation": 3,
+    "boundary_shift_quality": 3,
+    "pivot_quality": 2,
+    "surface_palindrome_obviousness_penalty": -2,
+    "proper_name_forcedness_penalty": -3
+  }
+}
