@@ -1379,3 +1379,107 @@ v0.51で:
 ## 次回の最短再開文
 
 **「HANDOFF 24節から再開。全体進捗約60%。v0.59 central-E-swap と v0.60 scene-microgrammar の2研究generatorはCI成功。v0.60 fixture driftの最終CIを確認し、第二positive scene familyまたは共通generator schemaへ進む。」**
+
+
+---
+
+# 25. 2026-09-19 17:18 JST 共通candidate schemaチェックポイント
+
+## 進捗目安
+- 歴史回文研究・生成原理: **約80%**
+- 怪文回文メーカー全体目標: **約61%**
+
+## v0.61 共通schema
+新規:
+- `data/historical-research-candidate-schema-v61.json`
+
+目的:
+central-E-swap と scene-microgrammar の候補を、同じ研究candidate形式で比較できるようにする。
+
+必須項目:
+- id
+- operation
+- reading
+- meter
+- factors
+- strict_palindrome
+- host_source_id
+- donor_source_ids
+- provenance
+- attestation_trace
+- morphology_trace
+- scene_trace
+- semantic_role_trace
+- source_confidence_trace
+- review_status
+- cautions
+
+重要:
+- machine accepted/natural statusは禁止継続
+- source-specific seamはsource-specificのままtraceする
+- missing evidenceはhold/review-needed
+- public UI consumptionはschema適合だけでは許可しない
+
+## central-E-swap側
+更新commit:
+`383d0d48b279284fd35f25314b63fc971a39f9d1`
+
+変更:
+- v0.61共通candidate fieldを追加
+- 既存fixture比較は維持
+- candidateごとに donor_source_ids / attestation / morphology / scene / semantic role / source confidence / review status を出力
+
+CI:
+- run `35431795768`
+- conclusion: **success**
+
+## scene-microgrammar側
+更新commit:
+`610cb945b09ab379e6c4e720da138d4c80f58a87`
+
+変更:
+- v0.61共通candidate fieldを追加
+- A sourceをhostとして保持
+- fixed corridor / E donorをdonor provenanceへ保持
+- historical-source / deep-review-supported / promising-but-parse-needed等へreview statusを整理
+
+CI:
+- run `35431817371`
+- conclusion: **success**
+
+## v0.59 / v0.60 fixture
+central:
+- `data/generated-central-pivot-research-v59.json`
+- drift check: success
+
+scene:
+- `data/generated-scene-microgrammar-v60.json`
+- drift check: success
+
+## 現在の実装上の到達点
+研究generatorは2系統:
+1. central-E-swap
+2. scene-microgrammar
+
+両方とも:
+- deterministic
+- CI検証あり
+- fixtureあり
+- common candidate schemaあり
+- public UI未接続
+
+## 次
+最優先:
+1. 第二positive scene familyを探す
+2. v0.61 schemaでそのfamilyをgeneratorへ追加
+3. positive familyが2系統以上になった後、modern怪文回文へのbridge設計へ進む
+
+候補探索では、既存の春・草木 / 信仰 / 冬・雪 等から
+- sceneが狭い
+- seamが強い
+- phrase attestationが高い
+- negative controlが取れる
+ものを優先する。
+
+## 再開最短文
+**「HANDOFF 25節から再開。全体約61%。v0.59/v0.60研究generatorはfixture+CI+v0.61共通schemaまで完成。次は第二positive scene family探索。」**
