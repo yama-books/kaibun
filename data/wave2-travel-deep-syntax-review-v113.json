@@ -1,0 +1,150 @@
+{
+  "version": "1.13",
+  "updated_on": "2026-09-20",
+  "title": "Wave2 travel family deep syntax review after poem-specific Yamauchi transcription",
+  "family_id": "wave2-travel-maha",
+  "inputs": {
+    "source_review": "data/yamauchi-visible-transcription-review-v112.json",
+    "historical_fixture": "data/generated-wave2-travel-outer-frame-v108.json",
+    "source_90": "shoju-next-090",
+    "source_93": "shoju-next-093"
+  },
+  "review_principles": [
+    "Treat Yamauchi's readable poem-specific transcription as scholarly-transcription evidence, not original Edo glyph evidence.",
+    "Treat every complete metrical line retained from source 90 or 93 as historically attested at the scholarly-transcription layer.",
+    "Keep kanji restoration and voicing restoration as separate hypotheses unless Yamauchi prints the relevant kanji.",
+    "Dictionary-supported resegmentation may raise parse plausibility but cannot verify target glyphs.",
+    "Same travel title/series supports narrow-scene compatibility but does not certify sentence-level naturalness."
+  ],
+  "source_93_dictionary_supported_hypotheses": [
+    {
+      "surface_normalized": "やとちかく",
+      "hypothesis": "宿近く",
+      "support": [
+        "宿 is read やど and can denote a lodging for a traveler.",
+        "The research palindrome normalization can collapse voicing distinctions; therefore やど -> やと is a possible normalized relation."
+      ],
+      "status": "dictionary-supported-voicing-hypothesis",
+      "source_glyph_verified": false
+    },
+    {
+      "surface": "みかき",
+      "hypothesis": "御垣",
+      "support": [
+        "御垣（みかき） is a classical noun for a fence around a palace or shrine.",
+        "The following Yamauchi transcription explicitly contains 神まいりなる, making a shrine-related interpretation locally coherent."
+      ],
+      "status": "dictionary-supported-scene-coherent-hypothesis",
+      "source_glyph_verified": false
+    },
+    {
+      "surface_normalized": "はまくかちとや",
+      "hypothesis": "浜 + 陸地（くがち） + とや",
+      "support": [
+        "浜（はま） is an old and modern noun for waterside shore.",
+        "陸地 has an attested historical reading くがち／くがぢ meaning land.",
+        "とや is an attested classical sequence of quotation/content particle と + particle や and can occur sentence-finally.",
+        "Under a voicing-insensitive palindrome normalization, くがち can correspond to normalized くかち."
+      ],
+      "status": "multi-lexeme-dictionary-supported-hypothesis",
+      "source_glyph_verified": false,
+      "syntax_semantics": "plausible-but-not-poem-specifically-annotated",
+      "caution": "Do not rewrite the Yamauchi kana transcription as 浜陸地とや in the source layer."
+    }
+  ],
+  "source_reviews": [
+    {
+      "id": "shoju-next-090",
+      "title": "旅行の人々え",
+      "scholarly_transcription_status": "poem-specific-visible",
+      "meter": ["ともかくも","まはるなかたひ","きよくゆく","よき日たかなる","はまもくかもと"],
+      "parse_confidence": {
+        "ku1": "high-lexical",
+        "ku2": "strong-author-parallel-for-なかたひ-plus-historical-まはる",
+        "ku3": "plausible-unconfirmed",
+        "ku4": "poem-specific-日-plus-same-author-near-parallel",
+        "ku5": "unresolved"
+      },
+      "overall": "partial-parse-with-opaque-ku5"
+    },
+    {
+      "id": "shoju-next-093",
+      "title": "旅行（同）",
+      "scholarly_transcription_status": "poem-specific-visible",
+      "meter": ["やとちかく","まはるなり今","みかきよき","神まいりなる","はまくかちとや"],
+      "parse_confidence": {
+        "ku1": "dictionary-supported-hypothesis",
+        "ku2": "partial-formal-with-explicit-今",
+        "ku3": "dictionary-supported-scene-coherent-hypothesis",
+        "ku4": "strong-surface-support-explicit-神",
+        "ku5": "dictionary-supported-resegmentation-hypothesis"
+      },
+      "overall": "substantially-improved-but-not-source-annotated"
+    }
+  ],
+  "candidate_reviews": [
+    {
+      "id": "wave2-travel-090-host-093-outer",
+      "reading": "やとちかくまはるなかたひきよくゆくよきひたかなるはまくかちとや",
+      "meter": ["やとちかく","まはるなかたひ","きよくゆく","よきひたかなる","はまくかちとや"],
+      "host_source_id": "shoju-next-090",
+      "outer_donor_source_id": "shoju-next-093",
+      "evidence": {
+        "strict_palindrome": "pass",
+        "meter": "pass",
+        "all_five_ku_scholarly_transcription_attested": true,
+        "host_middle_three_ku_attested_in_source_90": true,
+        "outer_ku1_ku5_attested_in_source_93": true,
+        "narrow_scene": "pass-same-travel-series",
+        "B_forward_morphology": "conditional-pass-operation-specific",
+        "source_transcription": "pass-poem-specific-scholarly-layer",
+        "original_source_image": "not-checked",
+        "semantic_role": "compatible-tentative",
+        "sentence_level_parse": "incomplete"
+      },
+      "previous_status": "hold-source-confirmation",
+      "current_status": "promising-but-parse-needed",
+      "promotion_reason": "The former generic source-confirmation blocker is substantially reduced: all five metrical lines are now directly recoverable in Yamauchi's poem-specific scholarly transcription, and the outer donor's previously opaque boundary has a dictionary-supported resegmentation hypothesis. Full combined syntax is still not independently annotated, so deep-review-supported is not justified.",
+      "automatic_acceptance": false
+    },
+    {
+      "id": "wave2-travel-093-host-090-outer",
+      "reading": "ともかくもまはるなりいまみかきよきかみまいりなるはまもくかもと",
+      "meter": ["ともかくも","まはるなりいま","みかきよき","かみまいりなる","はまもくかもと"],
+      "host_source_id": "shoju-next-093",
+      "outer_donor_source_id": "shoju-next-090",
+      "evidence": {
+        "strict_palindrome": "pass",
+        "meter": "pass",
+        "all_five_ku_scholarly_transcription_attested": true,
+        "host_middle_three_ku_attested_in_source_93": true,
+        "outer_ku1_ku5_attested_in_source_90": true,
+        "narrow_scene": "pass-same-travel-series",
+        "B_forward_morphology": "conditional-pass-operation-specific",
+        "source_transcription": "pass-poem-specific-scholarly-layer",
+        "original_source_image": "not-checked",
+        "semantic_role": "review-needed",
+        "sentence_level_parse": "incomplete",
+        "blocking_span": "はまもくかもと"
+      },
+      "previous_status": "hold-source-confirmation",
+      "current_status": "deep-review-needed",
+      "reason": "Source confirmation is no longer the primary blocker, but donor source 90 ku5 remains lexically opaque and the combined sentence-level interpretation is weaker than the opposite direction.",
+      "automatic_acceptance": false
+    }
+  ],
+  "family_verdict": {
+    "status": "third-positive-family-candidate-not-yet-established",
+    "best_novel_candidate": "wave2-travel-090-host-093-outer",
+    "best_novel_status": "promising-but-parse-needed",
+    "established_positive_family": false,
+    "automatic_acceptance": 0,
+    "comparison_to_musu": "Travel now joins musu as a strong unresolved third-family candidate, but neither is established."
+  },
+  "safety_updates": [
+    "A source-confirmation hold may be reduced when the target poem's scholarly transcription itself becomes readable, without implying original-glyph verification.",
+    "Dictionary-supported boundary-shift parses must remain hypotheses unless poem-specific annotation or source glyphs confirm them.",
+    "A candidate composed entirely of historically attested metrical lines can still require sentence-level parse review after recombination."
+  ],
+  "next_action": "Freeze the reverse travel direction at deep-review-needed; use wave2-travel-090-host-093-outer as the active travel candidate and seek poem-specific lexical annotation or original-source images before any deep-review-supported promotion."
+}
