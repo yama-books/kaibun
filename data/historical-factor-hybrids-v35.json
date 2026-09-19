@@ -1,0 +1,2360 @@
+{
+  "version": "0.35",
+  "method": "A-B-C-D-E factor-graph crossover from 50 historical strict 31-kana palindromes.",
+  "source_sample_count": 50,
+  "novel_path_count": 51,
+  "same_semantic_field_count": 23,
+  "all_palindrome_verified": true,
+  "caution": "局所接続が歴史作で実証されていても全文自然さは保証しない。意味レビュー前は研究キューに留める。",
+  "candidates": [
+    {
+      "reading": "しけるはのまたるるけしきさくはなはくさきしけるるたまのはるけし",
+      "meter": [
+        "しけるはの",
+        "またるるけしき",
+        "さくはなは",
+        "くさきしけるる",
+        "たまのはるけし"
+      ],
+      "A": "しけるはの",
+      "B": "また",
+      "C": "るるけしき",
+      "D": "さく",
+      "E": "はなは",
+      "factor_sources": {
+        "AB": [
+          "shoju-001-komatsuhiki"
+        ],
+        "BC": [
+          "shoju-010-somokuka"
+        ],
+        "CD": [
+          "shoju-010-somokuka"
+        ],
+        "DE": [
+          "shoju-010-somokuka"
+        ]
+      },
+      "source_ids": [
+        "shoju-001-komatsuhiki",
+        "shoju-010-somokuka"
+      ],
+      "source_fields": [
+        "春・草木"
+      ],
+      "source_titles": [
+        "小松引",
+        "草木花"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-001"
+    },
+    {
+      "reading": "しなもなくほとけのをしへみつもひもつみへしをのけとほくなもなし",
+      "meter": [
+        "しなもなく",
+        "ほとけのをしへ",
+        "みつもひも",
+        "つみへしをのけ",
+        "とほくなもなし"
+      ],
+      "A": "しなもなく",
+      "B": "ほと",
+      "C": "けのをしへ",
+      "D": "みつ",
+      "E": "もひも",
+      "factor_sources": {
+        "AB": [
+          "shoju-068"
+        ],
+        "BC": [
+          "shoju-068"
+        ],
+        "CD": [
+          "shoju-068"
+        ],
+        "DE": [
+          "shoju-five-elements"
+        ]
+      },
+      "source_ids": [
+        "shoju-068",
+        "shoju-five-elements"
+      ],
+      "source_fields": [
+        "信仰"
+      ],
+      "source_titles": [
+        "釈教",
+        "地水火風空"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-002"
+    },
+    {
+      "reading": "てりつうみきつるみそらはむすめよめすむはらそみるつきみうつりて",
+      "meter": [
+        "てりつうみ",
+        "きつるみそらは",
+        "むすめよめ",
+        "すむはらそみる",
+        "つきみうつりて"
+      ],
+      "A": "てりつうみ",
+      "B": "きつ",
+      "C": "るみそらは",
+      "D": "むす",
+      "E": "めよめ",
+      "factor_sources": {
+        "AB": [
+          "shoju-040"
+        ],
+        "BC": [
+          "shoju-add-109"
+        ],
+        "CD": [
+          "shoju-add-109"
+        ],
+        "DE": [
+          "shoju-add-109"
+        ]
+      },
+      "source_ids": [
+        "shoju-040",
+        "shoju-add-109"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "月明海上鴻鷹渡",
+        "嫁娘見月"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-003"
+    },
+    {
+      "reading": "てりつうみきつるみちもとこたしろしたこともちみるつきみうつりて",
+      "meter": [
+        "てりつうみ",
+        "きつるみちもと",
+        "こたしろし",
+        "たこともちみる",
+        "つきみうつりて"
+      ],
+      "A": "てりつうみ",
+      "B": "きつ",
+      "C": "るみちもと",
+      "D": "こた",
+      "E": "しろし",
+      "factor_sources": {
+        "AB": [
+          "shoju-040"
+        ],
+        "BC": [
+          "shoju-038"
+        ],
+        "CD": [
+          "shoju-038"
+        ],
+        "DE": [
+          "shoju-038"
+        ]
+      },
+      "source_ids": [
+        "shoju-040",
+        "shoju-038"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "月明海上鴻鷹渡",
+        "田毎月"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-004"
+    },
+    {
+      "reading": "てりつうみきつるもはきのはにてりてにはのきはもるつきみうつりて",
+      "meter": [
+        "てりつうみ",
+        "きつるもはきの",
+        "はにてりて",
+        "にはのきはもる",
+        "つきみうつりて"
+      ],
+      "A": "てりつうみ",
+      "B": "きつ",
+      "C": "るもはきの",
+      "D": "はに",
+      "E": "てりて",
+      "factor_sources": {
+        "AB": [
+          "shoju-040"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "shoju-035"
+        ]
+      },
+      "source_ids": [
+        "shoju-040",
+        "shoju-035"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "月明海上鴻鷹渡",
+        "同（月）"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-005"
+    },
+    {
+      "reading": "なかきよのきつしもなかのみなかりかなみのかなもしつきのよきかな",
+      "meter": [
+        "なかきよの",
+        "きつしもなかの",
+        "みなかりか",
+        "なみのかなもし",
+        "つきのよきかな"
+      ],
+      "A": "なかきよの",
+      "B": "きつ",
+      "C": "しもなかの",
+      "D": "みな",
+      "E": "かりか",
+      "factor_sources": {
+        "AB": [
+          "shoju-038"
+        ],
+        "BC": [
+          "shoju-040"
+        ],
+        "CD": [
+          "shoju-040"
+        ],
+        "DE": [
+          "shoju-040"
+        ]
+      },
+      "source_ids": [
+        "shoju-038",
+        "shoju-040"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "田毎月",
+        "月明海上鴻鷹渡"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-006"
+    },
+    {
+      "reading": "なかきよのきつるみそらはむすめよめすむはらそみるつきのよきかな",
+      "meter": [
+        "なかきよの",
+        "きつるみそらは",
+        "むすめよめ",
+        "すむはらそみる",
+        "つきのよきかな"
+      ],
+      "A": "なかきよの",
+      "B": "きつ",
+      "C": "るみそらは",
+      "D": "むす",
+      "E": "めよめ",
+      "factor_sources": {
+        "AB": [
+          "shoju-038"
+        ],
+        "BC": [
+          "shoju-add-109"
+        ],
+        "CD": [
+          "shoju-add-109"
+        ],
+        "DE": [
+          "shoju-add-109"
+        ]
+      },
+      "source_ids": [
+        "shoju-038",
+        "shoju-add-109"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "田毎月",
+        "嫁娘見月"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-007"
+    },
+    {
+      "reading": "なかきよのきつるもはきのはにてりてにはのきはもるつきのよきかな",
+      "meter": [
+        "なかきよの",
+        "きつるもはきの",
+        "はにてりて",
+        "にはのきはもる",
+        "つきのよきかな"
+      ],
+      "A": "なかきよの",
+      "B": "きつ",
+      "C": "るもはきの",
+      "D": "はに",
+      "E": "てりて",
+      "factor_sources": {
+        "AB": [
+          "shoju-038"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "shoju-035"
+        ]
+      },
+      "source_ids": [
+        "shoju-038",
+        "shoju-035"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "田毎月",
+        "同（月）"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-008"
+    },
+    {
+      "reading": "なかよさのきつしもなかのみなかりかなみのかなもしつきのさよかな",
+      "meter": [
+        "なかよさの",
+        "きつしもなかの",
+        "みなかりか",
+        "なみのかなもし",
+        "つきのさよかな"
+      ],
+      "A": "なかよさの",
+      "B": "きつ",
+      "C": "しもなかの",
+      "D": "みな",
+      "E": "かりか",
+      "factor_sources": {
+        "AB": [
+          "shoju-add-109"
+        ],
+        "BC": [
+          "shoju-040"
+        ],
+        "CD": [
+          "shoju-040"
+        ],
+        "DE": [
+          "shoju-040"
+        ]
+      },
+      "source_ids": [
+        "shoju-add-109",
+        "shoju-040"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "嫁娘見月",
+        "月明海上鴻鷹渡"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-009"
+    },
+    {
+      "reading": "なかよさのきつるみちもとこたしろしたこともちみるつきのさよかな",
+      "meter": [
+        "なかよさの",
+        "きつるみちもと",
+        "こたしろし",
+        "たこともちみる",
+        "つきのさよかな"
+      ],
+      "A": "なかよさの",
+      "B": "きつ",
+      "C": "るみちもと",
+      "D": "こた",
+      "E": "しろし",
+      "factor_sources": {
+        "AB": [
+          "shoju-add-109"
+        ],
+        "BC": [
+          "shoju-038"
+        ],
+        "CD": [
+          "shoju-038"
+        ],
+        "DE": [
+          "shoju-038"
+        ]
+      },
+      "source_ids": [
+        "shoju-add-109",
+        "shoju-038"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "嫁娘見月",
+        "田毎月"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-010"
+    },
+    {
+      "reading": "なかよさのきつるもはきのはにてりてにはのきはもるつきのさよかな",
+      "meter": [
+        "なかよさの",
+        "きつるもはきの",
+        "はにてりて",
+        "にはのきはもる",
+        "つきのさよかな"
+      ],
+      "A": "なかよさの",
+      "B": "きつ",
+      "C": "るもはきの",
+      "D": "はに",
+      "E": "てりて",
+      "factor_sources": {
+        "AB": [
+          "shoju-add-109"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "shoju-035"
+        ]
+      },
+      "source_ids": [
+        "shoju-add-109",
+        "shoju-035"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "嫁娘見月",
+        "同（月）"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-011"
+    },
+    {
+      "reading": "はるのみとまたひけよもつまこのてのこまつもよけひたまとみのるは",
+      "meter": [
+        "はるのみと",
+        "またひけよもつ",
+        "まこのての",
+        "こまつもよけひ",
+        "たまとみのるは"
+      ],
+      "A": "はるのみと",
+      "B": "また",
+      "C": "ひけよもつ",
+      "D": "まこ",
+      "E": "のての",
+      "factor_sources": {
+        "AB": [
+          "shoju-010-somokuka"
+        ],
+        "BC": [
+          "shoju-001-komatsuhiki"
+        ],
+        "CD": [
+          "shoju-001-komatsuhiki"
+        ],
+        "DE": [
+          "shoju-001-komatsuhiki"
+        ]
+      },
+      "source_ids": [
+        "shoju-010-somokuka",
+        "shoju-001-komatsuhiki"
+      ],
+      "source_fields": [
+        "春・草木"
+      ],
+      "source_titles": [
+        "草木花",
+        "小松引"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-012"
+    },
+    {
+      "reading": "はれつみよきつしもなかのみなかりかなみのかなもしつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつしもなかの",
+        "みなかりか",
+        "なみのかなもし",
+        "つきよみつれは"
+      ],
+      "A": "はれつみよ",
+      "B": "きつ",
+      "C": "しもなかの",
+      "D": "みな",
+      "E": "かりか",
+      "factor_sources": {
+        "AB": [
+          "shoju-035"
+        ],
+        "BC": [
+          "shoju-040"
+        ],
+        "CD": [
+          "shoju-040"
+        ],
+        "DE": [
+          "shoju-040"
+        ]
+      },
+      "source_ids": [
+        "shoju-035",
+        "shoju-040"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "同（月）",
+        "月明海上鴻鷹渡"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-013"
+    },
+    {
+      "reading": "はれつみよきつるみそらはむすめよめすむはらそみるつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつるみそらは",
+        "むすめよめ",
+        "すむはらそみる",
+        "つきよみつれは"
+      ],
+      "A": "はれつみよ",
+      "B": "きつ",
+      "C": "るみそらは",
+      "D": "むす",
+      "E": "めよめ",
+      "factor_sources": {
+        "AB": [
+          "shoju-035"
+        ],
+        "BC": [
+          "shoju-add-109"
+        ],
+        "CD": [
+          "shoju-add-109"
+        ],
+        "DE": [
+          "shoju-add-109"
+        ]
+      },
+      "source_ids": [
+        "shoju-035",
+        "shoju-add-109"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "同（月）",
+        "嫁娘見月"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-014"
+    },
+    {
+      "reading": "はれつみよきつるみちもとこたしろしたこともちみるつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつるみちもと",
+        "こたしろし",
+        "たこともちみる",
+        "つきよみつれは"
+      ],
+      "A": "はれつみよ",
+      "B": "きつ",
+      "C": "るみちもと",
+      "D": "こた",
+      "E": "しろし",
+      "factor_sources": {
+        "AB": [
+          "shoju-035"
+        ],
+        "BC": [
+          "shoju-038"
+        ],
+        "CD": [
+          "shoju-038"
+        ],
+        "DE": [
+          "shoju-038"
+        ]
+      },
+      "source_ids": [
+        "shoju-035",
+        "shoju-038"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "同（月）",
+        "田毎月"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-015"
+    },
+    {
+      "reading": "はれつみよきつるもはきのはにしけしにはのきはもるつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつるもはきの",
+        "はにしけし",
+        "にはのきはもる",
+        "つきよみつれは"
+      ],
+      "A": "はれつみよ",
+      "B": "きつ",
+      "C": "るもはきの",
+      "D": "はに",
+      "E": "しけし",
+      "factor_sources": {
+        "AB": [
+          "shoju-035"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "shoju-031"
+        ]
+      },
+      "source_ids": [
+        "shoju-035",
+        "shoju-031"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "同（月）",
+        "同（露）"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-016"
+    },
+    {
+      "reading": "みなくうのせかいなりちもみつのよのつみもちりないかせのうくなみ",
+      "meter": [
+        "みなくうの",
+        "せかいなりちも",
+        "みつのよの",
+        "つみもちりない",
+        "かせのうくなみ"
+      ],
+      "A": "みなくうの",
+      "B": "せか",
+      "C": "いなりちも",
+      "D": "みつ",
+      "E": "のよの",
+      "factor_sources": {
+        "AB": [
+          "shoju-five-elements"
+        ],
+        "BC": [
+          "shoju-five-elements"
+        ],
+        "CD": [
+          "shoju-five-elements"
+        ],
+        "DE": [
+          "shoju-068"
+        ]
+      },
+      "source_ids": [
+        "shoju-five-elements",
+        "shoju-068"
+      ],
+      "source_fields": [
+        "信仰"
+      ],
+      "source_titles": [
+        "地水火風空",
+        "釈教"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-017"
+    },
+    {
+      "reading": "みなくさのなはしらすみるともとちともとるみすらしはなのさくなみ",
+      "meter": [
+        "みなくさの",
+        "なはしらすみる",
+        "ともとちと",
+        "もとるみすらし",
+        "はなのさくなみ"
+      ],
+      "A": "みなくさの",
+      "B": "なは",
+      "C": "しらすみる",
+      "D": "とも",
+      "E": "とちと",
+      "factor_sources": {
+        "AB": [
+          "sendai-sakunami"
+        ],
+        "BC": [
+          "shoju-wakakusa"
+        ],
+        "CD": [
+          "shoju-wakakusa"
+        ],
+        "DE": [
+          "shoju-wakakusa"
+        ]
+      },
+      "source_ids": [
+        "sendai-sakunami",
+        "shoju-wakakusa"
+      ],
+      "source_fields": [
+        "春・草木"
+      ],
+      "source_titles": [
+        "作並",
+        "野遊"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-018"
+    },
+    {
+      "reading": "やとるつゆたまはのきはのはにてりてにはのはきのはまたゆつるとや",
+      "meter": [
+        "やとるつゆ",
+        "たまはのきはの",
+        "はにてりて",
+        "にはのはきのは",
+        "またゆつるとや"
+      ],
+      "A": "やとるつゆ",
+      "B": "たま",
+      "C": "はのきはの",
+      "D": "はに",
+      "E": "てりて",
+      "factor_sources": {
+        "AB": [
+          "shoju-031"
+        ],
+        "BC": [
+          "shoju-031"
+        ],
+        "CD": [
+          "shoju-031"
+        ],
+        "DE": [
+          "shoju-035"
+        ]
+      },
+      "source_ids": [
+        "shoju-031",
+        "shoju-035"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "同（露）",
+        "同（月）"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-019"
+    },
+    {
+      "reading": "わかくさのなははくとしれくすりなりすくれしとくははなのさくかわ",
+      "meter": [
+        "わかくさの",
+        "なははくとしれ",
+        "くすりなり",
+        "すくれしとくは",
+        "はなのさくかわ"
+      ],
+      "A": "わかくさの",
+      "B": "なは",
+      "C": "はくとしれ",
+      "D": "くす",
+      "E": "りなり",
+      "factor_sources": {
+        "AB": [
+          "shoju-wakakusa"
+        ],
+        "BC": [
+          "sendai-sakunami"
+        ],
+        "CD": [
+          "sendai-sakunami"
+        ],
+        "DE": [
+          "sendai-sakunami"
+        ]
+      },
+      "source_ids": [
+        "shoju-wakakusa",
+        "sendai-sakunami"
+      ],
+      "source_fields": [
+        "春・草木"
+      ],
+      "source_titles": [
+        "野遊",
+        "作並"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-020"
+    },
+    {
+      "reading": "てりつうみきつるもはきのはにしけしにはのきはもるつきみうつりて",
+      "meter": [
+        "てりつうみ",
+        "きつるもはきの",
+        "はにしけし",
+        "にはのきはもる",
+        "つきみうつりて"
+      ],
+      "A": "てりつうみ",
+      "B": "きつ",
+      "C": "るもはきの",
+      "D": "はに",
+      "E": "しけし",
+      "factor_sources": {
+        "AB": [
+          "shoju-040"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "shoju-031"
+        ]
+      },
+      "source_ids": [
+        "shoju-040",
+        "shoju-035",
+        "shoju-031"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "月明海上鴻鷹渡",
+        "同（月）",
+        "同（露）"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-021"
+    },
+    {
+      "reading": "なかきよのきつるもはきのはにしけしにはのきはもるつきのよきかな",
+      "meter": [
+        "なかきよの",
+        "きつるもはきの",
+        "はにしけし",
+        "にはのきはもる",
+        "つきのよきかな"
+      ],
+      "A": "なかきよの",
+      "B": "きつ",
+      "C": "るもはきの",
+      "D": "はに",
+      "E": "しけし",
+      "factor_sources": {
+        "AB": [
+          "shoju-038"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "shoju-031"
+        ]
+      },
+      "source_ids": [
+        "shoju-038",
+        "shoju-035",
+        "shoju-031"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "田毎月",
+        "同（月）",
+        "同（露）"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-022"
+    },
+    {
+      "reading": "なかよさのきつるもはきのはにしけしにはのきはもるつきのさよかな",
+      "meter": [
+        "なかよさの",
+        "きつるもはきの",
+        "はにしけし",
+        "にはのきはもる",
+        "つきのさよかな"
+      ],
+      "A": "なかよさの",
+      "B": "きつ",
+      "C": "るもはきの",
+      "D": "はに",
+      "E": "しけし",
+      "factor_sources": {
+        "AB": [
+          "shoju-add-109"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "shoju-031"
+        ]
+      },
+      "source_ids": [
+        "shoju-add-109",
+        "shoju-035",
+        "shoju-031"
+      ],
+      "source_fields": [
+        "秋・月"
+      ],
+      "source_titles": [
+        "嫁娘見月",
+        "同（月）",
+        "同（露）"
+      ],
+      "semantic_cohesion": 3,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-023"
+    },
+    {
+      "reading": "きつるままちもきよけらしかわのへのわかしらけよきもちままるつき",
+      "meter": [
+        "きつるまま",
+        "ちもきよけらし",
+        "かわのへの",
+        "わかしらけよき",
+        "もちままるつき"
+      ],
+      "A": "きつるまま",
+      "B": "ちも",
+      "C": "きよけらし",
+      "D": "かわ",
+      "E": "のへの",
+      "factor_sources": {
+        "AB": [
+          "shoju-033"
+        ],
+        "BC": [
+          "shoju-033"
+        ],
+        "CD": [
+          "shoju-070"
+        ],
+        "DE": [
+          "shoju-070"
+        ]
+      },
+      "source_ids": [
+        "shoju-033",
+        "shoju-070"
+      ],
+      "source_fields": [
+        "秋・月",
+        "信仰"
+      ],
+      "source_titles": [
+        "月",
+        "同（釈教）"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-024"
+    },
+    {
+      "reading": "さよきつるけふそまたきしすすかけかすすしきたまそふけるつきよさ",
+      "meter": [
+        "さよきつる",
+        "けふそまたきし",
+        "すすかけか",
+        "すすしきたまそ",
+        "ふけるつきよさ"
+      ],
+      "A": "さよきつる",
+      "B": "けふ",
+      "C": "そまたきし",
+      "D": "すす",
+      "E": "かけか",
+      "factor_sources": {
+        "AB": [
+          "shoju-027"
+        ],
+        "BC": [
+          "shoju-027"
+        ],
+        "CD": [
+          "shoju-027"
+        ],
+        "DE": [
+          "shoju-064"
+        ]
+      },
+      "source_ids": [
+        "shoju-027",
+        "shoju-064"
+      ],
+      "source_fields": [
+        "夏・行事",
+        "信仰"
+      ],
+      "source_titles": [
+        "納涼",
+        "社頭祝"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-025"
+    },
+    {
+      "reading": "しなもなくほとしらぬみちみもしはしもみちみぬらしとほくなもなし",
+      "meter": [
+        "しなもなく",
+        "ほとしらぬみち",
+        "みもしはし",
+        "もみちみぬらし",
+        "とほくなもなし"
+      ],
+      "A": "しなもなく",
+      "B": "ほと",
+      "C": "しらぬみち",
+      "D": "みも",
+      "E": "しはし",
+      "factor_sources": {
+        "AB": [
+          "shoju-068"
+        ],
+        "BC": [
+          "shoju-044"
+        ],
+        "CD": [
+          "shoju-044"
+        ],
+        "DE": [
+          "shoju-044"
+        ]
+      },
+      "source_ids": [
+        "shoju-068",
+        "shoju-044"
+      ],
+      "source_fields": [
+        "信仰",
+        "秋・月"
+      ],
+      "source_titles": [
+        "釈教",
+        "紅葉"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-026"
+    },
+    {
+      "reading": "しなもなくほとときすはやきつなけなつきやはすきととほくなもなし",
+      "meter": [
+        "しなもなく",
+        "ほとときすはや",
+        "きつなけな",
+        "つきやはすきと",
+        "とほくなもなし"
+      ],
+      "A": "しなもなく",
+      "B": "ほと",
+      "C": "ときすはや",
+      "D": "きつ",
+      "E": "なけな",
+      "factor_sources": {
+        "AB": [
+          "shoju-068"
+        ],
+        "BC": [
+          "shoju-021"
+        ],
+        "CD": [
+          "shoju-021"
+        ],
+        "DE": [
+          "shoju-021"
+        ]
+      },
+      "source_ids": [
+        "shoju-068",
+        "shoju-021"
+      ],
+      "source_fields": [
+        "信仰",
+        "夏・行事"
+      ],
+      "source_titles": [
+        "釈教",
+        "子規"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-027"
+    },
+    {
+      "reading": "しらゆきはけさのらくさのはにしけしにはのさくらのさけはきゆらし",
+      "meter": [
+        "しらゆきは",
+        "けさのらくさの",
+        "はにしけし",
+        "にはのさくらの",
+        "さけはきゆらし"
+      ],
+      "A": "しらゆきは",
+      "B": "けさ",
+      "C": "のらくさの",
+      "D": "はに",
+      "E": "しけし",
+      "factor_sources": {
+        "AB": [
+          "mitoku-shirayuki"
+        ],
+        "BC": [
+          "mitoku-shirayuki"
+        ],
+        "CD": [
+          "mitoku-shirayuki"
+        ],
+        "DE": [
+          "shoju-031"
+        ]
+      },
+      "source_ids": [
+        "mitoku-shirayuki",
+        "shoju-031"
+      ],
+      "source_fields": [
+        "冬・雪",
+        "秋・月"
+      ],
+      "source_titles": [
+        "白雪",
+        "同（露）"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-028"
+    },
+    {
+      "reading": "しらゆきはけさのらくさのはにてりてにはのさくらのさけはきゆらし",
+      "meter": [
+        "しらゆきは",
+        "けさのらくさの",
+        "はにてりて",
+        "にはのさくらの",
+        "さけはきゆらし"
+      ],
+      "A": "しらゆきは",
+      "B": "けさ",
+      "C": "のらくさの",
+      "D": "はに",
+      "E": "てりて",
+      "factor_sources": {
+        "AB": [
+          "mitoku-shirayuki"
+        ],
+        "BC": [
+          "mitoku-shirayuki"
+        ],
+        "CD": [
+          "mitoku-shirayuki"
+        ],
+        "DE": [
+          "shoju-035"
+        ]
+      },
+      "source_ids": [
+        "mitoku-shirayuki",
+        "shoju-035"
+      ],
+      "source_fields": [
+        "冬・雪",
+        "秋・月"
+      ],
+      "source_titles": [
+        "白雪",
+        "同（月）"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-029"
+    },
+    {
+      "reading": "てりつうみきつしもなかのみなめさめなみのかなもしつきみうつりて",
+      "meter": [
+        "てりつうみ",
+        "きつしもなかの",
+        "みなめさめ",
+        "なみのかなもし",
+        "つきみうつりて"
+      ],
+      "A": "てりつうみ",
+      "B": "きつ",
+      "C": "しもなかの",
+      "D": "みな",
+      "E": "めさめ",
+      "factor_sources": {
+        "AB": [
+          "shoju-040"
+        ],
+        "BC": [
+          "shoju-040"
+        ],
+        "CD": [
+          "shoju-040"
+        ],
+        "DE": [
+          "edo-popular-takarabune"
+        ]
+      },
+      "source_ids": [
+        "shoju-040",
+        "edo-popular-takarabune"
+      ],
+      "source_fields": [
+        "秋・月",
+        "その他"
+      ],
+      "source_titles": [
+        "月明海上鴻鷹渡",
+        "宝船回文歌"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-030"
+    },
+    {
+      "reading": "とひてかやなはしらすみるともとちともとるみすらしはなやかてひと",
+      "meter": [
+        "とひてかや",
+        "なはしらすみる",
+        "ともとちと",
+        "もとるみすらし",
+        "はなやかてひと"
+      ],
+      "A": "とひてかや",
+      "B": "なは",
+      "C": "しらすみる",
+      "D": "とも",
+      "E": "とちと",
+      "factor_sources": {
+        "AB": [
+          "shoju-058"
+        ],
+        "BC": [
+          "shoju-wakakusa"
+        ],
+        "CD": [
+          "shoju-wakakusa"
+        ],
+        "DE": [
+          "shoju-wakakusa"
+        ]
+      },
+      "source_ids": [
+        "shoju-058",
+        "shoju-wakakusa"
+      ],
+      "source_fields": [
+        "恋・人事",
+        "春・草木"
+      ],
+      "source_titles": [
+        "士",
+        "野遊"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-031"
+    },
+    {
+      "reading": "とひてかやなははくとしれくすりなりすくれしとくははなやかてひと",
+      "meter": [
+        "とひてかや",
+        "なははくとしれ",
+        "くすりなり",
+        "すくれしとくは",
+        "はなやかてひと"
+      ],
+      "A": "とひてかや",
+      "B": "なは",
+      "C": "はくとしれ",
+      "D": "くす",
+      "E": "りなり",
+      "factor_sources": {
+        "AB": [
+          "shoju-058"
+        ],
+        "BC": [
+          "sendai-sakunami"
+        ],
+        "CD": [
+          "sendai-sakunami"
+        ],
+        "DE": [
+          "sendai-sakunami"
+        ]
+      },
+      "source_ids": [
+        "shoju-058",
+        "sendai-sakunami"
+      ],
+      "source_fields": [
+        "恋・人事",
+        "春・草木"
+      ],
+      "source_titles": [
+        "士",
+        "作並"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-032"
+    },
+    {
+      "reading": "なかきよのとをのねふりのみなかりかなみのりふねのをとのよきかな",
+      "meter": [
+        "なかきよの",
+        "とをのねふりの",
+        "みなかりか",
+        "なみのりふねの",
+        "をとのよきかな"
+      ],
+      "A": "なかきよの",
+      "B": "とを",
+      "C": "のねふりの",
+      "D": "みな",
+      "E": "かりか",
+      "factor_sources": {
+        "AB": [
+          "edo-popular-takarabune"
+        ],
+        "BC": [
+          "edo-popular-takarabune"
+        ],
+        "CD": [
+          "edo-popular-takarabune"
+        ],
+        "DE": [
+          "shoju-040"
+        ]
+      },
+      "source_ids": [
+        "edo-popular-takarabune",
+        "shoju-040"
+      ],
+      "source_fields": [
+        "その他",
+        "秋・月"
+      ],
+      "source_titles": [
+        "宝船回文歌",
+        "月明海上鴻鷹渡"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-033"
+    },
+    {
+      "reading": "はれつみよきつるもはきのはにもつもにはのきはもるつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつるもはきの",
+        "はにもつも",
+        "にはのきはもる",
+        "つきよみつれは"
+      ],
+      "A": "はれつみよ",
+      "B": "きつ",
+      "C": "るもはきの",
+      "D": "はに",
+      "E": "もつも",
+      "factor_sources": {
+        "AB": [
+          "shoju-035"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "mitoku-shirayuki"
+        ]
+      },
+      "source_ids": [
+        "shoju-035",
+        "mitoku-shirayuki"
+      ],
+      "source_fields": [
+        "秋・月",
+        "冬・雪"
+      ],
+      "source_titles": [
+        "同（月）",
+        "白雪"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-034"
+    },
+    {
+      "reading": "みなくさのなはゆみとりとかたきよきたかとりとみゆはなのさくなみ",
+      "meter": [
+        "みなくさの",
+        "なはゆみとりと",
+        "かたきよき",
+        "たかとりとみゆ",
+        "はなのさくなみ"
+      ],
+      "A": "みなくさの",
+      "B": "なは",
+      "C": "ゆみとりと",
+      "D": "かた",
+      "E": "きよき",
+      "factor_sources": {
+        "AB": [
+          "sendai-sakunami"
+        ],
+        "BC": [
+          "shoju-058"
+        ],
+        "CD": [
+          "shoju-058"
+        ],
+        "DE": [
+          "shoju-058"
+        ]
+      },
+      "source_ids": [
+        "sendai-sakunami",
+        "shoju-058"
+      ],
+      "source_fields": [
+        "春・草木",
+        "恋・人事"
+      ],
+      "source_titles": [
+        "作並",
+        "士"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-035"
+    },
+    {
+      "reading": "もとつたそほとけのをしへみつのよのつみへしをのけとほそたつとも",
+      "meter": [
+        "もとつたそ",
+        "ほとけのをしへ",
+        "みつのよの",
+        "つみへしをのけ",
+        "とほそたつとも"
+      ],
+      "A": "もとつたそ",
+      "B": "ほと",
+      "C": "けのをしへ",
+      "D": "みつ",
+      "E": "のよの",
+      "factor_sources": {
+        "AB": [
+          "shoju-021"
+        ],
+        "BC": [
+          "shoju-068"
+        ],
+        "CD": [
+          "shoju-068"
+        ],
+        "DE": [
+          "shoju-068"
+        ]
+      },
+      "source_ids": [
+        "shoju-021",
+        "shoju-068"
+      ],
+      "source_fields": [
+        "夏・行事",
+        "信仰"
+      ],
+      "source_titles": [
+        "子規",
+        "釈教"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-036"
+    },
+    {
+      "reading": "もとつたそほとしらぬみちみもしはしもみちみぬらしとほそたつとも",
+      "meter": [
+        "もとつたそ",
+        "ほとしらぬみち",
+        "みもしはし",
+        "もみちみぬらし",
+        "とほそたつとも"
+      ],
+      "A": "もとつたそ",
+      "B": "ほと",
+      "C": "しらぬみち",
+      "D": "みも",
+      "E": "しはし",
+      "factor_sources": {
+        "AB": [
+          "shoju-021"
+        ],
+        "BC": [
+          "shoju-044"
+        ],
+        "CD": [
+          "shoju-044"
+        ],
+        "DE": [
+          "shoju-044"
+        ]
+      },
+      "source_ids": [
+        "shoju-021",
+        "shoju-044"
+      ],
+      "source_fields": [
+        "夏・行事",
+        "秋・月"
+      ],
+      "source_titles": [
+        "子規",
+        "紅葉"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-037"
+    },
+    {
+      "reading": "やとるつゆたまはのきはのはにもつもにはのはきのはまたゆつるとや",
+      "meter": [
+        "やとるつゆ",
+        "たまはのきはの",
+        "はにもつも",
+        "にはのはきのは",
+        "またゆつるとや"
+      ],
+      "A": "やとるつゆ",
+      "B": "たま",
+      "C": "はのきはの",
+      "D": "はに",
+      "E": "もつも",
+      "factor_sources": {
+        "AB": [
+          "shoju-031"
+        ],
+        "BC": [
+          "shoju-031"
+        ],
+        "CD": [
+          "shoju-031"
+        ],
+        "DE": [
+          "mitoku-shirayuki"
+        ]
+      },
+      "source_ids": [
+        "shoju-031",
+        "mitoku-shirayuki"
+      ],
+      "source_fields": [
+        "秋・月",
+        "冬・雪"
+      ],
+      "source_titles": [
+        "同（露）",
+        "白雪"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-038"
+    },
+    {
+      "reading": "やまのおくほとけのをしへみつのよのつみへしをのけとほくおのまや",
+      "meter": [
+        "やまのおく",
+        "ほとけのをしへ",
+        "みつのよの",
+        "つみへしをのけ",
+        "とほくおのまや"
+      ],
+      "A": "やまのおく",
+      "B": "ほと",
+      "C": "けのをしへ",
+      "D": "みつ",
+      "E": "のよの",
+      "factor_sources": {
+        "AB": [
+          "shoju-044"
+        ],
+        "BC": [
+          "shoju-068"
+        ],
+        "CD": [
+          "shoju-068"
+        ],
+        "DE": [
+          "shoju-068"
+        ]
+      },
+      "source_ids": [
+        "shoju-044",
+        "shoju-068"
+      ],
+      "source_fields": [
+        "秋・月",
+        "信仰"
+      ],
+      "source_titles": [
+        "紅葉",
+        "釈教"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-039"
+    },
+    {
+      "reading": "やまのおくほとときすはやきつなけなつきやはすきととほくおのまや",
+      "meter": [
+        "やまのおく",
+        "ほとときすはや",
+        "きつなけな",
+        "つきやはすきと",
+        "とほくおのまや"
+      ],
+      "A": "やまのおく",
+      "B": "ほと",
+      "C": "ときすはや",
+      "D": "きつ",
+      "E": "なけな",
+      "factor_sources": {
+        "AB": [
+          "shoju-044"
+        ],
+        "BC": [
+          "shoju-021"
+        ],
+        "CD": [
+          "shoju-021"
+        ],
+        "DE": [
+          "shoju-021"
+        ]
+      },
+      "source_ids": [
+        "shoju-044",
+        "shoju-021"
+      ],
+      "source_fields": [
+        "秋・月",
+        "夏・行事"
+      ],
+      "source_titles": [
+        "紅葉",
+        "子規"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-040"
+    },
+    {
+      "reading": "らくてみのよみやきよめしすすかせかすすしめよきやみよのみてくら",
+      "meter": [
+        "らくてみの",
+        "よみやきよめし",
+        "すすかせか",
+        "すすしめよきや",
+        "みよのみてくら"
+      ],
+      "A": "らくてみの",
+      "B": "よみ",
+      "C": "やきよめし",
+      "D": "すす",
+      "E": "かせか",
+      "factor_sources": {
+        "AB": [
+          "shoju-064"
+        ],
+        "BC": [
+          "shoju-064"
+        ],
+        "CD": [
+          "shoju-064"
+        ],
+        "DE": [
+          "shoju-027"
+        ]
+      },
+      "source_ids": [
+        "shoju-064",
+        "shoju-027"
+      ],
+      "source_fields": [
+        "信仰",
+        "夏・行事"
+      ],
+      "source_titles": [
+        "社頭祝",
+        "納涼"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-041"
+    },
+    {
+      "reading": "わかくさのなはゆみとりとかたきよきたかとりとみゆはなのさくかわ",
+      "meter": [
+        "わかくさの",
+        "なはゆみとりと",
+        "かたきよき",
+        "たかとりとみゆ",
+        "はなのさくかわ"
+      ],
+      "A": "わかくさの",
+      "B": "なは",
+      "C": "ゆみとりと",
+      "D": "かた",
+      "E": "きよき",
+      "factor_sources": {
+        "AB": [
+          "shoju-wakakusa"
+        ],
+        "BC": [
+          "shoju-058"
+        ],
+        "CD": [
+          "shoju-058"
+        ],
+        "DE": [
+          "shoju-058"
+        ]
+      },
+      "source_ids": [
+        "shoju-wakakusa",
+        "shoju-058"
+      ],
+      "source_fields": [
+        "春・草木",
+        "恋・人事"
+      ],
+      "source_titles": [
+        "野遊",
+        "士"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-042"
+    },
+    {
+      "reading": "てりつうみきつるもはきのはにもつもにはのきはもるつきみうつりて",
+      "meter": [
+        "てりつうみ",
+        "きつるもはきの",
+        "はにもつも",
+        "にはのきはもる",
+        "つきみうつりて"
+      ],
+      "A": "てりつうみ",
+      "B": "きつ",
+      "C": "るもはきの",
+      "D": "はに",
+      "E": "もつも",
+      "factor_sources": {
+        "AB": [
+          "shoju-040"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "mitoku-shirayuki"
+        ]
+      },
+      "source_ids": [
+        "shoju-040",
+        "shoju-035",
+        "mitoku-shirayuki"
+      ],
+      "source_fields": [
+        "秋・月",
+        "冬・雪"
+      ],
+      "source_titles": [
+        "月明海上鴻鷹渡",
+        "同（月）",
+        "白雪"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-043"
+    },
+    {
+      "reading": "なかきよのきつしもなかのみなめさめなみのかなもしつきのよきかな",
+      "meter": [
+        "なかきよの",
+        "きつしもなかの",
+        "みなめさめ",
+        "なみのかなもし",
+        "つきのよきかな"
+      ],
+      "A": "なかきよの",
+      "B": "きつ",
+      "C": "しもなかの",
+      "D": "みな",
+      "E": "めさめ",
+      "factor_sources": {
+        "AB": [
+          "shoju-038"
+        ],
+        "BC": [
+          "shoju-040"
+        ],
+        "CD": [
+          "shoju-040"
+        ],
+        "DE": [
+          "edo-popular-takarabune"
+        ]
+      },
+      "source_ids": [
+        "shoju-038",
+        "shoju-040",
+        "edo-popular-takarabune"
+      ],
+      "source_fields": [
+        "秋・月",
+        "その他"
+      ],
+      "source_titles": [
+        "田毎月",
+        "月明海上鴻鷹渡",
+        "宝船回文歌"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-044"
+    },
+    {
+      "reading": "なかきよのきつるもはきのはにもつもにはのきはもるつきのよきかな",
+      "meter": [
+        "なかきよの",
+        "きつるもはきの",
+        "はにもつも",
+        "にはのきはもる",
+        "つきのよきかな"
+      ],
+      "A": "なかきよの",
+      "B": "きつ",
+      "C": "るもはきの",
+      "D": "はに",
+      "E": "もつも",
+      "factor_sources": {
+        "AB": [
+          "shoju-038"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "mitoku-shirayuki"
+        ]
+      },
+      "source_ids": [
+        "shoju-038",
+        "shoju-035",
+        "mitoku-shirayuki"
+      ],
+      "source_fields": [
+        "秋・月",
+        "冬・雪"
+      ],
+      "source_titles": [
+        "田毎月",
+        "同（月）",
+        "白雪"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-045"
+    },
+    {
+      "reading": "なかよさのきつしもなかのみなめさめなみのかなもしつきのさよかな",
+      "meter": [
+        "なかよさの",
+        "きつしもなかの",
+        "みなめさめ",
+        "なみのかなもし",
+        "つきのさよかな"
+      ],
+      "A": "なかよさの",
+      "B": "きつ",
+      "C": "しもなかの",
+      "D": "みな",
+      "E": "めさめ",
+      "factor_sources": {
+        "AB": [
+          "shoju-add-109"
+        ],
+        "BC": [
+          "shoju-040"
+        ],
+        "CD": [
+          "shoju-040"
+        ],
+        "DE": [
+          "edo-popular-takarabune"
+        ]
+      },
+      "source_ids": [
+        "shoju-add-109",
+        "shoju-040",
+        "edo-popular-takarabune"
+      ],
+      "source_fields": [
+        "秋・月",
+        "その他"
+      ],
+      "source_titles": [
+        "嫁娘見月",
+        "月明海上鴻鷹渡",
+        "宝船回文歌"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-046"
+    },
+    {
+      "reading": "なかよさのきつるもはきのはにもつもにはのきはもるつきのさよかな",
+      "meter": [
+        "なかよさの",
+        "きつるもはきの",
+        "はにもつも",
+        "にはのきはもる",
+        "つきのさよかな"
+      ],
+      "A": "なかよさの",
+      "B": "きつ",
+      "C": "るもはきの",
+      "D": "はに",
+      "E": "もつも",
+      "factor_sources": {
+        "AB": [
+          "shoju-add-109"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "mitoku-shirayuki"
+        ]
+      },
+      "source_ids": [
+        "shoju-add-109",
+        "shoju-035",
+        "mitoku-shirayuki"
+      ],
+      "source_fields": [
+        "秋・月",
+        "冬・雪"
+      ],
+      "source_titles": [
+        "嫁娘見月",
+        "同（月）",
+        "白雪"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-047"
+    },
+    {
+      "reading": "はれつみよきつしもなかのみなめさめなみのかなもしつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつしもなかの",
+        "みなめさめ",
+        "なみのかなもし",
+        "つきよみつれは"
+      ],
+      "A": "はれつみよ",
+      "B": "きつ",
+      "C": "しもなかの",
+      "D": "みな",
+      "E": "めさめ",
+      "factor_sources": {
+        "AB": [
+          "shoju-035"
+        ],
+        "BC": [
+          "shoju-040"
+        ],
+        "CD": [
+          "shoju-040"
+        ],
+        "DE": [
+          "edo-popular-takarabune"
+        ]
+      },
+      "source_ids": [
+        "shoju-035",
+        "shoju-040",
+        "edo-popular-takarabune"
+      ],
+      "source_fields": [
+        "秋・月",
+        "その他"
+      ],
+      "source_titles": [
+        "同（月）",
+        "月明海上鴻鷹渡",
+        "宝船回文歌"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-048"
+    },
+    {
+      "reading": "もとつたそほとけのをしへみつもひもつみへしをのけとほそたつとも",
+      "meter": [
+        "もとつたそ",
+        "ほとけのをしへ",
+        "みつもひも",
+        "つみへしをのけ",
+        "とほそたつとも"
+      ],
+      "A": "もとつたそ",
+      "B": "ほと",
+      "C": "けのをしへ",
+      "D": "みつ",
+      "E": "もひも",
+      "factor_sources": {
+        "AB": [
+          "shoju-021"
+        ],
+        "BC": [
+          "shoju-068"
+        ],
+        "CD": [
+          "shoju-068"
+        ],
+        "DE": [
+          "shoju-five-elements"
+        ]
+      },
+      "source_ids": [
+        "shoju-021",
+        "shoju-068",
+        "shoju-five-elements"
+      ],
+      "source_fields": [
+        "夏・行事",
+        "信仰"
+      ],
+      "source_titles": [
+        "子規",
+        "釈教",
+        "地水火風空"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-049"
+    },
+    {
+      "reading": "やまのおくほとけのをしへみつもひもつみへしをのけとほくおのまや",
+      "meter": [
+        "やまのおく",
+        "ほとけのをしへ",
+        "みつもひも",
+        "つみへしをのけ",
+        "とほくおのまや"
+      ],
+      "A": "やまのおく",
+      "B": "ほと",
+      "C": "けのをしへ",
+      "D": "みつ",
+      "E": "もひも",
+      "factor_sources": {
+        "AB": [
+          "shoju-044"
+        ],
+        "BC": [
+          "shoju-068"
+        ],
+        "CD": [
+          "shoju-068"
+        ],
+        "DE": [
+          "shoju-five-elements"
+        ]
+      },
+      "source_ids": [
+        "shoju-044",
+        "shoju-068",
+        "shoju-five-elements"
+      ],
+      "source_fields": [
+        "秋・月",
+        "信仰"
+      ],
+      "source_titles": [
+        "紅葉",
+        "釈教",
+        "地水火風空"
+      ],
+      "semantic_cohesion": 2,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-050"
+    },
+    {
+      "reading": "なかるへきみつきよけらしけふのよのふけしらけよきつみきへるかな",
+      "meter": [
+        "なかるへき",
+        "みつきよけらし",
+        "けふのよの",
+        "ふけしらけよき",
+        "つみきへるかな"
+      ],
+      "A": "なかるへき",
+      "B": "みつ",
+      "C": "きよけらし",
+      "D": "けふ",
+      "E": "のよの",
+      "factor_sources": {
+        "AB": [
+          "shoju-070"
+        ],
+        "BC": [
+          "shoju-070"
+        ],
+        "CD": [
+          "shoju-033"
+        ],
+        "DE": [
+          "shoju-033",
+          "shoju-072"
+        ]
+      },
+      "source_ids": [
+        "shoju-070",
+        "shoju-033",
+        "shoju-072"
+      ],
+      "source_fields": [
+        "信仰",
+        "秋・月",
+        "恋・人事"
+      ],
+      "source_titles": [
+        "同（釈教）",
+        "月",
+        "寄琴恋"
+      ],
+      "semantic_cohesion": 1,
+      "semantic_review_status": "pending",
+      "palindrome_verified": true,
+      "local_factor_attested": true,
+      "id": "hybrid-051"
+    }
+  ]
+}
