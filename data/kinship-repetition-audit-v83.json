@@ -1,5 +1,5 @@
 {
-  "version": "0.83",
+  "version": "0.83.1",
   "title": "Kinship template repetition audit",
   "public_behavior_changed": false,
   "scope": "Current public L1 one-shot DNA generation and narrative growth data.",
@@ -7,15 +7,13 @@
     "recursive_rule_id": "L1-RECURSIVE-KINSHIP",
     "max_depth_defined": 3,
     "public_dna_depth_used": 1,
-    "generated_unique_at_public_depth": 216,
-    "depth0": 72,
-    "depth1": 144,
-    "default_visible": 216,
-    "estimated_l1_dna_rule_outputs": 290,
-    "l1_reverse_pair_outputs_added_by_dna_pool": 21,
-    "dna_button_pool_estimate": 311,
-    "recursive_share_of_dna_button": 0.6945,
-    "interpretation": "Roughly seven in ten L1 DNA-button candidates come from one recursive kinship grammar."
+    "recursive_unique_readings": 216,
+    "standard_nonrecursive_materialized": 233,
+    "reverse_pair_materialized": 80,
+    "nonrecursive_unique_after_overlap": 255,
+    "dna_button_total_unique": 451,
+    "recursive_form_share_of_dna_button": 0.4789,
+    "interpretation": "Exact reconstruction of index.html dnaPool(true): 216 of 451 unique L1 DNA-button readings belong to the recursive-kinship reading set, about 47.9%."
   },
   "seed_context": {
     "default_l1_seed_count": 159,
@@ -44,5 +42,6 @@
     "For 10-item comparison, use source/family-balanced sampling rather than uniform sampling over every materialized candidate.",
     "For growth, stop extending every compatible family through the same mother/father long-tail; add non-kinship long-tail families before further increasing depth."
   ],
-  "next_step": "Create a one-shot DNA family exposure policy and simulate the expected mix before changing public selection."
+  "next_step": "Create a one-shot DNA family exposure policy using the corrected 47.9% baseline and simulate a 25% recursive cap before changing public selection.",
+  "correction_note": "v0.83 initial rough estimate used source-classified public-pool counts after seed deduplication and overstated one-shot DNA share. v0.83.1 reconstructs the actual dnaPool(true) selection pool directly. Growth statistics are unchanged."
 }
