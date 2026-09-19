@@ -15,6 +15,10 @@ const factorHybrids = JSON.parse(fs.readFileSync("data/historical-factor-hybrids
 const seamSignatures = JSON.parse(fs.readFileSync("data/historical-seam-signatures-v36.json", "utf8"));
 const hybridReview = JSON.parse(fs.readFileSync("data/historical-hybrid-review-v37.json", "utf8"));
 const cento = JSON.parse(fs.readFileSync("data/historical-cento-candidates-v38.json", "utf8"));
+const wave2 = JSON.parse(fs.readFileSync("data/historical-mining-wave2-v39.json", "utf8"));
+const hybridCuration = JSON.parse(fs.readFileSync("data/historical-hybrid-curation-v40.json", "utf8"));
+const yamauchiTokenization = JSON.parse(fs.readFileSync("data/yamauchi-tokenization-model-v41.json", "utf8"));
+const topicFirst = JSON.parse(fs.readFileSync("data/historical-topic-first-model-v42.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -308,6 +312,25 @@ for(const c of cento.candidates??[]){
   }
 }
 
+for(const x of wave2.verified_candidates??[]){
+  if(!x.reading||[...x.reading].length!==31||!isPalindrome(x.reading))errors.push(`WAVE2 candidate invalid: ${x.id}`);
+}
+if(wave2.verified_count!==(wave2.verified_candidates??[]).length)errors.push("WAVE2 verified count mismatch");
+if(wave2.held_count!==(wave2.held_for_source_image_review??[]).length)errors.push("WAVE2 held count mismatch");
+
+const curatedIds=new Set((hybridCuration.reviews??[]).map(x=>x.id));
+if(curatedIds.size!==(hybridCuration.reviews??[]).length)errors.push("HYBRID CURATION duplicate ids");
+for(const x of hybridCuration.reviews??[]){
+  if(!isPalindrome(x.reading)||[...x.reading].length!==31)errors.push(`HYBRID CURATION invalid palindrome: ${x.id}`);
+  if(!factorHybrids.candidates?.some(y=>y.id===x.id))errors.push(`HYBRID CURATION unknown hybrid: ${x.id}`);
+  if(!x.status||!x.action)errors.push(`HYBRID CURATION missing status/action: ${x.id}`);
+}
+
+if(!(yamauchiTokenization.interpretation_for_engine??[]).length)errors.push("YAMAUCHI TOKENIZATION principles missing");
+if(!(yamauchiTokenization.unit_schema?.reading))errors.push("YAMAUCHI TOKENIZATION schema missing");
+if(!(topicFirst.topic_hierarchy??[]).length)errors.push("TOPIC FIRST hierarchy missing");
+if(topicFirst.source_findings?.local_50_sample_counts?.reduce((n,x)=>n+x[1],0)!==50)errors.push("TOPIC FIRST local counts must total 50");
+
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
 if(rules.rule_count!==rules.rules.length)errors.push(`RULE COUNT mismatch: declared=${rules.rule_count} actual=${rules.rules.length}`);
@@ -328,3 +351,6 @@ console.log(`Tanka lattice third-ku palindromes: ${thirdKuPalCount}/${allHistori
 console.log(`Research semantic fields: ${semanticFields.sample_count}`);
 console.log(`Historical factor hybrids: ${factorHybrids.novel_path_count}`);
 console.log(`Historical cento candidates: ${cento.total}`);
+console.log(`Wave2 verified samples: ${wave2.verified_count}, held: ${wave2.held_count}`);
+console.log(`Manual hybrid reviews: ${hybridCuration.reviews?.length??0}`);
+console.log(`Topic-first models: ${topicFirst.topic_hierarchy?.length??0}`);
