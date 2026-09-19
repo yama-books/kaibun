@@ -25,6 +25,7 @@ const topicFirstGate = JSON.parse(fs.readFileSync("data/historical-topic-first-g
 const autumnMoonMicrogrammar = JSON.parse(fs.readFileSync("data/autumn-moon-microgrammar-v46.json", "utf8"));
 const autumnMoonControl = JSON.parse(fs.readFileSync("data/autumn-moon-control-microgrammar-v47.json", "utf8"));
 const sceneGate = JSON.parse(fs.readFileSync("data/scene-compatibility-gate-v48.json", "utf8"));
+const factorSceneSignatures = JSON.parse(fs.readFileSync("data/autumn-moon-factor-scene-signatures-v49.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -384,6 +385,15 @@ if(sceneGate.status!=="research-hypothesis")errors.push("SCENE GATE V48 must rem
 if((sceneGate.generic_tags??[]).join(",")!=="秋,月")errors.push("SCENE GATE V48 generic tags changed unexpectedly");
 if((sceneGate.case_studies??[]).length!==2)errors.push("SCENE GATE V48 must contain positive and control case studies");
 if(!sceneGate.design_consequences?.includes("Missing scene metadata is not evidence of incompatibility; it triggers human review rather than rejection."))errors.push("SCENE GATE V48 missing conservative hold rule");
+if(factorSceneSignatures.version!=="0.49")errors.push(`FACTOR SCENE V49 version mismatch: ${factorSceneSignatures.version}`);
+if((factorSceneSignatures.signatures??[]).length!==9)errors.push(`FACTOR SCENE V49 signature count must be 9: ${(factorSceneSignatures.signatures??[]).length}`);
+const v49Hani=(factorSceneSignatures.signatures??[]).find(x=>x.id==="scene:D:はに");
+if(!v49Hani||v49Hani.confidence!=="high-structural"||!(v49Hani.scene_tags_forward??[]).includes("葉")||!(v49Hani.scene_tags_reverse??[]).includes("庭"))errors.push("FACTOR SCENE V49 はに signature weakened or changed");
+const v49Hare=(factorSceneSignatures.signatures??[]).find(x=>x.id==="scene:A:はれつみよ");
+if(!v49Hare||v49Hare.confidence!=="unresolved"||(v49Hare.scene_tags??[]).length!==0)errors.push("FACTOR SCENE V49 はれつみよ must remain unresolved");
+const v49Ku4=(factorSceneSignatures.signatures??[]).find(x=>x.id==="scene:ku4:にはのきはもる");
+if(!v49Ku4||(v49Ku4.unresolved??[]).includes("きはもる の漢字・語義")!==true)errors.push("FACTOR SCENE V49 must preserve きはもる uncertainty");
+for(const x of factorSceneSignatures.signatures??[]){if(String(x.confidence??"").includes("source-image-confirmed"))errors.push(`FACTOR SCENE V49 must not claim source-image confirmation: ${x.id}`);}
 
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
@@ -414,3 +424,4 @@ console.log(`Topic-first v45 candidates: ${(topicFirstGate.candidates??[]).lengt
 console.log(`Autumn/moon v46 microgrammar outputs: ${(autumnMoonMicrogrammar.outputs??[]).length}`);
 console.log(`Autumn/moon v47 control outputs: ${(autumnMoonControl.outputs??[]).length}`);
 console.log(`Scene gate v48 case studies: ${(sceneGate.case_studies??[]).length}`);
+console.log(`Factor scene v49 signatures: ${(factorSceneSignatures.signatures??[]).length}`);
