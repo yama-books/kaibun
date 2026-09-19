@@ -33,7 +33,8 @@ const required = [
   "./data/public-reading-hints-v82.json",
   "./data/dna-kinship-exposure-policy-v84.json",
   "./data/ten-comparison-balance-policy-v86.json",
-  "./data/l2-ten-comparison-policy-v93.json"
+  "./data/l2-ten-comparison-policy-v93.json",
+  "./data/growth-selector-usability-policy-v95.json"
 ];
 for (const id of ["lengthMeta","wrapMeta","readingHintMeta"]) {
   if (!html.includes(`id="${id}"`)) {
@@ -99,6 +100,29 @@ if (!html.includes("function repairL2Comparison(")) {
 if (!html.includes('if(layer==="L2")')) {
   failed = true;
   console.error("tenComparisonItems() does not branch for L2");
+}
+
+for (const fn of ["compactGrowthFamilyLabel","appendGrowthFamilyOption"]) {
+  if (!html.includes("function " + fn + "(")) {
+    failed = true;
+    console.error("index.html is missing growth selector helper: " + fn);
+  }
+}
+if (!html.includes('document.createElement("optgroup")')) {
+  failed = true;
+  console.error("growth family selector does not group all-dimension options");
+}
+if (!html.includes('all.textContent="すべて ("+families.length+")"')) {
+  failed = true;
+  console.error("growth dimension selector does not expose family count");
+}
+if (!html.includes('return label+" · "+(f.stages?.length||1)+"段";')) {
+  failed = true;
+  console.error("growth family labels do not expose stage count");
+}
+if (html.includes('function growAgain(){\n  if(layer!=="L1")return;')) {
+  failed = true;
+  console.error("growAgain() still blocks all L2 narrative rerolls");
 }
 
 if (!html.includes("function standardSeamPool()")) {
@@ -194,6 +218,21 @@ if (l2Ten.version !== "0.93") {
 if (l2Ten.rule?.capped_family !== "同定" || l2Ten.rule?.max_items !== 2) {
   failed = true;
   console.error("Unexpected L2 comparison cap configuration");
+}
+
+const growthSelector = JSON.parse(fs.readFileSync("data/growth-selector-usability-policy-v95.json", "utf8"));
+if (growthSelector.version !== "0.95") {
+  failed = true;
+  console.error("Unexpected growth selector policy version: " + growthSelector.version);
+}
+const growthData = JSON.parse(fs.readFileSync("data/growth-engine-v10.json", "utf8"));
+if ((growthData.narrative_families ?? []).length !== 53) {
+  failed = true;
+  console.error("Growth selector rollout changed narrative family count");
+}
+if ((growthData.narrative_families ?? []).reduce((n,f)=>n+(f.stages??[]).length,0) !== 366) {
+  failed = true;
+  console.error("Growth selector rollout changed narrative stage count");
 }
 
 if (failed) process.exit(1);
