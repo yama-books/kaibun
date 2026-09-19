@@ -1,0 +1,125 @@
+{
+  "version": "1.01",
+  "updated_on": "2026-09-19",
+  "purpose": "Route A source review for shoju-068. Separate source-image observation, scholarly transcription, and linguistic interpretation for D=みつ in 「みつの世の」.",
+  "target": {
+    "source_id": "shoju-068",
+    "title": "釈教",
+    "collection": "廻文歌百首",
+    "source_number": 68,
+    "relevant_text": "品もなく ほとけのをしへ みつの世の つみへしをのけ とほくなもなし",
+    "D_surface": "みつ",
+    "normalized_D": "みつ"
+  },
+  "evidence_layers": {
+    "original_image": {
+      "status": "not-directly-inspected",
+      "located_bibliographic_record": true,
+      "record": {
+        "repository": "国文学研究資料館 国書データベース",
+        "title": "風車塵の言の葉",
+        "bibliographic_id": "100080596",
+        "url": "https://kokusho.nijl.ac.jp/biblio/100080596"
+      },
+      "notes": [
+        "国書データベースの所蔵一覧で『風車塵の言の葉』の書誌ID 100080596 と画像View導線を確認した。",
+        "今回の実行環境からMirador/IIIFの該当コマを直接取得・目視できなかったため、原画像の字形確認済みとは扱わない。",
+        "東京都立図書館の『廻文歌百首』書誌も確認したが、検索時点では画像なし/画像取得中表示だった。"
+      ]
+    },
+    "scholarly_transcription": {
+      "status": "verified-in-published-transcription",
+      "source": {
+        "author": "山内潤三",
+        "title": "廻文歌の限界と効用（下）―高野山釈教長歌を頂点として―",
+        "journal": "密教文化",
+        "issue": "107",
+        "date": "1974-07-25",
+        "pages": "1-38",
+        "doi": "10.11168/jeb1947.1974.107_1",
+        "official_metadata_url": "https://www.jstage.jst.go.jp/browse/jeb1947/1974/107/_contents/-char/ja",
+        "ndl_url": "https://ndlsearch.ndl.go.jp/books/R100000002-I000000022661-i6306517"
+      },
+      "transcription_policy": [
+        "翻刻は原文どおりを旨とする。",
+        "字体は現行の漢字・平仮名に改める。",
+        "仮名遣いの誤用は原則そのままとする。"
+      ],
+      "observed_entry": {
+        "heading": "釈教",
+        "number": 68,
+        "text": "品もなく ほとけのをしへ みつの世の つみへしをのけ とほくなもなし",
+        "D_written_in_transcription": "みつ",
+        "following_context": "の世の"
+      },
+      "access_note": "Exact searchable transcription was inspected through a web mirror of the published article; publication identity and bibliographic details were cross-checked against J-STAGE/NDL."
+    },
+    "linguistic_interpretation": {
+      "status": "strongly-supported-not-glyph-confirmed",
+      "candidate_parse": "三つ + の + 世",
+      "semantic_field": "仏教・時間（三世）",
+      "support": [
+        {
+          "source": "新纂浄土宗大辞典「三世」",
+          "url": "https://jodoshuzensho.jp/daijiten/index.php/%E4%B8%89%E4%B8%96",
+          "point": "三世を『過去・現在・未来の三つの世』と定義する。"
+        }
+      ],
+      "contextual_support": [
+        "歌題が「釈教」。",
+        "直前が「ほとけのをしへ」。",
+        "「みつの世」は仏教の三世（過去・現在・未来）を自然に指しうる。"
+      ],
+      "caution": "これは語義・統語の解釈であり、原画像の『みつ』が漢字『三つ』で書かれていることを確認したものではない。"
+    }
+  },
+  "morphology_comparison": {
+    "shoju_five_elements": {
+      "surface_pre_normalization": "みづ",
+      "lexeme": "水",
+      "normalized_D": "みつ",
+      "confidence": "trusted"
+    },
+    "shoju_068": {
+      "surface_transcription": "みつ",
+      "interpreted_lexeme": "三つ",
+      "normalized_D": "みつ",
+      "interpretation_confidence": "strong-but-not-source-image-confirmed"
+    },
+    "normalized_string_equal": true,
+    "lexical_identity_equal": false,
+    "morphology_equivalence_for_crossover": false,
+    "reason": "水（みづ→みつ）と、釈教文脈の数量表現『三つ』は、回文正規化後の文字列が一致しても同一morphology nodeではない。"
+  },
+  "candidate_impact": {
+    "hybrid-002": {
+      "prior_status": "hold-morphology-normalization-collision",
+      "current_status": "hold-morphology-non-equivalence-supported",
+      "reopen": false
+    },
+    "hybrid-017": {
+      "prior_status": "hold-morphology-normalization-collision",
+      "current_status": "hold-morphology-non-equivalence-supported",
+      "reopen": false
+    },
+    "current_generator_candidate_count": 10,
+    "candidate_count_changed": false,
+    "positive_ids_unchanged": [
+      "hybrid-016",
+      "hybrid-019"
+    ]
+  },
+  "decision": {
+    "source_image_verified": false,
+    "scholarly_transcription_verified": true,
+    "linguistic_parse_strengthened": true,
+    "automatic_reopen_allowed": false,
+    "keep_v100_guard": true,
+    "reason": "原画像字形は未確認だが、公開翻刻と仏教語義から、水（みづ）とのmorphology同一視を支持する根拠はなく、むしろ非同一解釈が強い。安全側のguardを維持する。"
+  },
+  "next_actions": [
+    "原画像の該当コマへアクセスできる環境が得られた場合、字形のみ追補確認する。",
+    "原画像確認の有無にかかわらず、normalized palindrome key と morphology identity を別フィールドとして維持する。",
+    "guarded universeの次positive family探索へ進む。"
+  ]
+}
