@@ -66,6 +66,7 @@ const wave3DiagnosticsV125 = JSON.parse(fs.readFileSync("data/historical-mining-
 const orthographicEquivalenceV126 = JSON.parse(fs.readFileSync("data/historical-orthographic-equivalence-v126.json", "utf8"));
 const kanaCasebookV127 = JSON.parse(fs.readFileSync("data/historical-kana-equivalence-casebook-v127.json", "utf8"));
 const bidirectionalSeamV128 = JSON.parse(fs.readFileSync("data/bidirectional-tanka-seam-contrast-v128.json", "utf8"));
+const tankaLatticeDerivationV129 = JSON.parse(fs.readFileSync("data/tanka-mirror-lattice-independent-derivation-v129.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -804,6 +805,13 @@ if((bidirectionalSeamV128.cases??[]).some(x=>JSON.stringify(x.boundary_shift_sig
 if(bidirectionalSeamV128.summary?.strict_promotions!==0||bidirectionalSeamV128.summary?.new_generator_rule_enabled!==false)errors.push("BIDIRECTIONAL SEAM V128 must remain research-only");
 if(bidirectionalSeamV128.generator_implications?.strict_palindrome_generator?.direct_injection!==false)errors.push("BIDIRECTIONAL SEAM V128 must not inject into strict generator");
 
+if(tankaLatticeDerivationV129.version!=="1.29")errors.push(`TANKA LATTICE DERIVATION V129 version mismatch: ${tankaLatticeDerivationV129.version}`);
+if(tankaLatticeDerivationV129.derivation?.exact_match_to_v034!==true)errors.push("TANKA LATTICE DERIVATION V129 must match v0.34");
+if(JSON.stringify(tankaLatticeDerivationV129.derivation?.successive_cell_lengths)!==JSON.stringify([5,2,5,2,3,2,5,2,5]))errors.push("TANKA LATTICE DERIVATION V129 cell lengths drift");
+if(tankaLatticeDerivationV129.derivation?.strict_grammar_formula!==tankaGrammar.formula)errors.push("TANKA LATTICE DERIVATION V129 formula must equal v0.34");
+if(tankaLatticeDerivationV129.evidence_classes?.v034?.sample_count!==50||tankaLatticeDerivationV129.evidence_classes?.v128?.sample_count!==6)errors.push("TANKA LATTICE DERIVATION V129 evidence counts drift");
+if(tankaLatticeDerivationV129.generator_consequences?.new_operation_enabled!==false||tankaLatticeDerivationV129.generator_consequences?.general_factor_crossover_enabled!==false)errors.push("TANKA LATTICE DERIVATION V129 must not expand operations");
+
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
 if(rules.rule_count!==rules.rules.length)errors.push(`RULE COUNT mismatch: declared=${rules.rule_count} actual=${rules.rules.length}`);
@@ -873,3 +881,4 @@ console.log(`Wave3 diagnostics v1.25: o/wo=${wave3DiagnosticsV125.summary?.o_wo_
 console.log(`Orthographic v1.26: positives=${v126pos}`);
 console.log(`Kana casebook v1.27: profiles=${v127profiles}`);
 console.log(`Bidirectional seam v1.28: cases=${bidirectionalSeamV128.summary?.contrastive_cases}, shift=${bidirectionalSeamV128.summary?.shared_boundary_shift_signature?.join("/")}`);
+console.log(`Tanka lattice v1.29: cells=${tankaLatticeDerivationV129.summary?.derived_cell_lengths?.join("/")}, rederived=${tankaLatticeDerivationV129.summary?.v034_formula_rederived}`);
