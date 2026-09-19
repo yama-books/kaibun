@@ -1,7 +1,7 @@
 {
   "version": "0.69",
   "title": "Public whitelist for research-derived modern seam candidates",
-  "status": "public-adapter-ready",
+  "status": "public-adapter-ready-after-dedup",
   "source_generator_version": "0.67",
   "source_curation_version": "0.68",
   "policy": {
@@ -9,7 +9,8 @@
     "review_needed_excluded": true,
     "held_excluded": true,
     "runtime_llm": false,
-    "source_lexemes_existing_only": true
+    "source_lexemes_existing_only": true,
+    "existing_public_duplicates_excluded": true
   },
   "candidates": [
     {
@@ -24,20 +25,6 @@
       "why": "「庭のワニ」を見る対象として、既存の継ぎ目DNAを意味役割つきで再結合。",
       "japanese_quality": "A",
       "weirdness": 2,
-      "register": "standard-weird"
-    },
-    {
-      "id": "BRIDGE-0002",
-      "research_id": "modern-loan-garden-croc",
-      "display": "確かに庭のワニに貸した。",
-      "reading": "たしかににわのわににかした",
-      "family": "研究由来DNA",
-      "layer": "L1",
-      "subgroup": "bridge_seam",
-      "origin": "BRIDGE:SEAM:loan:garden-croc",
-      "why": "「ワニ」を貸借の受け手として許可し、既存shellだけで再構成。",
-      "japanese_quality": "A",
-      "weirdness": 3,
       "register": "standard-weird"
     },
     {
@@ -60,11 +47,11 @@
       "display": "確かに店のセミに貸した。",
       "reading": "たしかにみせのせみにかした",
       "family": "研究由来DNA",
-      "layer": "L1",
+      "layer": "L2",
       "subgroup": "bridge_seam",
       "origin": "BRIDGE:SEAM:loan:shop-cicada",
       "why": "「セミ」を貸借の受け手として許可し、既存shellだけで再構成。",
-      "japanese_quality": "A",
+      "japanese_quality": "B",
       "weirdness": 3,
       "register": "standard-weird"
     },
@@ -88,11 +75,11 @@
       "display": "確かに家のエイに貸した。",
       "reading": "たしかにいえのえいにかした",
       "family": "研究由来DNA",
-      "layer": "L1",
+      "layer": "L2",
       "subgroup": "bridge_seam",
       "origin": "BRIDGE:SEAM:loan:house-ray",
       "why": "「家のエイ」を擬人的な貸借の受け手として許可。既存shellのみ使用。",
-      "japanese_quality": "A",
+      "japanese_quality": "B",
       "weirdness": 3,
       "register": "standard-weird"
     },
@@ -112,9 +99,9 @@
     }
   ],
   "counts": {
-    "L1": 6,
-    "L2": 1,
-    "total": 7
+    "L1": 3,
+    "L2": 3,
+    "total": 6
   },
   "excluded_research_ids": [
     "modern-loan-squid-meeting",
@@ -122,7 +109,17 @@
     "modern-loan-pear-item",
     "modern-loan-sand-eggplant",
     "modern-loan-lie-layer",
-    "modern-loan-voice-eco"
+    "modern-loan-voice-eco",
+    "modern-loan-garden-croc"
   ],
-  "integration_plan": "Load as a separate bridge dataset and expose through bridgePool(); include in seam-derived generation only after validator passes."
+  "integration_plan": "Load as a separate bridge dataset and expose through bridgePool(); include in seam-derived generation only after validator passes.",
+  "existing_public_duplicates": [
+    {
+      "research_id": "modern-loan-garden-croc",
+      "reading": "たしかににわのわににかした",
+      "existing_seed_id": "V05-0065",
+      "existing_rule_id": "L1-TASHIKANI-LOAN",
+      "action": "excluded-from-bridge-whitelist"
+    }
+  ]
 }
