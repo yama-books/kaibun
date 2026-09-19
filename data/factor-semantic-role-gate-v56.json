@@ -1,0 +1,126 @@
+{
+  "version": "0.56",
+  "title": "Factor semantic-role compatibility gate",
+  "status": "research-hypothesis",
+  "purpose": "Add a non-numeric host-role check after scene compatibility for constrained E3 central-pivot exchanges.",
+  "evidence_basis": [
+    "hani-central-pivot-exchange-v53",
+    "central-pivot-exchange-survey-v54",
+    "mitsu-central-pivot-exchange-v55"
+  ],
+  "principle": "Compatibility depends on the discourse/semantic job performed by the host central phrase, not on raw kana, broad scene, or part-of-speech identity alone.",
+  "role_vocabulary": [
+    {
+      "id": "scene-predication",
+      "description": "Describes an entity/state/action inside the same visible scene; grammatical form may vary if the sentence remains coherent."
+    },
+    {
+      "id": "structural-enumeration",
+      "description": "Supplies an essential member or continuation of an explicit conceptual/list structure."
+    },
+    {
+      "id": "relational-description",
+      "description": "Builds a genitive/relational phrase such as XのYの; exact parse may remain source-dependent."
+    },
+    {
+      "id": "evaluation",
+      "description": "Supplies appraisal or closing judgment."
+    },
+    {
+      "id": "temporal-pivot",
+      "description": "Connects time expressions or temporal progression."
+    },
+    {
+      "id": "unresolved",
+      "description": "Evidence is insufficient to assign a role without semantic completion."
+    }
+  ],
+  "gate": {
+    "prerequisites": [
+      "host construction remains a strict palindrome after the constrained operation",
+      "D seam is valid for the operation",
+      "scene gate passes or is explicitly human/research reviewed"
+    ],
+    "outcomes": [
+      {
+        "status": "compatible-by-reviewed-context",
+        "rule": "Host and donor roles need not have identical grammar, but documented review supports the same local discourse function without breaking the host structure."
+      },
+      {
+        "status": "review-needed",
+        "rule": "Scene is compatible but host or donor role is not sufficiently parsed."
+      },
+      {
+        "status": "incompatible-for-this-host",
+        "rule": "Donor E destroys an explicit host structural role such as an enumeration or required contrast."
+      }
+    ],
+    "conservative_rule": "Missing role metadata produces review-needed, never automatic acceptance or rejection."
+  },
+  "case_studies": [
+    {
+      "id": "hybrid-019",
+      "host": "shoju-031",
+      "donor_E": "てりて",
+      "host_E": "しけし",
+      "host_role": "scene-predication",
+      "donor_role": "scene-predication",
+      "outcome": "compatible-by-reviewed-context",
+      "basis": [
+        "Both phrases occur after the same D=はに.",
+        "v0.53 preserves the dew/eaves/leaves/garden scene and changes only ku3.",
+        "v0.53 research review marked semantic coherence high-tentative."
+      ]
+    },
+    {
+      "id": "hybrid-016",
+      "host": "shoju-035",
+      "donor_E": "しけし",
+      "host_E": "てりて",
+      "host_role": "scene-predication",
+      "donor_role": "scene-predication",
+      "outcome": "compatible-by-reviewed-context",
+      "basis": [
+        "v0.40 human-style linguistic review already marked semantic coherence high.",
+        "Only E3 is exchanged inside shared D=はに."
+      ]
+    },
+    {
+      "id": "hybrid-017",
+      "host": "shoju-five-elements",
+      "donor_E": "のよの",
+      "host_E": "もひも",
+      "host_role": "structural-enumeration",
+      "donor_role": "relational-description",
+      "outcome": "incompatible-for-this-host",
+      "basis": [
+        "The trusted host explicitly organizes 地・水・火・風・空.",
+        "Replacing 水も火も with 水の世の removes the 火 member and breaks the enumeration pattern."
+      ],
+      "note": "This outcome is directional and does not reject donor E=のよの globally."
+    },
+    {
+      "id": "hybrid-002",
+      "host": "shoju-068",
+      "donor_E": "もひも",
+      "host_E": "のよの",
+      "host_role": "relational-description",
+      "donor_role": "structural-enumeration",
+      "outcome": "review-needed",
+      "basis": [
+        "Both sources are in the faith/Buddhist field.",
+        "The host is mining-layer and its full syntax remains source-image pending.",
+        "The imported 水も火も is conceptually compatible but its sentence-level role in the host requires review."
+      ],
+      "note": "v0.55 keeps it promising-but-source-parse-needed; the role gate does not upgrade it automatically."
+    }
+  ],
+  "design_rules": [
+    "Do not require POS equality between host and donor E.",
+    "Protect explicit structural devices such as enumerations before considering lexical scene similarity.",
+    "Semantic-role compatibility is directional: A<-B and B<-A may differ.",
+    "Keep role judgments separate from source confidence and morphology confidence.",
+    "No numeric naturalness score is introduced."
+  ],
+  "next_step": "Apply scene + role gating together to all repeated-D E-swap candidates and identify which operations are eligible for deeper linguistic review."
+}
