@@ -1,0 +1,522 @@
+{
+  "version": "0.57",
+  "title": "Central-pivot candidate pipeline",
+  "purpose": "Apply morphology, scene, and semantic-role gates in sequence to every novel repeated-D E-only swap in the fixed-50 research space.",
+  "pipeline": [
+    {
+      "stage": "operation-shape",
+      "rule": "Only E3 changes; host A/B/C/D remain fixed."
+    },
+    {
+      "stage": "D-morphology",
+      "rule": "Shared D must be usable for the constrained operation."
+    },
+    {
+      "stage": "scene",
+      "rule": "Host and donor E must share a compatible narrower scene; broad-field mismatch holds before role review."
+    },
+    {
+      "stage": "semantic-role",
+      "rule": "Donor E must preserve the host central phrase's discourse/semantic job, or be held for review."
+    },
+    {
+      "stage": "deep-linguistic-review",
+      "rule": "Only survivors receive full syntax/naturalness review."
+    }
+  ],
+  "corpus": {
+    "repeated_D_groups": 5,
+    "novel_directed_E_swaps": 12,
+    "no_novelty_D": [
+      "けふ"
+    ]
+  },
+  "results": [
+    {
+      "id": "hybrid-002",
+      "reading": "しなもなくほとけのをしへみつもひもつみへしをのけとほくなもなし",
+      "meter": [
+        "しなもなく",
+        "ほとけのをしへ",
+        "みつもひも",
+        "つみへしをのけ",
+        "とほくなもなし"
+      ],
+      "source_ids": [
+        "shoju-068",
+        "shoju-five-elements"
+      ],
+      "source_titles": [
+        "釈教",
+        "地水火風空"
+      ],
+      "D": "みつ",
+      "E": "もひも",
+      "factor_sources": {
+        "AB": [
+          "shoju-068"
+        ],
+        "BC": [
+          "shoju-068"
+        ],
+        "CD": [
+          "shoju-068"
+        ],
+        "DE": [
+          "shoju-five-elements"
+        ]
+      },
+      "stage": "deep-review-needed-role",
+      "reason": "same 信仰 scene + D=みつ high; host role/source parse remains incomplete",
+      "strict_palindrome": true,
+      "local_factor_attested": true
+    },
+    {
+      "id": "hybrid-016",
+      "reading": "はれつみよきつるもはきのはにしけしにはのきはもるつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつるもはきの",
+        "はにしけし",
+        "にはのきはもる",
+        "つきよみつれは"
+      ],
+      "source_ids": [
+        "shoju-035",
+        "shoju-031"
+      ],
+      "source_titles": [
+        "同（月）",
+        "同（露）"
+      ],
+      "D": "はに",
+      "E": "しけし",
+      "factor_sources": {
+        "AB": [
+          "shoju-035"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "shoju-031"
+        ]
+      },
+      "stage": "deep-review-supported",
+      "reason": "same 秋・月 scene + shared D=はに + v0.40/v0.56 compatible scene-predication",
+      "strict_palindrome": true,
+      "local_factor_attested": true
+    },
+    {
+      "id": "hybrid-017",
+      "reading": "みなくうのせかいなりちもみつのよのつみもちりないかせのうくなみ",
+      "meter": [
+        "みなくうの",
+        "せかいなりちも",
+        "みつのよの",
+        "つみもちりない",
+        "かせのうくなみ"
+      ],
+      "source_ids": [
+        "shoju-five-elements",
+        "shoju-068"
+      ],
+      "source_titles": [
+        "地水火風空",
+        "釈教"
+      ],
+      "D": "みつ",
+      "E": "のよの",
+      "factor_sources": {
+        "AB": [
+          "shoju-five-elements"
+        ],
+        "BC": [
+          "shoju-five-elements"
+        ],
+        "CD": [
+          "shoju-five-elements"
+        ],
+        "DE": [
+          "shoju-068"
+        ]
+      },
+      "stage": "hold-semantic-role-incompatible",
+      "reason": "same 信仰 scene but donor E breaks trusted 地水火風空 enumeration",
+      "strict_palindrome": true,
+      "local_factor_attested": true
+    },
+    {
+      "id": "hybrid-019",
+      "reading": "やとるつゆたまはのきはのはにてりてにはのはきのはまたゆつるとや",
+      "meter": [
+        "やとるつゆ",
+        "たまはのきはの",
+        "はにてりて",
+        "にはのはきのは",
+        "またゆつるとや"
+      ],
+      "source_ids": [
+        "shoju-031",
+        "shoju-035"
+      ],
+      "source_titles": [
+        "同（露）",
+        "同（月）"
+      ],
+      "D": "はに",
+      "E": "てりて",
+      "factor_sources": {
+        "AB": [
+          "shoju-031"
+        ],
+        "BC": [
+          "shoju-031"
+        ],
+        "CD": [
+          "shoju-031"
+        ],
+        "DE": [
+          "shoju-035"
+        ]
+      },
+      "stage": "deep-review-supported",
+      "reason": "same 秋・月 scene + shared D=はに + v0.53/v0.56 compatible scene-predication",
+      "strict_palindrome": true,
+      "local_factor_attested": true
+    },
+    {
+      "id": "hybrid-025",
+      "reading": "さよきつるけふそまたきしすすかけかすすしきたまそふけるつきよさ",
+      "meter": [
+        "さよきつる",
+        "けふそまたきし",
+        "すすかけか",
+        "すすしきたまそ",
+        "ふけるつきよさ"
+      ],
+      "source_ids": [
+        "shoju-027",
+        "shoju-064"
+      ],
+      "source_titles": [
+        "納涼",
+        "社頭祝"
+      ],
+      "D": "すす",
+      "E": "かけか",
+      "factor_sources": {
+        "AB": [
+          "shoju-027"
+        ],
+        "BC": [
+          "shoju-027"
+        ],
+        "CD": [
+          "shoju-027"
+        ],
+        "DE": [
+          "shoju-064"
+        ]
+      },
+      "stage": "hold-scene-mismatch",
+      "reason": "夏・納涼 host <- 神祇・祝 E",
+      "strict_palindrome": true,
+      "local_factor_attested": true
+    },
+    {
+      "id": "hybrid-028",
+      "reading": "しらゆきはけさのらくさのはにしけしにはのさくらのさけはきゆらし",
+      "meter": [
+        "しらゆきは",
+        "けさのらくさの",
+        "はにしけし",
+        "にはのさくらの",
+        "さけはきゆらし"
+      ],
+      "source_ids": [
+        "mitoku-shirayuki",
+        "shoju-031"
+      ],
+      "source_titles": [
+        "白雪",
+        "同（露）"
+      ],
+      "D": "はに",
+      "E": "しけし",
+      "factor_sources": {
+        "AB": [
+          "mitoku-shirayuki"
+        ],
+        "BC": [
+          "mitoku-shirayuki"
+        ],
+        "CD": [
+          "mitoku-shirayuki"
+        ],
+        "DE": [
+          "shoju-031"
+        ]
+      },
+      "stage": "hold-scene-mismatch",
+      "reason": "冬・雪 host <- 秋・月 E",
+      "strict_palindrome": true,
+      "local_factor_attested": true
+    },
+    {
+      "id": "hybrid-029",
+      "reading": "しらゆきはけさのらくさのはにてりてにはのさくらのさけはきゆらし",
+      "meter": [
+        "しらゆきは",
+        "けさのらくさの",
+        "はにてりて",
+        "にはのさくらの",
+        "さけはきゆらし"
+      ],
+      "source_ids": [
+        "mitoku-shirayuki",
+        "shoju-035"
+      ],
+      "source_titles": [
+        "白雪",
+        "同（月）"
+      ],
+      "D": "はに",
+      "E": "てりて",
+      "factor_sources": {
+        "AB": [
+          "mitoku-shirayuki"
+        ],
+        "BC": [
+          "mitoku-shirayuki"
+        ],
+        "CD": [
+          "mitoku-shirayuki"
+        ],
+        "DE": [
+          "shoju-035"
+        ]
+      },
+      "stage": "hold-scene-mismatch",
+      "reason": "冬・雪 host <- 秋・月 E",
+      "strict_palindrome": true,
+      "local_factor_attested": true
+    },
+    {
+      "id": "hybrid-030",
+      "reading": "てりつうみきつしもなかのみなめさめなみのかなもしつきみうつりて",
+      "meter": [
+        "てりつうみ",
+        "きつしもなかの",
+        "みなめさめ",
+        "なみのかなもし",
+        "つきみうつりて"
+      ],
+      "source_ids": [
+        "shoju-040",
+        "edo-popular-takarabune"
+      ],
+      "source_titles": [
+        "月明海上鴻鷹渡",
+        "宝船回文歌"
+      ],
+      "D": "みな",
+      "E": "めさめ",
+      "factor_sources": {
+        "AB": [
+          "shoju-040"
+        ],
+        "BC": [
+          "shoju-040"
+        ],
+        "CD": [
+          "shoju-040"
+        ],
+        "DE": [
+          "edo-popular-takarabune"
+        ]
+      },
+      "stage": "hold-scene-mismatch",
+      "reason": "秋・月・海・鳥 host <- 夜・夢・舟 E",
+      "strict_palindrome": true,
+      "local_factor_attested": true
+    },
+    {
+      "id": "hybrid-033",
+      "reading": "なかきよのとをのねふりのみなかりかなみのりふねのをとのよきかな",
+      "meter": [
+        "なかきよの",
+        "とをのねふりの",
+        "みなかりか",
+        "なみのりふねの",
+        "をとのよきかな"
+      ],
+      "source_ids": [
+        "edo-popular-takarabune",
+        "shoju-040"
+      ],
+      "source_titles": [
+        "宝船回文歌",
+        "月明海上鴻鷹渡"
+      ],
+      "D": "みな",
+      "E": "かりか",
+      "factor_sources": {
+        "AB": [
+          "edo-popular-takarabune"
+        ],
+        "BC": [
+          "edo-popular-takarabune"
+        ],
+        "CD": [
+          "edo-popular-takarabune"
+        ],
+        "DE": [
+          "shoju-040"
+        ]
+      },
+      "stage": "hold-scene-mismatch",
+      "reason": "夜・夢・舟 host <- 秋・月・海・鳥 E",
+      "strict_palindrome": true,
+      "local_factor_attested": true
+    },
+    {
+      "id": "hybrid-034",
+      "reading": "はれつみよきつるもはきのはにもつもにはのきはもるつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつるもはきの",
+        "はにもつも",
+        "にはのきはもる",
+        "つきよみつれは"
+      ],
+      "source_ids": [
+        "shoju-035",
+        "mitoku-shirayuki"
+      ],
+      "source_titles": [
+        "同（月）",
+        "白雪"
+      ],
+      "D": "はに",
+      "E": "もつも",
+      "factor_sources": {
+        "AB": [
+          "shoju-035"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "mitoku-shirayuki"
+        ]
+      },
+      "stage": "hold-scene-mismatch",
+      "reason": "秋・月 host <- 冬・雪 E",
+      "strict_palindrome": true,
+      "local_factor_attested": true
+    },
+    {
+      "id": "hybrid-038",
+      "reading": "やとるつゆたまはのきはのはにもつもにはのはきのはまたゆつるとや",
+      "meter": [
+        "やとるつゆ",
+        "たまはのきはの",
+        "はにもつも",
+        "にはのはきのは",
+        "またゆつるとや"
+      ],
+      "source_ids": [
+        "shoju-031",
+        "mitoku-shirayuki"
+      ],
+      "source_titles": [
+        "同（露）",
+        "白雪"
+      ],
+      "D": "はに",
+      "E": "もつも",
+      "factor_sources": {
+        "AB": [
+          "shoju-031"
+        ],
+        "BC": [
+          "shoju-031"
+        ],
+        "CD": [
+          "shoju-031"
+        ],
+        "DE": [
+          "mitoku-shirayuki"
+        ]
+      },
+      "stage": "hold-scene-mismatch",
+      "reason": "秋・月 host <- 冬・雪 E",
+      "strict_palindrome": true,
+      "local_factor_attested": true
+    },
+    {
+      "id": "hybrid-041",
+      "reading": "らくてみのよみやきよめしすすかせかすすしめよきやみよのみてくら",
+      "meter": [
+        "らくてみの",
+        "よみやきよめし",
+        "すすかせか",
+        "すすしめよきや",
+        "みよのみてくら"
+      ],
+      "source_ids": [
+        "shoju-064",
+        "shoju-027"
+      ],
+      "source_titles": [
+        "社頭祝",
+        "納涼"
+      ],
+      "D": "すす",
+      "E": "かせか",
+      "factor_sources": {
+        "AB": [
+          "shoju-064"
+        ],
+        "BC": [
+          "shoju-064"
+        ],
+        "CD": [
+          "shoju-064"
+        ],
+        "DE": [
+          "shoju-027"
+        ]
+      },
+      "stage": "hold-scene-mismatch",
+      "reason": "神祇・祝 host <- 夏・納涼 E",
+      "strict_palindrome": true,
+      "local_factor_attested": true
+    }
+  ],
+  "summary": {
+    "deep-review-needed-role": 1,
+    "deep-review-supported": 2,
+    "hold-semantic-role-incompatible": 1,
+    "hold-scene-mismatch": 8,
+    "total": 12,
+    "reaches_deep_review": 3,
+    "automatic_acceptance": 0
+  },
+  "key_result": "12 mechanically valid E-only palindrome swaps shrink to 3 deep-review candidates before full linguistic review: hybrid-016, hybrid-019, hybrid-002. No candidate is automatically accepted.",
+  "invariants": [
+    "All 12 readings remain strict palindromes.",
+    "All local factor paths were already attested in v0.35.",
+    "Scene holds occur before semantic-role judgments.",
+    "Role incompatibility is directional and host-specific.",
+    "Missing evidence causes hold/review, not fabricated parse."
+  ],
+  "next_step": "Deep-review hybrid-002 and preserve 016/019 as positive research examples; use the 8 scene holds and hybrid-017 as negative controls when implementing the generator."
+}
