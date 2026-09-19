@@ -60,7 +60,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 <div class="wrap">
 <header>
   <div><h1>怪文回文メーカー</h1><div class="sub">まず、日本語として通す。そこから一段ずつ、鏡の奥へ伸ばす。</div></div>
-  <div class="badge">v0.29 / 研究由来DNA＋読み指定</div>
+  <div class="badge">v0.30 / 品質バランスDNA</div>
 </header>
 
 <div class="card">
@@ -147,7 +147,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 </div>
 
 <script>
-let data=null,rules=null,pairs=null,growth=null,seams=null,bridge=null,bridgeExposure=null,growthRoleGate=null,growthRolePublic=null,readingHints=null,layer="L1",seen=new Set(),currentShown=null;
+let data=null,rules=null,pairs=null,growth=null,seams=null,bridge=null,bridgeExposure=null,growthRoleGate=null,growthRolePublic=null,readingHints=null,dnaExposure=null,layer="L1",seen=new Set(),currentShown=null;
 let growthState={mode:"structural",dimension:"all",familyId:null,stage:0,lastCenter:null,history:{}};
 
 const $=s=>document.querySelector(s);
@@ -155,7 +155,7 @@ const rev=s=>[...s].reverse().join("");
 const isPal=s=>s===rev(s);
 
 async function init(){
-  [data,rules,pairs,growth,seams,bridge,bridgeExposure,growthRoleGate,growthRolePublic,readingHints]=await Promise.all([
+  [data,rules,pairs,growth,seams,bridge,bridgeExposure,growthRoleGate,growthRolePublic,readingHints,dnaExposure]=await Promise.all([
     fetch("./data/layered-seeds-v08.json").then(r=>r.json()),
     fetch("./data/generation-rules-v08.json").then(r=>r.json()),
     fetch("./data/reverse-lexeme-pairs-v09.json").then(r=>r.json()),
@@ -165,14 +165,15 @@ async function init(){
     fetch("./data/public-bridge-exposure-policy-v70.json").then(r=>r.json()),
     fetch("./data/growth-wrapper-role-gate-v72.json").then(r=>r.json()),
     fetch("./data/growth-wrapper-role-public-v74.json").then(r=>r.json()),
-    fetch("./data/public-reading-hints-v82.json").then(r=>r.json())
+    fetch("./data/public-reading-hints-v82.json").then(r=>r.json()),
+    fetch("./data/dna-kinship-exposure-policy-v84.json").then(r=>r.json())
   ]);
   $("#c1").textContent=data.counts.L1+"本";
   $("#c2").textContent=data.counts.L2+"本";
   $("#c3").textContent=data.counts.L3+"本";
   $("#ruleStat").textContent="DNA規則 "+rules.rule_count+"種";
   const rs=rules.verified_recursive_space;
-  $("#recursiveStat").textContent=rs?("再帰 "+rs.sentence_variants.toLocaleString()+"文"):"再帰候補 –";
+  $("#recursiveStat").textContent=rs?("再帰 "+rs.sentence_variants.toLocaleString()+"文 / 抽選≤"+Math.round((dnaExposure.policy?.recursive_probability_cap||0)*100)+"%"):"再帰候補 –";
   $("#pairStat").textContent="逆語 "+pairs.pair_count+"組 / "+pairs.variant_count+"文";
   $("#storyStat").textContent="物語 "+(growth.verified?.narrative_family_count||0)+"系統 / "+(growth.verified?.narrative_variants||0)+"段階 / 最長 "+(growth.verified?.longest_narrative_kana||"–")+"かな";
   $("#benchmarkStat").textContent="固定基準 "+(growth.verified?.hundred_kana_benchmark?.length||"–")+"かな";
@@ -503,7 +504,19 @@ function show(x){
   });
 }
 function seedOne(){const x=chooseFresh(pool());show(x?{...x,origin:"原種コーパス"}:null)}
-function dnaOne(){show(chooseFresh(dnaPool(true)))}
+function dnaOne(){
+  const all=dnaPool(true);
+  if(layer!=="L1"){show(chooseFresh(all));return}
+  const recursiveReadings=new Set(recursivePool().map(x=>x.reading));
+  const recursive=all.filter(x=>recursiveReadings.has(x.reading));
+  const other=all.filter(x=>!recursiveReadings.has(x.reading));
+  if(!recursive.length){show(chooseFresh(other));return}
+  if(!other.length){show(chooseFresh(recursive));return}
+  const naturalShare=recursive.length/(recursive.length+other.length);
+  const cap=dnaExposure?.policy?.recursive_probability_cap??0.25;
+  const recursiveShare=Math.min(naturalShare,cap);
+  show(chooseFresh(Math.random()<recursiveShare?recursive:other));
+}
 function pairOne(){show(chooseFresh(pairPool()))}
 
 function narrativeFamiliesForLayer(){
