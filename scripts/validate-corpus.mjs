@@ -34,6 +34,7 @@ const pivotSurvey = JSON.parse(fs.readFileSync("data/central-pivot-exchange-surv
 const mitsuPivotExchange = JSON.parse(fs.readFileSync("data/mitsu-central-pivot-exchange-v55.json", "utf8"));
 const semanticRoleGate = JSON.parse(fs.readFileSync("data/factor-semantic-role-gate-v56.json", "utf8"));
 const pivotPipeline = JSON.parse(fs.readFileSync("data/central-pivot-candidate-pipeline-v57.json", "utf8"));
+const generatorContract = JSON.parse(fs.readFileSync("data/historical-generator-contract-v58.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -456,6 +457,15 @@ if(pivotPipeline.summary?.automatic_acceptance!==0)errors.push("PIVOT PIPELINE V
 const v57Deep=(pivotPipeline.results??[]).filter(x=>String(x.stage).startsWith("deep-review")).map(x=>x.id).sort().join(",");
 if(v57Deep!==["hybrid-002","hybrid-016","hybrid-019"].sort().join(","))errors.push(`PIVOT PIPELINE V57 deep-review set mismatch: ${v57Deep}`);
 for(const x of pivotPipeline.results??[]){if(!isPalindrome(x.reading))errors.push(`PIVOT PIPELINE V57 non-palindrome: ${x.id}`);}
+if(generatorContract.version!=="0.58")errors.push(`GENERATOR CONTRACT V58 version mismatch: ${generatorContract.version}`);
+if(generatorContract.mode!=="research-only")errors.push("GENERATOR CONTRACT V58 must remain research-only");
+if(generatorContract.public_ui_enabled!==false)errors.push("GENERATOR CONTRACT V58 public UI must remain disabled");
+const v58Central=(generatorContract.supported_operations??[]).find(x=>x.id==="central-E-swap");
+if(!v58Central)errors.push("GENERATOR CONTRACT V58 missing central-E-swap");
+const v58General=(generatorContract.supported_operations??[]).find(x=>x.id==="general-factor-crossover");
+if(v58General?.enabled!==false)errors.push("GENERATOR CONTRACT V58 general factor crossover must remain disabled");
+if(generatorContract.trace_policy?.accepted_status_not_generated_by_machine!==true)errors.push("GENERATOR CONTRACT V58 must forbid machine accepted status");
+if((generatorContract.regression_examples?.positive??[]).sort().join(",")!==["hybrid-016","hybrid-019"].sort().join(","))errors.push("GENERATOR CONTRACT V58 positive fixtures changed");
 
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
@@ -495,3 +505,4 @@ console.log(`Pivot survey v54 groups: ${(pivotSurvey.groups??[]).length}`);
 console.log(`Mitsu v55 directed swaps: ${(mitsuPivotExchange.outputs??[]).length}`);
 console.log(`Semantic-role v56 cases: ${(semanticRoleGate.case_studies??[]).length}`);
 console.log(`Pivot pipeline v57: total=${(pivotPipeline.results??[]).length}, deep-review=${pivotPipeline.summary?.reaches_deep_review??0}`);
+console.log(`Generator contract v58 operations: ${(generatorContract.supported_operations??[]).length}`);
