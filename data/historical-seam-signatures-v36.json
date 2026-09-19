@@ -1,0 +1,127 @@
+{
+  "version": "0.36",
+  "purpose": "同じ2かなセルを文字列一致だけで交配せず、歴史作での形態・統語機能を署名として持つ。",
+  "B2": {
+    "なは": {
+      "confidence": "high",
+      "forward_parse": "名は",
+      "reverse_parse": "花（はな）",
+      "signature": "topic-name -> lexical-flower",
+      "transferable": true,
+      "evidence": [
+        "shoju-wakakusa",
+        "sendai-sakunami",
+        "shoju-058"
+      ],
+      "note": "3例で同じ基本機能。交配接点として有望。"
+    },
+    "きつ": {
+      "confidence": "medium",
+      "forward_parse": "きつ…（来つる等の可能性。個別本文裁定要）",
+      "reverse_parse": "月（つき）",
+      "signature": "verbal/lexical onset -> moon",
+      "transferable": "conditional",
+      "evidence": [
+        "shoju-035",
+        "shoju-038",
+        "shoju-040",
+        "shoju-add-109"
+      ],
+      "note": "反転側の月は安定するが、前向き側の語境界・語義は作品ごとに確認が必要。"
+    },
+    "ほと": {
+      "confidence": "low-for-crossover",
+      "forward_parse": "複数: ほととぎす / ほど… / ほとけ",
+      "reverse_parse": "とほ…（遠…等）",
+      "signature": "homographic-cell-with-multiple-morphologies",
+      "transferable": false,
+      "evidence": [
+        "shoju-021",
+        "shoju-044",
+        "shoju-068"
+      ],
+      "note": "同じセルでも語内部位置が異なる。文字列一致による交配は禁止。"
+    },
+    "また": {
+      "confidence": "low-for-crossover",
+      "forward_parse": "また… / 待た…等の再分節候補",
+      "reverse_parse": "たま…（玉等）",
+      "signature": "ambiguous-forward-boundary -> lexical-tama",
+      "transferable": false,
+      "evidence": [
+        "shoju-001-komatsuhiki",
+        "shoju-010-somokuka"
+      ],
+      "note": "前向きの形態解析が一致するまで交配禁止。"
+    }
+  },
+  "D2": {
+    "はに": {
+      "confidence": "high",
+      "forward_parse": "葉に",
+      "reverse_parse": "庭（には、歴史的表記）",
+      "signature": "noun+particle -> place-noun",
+      "transferable": true,
+      "evidence": [
+        "mitoku-shirayuki",
+        "shoju-031",
+        "shoju-035"
+      ],
+      "note": "境界ずらしの典型。"
+    },
+    "みな": {
+      "confidence": "high",
+      "forward_parse": "皆",
+      "reverse_parse": "波",
+      "signature": "collective-noun -> nature-noun",
+      "transferable": true,
+      "evidence": [
+        "edo-popular-takarabune",
+        "shoju-040"
+      ],
+      "note": "宝船歌型の代表。"
+    },
+    "みつ": {
+      "confidence": "high",
+      "forward_parse": "水（歴史的正規化でみつ）等",
+      "reverse_parse": "罪",
+      "signature": "nature/substance-noun -> abstract-noun",
+      "transferable": true,
+      "evidence": [
+        "shoju-five-elements",
+        "shoju-068"
+      ],
+      "note": "釈教意味場で特に強い。"
+    },
+    "けふ": {
+      "confidence": "high",
+      "forward_parse": "今日",
+      "reverse_parse": "更け",
+      "signature": "time-noun -> verb-stem",
+      "transferable": true,
+      "evidence": [
+        "shoju-033",
+        "shoju-072"
+      ],
+      "note": "時間語が反転側で述語へ転換する高価値例。"
+    },
+    "すす": {
+      "confidence": "medium",
+      "forward_parse": "涼/鈴等を含む可能性",
+      "reverse_parse": "すす",
+      "signature": "self-reversing-two-kana",
+      "transferable": "conditional",
+      "evidence": [
+        "shoju-027",
+        "shoju-064"
+      ],
+      "note": "音列は自己反転だが語義・語境界の裁定が必要。"
+    }
+  },
+  "policy": {
+    "crossover": "共有セルは、文字列だけでなくsignature互換性が確認できた場合にのみ因子グラフ交配を許す。",
+    "high": "transferable=trueは自動候補へ進めてよいが、全文意味レビューは別途必要。",
+    "conditional": "前後セルと意味場が一致する場合だけ許可。",
+    "false": "形態解析が個別に一致するまで自動交配を禁止。"
+  }
+}
