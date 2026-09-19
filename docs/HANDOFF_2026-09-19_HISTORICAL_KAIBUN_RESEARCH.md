@@ -3069,3 +3069,280 @@ general-factor-crossover:
 ## 再開最短文
 
 **「HANDOFF 36節から再開。B=またはv1.02でsource-specific morphology hold。D=むす corridorではhybrid-007を第三family最有力としてv1.03 review、v1.04 deterministic generator+fixture+CIまで完成。hybrid-007はpromising-but-parse-neededで、未解決は『来つるみそらは』『すむはらそ見る』。Validate run 35442541085 green。次はこの2箇所のsyntax deep review。」**
+
+
+---
+
+# 37. 2026-09-19 hybrid-007 syntax v1.05 / wave2 travel prospect v1.06 チェックポイント
+
+## 実施概要
+
+36節から hybrid-007 の syntax deep review を継続した。
+
+結論:
+- hybrid-007 は **promising-but-parse-needed 維持**
+- deep-review-supported へ昇格しない
+- third positive family はまだ確立しない
+
+そのうえで alternate family を探索し、
+wave2 verified の旅行歌 90 / 93 に
+B=`まは` を共有する新しい A-only outer-frame prospect を発見した。
+
+ただしこちらも source-confirmation 前なので、
+positive familyへは昇格せず research prospect として固定した。
+
+## v1.05 hybrid-007 syntax deep review
+
+追加:
+- `data/hybrid-007-syntax-deep-review-v105.json`
+- `docs/HYBRID_007_SYNTAX_DEEP_REVIEW_V105.md`
+
+commits:
+- data: `a361f61ef1b16a8aba799697852c14559aa2a9e6`
+- doc: `a08c8a5d6caf32e10031df9fd3b9722aaa8e0e44`
+
+対象:
+1. `来つるみそらは`
+2. `すむはらそ見る`
+
+### 来つるみそらは
+
+外部文法・辞書レベルでは:
+- 完了助動詞「つ」の連体形 `つる` は成立
+- `御空 / みそら` も語として成立
+
+したがって
+`来 + つる + 御空 + は`
+という形態分析自体は可能。
+
+しかしこの歌において、
+`来つる` が `御空` へどう係るかを
+直接支持する原画像・校訂注・独立語釈は得られなかった。
+
+判定:
+- morphology: formally possible
+- source-specific syntax: unresolved
+- promotion: no
+
+### すむはらそ見る
+
+`すむ` は:
+- 住む
+- 澄む
+
+をkanaだけで一意に選べない。
+
+また Yamauchi-derived transcription surface は
+`そ`
+であり、
+`ぞ`
+とは確認されていない。
+
+文法的にきれいになるからという理由で
+`そ → ぞ`
+と補い、係り結びを成立させるのは禁止。
+
+さらに `見る` は上一段で
+終止形 / 連体形が表面上同形なので、
+`見る` の形から逆に `ぞ` を確定することもできない。
+
+判定:
+- lexeme: ambiguous
+- voicing: unresolved
+- syntax: unresolved
+- promotion: no
+
+### 新安全規則
+
+`source-voicing-and-lexeme-ambiguity-guard`
+
+以下を分離する:
+1. source glyph
+2. scholarly transcription surface
+3. normalized palindrome reading
+4. voicing hypothesis
+5. lexeme hypothesis
+6. syntax hypothesis
+
+**自然な文法を得るためだけに濁点・漢字・lexeme・係り結びを復元しない。**
+
+## v1.06 wave2 travel B=まは prospect
+
+追加:
+- `data/wave2-travel-maha-outer-frame-prospect-v106.json`
+- `docs/WAVE2_TRAVEL_MAHA_PROSPECT_V106.md`
+
+commits:
+- data: `f1d9dbd396bc72ed998c5557dfdc729500bd2c5b`
+- doc: `b40c0b940a5b91e68dd3bcd01e039e493f185975`
+
+対象:
+- `shoju-next-090`「旅行の人々え」
+- `shoju-next-093`「旅行（同）」
+
+両方とも wave2 verified-audio-string-pending-integration。
+fixed50 へは統合しない。
+
+### source 90
+
+factor:
+- A=`ともかくも`
+- B=`まは`
+- C=`るなかたひ`
+- D=`きよ`
+- E=`くゆく`
+
+ku2:
+`まはるなかたひ`
+
+### source 93
+
+factor:
+- A=`やとちかく`
+- B=`まは`
+- C=`るなりいま`
+- D=`みか`
+- E=`きよき`
+
+ku2:
+`まはるなりいま`
+
+### B morphology
+
+両sourceで B+C が
+**`まはる…`**
+と続く。
+
+辞書上 `まはる` は歴史的語形として成立し、
+ラ行四段の「回る / 廻る」として
+めぐる・あちこち歩く等の意味を持つ。
+
+したがって、
+raw B=`まは` 一致だけよりは
+forward morphology compatibility の根拠が強い。
+
+ただし:
+- source glyph未確認
+- 原文漢字を回る/廻ると確定しない
+- reverse(B)=`はま` を浜と確定しない
+
+### operation-specific correction
+
+A-only outer-frame swapでは:
+- host B/C/D/E固定
+- donor Aのみ移動
+- generated ku5 outer frame = donorの reverse(B)+reverse(A)
+
+となる。
+
+したがって donor ku5外枠がそのまま実証されるため、
+reverse(B)=`はま` のlexemeをglobalに復元・共有しなくても
+operation-specificな局所実証は保てる。
+
+これは v0.64 の
+「動かした境界だけ評価する」
+原則をwave2でも再確認する例になる。
+
+### novel prospects
+
+90 host <- 93 outer:
+`やとちかく / まはるなかたひ / きよくゆく / よきひたかなる / はまくかちとや`
+
+93 host <- 90 outer:
+`ともかくも / まはるなりいま / みかきよき / かみまいりなる / はまもくかもと`
+
+両方:
+- strict palindrome: pass
+- 5/7/5/7/7: pass
+- local overlap attestation: pass
+- morphology: conditional-pass-operation-specific
+- scene: source title「旅行」レベルで一致
+- semantic role: review-needed
+- source confidence: hold
+
+status:
+`hold-source-confirmation`
+
+automatic acceptance:
+0
+
+positive family established:
+false
+
+## validator / CI
+
+`scripts/validate-corpus.mjs` に v1.05 / v1.06 の検査を追加。
+
+検査:
+- hybrid-007 statusがpromising-but-parse-neededのまま
+- third family未確立
+- PDF/source-imageを直接確認したと誤記しない
+- `そ/ぞ` voicing unresolvedを維持
+- v1.05 safety guard存在
+- fixed50不変
+- wave2 verified14 / held5不変
+- B=`まは` / reverse B=`はま` 固定
+- reverse B lexeme unresolved
+- v1.06 2候補ともstrict palindrome
+- meter 5/7/5/7/7
+- review statusはhold-source-confirmation
+- automatic acceptance 0
+
+validator commit:
+`226bfbc73b814202a660e1d03b99095c40f1d6f8`
+
+Validate:
+- run `35443791622`
+- conclusion: **success**
+- head: `226bfbc73b814202a660e1d03b99095c40f1d6f8`
+
+既存generator / bridge / growth / UI validatorも同runでsuccess。
+
+## 現在のfamily状態
+
+確立済みpositive:
+1. autumn-night-garden-moon
+2. naha-spring-plants
+
+strongest unresolved candidate:
+3. musu-night-sky-family-moon
+   - hybrid-007
+   - promising-but-parse-needed
+
+new alternate prospect:
+4. wave2-travel-maha
+   - 2 directed prospects
+   - both hold-source-confirmation
+   - positive family not established
+
+## 研究上の現在地
+
+今回の重要点は候補数ではなく、
+**曖昧な史料を自然な文法へ寄せる補正を禁止しつつ、
+operation-specificに必要な証拠だけで候補空間を前進させられたこと。**
+
+固定事項:
+- fixed50変更なし
+- wave2 verified14 / held5変更なし
+- v0.76 baseline変更なし
+- public bridge6変更なし
+- general-factor-crossover disabled
+- research-only prospectをpublicへ接続しない
+
+## 進捗目安
+
+- 歴史回文研究・生成原理: **約91%**
+- 怪文回文メーカー全体目標: **約89%**
+
+## 次
+
+優先:
+1. source 90 / 93 の原画像または明示的な学術転写・語釈を探索
+2. B=`まは` のsource morphologyとouter-frame全文を確認
+3. 得られなければwave2の他のsame-scene repeated seamを同じguardで探索
+4. hybrid-007は新証拠が出るまでpromising-but-parse-neededで凍結
+5. v0.96 human review入力があればv0.97 adjudication
+
+## 再開最短文
+
+**「HANDOFF 37節から再開。hybrid-007はv1.05でpromising-but-parse-needed維持、そ→ぞ等の自然化補正を禁止するsource-voicing guardを追加。wave2旅行90/93は両方B+Cが『まはる…』で、B=まはのoperation-specific morphologyが有望。v1.06で2候補をhold-source-confirmationとして固定。Validate run 35443791622 green。次は90/93のsource確認。」**
