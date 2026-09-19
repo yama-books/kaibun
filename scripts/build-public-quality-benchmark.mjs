@@ -6,7 +6,7 @@ const rules=readJson("data/generation-rules-v08.json");
 const pairs=readJson("data/reverse-lexeme-pairs-v09.json");
 const seams=readJson("data/seam-grammar-v25.json");
 const bridge=readJson("data/modern-bridge-public-v69.json");
-const frozen=readJson("data/public-quality-benchmark-v76.json");
+const frozen=readJson("data/public-quality-benchmark-v79.json");
 
 const rev=s=>[...s].reverse().join("");
 const isPal=s=>s===rev(s);
@@ -129,18 +129,19 @@ for(const [layer,sourceQuotas] of Object.entries(quotas)){
 }
 
 const output={
-  version:"0.76",
-  purpose:"Deterministic source-stratified human-review benchmark for public palindrome candidate quality.",
+  version:"0.79",
+  baseline_version:"0.76",
+  purpose:"Post-calibration deterministic source-stratified public quality benchmark.",
   sample_size:benchmark.length,
   quotas,
-  selection:"Stable hash within source_pool/layer after default weirdness filtering; unique by reading inside each stratum.",
+  selection:"Same stable-hash procedure as v0.76 after v0.78 seam calibration.",
   candidates:benchmark
 };
 
 function check(){
   const errors=[];
   if(output.sample_size!==50)errors.push(`sample size ${output.sample_size}, expected 50`);
-  if(frozen.version!=="0.76")errors.push(`frozen benchmark version ${frozen.version}, expected 0.76`);
+  if(frozen.version!=="0.79")errors.push(`frozen benchmark version ${frozen.version}, expected 0.79`);
   if(frozen.sample_size!==output.sample_size)errors.push(`frozen sample size ${frozen.sample_size}, generated ${output.sample_size}`);
   const frozenById=new Map((frozen.candidates??[]).map(x=>[x.benchmark_id,x]));
   for(const c of benchmark){
