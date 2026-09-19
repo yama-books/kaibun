@@ -10,6 +10,7 @@ const seamSignatures = readJson("data/historical-seam-signatures-v36.json");
 const hybrids = readJson("data/historical-factor-hybrids-v35.json");
 const curatedPipeline = readJson("data/central-pivot-candidate-pipeline-v57.json");
 const contract = readJson("data/historical-generator-contract-v58.json");
+const frozenFixture = readJson("data/generated-central-pivot-research-v59.json");
 
 const semanticById = new Map((semanticFields.entries ?? []).map(x => [x.id, x]));
 const hybridByReading = new Map((hybrids.candidates ?? []).map(x => [x.reading, x]));
@@ -145,6 +146,19 @@ function check() {
   const fixtureIds = (curatedPipeline.results ?? []).map(x => x.id).sort();
   if (generatedIds.join(",") !== fixtureIds.join(",")) {
     errors.push(`candidate IDs differ from v0.57 fixture: generated=${generatedIds.join(",")} fixture=${fixtureIds.join(",")}`);
+  }
+
+  const frozenIds = (frozenFixture.candidates ?? []).map(x => x.id).sort();
+  if (frozenFixture.version !== "0.59") errors.push(`frozen fixture version is ${frozenFixture.version}, expected 0.59`);
+  if (frozenFixture.candidate_count !== output.candidate_count) errors.push(`frozen fixture count ${frozenFixture.candidate_count}, generated ${output.candidate_count}`);
+  if (frozenIds.join(",") !== generatedIds.join(",")) errors.push(`frozen fixture IDs differ: frozen=${frozenIds.join(",")} generated=${generatedIds.join(",")}`);
+  const frozenById = new Map((frozenFixture.candidates ?? []).map(x => [x.id, x]));
+  for (const candidate of generated) {
+    const frozen = frozenById.get(candidate.id);
+    if (!frozen) continue;
+    if (frozen.reading !== candidate.reading) errors.push(`frozen reading drift: ${candidate.id}`);
+    if (frozen.final_research_stage !== candidate.final_research_stage) errors.push(`frozen stage drift: ${candidate.id}`);
+    if (JSON.stringify(frozen.gate_trace) !== JSON.stringify(candidate.gate_trace)) errors.push(`frozen gate trace drift: ${candidate.id}`);
   }
 
   for (const candidate of generated) {
