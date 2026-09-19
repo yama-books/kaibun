@@ -1,0 +1,48 @@
+{
+  "version": "0.95",
+  "title": "Growth selector usability policy",
+  "source_audit_version": "0.94",
+  "public_behavior_change_planned": true,
+  "scope": "Growth controls only; no growth data changes.",
+  "changes": [
+    {
+      "id": "dimension-counts",
+      "behavior": "Narrative dimension options display family counts, e.g. すべて (40), 引用・伝聞 (22)."
+    },
+    {
+      "id": "group-all",
+      "behavior": "When dimension=all, growthFamily uses optgroup by dimension."
+    },
+    {
+      "id": "compact-family-label",
+      "behavior": "Narrative family options omit a redundant leading dimension prefix and append stage count, e.g. 松茸の長文を伝える · 17段."
+    },
+    {
+      "id": "selection-retention",
+      "behavior": "Repopulation retains the previous family if it remains in the filtered list; otherwise it selects the first available family."
+    },
+    {
+      "id": "l2-reroll",
+      "behavior": "同段階で別案 works for narrative mode in L1 and L2. Structural reroll remains L1-only."
+    },
+    {
+      "id": "reroll-disable",
+      "behavior": "同段階で別案 is disabled when no alternate family in the current filter contains the requested stage."
+    }
+  ],
+  "invariants": [
+    "Narrative family count remains 53 and stage count remains 366.",
+    "No family id, display, reading, layer, dimension, quality, or weirdness changes.",
+    "L3 still has no narrative families.",
+    "Native select elements remain in use.",
+    "startGrowthFromCurrent must still be able to select an exact matched family after repopulation."
+  ],
+  "success_criteria": [
+    "L2/all shows eight dimension optgroups rather than a flat 40-option list.",
+    "Dimension labels expose counts.",
+    "Single-dimension family labels do not repeat that dimension.",
+    "Each narrative option exposes its stage count.",
+    "L2 narrative reroll changes to another eligible family rather than returning immediately.",
+    "Structural reroll remains unavailable outside L1."
+  ]
+}
