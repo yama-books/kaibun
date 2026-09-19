@@ -29,9 +29,10 @@ const required = [
   "./data/modern-bridge-public-v69.json",
   "./data/public-bridge-exposure-policy-v70.json",
   "./data/growth-wrapper-role-gate-v72.json",
-  "./data/growth-wrapper-role-public-v74.json"
+  "./data/growth-wrapper-role-public-v74.json",
+  "./data/public-reading-hints-v82.json"
 ];
-for (const id of ["lengthMeta","wrapMeta"]) {
+for (const id of ["lengthMeta","wrapMeta","readingHintMeta"]) {
   if (!html.includes(`id="${id}"`)) {
     failed = true;
     console.error("index.html is missing runtime metadata element: " + id);
@@ -55,6 +56,17 @@ if (!html.includes('const list=nounCompatibleSentenceWrappers();')) {
 if (!html.includes('const autoList=autoCompatibleSentenceWrappers();')) {
   failed = true;
   console.error("automatic wrapper path does not use role-gated pool");
+}
+
+for (const fn of ["activeReadingHints","syncReadingHint"]) {
+  if (!html.includes("function " + fn + "(")) {
+    failed = true;
+    console.error("index.html is missing reading hint function: " + fn);
+  }
+}
+if (!html.includes('syncReadingHint(x);')) {
+  failed = true;
+  console.error("show() does not synchronize reading hints");
 }
 
 if (!html.includes("function standardSeamPool()")) {
@@ -110,6 +122,16 @@ if (growthRollout.version !== "0.74" || growthRollout.decision !== "approve-auto
 if (growthRollout.public_scope?.manual_wrapper_selection !== false) {
   failed = true;
   console.error("growth wrapper rollout must not restrict manual wrapper selection");
+}
+
+const readingHints = JSON.parse(fs.readFileSync("data/public-reading-hints-v82.json", "utf8"));
+if (readingHints.version !== "0.82") {
+  failed = true;
+  console.error("Unexpected public reading hints version: " + readingHints.version);
+}
+if ((readingHints.lexemes ?? []).length !== 2) {
+  failed = true;
+  console.error("Unexpected public reading hint lexeme count: " + (readingHints.lexemes ?? []).length);
 }
 
 if (failed) process.exit(1);
