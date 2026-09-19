@@ -412,7 +412,7 @@ function updateGrowthStageLabel(){
   $("#growOne").disabled=!available&&!canWrap;
   $("#growBack").disabled=wrapped>0?!currentShown?.wrapped_from:(!available||growthState.stage<=0);
   $("#growthStart").disabled=!available;
-  $("#growAgain").disabled=!available&&wrapped===0;
+  $("#growAgain").disabled=wrapped>0||!available;
   $("#growOne").textContent=wrapped>0?"さらに1段包む":(available&&growthState.stage>=max&&canWrap?"文を外側へ伸ばす":"1段伸ばす");
   $("#growBack").textContent=wrapped>0?"外枠を1段戻す":"1段戻す";
   for(const id of ["growthStart","growOne","growAgain","growBack"])$("#"+id).style.opacity=$("#"+id).disabled?".38":"1";
@@ -530,6 +530,31 @@ function startGrowthFromCurrent(){
   }
 }
 
+function snapshotGrowthContext(){
+  return {
+    mode:growthState.mode,
+    dimension:growthState.dimension,
+    familyId:growthState.familyId,
+    stage:growthState.stage,
+    lastCenter:growthState.lastCenter,
+    history:{...growthState.history}
+  };
+}
+function restoreGrowthContext(ctx){
+  if(!ctx)return;
+  growthState.mode=ctx.mode||"structural";
+  $("#growthMode").value=growthState.mode;
+  growthState.dimension=ctx.dimension||"all";
+  populateGrowthDimensions();
+  populateGrowthFamilies();
+  growthState.familyId=ctx.familyId||growthState.familyId;
+  $("#growthFamily").value=growthState.familyId||"";
+  growthState.stage=ctx.stage||0;
+  growthState.lastCenter=ctx.lastCenter||null;
+  growthState.history={...(ctx.history||{})};
+  renderGrowthTrail();
+  updateGrowthStageLabel();
+}
 function switchLayerWithoutGenerating(nextLayer){
   if(layer===nextLayer)return;
   layer=nextLayer;
@@ -556,7 +581,8 @@ function wrapCurrentSentence(){
     wrap_depth:depth,
     wrapper_id:w.id,
     wrapped_from:parent,
-    wrapped_from_layer:parentLayer
+    wrapped_from_layer:parentLayer,
+    growth_context:parent.growth_context||(parent.wrap_depth?null:snapshotGrowthContext())
   };
   switchLayerWithoutGenerating("L2");
   show(x);
@@ -566,6 +592,7 @@ function unwrapCurrentSentence(){
   const child=currentShown;
   const parent=child.wrapped_from;
   switchLayerWithoutGenerating(child.wrapped_from_layer||"L2");
+  if(!parent.wrap_depth&&child.growth_context)restoreGrowthContext(child.growth_context);
   show(parent);
 }
 
