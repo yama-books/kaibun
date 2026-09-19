@@ -60,7 +60,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 <div class="wrap">
 <header>
   <div><h1>怪文回文メーカー</h1><div class="sub">まず、日本語として通す。そこから一段ずつ、鏡の奥へ伸ばす。</div></div>
-  <div class="badge">v0.26 / 境界ずらしDNA</div>
+  <div class="badge">v0.27 / 研究由来DNA</div>
 </header>
 
 <div class="card">
@@ -144,7 +144,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 </div>
 
 <script>
-let data=null,rules=null,pairs=null,growth=null,seams=null,layer="L1",seen=new Set(),currentShown=null;
+let data=null,rules=null,pairs=null,growth=null,seams=null,bridge=null,layer="L1",seen=new Set(),currentShown=null;
 let growthState={mode:"structural",dimension:"all",familyId:null,stage:0,lastCenter:null,history:{}};
 
 const $=s=>document.querySelector(s);
@@ -152,12 +152,13 @@ const rev=s=>[...s].reverse().join("");
 const isPal=s=>s===rev(s);
 
 async function init(){
-  [data,rules,pairs,growth,seams]=await Promise.all([
+  [data,rules,pairs,growth,seams,bridge]=await Promise.all([
     fetch("./data/layered-seeds-v08.json").then(r=>r.json()),
     fetch("./data/generation-rules-v08.json").then(r=>r.json()),
     fetch("./data/reverse-lexeme-pairs-v09.json").then(r=>r.json()),
     fetch("./data/growth-engine-v10.json").then(r=>r.json()),
-    fetch("./data/seam-grammar-v25.json").then(r=>r.json())
+    fetch("./data/seam-grammar-v25.json").then(r=>r.json()),
+    fetch("./data/modern-bridge-public-v69.json").then(r=>r.json())
   ]);
   $("#c1").textContent=data.counts.L1+"本";
   $("#c2").textContent=data.counts.L2+"本";
@@ -169,6 +170,7 @@ async function init(){
   $("#storyStat").textContent="物語 "+(growth.verified?.narrative_family_count||0)+"系統 / "+(growth.verified?.narrative_variants||0)+"段階 / 最長 "+(growth.verified?.longest_narrative_kana||"–")+"かな";
   $("#benchmarkStat").textContent="固定基準 "+(growth.verified?.hundred_kana_benchmark?.length||"–")+"かな";
   $("#wrapperStat").textContent="外枠 "+(growth.verified?.sentence_level_wrapper_count||0)+"種 / 外側語彙 "+(growth.verified?.wrapper_distinct_outer_readings||0)+"種 / 重複回避ON";
+  $("#seamStat").textContent="継ぎ目 "+(seams.verified?.recipe_count||0)+"種 + 研究 "+(bridge.counts?.total||0)+"種";
   populateGrowthDimensions();
   populateGrowthFamilies();
   populateSentenceWrappers();
@@ -329,9 +331,24 @@ function syncSentenceWrapControls(){
   $("#wrapDepth").textContent="外枠 "+d+"段 / 候補 "+compatible.length+" / 重複除外 "+(total-compatible.length);
   $("#wrapMeta").textContent="外枠 "+d;
 }
+function bridgePool(){
+  if(!bridge)return [];
+  return (bridge.candidates||[])
+    .filter(r=>r.layer===layer && (r.weirdness??1)<=maxWeird() && isPal(r.reading))
+    .map(r=>({
+      display:r.display,
+      reading:r.reading,
+      family:r.family||"研究由来DNA",
+      origin:r.origin||("BRIDGE:"+r.id),
+      japanese_quality:r.japanese_quality||"A-",
+      weirdness:r.weirdness??2,
+      why:r.why||"歴史回文研究で得た意味役割ゲートを、既存の現代語DNAへ限定適用した候補。",
+      bridge_candidate:r.id
+    }));
+}
 function seamPool(){
-  if(!seams)return [];
-  return (seams.recipes||[])
+  if(!seams)return bridgePool();
+  const base=(seams.recipes||[])
     .filter(r=>r.layer===layer && (r.weirdness??1)<=maxWeird())
     .map(r=>({
       display:r.display,
@@ -345,6 +362,7 @@ function seamPool(){
       boundary_shift_shells:r.boundary_shift_shells||0,
       particle_hinges:r.particle_hinges||0
     }));
+  return uniqueByReading([...base,...bridgePool()]);
 }
 function seamOne(){show(chooseFresh(seamPool()))}
 function updateCandidateCount(){
