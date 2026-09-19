@@ -20,6 +20,7 @@ on:
       - "scripts/generate-nonkinship-reaction-expansion.mjs"
       - "scripts/validate-nonkinship-growth-rollout.mjs"
       - "scripts/validate-l2-ten-comparison-policy.mjs"
+      - "scripts/validate-human-quality-review.mjs"
       - "docs/TANKA_MIRROR_LATTICE_V28.md"
       - "data/historical-kaibunka-mining-v28.json"
       - "data/tanka-mirror-lattice-v28.json"
@@ -45,6 +46,7 @@ on:
       - "scripts/generate-nonkinship-reaction-expansion.mjs"
       - "scripts/validate-nonkinship-growth-rollout.mjs"
       - "scripts/validate-l2-ten-comparison-policy.mjs"
+      - "scripts/validate-human-quality-review.mjs"
       - "index.html"
 permissions:
   contents: read
@@ -89,5 +91,7 @@ jobs:
         run: node scripts/validate-nonkinship-growth-rollout.mjs
       - name: Validate L2 ten-item comparison cap
         run: node scripts/validate-l2-ten-comparison-policy.mjs
+      - name: Validate human quality review protocol
+        run: node scripts/validate-human-quality-review.mjs
       - name: Validate public UI
         run: node scripts/validate-ui.mjs
