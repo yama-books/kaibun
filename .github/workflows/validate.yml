@@ -11,6 +11,7 @@ on:
       - "scripts/generate-naha-outer-frame-research.mjs"
       - "scripts/generate-modern-seam-bridge.mjs"
       - "scripts/validate-modern-bridge-public.mjs"
+      - "scripts/simulate-growth-wrapper-role-gate.mjs"
       - "docs/TANKA_MIRROR_LATTICE_V28.md"
       - "data/historical-kaibunka-mining-v28.json"
       - "data/tanka-mirror-lattice-v28.json"
@@ -56,5 +57,7 @@ jobs:
         run: node scripts/generate-modern-seam-bridge.mjs --check
       - name: Validate public bridge whitelist
         run: node scripts/validate-modern-bridge-public.mjs
+      - name: Validate growth wrapper role gate
+        run: node scripts/simulate-growth-wrapper-role-gate.mjs --check
       - name: Validate public UI
         run: node scripts/validate-ui.mjs
