@@ -1,0 +1,154 @@
+{
+  "version": "0.58",
+  "title": "Historical topic-first research generator contract",
+  "mode": "research-only",
+  "public_ui_enabled": false,
+  "objective": "Generate explainable palindrome candidates from historically attested factors while preserving provenance, uncertainty, and gate traces.",
+  "supported_operations": [
+    {
+      "id": "central-E-swap",
+      "risk": "lowest-current-research-risk",
+      "description": "Keep host A/B/C/D fixed and substitute E3 from another source sharing the same morphologically valid D.",
+      "requirements": [
+        "host and donor are in the fixed research corpus",
+        "D reading matches and D morphology is valid for the operation",
+        "donor D+E is historically attested",
+        "strict palindrome reconstruction passes",
+        "scene gate is evaluated",
+        "semantic-role gate is evaluated"
+      ],
+      "rationale": "E3 sits at the 31-kana center and is self-reversing, so the operation does not move outer A/B/C/D boundaries."
+    },
+    {
+      "id": "scene-microgrammar",
+      "risk": "medium",
+      "description": "Vary only explicitly attested options inside a curated scene family such as v0.46.",
+      "requirements": [
+        "each variable factor has attested neighboring connections",
+        "morphologically sensitive corridor is fixed or explicitly signed",
+        "scene compatibility is documented",
+        "all outputs remain research candidates pending review"
+      ]
+    },
+    {
+      "id": "general-factor-crossover",
+      "risk": "high-disabled",
+      "enabled": false,
+      "description": "Arbitrary recombination across A/B/C/D/E.",
+      "reason_disabled": "Current research shows broad-field and local-factor validity are insufficient without scene and semantic-role constraints."
+    }
+  ],
+  "required_input": {
+    "topic": "broad research topic such as 秋・月 or 信仰",
+    "scene": "narrower scene or null; null forces review-needed rather than broad-field auto-pass",
+    "operation": "one supported operation id",
+    "corpus_version": "explicit frozen corpus version",
+    "source_policy": "trusted/mining eligibility rules"
+  },
+  "candidate_schema": {
+    "id": "stable research candidate id",
+    "reading": "31-kana normalized reading",
+    "meter": "five 5/7/5/7/7 readings",
+    "factors": "A/B/C/D/E",
+    "host_source_id": "host provenance",
+    "donor_source_ids": "factor donor provenance",
+    "operation": "operation id and changed factors",
+    "strict_palindrome": "boolean",
+    "attestation_trace": "which local factors/phrases are historically attested",
+    "morphology_trace": "which seams are moved, fixed, signed, source-specific, or unresolved",
+    "scene_trace": "broad field, narrow scene evidence, pass/hold/review",
+    "semantic_role_trace": "host role, donor role, compatibility outcome",
+    "source_confidence_trace": "trusted/mining/source-image-needed",
+    "review_status": "deep-review / hold-* / research-reviewed; never implicit accepted",
+    "cautions": "array"
+  },
+  "gate_order": [
+    {
+      "order": 1,
+      "id": "structural-palindrome",
+      "failure": "discard-mechanical-invalid",
+      "rule": "Reading must be exactly 31 kana under the declared normalization and strictly equal to its reverse for the current strict research mode."
+    },
+    {
+      "order": 2,
+      "id": "historical-attestation",
+      "failure": "hold-unattested-factor",
+      "rule": "Changed local factor connection must be historically attested or explicitly reviewed; unchanged host context is not reclassified as a transfer."
+    },
+    {
+      "order": 3,
+      "id": "morphology",
+      "failure": "hold-morphology",
+      "rule": "Evaluate morphology primarily for boundaries actually moved or reused across sources. Preserve source-specific signatures separately from global signatures."
+    },
+    {
+      "order": 4,
+      "id": "scene",
+      "failure": "hold-scene-mismatch",
+      "rule": "Broad topic is not enough. Require narrow scene compatibility or explicit review."
+    },
+    {
+      "order": 5,
+      "id": "semantic-role",
+      "failure": "hold-semantic-role-incompatible",
+      "rule": "Imported factor must preserve the host phrase's discourse/semantic job; missing role metadata becomes review-needed."
+    },
+    {
+      "order": 6,
+      "id": "source-confidence",
+      "failure": "hold-source-confirmation",
+      "rule": "Do not upgrade mining/transcription evidence to source-image-confirmed."
+    },
+    {
+      "order": 7,
+      "id": "deep-linguistic-review",
+      "failure": "hold-or-reject-for-now",
+      "rule": "Review syntax, viewpoint, time, subject, lexical plausibility and forcedness. Machine gates never auto-certify natural classical Japanese."
+    }
+  ],
+  "trace_policy": {
+    "every_gate_recorded": true,
+    "skipped_gate_requires_reason": true,
+    "negative_controls_retained": true,
+    "raw_kana_node_merge_forbidden": true,
+    "uncertainty_preserved": true,
+    "accepted_status_not_generated_by_machine": true
+  },
+  "regression_examples": {
+    "positive": [
+      "hybrid-016",
+      "hybrid-019"
+    ],
+    "deep_review_needed": [
+      "hybrid-002"
+    ],
+    "role_negative": [
+      "hybrid-017"
+    ],
+    "scene_negative": [
+      "hybrid-025",
+      "hybrid-028",
+      "hybrid-029",
+      "hybrid-030",
+      "hybrid-033",
+      "hybrid-034",
+      "hybrid-038",
+      "hybrid-041"
+    ]
+  },
+  "implementation_sequence": [
+    "Implement central-E-swap enumeration first.",
+    "Emit gate traces even for held candidates.",
+    "Compare generated candidate universe against v0.57 fixture.",
+    "Only then add curated scene-microgrammar enumeration.",
+    "Do not wire research generator into public UI until candidate review quality is separately accepted."
+  ],
+  "non_goals": [
+    "LLM free-generation",
+    "automatic kanji restoration",
+    "automatic naturalness certification",
+    "overwriting the fixed 50-sample baseline",
+    "publishing wave2 held readings as verified",
+    "maximizing candidate count"
+  ]
+}
