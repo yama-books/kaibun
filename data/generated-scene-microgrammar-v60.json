@@ -1,0 +1,269 @@
+{
+  "version": "0.60",
+  "source_microgrammar_version": "0.46",
+  "operation": "scene-microgrammar",
+  "scene_id": "autumn-night-garden-moon",
+  "candidate_count": 4,
+  "candidates": [
+    {
+      "id": "hybrid-008",
+      "operation": "scene-microgrammar",
+      "scene_id": "autumn-night-garden-moon",
+      "A_option": "A-shoju-038",
+      "E_option": "E-shoju-035",
+      "factors": {
+        "A": "なかきよの",
+        "B": "きつ",
+        "C": "るもはきの",
+        "D": "はに",
+        "E": "てりて"
+      },
+      "reading": "なかきよのきつるもはきのはにてりてにはのきはもるつきのよきかな",
+      "meter": [
+        "なかきよの",
+        "きつるもはきの",
+        "はにてりて",
+        "にはのきはもる",
+        "つきのよきかな"
+      ],
+      "strict_palindrome": true,
+      "kind": "novel-cento",
+      "prior_review": {
+        "status": "strong-promising",
+        "naturalness": "B+ tentative-classical",
+        "semantic_coherence": "high"
+      },
+      "provenance": {
+        "AB": [
+          "shoju-038"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "shoju-035"
+        ]
+      },
+      "gate_trace": {
+        "structural_palindrome": {
+          "status": "pass"
+        },
+        "local_attestation": {
+          "status": "pass",
+          "reason": "AB/BC/CD/DE combinations are explicitly attested under v0.46 invariants"
+        },
+        "morphology": {
+          "status": "pass-or-conditional",
+          "B": "conditional; reverse 月",
+          "D": "high transferable; 葉に -> 庭"
+        },
+        "scene": {
+          "status": "reviewed-family",
+          "scene_id": "autumn-night-garden-moon",
+          "evidence_basis": "v0.40 human review of hybrid-008/016/022"
+        },
+        "deep_review": {
+          "status": "strong-promising"
+        }
+      }
+    },
+    {
+      "id": "hybrid-016",
+      "operation": "scene-microgrammar",
+      "scene_id": "autumn-night-garden-moon",
+      "A_option": "A-shoju-035",
+      "E_option": "E-shoju-031",
+      "factors": {
+        "A": "はれつみよ",
+        "B": "きつ",
+        "C": "るもはきの",
+        "D": "はに",
+        "E": "しけし"
+      },
+      "reading": "はれつみよきつるもはきのはにしけしにはのきはもるつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつるもはきの",
+        "はにしけし",
+        "にはのきはもる",
+        "つきよみつれは"
+      ],
+      "strict_palindrome": true,
+      "kind": "novel-cento",
+      "prior_review": {
+        "status": "promising-but-parse-needed",
+        "naturalness": "B tentative",
+        "semantic_coherence": "high"
+      },
+      "provenance": {
+        "AB": [
+          "shoju-035"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "shoju-031"
+        ]
+      },
+      "gate_trace": {
+        "structural_palindrome": {
+          "status": "pass"
+        },
+        "local_attestation": {
+          "status": "pass",
+          "reason": "AB/BC/CD/DE combinations are explicitly attested under v0.46 invariants"
+        },
+        "morphology": {
+          "status": "pass-or-conditional",
+          "B": "conditional; reverse 月",
+          "D": "high transferable; 葉に -> 庭"
+        },
+        "scene": {
+          "status": "reviewed-family",
+          "scene_id": "autumn-night-garden-moon",
+          "evidence_basis": "v0.40 human review of hybrid-008/016/022"
+        },
+        "deep_review": {
+          "status": "promising-but-parse-needed"
+        }
+      }
+    },
+    {
+      "id": "hybrid-022",
+      "operation": "scene-microgrammar",
+      "scene_id": "autumn-night-garden-moon",
+      "A_option": "A-shoju-038",
+      "E_option": "E-shoju-031",
+      "factors": {
+        "A": "なかきよの",
+        "B": "きつ",
+        "C": "るもはきの",
+        "D": "はに",
+        "E": "しけし"
+      },
+      "reading": "なかきよのきつるもはきのはにしけしにはのきはもるつきのよきかな",
+      "meter": [
+        "なかきよの",
+        "きつるもはきの",
+        "はにしけし",
+        "にはのきはもる",
+        "つきのよきかな"
+      ],
+      "strict_palindrome": true,
+      "kind": "novel-cento",
+      "prior_review": {
+        "status": "promising-but-parse-needed",
+        "naturalness": "B- tentative",
+        "semantic_coherence": "high"
+      },
+      "provenance": {
+        "AB": [
+          "shoju-038"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "shoju-031"
+        ]
+      },
+      "gate_trace": {
+        "structural_palindrome": {
+          "status": "pass"
+        },
+        "local_attestation": {
+          "status": "pass",
+          "reason": "AB/BC/CD/DE combinations are explicitly attested under v0.46 invariants"
+        },
+        "morphology": {
+          "status": "pass-or-conditional",
+          "B": "conditional; reverse 月",
+          "D": "high transferable; 葉に -> 庭"
+        },
+        "scene": {
+          "status": "reviewed-family",
+          "scene_id": "autumn-night-garden-moon",
+          "evidence_basis": "v0.40 human review of hybrid-008/016/022"
+        },
+        "deep_review": {
+          "status": "promising-but-parse-needed"
+        }
+      }
+    },
+    {
+      "id": "shoju-035",
+      "operation": "scene-microgrammar",
+      "scene_id": "autumn-night-garden-moon",
+      "A_option": "A-shoju-035",
+      "E_option": "E-shoju-035",
+      "factors": {
+        "A": "はれつみよ",
+        "B": "きつ",
+        "C": "るもはきの",
+        "D": "はに",
+        "E": "てりて"
+      },
+      "reading": "はれつみよきつるもはきのはにてりてにはのきはもるつきよみつれは",
+      "meter": [
+        "はれつみよ",
+        "きつるもはきの",
+        "はにてりて",
+        "にはのきはもる",
+        "つきよみつれは"
+      ],
+      "strict_palindrome": true,
+      "kind": "historical-source",
+      "prior_review": {
+        "status": "source-member",
+        "naturalness": null,
+        "semantic_coherence": null
+      },
+      "provenance": {
+        "AB": [
+          "shoju-035"
+        ],
+        "BC": [
+          "shoju-035"
+        ],
+        "CD": [
+          "shoju-035"
+        ],
+        "DE": [
+          "shoju-035"
+        ]
+      },
+      "gate_trace": {
+        "structural_palindrome": {
+          "status": "pass"
+        },
+        "local_attestation": {
+          "status": "pass",
+          "reason": "AB/BC/CD/DE combinations are explicitly attested under v0.46 invariants"
+        },
+        "morphology": {
+          "status": "pass-or-conditional",
+          "B": "conditional; reverse 月",
+          "D": "high transferable; 葉に -> 庭"
+        },
+        "scene": {
+          "status": "reviewed-family",
+          "scene_id": "autumn-night-garden-moon",
+          "evidence_basis": "v0.40 human review of hybrid-008/016/022"
+        },
+        "deep_review": {
+          "status": "source-member"
+        }
+      }
+    }
+  ]
+}
