@@ -41,8 +41,8 @@
     },
     {
       "id": "M03",
-      "action": "Tap 原種から1本, DNAで1本生成, 逆語ペア, 継ぎ目型DNA.",
-      "pass": "Each action changes or refreshes the result and current diagnostic stays 回文."
+      "action": "Tap 回文を1本つくる and 別の回文をつくる; then open 作り方を選ぶ and tap 逆語ペアで作る / 継ぎ目型で作る.",
+      "pass": "Each generation path refreshes the result and current diagnostic stays 回文."
     },
     {
       "id": "M04",
@@ -51,8 +51,8 @@
     },
     {
       "id": "M05",
-      "action": "Start 段階的長文化 and tap 1段伸ばす at least three times.",
-      "pass": "Stage label/history update; buttons remain fully tappable; page can scroll vertically."
+      "action": "In step 3, tap 今の回文を長くする when enabled, or 長文化を開始; then tap 1段伸ばす at least three times.",
+      "pass": "Stage label/history update; disabled state is understandable when no direct growth family exists; touch controls remain usable."
     },
     {
       "id": "M06",
