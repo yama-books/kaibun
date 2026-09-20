@@ -1,7 +1,7 @@
 {
-  "version": "0.8.1",
+  "version": "0.8.2",
   "principle": "L1の自然さを維持したまま、逆読み語彙ペアと再帰的な親族名詞句を組み合わせて長文化する。再帰深度は3までを標準とし、怪文度と連動させる。",
-  "rule_count": 65,
+  "rule_count": 66,
   "rules": [
     {
       "id": "L1-WATASHI-C-SHITAWA",
@@ -1578,6 +1578,25 @@
       ]
     },
     {
+      "id": "L1-WAI-IWA-FRAME",
+      "layer": "L1",
+      "type": "productive",
+      "reading_pattern": "わい{pal_center}いわ",
+      "description": "主語・話題の「ワイ」と文末「〜いわ（女性言葉）」を鏡にした口語フレーム。",
+      "register": "spoken-feminine",
+      "library_ref": "wai-iwa",
+      "variants": [
+        [
+          "い",
+          "ワイ、いいわ。"
+        ],
+        [
+          "な",
+          "ワイ、ないわ。"
+        ]
+      ]
+    },
+    {
       "id": "L1-RECURSIVE-KINSHIP",
       "layer": "L1",
       "type": "recursive_kinship",
@@ -1722,5 +1741,35 @@
     "max_depth": 3,
     "all_palindromes": true,
     "constraint": "no same adjacent kinship relation"
-  }
+  },
+  "subject_suffix_library": [
+    {
+      "id": "wai-iwa",
+      "subject": {
+        "reading": "わい",
+        "display": "ワイ",
+        "role": "subject/topic"
+      },
+      "terminal": {
+        "reading": "いわ",
+        "display": "いわ",
+        "note": "文末「〜わ」（女性言葉）としての用法"
+      },
+      "frame": "わい{pal_center}いわ",
+      "allowed_centers": [
+        {
+          "reading": "い",
+          "display": "ワイ、いいわ。",
+          "register": "spoken-feminine"
+        },
+        {
+          "reading": "な",
+          "display": "ワイ、ないわ。",
+          "register": "spoken-feminine"
+        }
+      ],
+      "layer": "L1",
+      "caution": "一般の助詞ペアへ展開せず、文末「〜いわ」が自然に成立する固定フレームとして扱う。"
+    }
+  ]
 }
