@@ -246,9 +246,9 @@ if (!html.includes('content="width=device-width,initial-scale=1,viewport-fit=cov
   failed = true;
   console.error("mobile viewport-fit=cover missing");
 }
-if (!html.includes('v0.35 / 公開導線整理')) {
+if (!html.includes('公開β v0.35')) {
   failed = true;
-  console.error("public UI badge is not v0.35");
+  console.error("public UI badge is not 公開β v0.35");
 }
 for (const id of ["deviceDebug","deviceDebugStatus","deviceViewport","deviceVisualViewport","deviceTouch","deviceSafeArea","deviceData","deviceStorage","deviceTargets","deviceOverflow","deviceCurrent","deviceDpr","deviceDebugRefresh","deviceDebugCopy"]) {
   if (!html.includes('id="' + id + '"')) {
@@ -318,6 +318,18 @@ if (!html.includes('class="card techCard"') || !html.includes('<summary>仕組�
 if (!html.includes("怪文回文メーカー v0.35 実機診断")) {
   failed = true;
   console.error("mobile diagnostic copy text is not v0.35");
+}
+if (!html.includes('name="description"') || !html.includes('property="og:title"')) {
+  failed = true;
+  console.error("public metadata/OG tags missing");
+}
+if (!html.includes('<small>"+[...x.reading].length+"かな</small>')) {
+  failed = true;
+  console.error("ten-item public list no longer uses clean length-only metadata");
+}
+if (html.includes('(x.origin||x.subgroup||"原種")+" / 日本語')) {
+  failed = true;
+  console.error("ten-item list leaks technical origin/quality metadata");
 }
 const idMatches=[...html.matchAll(/id="([^"]+)"/g)].map(m=>m[1]);
 const duplicateIds=idMatches.filter((id,i)=>idMatches.indexOf(id)!==i);
