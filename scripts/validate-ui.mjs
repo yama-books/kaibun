@@ -2,6 +2,7 @@ import fs from "node:fs";
 
 const html = fs.readFileSync("index.html", "utf8");
 const scripts = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m => m[1]);
+const mobileProtocol = JSON.parse(fs.readFileSync("data/public-mobile-device-check-v131.json", "utf8"));
 
 if (!scripts.length) {
   console.error("No inline <script> block found in index.html");
@@ -233,6 +234,60 @@ if ((growthData.narrative_families ?? []).length !== 53) {
 if ((growthData.narrative_families ?? []).reduce((n,f)=>n+(f.stages??[]).length,0) !== 366) {
   failed = true;
   console.error("Growth selector rollout changed narrative stage count");
+}
+
+
+if (mobileProtocol.version !== "1.31" || mobileProtocol.public_ui_version !== "0.34") {
+  failed = true;
+  console.error("Unexpected mobile device protocol version/UI version");
+}
+if (!html.includes('content="width=device-width,initial-scale=1,viewport-fit=cover"')) {
+  failed = true;
+  console.error("mobile viewport-fit=cover missing");
+}
+if (!html.includes('v0.34 / 実機診断・スマホ操作調整')) {
+  failed = true;
+  console.error("public UI badge is not v0.34");
+}
+for (const id of ["deviceDebug","deviceDebugStatus","deviceViewport","deviceVisualViewport","deviceTouch","deviceSafeArea","deviceData","deviceStorage","deviceTargets","deviceOverflow","deviceCurrent","deviceDpr","deviceDebugRefresh","deviceDebugCopy"]) {
+  if (!html.includes('id="' + id + '"')) {
+    failed = true;
+    console.error("mobile diagnostic element missing: " + id);
+  }
+}
+for (const fn of ["mobileDebugSnapshot","renderMobileDebug","setupMobileDebug"]) {
+  if (!html.includes("function " + fn + "(")) {
+    failed = true;
+    console.error("mobile diagnostic function missing: " + fn);
+  }
+}
+if (!html.includes('new URLSearchParams(location.search).get("debug")==="mobile"')) {
+  failed = true;
+  console.error("mobile diagnostic query gate missing");
+}
+if (!html.includes('min-height:44px')) {
+  failed = true;
+  console.error("44px mobile tap target rule missing");
+}
+if (!html.includes('env(safe-area-inset-bottom)')) {
+  failed = true;
+  console.error("safe-area mobile padding missing");
+}
+if (!html.includes('document.documentElement.scrollWidth>window.innerWidth+1')) {
+  failed = true;
+  console.error("horizontal overflow diagnostic missing");
+}
+if (!html.includes('mobileDebugDataLoaded=true;')) {
+  failed = true;
+  console.error("mobile diagnostic data-load completion flag missing");
+}
+if (mobileProtocol.mobile_css_contract?.tap_target_min_height_px !== 44 || mobileProtocol.mobile_css_contract?.horizontal_overflow_is_failure !== true) {
+  failed = true;
+  console.error("mobile CSS contract drift");
+}
+if ((mobileProtocol.manual_smoke_test ?? []).length !== 10) {
+  failed = true;
+  console.error("mobile manual smoke-test count must be 10");
 }
 
 if (failed) process.exit(1);
