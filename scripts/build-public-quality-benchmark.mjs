@@ -42,6 +42,7 @@ const records=[];
 for(const x of seeds.records??[])records.push({...x,source_pool:"seed",source_id:x.id});
 
 for(const rule of rules.rules??[]){
+  if(rule.benchmark_eligible===false)continue;
   if(rule.type==="recursive_kinship"){
     for(const np of recursiveNPs(rule,1)){
       const weirdness=rule.weirdness_by_depth?.[np.depth]??(1+np.depth);
