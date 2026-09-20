@@ -858,6 +858,7 @@ for(const v of waiRockRule?.variants??[]){
   if(reverse(reading)!==reading)errors.push(`WAI/IWA 岩 variant is not palindrome: ${v[1]}`);
 }
 if((waiRockRule?.variants??[]).length!==2)errors.push("WAI/IWA 岩 variant count must be 2");
+if(waiRockRule?.benchmark_eligible!==false)errors.push("WAI/IWA 岩 rule must stay outside frozen quality benchmark until reviewed");
 if((pairs.pairs??[]).some(p=>p.left?.reading==="わい"||p.right?.reading==="いわ"))errors.push("WAI/IWA must not enter generic reverse-lexeme particle pairs");
 for(const [display,reading] of waiExpected){
   const seed=(corpus.records??[]).find(x=>x.display===display&&x.reading===reading);
