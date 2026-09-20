@@ -68,7 +68,7 @@ const kanaCasebookV127 = JSON.parse(fs.readFileSync("data/historical-kana-equiva
 const bidirectionalSeamV128 = JSON.parse(fs.readFileSync("data/bidirectional-tanka-seam-contrast-v128.json", "utf8"));
 const tankaLatticeDerivationV129 = JSON.parse(fs.readFileSync("data/tanka-mirror-lattice-independent-derivation-v129.json", "utf8"));
 const historicalThirdFamilyHumanV130 = JSON.parse(fs.readFileSync("data/historical-third-family-human-review-v130.json", "utf8"));
-const publicReleaseUiV132 = JSON.parse(fs.readFileSync("data/public-release-ui-path-v132.json", "utf8"));
+const publicReleaseUiV133 = JSON.parse(fs.readFileSync("data/public-release-ui-path-v133.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -864,10 +864,18 @@ for(const [display,reading] of waiExpected){
   if(!seed)errors.push(`WAI/IWA public seed missing: ${display}`);
   if(seed?.layer!=="L1"||seed?.subgroup!=="reverse_suffix")errors.push(`WAI/IWA seed scope drift: ${display}`);
 }
-if(publicReleaseUiV132.version!=="1.32"||publicReleaseUiV132.public_ui_version!=="0.35")errors.push("PUBLIC RELEASE UI V132 version drift");
-if(publicReleaseUiV132.subject_suffix_library_rollout?.library_id!=="wai-iwa")errors.push("PUBLIC RELEASE UI V132 wai-iwa rollout missing");
-if(publicReleaseUiV132.subject_suffix_library_rollout?.general_particle_expansion!==false)errors.push("PUBLIC RELEASE UI V132 must forbid generic particle expansion");
-if((publicReleaseUiV132.primary_route??[]).map(x=>x.step).join(",")!=="1,2,3")errors.push("PUBLIC RELEASE UI V132 primary route drift");
+if(publicReleaseUiV133.version!=="1.33"||publicReleaseUiV133.public_ui_version!=="0.35")errors.push("PUBLIC RELEASE UI V133 version drift");
+if(publicReleaseUiV133.subject_suffix_library_rollout?.library_id!=="wai-iwa")errors.push("PUBLIC RELEASE UI V133 wai-iwa rollout missing");
+if(publicReleaseUiV133.subject_suffix_library_rollout?.general_particle_expansion!==false)errors.push("PUBLIC RELEASE UI V133 must forbid generic particle expansion");
+if((publicReleaseUiV133.primary_route??[]).map(x=>x.step).join(",")!=="1,2,3")errors.push("PUBLIC RELEASE UI V133 primary route drift");
+
+const v133IwaSenses=publicReleaseUiV133.subject_suffix_library_rollout?.senses??[];
+if(v133IwaSenses.length!==2)errors.push("PUBLIC RELEASE UI V133 must expose two dedicated wai-iwa senses");
+const v133Rock=v133IwaSenses.find(x=>x.id==="iwa-rock");
+if(v133Rock?.rule_id!=="L2-WAI-IWA-ROCK-FRAME"||v133Rock?.layer!=="L2")errors.push("PUBLIC RELEASE UI V133 岩 rollout drift");
+if(publicReleaseUiV133.display_routes?.public_main?.url!=="https://yama-books.github.io/kaibun/")errors.push("PUBLIC RELEASE UI V133 main URL drift");
+if(publicReleaseUiV133.display_routes?.mobile_diagnostic?.visibility!=="query-only")errors.push("PUBLIC RELEASE UI V133 diagnostic visibility drift");
+if(publicReleaseUiV133.display_routes?.research_only?.linked_from_public_ui!==false||publicReleaseUiV133.display_routes?.research_only?.public_injection!==false)errors.push("PUBLIC RELEASE UI V133 research route must remain private from public UI");
 
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
@@ -940,4 +948,4 @@ console.log(`Kana casebook v1.27: profiles=${v127profiles}`);
 console.log(`Bidirectional seam v1.28: cases=${bidirectionalSeamV128.summary?.contrastive_cases}, shift=${bidirectionalSeamV128.summary?.shared_boundary_shift_signature?.join("/")}`);
 console.log(`Tanka lattice v1.29: cells=${tankaLatticeDerivationV129.summary?.derived_cell_lengths?.join("/")}, rederived=${tankaLatticeDerivationV129.summary?.v034_formula_rederived}`);
 console.log(`Historical third-family human v1.30: candidates=${historicalThirdFamilyHumanV130.candidates?.length}, completed=${historicalThirdFamilyHumanV130.current_state?.completed_reviews}`);
-console.log(`Public release UI v1.32: ui=${publicReleaseUiV132.public_ui_version}, wai-iwa variants=${waiRule?.variants?.length}`);
+console.log(`Public release UI v1.32: ui=${publicReleaseUiV133.public_ui_version}, wai-iwa variants=${waiRule?.variants?.length}`);
