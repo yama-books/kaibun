@@ -1,0 +1,100 @@
+{
+  "version": "1.31",
+  "updated_on": "2026-09-20",
+  "title": "Public mobile real-device verification protocol",
+  "purpose": "Define a repeatable iPhone/mobile smoke test for the public 怪文回文メーカー without changing generation quality rules or exposing research-only content.",
+  "public_ui_version": "0.34",
+  "entry": {
+    "normal": "./",
+    "diagnostic_query": "?debug=mobile",
+    "diagnostic_visibility": "query-only"
+  },
+  "automatic_diagnostics": [
+    "CSS viewport size",
+    "visual viewport size and scale",
+    "touch capability and maxTouchPoints",
+    "safe-area inset values",
+    "14/14 public UI data loads",
+    "localStorage availability",
+    "visible button/select target height >= 44px",
+    "horizontal overflow absence",
+    "current displayed reading is a strict palindrome",
+    "devicePixelRatio"
+  ],
+  "manual_smoke_test": [
+    {
+      "id": "M01",
+      "action": "Open diagnostic URL in portrait orientation.",
+      "pass": "実機診断 panel appears; data=14/14; horizontal overflow=none."
+    },
+    {
+      "id": "M02",
+      "action": "Tap 第一層/第二層/第三層 one by one.",
+      "pass": "Layer changes with one tap and result remains visible without accidental zoom."
+    },
+    {
+      "id": "M03",
+      "action": "Tap 原種から1本, DNAで1本生成, 逆語ペア, 継ぎ目型DNA.",
+      "pass": "Each action changes or refreshes the result and current diagnostic stays 回文."
+    },
+    {
+      "id": "M04",
+      "action": "Move 怪文度 slider from minimum to maximum and back.",
+      "pass": "Slider is operable by touch; result refreshes; no page horizontal scroll."
+    },
+    {
+      "id": "M05",
+      "action": "Start 段階的長文化 and tap 1段伸ばす at least three times.",
+      "pass": "Stage label/history update; buttons remain fully tappable; page can scroll vertically."
+    },
+    {
+      "id": "M06",
+      "action": "Use 文レベル長文化 once, then 1段ほどく.",
+      "pass": "Wrapped result is a strict palindrome and returns to prior state."
+    },
+    {
+      "id": "M07",
+      "action": "Tap 10本比較, then select an item near the bottom of the list.",
+      "pass": "List item opens reliably and no sticky/overlay element blocks taps."
+    },
+    {
+      "id": "M08",
+      "action": "Rotate portrait -> landscape -> portrait.",
+      "pass": "No persistent horizontal overflow; diagnostic viewport values update."
+    },
+    {
+      "id": "M09",
+      "action": "Use pinch zoom once, then return to normal scale.",
+      "pass": "Text remains readable and visual viewport diagnostic changes without breaking layout."
+    },
+    {
+      "id": "M10",
+      "action": "Tap 診断結果をコピー.",
+      "pass": "Clipboard copy succeeds, or fallback copy dialog appears."
+    }
+  ],
+  "mobile_css_contract": {
+    "viewport_fit_cover": true,
+    "safe_area_padding": true,
+    "tap_target_min_height_px": 44,
+    "mobile_controls_full_width": true,
+    "two_column_action_buttons": true,
+    "horizontal_overflow_is_failure": true
+  },
+  "out_of_scope": [
+    "Preserving the currently generated sentence across a full page reload",
+    "Offline/PWA installation",
+    "Research-only historical candidate display",
+    "Automatic human-quality adjudication"
+  ],
+  "reporting": {
+    "preferred": "Paste copied diagnostic text plus the IDs of any failed manual checks.",
+    "minimum": "Device/browser, portrait or landscape, and failed check ID."
+  },
+  "safety_invariants": [
+    "Diagnostic mode must not alter candidate generation probabilities.",
+    "Diagnostic mode must not inject historical research candidates into the public pool.",
+    "Normal URL must not display the diagnostic panel.",
+    "Mobile layout changes must not change corpus/generator data."
+  ]
+}
