@@ -69,6 +69,7 @@ const bidirectionalSeamV128 = JSON.parse(fs.readFileSync("data/bidirectional-tan
 const tankaLatticeDerivationV129 = JSON.parse(fs.readFileSync("data/tanka-mirror-lattice-independent-derivation-v129.json", "utf8"));
 const historicalThirdFamilyHumanV130 = JSON.parse(fs.readFileSync("data/historical-third-family-human-review-v130.json", "utf8"));
 const publicReleaseUiV133 = JSON.parse(fs.readFileSync("data/public-release-ui-path-v133.json", "utf8"));
+const waiIwaDualSenseV134 = JSON.parse(fs.readFileSync("data/wai-iwa-dual-sense-review-v134.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -877,6 +878,15 @@ if(v133Rock?.rule_id!=="L2-WAI-IWA-ROCK-FRAME"||v133Rock?.layer!=="L2")errors.pu
 if(publicReleaseUiV133.display_routes?.public_main?.url!=="https://yama-books.github.io/kaibun/")errors.push("PUBLIC RELEASE UI V133 main URL drift");
 if(publicReleaseUiV133.display_routes?.mobile_diagnostic?.visibility!=="query-only")errors.push("PUBLIC RELEASE UI V133 diagnostic visibility drift");
 if(publicReleaseUiV133.display_routes?.research_only?.linked_from_public_ui!==false||publicReleaseUiV133.display_routes?.research_only?.public_injection!==false)errors.push("PUBLIC RELEASE UI V133 research route must remain private from public UI");
+
+if(waiIwaDualSenseV134.version!=="1.34"||waiIwaDualSenseV134.library_id!=="wai-iwa")errors.push("WAI/IWA DUAL SENSE V134 version/library drift");
+const v134Suffix=(waiIwaDualSenseV134.senses??[]).find(x=>x.id==="sentence-final-iwa");
+const v134Rock=(waiIwaDualSenseV134.senses??[]).find(x=>x.id==="iwa-rock");
+if(!v134Suffix||!v134Rock)errors.push("WAI/IWA DUAL SENSE V134 must contain both senses");
+if(v134Suffix?.layer!=="L1"||v134Rock?.layer!=="L2")errors.push("WAI/IWA DUAL SENSE V134 layer separation drift");
+if(v134Rock?.frozen_benchmark_eligible!==false)errors.push("WAI/IWA DUAL SENSE V134 rock must remain outside frozen benchmark");
+if(waiIwaDualSenseV134.generation_policy?.generic_reverse_lexeme_pair!==false||waiIwaDualSenseV134.generation_policy?.dedicated_frame_only!==true)errors.push("WAI/IWA DUAL SENSE V134 generation policy drift");
+for(const sense of waiIwaDualSenseV134.senses??[])for(const x of sense.outputs??[])if(reverse(x.reading)!==x.reading)errors.push(`WAI/IWA DUAL SENSE V134 non-palindrome: ${x.display}`);
 
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
