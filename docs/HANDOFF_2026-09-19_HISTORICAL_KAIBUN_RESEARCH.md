@@ -4881,3 +4881,335 @@ final CI:
 ## 再開最短文
 
 **「HANDOFF 42節から再開。public v0.34で?debug=mobile query-only実機診断、safe-area、44px touch target、mobile layoutを実装。v1.31でM01-M10実機smoke protocol固定。通常UI/generation rule変更なし。v0.34 indexはValidate 35481924528 / Pages 35481924481 green。最新validator head 02fe068...のfinal CI確認後、iPhoneでdiagnostic text＋失敗M番号を回収して修正。研究側§41はfreeze気味でhuman review/product integration優先。」**
+
+
+---
+
+# 43. 2026-09-20 ワイ→いわ library / public β v0.35 導線整理 チェックポイント
+
+## ユーザー指示
+
+追加:
+- 主語 `ワイ`
+- 逆側文末 `いわ`
+- `〜いわ` を女性言葉としてlibraryへ追加
+
+並行:
+- UI / 表示経路を公開向けに整理
+
+## 1. wai-iwa subject suffix library
+
+更新:
+- `data/generation-rules-v08.json`
+- version `0.8.2`
+- rule_count 66
+
+新library:
+`subject_suffix_library / wai-iwa`
+
+subject:
+- reading `わい`
+- display `ワイ`
+- role subject/topic
+
+terminal:
+- reading `いわ`
+- note `文末「〜わ」（女性言葉）としての用法`
+
+new rule:
+`L1-WAI-IWA-FRAME`
+
+pattern:
+`わい{pal_center}いわ`
+
+variants:
+1. `ワイ、いいわ。`
+   - `わいいいわ`
+2. `ワイ、ないわ。`
+   - `わいないわ`
+
+both strict palindrome.
+
+register:
+`spoken-feminine`
+
+generic reverse-pair expansion:
+**禁止**
+
+`reverse-lexeme-pairs-v09.json`
+に `わい/いわ` を入れない。
+
+validatorでもgeneric pairへ入ったらfailure。
+
+commits:
+- rules `ac6c68a109e0f35641151548d3e68a770a18b6ce`
+- seeds `2afb8237b2c1d545fa883936e97f0c4187ef9abb`
+
+## 2. public seeds / counts
+
+new:
+- V08-0273 `ワイ、いいわ。`
+- V08-0274 `ワイ、ないわ。`
+
+both:
+- L1
+- reverse_suffix
+- spoken-feminine
+
+new counts:
+- L1 161
+- L2 30
+- L3 83
+- total 274
+
+DNA:
+- rule count 66
+
+L1 dnaPool:
+- total 453
+- recursive 216
+- nonrecursive 237
+- natural recursive share ~47.7%
+
+recursive public cap:
+- **25% unchanged**
+
+exposure policy snapshot更新:
+- policy commit `1738bf002310df39a7149066f990a0e83cd9e5c0`
+- validator `e9b98609bf379f67c00b4449aa3b257e69a47540`
+
+ten compare combined:
+- 489 -> 491
+
+quota 3/3/2/2 unchanged。
+
+ten validator:
+`aa0af02e1fa2c5f753a939a0a016bcf1fa374011`
+
+## 3. public UI v0.35
+
+main UI restructure:
+- commit `db2067215cfeeff4349c9e0d650e7787217e195a`
+
+refine:
+- `e62659f52b82a3fe2fe41139b0f1fbd011792ea7`
+- `49e599346278e0ad575dc4e18c69255f909f7dc8`
+
+current badge:
+`公開β v0.35`
+
+### primary route
+
+#### Step 1
+`雰囲気を選ぶ`
+
+- L1/L2/L3
+- 怪文度上限
+
+#### Step 2
+`回文を作る`
+
+primary:
+- 回文を1本つくる
+- 別の回文をつくる
+- 10本くらべる
+
+foldout:
+`作り方を選ぶ`
+
+- 逆語ペアで作る
+- 継ぎ目型で作る
+
+#### result always visible
+
+- strict palindrome badge
+- kana length
+- reading hint if relevant
+- canonical reading
+- mirror visualization
+
+foldout:
+`この回文の説明・詳細`
+
+- why
+- Japanese quality
+- weirdness
+- wrap depth
+- family
+- origin
+
+#### Step 3
+`気に入ったら長くする`
+
+- 今の回文を長くする
+- 段階的長文化
+- 文レベル長文化
+
+`growCurrent` はstep2からstep3へ移動。
+
+## 4. ten-item public presentation
+
+一覧から削除:
+- internal origin
+- Japanese quality code
+- weirdness number
+
+一覧表示:
+- sentence
+- kana length
+
+click後のdetailには内部metadataを残す。
+
+## 5. technical route
+
+foldout:
+`仕組み・検証情報`
+
+内部statsは削除せずここへ移動。
+
+通常のplay pathからは外す。
+
+## 6. web/public metadata
+
+追加:
+- meta description
+- theme-color
+- color-scheme
+- Open Graph title
+- Open Graph description
+- Open Graph type
+
+summary touch target:
+- min 44px
+
+## 7. public UI contract v1.32
+
+file:
+`data/public-release-ui-path-v132.json`
+
+initial:
+`2874a4e6dc45cdeca03bfdb2a54374e603129f42`
+
+refinements:
+- `6891771ede7668a2771b19b9d5f8dd59fb8dfce6`
+- `a90b7eb5376f408fde40bc6310c4a87e87925023`
+
+contract:
+- three-step primary route
+- advanced methods remain available
+- technical route folded
+- wai-iwa L1 rollout
+- no generic particle expansion
+- no historical research public injection
+- UI reordering must not change probabilities
+
+## 8. mobile real-device protocol
+
+`data/public-mobile-device-check-v131.json`
+
+public_ui_version:
+`0.35`
+
+M03:
+- primary buttons
+- then open advanced generation foldout
+
+M05:
+- Step3 grow-current / growth start
+- then >=3 stages
+
+deployment evidence updated:
+- Pages run `35483146139`
+- environment `https://yama-books.github.io/kaibun/`
+- success
+
+deployment evidence commit:
+`9c54b877940ee2cb67d46e0683857cf4afca4ac7`
+
+diagnostic:
+`https://yama-books.github.io/kaibun/?debug=mobile`
+
+## 9. validators
+
+corpus:
+- generation rules version 0.8.2
+- wai-iwa library exists
+- readings `わい / いわ`
+- L1 only
+- two outputs strict palindrome
+- two public seeds exist
+- reverse generic pair contamination forbidden
+- v1.32 contract
+
+UI:
+- public β badge
+- 3 route IDs
+- labels
+- advanced foldout
+- technical foldout
+- mobile v0.35
+- 44px / safe area
+- duplicate IDs forbidden
+- meta / OG
+- ten list = length-only public metadata
+
+commits:
+- `b2a9209627087724b08269b1685164c99cdd7180`
+- `f17c0492f6a7b2bfe4e5c2a5ea34afe5197e441f`
+- `daa04233db4e469278c87b92426e3cc58dba00fc`
+- `d90f78e3d6dd0f7cdcb0bd99041618c262234507`
+
+## 10. CI / Pages
+
+after wai-iwa count refresh:
+- Validate `35483026271` success
+- Pages `35483026277` success
+
+after route refine:
+- Validate `35483076430` success
+- Pages `35483076604` success
+
+final public contract head:
+`a90b7eb5376f408fde40bc6310c4a87e87925023`
+
+- Validate `35483146043` **success**
+- Pages `35483146139` **success**
+
+release note:
+`docs/PUBLIC_BETA_V035_WAI_IWA.md`
+
+commit:
+`4af643d88bae84f07b03f13381c9656b5e672c21`
+
+## 11. current public URLs
+
+normal:
+`https://yama-books.github.io/kaibun/`
+
+real-device diagnostic:
+`https://yama-books.github.io/kaibun/?debug=mobile`
+
+## 12. next
+
+public release lane:
+1. iPhone実機でnormal route確認
+2. diagnostic M01-M10
+3. copied diagnostic + failed M IDsで修正
+4. public human quality review
+5. v0.97 adjudication
+
+research lane:
+- §41 state維持
+- third positive familyを機械的には増やさない
+- new source/human philological evidenceが出た時だけ再開
+
+## progress
+
+- historical research / generation principles: **約97%**
+- public UI/release path: **約96%**
+- overall app target: **約96%**
+- remaining: **約4%**
+
+## 再開最短文
+
+**「HANDOFF 43節から再開。wai-iwa libraryを追加し、L1に『ワイ、いいわ。』『ワイ、ないわ。』を原種＋DNAで公開。generic pair展開は禁止。public UI v0.35は①雰囲気→②作る→③長くするへ整理し、advanced/technical metadataはfoldout。10本比較は文＋かな数のみ。Validate 35483146043 / Pages 35483146139 green。次はiPhone実機M01-M10＋public human review。」**
