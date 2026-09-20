@@ -4714,3 +4714,168 @@ guardを緩める理由はない。
 ## 再開最短文
 
 **「HANDOFF 41節から再開。v1.28でbidirectional 124-129のreverse meter seamがforward seamから全て+2と確認。v1.29でforward/reverse境界unionから5|2|5|2|3|2|5|2|5を独立再導出しv0.34を構造的に強化。新operationは0。v1.30でhybrid-007とtravel bestのhuman philological review queueを準備、未記入・自動昇格なし。次はwhole-sentence evidence探索、なければresearchをfreezeしてhuman review/product integrationへ。」**
+
+
+---
+
+# 42. 2026-09-20 public v0.34 mobile real-device verification lane チェックポイント
+
+## 方針変更
+
+ユーザー要望により、
+歴史研究継続と並行して**実機確認レーン**を開始した。
+
+対象:
+- 公開 `index.html`
+- iPhone / mobile Safari系を最優先
+- 通常利用UIを汚さず、query指定時のみ診断を表示
+
+## public UI v0.34
+
+index commit:
+`8167673bb8e7818309bb5a7c468d8f6383986c41`
+
+badge:
+`v0.34 / 実機診断・スマホ操作調整`
+
+### mobile layout changes
+
+- viewportに `viewport-fit=cover`
+- iPhone safe-area padding
+- `-webkit-text-size-adjust:100%`
+- mobile button/select touch target minimum height 44px
+- slider touch height 44px
+- mobile select full-width
+- toolbar / growth / wrapper buttonsを2列flex化
+- result/readingsのoverflow-wrap
+- mobile card padding調整
+- coarse pointerでもbutton/select 44px以上
+
+generation probability / corpus / quality ruleは変更していない。
+
+## query-only device diagnostic
+
+通常URL:
+- 診断パネル非表示
+
+`?debug=mobile`:
+- 実機診断card表示
+
+自動測定:
+1. CSS viewport
+2. visual viewport + scale
+3. touch / maxTouchPoints
+4. safe-area inset
+5. 14/14 UI data load
+6. localStorage availability
+7. visible button/select height >=44px
+8. horizontal overflow
+9. current result strict palindrome + length
+10. devicePixelRatio
+
+actions:
+- 再測定
+- 診断結果をコピー
+
+orientation / viewport resize時も再測定。
+
+debug modeはcandidate generationへ影響しない。
+
+## mobile protocol v1.31
+
+file:
+`data/public-mobile-device-check-v131.json`
+
+commit:
+`bcf75dd7f8721295e9266f57e86cb5080356336c`
+
+manual smoke checks:
+- M01 portrait diagnostic open
+- M02 L1/L2/L3 touch switching
+- M03 seed/DNA/pair/seam buttons
+- M04 weirdness slider
+- M05 growth >=3 steps
+- M06 sentence wrap / unwrap
+- M07 10-item comparison + lower item
+- M08 portrait/landscape rotation
+- M09 pinch zoom / visual viewport
+- M10 diagnostic copy
+
+out of scope:
+- page reload後のcurrent sentence persistence
+- offline/PWA
+- historical research candidate display
+- human adjudication automation
+
+## UI validator
+
+validator commit:
+`02fe068f316a391d04526fba5cb52ceb65841321`
+
+checks追加:
+- protocol v1.31 / UI v0.34
+- viewport-fit
+- diagnostic DOM ids
+- diagnostic JS functions
+- query-only gate
+- 44px rule
+- safe-area rule
+- overflow detector
+- data-loaded flag
+- manual smoke count=10
+
+## CI / Pages
+
+v0.34 index単体:
+- Validate run `35481924528` success
+- Pages run `35481924481` success
+
+v1.31 protocol + validator head:
+`02fe068f316a391d04526fba5cb52ceb65841321`
+
+このcheckpoint作成時:
+- final Validate `35481961870` running
+- final Pages `35481961842` running
+
+## 実機確認の次手
+
+ユーザーのiPhone等で公開Pagesを:
+
+`?debug=mobile`
+
+付きで開く。
+
+最小報告:
+- copied diagnostic text
+- 失敗したM番号
+
+これでviewport/touch/safe-area/overflowと
+操作上の症状を一対一で修正できる。
+
+## 研究側
+
+§41の研究状態は維持。
+
+- nine-cell lattice canonical
+- historical research principle ~97%
+- third positive familyはhuman philological evidence待ち
+- machine guardは緩めない
+
+実機側を並行したため、
+今後は:
+1. public mobile実機フィードバック修正
+2. human review/product integration
+3. 史料に新証拠が出たときだけthird-family research再開
+
+の3レーンで進める。
+
+## 進捗目安
+
+- 歴史回文研究・生成原理: **約97%**
+- 公開UI実機対応: **自動診断/準備 約85%、実機人手確認待ち**
+- 怪文回文メーカー全体: **約95%**
+- 残り: **約5%**
+
+## 再開最短文
+
+**「HANDOFF 42節から再開。public v0.34で?debug=mobile query-only実機診断、safe-area、44px touch target、mobile layoutを実装。v1.31でM01-M10実機smoke protocol固定。通常UI/generation rule変更なし。v0.34 indexはValidate 35481924528 / Pages 35481924481 green。最新validator head 02fe068...のfinal CI確認後、iPhoneでdiagnostic text＋失敗M番号を回収して修正。研究側§41はfreeze気味でhuman review/product integration優先。」**
