@@ -1751,7 +1751,9 @@
           "も",
           "ワイも岩。"
         ]
-      ]
+      ],
+      "benchmark_eligible": false,
+      "benchmark_note": "v0.79 fixed benchmark追加後の新規public candidate。既存baselineを動かさず、別途human review後に次版benchmarkで扱う。"
     }
   ],
   "verified_recursive_space": {
