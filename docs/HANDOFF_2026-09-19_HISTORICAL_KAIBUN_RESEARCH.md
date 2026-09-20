@@ -4833,9 +4833,11 @@ v0.34 index単体:
 v1.31 protocol + validator head:
 `02fe068f316a391d04526fba5cb52ceb65841321`
 
-このcheckpoint作成時:
-- final Validate `35481961870` running
-- final Pages `35481961842` running
+final CI:
+- Validate `35481961870` **success**
+- Pages `35481961842` **success**
+- Pages environment URL: `https://yama-books.github.io/kaibun/`
+- 実機診断 URL: `https://yama-books.github.io/kaibun/?debug=mobile`
 
 ## 実機確認の次手
 
