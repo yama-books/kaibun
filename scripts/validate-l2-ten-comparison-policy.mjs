@@ -87,12 +87,13 @@ function deterministicRepair(items){
 }
 
 const errors=[];
-if(policy.version!=="0.93")errors.push(`policy version ${policy.version}, expected 0.93`);
+if(policy.version!=="0.93.1")errors.push(`policy version ${policy.version}, expected 0.93.1`);
 if(family!=="同定")errors.push(`capped family ${family}, expected 同定`);
 if(cap!==2)errors.push(`cap ${cap}, expected 2`);
-if(combined.length!==62)errors.push(`L2 combined pool ${combined.length}, expected 62`);
+if(combined.length!==64)errors.push(`L2 combined pool ${combined.length}, expected 64`);
 if(identity.length!==13)errors.push(`identity count ${identity.length}, expected 13`);
-if(other.length!==49)errors.push(`non-identity count ${other.length}, expected 49`);
+if(other.length!==51)errors.push(`non-identity count ${other.length}, expected 51`);
+if(policy.inventory_snapshot?.combined_pool!==64||policy.inventory_snapshot?.capped_family_count!==13||policy.inventory_snapshot?.non_capped_count!==51)errors.push("L2 inventory snapshot drift");
 
 const worst=deterministicRepair(identity.slice(0,10));
 if(worst.length!==10)errors.push(`worst-case repaired length ${worst.length}, expected 10`);
@@ -109,4 +110,4 @@ if(errors.length){
   process.exit(1);
 }
 console.log("OK: L2 ten-item comparison identity cap");
-console.log(`Pool=62, identity=13, other=49, cap=${cap}`);
+console.log(`Pool=64, identity=13, other=51, cap=${cap}`);
