@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="日本語として読める回文から、意味の通る怪文、段階的な長文化まで遊べる回文生成アプリ。">
+<meta name="theme-color" content="#f5f0e8">
+<meta name="color-scheme" content="light">
+<meta property="og:title" content="怪文回文メーカー">
+<meta property="og:description" content="日本語として読める回文を作って、比べて、長くする。">
+<meta property="og:type" content="website">
 <title>怪文回文メーカー</title>
 <style>
 :root{--bg:#f5f0e8;--paper:#fffdf8;--ink:#22211e;--sub:#6f6a61;--line:#d8d0c2;--green:#315d59;--wine:#755055;--soft:#eee7dc}
@@ -69,7 +75,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 .stepHead b{font-size:18px}
 .stepHead .sub{font-size:12px;margin-top:2px}
 .publicDetails{margin-top:12px;border:1px solid var(--line);border-radius:12px;background:#fff}
-.publicDetails>summary{cursor:pointer;padding:11px 13px;font-weight:800;list-style:none}
+.publicDetails>summary{cursor:pointer;padding:11px 13px;min-height:44px;display:flex;align-items:center;font-weight:800;list-style:none}
 .publicDetails>summary::-webkit-details-marker{display:none}
 .publicDetails>summary::after{content:"＋";float:right;color:var(--sub)}
 .publicDetails[open]>summary::after{content:"−"}
@@ -105,7 +111,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 <div class="wrap">
 <header>
   <div><h1>怪文回文メーカー</h1><div class="sub">まず、日本語として通す。そこから一段ずつ、鏡の奥へ伸ばす。</div></div>
-  <div class="badge">v0.35 / 公開導線整理</div>
+  <div class="badge">公開β v0.35</div>
 </header>
 
 <div class="card deviceDebug" id="deviceDebug" hidden>
@@ -1105,7 +1111,7 @@ $("#ten").onclick=()=>{
   const items=tenComparisonItems();
   items.forEach((x,i)=>{
     const e=document.createElement("div");e.className="item";
-    e.innerHTML=(i+1)+". "+x.display+"<br><small>"+(x.origin||x.subgroup||"原種")+" / 日本語 "+(x.japanese_quality||"-")+" / 怪文 "+(x.weirdness??defaultWeird(layer))+"</small>";
+    e.innerHTML=(i+1)+". "+x.display+"<br><small>"+[...x.reading].length+"かな</small>";
     e.onclick=()=>show(x);box.appendChild(e);
   });
 };
