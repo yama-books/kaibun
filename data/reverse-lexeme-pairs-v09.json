@@ -1,8 +1,8 @@
 {
   "version": "0.9",
   "principle": "left.reading を逆読みすると right.reading になる語彙ペアだけを登録し、その間に1かなの助詞を置く。助詞は統語・意味的に自然なものをホワイトリスト登録する。",
-  "pair_count": 31,
-  "variant_count": 105,
+  "pair_count": 30,
+  "variant_count": 103,
   "pairs": [
     {
       "id": "tsuma-matsu",
@@ -1039,52 +1039,6 @@
           "layer": "L2",
           "weirdness": 3,
           "right_display": null
-        }
-      ]
-    },
-    {
-      "id": "wai-iwa",
-      "left": {
-        "reading": "わい",
-        "display": "ワイ"
-      },
-      "right": {
-        "reading": "いわ",
-        "display": "岩"
-      },
-      "pos": "noun-predicate",
-      "senses": [
-        {
-          "id": "iwa-rock",
-          "reading": "いわ",
-          "display": "岩",
-          "semantic_role": "noun-predicate",
-          "public_generation": true,
-          "note": "名詞「岩」。ワイ＋一かな助詞＋岩の名詞述語型に使用する。"
-        },
-        {
-          "id": "iwa-sentence-final",
-          "reading": "いわ",
-          "display": "いわ",
-          "semantic_role": "sentence-final-expression",
-          "register": "spoken-feminine",
-          "public_generation": "via-generation-rule",
-          "rule_ref": "L1-WAI-IWA-FRAME",
-          "note": "「〜いわ」の女性語的な文末表現。名詞「岩」とは別senseとして扱う。"
-        }
-      ],
-      "variants": [
-        {
-          "particle": "は",
-          "layer": "L2",
-          "weirdness": 4,
-          "right_display": "岩"
-        },
-        {
-          "particle": "も",
-          "layer": "L2",
-          "weirdness": 4,
-          "right_display": "岩"
         }
       ]
     }
