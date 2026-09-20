@@ -98,5 +98,15 @@
       "origin",
       "説明"
     ]
+  },
+  "public_presentation": {
+    "badge": "公開β v0.35",
+    "head_metadata": [
+      "description",
+      "theme-color",
+      "Open Graph title/description"
+    ],
+    "ten_item_list": "sentence + kana length only",
+    "technical_origin_quality_visibility": "after selecting a result, inside detail foldout"
   }
 }
