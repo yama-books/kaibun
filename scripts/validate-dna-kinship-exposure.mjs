@@ -86,11 +86,11 @@ const otherInAll=all.filter(x=>!recursiveReadings.has(x.reading));
 const errors=[];
 if(policy.version!=="0.84")errors.push(`policy version ${policy.version}, expected 0.84`);
 if(policy.policy?.recursive_probability_cap!==0.25)errors.push("recursive cap must be 0.25");
-if(all.length!==451)errors.push(`L1 dnaPool total ${all.length}, expected 451`);
+if(all.length!==453)errors.push(`L1 dnaPool total ${all.length}, expected 453`);
 if(recursiveInAll.length!==216)errors.push(`recursive reading count ${recursiveInAll.length}, expected 216`);
-if(otherInAll.length!==235)errors.push(`nonrecursive selected-pool count ${otherInAll.length}, expected 235`);
+if(otherInAll.length!==237)errors.push(`nonrecursive selected-pool count ${otherInAll.length}, expected 237`);
 const share=recursiveInAll.length/all.length;
-if(Math.abs(share-0.4789356984478936)>1e-12)errors.push(`recursive share drift ${share}`);
+if(Math.abs(share-0.4768211920529801)>1e-12)errors.push(`recursive share drift ${share}`);
 if(policy.policy?.recursive_probability_cap>=share)errors.push("cap no longer throttles current natural share");
 
 if(errors.length){
