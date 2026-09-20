@@ -1,7 +1,7 @@
 {
-  "version": "0.8.2",
+  "version": "0.8.3",
   "principle": "L1の自然さを維持したまま、逆読み語彙ペアと再帰的な親族名詞句を組み合わせて長文化する。再帰深度は3までを標準とし、怪文度と連動させる。",
-  "rule_count": 66,
+  "rule_count": 67,
   "rules": [
     {
       "id": "L1-WATASHI-C-SHITAWA",
@@ -1732,6 +1732,26 @@
       "constraints": {
         "no_same_adjacent_relation": true
       }
+    },
+    {
+      "id": "L2-WAI-IWA-ROCK-FRAME",
+      "layer": "L2",
+      "type": "productive",
+      "reading_pattern": "わい{pal_center}いわ",
+      "description": "主語・話題の「ワイ」と名詞述語「岩」を鏡にした意味怪文フレーム。",
+      "register": "spoken",
+      "library_ref": "wai-iwa",
+      "sense_ref": "iwa-rock",
+      "variants": [
+        [
+          "は",
+          "ワイは岩。"
+        ],
+        [
+          "も",
+          "ワイも岩。"
+        ]
+      ]
     }
   ],
   "verified_recursive_space": {
@@ -1769,7 +1789,18 @@
         }
       ],
       "layer": "L1",
-      "caution": "一般の助詞ペアへ展開せず、文末「〜いわ」が自然に成立する固定フレームとして扱う。"
+      "caution": "一般の逆語ペアへは展開しない。L1の文末「〜いわ」とL2の名詞「岩」を、専用フレームの別senseとして扱う。",
+      "alternate_terminal_senses": [
+        {
+          "id": "iwa-rock",
+          "reading": "いわ",
+          "display": "岩",
+          "role": "noun-predicate",
+          "layer": "L2",
+          "rule_ref": "L2-WAI-IWA-ROCK-FRAME",
+          "note": "名詞「岩」。文末表現「〜いわ」と同じ読みだが、別senseとして扱う。"
+        }
+      ]
     }
   ]
 }
