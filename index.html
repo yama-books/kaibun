@@ -2,12 +2,15 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>怪文回文メーカー</title>
 <style>
 :root{--bg:#f5f0e8;--paper:#fffdf8;--ink:#22211e;--sub:#6f6a61;--line:#d8d0c2;--green:#315d59;--wine:#755055;--soft:#eee7dc}
 *{box-sizing:border-box}
-body{margin:0;font-family:"Yu Gothic UI","Hiragino Sans","Meiryo",sans-serif;background:radial-gradient(circle at 12% 8%,rgba(117,79,82,.09),transparent 26%),radial-gradient(circle at 88% 15%,rgba(49,93,89,.07),transparent 24%),var(--bg);color:var(--ink)}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+button,select,input{font:inherit}
+button,select{touch-action:manipulation}
+body{margin:0;min-height:100dvh;font-family:"Yu Gothic UI","Hiragino Sans","Meiryo",sans-serif;background:radial-gradient(circle at 12% 8%,rgba(117,79,82,.09),transparent 26%),radial-gradient(circle at 88% 15%,rgba(49,93,89,.07),transparent 24%),var(--bg);color:var(--ink)}
 .wrap{max-width:1080px;margin:auto;padding:28px 18px 60px}
 header{display:flex;justify-content:space-between;gap:16px;align-items:start}
 h1{font-size:clamp(29px,6vw,50px);margin:0 0 7px}
@@ -53,15 +56,66 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 .wrapActions{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:9px}
 .wrapActions button{border:1px solid var(--line);background:white;padding:9px 12px;border-radius:10px;cursor:pointer}
 .wrapActions #wrapSentence{background:var(--wine);border-color:var(--wine);color:white;font-weight:800}
-@media(max-width:650px){header{display:block}.badge{display:inline-block;margin-top:8px}.layers{grid-template-columns:1fr}}
+.result,.reading,.item{overflow-wrap:anywhere}
+.deviceDebug{border-style:dashed}
+.deviceDebugHead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.deviceGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:12px}
+.deviceMetric{background:var(--soft);border-radius:10px;padding:9px 10px;font-size:12px;line-height:1.45}
+.deviceMetric b{display:block;font-size:11px;color:var(--sub);margin-bottom:2px}
+.deviceDebugActions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.deviceDebugActions button{border:1px solid var(--line);background:white;padding:9px 12px;border-radius:10px;cursor:pointer}
+.safeProbe{position:fixed;visibility:hidden;pointer-events:none;padding-top:env(safe-area-inset-top);padding-right:env(safe-area-inset-right);padding-bottom:env(safe-area-inset-bottom);padding-left:env(safe-area-inset-left)}
+@media(max-width:650px){
+  .wrap{padding:max(16px,env(safe-area-inset-top)) 12px calc(30px + env(safe-area-inset-bottom))}
+  header{display:block}.badge{display:inline-block;margin-top:8px}.layers{grid-template-columns:1fr}
+  .card{padding:15px;border-radius:15px}
+  .layer{min-height:58px}
+  .toolbar button,.growthActions button,.wrapActions button{min-height:44px;flex:1 1 calc(50% - 8px)}
+  .toolbar{gap:8px}.growthActions,.wrapActions{align-items:stretch}
+  .controls{align-items:stretch;gap:10px}
+  .controls label{display:grid;gap:6px;flex:1 1 100%}
+  .controls select,.wrapActions select{width:100%;min-height:44px}
+  .controls input[type=range]{width:100%;height:44px}
+  .item{min-height:44px}
+  .result{font-size:clamp(24px,8vw,36px)}
+  .deviceGrid{grid-template-columns:1fr}
+}
+@media(pointer:coarse){
+  button,select{min-height:44px}
+  .item{min-height:44px}
+}
 </style>
 </head>
 <body>
 <div class="wrap">
 <header>
   <div><h1>怪文回文メーカー</h1><div class="sub">まず、日本語として通す。そこから一段ずつ、鏡の奥へ伸ばす。</div></div>
-  <div class="badge">v0.33 / 長文化ナビ整理</div>
+  <div class="badge">v0.34 / 実機診断・スマホ操作調整</div>
 </header>
+
+<div class="card deviceDebug" id="deviceDebug" hidden>
+  <div class="deviceDebugHead">
+    <div><b>実機診断</b><div class="sub" style="font-size:12px">通常表示では非表示です。<code>?debug=mobile</code> のときだけ端末状態を確認します。</div></div>
+    <span class="stat" id="deviceDebugStatus">診断準備中</span>
+  </div>
+  <div class="deviceGrid">
+    <div class="deviceMetric"><b>CSS viewport</b><span id="deviceViewport">–</span></div>
+    <div class="deviceMetric"><b>visual viewport</b><span id="deviceVisualViewport">–</span></div>
+    <div class="deviceMetric"><b>タッチ環境</b><span id="deviceTouch">–</span></div>
+    <div class="deviceMetric"><b>safe area</b><span id="deviceSafeArea">–</span></div>
+    <div class="deviceMetric"><b>データ読込</b><span id="deviceData">–</span></div>
+    <div class="deviceMetric"><b>保存領域</b><span id="deviceStorage">–</span></div>
+    <div class="deviceMetric"><b>タップ領域</b><span id="deviceTargets">–</span></div>
+    <div class="deviceMetric"><b>横はみ出し</b><span id="deviceOverflow">–</span></div>
+    <div class="deviceMetric"><b>現在の回文</b><span id="deviceCurrent">–</span></div>
+    <div class="deviceMetric"><b>端末倍率</b><span id="deviceDpr">–</span></div>
+  </div>
+  <span class="safeProbe" id="safeProbe" aria-hidden="true"></span>
+  <div class="deviceDebugActions">
+    <button id="deviceDebugRefresh">再測定</button>
+    <button id="deviceDebugCopy">診断結果をコピー</button>
+  </div>
+</div>
 
 <div class="card">
   <div class="layers">
@@ -153,6 +207,96 @@ let growthState={mode:"structural",dimension:"all",familyId:null,stage:0,lastCen
 const $=s=>document.querySelector(s);
 const rev=s=>[...s].reverse().join("");
 const isPal=s=>s===rev(s);
+const mobileDebugEnabled=new URLSearchParams(location.search).get("debug")==="mobile";
+let mobileDebugDataLoaded=false;
+
+function storageAvailable(){
+  try{
+    const k="__kaibun_device_test__";
+    localStorage.setItem(k,"1");localStorage.removeItem(k);return true;
+  }catch(e){return false}
+}
+function visibleTapTargets(){
+  return [...document.querySelectorAll("button,select")].filter(el=>{
+    if(el.hidden||el.closest("[hidden]"))return false;
+    const r=el.getBoundingClientRect();
+    return r.width>0&&r.height>0;
+  });
+}
+function mobileDebugSnapshot(){
+  const vv=window.visualViewport;
+  const targets=visibleTapTargets();
+  const small=targets.filter(el=>el.getBoundingClientRect().height<44);
+  const probe=$("#safeProbe");
+  const cs=probe?getComputedStyle(probe):null;
+  const safe=cs?[cs.paddingTop,cs.paddingRight,cs.paddingBottom,cs.paddingLeft].join(" / "):"–";
+  const overflow=document.documentElement.scrollWidth>window.innerWidth+1;
+  const touch=(navigator.maxTouchPoints||0)>0||matchMedia("(pointer:coarse)").matches;
+  return {
+    viewport:window.innerWidth+" × "+window.innerHeight,
+    visual:vv?Math.round(vv.width)+" × "+Math.round(vv.height)+" / scale "+vv.scale:"非対応",
+    touch:(touch?"touch":"mouse")+" / points "+(navigator.maxTouchPoints||0),
+    safe,
+    data:mobileDebugDataLoaded?"14/14 UIデータ読込済み":"読込中または失敗",
+    storage:storageAvailable()?"localStorage 利用可":"localStorage 利用不可",
+    targets:small.length?"44px未満 "+small.length+"件":"表示中 "+targets.length+"件すべて高さ44px以上",
+    overflow:overflow?"横スクロールあり":"横はみ出しなし",
+    current:currentShown?(isPal(currentShown.reading)?"✓ 回文 / ":"× 非回文 / ")+[...currentShown.reading].length+"かな":"未表示",
+    dpr:String(window.devicePixelRatio||1)
+  };
+}
+function mobileDebugText(x){
+  return [
+    "怪文回文メーカー v0.34 実機診断",
+    "viewport: "+x.viewport,
+    "visual: "+x.visual,
+    "touch: "+x.touch,
+    "safe-area T/R/B/L: "+x.safe,
+    "data: "+x.data,
+    "storage: "+x.storage,
+    "tap targets: "+x.targets,
+    "overflow: "+x.overflow,
+    "current: "+x.current,
+    "DPR: "+x.dpr,
+    "UA: "+navigator.userAgent
+  ].join("\n");
+}
+function renderMobileDebug(){
+  if(!mobileDebugEnabled)return;
+  const panel=$("#deviceDebug");if(!panel)return;
+  panel.hidden=false;
+  const x=mobileDebugSnapshot();
+  $("#deviceViewport").textContent=x.viewport;
+  $("#deviceVisualViewport").textContent=x.visual;
+  $("#deviceTouch").textContent=x.touch;
+  $("#deviceSafeArea").textContent=x.safe;
+  $("#deviceData").textContent=x.data;
+  $("#deviceStorage").textContent=x.storage;
+  $("#deviceTargets").textContent=x.targets;
+  $("#deviceOverflow").textContent=x.overflow;
+  $("#deviceCurrent").textContent=x.current;
+  $("#deviceDpr").textContent=x.dpr;
+  const ok=mobileDebugDataLoaded&&!x.targets.includes("44px未満")&&x.overflow==="横はみ出しなし"&&(!currentShown||isPal(currentShown.reading));
+  $("#deviceDebugStatus").textContent=ok?"基本診断 OK":"要確認あり";
+}
+function setupMobileDebug(){
+  if(!mobileDebugEnabled)return;
+  $("#deviceDebug").hidden=false;
+  $("#deviceDebugRefresh").onclick=renderMobileDebug;
+  $("#deviceDebugCopy").onclick=async()=>{
+    const text=mobileDebugText(mobileDebugSnapshot());
+    try{
+      await navigator.clipboard.writeText(text);
+      $("#deviceDebugStatus").textContent="診断結果をコピー済み";
+    }catch(e){
+      window.prompt("診断結果をコピーしてください",text);
+    }
+  };
+  window.addEventListener("resize",renderMobileDebug);
+  window.addEventListener("orientationchange",()=>setTimeout(renderMobileDebug,120));
+  window.visualViewport?.addEventListener("resize",renderMobileDebug);
+  renderMobileDebug();
+}
 
 async function init(){
   [data,rules,pairs,growth,seams,bridge,bridgeExposure,growthRoleGate,growthRolePublic,readingHints,dnaExposure,tenBalance,l2TenPolicy,growthSelectorPolicy]=await Promise.all([
@@ -171,6 +315,7 @@ async function init(){
     fetch("./data/l2-ten-comparison-policy-v93.json").then(r=>r.json()),
     fetch("./data/growth-selector-usability-policy-v95.json").then(r=>r.json())
   ]);
+  mobileDebugDataLoaded=true;
   $("#c1").textContent=data.counts.L1+"本";
   $("#c2").textContent=data.counts.L2+"本";
   $("#c3").textContent=data.counts.L3+"本";
@@ -187,6 +332,7 @@ async function init(){
   populateSentenceWrappers();
   updatePolicy();
   seedOne();
+  setupMobileDebug();
 }
 
 function uniqueByReading(arr){
@@ -573,6 +719,7 @@ function show(x){
     const t=v=>{const n=[...document.querySelectorAll(".ch")];[i,n.length-1-i].forEach(k=>n[k]?.classList.toggle("on",v))};
     e.onmouseenter=()=>t(true);e.onmouseleave=()=>t(false);m.appendChild(e);
   });
+  renderMobileDebug();
 }
 function seedOne(){const x=chooseFresh(pool());show(x?{...x,origin:"原種コーパス"}:null)}
 function dnaOne(){
@@ -904,7 +1051,7 @@ $("#ten").onclick=()=>{
   });
 };
 
-init().catch(e=>{$("#result").textContent="データ読込失敗";console.error(e)});
+init().catch(e=>{$("#result").textContent="データ読込失敗";mobileDebugDataLoaded=false;setupMobileDebug();renderMobileDebug();console.error(e)});
 </script>
 </body>
 </html>
