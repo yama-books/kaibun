@@ -5679,3 +5679,143 @@ machine auto-promotionなし。
 ## 次セッション再開最短文
 
 **「HANDOFF 43節から再開。ワイ→いわは未実装。reverse_suffix系として『主語ワイ ↔ 文末〜いわ（女性語的終助詞）』を最小差分でライブラリ追加する。次にpublic UIを生成→長文化→比較の主要導線へ整理し、研究/診断情報は退避。public v0.34 / mobile diagnostic / v1.31 smoke protocolは維持。歴史研究§41はfreeze気味。」**
+
+
+---
+
+# 45. 2026-09-20 17:17 JST 停止・整合チェックポイント
+
+## 記録確認
+
+記録は成功している。
+
+ただしHANDOFF末尾には、
+実装後の§44より後ろに
+実装前時点の§43が追加されており、
+時系列表示だけが逆転している。
+
+**現在状態は§44を正本として扱う。**
+§43は「実装前の一時停止時点」の履歴であり、
+現在状態を表さない。
+
+この§45を最新・優先checkpointとする。
+
+## 現在の実装状態
+
+### wai-iwa
+
+**実装済み。**
+
+generic reverse pairには入れず、
+dedicated dual-sense libraryとして分離。
+
+#### sense A: 文末「〜いわ」
+
+- rule: `L1-WAI-IWA-FRAME`
+- layer: L1
+- register: spoken-feminine
+- examples:
+  - `ワイ、いいわ。` / `わいいいわ`
+  - `ワイ、ないわ。` / `わいないわ`
+
+#### sense B: 名詞「岩」
+
+- rule: `L2-WAI-IWA-ROCK-FRAME`
+- layer: L2
+- examples:
+  - `ワイは岩。` / `わいはいわ`
+  - `ワイも岩。` / `わいもいわ`
+
+両senseは同じreading `いわ` を持つが、
+semantic/syntactic senseは分離。
+
+generic particle expansionは禁止継続。
+
+## public UI / display route
+
+**整理済み。**
+
+public display contract:
+`data/public-release-ui-path-v133.json`
+
+UI:
+`公開β v0.35`
+
+routes:
+1. normal public
+2. public foldout
+3. mobile diagnostic
+4. research-only
+
+normal:
+`https://yama-books.github.io/kaibun/`
+
+diagnostic:
+`https://yama-books.github.io/kaibun/?debug=mobile`
+
+research-only historical dataはpublic UIからlinkしない。
+
+## quality / comparison
+
+wai-iwa追加後:
+
+- DNA rules: 66 -> 67
+- L2 public candidates: +2
+- L2 comparison pool: 62 -> 64
+- identity family `同定`: 13 unchanged
+- non-identity: 49 -> 51
+- 同定 cap: max 2 unchanged
+
+岩2例:
+- public generatorには入る
+- `benchmark_eligible=false`
+- frozen v0.79 / baseline v0.76は変更しない
+- human review対象
+
+## current verification
+
+最新code/data head:
+`1e33a7006577fc5e8d6cd9eca58fb90f625c6d39`
+
+Validate:
+- run `35485727713`
+- **success**
+
+Pages:
+- run `35485727734`
+- **success**
+
+その後のHANDOFF checkpoint:
+`7657e5639aa6378e5951a8bb5c950dbb350d9ba0`
+
+Pages:
+- run `35497649274`
+- **success**
+
+したがって、
+現在mainには§44のwai-iwa/public UI実装が含まれた状態で保存されている。
+
+## 次回再開
+
+優先:
+1. iPhone normal URL実機確認
+2. diagnostic M01-M10
+3. 岩2例のpublic human quality review
+4. v0.97 adjudication
+5. 問題なければ公開βからrelease候補へ
+
+歴史研究:
+- §41状態を維持
+- third positive familyを無理に確定しない
+- new source / human philological evidenceが出た場合だけ再開
+
+## 進捗
+
+- 歴史回文研究・生成原理: **約97%**
+- public UI / display-route readiness: **約98%**
+- 怪文回文メーカー全体: **約97%**
+- 残り: **約3%**
+
+## 再開最短文
+
+**「HANDOFF 45節から再開。§43は実装前履歴で、現在正本は§44→§45。wai-iwa dual senseは実装済み。L1文末『〜いわ』2例＋L2名詞『岩』2例、generic reverse pairは禁止。public β v0.35/display contract v1.33整理済み。Validate 35485727713 / Pages 35485727734 green。次はiPhone M01-M10＋岩human review→v0.97 adjudication→release候補。」**
