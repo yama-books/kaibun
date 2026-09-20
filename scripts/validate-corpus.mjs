@@ -843,6 +843,7 @@ for(const v of waiRule?.variants??[]){
   if(reverse(reading)!==reading)errors.push(`WAI/IWA variant is not palindrome: ${v[1]}`);
 }
 if((waiRule?.variants??[]).length!==2)errors.push("WAI/IWA variant count must be 2");
+if((pairs.pairs??[]).some(p=>p.left?.reading==="わい"||p.right?.reading==="いわ"))errors.push("WAI/IWA must not enter generic reverse-lexeme particle pairs");
 for(const [display,reading] of waiExpected){
   const seed=(corpus.records??[]).find(x=>x.display===display&&x.reading===reading);
   if(!seed)errors.push(`WAI/IWA public seed missing: ${display}`);
