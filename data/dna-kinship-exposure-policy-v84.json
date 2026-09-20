@@ -6,9 +6,9 @@
   "baseline": {
     "layer": "L1",
     "selector": "dnaPool(true)",
-    "total_unique": 451,
+    "total_unique": 453,
     "recursive_kinship_readings": 216,
-    "recursive_share": 0.4789
+    "recursive_share": 0.4768
   },
   "policy": {
     "surface": "DNAで1本生成",
@@ -21,13 +21,13 @@
   },
   "rationale": [
     "The recursive kinship grammar is productive and grammatical, so deletion would discard useful structure.",
-    "At 47.9% of the unique L1 DNA-button reading pool it disproportionately defines the app's voice.",
+    "At about 47.7% of the unique L1 DNA-button reading pool it disproportionately defines the app's voice.",
     "A 25% cap keeps the family discoverable while roughly doubling the chance of seeing a non-kinship DNA mechanism.",
     "This mirrors the v0.70 bridge strategy: control exposure separately from corpus size."
   ],
   "expected_effect": {
-    "recursive_draw_probability": "47.9% -> at most 25%",
-    "nonrecursive_draw_probability": "52.1% -> at least 75%",
+    "recursive_draw_probability": "47.7% -> at most 25%",
+    "nonrecursive_draw_probability": "52.3% -> at least 75%",
     "data_loss": "none"
   },
   "invariants": [
@@ -37,5 +37,6 @@
     "If recursive or nonrecursive pool is empty, use the non-empty pool.",
     "Global seen-reading behavior remains in effect."
   ],
-  "next_step": "Integrate only into dnaOne(), validate that dnaPool(true) inventory remains unchanged, then audit 10-item comparison separately."
+  "next_step": "Integrate only into dnaOne(), validate that dnaPool(true) inventory remains unchanged, then audit 10-item comparison separately.",
+  "baseline_refresh_note": "v0.35で非再帰L1候補「ワイ、いいわ。」「ワイ、ないわ。」を追加したため母数のみ更新。再帰候補数と25% capは不変。"
 }
