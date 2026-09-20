@@ -5213,3 +5213,309 @@ research lane:
 ## 再開最短文
 
 **「HANDOFF 43節から再開。wai-iwa libraryを追加し、L1に『ワイ、いいわ。』『ワイ、ないわ。』を原種＋DNAで公開。generic pair展開は禁止。public UI v0.35は①雰囲気→②作る→③長くするへ整理し、advanced/technical metadataはfoldout。10本比較は文＋かな数のみ。Validate 35483146043 / Pages 35483146139 green。次はiPhone実機M01-M10＋public human review。」**
+
+
+---
+
+# 44. 2026-09-20 wai-iwa dual sense / public display routes v1.33–v1.34 チェックポイント
+
+## ユーザー追加指示
+
+既存:
+- 主語・話題 `ワイ`
+- 文末 `〜いわ`（女性言葉）
+
+追加:
+- reverse surface `いわ` は名詞 **「岩」** もあり得る
+
+方針:
+同じreadingでも
+- sentence-final expression
+- noun predicate
+
+を別senseとして保持する。
+
+## 1. generic reverse-pairには入れない
+
+一時的に
+`reverse-lexeme-pairs-v09.json`
+へ `wai-iwa` を入れる案を試したが、
+§43で固定した:
+
+**wai-iwa generic particle expansion禁止**
+
+と衝突するため撤回。
+
+generic pair fileは:
+- pair count 30
+- variant count 103
+
+へ戻した。
+
+commit:
+`a962a78708e90380b05bea2a2d9879d5b150a157`
+
+## 2. dedicated wai-iwa library dual sense
+
+`data/generation-rules-v08.json`
+
+version:
+`0.8.3`
+
+rule count:
+67
+
+### sense A: sentence-final-iwa
+
+既存:
+- layer L1
+- rule `L1-WAI-IWA-FRAME`
+- register spoken-feminine
+
+outputs:
+- `ワイ、いいわ。` / `わいいいわ`
+- `ワイ、ないわ。` / `わいないわ`
+
+### sense B: iwa-rock
+
+追加:
+- display `岩`
+- reading `いわ`
+- role noun-predicate
+- layer L2
+- rule `L2-WAI-IWA-ROCK-FRAME`
+
+outputs:
+- `ワイは岩。` / `わいはいわ`
+- `ワイも岩。` / `わいもいわ`
+
+both strict palindrome.
+
+public entry:
+- Step1 第二層
+- Step2 「別の回文をつくる」
+- 第二層選択時に怪文度は最低3へ自動調整
+
+専用public buttonは増やさない。
+
+library commit:
+`e0de1991fbaca7535d240c66723a5a1332ac03e7`
+
+validator:
+`4b7e3d6e15d8069f32e99f7fee65970a9c0f960b`
+scope fix:
+`6e575fc4117efebc9f0a8240a1e97b244af49527`
+
+## 3. frozen quality benchmark
+
+新しいL2 ruleを追加すると
+stable-hash抽出のL2/DNA部分が4件ずれ、
+v0.79 fixed benchmark checkerがfailureした。
+
+これは新候補が悪いのではなく、
+frozen baselineが動いたため。
+
+方針:
+**v0.79 / baseline v0.76は上書きしない。**
+
+岩rule:
+`benchmark_eligible=false`
+
+新規2例はpublic generatorには入るが、
+既存固定benchmarkには混ぜない。
+
+human review後、
+必要ならfuture benchmarkで扱う。
+
+commits:
+- rule metadata `e0946a5e9568a933872d8a5e143c5ca3f005ac28`
+- benchmark builder guard `40c9fc390f6e71772d0770606e09f1ee8c5ba25f`
+- validator `7c1f23428f98884e705177291a651e7a3e6493ad`
+
+## 4. L2 comparison inventory refresh
+
+岩2候補により:
+- combined L2 pool 62 -> 64
+- identity family `同定` = 13 unchanged
+- non-identity 49 -> 51
+
+policy:
+`data/l2-ten-comparison-policy-v93.json`
+
+version:
+`0.93.1`
+
+rule unchanged:
+- uniform base sampling
+- `同定` max 2
+- excess only repair
+
+commits:
+- policy `534840e1c104116e1db28b6cbbc0ae90f2952618`
+- validator `3840b7db0def48d5466078e42dfb92e22f2c70aa`
+- UI validator version refresh `47d4ce0f746a3b667f4f85c00a393fe29c52d136`
+
+## 5. public display route contract v1.33
+
+new:
+`data/public-release-ui-path-v133.json`
+
+commit:
+`d9f63d5e8e88e6cc9db252bdf4ce7610488bbd1b`
+
+refine:
+`1e33a7006577fc5e8d6cd9eca58fb90f625c6d39`
+
+UI version:
+`公開β v0.35`
+
+### routes
+
+#### A. normal public
+`https://yama-books.github.io/kaibun/`
+
+default:
+- 3-step play route
+- result
+- growth
+
+#### B. public foldout
+default closed:
+- 作り方を選ぶ
+- この回文の説明・詳細
+- 仕組み・検証情報
+
+#### C. mobile diagnostic
+`https://yama-books.github.io/kaibun/?debug=mobile`
+
+query-only。
+
+#### D. research-only
+- historical candidate
+- source review
+- philological human queue
+
+public UIからlinkしない。
+public poolへinjectしない。
+
+## 6. public wording cleanup
+
+`index.html`
+
+commit:
+`3bb5ba3b9d82ca2293130ec674285ec7b6492472`
+
+Step1の内部policy文を直接見せず、
+public copyへ変更:
+
+L1:
+`ふつうの日本語として読める回文を中心に出します。`
+
+L2:
+`意味は通るけれど、少し変でおもしろい回文まで広げます。`
+
+L3:
+`文体や表現を崩した、実験的な回文も出します。`
+
+内部の:
+- whitelist
+- generation policy
+
+はtechnical/data側に保持。
+
+## 7. dual-sense review v1.34
+
+new:
+`data/wai-iwa-dual-sense-review-v134.json`
+
+commit:
+`56f3241274505de8e454ac62c1f527d99e119943`
+
+validator:
+`db8e7cd8cf397fe7ed311157bb27a6f30a27d15e`
+
+固定:
+- L1 suffix / L2 rock separate
+- generic pair false
+- dedicated frame only
+- rock benchmark eligible false
+- automatic acceptance false
+
+岩2例のhuman review focus:
+- 名詞述語としての口語省略
+- 意味怪文としての面白さ
+- `ワイ` registerとの整合
+
+## 8. public β documentation
+
+`docs/PUBLIC_BETA_V035_WAI_IWA.md`
+へdual-sense / v1.33 routeを追記。
+
+commit:
+`9e609aade29a88168bf819e72b538b4967c371b9`
+
+## 9. CI / Pages
+
+最終code/data head:
+`1e33a7006577fc5e8d6cd9eca58fb90f625c6d39`
+
+Validate:
+- run `35485727713`
+- **success**
+
+Pages:
+- run `35485727734`
+- **success**
+
+直前dual-sense validator head:
+`db8e7cd8cf397fe7ed311157bb27a6f30a27d15e`
+
+Validate:
+- `35485686081` success
+
+Pages:
+- `35485686294` success
+
+## 10. invariants
+
+unchanged:
+- L1 seed 161
+- L1 DNA pool 453
+- recursive 216
+- recursive exposure cap 25%
+- L1 10 comparison 3/3/2/2
+- fixed quality benchmark v0.79 / baseline v0.76
+- public UI v0.35 3-step route
+- research-only historical data not exposed
+- general-factor-crossover disabled
+
+changed:
+- DNA rules 66 -> 67
+- L2 public candidates +2
+- L2 comparison pool 62 -> 64
+- wai-iwa library has two semantic/syntactic senses
+
+## 11. next
+
+public:
+1. iPhone normal URL実機確認
+2. diagnostic M01-M10
+3. 岩2例をpublic human quality review
+4. v0.97 adjudication
+5. 問題がなければ公開βからrelease候補へ
+
+research:
+- §41 / §43 stateを維持
+- third positive historical familyを無理に増やさない
+- new source / human philological evidenceが出た場合のみ再開
+
+## progress
+
+- historical research / generation principles: **約97%**
+- public UI / display-route readiness: **約98%**
+- overall app target: **約97%**
+- remaining: **約3%**
+
+## 再開最短文
+
+**「HANDOFF 44節から再開。wai-iwaはdedicated dual-sense libraryへ整理。L1文末『〜いわ』2例＋L2名詞『岩』2例。generic reverse pairは禁止継続。岩2例はpublic生成するがv0.79固定benchmark外、L2 comparisonは64/identity13/other51で同定cap2不変。public display contract v1.33はnormal/foldout/diagnostic/research-onlyを分離。Validate 35485727713 / Pages 35485727734 green。次はiPhone M01-M10＋岩human review→release候補。」**
