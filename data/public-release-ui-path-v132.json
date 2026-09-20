@@ -1,0 +1,56 @@
+{
+  "version": "1.32",
+  "updated_on": "2026-09-20",
+  "title": "Public release UI path contract",
+  "public_ui_version": "0.35",
+  "purpose": "Simplify the public path without removing advanced generation methods or research diagnostics.",
+  "primary_route": [
+    {
+      "step": 1,
+      "id": "stepChoose",
+      "label": "雰囲気を選ぶ",
+      "public_controls": ["L1/L2/L3 layer","怪文度上限"]
+    },
+    {
+      "step": 2,
+      "id": "stepGenerate",
+      "label": "回文を作る",
+      "primary_actions": ["回文を1本つくる","別の回文をつくる","この文を長くする","10本くらべる"],
+      "advanced_foldout": ["逆語ペアで作る","継ぎ目型で作る"]
+    },
+    {
+      "step": 3,
+      "id": "stepGrow",
+      "label": "気に入ったら長くする",
+      "public_controls": ["段階的長文化","文レベル長文化"]
+    }
+  ],
+  "technical_route": {
+    "default_open": false,
+    "label": "仕組み・検証情報",
+    "contents": ["DNA規則","再帰候補","逆語ペア","実効候補","物語型","100かな基準","外枠","継ぎ目","全件回文検証"]
+  },
+  "subject_suffix_library_rollout": {
+    "library_id": "wai-iwa",
+    "rule_id": "L1-WAI-IWA-FRAME",
+    "layer": "L1",
+    "register_note": "文末「〜わ」（女性言葉）",
+    "public_seed_outputs": [
+      {"display":"ワイ、いいわ。","reading":"わいいいわ"},
+      {"display":"ワイ、ないわ。","reading":"わいないわ"}
+    ],
+    "general_particle_expansion": false
+  },
+  "mobile": {
+    "diagnostic_query": "?debug=mobile",
+    "normal_ui_diagnostic_hidden": true,
+    "protocol": "data/public-mobile-device-check-v131.json"
+  },
+  "invariants": [
+    "Generation probabilities are unchanged by UI reordering.",
+    "Advanced generation methods remain callable and are only moved behind a foldout.",
+    "Historical research candidates are not exposed in the public pool.",
+    "The new ワイ…いわ frame is L1-only and does not create a generic particle-pair rule.",
+    "Technical statistics remain available but are not on the primary play path."
+  ]
+}
