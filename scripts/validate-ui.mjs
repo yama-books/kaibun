@@ -3,7 +3,7 @@ import fs from "node:fs";
 const html = fs.readFileSync("index.html", "utf8");
 const scripts = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m => m[1]);
 const mobileProtocol = JSON.parse(fs.readFileSync("data/public-mobile-device-check-v131.json", "utf8"));
-const releasePath = JSON.parse(fs.readFileSync("data/public-release-ui-path-v132.json", "utf8"));
+const releasePath = JSON.parse(fs.readFileSync("data/public-release-ui-path-v133.json", "utf8"));
 
 if (!scripts.length) {
   console.error("No inline <script> block found in index.html");
@@ -291,9 +291,27 @@ if ((mobileProtocol.manual_smoke_test ?? []).length !== 10) {
   console.error("mobile manual smoke-test count must be 10");
 }
 
-if (releasePath.version !== "1.32" || releasePath.public_ui_version !== "0.35") {
+if (releasePath.version !== "1.33" || releasePath.public_ui_version !== "0.35") {
   failed = true;
   console.error("Unexpected public release UI path version");
+}
+
+const releaseSenses = releasePath.subject_suffix_library_rollout?.senses ?? [];
+if (releaseSenses.length !== 2 || !releaseSenses.some(x=>x.id==="iwa-rock"&&x.layer==="L2")) {
+  failed = true;
+  console.error("public release route does not expose dedicated 岩 sense");
+}
+if (releasePath.subject_suffix_library_rollout?.general_particle_expansion !== false) {
+  failed = true;
+  console.error("wai-iwa generic particle expansion must remain disabled");
+}
+if (releasePath.display_routes?.mobile_diagnostic?.visibility !== "query-only") {
+  failed = true;
+  console.error("mobile diagnostic route is no longer query-only");
+}
+if (releasePath.display_routes?.research_only?.linked_from_public_ui !== false) {
+  failed = true;
+  console.error("research-only route leaked into public UI");
 }
 for (const id of ["stepChoose","stepGenerate","stepGrow"]) {
   if (!html.includes('id="' + id + '"')) {
