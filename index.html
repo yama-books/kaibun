@@ -64,6 +64,21 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 .deviceMetric b{display:block;font-size:11px;color:var(--sub);margin-bottom:2px}
 .deviceDebugActions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 .deviceDebugActions button{border:1px solid var(--line);background:white;padding:9px 12px;border-radius:10px;cursor:pointer}
+.stepHead{display:flex;gap:10px;align-items:center;margin-bottom:13px}
+.stepNo{width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--ink);color:#fff;font-weight:900;font-size:13px;flex:0 0 auto}
+.stepHead b{font-size:18px}
+.stepHead .sub{font-size:12px;margin-top:2px}
+.publicDetails{margin-top:12px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.publicDetails>summary{cursor:pointer;padding:11px 13px;font-weight:800;list-style:none}
+.publicDetails>summary::-webkit-details-marker{display:none}
+.publicDetails>summary::after{content:"＋";float:right;color:var(--sub)}
+.publicDetails[open]>summary::after{content:"−"}
+.publicDetailsBody{padding:0 13px 13px}
+.mainActions button{font-weight:800}
+.secondaryActions{margin-top:0}
+.releaseHint{margin-top:10px;color:var(--sub);font-size:12px;line-height:1.6}
+.techCard{padding-top:12px}
+.techCard .stats{margin-top:0}
 .safeProbe{position:fixed;visibility:hidden;pointer-events:none;padding-top:env(safe-area-inset-top);padding-right:env(safe-area-inset-right);padding-bottom:env(safe-area-inset-bottom);padding-left:env(safe-area-inset-left)}
 @media(max-width:650px){
   .wrap{padding:max(16px,env(safe-area-inset-top)) 12px calc(30px + env(safe-area-inset-bottom))}
@@ -90,7 +105,7 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
 <div class="wrap">
 <header>
   <div><h1>怪文回文メーカー</h1><div class="sub">まず、日本語として通す。そこから一段ずつ、鏡の奥へ伸ばす。</div></div>
-  <div class="badge">v0.34 / 実機診断・スマホ操作調整</div>
+  <div class="badge">v0.35 / 公開導線整理</div>
 </header>
 
 <div class="card deviceDebug" id="deviceDebug" hidden>
@@ -117,30 +132,75 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
   </div>
 </div>
 
-<div class="card">
+<div class="card" id="stepChoose">
+  <div class="stepHead">
+    <span class="stepNo">1</span>
+    <div><b>雰囲気を選ぶ</b><div class="sub">まずは第一層がおすすめです。あとから怪文度を上げられます。</div></div>
+  </div>
   <div class="layers">
     <button class="layer active" data-layer="L1"><b>第一層　標準日本語</b><small id="c1">–</small></button>
     <button class="layer" data-layer="L2"><b>第二層　意味の通る怪文</b><small id="c2">–</small></button>
     <button class="layer" data-layer="L3"><b>第三層　実験文</b><small id="c3">–</small></button>
   </div>
   <div class="note" id="policy">読み込み中…</div>
-  <div class="stats">
-    <span class="stat" id="ruleStat">DNA規則 –</span>
-    <span class="stat" id="recursiveStat">再帰候補 –</span>
-    <span class="stat" id="pairStat">逆語ペア –</span>
-    <span class="stat" id="uniqueStat">実効候補 –</span>
-    <span class="stat" id="storyStat">物語型 –</span><span class="stat" id="benchmarkStat">100かな基準 –</span><span class="stat" id="wrapperStat">外枠 –</span><span class="stat" id="seamStat">継ぎ目 –</span>
-    <span class="stat">全件回文検証</span>
-  </div>
   <div class="controls">
     <label>怪文度上限 <b id="weirdVal">2</b> <input id="weird" type="range" min="1" max="5" value="2" step="1"></label>
   </div>
+</div>
 
+<div class="card" id="stepGenerate">
+  <div class="stepHead">
+    <span class="stepNo">2</span>
+    <div><b>回文を作る</b><div class="sub">迷ったら「回文を1本つくる」だけでOKです。</div></div>
+  </div>
+  <div class="toolbar mainActions">
+    <button class="primary" id="seedGen">回文を1本つくる</button>
+    <button class="dna" id="dnaGen">別の回文をつくる</button>
+    <button id="growCurrent">この文を長くする</button>
+    <button id="ten">10本くらべる</button>
+  </div>
+  <details class="publicDetails">
+    <summary>作り方を選ぶ</summary>
+    <div class="publicDetailsBody">
+      <div class="toolbar secondaryActions">
+        <button id="pairGen">逆語ペアで作る</button>
+        <button id="seamGen">継ぎ目型で作る</button>
+      </div>
+      <div class="releaseHint">生成方式の違いを試したい人向けです。通常は上の2ボタンだけで遊べます。</div>
+    </div>
+  </details>
+  <div class="result" id="result">読み込み中…</div>
+  <div class="reading" id="reading"></div>
+  <div class="meta">
+    <span class="pill" id="pal">–</span>
+    <span class="pill" id="quality">日本語 –</span>
+    <span class="pill" id="weirdMeta">怪文 –</span>
+    <span class="pill" id="lengthMeta">長さ –</span>
+    <span class="pill" id="wrapMeta">外枠 0</span>
+    <span class="pill" id="readingHintMeta" hidden></span>
+    <span class="pill" id="family">–</span>
+    <span class="pill dnaPill" id="origin">–</span>
+  </div>
+  <div class="mirror" id="mirror"></div>
+  <details class="publicDetails">
+    <summary>この回文の説明</summary>
+    <div class="publicDetailsBody">
+      <div class="note" id="why"></div>
+    </div>
+  </details>
+  <div class="list" id="list"></div>
+</div>
+
+<div class="card" id="stepGrow">
+  <div class="stepHead">
+    <span class="stepNo">3</span>
+    <div><b>気に入ったら長くする</b><div class="sub">短い回文から段階的に伸ばし、さらに文全体を外側から包めます。</div></div>
+  </div>
   <div class="growthBox">
     <div class="growthHead">
       <div>
         <b>段階的長文化</b>
-        <div class="sub" style="font-size:12px">「1段伸ばす」だけで、内容を増やし、終点後は文レベルの外枠へ続きます。</div>
+        <div class="sub" style="font-size:12px">「1段伸ばす」だけで内容を増やし、終点後は文レベルの外枠へ続きます。</div>
       </div>
       <span class="stat" id="growthStage">段階 0 / 4</span>
     </div>
@@ -174,29 +234,24 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
   </div>
 </div>
 
-<div class="card">
-  <div class="toolbar">
-    <button class="primary" id="seedGen">原種から1本</button>
-    <button class="dna" id="dnaGen">DNAで1本生成</button>
-    <button id="pairGen">逆語ペア</button><button id="seamGen">継ぎ目型DNA</button>
-    <button id="growCurrent">この文から伸ばす</button>
-    <button id="ten">10本比較</button>
-  </div>
-  <div class="result" id="result">読み込み中…</div>
-  <div class="reading" id="reading"></div>
-  <div class="meta">
-    <span class="pill" id="pal">–</span>
-    <span class="pill" id="quality">日本語 –</span>
-    <span class="pill" id="weirdMeta">怪文 –</span>
-    <span class="pill" id="lengthMeta">長さ –</span>
-    <span class="pill" id="wrapMeta">外枠 0</span>
-    <span class="pill" id="readingHintMeta" hidden></span>
-    <span class="pill" id="family">–</span>
-    <span class="pill dnaPill" id="origin">–</span>
-  </div>
-  <div class="note" id="why"></div>
-  <div class="mirror" id="mirror"></div>
-  <div class="list" id="list"></div>
+<div class="card techCard">
+  <details class="publicDetails">
+    <summary>仕組み・検証情報</summary>
+    <div class="publicDetailsBody">
+      <div class="stats">
+        <span class="stat" id="ruleStat">DNA規則 –</span>
+        <span class="stat" id="recursiveStat">再帰候補 –</span>
+        <span class="stat" id="pairStat">逆語ペア –</span>
+        <span class="stat" id="uniqueStat">実効候補 –</span>
+        <span class="stat" id="storyStat">物語型 –</span>
+        <span class="stat" id="benchmarkStat">100かな基準 –</span>
+        <span class="stat" id="wrapperStat">外枠 –</span>
+        <span class="stat" id="seamStat">継ぎ目 –</span>
+        <span class="stat">全件回文検証</span>
+      </div>
+      <div class="releaseHint">研究・検証用の内部情報です。通常の遊び方では開かなくても使えます。</div>
+    </div>
+  </details>
 </div>
 </div>
 
