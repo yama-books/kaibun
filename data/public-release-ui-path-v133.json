@@ -1,0 +1,188 @@
+{
+  "version": "1.33",
+  "updated_on": "2026-09-20",
+  "title": "Public release UI and display-route contract",
+  "public_ui_version": "0.35",
+  "purpose": "Simplify the public path without removing advanced generation methods or research diagnostics.",
+  "primary_route": [
+    {
+      "step": 1,
+      "id": "stepChoose",
+      "label": "雰囲気を選ぶ",
+      "public_controls": [
+        "L1/L2/L3 layer",
+        "怪文度上限"
+      ]
+    },
+    {
+      "step": 2,
+      "id": "stepGenerate",
+      "label": "回文を作る",
+      "primary_actions": [
+        "回文を1本つくる",
+        "別の回文をつくる",
+        "10本くらべる"
+      ],
+      "advanced_foldout": [
+        "逆語ペアで作る",
+        "継ぎ目型で作る"
+      ]
+    },
+    {
+      "step": 3,
+      "id": "stepGrow",
+      "label": "気に入ったら長くする",
+      "public_controls": [
+        "今の回文を長くする",
+        "段階的長文化",
+        "文レベル長文化"
+      ]
+    }
+  ],
+  "technical_route": {
+    "default_open": false,
+    "label": "仕組み・検証情報",
+    "contents": [
+      "DNA規則",
+      "再帰候補",
+      "逆語ペア",
+      "実効候補",
+      "物語型",
+      "100かな基準",
+      "外枠",
+      "継ぎ目",
+      "全件回文検証"
+    ]
+  },
+  "subject_suffix_library_rollout": {
+    "library_id": "wai-iwa",
+    "generic_reverse_pair_expansion": false,
+    "senses": [
+      {
+        "id": "sentence-final-iwa",
+        "rule_id": "L1-WAI-IWA-FRAME",
+        "layer": "L1",
+        "role": "sentence-final-expression",
+        "register_note": "文末「〜わ」（女性言葉）",
+        "outputs": [
+          {
+            "display": "ワイ、いいわ。",
+            "reading": "わいいいわ"
+          },
+          {
+            "display": "ワイ、ないわ。",
+            "reading": "わいないわ"
+          }
+        ]
+      },
+      {
+        "id": "iwa-rock",
+        "rule_id": "L2-WAI-IWA-ROCK-FRAME",
+        "layer": "L2",
+        "role": "noun-predicate",
+        "display": "岩",
+        "outputs": [
+          {
+            "display": "ワイは岩。",
+            "reading": "わいはいわ"
+          },
+          {
+            "display": "ワイも岩。",
+            "reading": "わいもいわ"
+          }
+        ],
+        "note": "同じ読み「いわ」でも文末表現とは別sense。generic逆語ペアではなく専用フレームでのみ生成する。"
+      }
+    ],
+    "general_particle_expansion": false
+  },
+  "mobile": {
+    "diagnostic_query": "?debug=mobile",
+    "normal_ui_diagnostic_hidden": true,
+    "protocol": "data/public-mobile-device-check-v131.json"
+  },
+  "invariants": [
+    "Generation probabilities are unchanged by UI reordering.",
+    "Advanced generation methods remain callable and are only moved behind a foldout.",
+    "Historical research candidates are not exposed in the public pool.",
+    "The wai-iwa library is dedicated: L1 sentence-final いわ and L2 noun 岩 are separate senses.",
+    "Generic reverse-lexeme particle expansion for wai-iwa remains forbidden.",
+    "Technical statistics remain available but are not on the primary play path.",
+    "The current-result growth action belongs to step 3, not the primary generation toolbar.",
+    "Normal public URL does not expose mobile diagnostics."
+  ],
+  "result_metadata": {
+    "always_visible": [
+      "完全回文判定",
+      "長さ",
+      "読みヒント（該当時）"
+    ],
+    "detail_foldout": [
+      "日本語評価",
+      "怪文度",
+      "外枠深度",
+      "family",
+      "origin",
+      "説明"
+    ]
+  },
+  "public_presentation": {
+    "badge": "公開β v0.35",
+    "head_metadata": [
+      "description",
+      "theme-color",
+      "Open Graph title/description"
+    ],
+    "ten_item_list": "sentence + kana length only",
+    "technical_origin_quality_visibility": "after selecting a result, inside detail foldout"
+  },
+  "display_routes": {
+    "public_main": {
+      "url": "https://yama-books.github.io/kaibun/",
+      "default": true,
+      "contents": [
+        "3-step play route",
+        "result",
+        "growth",
+        "collapsed advanced methods",
+        "collapsed technical details"
+      ]
+    },
+    "mobile_diagnostic": {
+      "url": "https://yama-books.github.io/kaibun/?debug=mobile",
+      "default": false,
+      "visibility": "query-only",
+      "contents": [
+        "device diagnostics",
+        "same public generator state"
+      ]
+    },
+    "public_detail_foldouts": {
+      "default_open": false,
+      "labels": [
+        "作り方を選ぶ",
+        "この回文の説明・詳細",
+        "仕組み・検証情報"
+      ],
+      "purpose": "Keep advanced/technical information available without placing it on the primary play path."
+    },
+    "research_only": {
+      "linked_from_public_ui": false,
+      "contents": [
+        "historical research candidates",
+        "source-review data",
+        "human philological queue"
+      ],
+      "public_injection": false
+    }
+  },
+  "release_state": {
+    "stage": "public-beta",
+    "ui_version": "0.35",
+    "release_blockers": [
+      "iPhone M01-M10 real-device confirmation",
+      "public human quality review/adjudication"
+    ],
+    "non_blocking_research": "third historical positive family remains unresolved"
+  }
+}
