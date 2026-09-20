@@ -213,7 +213,7 @@ if ((tenBalance.quotas ?? []).reduce((n,q)=>n+(q.count??0),0) !== 10) {
 }
 
 const l2Ten = JSON.parse(fs.readFileSync("data/l2-ten-comparison-policy-v93.json", "utf8"));
-if (l2Ten.version !== "0.93") {
+if (l2Ten.version !== "0.93.1") {
   failed = true;
   console.error("Unexpected L2 comparison policy version: " + l2Ten.version);
 }
