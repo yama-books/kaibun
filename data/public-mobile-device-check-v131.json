@@ -7,7 +7,14 @@
   "entry": {
     "normal": "./",
     "diagnostic_query": "?debug=mobile",
-    "diagnostic_visibility": "query-only"
+    "diagnostic_visibility": "query-only",
+    "deployed_url": "https://yama-books.github.io/kaibun/",
+    "deployed_diagnostic_url": "https://yama-books.github.io/kaibun/?debug=mobile",
+    "deployment_evidence": {
+      "pages_run_id": 35481961842,
+      "environment_url": "https://yama-books.github.io/kaibun/",
+      "conclusion": "success"
+    }
   },
   "automatic_diagnostics": [
     "CSS viewport size",
