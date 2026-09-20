@@ -156,7 +156,6 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
   <div class="toolbar mainActions">
     <button class="primary" id="seedGen">回文を1本つくる</button>
     <button class="dna" id="dnaGen">別の回文をつくる</button>
-    <button id="growCurrent">この文を長くする</button>
     <button id="ten">10本くらべる</button>
   </div>
   <details class="publicDetails">
@@ -173,19 +172,21 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
   <div class="reading" id="reading"></div>
   <div class="meta">
     <span class="pill" id="pal">–</span>
-    <span class="pill" id="quality">日本語 –</span>
-    <span class="pill" id="weirdMeta">怪文 –</span>
     <span class="pill" id="lengthMeta">長さ –</span>
-    <span class="pill" id="wrapMeta">外枠 0</span>
     <span class="pill" id="readingHintMeta" hidden></span>
-    <span class="pill" id="family">–</span>
-    <span class="pill dnaPill" id="origin">–</span>
   </div>
   <div class="mirror" id="mirror"></div>
   <details class="publicDetails">
-    <summary>この回文の説明</summary>
+    <summary>この回文の説明・詳細</summary>
     <div class="publicDetailsBody">
       <div class="note" id="why"></div>
+      <div class="meta">
+        <span class="pill" id="quality">日本語 –</span>
+        <span class="pill" id="weirdMeta">怪文 –</span>
+        <span class="pill" id="wrapMeta">外枠 0</span>
+        <span class="pill" id="family">–</span>
+        <span class="pill dnaPill" id="origin">–</span>
+      </div>
     </div>
   </details>
   <div class="list" id="list"></div>
@@ -195,6 +196,9 @@ select{border:1px solid var(--line);background:white;color:var(--ink);padding:7p
   <div class="stepHead">
     <span class="stepNo">3</span>
     <div><b>気に入ったら長くする</b><div class="sub">短い回文から段階的に伸ばし、さらに文全体を外側から包めます。</div></div>
+  </div>
+  <div class="toolbar">
+    <button id="growCurrent">今の回文を長くする</button>
   </div>
   <div class="growthBox">
     <div class="growthHead">
