@@ -5519,3 +5519,163 @@ research:
 ## 再開最短文
 
 **「HANDOFF 44節から再開。wai-iwaはdedicated dual-sense libraryへ整理。L1文末『〜いわ』2例＋L2名詞『岩』2例。generic reverse pairは禁止継続。岩2例はpublic生成するがv0.79固定benchmark外、L2 comparisonは64/identity13/other51で同定cap2不変。public display contract v1.33はnormal/foldout/diagnostic/research-onlyを分離。Validate 35485727713 / Pages 35485727734 green。次はiPhone M01-M10＋岩human review→release候補。」**
+
+
+---
+
+# 43. 2026-09-20 16:43 JST 一時停止チェックポイント
+
+## ユーザー指示
+
+次の実装予定:
+
+1. **主語「ワイ」→ 文末「いわ」**
+2. **「〜いわ」（女性語的な文末表現）をライブラリへ追加**
+3. その後、**UIと表示経路を公開向けに整理**
+4. 実機確認は並行継続
+
+この時点では、
+**ワイ→いわ のコード実装はまだ行っていない。**
+
+調査・設計確認まで完了。
+
+## ワイ→いわ の実装方針メモ
+
+既存の:
+- reverse lexeme
+- reverse suffix
+- 文末反転型
+
+を確認。
+
+特に既存原種:
+- 与田だよ。
+- 和田だわ。
+- 灘だな。
+
+のような `reverse_suffix` 系統が存在する。
+
+したがって
+`ワイ → いわ`
+は単純な動詞reverse pairとしてではなく、
+
+**主語側「ワイ」 + 文末側「〜いわ」**
+
+を結ぶ
+**suffix / sentence-final register 型**
+として扱う方向が有力。
+
+注意:
+- 「いわ」は女性語的な終助詞・文末表現としてannotationを持たせる
+- 既存のreverse lexeme pairへ無理に一般化しない
+- 不自然な助詞variantを大量生成しない
+- L1/L2どちらに置くかは生成文の自然さを見て決める
+- `ワイ` 自体のregisterも口語・方言的/くだけた表現として扱う可能性あり
+- 公開用には説明過多にしない
+
+次セッションではまず:
+- `data/reverse-lexeme-pairs-v09.json`
+- `data/generation-rules-v08.json`
+- `data/layered-seeds-v08.json`
+
+の既存reverse_suffix schemaを確認してから、
+最小差分で追加する。
+
+## 公開UI整理の次段階
+
+public v0.34では実機診断まで実装済み。
+
+現在の課題:
+- 研究用数値・統計表示が多い
+- 公開ユーザーには「何を押せばよいか」をより単純化できる
+- 主要導線:
+  1. まず1本生成
+  2. 別の作り方
+  3. 長くする
+  4. 比較する
+  を中心に再整理する余地あり
+
+方針:
+- 通常公開画面はシンプル化
+- 研究/診断情報はquery/debugまたは詳細表示へ退避
+- 「次にみる」等の説明的・機械的表現を避ける
+- スマホで1画面目の操作対象を減らす
+- mobile smoke protocol M01-M10は維持
+
+## 実機確認状態
+
+公開:
+`https://yama-books.github.io/kaibun/`
+
+診断:
+`https://yama-books.github.io/kaibun/?debug=mobile`
+
+public v0.34:
+- safe-area
+- 44px touch targets
+- mobile select full width
+- query-only diagnostic
+- viewport / visual viewport
+- touch
+- data load
+- localStorage
+- horizontal overflow
+- current palindrome
+- DPR
+
+まで実装済み。
+
+v1.31:
+`data/public-mobile-device-check-v131.json`
+
+M01-M10 smoke protocol固定済み。
+
+最新確認済み:
+- Validate `35482019546` success
+- public Pages v0.34 deploy success
+
+## 歴史研究側
+
+§41〜42の状態を維持。
+
+確立:
+- nine-cell lattice canonical
+- 5|2|5|2|3|2|5|2|5 independent derivation
+- operation inventionはほぼ終了
+- human review queue v1.30準備済み
+
+第三family:
+- hybrid-007 = promising-but-parse-needed
+- wave2-travel-090-host-093-outer = promising-but-parse-needed
+
+machine auto-promotionなし。
+
+研究側はfreeze気味で、
+今後は:
+- human philological review
+- product/public integration
+- 新source evidenceが出たときのみ再開
+
+を優先。
+
+## 固定事項
+
+変更しない:
+- fixed50
+- wave2 verified14 / held5
+- public bridge6
+- v0.76 baseline
+- general-factor-crossover disabled
+- machine accepted/natural禁止
+- historical research text public injection禁止
+
+## 進捗目安
+
+- 歴史回文研究・生成原理: **約97%**
+- public mobile実機準備: **約90%**
+- 怪文回文メーカー全体: **約95%**
+- 残り: **約5%**
+
+## 次セッション再開最短文
+
+**「HANDOFF 43節から再開。ワイ→いわは未実装。reverse_suffix系として『主語ワイ ↔ 文末〜いわ（女性語的終助詞）』を最小差分でライブラリ追加する。次にpublic UIを生成→長文化→比較の主要導線へ整理し、研究/診断情報は退避。public v0.34 / mobile diagnostic / v1.31 smoke protocolは維持。歴史研究§41はfreeze気味。」**
