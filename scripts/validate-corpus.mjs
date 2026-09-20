@@ -830,7 +830,7 @@ if(rules.version!=="0.8.3")errors.push(`GENERATION RULES version mismatch: ${rul
 const waiLibrary=(rules.subject_suffix_library??[]).find(x=>x.id==="wai-iwa");
 if(!waiLibrary)errors.push("WAI/IWA subject-suffix library missing");
 if(waiLibrary?.subject?.reading!=="わい"||waiLibrary?.terminal?.reading!=="いわ")errors.push("WAI/IWA library reading drift");
-if(waiLibrary?.layer!=="L1"||waiLibrary?.caution?.includes("一般の助詞ペアへ展開せず")!==true)errors.push("WAI/IWA library scope drift");
+if(waiLibrary?.layer!=="L1"||waiLibrary?.caution?.includes("一般の逆語ペア")!==true)errors.push("WAI/IWA library scope drift");
 const waiRule=(rules.rules??[]).find(x=>x.id==="L1-WAI-IWA-FRAME");
 if(!waiRule)errors.push("WAI/IWA generation rule missing");
 if(waiRule?.reading_pattern!=="わい{pal_center}いわ"||waiRule?.layer!=="L1")errors.push("WAI/IWA generation rule drift");
