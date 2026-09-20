@@ -272,6 +272,11 @@ let growthState={mode:"structural",dimension:"all",familyId:null,stage:0,lastCen
 const $=s=>document.querySelector(s);
 const rev=s=>[...s].reverse().join("");
 const isPal=s=>s===rev(s);
+const publicLayerCopy={
+  L1:"ふつうの日本語として読める回文を中心に出します。",
+  L2:"意味は通るけれど、少し変でおもしろい回文まで広げます。",
+  L3:"文体や表現を崩した、実験的な回文も出します。"
+};
 const mobileDebugEnabled=new URLSearchParams(location.search).get("debug")==="mobile";
 let mobileDebugDataLoaded=false;
 
@@ -682,7 +687,7 @@ function syncControls(){
   for(const id of ["pairGen","dnaGen"])$("#"+id).style.opacity=$("#"+id).disabled?".38":"1";
   updateGrowthStageLabel();
 }
-function updatePolicy(){$("#policy").textContent=data.policy[layer];syncControls();updateCandidateCount()}
+function updatePolicy(){$("#policy").textContent=publicLayerCopy[layer]||data.policy[layer];syncControls();updateCandidateCount()}
 
 function chooseFresh(p){
   if(!p.length)return null;
