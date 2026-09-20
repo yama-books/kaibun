@@ -68,6 +68,7 @@ const kanaCasebookV127 = JSON.parse(fs.readFileSync("data/historical-kana-equiva
 const bidirectionalSeamV128 = JSON.parse(fs.readFileSync("data/bidirectional-tanka-seam-contrast-v128.json", "utf8"));
 const tankaLatticeDerivationV129 = JSON.parse(fs.readFileSync("data/tanka-mirror-lattice-independent-derivation-v129.json", "utf8"));
 const historicalThirdFamilyHumanV130 = JSON.parse(fs.readFileSync("data/historical-third-family-human-review-v130.json", "utf8"));
+const publicReleaseUiV132 = JSON.parse(fs.readFileSync("data/public-release-ui-path-v132.json", "utf8"));
 const reverse=s=>[...s].reverse().join("");
 const isPalindrome=s=>s===reverse(s);
 const errors=[];
@@ -825,6 +826,33 @@ for(const x of historicalThirdFamilyHumanV130.candidates??[]){
 if(historicalThirdFamilyHumanV130.current_state?.completed_reviews!==0||historicalThirdFamilyHumanV130.current_state?.family_promotions!==0)errors.push("HISTORICAL THIRD FAMILY HUMAN V130 must not pre-adjudicate");
 if(historicalThirdFamilyHumanV130.current_state?.public_effect!=="none")errors.push("HISTORICAL THIRD FAMILY HUMAN V130 public effect forbidden");
 
+if(rules.version!=="0.8.2")errors.push(`GENERATION RULES version mismatch: ${rules.version}`);
+const waiLibrary=(rules.subject_suffix_library??[]).find(x=>x.id==="wai-iwa");
+if(!waiLibrary)errors.push("WAI/IWA subject-suffix library missing");
+if(waiLibrary?.subject?.reading!=="わい"||waiLibrary?.terminal?.reading!=="いわ")errors.push("WAI/IWA library reading drift");
+if(waiLibrary?.layer!=="L1"||waiLibrary?.caution?.includes("一般の助詞ペアへ展開せず")!==true)errors.push("WAI/IWA library scope drift");
+const waiRule=(rules.rules??[]).find(x=>x.id==="L1-WAI-IWA-FRAME");
+if(!waiRule)errors.push("WAI/IWA generation rule missing");
+if(waiRule?.reading_pattern!=="わい{pal_center}いわ"||waiRule?.layer!=="L1")errors.push("WAI/IWA generation rule drift");
+const waiExpected=new Map([["ワイ、いいわ。","わいいいわ"],["ワイ、ないわ。","わいないわ"]]);
+for(const v of waiRule?.variants??[]){
+  const expected=waiExpected.get(v[1]);
+  if(!expected)errors.push(`Unexpected WAI/IWA variant: ${v[1]}`);
+  const reading=waiRule.reading_pattern.replace("{pal_center}",v[0]);
+  if(reading!==expected)errors.push(`WAI/IWA variant reading drift: ${v[1]} / ${reading}`);
+  if(reverse(reading)!==reading)errors.push(`WAI/IWA variant is not palindrome: ${v[1]}`);
+}
+if((waiRule?.variants??[]).length!==2)errors.push("WAI/IWA variant count must be 2");
+for(const [display,reading] of waiExpected){
+  const seed=(corpus.records??[]).find(x=>x.display===display&&x.reading===reading);
+  if(!seed)errors.push(`WAI/IWA public seed missing: ${display}`);
+  if(seed?.layer!=="L1"||seed?.subgroup!=="reverse_suffix")errors.push(`WAI/IWA seed scope drift: ${display}`);
+}
+if(publicReleaseUiV132.version!=="1.32"||publicReleaseUiV132.public_ui_version!=="0.35")errors.push("PUBLIC RELEASE UI V132 version drift");
+if(publicReleaseUiV132.subject_suffix_library_rollout?.library_id!=="wai-iwa")errors.push("PUBLIC RELEASE UI V132 wai-iwa rollout missing");
+if(publicReleaseUiV132.subject_suffix_library_rollout?.general_particle_expansion!==false)errors.push("PUBLIC RELEASE UI V132 must forbid generic particle expansion");
+if((publicReleaseUiV132.primary_route??[]).map(x=>x.step).join(",")!=="1,2,3")errors.push("PUBLIC RELEASE UI V132 primary route drift");
+
 const counts=corpus.records.reduce((a,r)=>(a[r.layer]=(a[r.layer]??0)+1,a),{});
 for(const l of ["L1","L2","L3"])if(counts[l]!==corpus.counts[l])errors.push(`COUNT mismatch ${l}: declared=${corpus.counts[l]} actual=${counts[l]}`);
 if(rules.rule_count!==rules.rules.length)errors.push(`RULE COUNT mismatch: declared=${rules.rule_count} actual=${rules.rules.length}`);
@@ -896,3 +924,4 @@ console.log(`Kana casebook v1.27: profiles=${v127profiles}`);
 console.log(`Bidirectional seam v1.28: cases=${bidirectionalSeamV128.summary?.contrastive_cases}, shift=${bidirectionalSeamV128.summary?.shared_boundary_shift_signature?.join("/")}`);
 console.log(`Tanka lattice v1.29: cells=${tankaLatticeDerivationV129.summary?.derived_cell_lengths?.join("/")}, rederived=${tankaLatticeDerivationV129.summary?.v034_formula_rederived}`);
 console.log(`Historical third-family human v1.30: candidates=${historicalThirdFamilyHumanV130.candidates?.length}, completed=${historicalThirdFamilyHumanV130.current_state?.completed_reviews}`);
+console.log(`Public release UI v1.32: ui=${publicReleaseUiV132.public_ui_version}, wai-iwa variants=${waiRule?.variants?.length}`);
