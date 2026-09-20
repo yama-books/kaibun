@@ -98,7 +98,7 @@ const combined=unique([...seedU,...dnaU,...seamU]);
 
 const errors=[];
 if(policy.version!=="0.86.1")errors.push(`policy version ${policy.version}, expected 0.86.1`);
-if(combined.length!==489)errors.push(`combined L1 comparison pool ${combined.length}, expected 489`);
+if(combined.length!==491)errors.push(`combined L1 comparison pool ${combined.length}, expected 491`);
 if(recursiveReadings.size!==216)errors.push(`recursive reading set ${recursiveReadings.size}, expected 216`);
 const recCombined=combined.filter(x=>recursiveReadings.has(x.reading)).length;
 if(recCombined!==216)errors.push(`recursive readings in combined pool ${recCombined}, expected 216`);
