@@ -267,3 +267,122 @@ environment:
 5. human quality review / adjudicationへ進む
 
 歴史研究側のguardは変更していない。
+
+
+---
+
+## 10. 追記: 「いわ」の第二sense = 岩
+
+ユーザー確認により、
+同じ反転表面 `いわ` について
+名詞 **「岩」** もlibrary候補として追加した。
+
+重要なのは、
+文末表現と名詞を同じgeneric pairとして扱わないこと。
+
+### sense A: 文末「〜いわ」
+
+- layer: L1
+- role: sentence-final expression
+- register: spoken-feminine
+- rule: `L1-WAI-IWA-FRAME`
+
+outputs:
+- `ワイ、いいわ。` / `わいいいわ`
+- `ワイ、ないわ。` / `わいないわ`
+
+### sense B: 名詞「岩」
+
+- layer: L2
+- role: noun predicate
+- rule: `L2-WAI-IWA-ROCK-FRAME`
+
+outputs:
+- `ワイは岩。` / `わいはいわ`
+- `ワイも岩。` / `わいもいわ`
+
+いずれもstrict palindrome。
+
+public entry:
+- Step 1で第二層
+- Step 2で「別の回文をつくる」
+- 第二層選択時は怪文度が最低3へ自動調整される
+
+専用ボタンは増やさない。
+
+### generic pair guard
+
+一度 `reverse-lexeme-pairs-v09.json` へ入れる案も検討したが、
+既存設計の
+「wai-iwaはgeneric particle expansionしない」
+というguardと衝突するため採用しない。
+
+現在は:
+- `subject_suffix_library / wai-iwa` の別sense
+- dedicated frame only
+
+として固定。
+
+## 11. 品質基準への影響
+
+generation rules:
+- version `0.8.3`
+- 67 rules
+
+L1:
+- inventory / recursive count変更なし
+- DNA pool 453
+- recursive 216
+- cap 25%不変
+- ten-item quota 3/3/2/2不変
+
+L2:
+- comparison combined pool 62 → 64
+- 同定 family 13のまま
+- non-identity 49 → 51
+- 同定表示cap 2のまま
+- policy `0.93.1`
+
+固定quality benchmark:
+- v0.79 / baseline v0.76は変更しない
+- 新しい岩2例は `benchmark_eligible=false`
+- public human review後、必要なら次版benchmarkで扱う
+
+dual-sense review:
+`data/wai-iwa-dual-sense-review-v134.json`
+
+## 12. 公開表示経路 v1.33
+
+current contract:
+`data/public-release-ui-path-v133.json`
+
+public UI:
+`公開β v0.35`
+
+4経路を分離:
+
+1. 通常公開
+   - `https://yama-books.github.io/kaibun/`
+   - 3-step play route
+
+2. public detail foldout
+   - 作り方を選ぶ
+   - この回文の説明・詳細
+   - 仕組み・検証情報
+
+3. 実機診断
+   - `https://yama-books.github.io/kaibun/?debug=mobile`
+   - query指定時のみ
+
+4. research-only
+   - historical candidate / source review / philological queue
+   - public UIからリンクしない
+   - public candidate poolへ注入しない
+
+Step 1のlayer説明も公開向けへ簡略化:
+- L1: ふつうに読める
+- L2: 意味は通るが少し変
+- L3: 実験的
+
+内部の「ホワイトリスト方式」等は
+public primary pathには表示しない。
