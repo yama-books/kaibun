@@ -11,7 +11,8 @@
     "deployed_url": "https://yama-books.github.io/kaibun/",
     "deployed_diagnostic_url": "https://yama-books.github.io/kaibun/?debug=mobile",
     "deployment_evidence": {
-      "pages_run_id": 35481961842,
+      "pages_run_id": 35483146139,
+      "head_sha": "a90b7eb5376f408fde40bc6310c4a87e87925023",
       "environment_url": "https://yama-books.github.io/kaibun/",
       "conclusion": "success"
     }
