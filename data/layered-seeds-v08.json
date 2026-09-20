@@ -6,10 +6,10 @@
     "L3": "第三層。電文調・舞台指示調など、意味は追えるが標準文から外れる実験候補。"
   },
   "counts": {
-    "L1": 159,
+    "L1": 161,
     "L2": 30,
     "L3": 83,
-    "total": 272,
+    "total": 274,
     "rejected_from_v03": 875
   },
   "records": [
@@ -3276,6 +3276,30 @@
       "weirdness": 2,
       "japanese_quality": "A",
       "rationale": "親族関係を表す回文名詞句を中心に置き、助詞を保ったまま長文化した自然文。"
+    },
+    {
+      "id": "V08-0273",
+      "display": "ワイ、いいわ。",
+      "reading": "わいいいわ",
+      "family": "主語＋文末表現",
+      "layer": "L1",
+      "subgroup": "reverse_suffix",
+      "register": "spoken-feminine",
+      "weirdness": 1,
+      "japanese_quality": "A",
+      "rationale": "主語・話題の「ワイ」と文末「〜わ（女性言葉）」を反転対応させた口語回文。"
+    },
+    {
+      "id": "V08-0274",
+      "display": "ワイ、ないわ。",
+      "reading": "わいないわ",
+      "family": "主語＋文末表現",
+      "layer": "L1",
+      "subgroup": "reverse_suffix",
+      "register": "spoken-feminine",
+      "weirdness": 1,
+      "japanese_quality": "A",
+      "rationale": "主語・話題の「ワイ」と文末「〜わ（女性言葉）」を反転対応させた口語回文。"
     }
   ],
   "all_palindromes_verified": true,
