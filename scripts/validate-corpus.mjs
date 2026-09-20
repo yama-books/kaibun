@@ -826,7 +826,7 @@ for(const x of historicalThirdFamilyHumanV130.candidates??[]){
 if(historicalThirdFamilyHumanV130.current_state?.completed_reviews!==0||historicalThirdFamilyHumanV130.current_state?.family_promotions!==0)errors.push("HISTORICAL THIRD FAMILY HUMAN V130 must not pre-adjudicate");
 if(historicalThirdFamilyHumanV130.current_state?.public_effect!=="none")errors.push("HISTORICAL THIRD FAMILY HUMAN V130 public effect forbidden");
 
-if(rules.version!=="0.8.2")errors.push(`GENERATION RULES version mismatch: ${rules.version}`);
+if(rules.version!=="0.8.3")errors.push(`GENERATION RULES version mismatch: ${rules.version}`);
 const waiLibrary=(rules.subject_suffix_library??[]).find(x=>x.id==="wai-iwa");
 if(!waiLibrary)errors.push("WAI/IWA subject-suffix library missing");
 if(waiLibrary?.subject?.reading!=="わい"||waiLibrary?.terminal?.reading!=="いわ")errors.push("WAI/IWA library reading drift");
@@ -843,6 +843,21 @@ for(const v of waiRule?.variants??[]){
   if(reverse(reading)!==reading)errors.push(`WAI/IWA variant is not palindrome: ${v[1]}`);
 }
 if((waiRule?.variants??[]).length!==2)errors.push("WAI/IWA variant count must be 2");
+const waiRockSense=(waiLibrary?.alternate_terminal_senses??[]).find(x=>x.id==="iwa-rock");
+if(!waiRockSense)errors.push("WAI/IWA 岩 sense missing");
+if(waiRockSense?.reading!=="いわ"||waiRockSense?.display!=="岩"||waiRockSense?.layer!=="L2")errors.push("WAI/IWA 岩 sense drift");
+const waiRockRule=(rules.rules??[]).find(x=>x.id==="L2-WAI-IWA-ROCK-FRAME");
+if(!waiRockRule)errors.push("WAI/IWA 岩 generation rule missing");
+if(waiRockRule?.library_ref!=="wai-iwa"||waiRockRule?.sense_ref!=="iwa-rock"||waiRockRule?.layer!=="L2")errors.push("WAI/IWA 岩 rule linkage drift");
+const waiRockExpected=new Map([["ワイは岩。","わいはいわ"],["ワイも岩。","わいもいわ"]]);
+for(const v of waiRockRule?.variants??[]){
+  const expected=waiRockExpected.get(v[1]);
+  if(!expected)errors.push(`Unexpected WAI/IWA 岩 variant: ${v[1]}`);
+  const reading=waiRockRule.reading_pattern.replace("{pal_center}",v[0]);
+  if(reading!==expected)errors.push(`WAI/IWA 岩 reading drift: ${v[1]} / ${reading}`);
+  if(reverse(reading)!==reading)errors.push(`WAI/IWA 岩 variant is not palindrome: ${v[1]}`);
+}
+if((waiRockRule?.variants??[]).length!==2)errors.push("WAI/IWA 岩 variant count must be 2");
 if((pairs.pairs??[]).some(p=>p.left?.reading==="わい"||p.right?.reading==="いわ"))errors.push("WAI/IWA must not enter generic reverse-lexeme particle pairs");
 for(const [display,reading] of waiExpected){
   const seed=(corpus.records??[]).find(x=>x.display===display&&x.reading===reading);
