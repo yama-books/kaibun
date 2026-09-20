@@ -1,0 +1,88 @@
+{
+  "version": "1.34",
+  "updated_on": "2026-09-20",
+  "title": "wai-iwa dual-sense public review",
+  "purpose": "Keep the two meanings of reversed surface いわ separate in public generation and review.",
+  "library_id": "wai-iwa",
+  "left": {
+    "reading": "わい",
+    "display": "ワイ",
+    "role": "subject/topic"
+  },
+  "senses": [
+    {
+      "id": "sentence-final-iwa",
+      "reading": "いわ",
+      "display_role": "sentence-final-expression",
+      "layer": "L1",
+      "register": "spoken-feminine",
+      "rule_id": "L1-WAI-IWA-FRAME",
+      "outputs": [
+        {
+          "display": "ワイ、いいわ。",
+          "reading": "わいいいわ",
+          "strict_palindrome": true
+        },
+        {
+          "display": "ワイ、ないわ。",
+          "reading": "わいないわ",
+          "strict_palindrome": true
+        }
+      ],
+      "status": "public-beta"
+    },
+    {
+      "id": "iwa-rock",
+      "reading": "いわ",
+      "display_role": "noun-predicate",
+      "display": "岩",
+      "layer": "L2",
+      "register": "spoken",
+      "rule_id": "L2-WAI-IWA-ROCK-FRAME",
+      "outputs": [
+        {
+          "display": "ワイは岩。",
+          "reading": "わいはいわ",
+          "strict_palindrome": true,
+          "weirdness": 3
+        },
+        {
+          "display": "ワイも岩。",
+          "reading": "わいもいわ",
+          "strict_palindrome": true,
+          "weirdness": 3
+        }
+      ],
+      "status": "public-beta-pending-human-quality-review",
+      "frozen_benchmark_eligible": false,
+      "review_focus": [
+        "名詞述語としての口語省略が単独文として許容できるか",
+        "意味怪文として面白さがあるか",
+        "ワイという一人称とのregister整合性"
+      ]
+    }
+  ],
+  "generation_policy": {
+    "generic_reverse_lexeme_pair": false,
+    "dedicated_frame_only": true,
+    "reason": "同じ読み いわ が名詞と文末表現で異なる統語役割を持つため、generic particle expansionではなくsense-specific frameで制御する。"
+  },
+  "quality_policy": {
+    "existing_v079_benchmark_changed": false,
+    "new_rock_outputs_enter_existing_benchmark": false,
+    "future_review_route": "public human quality review",
+    "automatic_acceptance": false
+  },
+  "public_route": {
+    "main_ui": "https://yama-books.github.io/kaibun/",
+    "diagnostic": "https://yama-books.github.io/kaibun/?debug=mobile",
+    "research_only_data_linked_from_ui": false
+  },
+  "invariants": [
+    "Both senses share reading いわ but remain semantically and syntactically separate.",
+    "No generic reverse-pair wai-iwa entry is allowed.",
+    "The L1 recursive exposure cap remains 25%.",
+    "L2 identity-family comparison cap remains two items.",
+    "The frozen quality benchmark remains unchanged."
+  ]
+}
