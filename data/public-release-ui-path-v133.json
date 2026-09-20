@@ -91,7 +91,8 @@
             "reading": "わいもいわ"
           }
         ],
-        "note": "同じ読み「いわ」でも文末表現とは別sense。generic逆語ペアではなく専用フレームでのみ生成する。"
+        "note": "同じ読み「いわ」でも文末表現とは別sense。generic逆語ペアではなく専用フレームでのみ生成する。",
+        "public_entry_route": "Step1 第二層 → Step2 別の回文をつくる（怪文度は第二層選択時に最低3へ自動調整）"
       }
     ],
     "general_particle_expansion": false
@@ -184,5 +185,17 @@
       "public human quality review/adjudication"
     ],
     "non_blocking_research": "third historical positive family remains unresolved"
+  },
+  "public_layer_copy": {
+    "L1": "ふつうの日本語として読める回文を中心に出します。",
+    "L2": "意味は通るけれど、少し変でおもしろい回文まで広げます。",
+    "L3": "文体や表現を崩した、実験的な回文も出します。"
+  },
+  "l2_comparison_policy": {
+    "version": "0.93.1",
+    "combined_pool": 64,
+    "capped_family": "同定",
+    "max_items": 2,
+    "note": "岩sense追加で非同定候補が2件増加。表示cap自体は不変。"
   }
 }
