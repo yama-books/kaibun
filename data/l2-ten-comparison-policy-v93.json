@@ -1,5 +1,5 @@
 {
-  "version": "0.93",
+  "version": "0.93.1",
   "title": "L2 ten-item comparison light concentration cap",
   "source_audit_version": "0.92",
   "public_behavior_change_planned": true,
@@ -26,5 +26,12 @@
     "identity_max_in_ten": 2,
     "previous_probability_at_least_three": 0.348,
     "previous_probability_at_least_four": 0.1195
-  }
+  },
+  "inventory_snapshot": {
+    "combined_pool": 64,
+    "capped_family_count": 13,
+    "non_capped_count": 51,
+    "refresh_reason": "L2専用 wai-iwa『岩』senseから「ワイは岩。」「ワイも岩。」の2候補を追加。capped family『同定』数は不変。"
+  },
+  "baseline_refresh_note": "v0.93の表示ルール（同定最大2件）は不変。L2非同定候補が2件増えたため母数のみ更新。"
 }
