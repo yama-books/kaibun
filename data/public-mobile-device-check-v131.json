@@ -3,7 +3,7 @@
   "updated_on": "2026-09-20",
   "title": "Public mobile real-device verification protocol",
   "purpose": "Define a repeatable iPhone/mobile smoke test for the public 怪文回文メーカー without changing generation quality rules or exposing research-only content.",
-  "public_ui_version": "0.34",
+  "public_ui_version": "0.35",
   "entry": {
     "normal": "./",
     "diagnostic_query": "?debug=mobile",
