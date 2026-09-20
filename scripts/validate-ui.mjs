@@ -3,6 +3,7 @@ import fs from "node:fs";
 const html = fs.readFileSync("index.html", "utf8");
 const scripts = [...html.matchAll(/<script>([\s\S]*?)<\/script>/g)].map(m => m[1]);
 const mobileProtocol = JSON.parse(fs.readFileSync("data/public-mobile-device-check-v131.json", "utf8"));
+const releasePath = JSON.parse(fs.readFileSync("data/public-release-ui-path-v132.json", "utf8"));
 
 if (!scripts.length) {
   console.error("No inline <script> block found in index.html");
@@ -237,7 +238,7 @@ if ((growthData.narrative_families ?? []).reduce((n,f)=>n+(f.stages??[]).length,
 }
 
 
-if (mobileProtocol.version !== "1.31" || mobileProtocol.public_ui_version !== "0.34") {
+if (mobileProtocol.version !== "1.31" || mobileProtocol.public_ui_version !== "0.35") {
   failed = true;
   console.error("Unexpected mobile device protocol version/UI version");
 }
@@ -245,9 +246,9 @@ if (!html.includes('content="width=device-width,initial-scale=1,viewport-fit=cov
   failed = true;
   console.error("mobile viewport-fit=cover missing");
 }
-if (!html.includes('v0.34 / 実機診断・スマホ操作調整')) {
+if (!html.includes('v0.35 / 公開導線整理')) {
   failed = true;
-  console.error("public UI badge is not v0.34");
+  console.error("public UI badge is not v0.35");
 }
 for (const id of ["deviceDebug","deviceDebugStatus","deviceViewport","deviceVisualViewport","deviceTouch","deviceSafeArea","deviceData","deviceStorage","deviceTargets","deviceOverflow","deviceCurrent","deviceDpr","deviceDebugRefresh","deviceDebugCopy"]) {
   if (!html.includes('id="' + id + '"')) {
@@ -290,5 +291,39 @@ if ((mobileProtocol.manual_smoke_test ?? []).length !== 10) {
   console.error("mobile manual smoke-test count must be 10");
 }
 
+if (releasePath.version !== "1.32" || releasePath.public_ui_version !== "0.35") {
+  failed = true;
+  console.error("Unexpected public release UI path version");
+}
+for (const id of ["stepChoose","stepGenerate","stepGrow"]) {
+  if (!html.includes('id="' + id + '"')) {
+    failed = true;
+    console.error("public release step missing: " + id);
+  }
+}
+for (const label of ["雰囲気を選ぶ","回文を作る","気に入ったら長くする","回文を1本つくる","別の回文をつくる","作り方を選ぶ","仕組み・検証情報"]) {
+  if (!html.includes(label)) {
+    failed = true;
+    console.error("public release label missing: " + label);
+  }
+}
+if (!html.includes('<button id="pairGen">逆語ペアで作る</button>') || !html.includes('<button id="seamGen">継ぎ目型で作る</button>')) {
+  failed = true;
+  console.error("advanced generation buttons missing from foldout");
+}
+if (!html.includes('class="card techCard"') || !html.includes('<summary>仕組み・検証情報</summary>')) {
+  failed = true;
+  console.error("technical route is not folded out");
+}
+if (!html.includes("怪文回文メーカー v0.35 実機診断")) {
+  failed = true;
+  console.error("mobile diagnostic copy text is not v0.35");
+}
+const idMatches=[...html.matchAll(/id="([^"]+)"/g)].map(m=>m[1]);
+const duplicateIds=idMatches.filter((id,i)=>idMatches.indexOf(id)!==i);
+if (duplicateIds.length) {
+  failed = true;
+  console.error("duplicate public UI ids: " + [...new Set(duplicateIds)].join(","));
+}
 if (failed) process.exit(1);
 console.log("UI validation OK.");
